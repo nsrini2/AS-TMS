@@ -6,6 +6,19 @@ RAILS_GEM_VERSION = '2.3.9' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+require "#{Rails.root}/vendor/plugins/cubeless/lib/crypty"
+CfgCrypt = Crypty.new
+
+require "#{Rails.root}/vendor/plugins/cubeless/lib/cubeless_config"
+
+Config.load_config
+CfgCrypt.key = Config['cfg_secret'] || Config['session_secret']
+Config.load_config
+
+Config.require(:smtp_settings)
+Config.require(:site_base_url)
+
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -13,12 +26,41 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.autoload_paths += %W( #{RAILS_ROOT}/extras )
+  config.autoload_paths += %W(  #{Rails.root}/vendor/plugins/cubeless/components
+                                #{Rails.root}/vendor/plugins/cubeless/lib
+                                #{Rails.root}/vendor/plugins/cubeless/lib/assist/plugins
+                                #{Rails.root}/vendor/plugins/cubeless/lib/assist/profile                                
+                                #{Rails.root}/vendor/plugins/cubeless/lib/assist/video
+                                #{Rails.root}/vendor/plugins/cubeless/vendor/plugins  )
+  # config.autoload_paths << "#{RAILS_ROOT}/app/observers"
+  # config.autoload_paths << "#{RAILS_ROOT}/app/sweepers"
 
   # Specify gems that this application depends on and have them installed with rake gems:install
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
+  
+  #Require RedCloth  
+  config.gem "RedCloth"
+  require 'RedCloth'
+  
+  config.gem "json", :version => '1.2.4'
+  
+  # require native mysql driver, not the ruby version
+  config.gem 'fastercsv' # admin user import/export
+  config.gem 'mysql'
+
+  config.gem 'rest-client', :lib => 'rest_client', :version => '1.5.0'
+  
+  config.gem 's3'
+  config.gem 'right_aws'
+
+  config.gem 'panda', :version => '0.2.1'
+  # config.gem "compass", :version => ">= 0.10.2"
+
+  # ensure :acts_as_auditable loads before :xss_terminate (no filtering)
+  config.plugins = [ :acts_as_auditable, :all ]
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -39,3 +81,137 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+# Load initializers from plugin
+require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/compass"
+require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/delayed_job"
+require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/editable_by"
+require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/geokit"
+require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/new_defaults"
+require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/panda"
+require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/reports"
+require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/xss"
+
+
+require "#{Rails.root}/vendor/plugins/cubeless/components/cubeless"
+
+# Load config from db
+begin
+  Config.load_config_from_db
+rescue
+  Rails.logger.warn "Could not load config from DB: #{$!}"
+end
+
+#Override field error format to include image
+ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+  error_class = "fieldWithErrors"
+  if html_tag =~ /<(input|textarea|select|label)[^>]+class=/
+    class_attribute = html_tag =~ /class=['"]/
+    html_tag.insert(class_attribute + 7, "#{error_class} ")
+  elsif html_tag =~ /<(input|textarea|select|label)/
+    first_whitespace = html_tag =~ /\s/
+    html_tag[first_whitespace] = " class='#{error_class}' "
+  end
+  unless html_tag =~ /<input[^>]+type=\"hidden\"|<label/
+    html_tag = "<div class=\"fieldWithErrors\"><img src=\"/images/errorFieldIconBG.png\" width=\"25\" height=\"25\" alt=\"#{[instance.error_message].flatten.first}\">#{html_tag}</div>"
+  end
+  html_tag
+end
+
+# Add new inflection rules using the following format
+# (all these examples are active by default):
+# Inflector.inflections do |inflect|
+#   inflect.plural /^(ox)$/i, '\1en'
+#   inflect.singular /^(ox)en/i, '\1'
+#   inflect.irregular 'person', 'people'
+#   inflect.uncountable %w( fish sheep )
+# end
+
+# Add new mime types for use in respond_to blocks:
+# Mime::Type.register "text/richtext", :rtf
+# Mime::Type.register "application/x-mobile", :mobile
+Mime::Type.register "application/pdf", :pdf
+
+# Support for cloning the activerecord connection
+module ActiveRecord
+  def Base.clone_connection
+    # capture the current default connection
+    conn = ActiveRecord::Base.connection
+    # make AR create a new base connection
+    ActiveRecord::Base.establish_connection
+    # reconnect our old connection handle!
+    conn.reconnect!
+    conn
+  end
+end
+
+module ActiveRecord::Validations
+  def first_error
+    @errors.full_messages[0]
+  end
+end
+
+# for dev testing only
+module ActionView::Helpers::AssetTagHelper
+  alias_method :image_tag_pre_dimwarn, :image_tag
+  def image_tag(source, options={})
+    puts "WARNING: image width,height not specified (#{source})" unless options.member?(:size) or options.member?(:width) or options.member?(:height)
+    options[:alt] ||= ''
+    return image_tag_pre_dimwarn(source,options)
+  end
+end
+
+# validate_on_destroy hack
+class ActiveRecord::Base
+  class ObjectNotDestroyable < ActiveRecord::ActiveRecordError
+  end
+  def destroy_with_validation
+    validate_on_destroy if self.respond_to? :validate_on_destroy
+    if errors.empty?
+      destroy_without_validation
+    end
+  end
+  alias_method_chain :destroy, :validation
+end
+
+# apache 2.0 ProxyPass from http->https does not convert return urls back to http
+# rails support for the X-Forwarded-Proto header only checks for the 'https' value, not 'http',
+# which is used in this odd case...
+# this patch enables http->https->rails proxying (we use this for secure tunnelling from an external network)
+# rails "normally" supports https->http->rails (where https is normally a load balancer that offloads https processing)
+class ActionController::AbstractRequest
+  def ssl?
+    xproto = @env['HTTP_X_FORWARDED_PROTO']
+    return xproto=='https' if xproto
+    return @env['HTTPS']=='on'
+  end    
+end
+
+class ActiveRecord::Base
+  class << self
+
+    # keep reference to untouched find method (since we monkey with the defaults)
+    alias_method :base_find, :find
+
+    # patch to add :having functionality
+    protected
+    VALID_FIND_OPTIONS << :having
+
+    private
+    alias_method :add_limit_pre_having!, :add_limit!
+    def add_limit!(sql, options, scope = :auto)
+      having = options.delete(:having)
+      sql << " HAVING (#{having})" if having
+      add_limit_pre_having!(sql,options,scope)
+    end
+  end
+end
+
+ActionMailer::Base.smtp_settings = Config[:smtp_settings]
+
+# Include your application configuration below
+require 'table_for'
+require 'getthere_integration'
+
+require 'RMagick'  
+require 'spawn'
