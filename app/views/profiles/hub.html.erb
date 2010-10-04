@@ -1,0 +1,354 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>AgentStream</title>
+	<link rel="stylesheet" href="/themes/agentstream/_css/style.css" />
+	<style>
+/*
+	#6f563b header (chocolate) 
+	#4a6970 subnav, subhead, questions (teal) 
+	#676767 body copy (gray)
+	
+	#e5f1f4 right column bg (light blue)
+	
+	#c4d7dc grid lines
+	
+	#90b4bc light blue links
+	
+	
+	#987d72 light brown
+	
+	
+*/
+	h1, h2, h3, h4, h5, h6 {  }
+	h2 { text-shadow: #fff 0 1px 0; font-size: 18px; color: #6f563b; text-transform: uppercase; margin-bottom: 10px;}
+	h3, h3 a { color: #4a6970; font-weight: normal; font-size: 16px; }
+	.aside {  }
+	.aside p { color: #666;}
+	div.meta { color: #666; font-size: 11px;}
+	p.asked, p.open_until { display: inline; }
+	p.category, p.answers { display: inline; }
+	.question_actions { color: #666; font-size: 11px; }
+		.question_actions li { display: inline; }
+	.primary {  }
+
+.alert { border: 1px solid #c4d7dc; border-width: 0 1px 0; }
+	.alert .content { margin: 0 10px 10px; padding: 10px 10px 1px; border-radius: 3px; }
+		.alert .content p { margin: 0 0 10px; }
+	.notice .content { background: #ddf0f8; }
+	.success .content { background: #dcedbc; }
+	.error .content { background: #fee; }
+	.warning .content { background: #fff5cc;}
+		
+.primary .alert { float: none; border: none; }
+
+#header { height: 100px; }
+
+#header h1 {float: left;
+height: 80px;
+margin: 0;
+overflow: hidden;
+text-indent: -9999px;}
+
+#header h1 a { background: url(http://placehold.it/140x80/eeeeee/&text=logo) no-repeat 0 0;
+display: block;
+height: 100px;
+margin: 5px 0px 0px 10px;
+width: 140px; }
+
+#header .nav {display: block; }
+	#header .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+#header .nav li { display: block; float: left; margin: 0 20px 0 0; }
+#header .utility { margin: 20px 0 0; font-size: 14px; }
+	#header .nav a { color: #4a6970; }
+#header .global_nav { margin: 30px 0 0; font-size: 16px; text-transform: lowercase; }
+	#header .global_nav li.active { border-bottom: 1px solid #4a6970; } 
+
+/*	news feed */
+#feeds { background: #fff; margin: 0 0 10px; }
+	#feeds .tabs-panel { padding: 10px 0; }
+		#news_feed .news_item { clear: both; margin: 20px 0 0; color: #4a6970; padding: 10px; }
+		#news_feed .question { background: #e1ecee }
+			#news_feed .news_item:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+		#news_feed .news_item .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
+		#news_feed .news_item .details { display: block; float: left; width: 420px;}
+			#news_feed .news_item .details h3 { margin: 0 10px 0 0; display: inline; font-weight: bold; }
+			#news_feed .news_item .details p { display: inline; }
+			#news_feed .news_item h3 a { color: #4a6970; }
+
+#feeds #ask { clear: both; margin: 15px 0 0; color: #4a6970; padding: 0 10px; }
+	#feeds #ask .photo_wrapper { display: block; float: left; margin: 0; }
+	#feeds #ask:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	#feeds #ask textarea { height: 60px; width: 415px; padding: 10px; border: 1px solid #90b4bc; border-width: 1px 1px 1px 0; font-size: 12px; color: #4a6970; }
+	#feeds #ask img { border: 1px solid #90b4bc; border-width: 1px 0 1px 1px; }
+	#feeds #ask .button { float: right; margin: 0; background: #90b4bc; border: 0; padding: 5px 25px; color: #fff; font-size: 18px; text-transform: uppercase; font-weight: bold; }
+			
+			
+/*groups*/
+#groups { position: relative; background-color: #eff8fa; }
+.group_item { clear: both;}
+.group_item:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	#groups .group_item .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
+	#groups .details { display: block; float: left; width: 425px;}
+		#groups .group_item .details h3 { margin-bottom: 0px; }
+		#groups h3 a { color: #6f563b; }
+		#groups h3 .info { color: #987d72; }
+
+#groups h2 { float: left; }
+#groups .nav { display: block; float: right; margin: 0 0; font-size: 16px; text-transform: lowercase; }
+	#groups .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+	#groups .nav li { display: block; float: left; margin: 0 20px 0 0; }
+		#groups .nav li.active { border-bottom: 1px solid #4a6970; }
+	#groups .nav a { color: #4a6970; font-weight: normal;  }
+	
+	#statistics table { width: 100%;}
+	#statistics table, #statistics table a { color: #4a6970; }
+	#header, #main { border: 1px solid #c4d7dc; border-width: 0 1px 0; }
+	#main { border-width: 0 1px 1px;}
+	#footer { clear: both; }
+	.aside .module, .primary .module { margin: 0; padding: 10px 20px 10px; border: 1px solid #c4d7dc; border-width: 1px 0 0 0; background: #e5f1f4;}
+	.aside .module { border-width: 1px 0 0 1px; }
+		.aside .last { border-bottom: 1px solid #c4d7dc; }
+	
+		#widget .module { height: 500px; }
+.question { margin: 0 0 10px; }
+.question .text { margin: 0 0 10px; }
+.question .meta a { color: #90b4bc; }
+.question .meta p { margin: 0;}
+.question .question_actions { margin: 5px 0 0 0;}
+.question .question_actions li { margin: 0 15px 0 0; }
+.question .question_actions a { color: #676767; }
+
+.note { clear: both; }
+
+.note:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.note .text, .note .text a { margin: 0 0 3px 0; font-size: 16px; color: #4a6970; }
+.note .text a { width: 100%; display: block; }
+.note .title { clear: both; float: right; margin: 0; color: #4a6970;}
+.note .when { clear: both; float: right; margin: 0 0 10px 0; font-size:11px; color: #8ba2a7; }
+
+#promotions { padding: 0; height: 150px; position: relative; }
+ #promotions h2 { position: absolute; top: 10px; left: 15px; z-index: 2; color: #fff; text-shadow: #999 0 -1px 0;}
+.promo_image { position: absolute; }
+	</style>
+
+</head>
+<body>
+<div id="page">
+	<div id="header">
+		<h1 id="logo"><a href="/">AgentStream</a></h1>
+		<div class="global_nav">
+			<ul class="nav">
+				<li class="active"><a href="#">Community</a></li>
+				<li><a href="#">Destinations</a></li>
+				<li><a href="#">Marketing</a></li>
+			</ul>
+		</div>
+		<div class="utility">
+			<ul class="nav">
+				<li><span class="online_now">4 online now</span></li>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Profile</a></li>
+				<li><a href="#">Account</a></li>
+			</ul>
+			<div class="search">
+				<form action="search" method="get" accept-charset="utf-8">
+					<input type="text" name="q" size="40" placeholder="Search for any keyword or person" />
+			    <button type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="main">
+		<div class="primary">
+			<div class="notice alert">
+				<div class="content">
+					<p>But maybe the line length on this guy seems to be a little bit better suited for reading. Say for example we have an annoucement of some sort.</p>
+					<p>Another paragraph perhaps.</p>
+					<a href="#" class="close">Close</a>
+				</div>
+			</div>
+			<div id="feeds">
+				
+				<div class="tabs"> 
+					<ul class="tabs-nav">
+						<li class="active"><span href="#news_feed">News Feed (100+)</span></li>
+						<li class=""><a href="#following">Following (11)</a></li> 
+						<li class=""><a href="#messages">Messages (3)</a></li> 
+					</ul>
+					
+					<div id="news_feed" class="tabs-panel">
+						
+						<div id="ask" class="">
+							<form action="" method="get" accept-charset="utf-8">
+								<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+								<textarea></textarea>
+								<p><input class="button" type="submit" value="Ask"></p>
+							</form>
+						</div>
+							
+						<div id="news_item1" class="list_item news_item even">
+							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+							<div class="details">
+								<h3 class="who"><a href="/groups/140">Jeremy Johnson</a></h3>
+								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
+							</div>
+						</div>
+						
+						<div id="news_item1" class="list_item news_item even question">
+							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+							<div class="details">
+								<h3 class="who"><a href="/groups/140">Kevin Schumacher</a></h3>
+								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
+							</div>
+						</div>
+						
+						<div id="news_item1" class="list_item news_item even">
+							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+							<div class="details">
+								<h3 class="who"><a href="/groups/140">Sarah Kennedy</a></h3>
+								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
+							</div>
+						</div>
+						
+					</div> 
+					<div id="following" class="tabs-panel hide" style="display: none"> 
+						Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.
+					</div> 
+					<div id="messages" class="tabs-panel hide" style="display: none"> 
+						Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id="groups" class="module">
+				<h2>Groups</h2>
+				<ul class="nav">
+					<li><a href="#">Explore Groups</a></li>
+					<li><a href="#">Create a Group</a></li>
+				</ul>
+				<div id="group140" class="list_item group_item even">
+					<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+					<div class="details">
+						<h3><a href="/groups/140">HQ Commute Share - <span class="info">Founded on Jan 10, 2008</span></a></h3>
+						<p class="description">Connect with a neighbor or friend to ride in with as often as needed. Hopefully it will help to free up some parking spots in the garage, help the environment and heck, make the commute a bit more fun. Feel free to list your home city and normal route when looking for a commute share.</p>
+					</div>
+				</div>
+				<div id="group140" class="list_item group_item even">
+					<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+					<div class="details">
+						<h3><a href="/groups/140">HQ Commute Share - <span class="info">Founded on Jan 10, 2008</span></a></h3>
+						<p class="description">Connect with a neighbor or friend to ride in with as often as needed. Hopefully it will help to free up some parking spots in the garage, help the environment and heck, make the commute a bit more fun. Feel free to list your home city and normal route when looking for a commute share.</p>
+					</div>
+				</div>
+				<div id="group140" class="list_item group_item even">
+					<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+					<div class="details">
+						<h3><a href="/groups/140">HQ Commute Share - <span class="info">Founded on Jan 10, 2008</span></a></h3>
+						<p class="description">Connect with a neighbor or friend to ride in with as often as needed. Hopefully it will help to free up some parking spots in the garage, help the environment and heck, make the commute a bit more fun. Feel free to list your home city and normal route when looking for a commute share.</p>
+					</div>
+				</div>
+				
+				<div class="see_all">
+					<a href="#">See All Groups</a>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="aside">
+			<div id="promotions" class="module">
+				<h2>Promotions</h2>
+				<p class="promo_image"><image src="http://placehold.it/300x150"></p>
+			</div>
+			<div id="referred_questions" class="module">
+				<h2>Referred Questions</h2>
+				<div class="question">
+					<h3 class="text">The island of Rhodes... What hotel do you like best?  Why?</h3>
+					<div class="meta">
+						<p class="asked">asked on Aug 07, 2010 by Betty Rhodes -</p>
+						<p class="open_until">Open Until Sep 06, 2010</p><br>
+						<p class="category">category: <a href="">leisure travel</a></p>
+						<p class="answers"><a href="#">2 answers</a></p>
+					</div>
+					<ul class="nav question_actions">
+						<li class="answer"><a href="#">Answer</a></li>
+						<li class="refer"><a href="#">Refer</a></li>
+						<li class="watch"><a href="#">Watch This</a></li>
+						<li class="shady"><a href="#">Shady</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="statistics" class="module">
+				<h2>Karma (199)</h2>
+				<table>
+					<tr>
+						<td><strong>Updates:</strong> 1136</td>
+						<td><strong>Best Answers:</strong> 6</td>
+					</tr>
+					<tr>
+						<td><strong>Questions:</strong> 54</td>
+						<td><strong>Notes:</strong> 11</td>
+					</tr>
+					<tr>
+						<td><strong>Groups:</strong> 7</td>
+						<td><strong>Profile Views:</strong> 302</td>
+					</tr>
+				</table>
+			</div>
+			<div id="notes">
+				<div class="module">
+					<h2>Notes</h2>
+					<div class="note">
+						<p class="text"><a href="#">I thought my life was awesome before but it was nothing compared to how utterly cool it is now... </a></p>
+						<p class="title">Upgraded to Sabre Red</p>
+						<p class="when">Tuesday, July 13, 2010</p>
+					</div>
+				
+					<div class="note">
+						<p class="text"><a href="#">I thought my life was awesome before but it was nothing compared to how utterly cool it is now... </a></p>
+						<p class="title">Upgraded to Sabre Red</p>
+						<p class="when">Tuesday, July 13, 2010</p>
+					</div>
+				
+					<div class="see_all">
+						<a href="#">See All Notes</a>
+					</div>
+				</div>
+			</div>
+			<div id="widget" class="widget">
+				<div class="module last">
+					<h2>Widget Area</h2>
+				</div>
+			</div>
+			
+		</div>
+		
+			
+	</div>
+	<div id="footer">
+		hehe
+	</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js"><\/script>')</script>
+<script src="/themes/agentstream/_js/script.js"></script>
+<script type="text/javascript" charset="utf-8">
+(function($) {  // $ = jQuery within this block
+
+
+$(document).ready(function() {
+
+		$('.alert .close').live('click', function(event) {
+			$(this).parent().fadeTo('slow', 0.01, function(){$(this).slideUp();});
+			return false;
+		});
+});
+})(jQuery);
+</script>
+</body>
+</html>

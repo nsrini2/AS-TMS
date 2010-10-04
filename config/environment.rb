@@ -58,12 +58,17 @@ Rails::Initializer.run do |config|
   config.gem 'right_aws'
 
   config.gem 'panda', :version => '0.2.1'
-  # config.gem "compass", :version => ">= 0.10.2"
 
   config.plugin_paths += ["#{Rails.root}/vendor/plugins/cubeless/vendor/plugins"]
 
   # ensure :acts_as_auditable loads before :xss_terminate (no filtering)
   config.plugins = [ :acts_as_auditable, :all ]
+  
+  
+  # AgentStream gems
+  config.gem "compass", :version => ">= 0.10.2"
+  config.gem "compass-960-plugin", :lib => "ninesixty", :version => ">= 0.10.0"
+  
   
 
   # Only load the plugins named here, in the order given (default is alphabetical).
