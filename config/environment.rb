@@ -30,8 +30,9 @@ Rails::Initializer.run do |config|
                                 #{Rails.root}/vendor/plugins/cubeless/lib
                                 #{Rails.root}/vendor/plugins/cubeless/lib/assist/plugins
                                 #{Rails.root}/vendor/plugins/cubeless/lib/assist/profile                                
-                                #{Rails.root}/vendor/plugins/cubeless/lib/assist/video
-                                #{Rails.root}/vendor/plugins/cubeless/vendor/plugins  )
+                                #{Rails.root}/vendor/plugins/cubeless/lib/assist/video ) # Shouldn't nested lib files be autoloaded by default?
+                                                       
+  # config.autoload_paths += cubeless_plugins_paths      
   # config.autoload_paths << "#{RAILS_ROOT}/app/observers"
   # config.autoload_paths << "#{RAILS_ROOT}/app/sweepers"
 
@@ -59,8 +60,11 @@ Rails::Initializer.run do |config|
   config.gem 'panda', :version => '0.2.1'
   # config.gem "compass", :version => ">= 0.10.2"
 
+  config.plugin_paths += ["#{Rails.root}/vendor/plugins/cubeless/vendor/plugins"]
+
   # ensure :acts_as_auditable loads before :xss_terminate (no filtering)
   config.plugins = [ :acts_as_auditable, :all ]
+  
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -82,8 +86,9 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
+
 # Load initializers from plugin
-require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/compass"
+# require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/compass"
 require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/delayed_job"
 require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/editable_by"
 require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/geokit"
