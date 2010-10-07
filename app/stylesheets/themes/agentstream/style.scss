@@ -5,7 +5,8 @@
 .tabs { position: relative; margin: 0 10px; padding: 0; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
 .tabs .tabs-nav { margin: 0; padding: 0; }
 .tabs .tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 10px 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
-.tabs .tabs-nav li a, .tabs .tabs-nav li span { float: left; padding: .5em 1em; text-decoration: none; }
+.tabs .tabs-nav li.active a { color: inherit; }
+.tabs .tabs-nav li a, .tabs .tabs-nav li.active a { float: left; padding: .5em 1em; text-decoration: none; }
 .tabs .tabs-nav li.tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
 .tabs .tabs-nav li.tabs-selected a, .tabs .tabs-nav li.state-disabled a, .tabs .tabs-nav li.state-processing a { cursor: text; }
 .tabs .tabs-nav li a, .tabs.tabs-collapsible .tabs-nav li.tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */

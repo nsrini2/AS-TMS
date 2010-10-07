@@ -5,6 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>AgentStream</title>
 	<link rel="stylesheet" href="/themes/agentstream/_css/style.css" />
+
+	<%#= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
 	<style>
 /*
 	#6f563b header (chocolate) 
@@ -84,7 +86,20 @@ width: 140px; }
 	#feeds #ask textarea { height: 60px; width: 415px; padding: 10px; border: 1px solid #90b4bc; border-width: 1px 1px 1px 0; font-size: 12px; color: #4a6970; }
 	#feeds #ask img { border: 1px solid #90b4bc; border-width: 1px 0 1px 1px; }
 	#feeds #ask .button { float: right; margin: 0; background: #90b4bc; border: 0; padding: 5px 25px; color: #fff; font-size: 18px; text-transform: uppercase; font-weight: bold; }
-			
+
+
+/* feeds */ /* STOLEN FROM news feed...made to be generic */
+#feeds { background: #fff; margin: 0 0 10px; }
+	#feeds .tabs-panel { padding: 10px 0; }
+		.tabs-panel .news_item { clear: both; margin: 20px 0 0; color: #4a6970; padding: 10px; }
+		.tabs-panel .question { background: #e1ecee }
+			.tabs-panel .news_item:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+		.tabs-panel .news_item .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
+		.tabs-panel .news_item .details { display: block; float: left; width: 420px;}
+			.tabs-panel .news_item .details h3 { margin: 0 10px 0 0; display: inline; font-weight: bold; }
+			.tabs-panel .news_item .details p { display: inline; }
+			.tabs-panel .news_item h3 a { color: #4a6970; }
+
 			
 /*groups*/
 #groups { position: relative; background-color: #eff8fa; }
@@ -118,7 +133,7 @@ width: 140px; }
 .question .meta a { color: #90b4bc; }
 .question .meta p { margin: 0;}
 .question .question_actions { margin: 5px 0 0 0;}
-.question .question_actions li { margin: 0 15px 0 0; }
+.question .question_actions li { margin: 0 15px 0 0; text-transform: capitalize; }
 .question .question_actions a { color: #676767; }
 
 .note { clear: both; }
@@ -138,7 +153,7 @@ width: 140px; }
 <body>
 <div id="page">
 	<div id="header">
-		<h1 id="logo"><a href="/">AgentStream</a></h1>
+		<h1 id="logo"><%= link_to "AgentStream", home_path %></h1>
 		<div class="global_nav">
 			<ul class="nav">
 				<li class="active"><a href="#">Community</a></li>
@@ -148,13 +163,21 @@ width: 140px; }
 		</div>
 		<div class="utility">
 			<ul class="nav">
-				<li><span class="online_now">4 online now</span></li>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Account</a></li>
+				<li>
+				  <span class="online_now"><%= @active_users %> online now</span>
+				</li>
+				<li>
+				  <%= link_to "Home", home_path %>
+				</li>
+				<li>
+				  <%= link_to "Profile", profile_path(current_profile) %>
+				</li>
+				<li>
+				  <%= link_to("Account", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => @content_for_settings_selected) %>
+				</li>
 			</ul>
 			<div class="search">
-				<form action="search" method="get" accept-charset="utf-8">
+				<form action="/search" method="get" accept-charset="utf-8">
 					<input type="text" name="q" size="40" placeholder="Search for any keyword or person" />
 			    <button type="submit">Search</button>
 				</form>
@@ -163,146 +186,156 @@ width: 140px; }
 	</div>
 
 	<div id="main">
-		<div class="primary">
-			<div class="notice alert">
-				<div class="content">
-					<p>But maybe the line length on this guy seems to be a little bit better suited for reading. Say for example we have an annoucement of some sort.</p>
-					<p>Another paragraph perhaps.</p>
-					<a href="#" class="close">Close</a>
-				</div>
-			</div>
-			<div id="feeds">
+	  <div id="primary">
+		  <div class="primary">
+		    <% if @system_announcement %>
+    			<div class="notice alert">
+    				<div class="content">
+              <%= @system_announcement.content %>
+    					<a href="#" class="close">Close</a>
+    				</div>
+    			</div>
+			  <% end %>
+			  <div id="feeds">
 				
-				<div class="tabs"> 
-					<ul class="tabs-nav">
-						<li class="active"><span href="#news_feed">News Feed (100+)</span></li>
-						<li class=""><a href="#following">Following (11)</a></li> 
-						<li class=""><a href="#messages">Messages (3)</a></li> 
-					</ul>
+  				<div class="tabs"> 
+  					<ul class="tabs-nav">
+  						<li class="active"><a href="#news_feed">News Feed (???)</a></li>
+  						<li class=""><a href="#following">Following (??)</a></li> 
+  						<li class=""><a href="#messages">Messages (?)</a></li> 
+  					</ul>
 					
-					<div id="news_feed" class="tabs-panel">
+  					<div id="news_feed" class="tabs-panel">
 						
-						<div id="ask" class="">
-							<form action="" method="get" accept-charset="utf-8">
-								<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
-								<textarea></textarea>
-								<p><input class="button" type="submit" value="Ask"></p>
-							</form>
-						</div>
-							
-						<div id="news_item1" class="list_item news_item even">
-							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
-							<div class="details">
-								<h3 class="who"><a href="/groups/140">Jeremy Johnson</a></h3>
-								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
-							</div>
-						</div>
+  						<div id="ask" class="">
+  							<form action="" method="get" accept-charset="utf-8">
+  							  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_80, :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
+  								<textarea><h1>IS THIS WHERE I ASK QUESTIONS OR DO UPDATES?</h1></textarea>
+  								<p><input class="button" type="submit" value="Ask"></p>
+  							</form>
+  						</div>
 						
-						<div id="news_item1" class="list_item news_item even question">
-							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
-							<div class="details">
-								<h3 class="who"><a href="/groups/140">Kevin Schumacher</a></h3>
-								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
-							</div>
-						</div>
+  						<h1>WHAT ARE THESE?</h1>
 						
-						<div id="news_item1" class="list_item news_item even">
-							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
-							<div class="details">
-								<h3 class="who"><a href="/groups/140">Sarah Kennedy</a></h3>
-								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
-							</div>
-						</div>
+  						<div id="news_item1" class="list_item news_item even">
+  							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+  							<div class="details">
+  								<h3 class="who"><a href="/groups/140">Jeremy Johnson</a></h3>
+  								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
+  							</div>
+  						</div>
 						
-					</div> 
-					<div id="following" class="tabs-panel hide" style="display: none"> 
-						Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.
-					</div> 
-					<div id="messages" class="tabs-panel hide" style="display: none"> 
-						Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.
-					</div>
-				</div>
+  						<div id="news_item1" class="list_item news_item even question">
+  							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+  							<div class="details">
+  								<h3 class="who"><a href="/groups/140">Kevin Schumacher</a></h3>
+  								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
+  							</div>
+  						</div>
+						
+  						<div id="news_item1" class="list_item news_item even">
+  							<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
+  							<div class="details">
+  								<h3 class="who"><a href="/groups/140">Sarah Kennedy</a></h3>
+  								<p class="what">In this dedication of their own physical condition, but for basic human rights. The passion for us together offer an ever-richer life and property,</p>
+  							</div>
+  						</div>
+						
+  					</div> 
+  					<div id="following" class="tabs-panel" style="display: none"> 
+  						<h1>ARE WE RENDERING ALL THE 'WATCHED' THINGS HERE? (QUESTIONS, PEOPLE, GROUPS, ETC.)</h1>
+  					</div> 
+  					<div id="messages" class="tabs-panel" style="display: none"> 
+  						<h1>HOW DO WE TRACK 'NEW' MESSAGES? SINCE LAST TIME THEY LOGGED IN? CLICKED THIS TAB? ARE THESE JUST MESSAGES TO ME OR TO AND FROM ME?</h1>
+  						<% @messages.each do |message| %>
+  						  <div class="list_item news_item">
+  						    <%= link_to_avatar_for(message.sender, { :thumb => :thumb_80, :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
+  						    <div class="details">
+  						      <h3 class="who"><%= link_to_profile message.sender, false %></h3>
+  						      <p class="what"><%= message.message %></p>
+  						    </div>
+  						  </div>
+  						<% end %>
+  					</div>
+  				</div>
 				
-			</div>
+  			</div>
 			
-			<div id="groups" class="module">
-				<h2>Groups</h2>
-				<ul class="nav">
-					<li><a href="#">Explore Groups</a></li>
-					<li><a href="#">Create a Group</a></li>
-				</ul>
-				<div id="group140" class="list_item group_item even">
-					<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
-					<div class="details">
-						<h3><a href="/groups/140">HQ Commute Share - <span class="info">Founded on Jan 10, 2008</span></a></h3>
-						<p class="description">Connect with a neighbor or friend to ride in with as often as needed. Hopefully it will help to free up some parking spots in the garage, help the environment and heck, make the commute a bit more fun. Feel free to list your home city and normal route when looking for a commute share.</p>
-					</div>
-				</div>
-				<div id="group140" class="list_item group_item even">
-					<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
-					<div class="details">
-						<h3><a href="/groups/140">HQ Commute Share - <span class="info">Founded on Jan 10, 2008</span></a></h3>
-						<p class="description">Connect with a neighbor or friend to ride in with as often as needed. Hopefully it will help to free up some parking spots in the garage, help the environment and heck, make the commute a bit more fun. Feel free to list your home city and normal route when looking for a commute share.</p>
-					</div>
-				</div>
-				<div id="group140" class="list_item group_item even">
-					<div class="photo_wrapper"><a href="/groups/140"><img alt="avatar" class="photo " height="80" src="http://placehold.it/80x80" width="80" /></a></div>
-					<div class="details">
-						<h3><a href="/groups/140">HQ Commute Share - <span class="info">Founded on Jan 10, 2008</span></a></h3>
-						<p class="description">Connect with a neighbor or friend to ride in with as often as needed. Hopefully it will help to free up some parking spots in the garage, help the environment and heck, make the commute a bit more fun. Feel free to list your home city and normal route when looking for a commute share.</p>
-					</div>
-				</div>
+			  <div id="groups" class="module">
+  				<h2>Groups</h2>
+  				<ul class="nav">
+  					<li><%= link_to "Explore Groups", groups_explorations_path %></li>
+  					<li><%= link_to "Create a Group", new_group_path, :class => "modal create_group" %></li>
+  				</ul>
+  				<h1><br/>HOW MANY MAX? HOW ARE THEY SORTED? DIFF BETWEEN 'EXPLORE' AND 'ALL' LINKS? ARE WE DITCHING THE PUBLIC/PRIVATE/INVITE-ONLY ICONS? BLANK STATE?</h1>
+  				<% @groups.each do |group| %>
+    				<div id="group140" class="list_item group_item <%= cycle "even", "odd" %>">
+    					<%= primary_photo_for(group, :thumb => :thumb_80, :linkable => true, :class => "photo", :alt => "#{group.name} avatar", :hide_group_icon => true ) %>
+
+    					<div class="details">
+    						<h3><%= link_to "#{group.name} - Founded on #{content_tag("span", short_date(group.created_at),:class => "info")}", group_path(group) %></h3>
+    						<p class="description">
+    						  <%= group.description %>
+    						</p>
+    					</div>
+    				</div>
+  				<% end %>
 				
-				<div class="see_all">
-					<a href="#">See All Groups</a>
-				</div>
-			</div>
-		</div>
+  				<div class="see_all">
+  				  <%= link_to "See All My? Groups", groups_profile_path(current_profile) %>
+  				</div>
+  			</div>
+		  </div>
 		
 		
-		<div class="aside">
+		  <div class="aside">
 			<div id="promotions" class="module">
 				<h2>Promotions</h2>
 				<p class="promo_image"><image src="http://placehold.it/300x150"></p>
 			</div>
 			<div id="referred_questions" class="module">
 				<h2>Referred Questions</h2>
-				<div class="question">
-					<h3 class="text">The island of Rhodes... What hotel do you like best?  Why?</h3>
-					<div class="meta">
-						<p class="asked">asked on Aug 07, 2010 by Betty Rhodes -</p>
-						<p class="open_until">Open Until Sep 06, 2010</p><br>
-						<p class="category">category: <a href="">leisure travel</a></p>
-						<p class="answers"><a href="#">2 answers</a></p>
-					</div>
-					<ul class="nav question_actions">
-						<li class="answer"><a href="#">Answer</a></li>
-						<li class="refer"><a href="#">Refer</a></li>
-						<li class="watch"><a href="#">Watch This</a></li>
-						<li class="shady"><a href="#">Shady</a></li>
-					</ul>
-				</div>
+				<h1>HOW MANY MAX? HOW ARE THEY SORTED? TITLES AS LINKS? BLANK STATE?</h1>
+				<% @questions_referred_to_me.each do |question| %>
+  				<div class="question">
+  					<h3 class="text"><%= question.question %></h3>
+  					<div class="meta">
+  						<p class="asked">asked on <%= short_date question.created_at %> by <%= question.profile.full_name %> -</p>
+  						<p class="open_until">Open Until <%= short_date question.open_until %></p><br>
+  						<p class="category">category: <%= link_to question.category, questions_explorations_path(:filter_category => question.category) %></p>
+  						<p class="answers"><%= link_to pluralize(question.answers.count, " answer"), question_path(question) %></p>
+  					</div>
+  					<ul class="nav question_actions">
+  						<li class="answer"><%= link_to_answer question %></li>
+  						<li class="refer"><%= link_to_refer question %></li>
+  						<li class="watch"><%= link_to_watch_for question %></li>
+  						<li class="shady"><%= render_abuse(question) %></li>
+  					</ul>
+  				</div>				
+				<% end %>
 			</div>
 			<div id="statistics" class="module">
-				<h2>Karma (199)</h2>
+				<h2>Karma (<%= @profile_stats[:karma_points] %>)</h2>
+				<h1>UPDATES? ARE WE DOING THOSE?</h1>
 				<table>
 					<tr>
-						<td><strong>Updates:</strong> 1136</td>
-						<td><strong>Best Answers:</strong> 6</td>
+						<td><strong>Updates:</strong> <%= @profile_stats[:statuses] %></td>
+						<td><strong>Best Answers:</strong> <%= @profile_stats[:best_answers] %></td>
 					</tr>
 					<tr>
-						<td><strong>Questions:</strong> 54</td>
-						<td><strong>Notes:</strong> 11</td>
+						<td><strong>Questions:</strong> <%= @profile_stats[:questions] %></td>
+						<td><strong>Notes:</strong> <%= @profile_stats[:blog_posts] %></td>
 					</tr>
 					<tr>
-						<td><strong>Groups:</strong> 7</td>
-						<td><strong>Profile Views:</strong> 302</td>
+						<td><strong>Groups:</strong> <%= @profile_stats[:groups] %></td>
+						<td><strong>Profile Views:</strong> <%= @profile_stats[:profile_views] %></td>
 					</tr>
 				</table>
 			</div>
 			<div id="notes">
 				<div class="module">
 					<h2>Notes</h2>
+					<h1>WHAT ARE NOTES? I THINK THEY'RE BLOG POSTS...BUT THAT MAKES THE CONTENT BELOW WEIRD FOR ME...HELP?</h1>
 					<div class="note">
 						<p class="text"><a href="#">I thought my life was awesome before but it was nothing compared to how utterly cool it is now... </a></p>
 						<p class="title">Upgraded to Sabre Red</p>
@@ -328,27 +361,66 @@ width: 140px; }
 			
 		</div>
 		
-			
+		</div>
 	</div>
 	<div id="footer">
 		hehe
 	</div>
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script>!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js"><\/script>')</script>
-<script src="/themes/agentstream/_js/script.js"></script>
-<script type="text/javascript" charset="utf-8">
-(function($) {  // $ = jQuery within this block
+<!-- 
+  MM2:
+  REVERTING BACK TO THE OLD JAVASCRIPT WAYS.
+  IF ANYONE HAS THE TIME/EFFORT TO WRITE ONLY THE ONES WE NEED, I'M OPEN TO IT.
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script>!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js"><\/script>')</script>
+  <script src="/themes/agentstream/_js/script.js"></script>
+  <script type="text/javascript" charset="utf-8">
+  (function($) {  // $ = jQuery within this block
 
 
-$(document).ready(function() {
+  $(document).ready(function() {
 
-		$('.alert .close').live('click', function(event) {
-			$(this).parent().fadeTo('slow', 0.01, function(){$(this).slideUp();});
-			return false;
-		});
-});
-})(jQuery);
-</script>
+     $('.alert .close').live('click', function(event) {
+       $(this).parent().fadeTo('slow', 0.01, function(){$(this).slideUp();});
+       return false;
+     });
+  });
+  })(jQuery);
+  </script>
+-->
+
+  <%= javascript_include_merged( :base ) -%>
+  <%= javascript_include_merged( :admin ) if @content_for_admin_js -%>
+
+  <% # There were issues with including ckeditor in the asset packager %>
+  <%= javascript_include_tag "ckeditor/ckeditor" %>
+  
+  <!-- OK THIS DOES NEED A FILE HOME -->
+  <script type="text/javascript" charset="utf-8">
+    (function($) {  // $ = jQuery within this block
+    	$(document).ready(function() {
+
+    		$('.alert .close').live('click', function(event) {
+    		  $(this).parent().fadeTo('slow', 0.01, function(){$(this).slideUp();});
+    		  return false;
+    		}),
+
+    		$('div.tabs ul.tabs-nav li a').live('click', function(event) {
+    			var $this = $(this);
+
+    			// Toggle the tab links
+    			$('.tabs ul.tabs-nav li').removeClass('active');
+    			$this.parent().addClass('active');
+
+    			// Toggle the tab containers
+    			$('div.tabs-panel').hide();
+    			$('div' + $this.attr('href')).show();
+
+    			return false;
+    		});
+    	});
+    })(jQuery);  
+  </script>
 </body>
 </html>
