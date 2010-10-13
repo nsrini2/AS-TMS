@@ -21,7 +21,7 @@ class ProfilesController
     
     # TODO: Organized by the last ones I participated in
     @groups = current_profile.groups
-    @groups = @groups[@groups.size-3..@groups.size-1].reverse
+    @groups = @groups[@groups.size-3..@groups.size-1].to_a.reverse
 
 
     # TODO: Clean this up...scraped from ExplorationsController.
@@ -35,6 +35,10 @@ class ProfilesController
     @messages = [current_profile.notes, current_profile.sent_notes].flatten.sort_by(&:created_at).reverse
     
     @events = ActivityStreamEvent.find_summary(:all,:limit => 7)
+    
+    # For status or question creation
+    @status = Status.new
+    @question = Question.new
   end
   
 end
