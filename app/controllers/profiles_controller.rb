@@ -3,9 +3,11 @@
 # Without this require, this controller will completely overwrite the cubeless engine. It will NOT extend it.
 require "#{Rails.root}/vendor/plugins/cubeless/app/controllers/profiles_controller"
 
+
+
 class ProfilesController
 
-  layout nil
+  helper :event_stream
   
   def hub    
     @system_announcement = SystemAnnouncement.get_if_active
@@ -17,10 +19,11 @@ class ProfilesController
     
     @questions_referred_to_me = current_profile.questions_referred_to_me
     @groups = current_profile.groups
-    
-    @messages = current_profile.notes
 
-    render :layout => nil
+    # TODO: Make into one query
+    @messages = [current_profile.notes, current_profile.sent_notes].flatten.sort_by(&:created_at).reverse
+    
+    @events = ActivityStreamEvent.find_summary(:all,:limit => 7)
   end
   
 end

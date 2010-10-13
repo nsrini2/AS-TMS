@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>AgentStream</title>
+	<link rel="stylesheet" href="/themes/agentstream/_css/style.css" />
+
+	<%#= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+	<style>
+/*
+	#6f563b header (chocolate) 
+	#4a6970 subnav, subhead, questions (teal) 
+	#676767 body copy (gray)
+	
+	#e5f1f4 right column bg (light blue)
+	
+	#c4d7dc grid lines
+	
+	#90b4bc light blue links
+	
+	
+	#987d72 light brown
+	
+	
+*/
+	h1, h2, h3, h4, h5, h6 {  }
+	h2 { text-shadow: #fff 0 1px 0; font-size: 18px; color: #6f563b; text-transform: uppercase; margin-bottom: 10px;}
+	h3, h3 a { color: #4a6970; font-weight: normal; font-size: 16px; }
+	.aside {  }
+	.aside p { color: #666;}
+	div.meta { color: #666; font-size: 11px;}
+	p.asked, p.open_until { display: inline; }
+	p.category, p.answers { display: inline; }
+	.question_actions { color: #666; font-size: 11px; }
+		.question_actions li { display: inline; }
+	.primary {  }
+
+.alert { border: 1px solid #c4d7dc; border-width: 0 1px 0; }
+	.alert .content { margin: 0 10px 10px; padding: 10px 10px 1px; border-radius: 3px; }
+		.alert .content p { margin: 0 0 10px; }
+	.notice .content { background: #ddf0f8; }
+	.success .content { background: #dcedbc; }
+	.error .content { background: #fee; }
+	.warning .content { background: #fff5cc;}
+		
+.primary .alert { float: none; border: none; }
+
+#header { height: 100px; }
+
+#header h1 {float: left;
+height: 80px;
+margin: 0;
+overflow: hidden;
+text-indent: -9999px;}
+
+#header h1 a { background: url(http://placehold.it/140x80/eeeeee/&text=logo) no-repeat 0 0;
+display: block;
+height: 100px;
+margin: 5px 0px 0px 10px;
+width: 140px; }
+
+#header .nav {display: block; }
+	#header .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+#header .nav li { display: block; float: left; margin: 0 20px 0 0; }
+#header .utility { margin: 20px 0 0; font-size: 14px; }
+	#header .nav a { color: #4a6970; }
+#header .global_nav { margin: 30px 0 0; font-size: 16px; text-transform: lowercase; }
+	#header .global_nav li.active { border-bottom: 1px solid #4a6970; } 
+
+
+	</style>
+
+</head>
+<body>
+<div id="page">
+	<div id="header">
+		<h1 id="logo"><%= link_to "AgentStream", home_path %></h1>
+		<div class="global_nav">
+			<ul class="nav">
+				<li class="active"><a href="#">Community</a></li>
+				<li><a href="#">Destinations</a></li>
+				<li><a href="#">Marketing</a></li>
+			</ul>
+		</div>
+		<div class="utility">
+			<ul class="nav">
+				<li>
+				  <span class="online_now"><%= @active_users %> online now</span>
+				</li>
+				<li>
+				  <%= link_to "Home", home_path %>
+				</li>
+				<li>
+				  <%= link_to "Profile", profile_path(current_profile) if current_profile %>
+				</li>
+				<li>
+				  <%= link_to("Account", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => @content_for_settings_selected) if current_profile %>
+				</li>
+			</ul>
+			<div class="search">
+				<form action="/search" method="get" accept-charset="utf-8">
+					<input type="text" name="q" size="40" placeholder="Search for any keyword or person" />
+			    <button type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="main">
+	  <div id="primary">
+
+      <%= yield %>
+		
+		</div>
+	</div>
+	<div id="footer">
+		hehe
+	</div>
+</div>
+<!-- 
+  MM2:
+  REVERTING BACK TO THE OLD JAVASCRIPT WAYS.
+  IF ANYONE HAS THE TIME/EFFORT TO WRITE ONLY THE ONES WE NEED, I'M OPEN TO IT.
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script>!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js"><\/script>')</script>
+  <script src="/themes/agentstream/_js/script.js"></script>
+  <script type="text/javascript" charset="utf-8">
+  (function($) {  // $ = jQuery within this block
+
+
+  $(document).ready(function() {
+
+     $('.alert .close').live('click', function(event) {
+       $(this).parent().fadeTo('slow', 0.01, function(){$(this).slideUp();});
+       return false;
+     });
+  });
+  })(jQuery);
+  </script>
+-->
+
+  <%= javascript_include_merged( :base ) -%>
+  <%= javascript_include_merged( :admin ) if @content_for_admin_js -%>
+
+  <% # There were issues with including ckeditor in the asset packager %>
+  <%= javascript_include_tag "ckeditor/ckeditor" %>
+  
+  <!-- OK THIS DOES NEED A FILE HOME -->
+  <script type="text/javascript" charset="utf-8">
+    (function($) {  // $ = jQuery within this block
+    	$(document).ready(function() {
+
+    		$('.alert .close').live('click', function(event) {
+    		  $(this).parent().fadeTo('slow', 0.01, function(){$(this).slideUp();});
+    		  return false;
+    		}),
+
+    		$('div.tabs ul.tabs-nav li a').live('click', function(event) {
+    			var $this = $(this);
+
+    			// Toggle the tab links
+    			$('.tabs ul.tabs-nav li').removeClass('active');
+    			$this.parent().addClass('active');
+
+    			// Toggle the tab containers
+    			$('div.tabs-panel').hide();
+    			$('div' + $this.attr('href')).show();
+
+    			return false;
+    		});
+    	});
+    })(jQuery);  
+  </script>
+</body>
+</html>

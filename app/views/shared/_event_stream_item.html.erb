@@ -1,0 +1,16 @@
+<style>
+  div.news_item div.details a {
+    color: inherit;
+  }
+</style>
+
+<div id="news_item1" class="list_item news_item <%= cycle("even", "odd") %>">
+	<%= display_event(event)[:avatar] %>
+	<div class="details">
+		<a href="<%= event_path(event) %>">
+		  <h3 class="who"><%= display_event(event)[:who] %></h3>
+		  <p class="what"><%= display_event(event)[:what] %></p>
+		</a>
+	</div>
+</div>
+
