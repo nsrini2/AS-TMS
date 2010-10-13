@@ -6,7 +6,7 @@
 	<title>AgentStream</title>
 	<link rel="stylesheet" href="/themes/agentstream/_css/style.css" />
 
-	<%#= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
 	<style>
 /*
 	#6f563b header (chocolate) 
