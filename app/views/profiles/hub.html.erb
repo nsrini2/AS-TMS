@@ -70,9 +70,14 @@
   .note { clear: both; }
 
   .note:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-  .note .text, .note .text a { margin: 0 0 3px 0; font-size: 16px; color: #4a6970; }
-  .note .text a { width: 100%; display: block; }
-  .note .title { clear: both; float: right; margin: 0; color: #4a6970;}
+/*  .note .text, .note .text a { margin: 0 0 3px 0; font-size: 16px; color: #4a6970; } */
+/*  .note .text a { width: 100%; display: block; }*/
+/*  .note .title { clear: both; float: right; margin: 0; color: #4a6970;}*/
+  .note .text, .note .text { margin: 0 0 3px 0; font-size: 16px; color: #4a6970; }
+  .note .text { width: 100%; display: block; }
+  .note object { width: 100% ! important; }
+
+  .note .title a { clear: both; float: right; margin: 0; color: #4a6970;}
   .note .when { clear: both; float: right; margin: 0 0 10px 0; font-size:11px; color: #8ba2a7; }
 
   #promotions { padding: 0; height: 150px; position: relative; }
@@ -106,7 +111,7 @@
 						<textarea maxlength="140"></textarea>
 						<p>
 						  <input class="button" type="submit" value="Share">
-						  <input type="checkbox" onclick="alert('Need fancy category dropdown to appear. Also need to remove the maxlength on the textarea.');" />
+						  <input type="checkbox" onclick="alert('This function doesn't work yet. Need fancy category dropdown to appear. Also need to remove the maxlength on the textarea.');" />
 						  Post as a question
 						  
 						</p>
@@ -141,12 +146,12 @@
 	</div>
 
   <div id="groups" class="module">
-		<h2>Groups</h2>
+		<h2>My Groups</h2>
 		<ul class="nav">
 			<li><%= link_to "Explore Groups", groups_explorations_path %></li>
 			<li><%= link_to "Create a Group", new_group_path, :class => "modal create_group" %></li>
 		</ul>
-		<h1><br/>HOW MANY MAX? HOW ARE THEY SORTED? DIFF BETWEEN 'EXPLORE' AND 'ALL' LINKS? ARE WE DITCHING THE PUBLIC/PRIVATE/INVITE-ONLY ICONS? BLANK STATE?</h1>
+	
 		<% @groups.each do |group| %>
 			<div id="group140" class="list_item group_item <%= cycle "even", "odd" %>">
 				<%= primary_photo_for(group, :thumb => :thumb_80, :linkable => true, :class => "photo", :alt => "#{group.name} avatar", :hide_group_icon => true ) %>
@@ -161,7 +166,7 @@
 		<% end %>
 	
 		<div class="see_all">
-		  <%= link_to "See All My? Groups", groups_profile_path(current_profile) %>
+		  <%= link_to "See All My Groups", groups_profile_path(current_profile) %>
 		</div>
 	</div>
 </div>
@@ -174,10 +179,9 @@
 	</div>
 	<div id="referred_questions" class="module">
 		<h2>Referred Questions</h2>
-		<h1>HOW MANY MAX? HOW ARE THEY SORTED? TITLES AS LINKS? BLANK STATE?</h1>
 		<% @questions_referred_to_me.each do |question| %>
 			<div class="question">
-				<h3 class="text"><%= question.question %></h3>
+				<h3 class="text"><%= link_to question.question, question_path(question) %></h3>
 				<div class="meta">
 					<p class="asked">asked on <%= short_date question.created_at %> by <%= question.profile.full_name %> -</p>
 					<p class="open_until">Open Until <%= short_date question.open_until %></p><br>
@@ -195,7 +199,6 @@
 	</div>
 	<div id="statistics" class="module">
 		<h2>Karma (<%= @profile_stats[:karma_points] %>)</h2>
-		<h1>UPDATES? ARE WE DOING THOSE?</h1>
 		<table>
 			<tr>
 				<td><strong>Updates:</strong> <%= @profile_stats[:statuses] %></td>
@@ -213,22 +216,17 @@
 	</div>
 	<div id="notes">
 		<div class="module">
-			<h2>Notes</h2>
-			<h1>WHAT ARE NOTES? I THINK THEY'RE BLOG POSTS...BUT THAT MAKES THE CONTENT BELOW WEIRD FOR ME...HELP?</h1>
-			<div class="note">
-				<p class="text"><a href="#">I thought my life was awesome before but it was nothing compared to how utterly cool it is now... </a></p>
-				<p class="title">Upgraded to Sabre Red</p>
-				<p class="when">Tuesday, July 13, 2010</p>
-			</div>
-		
-			<div class="note">
-				<p class="text"><a href="#">I thought my life was awesome before but it was nothing compared to how utterly cool it is now... </a></p>
-				<p class="title">Upgraded to Sabre Red</p>
-				<p class="when">Tuesday, July 13, 2010</p>
-			</div>
+			<h2>Blog Posts</h2>
+			<% @blog_posts.each do |blog_post| %>
+  			<div class="note">
+  				<p class="text"><%= truncate(blog_post.text, 200) %></p>
+  				<p class="title"><%= link_to blog_post.title, blog_post_path(blog_post) %></p>
+  				<p class="when"><%= pretty_date blog_post.created_at %></p>
+  			</div>
+			<% end %>
 		
 			<div class="see_all">
-				<a href="#">See All Notes</a>
+				<a href=<%= blogs_explorations_path %>>See All Blog Posts</a>
 			</div>
 		</div>
 	</div>
