@@ -26,7 +26,8 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.autoload_paths += %W( #{RAILS_ROOT}/extras )
-  config.autoload_paths += %W(  #{Rails.root}/vendor/plugins/cubeless/components
+  config.autoload_paths += %W(  #{Rails.root}/vendor/plugins/cubeless/app/observers
+                                #{Rails.root}/vendor/plugins/cubeless/components
                                 #{Rails.root}/vendor/plugins/cubeless/lib
                                 #{Rails.root}/vendor/plugins/cubeless/lib/assist/plugins
                                 #{Rails.root}/vendor/plugins/cubeless/lib/assist/profile                                
@@ -89,6 +90,18 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+  
+  
+  # More cubeless specific stuff
+  config.active_record.observers = :activity_stream_observer, :karma_observer, :general_observer, :watch_observer, :watch_event_observer
+
+  config.action_view.sanitized_allowed_attributes = 'style'
+  config.after_initialize do
+    ActionView::Base.sanitized_allowed_tags << 'u'
+  end
+  
+  config.logger = Logger.new(File.dirname(__FILE__) + "/../log/#{RAILS_ENV}.log") 
+  config.logger.formatter = Logger::Formatter.new
 end
 
 
