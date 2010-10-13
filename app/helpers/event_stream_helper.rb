@@ -14,7 +14,7 @@ module EventStreamHelper
   end
   
   def event_path(event)
-    if event.group_id
+    if event.group_id && !event.profile_id
       group_event_path(event)
     else
       case event.klass
@@ -34,7 +34,7 @@ module EventStreamHelper
   end
   
   def event_who_text(event)
-    if event.group_id
+    if event.group_id && !event.profile_id
       event.group_name
     else
       event.profile_screen_name
@@ -43,7 +43,7 @@ module EventStreamHelper
   
   def event_what_text(event)
     text = []
-    if event.group_id
+    if event.group_id && !event.profile_id
       text << group_event_verb_text(event)
       text << group_event_what_text(event)
     else
