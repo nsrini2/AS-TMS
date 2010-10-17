@@ -105,17 +105,23 @@
 		
 			<div id="news_feed" class="tabs-panel">
 			
-				<div id="ask" class="">
-					<form action="" method="get" accept-charset="utf-8">
-					  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_80, :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
-						<textarea maxlength="140"></textarea>
-						<p>
-						  <input class="button" type="submit" value="Share">
-						  <input type="checkbox" onclick="alert('This function doesn't work yet. Need fancy category dropdown to appear. Also need to remove the maxlength on the textarea.');" />
-						  Post as a question
-						  
-						</p>
-					</form>
+				<div id="ask" class="">				  
+				  <% form_for :status, :url => statuses_path, :html => {:accept_charset => "utf-8", :id => "widget_status"} do |f| -%>
+  				  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_80, :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
+  					<%= f.text_area :body, :maxlength => '140' %>
+  					<p>
+  					  <input class="button" type="submit" value="Share">
+  					  <input type="checkbox" id="status_question" />
+  					  Post as a question
+  					  <%# MM2: There's some railsness to make this cleaner somewhere %>
+              <select name="status[question_category]" id="status_question_category" style="display: none;">
+                <% Question.categories.each do |category| %>
+                  <option><%= category %></option>
+                <% end %>
+              </select>
+  					</p>				  
+				  <% end %>
+				  
 				</div>
 			
 			

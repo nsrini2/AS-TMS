@@ -37,6 +37,7 @@ $.fn.extend({
 				});
 			
 			function check() {
+				options['maxLength'] = parseInt( $this.attr('maxlength'), 10); // This essentially does live polling on the maxlength
 				var val = $this.val(), 
 				    length = val.length, 
 				    percentage_complete = length/options.maxLength, 

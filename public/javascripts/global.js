@@ -183,21 +183,35 @@ $.fn.extend({
 	},
 	
 	// Status
+	update_status_widget: function(data) {		
+    var widget_status_events = $('#widget_status_events');
+    var status_div = data;
+    
+    widget_status_events.prepend(status_div);
+    
+    $('#status_body').val("");
+	},
+	
 	setup_status_update_from_widget: function() {
 		return this.bind('submit', function() {
 	    $this = $(this);
 
 	    var status_body = $('#status_body').val();
+			var status_maxlength = parseInt($('#status_body').attr('maxlength'), 10);
 
 	    // Check that the status body is at least 1 characters
 	    if(status_body.length < 1) {
-	      alert('Your update must be at least 1 character long.\n\nIt is currently ' + status_body.length + ' characters.');
+	      alert('Your text must be at least 1 character long.\n\nIt is currently ' + status_body.length + ' characters.');
 	      return false;
 	    }
 
 	    // Check that the status body is under 140 characters
-	    if(status_body.length > 140) {
-	      alert('Your update must be less than 140 characters.\n\nIt is currently ' + status_body.length + ' characters.');
+	    // if(status_body.length > 140) {
+	    //   alert('Your update must be less than 140 characters.\n\nIt is currently ' + status_body.length + ' characters.');
+	    //   return false;
+	    // }
+	    if(status_body.length > status_maxlength) {
+	      alert('Your text must be less than ' + status_maxlength + ' characters.\n\nIt is currently ' + status_body.length + ' characters.');
 	      return false;
 	    }
 
@@ -215,12 +229,13 @@ $.fn.extend({
 						$('#flash_error ul').append('<li>' + 'There was an error while updating your status.' + '</li>');
 						$('#flash_error').setup_notices();
 					} else {
-	          var widget_status_events = $('#widget_status_events');
-	          var status_div = data;
-
-	          widget_status_events.prepend(status_div);
-
-	          $('#status_body').val("");
+	          // var widget_status_events = $('#widget_status_events');
+	          // var status_div = data;
+	          // 
+	          // widget_status_events.prepend(status_div);
+	          // 
+	          // $('#status_body').val("");
+						$('#status_body').update_status_widget(data);
 					}
 				},
 				complete: function() {

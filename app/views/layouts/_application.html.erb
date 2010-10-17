@@ -141,6 +141,8 @@ width: 140px; }
   </script>
 -->
 
+
+
   <%= javascript_include_merged( :base ) -%>
   <%= javascript_include_merged( :admin ) if @content_for_admin_js -%>
 
@@ -149,7 +151,19 @@ width: 140px; }
   
   <!-- OK THIS DOES NEED A FILE HOME -->
   <script type="text/javascript" charset="utf-8">
+    // Helper functions 
+    
+    // // OVERRIDES THE METHOD IN GLOBAL.JS
+    // function update_status_widget(data) {
+    //   window.location = window.location;
+    // }
+  </script>
+
+  <!-- AS DO THESE! -->
+  <script type="text/javascript" charset="utf-8">  
+  
     (function($) {  // $ = jQuery within this block
+      
     	$(document).ready(function() {
 
     		$('.alert .close').live('click', function(event) {
@@ -169,8 +183,38 @@ width: 140px; }
     			$('div' + $this.attr('href')).show();
 
     			return false;
+    		}),
+    		
+    		$('input#status_question').live('click', function(event) {
+    		  $this = $(this);
+    		  
+    		  $form = $('form#widget_status');
+    		  
+    		  if($this.attr('checked')) {
+    		    $form.attr('action', '/questions');
+    		    $('select#status_question_category').show();
+    		    
+    		    $('textarea#status_body').attr('maxlength', '4000');
+    		  }
+    		  else {
+    		    $form.attr('action', '/statuses');
+    		    $('select#status_question_category').hide();
+    		    
+    		    $('textarea#status_body').attr('maxlength', '140');
+    		  }
     		});
     	});
+    	
+    	$.fn.extend({    	
+      	// Status
+      	update_status_widget: function(data) {
+      		$('#status_body').val("");
+      		
+      		// More than just reload...clear out all the values
+      		// window.location.reload();
+      		window.location = window.location;
+      	},
+  	  });
     })(jQuery);  
   </script>
 </body>

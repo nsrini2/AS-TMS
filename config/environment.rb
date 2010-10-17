@@ -63,7 +63,7 @@ Rails::Initializer.run do |config|
   config.plugin_paths += ["#{Rails.root}/vendor/plugins/cubeless/vendor/plugins"]
 
   # ensure :acts_as_auditable loads before :xss_terminate (no filtering)
-  config.plugins = [ :acts_as_auditable, :all ]
+  config.plugins = [ :cubeless, :acts_as_auditable, :all ]
   
   
   # AgentStream gems
