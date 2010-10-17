@@ -225,7 +225,7 @@
 			<h2>Blog Posts</h2>
 			<% @blog_posts.each do |blog_post| %>
   			<div class="note">
-  				<p class="text"><%= truncate(blog_post.text, 200) %></p>
+  				<p class="text"><%= truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 500, "&hellip;&nbsp;") %></p>
   				<p class="title"><%= link_to blog_post.title, blog_post_path(blog_post) %></p>
   				<p class="when"><%= pretty_date blog_post.created_at %></p>
   			</div>
