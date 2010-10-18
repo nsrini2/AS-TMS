@@ -1,0 +1,81 @@
+<% is_owner = (current_profile == @profile) -%>
+<% content_for(:my_stuff_selected, 'selected') if is_owner -%>
+
+<% content_for :content do -%>
+  <div class="profile">
+    <div class="primary">
+      <div class="tabs"> 
+      	<ul class="tabs-nav standard">
+          <%# We're not doing tab based rendering at this point %>
+          <% if false %>
+        		<li class="active"><a href="#profile_tab">Profile</a></li>
+        		<li class=""><a href="#following_tab">Q&amp;A</a></li> 
+        		<li class=""><a href="#groups_tab">Groups</a></li>
+        		<li class=""><a href="#notes_tab">Notes</a></li>
+        		<li class=""><a href="#following_tab">Following</a></li>
+        		<li class=""><a href="#updates_tab">Updates</a></li>
+      		<% end %>
+      		<% is_owner = (current_profile == @profile) -%>
+      		<% content_for(:my_stuff_selected, 'selected') if is_owner -%>
+    		  <%= content_tag('li', link_to("Profile", profile_path(@profile)), :class => @content_for_profile_tab_selected) -%>
+    	  	<% show_when_viewing_sponsored_profile do -%>
+        		<%= content_tag('li', link_to("Q &amp; A", watched_questions_profile_path(@profile)), :class => @content_for_questions_tab_selected) -%>
+        	<% end -%>
+        	<% hide_when_viewing_sponsored_profile do -%>
+        		<%= content_tag('li', link_to("Q &amp; A", is_owner ? matched_questions_profile_path(@profile) : questions_asked_profile_path(@profile)), :class => @content_for_questions_tab_selected) -%>
+        	<% end -%>
+        	<%= content_tag('li', link_to("Groups", groups_profile_path(@profile)), :class => @content_for_groups_tab_selected) -%>
+        	<% hide_when_viewing_sponsored_profile do -%>
+        		<%= content_tag('li', link_to("Blog",  profile_blog_path(@profile)), :class => @content_for_blog_tab) -%>
+        		<% owner_content do -%>
+        			<%= content_tag('li', link_to("Following", profile_watches_path(@profile)), :class => @content_for_favorites_tab) -%>
+        			<% if Getthere.Enabled? %>
+        				<%= content_tag('li', link_to("Travel", profile_travels_path(@profile)), :class => @content_for_travel_tab) -%>
+        			<% end %>
+        		<% end -%>
+
+        		<%= content_tag('li', link_to("Updates", profile_statuses_path(@profile)), :class => @content_for_status_tab) -%>
+
+        	<% end -%>
+      	</ul>
+
+        <div class="tabs-panel">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  
+    <div class="aside">
+    	<div class="module last">
+    		<h2>Latest Activity</h2>
+    		<h1>I THINK WE SCRATCH THIS SECTION FOR PHASE 1</h1>
+
+    		<div class="question">
+    			<h3 class="text">The island of Rhodes... What hotel do you like best?  Why?</h3>
+    			<div class="meta">
+    				<p class="asked">asked on Aug 07, 2010 by Betty Rhodes -</p>
+    				<p class="open_until">Open Until Sep 06, 2010</p><br>
+    				<p class="category">category: <a href="">leisure travel</a></p>
+    				<p class="answers"><a href="#">2 answers</a></p>
+    			</div>
+    			<ul class="nav question_actions">
+    				<li class="answer"><a href="#">Answer</a></li>
+    				<li class="refer"><a href="#">Refer</a></li>
+    				<li class="watch"><a href="#">Watch This</a></li>
+    				<li class="shady"><a href="#">Shady</a></li>
+    			</ul>
+    		</div>
+    	</div>
+
+
+    </div>
+
+  </div>
+<% end %>
+
+<%= render :file => 'layouts/_application' -%>
+
+
+
+
+
