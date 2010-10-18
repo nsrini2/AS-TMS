@@ -1,0 +1,86 @@
+<style>
+
+/*.profile .tabs .tabs-nav li { margin: 0 5px 1px 0;}
+.profile .tabs .tabs-nav li a, .tabs .tabs-nav li span { padding: .5em 2.5em; }*/
+#profile_tab div.avatar_large { float: left;}
+#profile_tab .user_card { background: none; border: none; width: auto; }
+
+</style>
+
+<div class="profile">
+  <div class="primary">
+    <div class="tabs"> 
+    	<ul class="tabs-nav">
+    		<li class="active"><span href="#profile_tab">Profile</span></li>
+    		<li class=""><a href="#following_tab">Q&amp;A</a></li> 
+    		<li class=""><a href="#groups_tab">Groups</a></li>
+    		<li class=""><a href="#notes_tab">Notes</a></li>
+    		<li class=""><a href="#following_tab">Following</a></li>
+    		<li class=""><a href="#updates_tab">Updates</a></li>
+    	</ul>
+	
+    	<div id="profile_tab" class="tabs-panel">
+    	  <% @hide_updates = true %>
+    	  <%= render :partial => 'profiles/user_card' -%>
+
+      	<% hide_when_viewing_sponsored_profile do -%>      	
+        	<div id="profile_questions">
+        	    <h1>NEEDS STYLIZATIONESS BELOW</h1>
+        	  
+        		<% question_sections.each do |section| -%>
+        			<div class="profile_questions_sec">
+        				<h3><%= section['title'] -%></h3>
+        				<% section['questions'].each do |question| -%>
+        					<div class="question <%= cycle('odd', 'even', :name => 'question') -%>"> 
+        				<h4 <%= @profile.question_field_required?(question['question']) ? 'class="title"> ' : 'class="title">' -%> <%= question['label'] %></h4>
+        				<% if @profile.send(question['question']).blank? && @profile.editable_by?(current_profile) && question['example'] -%>
+        							<p class="instr"><%= question['example'] %></p>
+        						<% end -%>
+        						<%= render_inline_editor_for(@profile, question['question'], update_profile_path( @profile ), :type => 'expandable', :tooltip => "Click to edit your answer", :maxlength => '4000', :placeholder => 'Click here to answer') -%>
+        					</div>
+        				<% end -%>
+        				<% reset_cycle('question') %>
+        			</div>
+        		<% end -%>
+        	</div>
+      	<% end -%>
+
+
+    	</div> 
+    	<div id="following" class="tabs-panel hide" style="display: none"> 
+    		Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.
+    	</div> 
+    	<div id="messages" class="tabs-panel hide" style="display: none"> 
+    		Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.
+    	</div>
+    </div>
+  </div>
+
+  <div class="aside">
+  	<div class="module last">
+  		<h2>Latest Activity</h2>
+  		<h1>I THINK WE SCRATCH THIS SECTION FOR PHASE 1</h1>
+  		
+  		<div class="question">
+  			<h3 class="text">The island of Rhodes... What hotel do you like best?  Why?</h3>
+  			<div class="meta">
+  				<p class="asked">asked on Aug 07, 2010 by Betty Rhodes -</p>
+  				<p class="open_until">Open Until Sep 06, 2010</p><br>
+  				<p class="category">category: <a href="">leisure travel</a></p>
+  				<p class="answers"><a href="#">2 answers</a></p>
+  			</div>
+  			<ul class="nav question_actions">
+  				<li class="answer"><a href="#">Answer</a></li>
+  				<li class="refer"><a href="#">Refer</a></li>
+  				<li class="watch"><a href="#">Watch This</a></li>
+  				<li class="shady"><a href="#">Shady</a></li>
+  			</ul>
+  		</div>
+  	</div>
+
+	
+  </div>
+
+</div>
+
+
