@@ -28,14 +28,14 @@ Rails::Initializer.run do |config|
   # config.autoload_paths += %W( #{RAILS_ROOT}/extras )
   config.autoload_paths += %W(  #{Rails.root}/vendor/plugins/cubeless/app/observers
                                 #{Rails.root}/vendor/plugins/cubeless/components
-                                #{Rails.root}/vendor/plugins/cubeless/lib
-                                #{Rails.root}/vendor/plugins/cubeless/lib/assist/plugins
-                                #{Rails.root}/vendor/plugins/cubeless/lib/assist/profile                                
-                                #{Rails.root}/vendor/plugins/cubeless/lib/assist/video ) # Shouldn't nested lib files be autoloaded by default?
+                                #{Rails.root}/vendor/plugins/cubeless/lib  ) # Shouldn't nested lib files be autoloaded by default?
                                                        
   # config.autoload_paths += cubeless_plugins_paths      
   # config.autoload_paths << "#{RAILS_ROOT}/app/observers"
   # config.autoload_paths << "#{RAILS_ROOT}/app/sweepers"
+
+  # config.eager_load_paths << "#{Rails.root}/vendor/plugins/cubeless/config/initializers"
+
 
   # Specify gems that this application depends on and have them installed with rake gems:install
   # config.gem "bj"
@@ -107,6 +107,7 @@ end
 
 # Load initializers from plugin
 # require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/compass"
+# require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/assist"
 require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/delayed_job"
 require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/editable_by"
 require "#{Rails.root}/vendor/plugins/cubeless/config/initializers/geokit"
