@@ -60,8 +60,8 @@ width: 140px; }
 
 #header .utility .nav { float: right; }
 #header .utility .search { float: right; margin: 0 15px 0 0; }
-#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('bg_nav_online_now.png') 0 50% no-repeat; }
-.nav .drop_down { padding: 0 15px 0 0; background: url('bg_nav_dropdown.png') 100% 50% no-repeat; }
+#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('/images/bg_nav_online_now.png') 0 50% no-repeat; }
+.nav .drop_down { padding: 0 15px 0 0; background: url('/images/bg_nav_dropdown.png') 100% 50% no-repeat; }
 
 /*	news feed */
 .content { background: #fff; margin: 0 0 10px; }
@@ -87,16 +87,16 @@ width: 140px; }
 #groups { position: relative; background-color: #eff8fa; }
 .group_item { clear: both; }
 .group_item:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-	#groups .group_item .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
-	#groups .details { display: block; float: left; width: 425px;}
-		#groups .group_item .details h3 { margin-bottom: 0px; }
-		#groups h3 a { color: #6f563b; }
+	#hub #groups .group_item .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
+	#hub #groups .details { display: block; float: left; width: 425px;}
+		#hub #groups .group_item .details h3 { margin-bottom: 0px; }
+		#hub #groups h3 a { color: #6f563b; }
 		#groups h3 .info { color: #987d72; }
 
 #groups h2 { float: left; }
 #groups .nav { display: block; float: right; margin: 0 0; font-size: 16px; text-transform: lowercase; }
 	#groups .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-	#groups .nav li { display: block; float: left; margin: 0 10px 0 0; padding: 0 10px 0 0; background: url('bg_nav_glyph_right_blue.png') 100% 50% no-repeat; }
+	#groups .nav li { display: block; float: left; margin: 0 10px 0 0; padding: 0 10px 0 0; background: url('/images/bg_nav_glyph_right_blue.png') 100% 50% no-repeat; }
 		#groups .nav li.active { border-bottom: 1px solid #4a6970; }
 	#groups .nav a { color: #4a6970; font-weight: normal;  }
 	
@@ -122,7 +122,7 @@ width: 140px; }
 
 .note:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .note .text, .note .text a { margin: 0 0 3px 0; font-size: 16px; color: #4a6970; }
-.note .text { background: url('bg_notes_quote.png') no-repeat; padding: 0 0 0 25px;}
+.note .text { background: url('/images/bg_notes_quote.png') no-repeat; padding: 0 0 0 25px;}
 .note .text a { width: 100%; display: block; }
 .note .title { clear: both; float: right; margin: 0; color: #4a6970;}
 .note .when { clear: both; float: right; margin: 0 0 10px 0; font-size:11px; color: #8ba2a7; }

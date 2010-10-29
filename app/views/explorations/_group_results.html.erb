@@ -1,0 +1,15 @@
+<h2 class="page_title">Groups</h2>
+
+<div class="group_results">
+	<div id="list">
+	  <div class="listform">
+  	  <%= filter_sort_controls('Group') %>
+  	</div>
+	  
+	  <%= render :partial => 'groups/groups' %>
+	</div>
+
+  <h1>HELLO PAGING</h1>
+
+	<%= render_pagination @groups %>
+</div>

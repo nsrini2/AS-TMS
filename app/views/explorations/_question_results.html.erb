@@ -1,0 +1,23 @@
+<style>
+  #list div.question { clear: both; }
+</style>
+
+<h2 class="page_title">Questions</h2>
+
+<div class="question_results">
+	<div id="list">
+	  <div class="listform">
+  	  <%= filter_sort_controls('Question') %>
+  	</div>
+	  
+    <%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries} )%>
+
+    <div style="clear:both;"></div>
+	</div>
+
+
+
+  <h1>HELLO PAGING</h1>
+
+  <%= render_pagination(@question_summaries) %>
+</div>

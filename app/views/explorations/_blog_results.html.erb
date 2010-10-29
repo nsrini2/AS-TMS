@@ -1,0 +1,18 @@
+<h2 class="page_title">Blogs</h2>
+
+<div class="blog_results">
+	<div id="list">
+	  <div class="listform">
+	    <%= category_filter_sort_controls('BlogPost') -%>
+  	</div>
+	  
+  	<% @blogs.each do |blog_post| -%>
+  		<%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => blog_post, :blog_explore => true, :classname => cycle('odd', 'even') } %>
+  		<div style="clear: both;"></div>
+  	<% end -%>
+	</div>
+
+  <h1>HELLO PAGING</h1>
+
+	<%= render_pagination @blogs %>
+</div>

@@ -16,10 +16,10 @@
 		<h1 id="logo"><%= link_to "AgentStream", home_path %></h1>
 		<div class="global_nav">
 			<ul class="nav">
-				<li class="active"><%= link_to "Community", '/' %></li>
-				<li><%= link_to "Questions", questions_path %></li>
-				<li><%= link_to "Groups", groups_path %></li>
-				<li><%= link_to "Blogs", blog_posts_path %></li>				
+				<%= global_nav_link "Community", '/' %>
+				<%= global_nav_link "Questions", questions_explorations_path %>
+				<%= global_nav_link "Groups", groups_explorations_path %>
+				<%= global_nav_link "Blogs", blogs_explorations_path %>
 			</ul>
 		</div>
 		<div class="utility">
@@ -34,7 +34,7 @@
 				  <%= link_to "Profile", profile_path(current_profile) if current_profile %>
 				</li>
 				<li>
-				  <%= link_to("Account", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => @content_for_settings_selected) if current_profile %>
+				  <%= link_to("Account", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => "#{@content_for_settings_selected} drop_down") if current_profile %>
 				</li>
 			</ul>
 			<div class="search">

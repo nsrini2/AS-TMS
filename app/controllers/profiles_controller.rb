@@ -11,6 +11,7 @@ class ProfilesController
   
   def hub    
     @system_announcement = SystemAnnouncement.get_if_active
+    @random_marketing_message = MarketingMessage.random_active_message
 
     @profile_stats = current_profile.stats    
     @profile_stats[:karma_points] = current_profile.karma_points

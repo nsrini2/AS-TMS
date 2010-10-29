@@ -179,11 +179,11 @@ div.profile_results dl.profile_info dd.contact_info dl dt { clear: left; float: 
 div.profile_results dl.profile_info dd.contact_info dl dd { float: left; }
 
 /* hub */
-#hub { float: left; width: 595px; }
+/*#hub { float: left; width: 595px; }
 
 #hub:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 
-#hub { zoom: 1; }
+#hub { zoom: 1; }*/
 
 #marketing_message { float: left; margin-bottom: 18px; width: 595px; }
 
@@ -322,3 +322,10 @@ span.profile_notification.urgent { color: red; }
 #stats table td span.count { color: #1E678A; font-size: 2.0em; letter-spacing: -0.1em; line-height: 1em; margin-right: 0.2em; }
 
 #stats table td span.extra a { font-style: italic; font-weight: normal; }
+
+
+/* avatar */
+div.photo_wrapper { position: relative; }
+div.photo_wrapper img.online_now_indicator { position: absolute; right: -2px; bottom: -2px; }
+div.photo_wrapper img.sponsor_indicator { position: absolute; bottom: -2px; left: -4px; }
+div.photo_wrapper img.group_icon { position: absolute; right: -4px; bottom: -4px; }
