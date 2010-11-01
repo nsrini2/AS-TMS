@@ -26,3 +26,8 @@ class ApplicationController
   end
   
 end
+
+# Check certain controllers for public/private layout options
+%w(account display feedback retrievals).each do |name|
+  "#{name.titlecase}Controller".constantize.__send__ :layout, :public_or_private_layout
+end
