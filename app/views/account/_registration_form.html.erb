@@ -1,0 +1,48 @@
+<div class="intro-text">
+	<h5>What is</h5>
+	<h1>AgentStream?</h1>
+	<p>AgentStream isn't your typical online social community. Travel professionals around the globe come together in this free travel community to share knowledge and build relationships on a daily basis.</p>
+	<ul>
+		<li>Collaborate with peers</li>
+		<li>Ask or answer travel questions</li>
+		<li>Create your own Blog</li>
+	</ul>
+</div>
+<div class="sign-up">
+  <% @registration_fields = Config['registration_fields'] %>
+  <% @registration = Registration.new %>
+  
+	<h5>Sign Up For An Account</h5>
+	<% form_for @registration, :url => signup_account_path, :html => { :class => "labeless", "accept-charset" => "utf-8"} do %>
+
+		<p>
+		  <input type="text" name="profile[first_name]" size="32" placeholder="First Name" />
+		  <input type="text" name="prafile[last_name]" size="32" placeholder="Last Name" />
+		</p>
+		
+		<p>
+		  <input type="text" name="user[email]" size="32" placeholder="Email Address" />
+		  <input type="text" name="user[login]" size="32" placeholder="Login ID" />
+		</p>
+		
+		<% unless Config[:registration_queue] %>
+		  <p>
+		    <input type="text" name="user[password]" size="32" placeholder="Password" />
+		    <input type="text" name="user[password_confirmation]" size="32" placeholder="Password (Again)" />
+		  </p>
+		<% end %>
+
+		<% @registration_fields.each_with_index do |hash,idx| %>
+		  <%= "<p>" if idx%2 == 0 %>
+			<% attr_name = hash['label'].to_s.downcase.gsub(" ", "_") %>
+  	  <% if hash['options'].to_s.blank? %>
+  	    <%= text_field :registration, attr_name, :size =>'32', :placeholder => hash['label'] -%>
+  	  <% else %>
+  	    <%= select :registration, attr_name, hash['options'].split("\n"), {:prompt => "#{hash['label']}"}, :style => "width:235px", :placeholder => hash['label'] -%>
+  	  <% end %>
+  	  <%= "</p>" if (idx%2 == 1) || idx == @registration_fields.size-1 %>
+  	<% end %>
+				
+		<p><button type="submit">Create Account</button></p>
+  <% end %>
+</div>

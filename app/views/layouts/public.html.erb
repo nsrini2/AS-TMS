@@ -6,8 +6,10 @@
 	<title>AgentStream</title>
 	<link rel="stylesheet" href="/themes/agentstream/_css/style.css" />
 	<style>
-	#main { background: #e5f1f4 url('_img/signup_bg.jpg') no-repeat left top;}
+	#main { background: #e5f1f4 url('/images/signup_bg.jpg') no-repeat left top;}
+	input.placeholder { color: #666;}
 	.login-main { float: right; margin: 40px 20px;}
+	.login-main h4 { margin:0 0 8px 0; line-height: 10px; color:#4a6970;}
 	#main .primary .content {width:960px; border-top: 1px solid #c4d7dc; }
 	#main .primary .content .intro-text { clear: both; float:left; width: 350px; margin:60px 20px 20px 40px;}
 	#main .primary .content .intro-text h5 {font-size: 32px; line-height: 32px; margin:0; font-weight:normal; color: #6f563b;}
@@ -25,6 +27,7 @@
 	  <h1 id="logo"><%= link_to "AgentStream", home_path %></h1>
 		
 		<div class="login-main">
+			<h4>Login To Your Account</h4>
 			<form action="/account/login" accept-charset="utf-8" id="login_form" class="labeless">
 				<p>
 				  <input type="text" name="login" size="40" placeholder="Login" id="one" />
@@ -59,29 +62,42 @@
   	  
   	  // MM2: Basically recreate the html5 placeholder functionality for browsers that don't
   	  if(!supports_input_placeholder()) {  	  
-        var login_inputs = 'form.labeless input:text, form.labeless input:password';
+        var inputs = 'form.labeless input:text, form.labeless input:password';
 
-        $(login_inputs).each(function(element) {
+        $(inputs).each(function(element) {
           $this = $(this);
           if($this.attr('value') == '') {
             $this.attr('value', $this.attr('placeholder'));
+      		  $this.addClass('placeholder');
           }
     		}),
 
-        $(login_inputs).live('click', function(event) {
+        $(inputs).live('click', function(event) {
           $this = $(this);
           if($this.attr('value') == $this.attr('placeholder')) {
       		  $this.attr('value','');
+      		  $this.removeClass('placeholder');
       		  return false;
           }
     		}),
 		
-    		$(login_inputs).bind('blur', function(event) {
+    		$(inputs).bind('blur', function(event) {
     		  $this = $(this);
     		  if($this.attr('value') == '') {
     		    $this.attr('value', $this.attr('placeholder'));
+    		    $this.addClass('placeholder');
     		  }
-    		}); 
+    		}),
+    		
+    		// Clear out placeholders before submit
+    		$(inputs).parents('form').submit(function() {
+          $(this).find('input.placeholder').each(function() {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+              input.val('');
+            }
+          })
+        }); 
 		  }
     });
   })(jQuery);
