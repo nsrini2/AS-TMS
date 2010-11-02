@@ -29,7 +29,8 @@
 		
 		<div class="login-main">
 			<h4>Login To Your Account</h4>
-			<form action="/account/login" accept-charset="utf-8" id="login_form" class="labeless">
+			<% @user = User.new %>
+			<% form_for @user, :url => login_account_path, :html => { :id => "login_form", :class => "labeless", "accept-charset" => "utf-8"} do %>
 				<p>
 				  <input type="text" name="login" size="40" placeholder="Login" id="one" />
 				  <input type="password" name="password" size="40" placeholder="Password" id="two"/>
@@ -39,7 +40,7 @@
           <% 66.times do %>&nbsp;<% end %>
 			   	<a href="/retrievals/new?forgot=password" tabindex="5">Forgot password?</a>
 			  </p>
-			</form>
+			<% end %>
 		</div>
 	</div>
 
@@ -88,17 +89,17 @@
     		    $this.attr('value', $this.attr('placeholder'));
     		    $this.addClass('placeholder');
     		  }
-    		}),
+    		});
     		
-    		// Clear out placeholders before submit
-    		$(inputs).parents('form').submit(function() {
-          $(this).find('input.placeholder').each(function() {
-            var input = $(this);
-            if (input.val() == input.attr('placeholder')) {
-              input.val('');
-            }
-          })
-        }); 
+        // Clear out placeholders before submit
+        $(inputs).parents('form').submit(function() {
+                  $(this).find('input.placeholder').each(function() {
+                    var input = $(this);
+                    if (input.val() == input.attr('placeholder')) {
+                      input.val('');
+                    }
+                  })
+                }); 
 		  }
     });
   })(jQuery);
