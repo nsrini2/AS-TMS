@@ -329,3 +329,6 @@ div.photo_wrapper { position: relative; }
 div.photo_wrapper img.online_now_indicator { position: absolute; right: -2px; bottom: -2px; }
 div.photo_wrapper img.sponsor_indicator { position: absolute; bottom: -2px; left: -4px; }
 div.photo_wrapper img.group_icon { position: absolute; right: -4px; bottom: -4px; }
+
+/* lists */
+.profile #list { background-color: inherit; border-top: 0; padding: 0; }

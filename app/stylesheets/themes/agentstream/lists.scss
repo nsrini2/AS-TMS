@@ -26,7 +26,9 @@ h2.page_title {
 		font-size: 16px;
 		font-weight: normal;
 	}
-	
+
+#list div.list_item:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
+
 /* Content */
 #content { position: relative; background-color: #eff8fa; border-top: 1px solid #c4d7dc; }
 	#content .photo_wrapper { float: left; margin:20px; }
@@ -65,3 +67,6 @@ div.single_item div.action_buttons {
 #list div.rate {
 	float: right;
 }
+
+/* Comments */
+#list div#comments:before { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }

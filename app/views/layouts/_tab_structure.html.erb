@@ -1,0 +1,24 @@
+<% content_for :content do -%>
+  <div class="profile">
+    <div class="primary <%= "full_length" if @content_for_aside.blank? %>">
+      <div class="tabs"> 
+      	<ul class="tabs-nav standard">
+      		<%= yield :tabs %>
+      	</ul>
+
+        <div class="tabs-panel">
+          <%= @content_for_tab_panel ? yield(:tab_panel) : yield %>
+        </div>
+      </div>
+    </div>
+  
+    <% unless @content_for_aside.blank? %>
+      <div class="aside">
+      	<%= yield :aside %>
+      </div>
+    <% end %>
+
+  </div>
+<% end %>
+
+<%= render :file => 'layouts/_application' -%>

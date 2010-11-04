@@ -21,10 +21,12 @@ $ninesixty-grid-width: 960px;
 	}
 	
 	.primary { width: 560px; @include alpha; }
-	.aside { width: 400px; @include omega; }
+	.aside { margin-top: 30px; width: 400px; @include omega; }
 		.aside .module { margin: 0 10px 0; }
 	.list .primary { width: 720px;  }
 	.list .aside { width: 240px; }
 	
 	.profile .primary { @include grid-width(12); clear: both; @include alpha; }
 	.profile .aside { @include grid-width(4); @include omega; }
+	
+	.profile .full_length { @include grid-width(16); clear: both; }
