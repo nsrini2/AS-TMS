@@ -11,7 +11,7 @@ module ApplicationHelper
     regexes = { :questions => /questions/,
                 :groups => /groups/,
                 :blogs => /blogs/,
-                :community => /(questions|groups|blogs)/ }
+                :hub => /(questions|groups|blogs)/ }
                 
     regex = regexes[name.downcase.to_sym]
     
@@ -21,7 +21,7 @@ module ApplicationHelper
   end
   
   def global_nav_link_active?(name, regex)
-    if name.downcase == "community"
+    if name.downcase == "hub"
       (regex && !request.url[regex])
     else
       (regex && request.url[regex])
