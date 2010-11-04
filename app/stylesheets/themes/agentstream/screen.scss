@@ -27,7 +27,7 @@
 	.primary {  }
 
 .alert { border: 1px solid #c4d7dc; border-width: 0 1px 0; }
-	.alert .content { margin: 0 10px 10px; padding: 10px 10px 1px; border-radius: 3px; }
+	.alert .content { margin: 0 0 20px; padding: 10px 10px 1px; border-radius: 3px; }
 		.alert .content p { margin: 0 0 10px; }
 	.notice .content { background: #ddf0f8; }
 	.success .content { background: #dcedbc; }
@@ -36,10 +36,10 @@
 		
 .primary .alert { float: none; border: none; }
 
-#header { height: 100px; }
+#header { height: 110px; }
 
 #header h1 {float: left;
-height: 80px;
+height: 110px;
 margin: 0;
 overflow: hidden;
 text-indent: -9999px;}
@@ -48,7 +48,7 @@ text-indent: -9999px;}
 display: block;
 height: 100px;
 margin: 5px 0px 0px 10px;
-width: 140px; }
+width: 220px; }
 
 #header .nav {display: block; }
 	#header .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }

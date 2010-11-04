@@ -8,7 +8,9 @@
 
 	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
 
-
+  <style>
+  	#header h1#logo a { background: url(/images/agent.stream.web.dev2.gif) no-repeat 0px 50%;}
+  </style>
 </head>
 <body>
 <div id="page">
@@ -16,10 +18,11 @@
 		<h1 id="logo"><%= link_to "AgentStream", home_path %></h1>
 		<div class="global_nav">
 			<ul class="nav">
-				<%= global_nav_link "Community", '/' %>
+				<%= global_nav_link "Hub", '/' %>
 				<%= global_nav_link "Questions", questions_explorations_path %>
 				<%= global_nav_link "Groups", groups_explorations_path %>
 				<%= global_nav_link "Blogs", blogs_explorations_path %>
+				<%= global_nav_link "News", "#" %>
 			</ul>
 		</div>
 		<div class="utility">
@@ -28,21 +31,29 @@
 				  <span class="online_now"><%= @active_users %> online now</span>
 				</li>
 				<li>
-				  <%= link_to "Home", home_path %>
-				</li>
-				<li>
 				  <%= link_to "Profile", profile_path(current_profile) if current_profile %>
 				</li>
 				<li>
-				  <%= link_to("Account", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => "#{@content_for_settings_selected} drop_down") if current_profile %>
+				  <%= link_to("Settings", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => "#{@content_for_settings_selected}") if current_profile %>
+				</li>
+				<li>
+				  <%= link_to "Logout", logout_account_path if current_profile %>
 				</li>
 			</ul>
 			<div class="search">
-				<form action="/search" method="get" accept-charset="utf-8">
-					<input type="text" name="q" size="40" placeholder="Search for any keyword or person" />
+				<form action="/search" method="get" accept-charset="utf-8" class="labeless">
+					<input type="text" name="q" placeholder="Search for any keyword or person" style="width: 250px;"/>
 			    <button type="submit">Search</button>
 				</form>
 			</div>
+		</div>
+	</div>
+
+	<div class="notice alert">
+		<div class="content">
+			<p>But maybe the line length on this guy seems to be a little bit better suited for reading. Say for example we have an annoucement of some sort.</p>
+			<p>Another paragraph perhaps.</p>
+			<a href="#" class="close">Close</a>
 		</div>
 	</div>
 

@@ -50,13 +50,14 @@ q:before, q:after {
     content:none;
 }
 
-a {
+a, a:visited {
     margin:0;
     padding:0;
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
 		text-decoration: none;
+		color: #4A6970;
 }
 
 /* change colours to suit your needs */

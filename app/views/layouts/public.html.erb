@@ -8,8 +8,9 @@
 	<style>
 	#main { background: #e5f1f4 url('/images/signup_bg.jpg') no-repeat left top;}
 	input.placeholder { color: #666;}
-	.login-main { float: right; margin: 40px 20px;}
+	.login-main { float: right; margin: 30px 20px;}
 	.login-main h4 { margin:0 0 8px 0; line-height: 10px; color:#4a6970;}
+	.login-main input[type=text],.login-main input[type=password]  { margin-bottom: 3px; }
 	#main .primary .content {width:960px; border-top: 1px solid #c4d7dc; }
 	#main .primary .content .intro-text { clear: both; float:left; width: 350px; margin:60px 20px 20px 40px;}
 	#main .primary .content .intro-text h5 {font-size: 32px; line-height: 32px; margin:0; font-weight:normal; color: #6f563b;}
@@ -19,6 +20,9 @@
 	#main .primary .content .sign-up { float:right; width: 500px; margin:50px 20px 100px 20px;}
 	#main .primary .content .sign-up form input[type=text] { width: 228px; }
 	#footer { clear:both;}
+	
+	
+	#header h1#logo a { background: url(/images/agent.stream.web.dev.gif) no-repeat 0px 50%;}
 	</style>
 
 </head>
@@ -28,7 +32,7 @@
 	  <h1 id="logo"><%= link_to "AgentStream", home_path %></h1>
 		
 		<div class="login-main">
-			<h4>Login To Your Account</h4>
+			<h4>Current Members</h4>
 			<% @user = User.new %>
 			<% form_for @user, :url => login_account_path, :html => { :id => "login_form", :class => "labeless", "accept-charset" => "utf-8"} do %>
 				<p>
