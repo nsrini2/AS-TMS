@@ -70,11 +70,11 @@ Rails::Initializer.run do |config|
   config.gem "compass", :version => ">= 0.10.2"
   config.gem "compass-960-plugin", :lib => "ninesixty", :version => ">= 0.10.0"
   
-  config.gem(
-    'thinking-sphinx',
-    :lib     => 'thinking_sphinx',
-    :version => '1.3.20'
-  )
+  # config.gem(
+  #   'thinking-sphinx',
+  #   :lib     => 'thinking_sphinx',
+  #   :version => '1.3.20'
+  # )
   
   
 
