@@ -7,16 +7,18 @@
   			#news_feed .news_item:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
   		#news_feed .news_item .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
   		#news_feed .news_item .details { display: block; float: left; width: 420px;}
-  			#news_feed .news_item .details h3 { margin: 0 10px 0 0; display: inline; font-weight: bold; }
+  			#news_feed .news_item .details h3 { margin: 0 6px 0 0; display: inline; font-weight: bold; }
   			#news_feed .news_item .details p { display: inline; }
+  			#news_feed .news_item .details p.what { font-size: 14px; }
+  			#news_feed .news_item .details p.what span { font-size: 12px;}
   			#news_feed .news_item h3 a { color: #4a6970; }
 
   #feeds #ask { clear: both; margin: 15px 0 0; color: #4a6970; padding: 0 10px; }
-  	#feeds #ask .photo_wrapper { display: block; float: left; margin: 0; }
+  	#feeds #ask .photo_wrapper { display: block; float: left; margin: 1px 0 0 0; }
   	#feeds #ask:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
   	#feeds #ask textarea { height: 60px; width: 415px; padding: 10px; border: 1px solid #90b4bc; border-width: 1px 1px 1px 0; font-size: 12px; color: #4a6970; }
   	#feeds #ask img { border: 1px solid #90b4bc; border-width: 1px 0 1px 1px; }
-  	#feeds #ask .button { float: right; margin: 0; background: #90b4bc; border: 0; padding: 5px 25px; color: #fff; font-size: 18px; text-transform: uppercase; font-weight: bold; }
+  	#feeds #ask .button { float: right; margin: 0 2px 0 0; background: #90b4bc; border: 0; padding: 5px 25px; color: #fff; font-size: 18px; text-transform: uppercase; font-weight: bold; }
 
 
   /* feeds */ /* STOLEN FROM news feed...made to be generic */
@@ -37,7 +39,7 @@
   .group_item { clear: both;}
   .group_item:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
   	#groups .group_item .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
-  	#groups .details { display: block; float: left; width: 425px;}
+  	#hub #groups .details { display: block; float: left; width: 410px;}
   		#groups .group_item .details h3 { margin-bottom: 0px; }
 /*      #groups h3 a { color: #6f563b; }*/
   		#groups h3 .info { color: #987d72; }
@@ -58,7 +60,6 @@
   	.aside .module { border-width: 1px 0 0 1px; }
   		.aside .last { border-bottom: 1px solid #c4d7dc; }
 	
-  		#widget .module { height: 500px; }
   .question { margin: 0 0 10px; }
   .question .text { margin: 0 0 10px; }
   .question .meta a { color: #90b4bc; }
@@ -67,52 +68,62 @@
   .question .question_actions li { margin: 0 15px 0 0; text-transform: capitalize; }
   .question .question_actions a { color: #676767; }
 
-  .note { clear: both; }
 
-  .note:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-/*  .note .text, .note .text a { margin: 0 0 3px 0; font-size: 16px; color: #4a6970; } */
-/*  .note .text a { width: 100%; display: block; }*/
-/*  .note .title { clear: both; float: right; margin: 0; color: #4a6970;}*/
-  .note .text, .note .text { margin: 0 0 3px 0; font-size: 16px; color: #4a6970; }
-  .note .text { width: 100%; display: block; }
-  .note object { width: 100% ! important; }
-
-  .note .title a { clear: both; float: right; margin: 0; color: #4a6970;}
-  .note .when { clear: both; float: right; margin: 0 0 10px 0; font-size:11px; color: #8ba2a7; }
 
   #promotions { padding: 0; height: 150px; position: relative; }
    #promotions h2 { position: absolute; top: 10px; left: 15px; z-index: 2; color: #fff; text-shadow: #999 0 -1px 0;}
   .promo_image { position: absolute; }
+  
+  #ask span.counter {
+    /*color: #990000;*/
+    display: block ! important;
+    float: left;
+    margin: 0 0 0 -80px;    
+  }
+  #ask p.actions {
+    margin-left: 170px;
+  }
+  #ask p.actions input[type=checkbox] {
+    float: left;
+    height: 18px;
+    margin: 0 2px 0 0;
+    width: 18px;
+  }
+  #ask p.actions span {
+    display: block;
+    float: left;
+    font-size: 1.2em;
+  }
+  #ask p.actions select {
+  }
 </style>
 
+
+<% if @system_announcement && cookies["system_announcement_updated_at"] != @system_announcement.updated_at.to_s %>
+  <%= render :partial => "system_announcements/system_announcement" %>
+<% end %>
+
 <div id="hub" class="primary">
-  <% if @system_announcement %>
-		<div class="notice alert">
-			<div class="content">
-        <%= @system_announcement.content %>
-				<a href="#" class="close">Close</a>
-			</div>
-		</div>
-  <% end %>
   <div id="feeds">
 	
 		<div class="tabs"> 
 			<ul class="tabs-nav">
-				<li class="active"><a href="#news_feed">News Feed</a></li>
+				<li class="active"><a href="#news_feed">Activity Stream</a></li>
 				<li class=""><a href="#following">Following</a></li> 
-				<li class=""><a href="#messages">Messages</a></li> 
+				<li class=""><a href="#messages">Inbox</a></li> 
 			</ul>
 		
 			<div id="news_feed" class="tabs-panel">
 			
 				<div id="ask" class="">				  
-				  <% form_for :status, :url => statuses_path, :html => {:accept_charset => "utf-8", :id => "widget_status"} do |f| -%>
+				  <% form_for :status, :url => statuses_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "labeless"} do |f| -%>
   				  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_80, :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
-  					<%= f.text_area :body, :maxlength => '140' %>
-  					<p>
+  					<%= f.text_area :body, :maxlength => '140', :placeholder => "Share an Update or Ask a Question" %>
+  					
+  					<p class="actions">
   					  <input class="button" type="submit" value="Share">
   					  <input type="checkbox" id="status_question" />
-  					  Post as a question
+  					  <span>Post as a question</span>
   					  <%# MM2: There's some railsness to make this cleaner somewhere %>
               <select name="status[question_category]" id="status_question_category" style="display: none;">
                 <% Question.categories.each do |category| %>
@@ -152,7 +163,7 @@
 	</div>
 
   <div id="groups" class="module">
-		<h2>My Groups</h2>
+		<h2>My Groups <%#= image_tag "/images/icons/as/user-group.png", :height => 16 %></h2>
 		<ul class="nav">
 			<li><%= link_to "Explore Groups", groups_explorations_path %></li>
 			<li><%= link_to "Create a Group", new_group_path, :class => "modal create_group" %></li>
@@ -221,25 +232,28 @@
 			</tr>
 		</table>
 	</div>
-	<div id="notes">
-		<div class="module">
-			<h2>Blog Posts</h2>
-			<% @blog_posts.each do |blog_post| %>
-  			<div class="note">
-  				<p class="text"><%= truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 500, "&hellip;&nbsp;") %></p>
-  				<p class="title"><%= link_to blog_post.title, blog_post_path(blog_post) %></p>
-  				<p class="when"><%= pretty_date blog_post.created_at %></p>
-  			</div>
-			<% end %>
-		
-			<div class="see_all">
-				<a href=<%= blogs_explorations_path %>>See All Blog Posts</a>
+	<div id="blog_posts" class="module">
+		<h2>Blog Posts</h2>
+		<% @blog_posts.each do |blog_post| %>
+			<div class="note">
+				<p class="text"><%= link_to truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 200, "&hellip;&nbsp;"), blog_post_path(blog_post) %></p>
+				<p class="title"><%= link_to blog_post.title, blog_post_path(blog_post) %></p>
+				<p class="when"><%= pretty_date blog_post.created_at %></p>
 			</div>
+		<% end %>
+	
+		<div class="see_all">
+			<a href=<%= blogs_explorations_path %>>See All Blog Posts</a>
 		</div>
 	</div>
+
 	<div id="widget" class="widget">
 		<div class="module last">
-			<h2>Widget Area</h2>
+			<h2>Widgets</h2>
+
+      <% @widgets.each_pair do |id, data| %>      
+        <%= render_widget data if data -%>
+      <% end %>
 		</div>
 	</div>
 	

@@ -26,42 +26,19 @@
 		.question_actions li { display: inline; }
 	.primary {  }
 
-.alert { border: 1px solid #c4d7dc; border-width: 0 1px 0; }
+  img.photo { border: 1px solid #C4D7DC; }
+
+.alert { border: 1px solid #c4d7dc; border-width: 0 1px 0; border-width: 0 ! important;}
 	.alert .content { margin: 0 0 20px; padding: 10px 10px 1px; border-radius: 3px; }
 		.alert .content p { margin: 0 0 10px; }
-	.notice .content { background: #ddf0f8; }
+	.notice .content { background: #E5F1F4; }
 	.success .content { background: #dcedbc; }
 	.error .content { background: #fee; }
 	.warning .content { background: #fff5cc;}
 		
 .primary .alert { float: none; border: none; }
 
-#header { height: 110px; }
 
-#header h1 {float: left;
-height: 110px;
-margin: 0;
-overflow: hidden;
-text-indent: -9999px;}
-
-#header h1 a { background: url('http://placehold.it/140x80/eeeeee/&text=logo') no-repeat 0 0;
-display: block;
-height: 100px;
-margin: 5px 0px 0px 10px;
-width: 220px; }
-
-#header .nav {display: block; }
-	#header .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-#header .nav li { display: block; float: left; margin: 0 15px 0 0; }
-#header .utility { margin: 20px 0 0; font-size: 14px; }
-	#header .nav a { color: #4a6970; }
-#header .global_nav { margin: 30px 0 0; font-size: 16px; text-transform: lowercase; }
-	#header .global_nav li.active { border-bottom: 1px solid #4a6970; } 
-
-#header .utility .nav { float: right; }
-#header .utility .search { float: right; margin: 0 15px 0 0; }
-#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('/images/bg_nav_online_now.png') 0 50% no-repeat; }
-.nav .drop_down { padding: 0 15px 0 0; background: url('/images/bg_nav_dropdown.png') 100% 50% no-repeat; }
 
 /*	news feed */
 .content { background: #fff; margin: 0 0 10px; }
@@ -121,11 +98,26 @@ width: 220px; }
 .note { clear: both; }
 
 .note:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-.note .text, .note .text a { margin: 0 0 3px 0; font-size: 16px; color: #4a6970; }
+.note .text, .note .text a { margin: 0 10px 3px 0; font-size: 16px; color: #4a6970; }
 .note .text { background: url('/images/bg_notes_quote.png') no-repeat; padding: 0 0 0 25px;}
 .note .text a { width: 100%; display: block; }
 .note .title { clear: both; float: right; margin: 0; color: #4a6970;}
 .note .when { clear: both; float: right; margin: 0 0 10px 0; font-size:11px; color: #8ba2a7; }
+.note object { width: 315px ! important; }
+
+#widget:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+#widget h3 {
+	margin: 10px 0 5px 0;
+}
+#widget div.content {
+	background-color: #E5F1F4;
+	border-bottom: 1px solid #C4D7DC;
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+}
+#widget .widget:last-child div.content {
+	border-bottom: 0;
+}
 
 #promotions { padding: 0; height: 150px; position: relative; }
  #promotions h2 { position: absolute; top: 10px; left: 15px; z-index: 2; color: #fff; text-shadow: #999 0 -1px 0;}

@@ -1,0 +1,25 @@
+.ui-widget-overlay {
+	background-color: #333;
+	opacity: 0.8;
+	zoom: 1;
+}
+
+.popup {
+	background-color: #fff;
+	border: 3px solid #C4D7DC;
+	padding: 10px;
+	width: 425px;
+}
+
+.popup .ui-dialog-titlebar { display: none; }
+.popup .ui-dialog-content { 
+		position: relative; 
+		padding: 16px; 
+}
+.popup .ui-dialog-content h3 { margin-top: -5px; margin-bottom: 18px; }
+.popup .ui-dialog-content a.close { 
+	position: absolute; 
+	top: 13px; 
+	right: 20px; 
+	font-weight: bold;
+}

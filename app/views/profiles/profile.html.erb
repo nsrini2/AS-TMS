@@ -9,13 +9,12 @@
 
 <% content_for(:profile_tab_selected, 'selected') %>
 		
-<div id="profile_tab" class="tabs-panel">
-  <% @hide_updates = true %>
+<div id="profile_tab">
+  <% @hide_updates = false %>
   <%= render :partial => 'profiles/user_card' -%>
 
 	<% hide_when_viewing_sponsored_profile do -%>      	
   	<div id="profile_questions">
-  	    <h1>NEEDS STYLIZATIONESS BELOW</h1>
   	  
   		<% question_sections.each do |section| -%>
   			<div class="profile_questions_sec">

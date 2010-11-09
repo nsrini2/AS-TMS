@@ -7,8 +7,9 @@ module ApplicationHelper
     link_to_if(message.link_to_url, image_tag( marketing_image_path(message), :alt => '', :width => "399", :height => "150"),message.link_to_url) if message
   end
   
-  def global_nav_link(name, path)
+  def global_nav_link(name, path, id="")
     regexes = { :questions => /questions/,
+                "q&amp;a".to_sym => /questions/,
                 :groups => /groups/,
                 :blogs => /blogs/,
                 :hub => /(questions|groups|blogs)/ }
@@ -17,7 +18,7 @@ module ApplicationHelper
     
     css_class = global_nav_link_active?(name, regex) ? "active" : ""
     
-    "<li class=\"#{css_class}\">#{link_to name, path}</li>"
+    "<li id=\"#{id}\" class=\"#{css_class}\">#{link_to name, path}</li>"
   end
   
   def global_nav_link_active?(name, regex)
@@ -27,4 +28,5 @@ module ApplicationHelper
       (regex && request.url[regex])
     end
   end
+  
 end

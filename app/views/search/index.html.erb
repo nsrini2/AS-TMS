@@ -1,5 +1,15 @@
 <h2>Search Results for '<%= @query %>'</h2>
 
-<div>
-  Aggregated search goes here...
+<div id="list">
+<% @results.each_with_index do |result, idx| %>
+  <%= case result.class.to_s
+      when "Question"
+        render :partial =>'questions/question', :locals => {:questions_for => nil, :domain => '', :questions_counter => idx, :question => result, :show => nil, :model => ''}
+      else
+        "display not supported"
+    end %>
+    
+  <div style="clear:both;"></div>
+<% end %>
 </div>
+

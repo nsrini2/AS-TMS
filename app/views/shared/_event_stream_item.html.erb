@@ -2,14 +2,23 @@
   div.news_item div.details a {
     color: inherit;
   }
+  
 </style>
 
 <div id="news_item1" class="list_item news_item <%= cycle("even", "odd") %>">
-	<%= display_event(event)[:avatar] %>
+  <% display = display_event(event) %>
+	<%= display[:avatar] %>
 	<div class="details">
 		<a href="<%= event_path(event) %>">
-		  <h3 class="who"><%= display_event(event)[:who] %></h3>
-		  <p class="what"><%= display_event(event)[:what] %></p>
+		  <div class="icon">
+		    <%= display[:icon] %>
+		  </div>
+		  <h3 class="who"><%= display[:who] %></h3>
+		  <p class="what">
+		    <%= display[:what] %>
+		  </p>
+		  <p class="when"><br/><%= pretty_datetime event.created_at %></p>
+		  
 		</a>
 	</div>
 </div>

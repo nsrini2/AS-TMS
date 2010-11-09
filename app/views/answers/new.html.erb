@@ -1,0 +1,28 @@
+<% content_for(:page_title, "Answer: #{truncate(@question_summary.question, 25)}") -%>
+
+<div class="list">
+  <% if @question_summary.is_open? -%>
+    <% form_for :answer, :url => question_answers_path, :html => {:id => 'answer_form', :class => 'answer_question single_item disable_buttons_on_submit'} do |f| -%>
+    	<h2 class="page_title">Answer This Question</h2>
+	
+        <div class="description">
+          <div class="content">
+          	<div id="qaQuestion" class="question <%= @question_summary.id %> list_item single_item">
+          		<%= render :partial => 'questions/question', :locals => { :show => { :answer => false, :answer_inline => true, :linked_question => false }, :question => @question_summary } -%>
+          	</div>
+          	<fieldset style="margin-left: 140px;">
+          		<%= f.text_area :answer, :style => "width: 600px; height: 100px;" -%>
+          		<div class="buttons">
+          			<input type="submit" name="commit" value="Answer" class="button large">
+          		</div>
+          	</fieldset>
+          </div>
+        </div>
+
+    <% end -%>
+  <% end -%>
+  
+  <div id="list">
+    <%= render( :partial => 'answers/answers', :locals =>{ :answers => @answer_summaries, :question => @question_summary } ) -%>
+  </div>
+</div>

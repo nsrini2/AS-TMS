@@ -22,7 +22,7 @@
 	#footer { clear:both;}
 	
 	
-	#header h1#logo a { background: url(/images/agent.stream.web.dev.gif) no-repeat 0px 50%;}
+	#header h1#logo a { background: url(/images/as_177x90.png) no-repeat 0px 50%;}
 	</style>
 
 </head>
@@ -59,70 +59,8 @@
 </div>
 
 <%= javascript_include_merged( :base ) -%>
-<script type="text/javascript" charset="utf-8">
-  // Use HTML5 placeholders when possible, else us JS to do the same
-  function supports_input_placeholder() { var i = document.createElement('input'); return 'placeholder' in i; }
-        
-  (function($) {  // $ = jQuery within this block
-  	$(document).ready(function() {  
-  	  
-  	  // MM2: Basically recreate the html5 placeholder functionality for browsers that don't
-  	  if(!supports_input_placeholder()) {  	  
-        var inputs = 'form.labeless input:text, form.labeless input:password';
 
-        $(inputs).each(function(element) {
-          $this = $(this);
-          if($this.attr('value') == '') {
-            $this.attr('value', $this.attr('placeholder'));
-      		  $this.addClass('placeholder');
-          }
-    		}),
+<%= javascript_include_tag "forms" %>
 
-        $(inputs).live('click', function(event) {
-          $this = $(this);
-          if($this.attr('value') == $this.attr('placeholder')) {
-      		  $this.attr('value','');
-      		  $this.removeClass('placeholder');
-      		  return false;
-          }
-    		}),
-		
-    		$(inputs).bind('blur', function(event) {
-    		  $this = $(this);
-    		  if($this.attr('value') == '') {
-    		    $this.attr('value', $this.attr('placeholder'));
-    		    $this.addClass('placeholder');
-    		  }
-    		});
-    		
-        // Clear out placeholders before submit
-        $(inputs).parents('form').submit(function() {
-                  $(this).find('input.placeholder').each(function() {
-                    var input = $(this);
-                    if (input.val() == input.attr('placeholder')) {
-                      input.val('');
-                    }
-                  })
-                }); 
-		  }
-    });
-  })(jQuery);
-</script>
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script>!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js"><\/script>')</script>
-<script src="_js/script.js"></script>
-<script type="text/javascript" charset="utf-8">
-(function($) {  // $ = jQuery within this block
-
-
-$(document).ready(function() {
-
-    $('.alert .close').live('click', function(event) {
-      $(this).parent().fadeTo('slow', 0.01, function(){$(this).slideUp();});
-      return false;
-    });
-});
-})(jQuery);
-</script> -->
 </body>
 </html>

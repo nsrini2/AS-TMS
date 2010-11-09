@@ -1,0 +1,9 @@
+<% if @system_announcement %>
+  <div class="notice alert">
+  	<div class="content">
+  		<a id="system_admin_close" updatedat="<%= @system_announcement.updated_at.to_s %>" href="#" class="close" style="color: inherit; float: right">[x]</a>
+  		<%= @system_announcement.content %>
+  	</div>
+  </div>
+<% end %>
+
