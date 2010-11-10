@@ -34,7 +34,7 @@
 		<div class="login-main">
 			<h4>Current Members</h4>
 			<% @user = User.new %>
-			<% form_for @user, :url => login_account_path, :html => { :id => "login_form", :class => "labeless", "accept-charset" => "utf-8"} do %>
+			<% form_for @user, :url => login_account_path, :html => { :id => "login_form", :class => "html5", "accept-charset" => "utf-8"} do %>
 				<p>
 				  <input type="text" name="login" size="40" placeholder="Login" id="one" />
 				  <input type="password" name="password" size="40" placeholder="Password" id="two"/>

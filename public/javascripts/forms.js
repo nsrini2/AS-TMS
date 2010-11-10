@@ -3,6 +3,7 @@ function supports_input_placeholder() { var i = document.createElement('input');
       
 (function($) {  // $ = jQuery within this block
 	$(document).ready(function() {  
+			$(document).find('form.html5').setup_html5_form().end();
 	  
 	  // MM2: Basically recreate the html5 placeholder functionality for browsers that don't
 	  if(!supports_input_placeholder()) {  	  

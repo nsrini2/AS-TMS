@@ -6,8 +6,10 @@
 
 <div class="question_results">
 	<div id="list">
+	  
 	  <div class="listform">
-  	  <%= filter_sort_controls('Question') %>
+  	  <%#= filter_sort_controls('Question') %>
+  	  <%= category_filter_sort_controls('Question') %>
   	</div>
 	  
     <%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries} )%>

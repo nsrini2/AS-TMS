@@ -41,6 +41,7 @@
   	#groups .group_item .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
   	#hub #groups .details { display: block; float: left; width: 410px;}
   		#groups .group_item .details h3 { margin-bottom: 0px; }
+  		#groups .group_item .details h3 small { font-size: 0.8em; }
 /*      #groups h3 a { color: #6f563b; }*/
   		#groups h3 .info { color: #987d72; }
 
@@ -81,7 +82,7 @@
     margin: 0 0 0 -80px;    
   }
   #ask p.actions {
-    margin-left: 170px;
+    margin-left: 250px;
   }
   #ask p.actions input[type=checkbox] {
     float: left;
@@ -132,28 +133,37 @@
               </select>
   					</p>				  
 				  <% end %>
-				  
 				</div>
-			
 			
 			  <% @events.each do |event| -%>
         	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
         <% end -%>
-
-			
 			</div> 
-			<div id="following" class="tabs-panel" style="display: none"> 
+			<div id="following" class="tabs-panel" style="display: none;"> 
 				<h1>ARE WE RENDERING ALL THE 'WATCHED' THINGS HERE? (QUESTIONS, PEOPLE, GROUPS, ETC.)</h1>
 			</div> 
-			<div id="messages" class="tabs-panel" style="display: none"> 
+			<div id="messages" class="tabs-panel" style="display: none;"> 
+			  <div style="float: right; margin-right: 10px; margin-top: 8px;">
+			    <%= link_to "Send a New Message", new_note_path, :class => "new_message" %>
+			  </div>
+			  
+			  <h3 style="margin-left: 10px;">Private Messages</h3>
+			  
 				<% @messages.each do |message| %>
+				  <% person_of_interest = display_message_person_of_interest(message) %>
 				  <div class="list_item news_item">
-				    <%= link_to_avatar_for(message.sender, { :thumb => :thumb_80, :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
+				    <%= person_of_interest[:img] %>
 				    <div class="details">
+				      <p class="reply" style="float: right; margin-top: 3px;">
+				        <%= link_to "Reply", new_note_path(:reply_to => message.id), :class => "new_message" %>
+				      </p>
 				      <h3 class="who">
-				        <%= display_message_person_of_interest(message) %>
+				        <%= person_of_interest[:lead] %>
 				      </h3>
-				      <p class="what"><%= message.message %></p>
+				      <p class="when">
+				        <%= pretty_datetime message.created_at %>
+				      </p>
+				      <div class="what"><%= message.message %></div>
 				    </div>
 				  </div>
 				<% end %>
@@ -163,7 +173,7 @@
 	</div>
 
   <div id="groups" class="module">
-		<h2>My Groups <%#= image_tag "/images/icons/as/user-group.png", :height => 16 %></h2>
+		<h2>My Groups</h2>
 		<ul class="nav">
 			<li><%= link_to "Explore Groups", groups_explorations_path %></li>
 			<li><%= link_to "Create a Group", new_group_path, :class => "modal create_group" %></li>
@@ -174,9 +184,9 @@
 				<%= primary_photo_for(group, :thumb => :thumb_80, :linkable => true, :class => "photo", :alt => "#{group.name} avatar", :hide_group_icon => true ) %>
 
 				<div class="details">
-					<h3><%= link_to "#{group.name} - Founded on #{content_tag("span", short_date(group.created_at),:class => "info")}", group_path(group) %></h3>
+					<h3><%= link_to "#{group.name} &nbsp;&nbsp;<small>Founded on #{content_tag("span", short_date(group.created_at),:class => "info")}", group_path(group) %></small></h3>
 					<p class="description">
-					  <%= group.description %>
+					  <%= truncate(group.description, 200) %>
 					</p>
 				</div>
 			</div>
@@ -236,7 +246,7 @@
 		<h2>Blog Posts</h2>
 		<% @blog_posts.each do |blog_post| %>
 			<div class="note">
-				<p class="text"><%= link_to truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 200, "&hellip;&nbsp;"), blog_post_path(blog_post) %></p>
+				<p class="text"><%= link_to truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 140, "&hellip;&nbsp;"), blog_post_path(blog_post) %></p>
 				<p class="title"><%= link_to blog_post.title, blog_post_path(blog_post) %></p>
 				<p class="when"><%= pretty_date blog_post.created_at %></p>
 			</div>
@@ -249,8 +259,6 @@
 
 	<div id="widget" class="widget">
 		<div class="module last">
-			<h2>Widgets</h2>
-
       <% @widgets.each_pair do |id, data| %>      
         <%= render_widget data if data -%>
       <% end %>

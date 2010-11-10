@@ -1,0 +1,44 @@
+<style>
+  dl.message_text dd textarea {
+    height: 100px;
+    width: 300px;
+  }
+  dl.message_text dd span.counter {
+    display: block;
+  }
+</style>
+
+<% content_for(:title, 'New Message') -%>
+<% form_for :message, :url => notes_path, :html => {:class => "html5", :onSubmit => "window.location.reload();"} do |f| -%>
+	<%= hidden_field_tag :receiver_id, @reply_to_profile ? @reply_to_profile.id : "", :class => 'suggestion_id' -%>
+	<%= hidden_field_tag :receiver_type, @reply_to_profile ? "Profile" : "" , :class => 'suggestion_type' -%>
+  <%= hidden_field_tag :private_note, "true" %>
+  
+  <p>Send a short message to another AgentStream member. Messages are delivered to the Hub Inbox and the member's email address. All messages are private.</p>
+  
+	<dl>
+		<dt><label for="new_message_name">Name*</label></dt>
+		<% text_field_options = { :disabled => !@reply_to_profile.nil?, :required => "required", :title => "Name" } 
+		    text_field_options[:placeholder] = "Name" unless @reply_to_profile
+		    text_field_options[:value] = @reply_to_profile.screen_name if @reply_to_profile
+		%>
+		<dd><%= f.text_field :name, text_field_options -%></dd>
+	</dl>
+	<dl class="message_text">
+		<dt><label>Message* (400 character max)</label></dt>
+		<dd><%= text_area_tag :message, "", :maxlength => 400, :required => true, :title => "Message", :placeholder => "Message" -%></dd>
+
+    <dd>
+      <div class="buttons">
+    		<input type="submit" name="commit" value="Send" class="button medium">
+    		<input type="button" value="Cancel" class="button medium light close">
+
+    		<p>
+    		  <small>* required field</small>
+    		</p>
+    	</div>
+    </dd>
+	</dl>
+
+<% end -%>
+

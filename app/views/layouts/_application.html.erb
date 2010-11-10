@@ -58,7 +58,7 @@
 				</li>
 			</ul>
 			<div class="search">
-				<form action="/search" method="get" accept-charset="utf-8" class="labeless">
+				<form action="/search" method="get" accept-charset="utf-8" class="html5" title="Search">
 					<input type="text" name="q" placeholder="Search for any keyword or person" />
 			    <button type="submit">Search</button>
 				</form>
@@ -102,11 +102,11 @@
 -->
 
 
-
   <%= javascript_include_merged( :base ) -%>
   <%= javascript_include_merged( :admin ) if @content_for_admin_js -%>
 
   <%= javascript_include_tag "jquery/cookie" %>
+
 
   <% # There were issues with including ckeditor in the asset packager %>
   <%= javascript_include_tag "ckeditor/ckeditor" %>

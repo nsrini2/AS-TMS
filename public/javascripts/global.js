@@ -2,6 +2,7 @@
 
 
 $(document).ready(function() {
+	$(document).find('form.html5').setup_html5_form().end();
 	$('#primary')
 		// plugins/widgets/utilities
 		.find('.inline_editable').setup_inline_editor().end()
@@ -33,6 +34,8 @@ $(document).ready(function() {
 		// Status
 		.find('#widget_status').setup_status_update_from_widget().end()
 		.find('#profile_status_form').setup_status_update_from_profile().end()
+		// Messages
+		.find('.new_message').dialog_for_new_message().end()
 		// Dialogs/Modals
 		.find('.delete').confirm_delete().end()
 		.find('.delete_watch').confirm_delete_watch().end()
@@ -121,6 +124,12 @@ $(document).ready(function() {
 var stream_interval;
 
 $.fn.extend({
+
+	setup_html5_form: function() {
+		return this.each(function() {
+			$(this).html5form();
+		});
+	},
 
 	toggle_checkboxes: function() {
 		return this.live('click', function(event) {
@@ -784,6 +793,7 @@ $.fn.extend({
 							$.ajax({
 								url: $form.attr('action'), type: 'post', data: $form.serialize(), dataType: 'json',
 								success: function(data) {
+									alert('success');
 									if ( data["errors"] ) {
 										$form.find('textarea, input').attr('disabled', false);
 										for ( var i=0; i<data["errors"].length; i++ ) {
@@ -871,6 +881,25 @@ $.fn.extend({
 				
 			}
 		}).end();
+	},
+	
+	dialog_for_new_message: function() {
+		return this.dialog_for_form({
+			dialogClass: 'new_message',
+			success: function($dialog, data) {
+				alert('hi');
+				// $('#flash_notice ul').append('<li>Successfully sent message to ' + 'NAME' + '</li>');
+				// $('#flash_notice').setup_notices();
+				// $dialog.dialog('destroy').remove();
+				window.location.reload();
+			},
+
+			onShow: function($dialog) {
+				$dialog.find('#message_name').setup_name_autocomplete({ url: "/messages/autocomplete" });
+				$dialog.find(':input[maxlength]').setup_character_counter();
+				$dialog.find('form.html5').setup_html5_form();
+			}
+		});
 	},
 
 	equal_heights_for: function(selector) {

@@ -12,6 +12,9 @@ h2.page_title {
 .listform dd { border-right: 1px solid #676767; }
 .listform dl dd:last-child { border-right: 0; }
 
+.listform div.categories { display: inline; }
+.listform div { margin: 10px 0; }
+.listform div strong { float: left; width: 80px; }
 
 .tabs-header {margin: 0; padding: 10px 10px 1px; background: #d5eae6;}
 
@@ -19,6 +22,7 @@ h2.page_title {
 #list { position: relative; background-color: #eff8fa; border-top: 1px solid #c4d7dc; padding: 10px 10px; }
 	#list .photo_wrapper { float: left; margin: 20px 20px 20px 0; }
 	#list .details { display: block; float: left; width: 575px; margin-top: 20px;}
+	#list .details p { margin-bottom: 1em;}
 
 	/* Same as H3 */
 	#list .details div.item_text,	#list .details div.item_text a {
@@ -61,6 +65,14 @@ div.single_item div.action_buttons {
 #list div.action_buttons a, div.single_item div.action_buttons a {
 	display: block;
 }
+#list div.action_buttons a.best {
+	display: inline;
+}
+#list div.vote_wrap a {
+	display: inline;
+}
+
+
 #list div.answer:after, div.single_item:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 
 /* Ratings */
@@ -70,3 +82,8 @@ div.single_item div.action_buttons {
 
 /* Comments */
 #list div#comments:before { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
+
+#filter_options .selected {
+	font-size: 1.2em;
+	font-weight: bold;
+}

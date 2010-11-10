@@ -2,6 +2,9 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
 
   map.search '/search', :controller => 'search', :action => 'index'
+  
+  map.new_note '/notes/new', :controller => 'notes', :action => 'new'
+  map.autocomplete_for_message_note '/messages/autocomplete', :controller => 'notes', :action => 'autocomplete_for_message'
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'

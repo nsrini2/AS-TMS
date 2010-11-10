@@ -26,7 +26,13 @@
 .tabs .tabs-nav { margin: 0; display:block; }
 	.tabs .tabs-nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 	.tabs .tabs-nav li { white-space: nowrap; background: #e6edea;  color: #92b5bd; text-shadow: #fff 0 1px 0; }
-		.tabs .tabs-nav li.active, .tabs .tabs-nav li.selected { margin: 0 10px 1px 0; background: #d8e9e6; border-bottom: 1px solid #D8E9E6; color: #4a6970; z-index: 1;}
+		.tabs .tabs-nav li.active, .tabs .tabs-nav li.selected { 
+			margin: 0 10px 1px 0; 
+			background: #d8e9e6; 
+			border-bottom: 1px solid #D8E9E6; 
+			color: #4a6970; 
+			/*z-index: 1;*/
+		}
 			.tabs .st-tabs-nav li.active a:hover, .tabs .st-tabs-nav li.selected a:hover { color: #333; }
 		.tabs .tabs-nav li.disabled a { color: #b4b4b4; background-image: none; cursor: default !important;}
 		.tabs .tabs-nav li.disabled a:hover { color: #b4b4b4;}
