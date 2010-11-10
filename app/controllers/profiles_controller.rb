@@ -8,16 +8,14 @@ class ProfilesController
     @widgets = {}
         
     # Add the default widget
-
+    @widgets["1"] = { :id => "1", :title => "Facebook Activity", :url=>"/profiles/my_widget", :internal => false }
 
     # Add the other content admin widgets
-    w_idx = 1
+    w_idx = 2
     Widget.all.each do |w|
       @widgets[w_idx.to_s] = { :id => w_idx, :title => w.title, :url => widget_path(w), :internal => false, :hide_settings => true }
       w_idx += 1
     end
-    
-    @widgets["#{Widget.count+1}"] = { :id => "1", :title => "Facebook Activity", :url=>"/profiles/my_widget", :internal => false }
     
     
     @system_announcement = SystemAnnouncement.get_if_active    
