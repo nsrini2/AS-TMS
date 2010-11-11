@@ -3,6 +3,7 @@ require_cubeless_engine_file(:controller, :profiles_controller)
 class ProfilesController
 
   helper :event_stream
+  helper :watches
   
   def hub
     @widgets = {}
@@ -16,6 +17,30 @@ class ProfilesController
       @widgets[w_idx.to_s] = { :id => w_idx, :title => w.title, :url => widget_path(w), :internal => false, :hide_settings => true }
       w_idx += 1
     end
+    
+    
+    # MM2: Please don't leave this as is. I'm talking to you Mark
+    @profile = current_profile
+    
+    def init_watch_list
+      @profile_watches = @profile.watches.find(:all, :conditions => "watchable_type='Profile'", :joins => "join profiles p on p.id=watches.watchable_id", :order => "p.screen_name")
+      @group_watches = @profile.watches.find(:all, :conditions => "watchable_type='Group'", :joins => "join groups g on g.id=watches.watchable_id", :order => "g.name")
+    end
+    
+    options = {:order => 'created_at desc'}
+    #if params[:action]=='show'
+    #  watch = Watch.find(params[:id])
+    #  @filter_set = "Watch_#{watch.watchable_type.downcase}"
+    #  options.merge!(:conditions => ['watch_events.watchable_type=? and watch_events.watchable_id=?',watch.watchable_type,watch.watchable_id])
+    #end
+    options.merge!(:conditions => "watch_events.watchable_type='Profile'") if params[:action]=='profiles'
+    options.merge!(:conditions => "watch_events.watchable_type='Group'") if params[:action]=='groups'
+    @events = @profile.watch_events(watch_filters(options))
+    init_watch_list
+    
+    
+    
+    
     
     
     @system_announcement = SystemAnnouncement.get_if_active    

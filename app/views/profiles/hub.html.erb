@@ -97,6 +97,10 @@
   }
   #ask p.actions select {
   }
+  
+  #following .list {
+    margin: 10px;
+  }
 </style>
 
 
@@ -140,14 +144,25 @@
         <% end -%>
 			</div> 
 			<div id="following" class="tabs-panel" style="display: none;"> 
-				<h1>ARE WE RENDERING ALL THE 'WATCHED' THINGS HERE? (QUESTIONS, PEOPLE, GROUPS, ETC.)</h1>
+        <h3 class="lead">Things I'm Following</h3>
+        <% if false %>
+        <div class="list">
+          <%= render :partial => 'watches/watch_list' %>
+          <div id="favorites">
+          	<%= category_filter_sort_controls(@filter_set || 'Watch') %>
+          	<div id="events">
+          		<%#= render :partial => 'watches/events_list' %>
+          	</div>
+          </div>
+        </div>
+        <% end %>
 			</div> 
 			<div id="messages" class="tabs-panel" style="display: none;"> 
 			  <div style="float: right; margin-right: 10px; margin-top: 8px;">
 			    <%= link_to "Send a New Message", new_note_path, :class => "new_message" %>
 			  </div>
 			  
-			  <h3 style="margin-left: 10px;">Private Messages</h3>
+			  <h3 class="lead">Private Messages</h3>
 			  
 				<% @messages.each do |message| %>
 				  <% person_of_interest = display_message_person_of_interest(message) %>

@@ -13,26 +13,7 @@
   <% @hide_updates = false %>
   <%= render :partial => 'profiles/user_card' -%>
 
-	<% hide_when_viewing_sponsored_profile do -%>      	
-  	<div id="profile_questions">
-  	  
-  		<% question_sections.each do |section| -%>
-  			<div class="profile_questions_sec">
-  				<h3><%= section['title'] -%></h3>
-  				<% section['questions'].each do |question| -%>
-  					<div class="question <%= cycle('odd', 'even', :name => 'question') -%>"> 
-  				<h4 <%= @profile.question_field_required?(question['question']) ? 'class="title"> ' : 'class="title">' -%> <%= question['label'] %></h4>
-  				<% if @profile.send(question['question']).blank? && @profile.editable_by?(current_profile) && question['example'] -%>
-  							<p class="instr"><%= question['example'] %></p>
-  						<% end -%>
-  						<%= render_inline_editor_for(@profile, question['question'], update_profile_path( @profile ), :type => 'expandable', :tooltip => "Click to edit your answer", :maxlength => '4000', :placeholder => 'Click here to answer') -%>
-  					</div>
-  				<% end -%>
-  				<% reset_cycle('question') %>
-  			</div>
-  		<% end -%>
-  	</div>
-	<% end -%>
+
 </div> 
 
 <%# We're not going to do a tab based rendering at this point %>
@@ -48,3 +29,25 @@
 
 
 
+<% content_for :post_panel do %>
+<% hide_when_viewing_sponsored_profile do -%>      		
+	<div id="profile_questions">
+	  
+		<% question_sections.each do |section| -%>
+			<div class="profile_questions_sec">
+				<h3><%= section['title'] -%></h3>
+				<% section['questions'].each do |question| -%>
+					<div class="question <%= cycle('odd', 'even', :name => 'question') -%>"> 
+				<h4 <%= @profile.question_field_required?(question['question']) ? 'class="title"> ' : 'class="title">' -%> <%= question['label'] %></h4>
+				<% if @profile.send(question['question']).blank? && @profile.editable_by?(current_profile) && question['example'] -%>
+							<p class="instr"><%= question['example'] %></p>
+						<% end -%>
+						<%= render_inline_editor_for(@profile, question['question'], update_profile_path( @profile ), :type => 'expandable', :tooltip => "Click to edit your answer", :maxlength => '4000', :placeholder => 'Click here to answer') -%>
+					</div>
+				<% end -%>
+				<% reset_cycle('question') %>
+			</div>
+		<% end -%>
+	</div>
+<% end -%>  
+<% end %>

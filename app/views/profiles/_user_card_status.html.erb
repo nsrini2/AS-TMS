@@ -1,0 +1,36 @@
+<% hide_when_viewing_sponsored_profile do -%>
+  <% if owner_content %>
+    <% @status = Status.new %>
+  
+    <% form_for :status, :url => statuses_path, :html => {:id => "profile_status_form", :class => "html5"} do |f| -%>
+      <%= f.text_area :body, :maxlength => '140', :rows => 2, :placeholder => "What are you working on today?" -%>
+      <%= hidden_field_tag :profile_status, true %>
+    
+      <div class="buttons">
+        <input type="submit" value="Share" class="button">
+      </div>
+    <% end -%>
+  <% else %>
+    <h3><%= "#{@profile.first_name}'#{'s' if(@profile.first_name.last!='s')}" %> Updates</h3>
+
+    <% first_status = statuses.delete_at(0) || Status.new(:body => "No Updates") %>
+  
+    <div id="first_status">
+      <%= first_status.body %>
+    </div>
+    <div id="first_status_extra">
+      <%= pretty_datetime first_status.created_at unless first_status.new_record? %>
+    </div>
+  <% end %>
+
+  <% if false %>
+    <div id="profile_status_events">
+      <% statuses[0..1].each do |status| %>
+        <%= render :partial => "/statuses/profile_status", :locals => { :status => status } %>
+      <% end %>
+  
+      <br/>
+      <%= link_to "More", profile_statuses_path(@profile) unless statuses.empty? %>
+    </div>
+  <% end %>
+<% end %>
