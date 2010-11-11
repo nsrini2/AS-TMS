@@ -1,4 +1,10 @@
 <% content_for :content do -%>
+  <% unless @content_for_tab_heading.blank? %>
+    <h2 class="page_title">
+      <%= yield :tab_heading %>
+    </h2>
+  <% end %>
+
   <div class="profile">
     <div class="primary <%= "full_length" if @content_for_aside.blank? %>">
       <div class="tabs"> 

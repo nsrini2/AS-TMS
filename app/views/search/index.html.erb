@@ -1,8 +1,8 @@
-<h2 class="page_title">Search Results: <%= h @query %></h2>
+<h2 class="page_title">Search</h2>
 
 <div id="search_results">
   <div id="list">
-    <h2><%= "#{@filters[params[:scope]]}: "unless params[:scope].blank? %><%= pluralize @results.size, "Result" %></h2>
+    <h2>Search Results (<%= @results.size %>): <%= h @query %></h2>
     <% if @results.empty? %>
       No Results Found
     <% else %>

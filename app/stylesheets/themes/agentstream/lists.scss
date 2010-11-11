@@ -71,13 +71,36 @@ div.single_item div.action_buttons {
 #list div.vote_wrap a {
 	display: inline;
 }
-
-
 #list div.answer:after, div.single_item:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
+
+/* Blog Posts */
+#list .blog_post_item .details {
+	width: 470px;
+}
+#list .blog_post_item .details h3, #list .blog_post_item .details h3 a {
+	margin-bottom: 0;
+	font-weight: bold;
+}
+#list .blog_post_item .details .summary {
+	margin-bottom: 10px;
+}
+#list .blog_post_item .details ul.action_list {
+	margin-top: 5px;
+}
+#list .blog_post_item .details ul.action_list li span.tags{
+	display: block;
+}
+#blog_meta h4 {
+	margin-bottom: 0;
+}
+#blog_meta h4:first-child {
+	margin-bottom: 1em;
+}
 
 /* Ratings */
 #list div.rate {
 	float: right;
+	margin-top: 14px;
 }
 
 /* Comments */

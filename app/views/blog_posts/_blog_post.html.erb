@@ -22,7 +22,10 @@ preview = false unless defined?(preview)
   				]) -%>
   			<% end -%>
   		<% else -%>
-  			<p class="summary"><%= truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 514, "&hellip;&nbsp;") -%><%= (link_to("read more &raquo;", blog_post_path(blog_post)) if blog_post.text.size > 500) -%></p>
+  			<div class="summary">
+  			  <%# truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 514, "&hellip;&nbsp;") -%>
+  			  <%= textilize truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 514, "&hellip;&nbsp;") -%><%= (link_to("read more &raquo;", blog_post_path(blog_post)) if blog_post.text.size > 500) -%>
+  			</div>
   			<%= action_list_for([
   				(content_tag(:span, "No comments yet") if blog_post.comments.count.zero?),
   				(link_to(pluralize(blog_post.comments.count, 'comment'), "#{blog_post_path(blog_post)}#comments") unless blog_post.comments.count.zero?),

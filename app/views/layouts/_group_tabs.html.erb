@@ -1,0 +1,24 @@
+<% content_for(:tab_heading, @group.name) -%>
+<% content_for :tabs do -%>
+	<%= content_tag('li', link_to("Home", group_path(@group)), :class => @content_for_home_tab) -%>
+	<% group_member_or_public_content @group do -%>
+		<%= content_tag('li', link_to("Members", members_group_path(@group)), :class => @content_for_members_tab) -%>
+		<% non_private_content @group do -%>
+			<%= content_tag('li', link_to("Q &amp; A (<span class='inline' id='matchedq'>#{@group.questions_referred_to_me.count}</span>)", help_answer_group_path(@group)), :class => @content_for_help_answer_tab) -%>
+		<% end -%>
+		<%= content_tag('li', link_to("Blog", group_blog_path(@group)), :class => @content_for_blog_tab) -%>
+		<%= content_tag('li', link_to("Photos", group_gallery_photos_path(@group)), :class => @content_for_photos_tab) -%>
+	<% end -%>
+	<% group_member_or_shady_admin_content @group do -%>
+		<%= content_tag('li', link_to("Group Talk", group_group_posts_path(@group)), :class => @content_for_group_talk_tab) -%>
+	<% end -%>
+	<% if @group.editable_by?(current_profile) -%>
+		<%= content_tag('li', link_to("Manage", edit_group_path(@group)), :class => @content_for_manage_tab) -%>
+	<% end -%>
+<% end -%>
+
+<% content_for :tab_panel do %>
+  <%= yield -%>
+<% end %>
+
+<%= render :file => 'layouts/_tab_structure' -%>
