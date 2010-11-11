@@ -1,0 +1,62 @@
+.group_actions {
+	text-align: left;
+}
+
+ul.group_actions li {
+	display: inline;
+	margin: 0 20px 0 0px;
+}
+
+#group_hub #notes {
+	display: none;
+}
+
+#group_hub .group_card .photo_wrapper {
+	float: left;
+}
+
+#group_hub .group_card .details {
+	margin-left: 190px;
+}
+
+#group_hub .group_card .details h3 {
+	margin-bottom: 0;
+}
+
+#group_hub .group_card .details h4 {
+	font-size: 1.0em;
+	font-weight: bold;
+	margin-bottom: 0;
+	margin-top: 40px;
+}
+
+#group_widgets {
+	margin: 10px 20px;
+}
+
+#group_widgets h3 {
+	margin-bottom: 2px;
+}
+
+#stream.group h5 {
+	margin-bottom: 0;
+}
+
+#stream.group .events .evemt {
+	clear: both;
+	margin-top: 10px 0 40px 0;
+}
+
+#stream.group .events .event .photo_wrapper {
+	float: left;
+	margin: 0 3px;
+}
+
+#stream.group .events .event .detail {
+	margin: 10px 0 20px 30px;
+}
+
+#stream.group .events .event .detail .did, #stream.group .events .event .detail .what, #stream.group .events .event .detail .detail {
+	display: block;
+	margin: 0;
+}
