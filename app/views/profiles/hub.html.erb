@@ -67,7 +67,13 @@
   .question .meta p { margin: 0;}
   .question .question_actions { margin: 5px 0 0 0;}
   .question .question_actions li { margin: 0 15px 0 0; text-transform: capitalize; }
-  .question .question_actions a { color: #676767; }
+  .question .question_actions a { 
+    background: none;
+    color: #676767; 
+    font-size: 100%;
+    font-weight: normal;
+    text-transform: lowercase;
+  }
 
 
 
@@ -221,24 +227,15 @@
 		</p>
 	</div>
 	<div id="referred_questions" class="module">
-		<h2>Referred Questions</h2>
-		<% @questions_referred_to_me.each do |question| %>
-			<div class="question">
-				<h3 class="text"><%= link_to question.question, question_path(question) %></h3>
-				<div class="meta">
-					<p class="asked">asked on <%= short_date question.created_at %> by <%= question.profile.full_name %> -</p>
-					<p class="open_until">Open Until <%= short_date question.open_until %></p><br>
-					<p class="category">category: <%= link_to question.category, questions_explorations_path(:filter_category => question.category) %></p>
-					<p class="answers"><%= link_to pluralize(question.answers.count, " answer"), question_path(question) %></p>
-				</div>
-				<ul class="nav question_actions">
-					<li class="answer"><%= link_to_answer question %></li>
-					<li class="refer"><%= link_to_refer question %></li>
-					<li class="watch"><%= link_to_watch_for question %></li>
-					<li class="shady"><%= render_abuse(question) %></li>
-				</ul>
-			</div>				
-		<% end %>
+	  <% if !@questions_referred_to_me.empty? %>
+  		<h2>Referred Questions</h2>
+  		<% @questions_referred_to_me.each do |question| %>
+				<%= render :partial => "/questions/hub", :locals => { :question => question } %>
+  		<% end %>
+  	<% else %>
+  	  <h2>Latest Question</h2>
+			<%= render :partial => "/questions/hub", :locals => { :question => @latest_question } %>  	  
+  	<% end %>
 	</div>
 	<div id="statistics" class="module">
 		<h2>Karma (<%= @profile_stats[:karma_points] %>)</h2>
@@ -261,7 +258,10 @@
 		<h2>Blog Posts</h2>
 		<% @blog_posts.each do |blog_post| %>
 			<div class="note">
-				<p class="text"><%= link_to truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 140, "&hellip;&nbsp;"), blog_post_path(blog_post) %></p>
+				<div class="text">
+				  <%#= link_to truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 140, "&hellip;&nbsp;"), blog_post_path(blog_post) %>
+				  <%= textilize truncate(blog_post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), 140, "&hellip;&nbsp;") %>
+				</div>
 				<p class="title"><%= link_to blog_post.title, blog_post_path(blog_post) %></p>
 				<p class="when"><%= pretty_date blog_post.created_at %></p>
 			</div>

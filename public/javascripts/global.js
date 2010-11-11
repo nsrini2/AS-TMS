@@ -127,7 +127,10 @@ $.fn.extend({
 
 	setup_html5_form: function() {
 		return this.each(function() {
-			$(this).html5form();
+			var $this = $(this);
+			$this.html5form({
+				async:false
+			});
 		});
 	},
 

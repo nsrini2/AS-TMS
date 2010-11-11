@@ -1,0 +1,21 @@
+<div>
+  <%= link_to_avatar_for profile %>
+  <div class="details">
+    <div class="item_text">
+      <%= link_to_profile profile %>
+    </div>
+    <p>
+      <% attr_count = 0 %>
+      <% [:profile_1,contact_info_order(profile)['profile']].flatten[0..7].each do |item| -%>
+        <% unless profile[item].blank? %>
+          <% unless attr_count == 0 %>
+            &nbsp;&nbsp;|&nbsp;&nbsp;          
+          <% end %>
+          
+          <%= profile_question_label_for item -%>: <%= profile[item] %>
+          <% attr_count += 1%>
+        <% end %>
+			<% end -%>
+    </p>
+  </div>
+</div>

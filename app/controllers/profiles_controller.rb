@@ -52,6 +52,7 @@ class ProfilesController
     @profile_stats[:blog_posts] = current_profile.blog_posts.count
     
     @questions_referred_to_me = current_profile.questions_referred_to_me
+    @latest_question = Question.last
     
     # TODO: Organized by the last ones I participated in
     @groups = current_profile.groups
