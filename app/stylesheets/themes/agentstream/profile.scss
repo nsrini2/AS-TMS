@@ -106,7 +106,7 @@
 
 #notes { float: left; margin: 0; padding: 0; }
 
-#profile_questions { clear: both; position: relative; margin: 0 11px 0 10px; padding-top: 25px; }
+#profile_questions { clear: both; position: relative; margin: 0 11px 0 10px; padding-top: 15px; }
 
 #profile_questions h3 { clear: both; margin: 0 0 15px; border-bottom: 1px solid #C4D7DC; color: #1E678A; font-weight: bold; }
 
@@ -116,7 +116,7 @@
 
 #profile_questions .profile_questions_sec { zoom: 1; }
 
-#profile_questions .question { float: left; margin: 0 0 20px 0; width: 359px; background: inherit; }
+#profile_questions .question { float: left; margin: 0 0 20px 0; width: 420px; background: inherit; }
 
 #profile_questions .question p { width: 350px; margin: 0; }
 
@@ -213,7 +213,7 @@ div.profile_results dl.profile_info dd.contact_info dl dd { float: left; }
 /* following */
 #group_action_links, #profile_action_links { float: right; padding: 0 4px 10px; }
 
-dl#watch_list { float: left; margin: 1px 15px 8px 0; padding: 8px 8px 15px; width: 180px; font-size: 1.2em; background: #E0F1F8; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; }
+dl#watch_list { float: left; margin: 1px 15px 8px 0; padding: 8px 8px 15px; width: 180px; font-size: 1.2em; background: #fff; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; }
 
 dl#watch_list dt, dl#watch_list dd { padding: 2px 0; }
 
@@ -243,9 +243,25 @@ dl#watch_list dd.selected a.item_remove { margin-right: 17px; }
 
 #favorites #filter_form { margin-bottom: 10px; }
 
+#favorites #filter_form dl#filter_options {
+	text-align: left;
+}
+
+#favorites #filter_form dl#filter_options dt, #favorites #filter_form dl#filter_options dd {
+	display: inline;
+	padding: 0 10px;
+} 
+
+#favorites #filter_form dl#filter_options dd {
+	border-right: 1px solid #676767;
+}
+#favorites #filter_form dl#filter_options dd:last-child {
+	border-right: 0;
+}
+
 #favorites #events:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 
-#favorites #events { zoom: 1; }
+#favorites #events { margin-bottom: 10px; zoom: 1; }
 
 #favorites #events .favorite_item { position: relative; margin: 15px 0 0; padding: 10px; width: 264px; height: 136px; background: #ddd; font-size: 1.2em; overflow: hidden; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; }
 
@@ -255,7 +271,7 @@ dl#watch_list dd.selected a.item_remove { margin-right: 17px; }
 
 #favorites #events .watch_title { font-weight: bold; }
 
-#favorites #events .watch_title .watch_letter { font-weight: bold; color: #f00; }
+#favorites #events .watch_title .watch_letter { font-weight: bold; color: #4a6970; }
 
 #favorites #events .watch_title a { color: #000; text-decoration: none; }
 
@@ -263,9 +279,9 @@ dl#watch_list dd.selected a.item_remove { margin-right: 17px; }
 
 #favorites #events p { font-size: 13px; margin: 0.8em 0; }
 
-#favorites #events .author { position: absolute; bottom: 10px; width: 258px; font-size: 11px; }
+#favorites #events .author { width: 258px; font-size: 11px; }
 
-#favorites #events .author .photo_wrapper { float: left; }
+#favorites #events .author .photo_wrapper { float: left; margin: 0; }
 
 #favorites #events .author img.photo { margin: 2px 8px 0 0; }
 
@@ -363,6 +379,9 @@ div.photo_wrapper img.group_icon { position: absolute; right: -4px; bottom: -4px
 .profile div#profile_status div.buttons {
 	text-align: right;
   width: 353px;
+}
+.profile div#profile_status div.event {
+	margin-top: 10px;
 }
 
 .profile h4 {

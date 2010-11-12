@@ -17,7 +17,7 @@
 .tabs .tabs-nav li.tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
 .tabs .tabs-nav li.tabs-selected a, .tabs .tabs-nav li.state-disabled a, .tabs .tabs-nav li.state-processing a { cursor: text; }
 .tabs .tabs-nav li a, .tabs.tabs-collapsible .tabs-nav li.tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-.tabs .tabs-panel { display: block; border-width: 0; padding: 10px; background: none; border: 1px solid #C4D7DC; margin-top: -1px; }
+.tabs .tabs-panel { display: block; border-width: 0; padding: 10px; background: none; border: 1px solid #C4D7DC; margin-top: -1px; margin-bottom: 10px; }
 .tabs .tabs-hide { display: none !important; }
 
 .tabs .tabs-nav { background: #fff }

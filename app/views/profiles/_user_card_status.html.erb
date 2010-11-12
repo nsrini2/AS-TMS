@@ -11,7 +11,7 @@
       </div>
     <% end -%>
   <% else %>
-    <h3><%= "#{@profile.first_name}'#{'s' if(@profile.first_name.last!='s')}" %> Updates</h3>
+    <h3>Recent Updates</h3>
 
     <% first_status = statuses.delete_at(0) || Status.new(:body => "No Updates") %>
   
@@ -23,7 +23,7 @@
     </div>
   <% end %>
 
-  <% if false %>
+  <% if !owner_content %>
     <div id="profile_status_events">
       <% statuses[0..1].each do |status| %>
         <%= render :partial => "/statuses/profile_status", :locals => { :status => status } %>

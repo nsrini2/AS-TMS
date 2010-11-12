@@ -796,7 +796,6 @@ $.fn.extend({
 							$.ajax({
 								url: $form.attr('action'), type: 'post', data: $form.serialize(), dataType: 'json',
 								success: function(data) {
-									alert('success');
 									if ( data["errors"] ) {
 										$form.find('textarea, input').attr('disabled', false);
 										for ( var i=0; i<data["errors"].length; i++ ) {

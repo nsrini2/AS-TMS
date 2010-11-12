@@ -107,6 +107,10 @@
   #following .list {
     margin: 10px;
   }
+  
+  div.news_item div.details a.new_message.button {
+    color: #fff;
+  }
 </style>
 
 
@@ -150,22 +154,23 @@
         <% end -%>
 			</div> 
 			<div id="following" class="tabs-panel" style="display: none;"> 
+			  <style>
+			    #following a.filter {
+			      display: block;
+			      float: right;
+			      margin: 3px 5px 0 0;
+			    }
+			  </style>
+        <%= link_to "View and Filter All the Things your Following", profile_watches_path(current_profile), :class => "filter" %>
         <h3 class="lead">Things I'm Following</h3>
-        <% if false %>
-        <div class="list">
-          <%= render :partial => 'watches/watch_list' %>
-          <div id="favorites">
-          	<%= category_filter_sort_controls(@filter_set || 'Watch') %>
-          	<div id="events">
-          		<%#= render :partial => 'watches/events_list' %>
-          	</div>
-          </div>
-        </div>
-        <% end %>
+
+        <% @followings.each do |event| -%>
+        	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
+        <% end -%>
 			</div> 
 			<div id="messages" class="tabs-panel" style="display: none;"> 
 			  <div style="float: right; margin-right: 10px; margin-top: 8px;">
-			    <%= link_to "Send a New Message", new_note_path, :class => "new_message" %>
+			    <%= link_to "Send a New Message", new_note_path, :class => "new_message button" %>
 			  </div>
 			  
 			  <h3 class="lead">Private Messages</h3>
@@ -175,9 +180,11 @@
 				  <div class="list_item news_item">
 				    <%= person_of_interest[:img] %>
 				    <div class="details">
+
 				      <p class="reply" style="float: right; margin-top: 3px;">
-				        <%= link_to "Reply", new_note_path(:reply_to => message.id), :class => "new_message" %>
+				        <%= link_to "Reply", new_note_path(:reply_to => message.id), :class => "new_message button little" %>
 				      </p>
+
 				      <h3 class="who">
 				        <%= person_of_interest[:lead] %>
 				      </h3>
