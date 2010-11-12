@@ -1,0 +1,11 @@
+<%= render "notifier/partials/headline", {:headline => "Your Question Summary"} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<p>
+		You received <%= pluralize(@question.num_new_answers.to_i, 'new answer') %> yesterday to your question below:
+	</p>
+	<p>
+		<strong>Q:</strong> &#8220;<%= @question.question %>&#8221;
+		<%= link_from_email("Click here", @question_url )%> to read <%= @question.num_new_answers.to_i>1 ? 'them' : 'it' %>.
+	</p>
+</font></p>	

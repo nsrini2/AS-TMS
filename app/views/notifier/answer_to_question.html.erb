@@ -1,0 +1,8 @@
+<%= render "notifier/partials/headline", {:headline => "You've received a new answer to your question."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">	
+	<p><%= link_from_email("#{@answer.profile.screen_name}", @profile_url) %> answered your question shown below:</p>
+	<p><strong>Q:</strong> 	&#8220;<%= @question.question %>&#8221;</p>
+	<p><strong>A:</strong> &#8220;<%= truncate @answer.answer, 75 %>&#8221;</p>
+	<p><%= link_from_email("Click here", @question_url )%> to view the complete answer.</p>
+</font></p>		

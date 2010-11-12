@@ -1,0 +1,13 @@
+<%= render "notifier/partials/headline", {:headline => "Your question is about to close."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<p>
+		The following question will close automatically to new answers in 4 days.
+	</p>
+	<p>
+		<strong>Q:</strong> &#8220;<%= @question.question %>&#8221;
+	</p>
+	<p>
+		<%= link_from_email("Click here",@question_url )%> to view this question's answers or to extend the close date.
+	</p>
+</font></p>	

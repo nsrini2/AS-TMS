@@ -1,0 +1,9 @@
+<%= render "notifier/partials/headline", {:headline => "You've been referred a new question."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	A community member could use your help!  You have been identified by <%=@site_name%> as a member most likely to have an answer to the following question:
+	<p><strong>Q:</strong> &#8220;<%= @question.question %>&#8221;</p>
+	<p>Prove them right by answering it
+		<%= link_from_email("here","#{@site_base_url}/questions/#{@question.id}/answers/new" )%>.
+	</p>
+</font></p>	

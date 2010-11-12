@@ -1,0 +1,94 @@
+<% headline = "#{@site_name} Activity: "%>
+<% if @start_date < Date.today-1 %>
+	<% headline << @start_date.strftime("%B %d") + " - " %>
+<% end %>
+<% headline << (Date.today-1).strftime("%B %d") %>
+<%= render "notifier/partials/headline", {:headline => headline } %>
+
+
+<table cellpadding="0" cellspacing="0" border="0" >	
+	<tr>
+		<td width="480">
+			<table style="font-size:2;font-face:linotype universe, helvetica, arial;font-color:#333333;margin-left:20px;margin-right:20px;width:460px;" cellpadding="5" cellspacing="0" border="0">
+				<tr>
+					<td style="border-bottom:1px solid #666666;width:20px;">
+						<%= image_tag(@site_base_url+"/images/icons/as/nav/on/email.png", {:style=>'vertical-align:bottom;height:20px'}) %>
+					</td>
+					<td colspan="2" style="border-bottom:1px solid #666666;vertical-align:bottom;" >
+						<strong>Messages</strong>
+					</td>	
+				</tr>	
+				<tr>
+					<td>&nbsp;</td>
+					<td style="width:110px;">
+						<%=pluralize(@profile.num_new_notes, 'New Message', 'New Messages')%>
+					</td>
+					<td>	
+						<%= @profile.num_new_notes.to_i > 0 ? link_from_email("view", @profile_url, :style => "margin-left:5px;" ) : '&nbsp;' %>
+					</td>
+				</tr>
+				<tr>
+					<td  style="border-bottom:1px solid #666666;padding-top:20px;">
+						<%= image_tag(@site_base_url+"/images/icons/as/nav/on/help.png", {:style=>'vertical-align:bottom;height:20px'}) %>
+						
+					</td>
+					<td colspan="2" style="border-bottom:1px solid #666666;vertical-align:bottom;">
+						<strong>Questions</strong>
+					</td>	
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<%=pluralize(@profile.num_new_answers, 'New Answer', 'New Answers')%>
+					</td>
+					<td>	
+						<%= @profile.num_new_answers.to_i > 0 ? link_from_email("view", @site_base_url + questions_asked_profile_path(@profile), 
+								:style => "margin-left:5px;") : '&nbsp;' %>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<%=pluralize(@profile.num_new_referrals, 'New Referral', 'New Referrals')%>
+					</td>
+					<td>
+						<%= @profile.num_new_referrals.to_i > 0 ? link_from_email("view", @site_base_url + matched_questions_profile_path(@profile),
+						 		:style => "margin-left:5px;") : '&nbsp;' %>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<%=pluralize(@profile.num_matches, 'Current Match', 'Current Matches')%>
+					</td>
+					<td>
+						<%= @profile.num_matches.to_i > 0 ? link_from_email("view", @site_base_url + matched_questions_profile_path(@profile), 
+								:style => "margin-left:5px;" ) : '&nbsp;' %>
+					</td>
+				</tr>
+				<tr style="padding-top:-50px;">	
+					<td>&nbsp;</td>
+					<td>
+						<%=pluralize(@questions.size, 'Closed Question', 'Closed Questions')%>
+					</td>
+					<td>
+						<% if @questions.size > 0 %>
+							<span style="color:#666666;">Give <%= pluralize(@questions.size, "award", "awards") %> for best answer!</span>
+						<% end %>	
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td colspan="2" >
+						<ul style="list-style-type:none;">
+							<% @questions.each do |question| %>
+								<li><strong>Q:&nbsp;</strong><%= question.question %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<%= link_from_email("Choose best answer.", @site_base_url + question_path(question)) %></li>
+							<% end %>
+						</ul>
+	         </td>
+				</tr>						
+			</table>
+		</td>
+	</tr>
+</table>

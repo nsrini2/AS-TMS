@@ -1,0 +1,8 @@
+<%= render "notifier/partials/headline", {:headline => "A new item has been marked as shady."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<p>
+		A new item has been marked as shady. Please follow-up by visiting the 
+		<%= link_from_email("Shady Admin", shady_admin_admin_url)%>.
+	</p>
+</font></p>
