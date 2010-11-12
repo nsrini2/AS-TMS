@@ -1255,6 +1255,12 @@ $.fn.extend({
 	setup_notices: function() {
 		return this.each(function() {
 			var $this = $(this), timeout;
+			
+			var hang_time = 5000;
+			if($this.has('ul.error_messages')) {
+				 hang_time = 10000;
+			}
+			
 			if ( !$this.has('ul li') ) return;
 			$this
 				.dialog({
@@ -1265,7 +1271,7 @@ $.fn.extend({
 					if ( event.type == 'mouseenter' ) clearTimeout(timeout);
 					else timeout = setTimeout(function() { $this.dialog('destroy').css('display', '').find('ul').empty(); }, 500);
 				});
-			timeout = setTimeout(function() { $this.dialog('destroy').css('display', '').find('ul').empty(); }, 2000);
+			timeout = setTimeout(function() { $this.dialog('destroy').css('display', '').find('ul').empty(); }, hang_time);
 		});
 	},
 

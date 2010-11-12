@@ -1,3 +1,5 @@
+
+
 .ui-widget-overlay {
 	background-color: #333;
 	opacity: 0.8;
@@ -23,3 +25,24 @@
 	right: 20px; 
 	font-weight: bold;
 }
+
+
+/* notice and error dialogs */
+#flash_notice { display: none; }
+.notice_dialog #flash_notice { display: block; }
+.notice_dialog .ui-dialog-titlebar { display: none; }
+#flash_notice ul.notice_messages { 
+	margin-bottom: 0; 
+	list-style: none;
+}
+#flash_notice ul.notice_messages li { 
+	margin: 5px 0; 
+}
+
+#flash_error { 
+	border: 3px solid #990000;
+	display: none; 
+}
+.error_dialog #flash_error { display: block; }
+.error_dialog .ui-dialog-titlebar { display: block; float: right; text-align: right; margin: 5px 5px 10px; width: 100%;}
+

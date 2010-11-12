@@ -1,24 +1,25 @@
 <div class="intro-text">
-	<h5>welcome to the largest</h5>
-	<h1>travel agent</h1>
-	<h5>community in the world</h5>
-	<p>AgentStream isn't your typical online social community. Travel professionals around the globe come together in this free travel community to share knowledge and build relationships on a daily basis.</p>
+	<h5>the largest</h5>
+	<h1>travel agent community</h1>
+	<h5>in the world</h5>
+	<p>Welcome to AgentStream, a free community where you can connect, collaborate and share knowledge with thousands of your travel agent peers from around the globe.</p>
 	<ul>
-		<li>Collaborate with peers</li>
-		<li>Ask or answer travel questions</li>
-		<li>Create your own Blog</li>
+		<li>Ask & Answer Questions</li>
+		<li>Create & Join Groups</li>
+		<li>Create & Comment on Blogs</li>
+		<li>Access Daily Travel News</li>
 	</ul>
 </div>
+
 <div class="sign-up">
   <% @registration_fields = Config['registration_fields'] %>
-  <% @registration = Registration.new %>
   
 	<h5>Request A Free Account</h5>
-	<% form_for @registration, :url => signup_account_path, :html => { :class => "labeless", "accept-charset" => "utf-8"} do %>
+	<% form_for :user, :url => signup_account_path, :html => { :class => "labeless", "accept-charset" => "utf-8"} do %>
 
 		<p>
 		  <input type="text" name="profile[first_name]" size="32" placeholder="First Name" />
-		  <input type="text" name="prafile[last_name]" size="32" placeholder="Last Name" />
+		  <input type="text" name="profile[last_name]" size="32" placeholder="Last Name" />
 		</p>
 		
 		<p>

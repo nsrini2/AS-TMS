@@ -143,7 +143,8 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
     html_tag[first_whitespace] = " class='#{error_class}' "
   end
   unless html_tag =~ /<input[^>]+type=\"hidden\"|<label/
-    html_tag = "<div class=\"fieldWithErrors\"><img src=\"/images/errorFieldIconBG.png\" width=\"25\" height=\"25\" alt=\"#{[instance.error_message].flatten.first}\">#{html_tag}</div>"
+    # html_tag = "<div class=\"fieldWithErrors\"><img src=\"/images/errorFieldIconBG.png\" width=\"25\" height=\"25\" alt=\"#{[instance.error_message].flatten.first}\">#{html_tag}</div>"
+    # html_tag = "<div class=\"fieldWithErrors\">#{html_tag}</div>"
   end
   html_tag
 end
