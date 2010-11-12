@@ -34,6 +34,12 @@ class Notifier
     self.body = {:award => profile_award.award, :profile => profile_award.profile}
   end
   
+  def retrieval(retrieval)
+    @subject = "Your requested information"
+    prepare_login_retrieval(retrieval) if retrieval.item == 'login'
+    prepare_password_retrieval(retrieval) if retrieval.item == 'password'
+  end
+
 private  
   def prepare_welcome_email(user)
     if user.profile.has_role?(Role::SponsorMember)
