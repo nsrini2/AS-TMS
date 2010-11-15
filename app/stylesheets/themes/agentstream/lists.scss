@@ -45,6 +45,21 @@ h2.page_title {
 .group_item h3 { margin-bottom: 0; }
 
 /* Questions */
+div.single_item .question_text {
+	font-size: 16px;
+	font-weight: bold;
+	color:#4A6970;
+}
+
+div.single_item #best_answer_top {
+	clear:both;
+}
+
+div.single_item #best_answer_top h4 {
+	margin-bottom:0px;
+	margin-top:20px;
+}
+
 div.single_item .details {
 	float: left;
 	width: 65%;
@@ -57,6 +72,7 @@ div.single_item div.action_buttons {
   float: right;
 	width: 15%;
 }
+
 #list .details ul.action_list li, div.single_item .details ul.action_list li { 
 	display: inline; 
 	margin-left: 0;
