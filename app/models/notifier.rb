@@ -3,6 +3,15 @@ require_cubeless_engine_file :model, :notifier
 class Notifier 
   helper :email
   
+  def blog_post(blog_post)
+    @subject = "#{blog_post.root_parent.screen_name} just wrote a new blog post"
+    self.body = {:blog_post => blog_post, :author => blog_post.root_parent}
+  end
+  
+  def group_blog_post(blog_post)
+    @subject = "A new blog post has been added to #{blog_post.blog.owner.name}"
+    self.body = {:blog_post => blog_post, :group => blog_post.blog.owner}
+  end
   
   def group_invitation(invite)
     @recipients  = invite.receiver.email
@@ -22,9 +31,37 @@ class Notifier
     self.body = { :group => group, :group_url => url_for(:controller => :groups, :action => :show, :id => group.id)}
   end
   
+  def group_post(post)
+    @subject = "#{post.group.name} just got a new group talk post"
+    self.body = {:post => post, :group => post.group}
+  end
+
+  def group_referral(referral)
+    @subject = "#{referral.owner.name} has been referred a question"
+    self.body = {:group => referral.owner, :referred_by => referral.referer, :question => referral.question}
+  end
+  
+  def new_comment_on_blog(comment)
+    @recipients = comment.owner.root_parent.email
+    @subject = "#{comment.owner.title} just received a new comment"
+    self.body = { :comment => comment }
+  end
+  
+  def new_comment_on_group_blog_post(comment)
+    @recipients = comment.owner.profile.email
+    @subject = "#{comment.owner.title} just received a new comment"
+    self.body = { :comment => comment }
+  end
+  
   def new_user(user)
     @subject = "A new user has signed up for #{Config[:site_name]}"
     self.body = {:user => user}
+  end
+  
+  def note(note)
+    @recipients = note.receiver.email
+    @subject = "You just received a new private message"
+    self.body = {:note => note, :sender => note.sender, :receiver => note.receiver}
   end
   
   def profile_award(profile_award)
