@@ -27,6 +27,7 @@
 	#header h1#logo a { background: url(/images/as_logo_179x90.png) no-repeat 0px 50%;}
 	</style>
 
+  <%= render :partial => "shared/ga" %>
 </head>
 <body>
 <div id="page">
@@ -64,8 +65,6 @@
 <%= javascript_include_merged( :base ) -%>
 
 <%= javascript_include_tag "forms" %>
-
-  <%= render :partial => "shared/ga" %>
 
 </body>
 </html>

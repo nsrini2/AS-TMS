@@ -14,7 +14,7 @@
 				<li class=""><a href="#inbox">Inbox</a></li> 
 			</ul>
 		
-			<div id="news_feed" class="tabs-panel">
+			<div id="news_feed" class="tabs-panel" onclick="_gaq.push(['_trackEvent', 'hub_stream_tab', 'clicked'])">
 			
 				<div id="ask" class="">				  
 				  <% form_for :status, :url => statuses_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "labeless"} do |f| -%>
@@ -42,7 +42,7 @@
     			<a href=<%= stream_events_path(:page => 2) %>>More</a>
     		</div>
 			</div> 
-			<div id="following" class="tabs-panel" style="display: none;"> 
+			<div id="following" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_following_tab', 'clicked'])"> 
 			  <style>
 			    #following a.filter {
 			      display: block;
@@ -57,7 +57,7 @@
         	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
         <% end -%>
 			</div> 
-			<div id="inbox" class="tabs-panel" style="display: none;"> 
+			<div id="inbox" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_inbox_tab', 'clicked'])"> 
 			  <div style="float: right; margin-right: 10px; margin-top: 8px;">
 			    <%= link_to "Send a New Message", new_note_path, :class => "new_message button" %>
 			  </div>
