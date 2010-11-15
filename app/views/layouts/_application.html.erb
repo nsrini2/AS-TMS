@@ -109,7 +109,11 @@
 
 
   <% # There were issues with including ckeditor in the asset packager %>
-  <%= javascript_include_tag "ckeditor/ckeditor" %>
+  <% # Also, ckeditor is very large, and not needed on the hub page, so we'll skip loading it there %>
+  <% # At some point only requiring it on the pages that need it would be a good idea %>
+  <% unless params[:controller] == "profiles" && params[:action] == "hub" %>
+    <%= javascript_include_tag "ckeditor/ckeditor" %>
+  <% end %>
   
   <!-- OK THIS DOES NEED A FILE HOME -->
   <script type="text/javascript" charset="utf-8">
