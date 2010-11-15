@@ -12,7 +12,8 @@ module ApplicationHelper
                 "q&amp;a".to_sym => /questions/,
                 :groups => /groups/,
                 :blogs => /blogs/,
-                :hub => /(questions|groups|blogs)/ }
+                :news => /news/,
+                :hub => /(questions|groups|blogs|news)/ }
                 
     regex = regexes[name.downcase.to_sym]
     
