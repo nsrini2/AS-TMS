@@ -3,7 +3,6 @@
 /*.profile .tabs .tabs-nav li { margin: 0 5px 1px 0;}
 .profile .tabs .tabs-nav li a, .tabs .tabs-nav li span { padding: .5em 2.5em; }*/
 #profile_tab div.avatar_large { float: left;}
-#profile_tab .user_card { background: none; border: none; width: auto; }
 
 </style>
 
@@ -12,8 +11,6 @@
 <div id="profile_tab">
   <% @hide_updates = false %>
   <%= render :partial => 'profiles/user_card' -%>
-
-
 </div> 
 
 <%# We're not going to do a tab based rendering at this point %>
