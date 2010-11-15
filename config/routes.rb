@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.new_note '/notes/new', :controller => 'notes', :action => 'new'
   map.autocomplete_for_message_note '/messages/autocomplete', :controller => 'notes', :action => 'autocomplete_for_message'
+  
+  map.news '/news', :controller => 'news', :action => 'index'
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
