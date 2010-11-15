@@ -18,7 +18,7 @@
 			
 				<div id="ask" class="">				  
 				  <% form_for :status, :url => statuses_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "labeless"} do |f| -%>
-  				  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_80, :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
+  				  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_large, :size=> "80x80", :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
   					<%= f.text_area :body, :maxlength => '140', :placeholder => "Share an Update or Ask a Question" %>
   					
   					<p class="actions">
