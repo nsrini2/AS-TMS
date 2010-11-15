@@ -2,7 +2,7 @@
 
 <div class="blog_results">
 	<div id="list">
-    <h3>Provided by <a href="http://www.tnooz.com">Tnooz</a></h3>
+    <h3><a href="http://www.tnooz.com">Provided by Tnooz</a></h3>
 
   	<% @news.each do |blog_post| -%>
   		<%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => blog_post, :blog_explore => true, :classname => cycle('odd', 'even') } %>
