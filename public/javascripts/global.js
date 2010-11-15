@@ -74,7 +74,7 @@ $(document).ready(function() {
 					.find('.new_reply').dialog_for_answer_reply().end()
 					.find('.edit_reply').dialog_for_answer_reply_edit().end()
 				.end()
-				.find('#profile')
+				.find('.profile')
 					.find('.change_photo').dialog_for_photo_upload().end()
 					.find('.new_photo').dialog_for_photo_upload().end()
 				.end()
