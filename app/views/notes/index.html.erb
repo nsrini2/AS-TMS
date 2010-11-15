@@ -1,0 +1,19 @@
+<style>
+  #list .news_item {
+    clear: both;
+  }
+</style>
+
+<% content_for :notes_tab_selected, 'selected' %>
+
+<h2>Private Messages (<%= @messages.size %>)</h2>
+
+<div style="margin-left: 526px;">
+  <%= link_to "Send a New Message", new_note_path, :class => "new_message button" %>
+</div>
+
+<div id="list">
+  <% @messages.each do |message| %>
+    <%= render :partial => "/notes/note", :locals => { :message => message } %>
+  <% end %>
+</div>

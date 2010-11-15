@@ -4,6 +4,10 @@ div#search_results {
   width: 720px;
 }
 div#search_results .result:after{ content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
+
+div#search_results div.result_container {
+	clear: both;
+}
 div#search_results .icon_wrapper {
   float: right;
   margin-top: 20px;

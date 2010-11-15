@@ -2,6 +2,13 @@ require_cubeless_engine_file :controller, :notes_controller
 
 class NotesController
   
+  def index
+    @profile = current_profile
+    @messages = [current_profile.notes, current_profile.sent_notes].flatten.sort_by(&:created_at).reverse
+    
+    render :layout => "_my_stuff"
+  end
+  
   def new
     if params[:reply_to]
       @reply = Note.find(params[:reply_to])

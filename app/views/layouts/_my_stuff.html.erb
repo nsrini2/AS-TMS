@@ -5,6 +5,11 @@
   <% is_owner = (current_profile == @profile) -%>
   <% content_for(:my_stuff_selected, 'selected') if is_owner -%>
   <%= content_tag('li', link_to("Profile", profile_path(@profile)), :class => @content_for_profile_tab_selected) -%>
+  
+  <% owner_content do %>
+    <%= content_tag('li', link_to("Messages", notes_path), :class => @content_for_notes_tab_selected) -%>
+  <% end %>
+  
   <% show_when_viewing_sponsored_profile do -%>
   	<%= content_tag('li', link_to("Q &amp; A", watched_questions_profile_path(@profile)), :class => @content_for_questions_tab_selected) -%>
   <% end -%>

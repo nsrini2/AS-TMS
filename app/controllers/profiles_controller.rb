@@ -51,7 +51,7 @@ class ProfilesController
     @blog_posts = BlogPost.find(:all, blog_options)
 
     # TODO: Make into one query
-    @messages = [current_profile.notes, current_profile.sent_notes].flatten.sort_by(&:created_at).reverse
+    @messages = [current_profile.notes.recent, current_profile.sent_notes.recent].flatten.sort_by(&:created_at).reverse
     
     @events = ActivityStreamEvent.find_summary(:all,:limit => 7)
     
