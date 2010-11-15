@@ -1,0 +1,29 @@
+<% 
+content_for(:feedback_selected, 'selected')
+content_for(:page_title, 'Feedback')
+-%>
+<% form_for :feedback, :url => feedback_path, :html => { :class => "feedback" } do |f| -%>
+	<h2>Feedback</h2>
+	<p>Use the form below to send us your questions, comments, or feedback about AgentStream. Please allow at least 72 hours for a response.</p>
+	<fieldset>
+		<% unless logged_in? -%>
+		<dl class="name">
+			<dt><label for="feedback_name">Name</label></dt>
+			<dd><%= f.text_field 'name', :maxlength => 50 -%></dd>
+		</dl>
+		<dl class="email">
+			<dt><label for="feedback_email">Email</label></dt>
+			<dd><%= f.text_field 'email', :maxlength => 50 -%></dd>
+		</dl>
+		<% end -%>
+		<dl>
+			<dt class="subject"><label for="feedback_subject">Subject</label></dt>
+			<dd class="subject"><%= f.text_field 'subject', :maxlength => 50 -%></dd>
+			<dt class="body"><label for="feedback_body">Feedback</label></dt>
+			<dd class="body"><%= f.text_area 'body' %></dd>
+		</dl>
+		<div class="buttons">
+			<input type="submit" name="commit" value="Send Feedback" class="button large">
+		</div>
+	</fieldset>
+<% end -%>
