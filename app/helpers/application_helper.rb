@@ -29,4 +29,8 @@ module ApplicationHelper
     end
   end
   
+  # Setup for central time
+  def pretty_datetime(date)
+    date.strftime("%b %d, %Y at %I:%M %p")
+  end
 end
