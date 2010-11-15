@@ -13,8 +13,6 @@
   	</div>
 	  
     <%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries} )%>
-
-    <div style="clear:both;"></div>
 	</div>
 
   <%= render_pagination(@question_summaries) %>

@@ -21,8 +21,11 @@ h2.page_title {
 /* Lists */
 #list { position: relative; background-color: #eff8fa; border-top: 1px solid #c4d7dc; padding: 10px 10px; }
 	#list .photo_wrapper { float: left; margin: 20px 20px 20px 0; }
-	#list .details { display: block; float: left; width: 575px; margin-top: 20px;}
+	#list .details { position: relative; display: block; float: left; width: 575px; margin-top: 20px;}
 	#list .details p { margin-bottom: 1em;}
+	#list .action_buttons {
+		position: relative;
+	}
 
 	/* Same as H3 */
 	#list .details div.item_text,	#list .details div.item_text a {
@@ -71,6 +74,14 @@ div.single_item div.action_buttons {
 #list div.vote_wrap a {
 	display: inline;
 }
+
+#answer_form fieldset {
+	position: relative;
+	clear: both;
+	margin-top: 10px;
+}
+
+
 #list div.answer:after, div.single_item:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 
 /* Blog Posts */
@@ -99,6 +110,7 @@ div.single_item div.action_buttons {
 
 /* Ratings */
 #list div.rate {
+	position: relative;
 	float: right;
 	margin-top: 14px;
 }

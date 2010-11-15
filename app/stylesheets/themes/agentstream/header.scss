@@ -72,7 +72,7 @@ width: 220px; }
 }
 
 
-#header .utility { margin: 20px 0 0; font-size: 14px; }
+#header .utility { margin: 20px 0 0 50px; font-size: 14px; }
 #header .utility .nav { float: right; }
 #header .utility .nav li { 
 	font-size: 0.9em;
@@ -84,16 +84,19 @@ width: 220px; }
 	float: right;
 	margin: 0 5px 0 0; 
 }
-#header .utility .search input[type=text] {
+#header .utility .search input[type=text], #header .utility .search #global_search_input {
+	margin-top: 0;
+	height: 20px;
 	width: 210px;
 }
 #header .utility .search .button {
 	font-size: 12px;
 	margin: 0 3px 0 0;
-	padding-bottom: 2px;
-	padding-top: 2px;
+	padding-bottom: 4px;
+	padding-top: 1px;
 	text-align: center;
 	text-transform: capitalize;
+	height: 22px;
 	width: 70px;
 }
 
@@ -102,3 +105,9 @@ width: 220px; }
 .nav .drop_down { padding: 0 15px 0 0; background: url('/images/bg_nav_dropdown.png') 100% 50% no-repeat; }
 
 
+#header, #main { border: 1px solid #c4d7dc; border-width: 0 1px 0; }
+#main { border-width: 0 1px 1px;}
+#footer { clear: both; }
+.aside .module, .primary .module { margin: 0; padding: 10px 20px 10px; border: 1px solid #c4d7dc; border-width: 1px 0 0 0; background: #e5f1f4;}
+.aside .module { border-width: 1px 0 0 1px; }
+	.aside .last { border-bottom: 1px solid #c4d7dc; }
