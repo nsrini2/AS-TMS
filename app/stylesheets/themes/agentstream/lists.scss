@@ -96,6 +96,9 @@ div.single_item div.action_buttons {
 	clear: both;
 	margin-top: 10px;
 }
+#list #answers .answer {
+  clear: both;
+}
 
 
 #list div.answer:after, div.single_item:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
