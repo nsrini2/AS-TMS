@@ -103,6 +103,9 @@
   #following .list {
     margin: 10px;
   }
+	#following .news_item {
+		clear: both;
+	}
   
   div.news_item div.details a.new_message.button {
     color: #fff;

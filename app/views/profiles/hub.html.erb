@@ -56,6 +56,8 @@
         <% @followings.each do |event| -%>
         	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
         <% end -%>
+        
+        <div style="clear: both;"></div>
 			</div> 
 			<div id="inbox" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_inbox_tab', 'clicked'])"> 
 			  <div style="float: right; margin-right: 10px; margin-top: 8px;">
