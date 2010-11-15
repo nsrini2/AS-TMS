@@ -180,6 +180,22 @@
     		    
     		    $('textarea#status_body').attr('maxlength', '140');
     		  }
+    		}),
+    		
+    		$('div.tabs').each(function(){
+    		  $this = $(this);
+    		  
+    		  var urlHash = window.location.hash;
+    		  if(urlHash && $this.has('div' + urlHash)) {    		    
+    		    // Set all tabs to not be active and hidden
+    		    $this.find('ul.tabs-nav li').removeClass('active');
+    		    $this.find('div.tabs-panel').hide();
+    		    
+    		    // Make the match active and visible
+    		    $this.find('ul.tabs-nav li a[href=' + urlHash + ']').parent().addClass('active');
+    		    $this.find('div' + urlHash).show();
+    		  }
+    		  
     		});
     	});
     	
@@ -191,7 +207,7 @@
       		// More than just reload...clear out all the values
       		// window.location.reload();
       		window.location = window.location;
-      	},
+      	}
   	  });
     })(jQuery);  
   </script>

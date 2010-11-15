@@ -24,7 +24,7 @@ class NotesController
     note.save
     # render_for_receiver(receiver)
     
-    render :text => {:errors => [] }.to_json
+    render :text => { }.to_json
   end
   
   def autocomplete_for_message

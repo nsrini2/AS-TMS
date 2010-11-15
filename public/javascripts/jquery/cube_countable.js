@@ -27,14 +27,17 @@ $.fn.extend({
 				.html( options.positiveCopy.replace("{n}", '<span class="num"/>') )
 				.addClass( options.className );
 			if ( $.support.opacity ) $el.css({ opacity: 0 }); // don't set opacity for IE to avoid clear text issues.
-			$el[options.appendMethod]($this);
 			
-			$this
-				.bind('keyup', check)
-				.bind('focus blur', function(event) {
-					if ( event.type == 'blur' ) clearInterval( interval );
-					if ( event.type == 'focus' && !interval ) setInterval(check, options.interval);
-				});
+			// if(!$this.has('span.counter')) {
+				$el[options.appendMethod]($this);
+			
+				$this
+					.bind('keyup', check)
+					.bind('focus blur', function(event) {
+						// if ( event.type == 'blur' ) clearInterval( interval );
+						if ( event.type == 'focus' && !interval ) setInterval(check, options.interval);
+					});
+			// }
 			
 			function check() {
 				options['maxLength'] = parseInt( $this.attr('maxlength'), 10); // This essentially does live polling on the maxlength

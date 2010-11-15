@@ -793,6 +793,7 @@ $.fn.extend({
 						.dialog({ modal: true, bgiframe: true, dialogClass: 'popup form_popup ' + options.dialogClass, draggable: false, width: null, height: 'auto', minHeight: 0 })  //.find(':input:not(:hidden):first').focus().end() // breaks auto completer
 						.find('form').bind('submit', function(event) {
 							var $form = $(this);
+
 							$.ajax({
 								url: $form.attr('action'), type: 'post', data: $form.serialize(), dataType: 'json',
 								success: function(data) {
@@ -889,16 +890,13 @@ $.fn.extend({
 		return this.dialog_for_form({
 			dialogClass: 'new_message',
 			success: function($dialog, data) {
-				alert('hi');
-				// $('#flash_notice ul').append('<li>Successfully sent message to ' + 'NAME' + '</li>');
-				// $('#flash_notice').setup_notices();
-				// $dialog.dialog('destroy').remove();
 				window.location.reload();
 			},
 
 			onShow: function($dialog) {
 				$dialog.find('#message_name').setup_name_autocomplete({ url: "/messages/autocomplete" });
 				$dialog.find(':input[maxlength]').setup_character_counter();
+
 				$dialog.find('form.html5').setup_html5_form();
 			}
 		});
@@ -1039,8 +1037,13 @@ $.fn.extend({
 	},
 
 	setup_character_counter: function() {
+		// MM2: Ok this isn't really a great way to get this
+		// IE7 has jacked up character counters, especially on the hub page		
 		return this.livequery(function(){
-			$(this).cube_countable();  //in lieu of countable corrects crlf count 
+			var browser = jQuery.browser;
+			if(!(jQuery.find('#hub') && browser["msie"] && browser["version"] == "7.0")) {
+				$(this).cube_countable();  //in lieu of countable corrects crlf count 
+			}
 		});
 	},
  
