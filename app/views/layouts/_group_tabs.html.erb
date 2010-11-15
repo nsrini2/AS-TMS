@@ -18,7 +18,7 @@
 <% end -%>
 
 <% content_for :tab_panel do %>
-  <%= yield :group_manage_sub_menu_content %>
+  <%= @content_for_group_manage_sub_menu_content ? yield(:group_manage_sub_menu_content) : yield %>
 <% end %>
 
 <%= render :file => 'layouts/_tab_structure' -%>
