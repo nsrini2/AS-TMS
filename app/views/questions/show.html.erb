@@ -23,9 +23,13 @@
       		<% self.instance_eval { alias :link_to_avatar_for :link_to_avatar_for_from_cubeless } %>
       		
       		<%= render(:partial => 'answers/best_answer', :locals => {:answer => @best_answer}) %>
+      		
+      		<div style="clear: both;"></div>
       </div>
     </div>
   </div>
+  
+  <div style="clear: both;"></div>
 
   <div id="list">
     <%= render( :partial => 'answers/answers', :locals =>{:answers => @answer_summaries, :question => @question_summary})%>
