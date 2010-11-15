@@ -9,7 +9,7 @@ preview = false unless defined?(preview)
   <div class="list_item blog_post_item <%= classname %>">
   	<%= link_to_avatar_for(blog_post.profile) if blog_explore || blog_post.root_parent.is_a?(Group) -%>
   	<div class="details">
-  		<h3><%= link_to_unless(full_post || preview, blog_post.title, blog_post_path(blog_post))%></h3>
+  		<h3><%= (full_post || preview) ? blog_post.title : link_to(blog_post.title, blog_post_path(blog_post)) %></h3>
   		<p class="meta">Posted on <%= pretty_datetime(blog_post.created_at || Time.new) %><%= blog_post.root_parent.is_a?(Group) && blog_explore ? " in #{link_to(blog_post.root_parent.name, group_blog_url(blog_post.root_parent))}" : "" %> by&nbsp;<%= link_to_author blog_post %></p>
   		<% if full_post -%>
   			<%= blog_post.text -%>
