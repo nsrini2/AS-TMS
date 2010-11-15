@@ -1,9 +1,11 @@
 <% content_for :content do %>
+  <style>
+    form#query_form { display: none ! important; }
+  </style>
+  
   <%= yield %>
 <% end %>
 
-<style>
-  form#query_form { display: none ! important; }
-</style>
+
 
 <%= render :file => "layouts/_application" %>
