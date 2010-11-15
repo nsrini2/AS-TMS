@@ -116,7 +116,15 @@ div.single_item div.action_buttons {
 }
 
 /* Comments */
+#list div#comments {
+	clear: both;
+}
 #list div#comments:before { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
+
+/* Status */
+#list .status_results .list_item {
+	clear: both;
+}
 
 #filter_options .selected {
 	font-size: 1.2em;

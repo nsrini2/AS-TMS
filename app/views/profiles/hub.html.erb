@@ -38,6 +38,9 @@
 			  <% @events.each do |event| -%>
         	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
         <% end -%>
+        <div class="see_all" style="margin-left: 10px;">
+    			<a href=<%= stream_events_path(:page => 2) %>>More</a>
+    		</div>
 			</div> 
 			<div id="following" class="tabs-panel" style="display: none;"> 
 			  <style>
