@@ -9,7 +9,7 @@ module EventStreamHelper
   
   def link_to_avatar_for_event(event, options={})
     photo = primary_photo_for(event, :thunb => :thumb_large, :hide_status_indicator => false, :hide_sponsor_sash => false)
-    path = event.group_id ? group_event_path(event) : profile_path(event.profile)
+    path = event.group_id ? group_event_path(event) : event.profile ? profile_path(event.profile) : ""
     
     link_to photo, path
   end
@@ -37,8 +37,12 @@ module EventStreamHelper
   def event_who_text(event)
     if event.group_id && !event.profile_id
       event.group_name
-    else
+    elsif event.respond_to?(:profile_screen_name)
       event.profile_screen_name
+    elsif event.respond_to?(:profile) && event.profile
+      event.profile.screen_name
+    else
+      ""
     end
   end
   
