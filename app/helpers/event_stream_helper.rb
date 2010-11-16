@@ -25,7 +25,7 @@ module EventStreamHelper
         when "BlogPost": "/blog_posts/#{event.klass_id}"
         when "Comment": "/comments/#{event.klass_id}"
         else
-          profile_path(event.profile)
+          event.profile ? profile_path(event.profile) : ""
       end
     end
   end
