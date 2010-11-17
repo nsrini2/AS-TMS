@@ -1,21 +1,55 @@
-# require "#{Rails.root}/vendor/plugins/cubeless/lib/batch_mailer"
+require "#{Rails.root}/vendor/plugins/cubeless/lib/batch_mailer"
+require "#{Rails.root}/app/models/notifier" # not sure if it is better to reference cubeless or agentstream version of this file
+# SSJ 11/16/2010
+# monkey punching - duck punching cannot happen inside another class
+# these methods are not in cubeless, but help in testing ...
+class BatchMailer
+  def self.send_batch_mail(tmail)
+    users = ["scott.johnson@sabre.com"]
+    batch_me_up_scotty(tmail, users)
+  end  
+end
+
+class Notifier
+  
+  def self.send_summary_email(start_date,options={})
+    profile = Profile.find_by_id(2)
+    questions = Question.find(:all) 
+    # instance_eval adds instance only methods
+    profile.instance_eval do
+      def num_new_answers
+        1
+      end  
+      def num_matches
+        1
+      end
+      def num_new_referrals
+        1
+      end
+      def num_new_notes
+        1
+      end
+      def num_needs_best_answer
+        2
+      end
+    end  
+    Notifier.deliver_summary_email(profile, questions, start_date)
+  end
+  
+  def self.send_question_summary
+    options = {:group => 'questions.id'}
+    ModelUtil.add_joins!(options,"join answers a on a.question_id=questions.id")
+    ModelUtil.add_selects!(options,"questions.*, count(1) as num_new_answers")
+    # the following requires that the data in the db have updated timestamps, so I leave it out
+    # ModelUtil.add_conditions!(options,"daily_summary_email=1 and a.created_at >= DATE_SUB(CURDATE(),INTERVAL 1 DAY) and a.created_at < CURDATE()")
+
+    Question.find(:all, options).each do |question|
+      Notifier.deliver_question_summary(question)
+    end
+  end
+end  
 
 class SendEmail
-
-  
-  #  SSJ 11/12/2010
-  #  This uses a hacked up version of Notifier 
-  #  AND BatchMailer be installed in the cubeless engine
-  #  found only on Scott's computer -- SSJ
-  # class BatchMailer
-  #   def self.send_batch_mail(tmail)
-  #     users = ["scott.johnson@sabre.com"]
-  #     self.batch_me_up_scotty(tmail, users)
-  #   end  
-  # end
-  
-  # Duck typing does not seem to take on Engine files unless the server / console is RESTARTED, 
-  # with that knowledge we should be able to duck type BatchMailer and Notifier...
   
   def send_all
     send_welcome
@@ -115,7 +149,7 @@ class SendEmail
   def send_new_user
     user = User.find_by_id(3)
     tmail = Notifier.create_new_user(user)
-    BatchMailer.send_batch_mail(tmail) # this is in my Hacked up version of BatchMailer -- could not get duck typing to work
+    BatchMailer.send_batch_mail(tmail)
   end
   
   def send_new_comment_on_group_blog_post
@@ -130,26 +164,26 @@ class SendEmail
   
   def send_new_abuse
     tmail = Notifier.create_new_abuse
-    BatchMailer.send_batch_mail(tmail) # this is in my Hacked up version of BatchMailer -- could not get duck typing to work
+    BatchMailer.send_batch_mail(tmail)
   end
   
   def send_group_mass_mail
     group = Group.find_by_id(1)
     profile = Profile.find_by_id(4)
     tmail = Notifier.create_mass_mail_for_group(group, profile, "Mass Mail Subject", "Mass Mail Body")
-    BatchMailer.send_batch_mail(tmail) # this is in my Hacked up version of BatchMailer -- could not get duck typing to work
+    BatchMailer.send_batch_mail(tmail)
   end
   
   def send_group_referral
     qr = QuestionReferral.find_by_id(3)
     tmail = Notifier.create_group_referral(qr)
-    BatchMailer.send_batch_mail(tmail) # this is in my Hacked up version of BatchMailer -- could not get duck typing to work
+    BatchMailer.send_batch_mail(tmail)
   end
   
   def send_group_post
     gp = GroupPost.find_by_id(1)
     tmail = Notifier.create_group_post(gp)
-    BatchMailer.send_batch_mail(tmail) # this is in my Hacked up version of BatchMailer -- could not get duck typing to work
+    BatchMailer.send_batch_mail(tmail)
   end
   
   def send_group_owner
@@ -170,7 +204,7 @@ class SendEmail
   def send_group_blog_post
     blog_post = BlogPost.find_by_id(1)
     tmail = Notifier.create_group_blog_post(blog_post)
-    BatchMailer.send_batch_mail(tmail) # this is in my Hacked up version of BatchMailer -- could not get duck typing to work
+    BatchMailer.send_batch_mail(tmail)
   end
   
   def send_feedback
@@ -202,7 +236,7 @@ class SendEmail
   def send_blog_post
     blog_post = BlogPost.find_by_id(4)
     tmail = Notifier.create_blog_post(blog_post)
-    BatchMailer.send_batch_mail(tmail) # this is in my Hacked up version of BatchMailer -- could not get duck typing to work
+    BatchMailer.send_batch_mail(tmail)
   end
   
   def send_best_answer
