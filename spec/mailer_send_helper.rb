@@ -1,6 +1,9 @@
 require "#{Rails.root}/vendor/plugins/cubeless/lib/batch_mailer"
 require "#{Rails.root}/app/models/notifier" # not sure if it is better to reference cubeless or agentstream version of this file
 # SSJ 11/16/2010
+#
+# when using in consule do require 'spec/mailer_send_helper'
+#
 # monkey punching - duck punching cannot happen inside another class
 # these methods are not in cubeless, but help in testing ...
 class BatchMailer
@@ -10,6 +13,7 @@ class BatchMailer
   end  
 end
 
+# these methods are in cubelss, but have too  many restrictions to make getting test data feasable.
 class Notifier
   
   def self.send_summary_email(start_date,options={})
@@ -49,7 +53,7 @@ class Notifier
   end
 end  
 
-class SendEmail
+class MailerSendHelper
   
   def send_all
     send_welcome
@@ -258,4 +262,4 @@ class SendEmail
     c = Comment.find_by_id(7)
     Notifiers::Group.deliver_new_comment_on_group_post(c)
   end
-end  
+end
