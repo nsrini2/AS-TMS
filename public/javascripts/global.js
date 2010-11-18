@@ -19,7 +19,7 @@ $(document).ready(function() {
 		.find('.request_invite').request_invite().end()
 		.find('.accept').accept_invite().end()
 		.find('.decline').decline_invite().end()
-		.find('#profile .make_default').make_default_photo().end()
+		.find('.profile .make_default').make_default_photo().end()
 		.find('.select_moderator_option').setup_select_moderator_option_links().end()
 		.find('.cbtoggle').toggle_checkboxes().end()
 		.find('.toggle').toggle_containers().end()
@@ -110,7 +110,7 @@ $(document).ready(function() {
 		.find('div.profile_results').equal_heights_for('div.profile').end()
 		.find('#answer_form').setup_answer_form().end()
 		.find('#filter_form').setup_filter_form().end()
-		.find('#profile .alternate_photos a').setup_alternate_photos().end();
+		.find('.profile .alternate_photos a').setup_alternate_photos().end();
 
 
 	$('#flash_notice, #flash_error').setup_notices();
