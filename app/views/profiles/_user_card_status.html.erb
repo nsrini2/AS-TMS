@@ -2,7 +2,7 @@
   <% if owner_content %>
     <% @status = Status.new %>
   
-    <% form_for :status, :url => statuses_path, :html => {:id => "profile_status_form", :class => "html5"} do |f| -%>
+    <% form_for :status, :url => statuses_path, :html => {:id => "profile_status_form"} do |f| -%>
       <%= f.text_area :body, :maxlength => '140', :rows => 2, :placeholder => "What are you working on today?" -%>
       <%= hidden_field_tag :profile_status, true %>
     

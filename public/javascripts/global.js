@@ -265,6 +265,15 @@ $.fn.extend({
 	
 	// TODO: DRY this up....
 	setup_status_update_from_profile: function() {
+	  // SSJ in lieu of html5 class binding to avoid double post
+	  this.each(function(){
+	    var $this = $(this);
+	    $this.html5form({
+	      
+				async:false,
+				action: ""
+			});
+	  });
 		return this.bind('submit', function() {
 	    $this = $(this);
 
@@ -296,12 +305,17 @@ $.fn.extend({
 						$('#flash_error ul').append('<li>' + 'There was an error while updating your status.' + '</li>');
 						$('#flash_error').setup_notices();
 					} else {
-	          var profile_status_events = $('#profile_status_events');
-	          var status_div = data;
+            // SSJ NOT currently displaying recent
+            // var profile_status_events = $('#profile_status_events');
+            // var status_div = data;
+            // 
+            // profile_status_events.prepend(status_div);
 
-	          profile_status_events.prepend(status_div);
-
+            $('#flash_notice ul').append('<li>Thanks for Sharing!</li>');
+    				$('#flash_notice').setup_notices();
+    				
 	          $('#status_body').val("");
+	          $('#status_body').blur();
 					} 
 				},
 				complete: function() {
