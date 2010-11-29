@@ -226,6 +226,13 @@ $.fn.extend({
 	      alert('Your text must be less than ' + status_maxlength + ' characters.\n\nIt is currently ' + status_body.length + ' characters.');
 	      return false;
 	    }
+	    
+	    // Check for a category
+	    var question_category = $('select#status_question_category').val();
+	    if(question_category == "-1") {
+	      alert('Please choose a category for your question.');
+	      return false;
+	    }
 
 	    // Actually post it
 	    $.ajax({ url: $this.attr('action'), dataType: 'html', type: 'post', data: $this.serialize(),

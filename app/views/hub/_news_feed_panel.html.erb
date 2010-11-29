@@ -10,9 +10,9 @@
   		  <span>Post as a question</span>
 		  <% end %>
 		  <div class="category_prompt">
-  		  <span>Category: </span>
   		  <%# MM2: There's some railsness to make this cleaner somewhere %>
         <select name="status[question_category]" id="status_question_category">
+          <option value="-1">Select a Category</option>
           <% Question.categories.each do |category| %>
             <option><%= category %></option>
           <% end %>
