@@ -1,0 +1,22 @@
+<h2>My Groups</h2>
+<ul class="nav">
+	<li><%= link_to "Explore Groups", groups_explorations_path %></li>
+	<li><%= link_to "Create a Group", new_group_path, :class => "modal create_group" %></li>
+</ul>
+
+<% groups.each do |group| %>
+	<div id="group140" class="list_item group_item <%= cycle "even", "odd" %>">
+		<%= primary_photo_for(group, :thumb => :thumb_80, :linkable => true, :class => "photo", :alt => "#{group.name} avatar", :hide_group_icon => true ) %>
+
+		<div class="details">
+			<h3><%= link_to "#{group.name} &nbsp;&nbsp;<small>Founded on #{content_tag("span", short_date(group.created_at),:class => "info")}", group_path(group) %></small></h3>
+			<p class="description">
+			  <%= truncate(group.description, 200) %>
+			</p>
+		</div>
+	</div>
+<% end %>
+
+<div class="see_all">
+  <%= link_to "See All My Groups", groups_profile_path(current_profile) %>
+</div>

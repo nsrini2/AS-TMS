@@ -1,0 +1,25 @@
+<div id="ask" class="">				  
+  <% form_for :status, :url => statuses_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "labeless"} do |f| -%>
+	  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_large, :size=> "80x80", :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
+		<%= f.text_area :body, :maxlength => '140', :placeholder => "Share an Update or Ask a Question" %>
+		
+		<p class="actions">
+		  <input class="button" type="submit" value="Share">
+		  <input type="checkbox" id="status_question" />
+		  <span>Post as a question</span>
+		  <%# MM2: There's some railsness to make this cleaner somewhere %>
+      <select name="status[question_category]" id="status_question_category" style="display: none;">
+        <% Question.categories.each do |category| %>
+          <option><%= category %></option>
+        <% end %>
+      </select>
+		</p>				  
+  <% end %>
+</div>
+
+<% events.each do |event| -%>
+	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
+<% end -%>
+<div class="see_all" style="margin-left: 10px;">
+	<a href=<%= stream_events_path(:page => 2) %>>More</a>
+</div>

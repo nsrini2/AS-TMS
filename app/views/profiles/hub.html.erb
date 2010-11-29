@@ -6,7 +6,6 @@
 
 <div id="hub" class="primary">
   <div id="feeds">
-	
 		<div class="tabs"> 
 			<ul class="tabs-nav">
 				<li class="active"><a href="#news_feed">Activity Stream</a></li>
@@ -15,95 +14,21 @@
 			</ul>
 		
 			<div id="news_feed" class="tabs-panel" onclick="_gaq.push(['_trackEvent', 'hub_stream_tab', 'clicked'])">
-			
-				<div id="ask" class="">				  
-				  <% form_for :status, :url => statuses_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "labeless"} do |f| -%>
-  				  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_large, :size=> "80x80", :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
-  					<%= f.text_area :body, :maxlength => '140', :placeholder => "Share an Update or Ask a Question" %>
-  					
-  					<p class="actions">
-  					  <input class="button" type="submit" value="Share">
-  					  <input type="checkbox" id="status_question" />
-  					  <span>Post as a question</span>
-  					  <%# MM2: There's some railsness to make this cleaner somewhere %>
-              <select name="status[question_category]" id="status_question_category" style="display: none;">
-                <% Question.categories.each do |category| %>
-                  <option><%= category %></option>
-                <% end %>
-              </select>
-  					</p>				  
-				  <% end %>
-				</div>
-			
-			  <% @events.each do |event| -%>
-        	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
-        <% end -%>
-        <div class="see_all" style="margin-left: 10px;">
-    			<a href=<%= stream_events_path(:page => 2) %>>More</a>
-    		</div>
+			  <%= render :partial => "/hub/news_feed_panel", :locals => { :events => @events } %>
 			</div> 
 			<div id="following" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_following_tab', 'clicked'])"> 
-			  <style>
-			    #following a.filter {
-			      display: block;
-			      float: right;
-			      margin: 3px 5px 0 0;
-			    }
-			  </style>
-        <%= link_to "View and Filter All the Things your Following", profile_watches_path(current_profile), :class => "filter" %>
-        <h3 class="lead">Things I'm Following</h3>
-
-        <% @followings.each do |event| -%>
-        	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
-        <% end -%>
-        
-        <div style="clear: both;"></div>
+			  <%= render :partial => "/hub/following_panel", :locals => { :followings => @followings } %>
 			</div> 
 			<div id="inbox" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_inbox_tab', 'clicked'])"> 
-			  <div style="float: right; margin-right: 10px; margin-top: 8px;">
-			    <%= link_to "Send a New Message", new_note_path, :class => "new_message button" %>
-			  </div>
-			  
-			  <h3 class="lead">Private Messages</h3>
-			  
-				<% @messages.each do |message| %>
-				  <%= render :partial => "/notes/note", :locals => { :message => message } %>
-				<% end %>
-				
-				<div class="see_all" style="margin-left: 10px; clear: both;">
-    			<a href=<%= notes_path %>>More</a>
-    		</div>
+			  <%= render :partial => "/hub/messages_panel", :locals => { :messages => @messages } %>
 			</div>
 		</div>
-	
 	</div>
 
   <div id="groups" class="module">
-		<h2>My Groups</h2>
-		<ul class="nav">
-			<li><%= link_to "Explore Groups", groups_explorations_path %></li>
-			<li><%= link_to "Create a Group", new_group_path, :class => "modal create_group" %></li>
-		</ul>
-	
-		<% @groups.each do |group| %>
-			<div id="group140" class="list_item group_item <%= cycle "even", "odd" %>">
-				<%= primary_photo_for(group, :thumb => :thumb_80, :linkable => true, :class => "photo", :alt => "#{group.name} avatar", :hide_group_icon => true ) %>
-
-				<div class="details">
-					<h3><%= link_to "#{group.name} &nbsp;&nbsp;<small>Founded on #{content_tag("span", short_date(group.created_at),:class => "info")}", group_path(group) %></small></h3>
-					<p class="description">
-					  <%= truncate(group.description, 200) %>
-					</p>
-				</div>
-			</div>
-		<% end %>
-	
-		<div class="see_all">
-		  <%= link_to "See All My Groups", groups_profile_path(current_profile) %>
-		</div>
+    <%= render :partial => "/hub/groups", :locals => { :groups => @groups } %>
 	</div>
 </div>
-
 
 <div class="aside">
 	<div id="promotions" class="module">
@@ -112,49 +37,13 @@
 		</p>
 	</div>
 	<div id="referred_questions" class="module">
-	  <% if !@questions_referred_to_me.empty? %>
-  		<h2>Referred Questions</h2>
-  		<% @questions_referred_to_me.each do |question| %>
-				<%= render :partial => "/questions/hub", :locals => { :question => question } %>
-  		<% end %>
-  	<% else %>
-  	  <h2>Latest Question</h2>
-			<%= render :partial => "/questions/hub", :locals => { :question => @latest_question } %>  	  
-  	<% end %>
+	  <%= render :partial => "/hub/questions", :locals => { :questions_referred_to_me => @questions_referred_to_me, :latest_question => @latest_question }%>
 	</div>
 	<div id="statistics" class="module">
-		<h2>Karma (<%= @profile_stats[:karma_points] %>)</h2>
-		<table>
-			<tr>
-				<td><strong>Updates:</strong> <%= @profile_stats[:statuses] %></td>
-				<td><strong>Best Answers:</strong> <%= @profile_stats[:best_answers] %></td>
-			</tr>
-			<tr>
-				<td><strong>Questions:</strong> <%= @profile_stats[:questions] %></td>
-				<td><strong>Notes:</strong> <%= @profile_stats[:blog_posts] %></td>
-			</tr>
-			<tr>
-				<td><strong>Groups:</strong> <%= @profile_stats[:groups] %></td>
-				<td><strong>Profile Views:</strong> <%= @profile_stats[:profile_views] %></td>
-			</tr>
-		</table>
+		<%= render :partial => "/hub/stats", :locals => { :profile_stats => @profile_stats }%>
 	</div>
 	<div id="blog_posts" class="module">
-		<h2>Blog Posts</h2>
-		<% @blog_posts.each do |blog_post| %>
-			<div class="note">
-				<div class="text">
-				  <%#= link_to truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 140, "&hellip;&nbsp;"), blog_post_path(blog_post) %>
-				  <%= textilize truncate(blog_post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), 140, "&hellip;&nbsp;") %>
-				</div>
-				<p class="title"><%= link_to blog_post.title, blog_post_path(blog_post) %></p>
-				<p class="when"><%= pretty_date blog_post.created_at %></p>
-			</div>
-		<% end %>
-	
-		<div class="see_all">
-			<a href=<%= blogs_explorations_path %>>See All Blog Posts</a>
-		</div>
+		<%= render :partial=> "/hub/blog_posts", :locals => { :blog_posts => @blog_posts }%>
 	</div>
 
 	<div id="widget" class="widget">
@@ -164,5 +53,4 @@
       <% end %>
 		</div>
 	</div>
-	
 </div>
