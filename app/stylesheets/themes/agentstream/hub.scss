@@ -81,23 +81,36 @@
     float: left;
     margin: 0 0 0 -80px;    
   }
-  #ask p.actions {
+  #ask .actions {
     margin-top: 1px;
-    margin-left: 250px;
+    margin-left: 100px;
   }
-  #ask p.actions input[type=checkbox] {
+
+  #feeds #ask textarea.ask_text_placeholder {
+    font-size: 2.2em ! important;
+    font-weight: normal;
+    padding: 5px 10px 15px 10px;
+    color: #a1a1a1;
+  }
+  
+  #ask .actions input[type=checkbox] {
     float: left;
     height: 18px;
     margin: 0 2px 0 0;
     width: 18px;
   }
-  #ask p.actions span {
-    display: block;
-    float: left;
-    font-size: 1.2em;
+  
+  #ask .actions .category_prompt {
+    float: right; 
+    margin-right: 20px; 
+    margin-top: 0;
   }
-  #ask p.actions select {
-    margin: 2px 0 0 0;
+  
+  #ask .actions span {
+
+  }
+  #ask .actions select {
+
   }
   
   #following a.filter {

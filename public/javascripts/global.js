@@ -212,8 +212,8 @@ $.fn.extend({
 			var status_maxlength = parseInt($('#status_body').attr('maxlength'), 10);
 
 	    // Check that the status body is at least 1 characters
-	    if(status_body.length < 1) {
-	      alert('Your text must be at least 1 character long.\n\nIt is currently ' + status_body.length + ' characters.');
+	    if(status_body.length < 1 || status_body == $('#status_body').attr('placeholder')) {
+	      alert('Your text must be at least 1 character long.');
 	      return false;
 	    }
 
@@ -232,7 +232,7 @@ $.fn.extend({
 				beforeSend: function() {
 					$this.find('input.button').each(function() {
 						$input = $(this);
-						$input.attr('value', 'Updating...');
+						$input.attr('value', 'Posting...');
 						$input.attr('disabled', 'disabled');
 					});
 				},
@@ -253,7 +253,7 @@ $.fn.extend({
 				complete: function() {
 					$this.find('input.button').each(function() {
 						$input = $(this);
-						$input.attr('value', 'Update');
+						$input.attr('value', 'Ask');
 						$input.removeAttr('disabled');
 					});
 				}

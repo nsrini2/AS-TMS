@@ -1,21 +1,27 @@
 <div id="ask" class="">				  
-  <% form_for :status, :url => statuses_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "labeless"} do |f| -%>
+  <% form_for :status, :url => questions_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "labeless"} do |f| -%>
 	  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_large, :size=> "80x80", :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
-		<%= f.text_area :body, :maxlength => '140', :placeholder => "Share an Update or Ask a Question" %>
+		<%= f.text_area :body, :maxlength => '4000', :placeholder => "Ask a Question", :class => "ask_text_placeholder", :required => "" %>
 		
-		<p class="actions">
-		  <input class="button" type="submit" value="Share">
-		  <input type="checkbox" id="status_question" />
-		  <span>Post as a question</span>
-		  <%# MM2: There's some railsness to make this cleaner somewhere %>
-      <select name="status[question_category]" id="status_question_category" style="display: none;">
-        <% Question.categories.each do |category| %>
-          <option><%= category %></option>
-        <% end %>
-      </select>
-		</p>				  
+		<div class="actions">
+		  <input class="button" type="submit" value="Ask">
+      <% if false %>
+  		  <input type="checkbox" id="status_question" />
+  		  <span>Post as a question</span>
+		  <% end %>
+		  <div class="category_prompt">
+  		  <span>Category: </span>
+  		  <%# MM2: There's some railsness to make this cleaner somewhere %>
+        <select name="status[question_category]" id="status_question_category">
+          <% Question.categories.each do |category| %>
+            <option><%= category %></option>
+          <% end %>
+        </select>
+      </div>
+		</div>				  
   <% end %>
 </div>
+
 
 <% events.each do |event| -%>
 	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>

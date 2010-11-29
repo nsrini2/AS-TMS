@@ -4,6 +4,7 @@ class QuestionsController
   alias :original_create :create
   
   def create    
+    sleep 100
     if !params["status"]["body"]
       original_create and return 
     end
