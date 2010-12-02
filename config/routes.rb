@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
-
+  map.connect '/join', :controller => 'profiles', :action => 'hub'
   map.search '/search', :controller => 'search', :action => 'index'
   
   map.new_note '/notes/new', :controller => 'notes', :action => 'new'
