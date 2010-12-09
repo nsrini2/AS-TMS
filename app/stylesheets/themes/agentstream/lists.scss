@@ -2,6 +2,14 @@ h2.page_title {
 	margin: 10px 0 0 10px;
 }
 
+.list_action_button { 
+	float: right;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-right: 20px;
+	text-decoration: underline;
+}
+
 .list .description .content { margin:  0 10px 10px; padding: 10px 10px 1px; background: #d5eae6; }
 .list .description .photo_wrapper {float:left; margin:  0 20px 0 0;}
 .list .description .text { }
@@ -10,7 +18,7 @@ h2.page_title {
 .listform p, .listform a, .listform dt, .listform dd {display:inline; padding: 0 10px;  }
 .listform dl { float: right; }
 .listform dd { border-right: 1px solid #676767; }
-.listform dl dd:last-child { border-right: 0; }
+.listform dl dd:last-child { border-right: 0; padding-right: 0; }
 
 .listform div.categories { display: inline; }
 .listform div { margin: 10px 0; }

@@ -59,6 +59,7 @@ $(document).ready(function() {
 		.find('.shady').dialog_for_shady().end()
 		.find('.view_all_awards').dialog_for_awards().end()
 		.find('.create_group').dialog_for_create_group().end()
+		.find('#new_question').dialog_for_new_question().end()
 		.find('.edit_comment').dialog_for_edit_comment().end()
 		.find('.group_post_item')
 					.find('.reply').dialog_for_group_talk_reply().end()
@@ -918,6 +919,31 @@ $.fn.extend({
 				$dialog.find('#message_name').setup_name_autocomplete({ url: "/messages/autocomplete" });
 				$dialog.find(':input[maxlength]').setup_character_counter();
 
+				$dialog.find('form.html5').setup_html5_form();
+			}
+		});
+	},
+
+  dialog_for_new_question: function() {
+		return this.dialog_for_form({
+			dialogClass: 'new_question',
+
+      success: function($dialog, data) {
+        if ( data["errors"] ) {
+          $dialog.find("form").find('textarea, input').attr('disabled', false);
+          for ( var i=0; i<data["errors"].length; i++ ) {
+            $('#flash_error ul').append('<li>' + data["errors"][i] + '</li>');
+            $('#flash_error').setup_notices();
+          }
+        } else {
+          window.location = data['question']['similar_questions_path'];               
+        }     
+      },
+
+			onShow: function($dialog) {
+        // $dialog.find('#message_name').setup_name_autocomplete({ url: "/messages/autocomplete" });
+        // $dialog.find(':input[maxlength]').setup_character_counter();
+        // will this double post?
 				$dialog.find('form.html5').setup_html5_form();
 			}
 		});

@@ -2,18 +2,16 @@
   #list div.question { clear: both; }
 </style>
 
+<div class="list_action_button" ><%= link_to "Ask a Question", new_question_path, :id => 'new_question' %></div>
 <h2 class="page_title">Questions</h2>
 
 <div class="question_results">
 	<div id="list">
-	  
 	  <div class="listform">
   	  <%#= filter_sort_controls('Question') %>
   	  <%= category_filter_sort_controls('Question') %>
   	</div>
-	  
     <%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries} )%>
 	</div>
-
   <%= render_pagination(@question_summaries) %>
 </div>
