@@ -70,11 +70,13 @@
 	    }
 		}),
 		
+		// Do hiding/showing tabs via url parts on the hub page
 		$('div.tabs').each(function(){
 		  $this = $(this);
 		  
 		  var urlHash = window.location.hash;
-		  if(urlHash && $this.has('div' + urlHash)) {    		    
+		  var urlPathname = window.location.pathname;
+		  if((urlPathname == "/" || urlPathname == "/profiles/hub") && urlHash && $this.has('div' + urlHash)) {    		    
 		    // Set all tabs to not be active and hidden
 		    $this.find('ul.tabs-nav li').removeClass('active');
 		    $this.find('div.tabs-panel').hide();
