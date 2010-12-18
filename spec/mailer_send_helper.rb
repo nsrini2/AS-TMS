@@ -9,6 +9,8 @@ require "#{Rails.root}/app/models/notifier" # not sure if it is better to refere
 class BatchMailer
   def self.send_batch_mail(tmail)
     users = ["scott.johnson@sabre.com"]
+    # tmail.charset
+    puts here(tmail.charset)
     batch_me_up_scotty(tmail, users)
   end  
 end
@@ -54,6 +56,24 @@ class Notifier
 end  
 
 class MailerSendHelper
+  
+  def send_generic_email
+    recipients = ["scott.s.johnson@att.net"]
+    subject = "Communíty widé sübject"
+    body  = "Community wide body. with hâts"
+    Notifier.deliver_generic_email(subject, body, recipients)
+  end
+  
+  def send_generic_batch
+    recipients = ["scott.johnson@sabre.com"]
+    subject = "Sübject with áccents - Batch"
+    body = "Bödy wíth hâts and stuff - Batch"
+    tmail = Notifier.create_generic_email(subject, body, recipients)
+    # tmail.charset ="utf-8"
+    # tmail.charset ="iso-8859-1"
+    BatchMailer.send_batch_mail(tmail)
+  end
+  
   
   def send_all
     send_welcome
@@ -228,7 +248,7 @@ class MailerSendHelper
   def send_community_email
     recipients = ["scott.johnson@sabre.com"]
     subject = "Community wide subject"
-    body  = "Community wide body."
+    body  = "Community wide body. with hâts"
     Notifier.deliver_community_email(subject, body, recipients)
   end
   
