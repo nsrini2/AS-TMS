@@ -27,13 +27,13 @@
 	<% form_for :user, :url => signup_account_path, :html => { :class => "labeless", "accept-charset" => "utf-8"} do %>
 
 		<p>
-		  <input type="text" name="profile[first_name]" size="32" placeholder="First Name" />
-		  <input type="text" name="profile[last_name]" size="32" placeholder="Last Name" />
+		  <%= text_field :profile, :first_name, :size => '32', :placeholder => "First Name" %>
+		  <%= text_field :profile, :last_name, :size => '32', :placeholder => "Last Name" %>
 		</p>
 		
 		<p>
-		  <input type="text" name="user[email]" size="32" placeholder="Email Address" />
-		  <input type="text" name="user[login]" size="32" placeholder="Login ID" />
+		  <%= text_field :user, :email, :size => '32', :placeholder => "Email Address" %>
+		  <%= text_field :user, :login, :size => '32', :placeholder => "Login ID" %>
 		</p>
 		
 		<% unless Config[:registration_queue] %>
