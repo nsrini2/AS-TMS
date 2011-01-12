@@ -24,8 +24,10 @@
   <% @registration_fields = Config['registration_fields'] %>
   
 	<h5>Request A Free Account</h5>
-	<% form_for :user, :url => signup_account_path, :html => { :class => "labeless", "accept-charset" => "utf-8"} do %>
-
+	<% form_for :user, :url => signup_account_path, :html => { :class => "html5", :id => "registration_form", "accept-charset" => "utf-8"} do %>
+		<div id="errors" class="error" >
+			<!-- This is a place holder DIV where any error messages about this form will be placed -->
+		</div>
 		<p>
 		  <%= text_field :profile, :first_name, :size => '32', :placeholder => "First Name" %>
 		  <%= text_field :profile, :last_name, :size => '32', :placeholder => "Last Name" %>

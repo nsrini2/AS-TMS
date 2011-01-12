@@ -6,3 +6,17 @@ textarea {
 textarea.fckeditor {
   height: 300px;
 }
+
+/* registration form Error formatting */
+form#registration_form  div#errors li{
+	color: #990000;
+}
+  form#registration_form .fieldWithErrors { 
+  	border: 1px dashed #990000; 
+  }
+  #registration_form div#errors { 
+  	display: none; 
+  }
+    form#registration_form  div.error h2{
+    	color: #990000;
+    }

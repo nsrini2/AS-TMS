@@ -2,7 +2,8 @@
 
 
 $(document).ready(function() {
-	$(document).find('form.html5').setup_html5_form().end();
+	$('form.html5').setup_html5_form().end()
+  $('#registration_form').hijack_errors() // don't put .end() here
 	$('#primary')
 		// plugins/widgets/utilities
 		.find('.inline_editable').setup_inline_editor().end()
@@ -129,11 +130,25 @@ $.fn.extend({
 	setup_html5_form: function() {
 		return this.each(function() {
 			var $this = $(this);
-			$this.html5form({
-				async:false
-			});
+			$this.html5form_custom();
 		});
 	},
+	
+  hijack_errors: function() {
+    $this = $(this);
+    modal_errors = $('#flash_error');
+    if ( !modal_errors.has('ul li') ) return;
+    if ( modal_errors.html().match(/password is invalid/i) ){
+      // SSJ 1-11-2011 dont hijack login errors -- could look into attaching to login form if interested
+      return; 
+    } 
+        
+    form_erros = $("div#errors", $this);
+    error_message = modal_errors.html();
+    modal_errors.html("");
+    form_erros.html(error_message) ;
+    form_erros.show('slow').blindDown('slow');
+  },
 
 	toggle_checkboxes: function() {
 		return this.live('click', function(event) {
@@ -276,9 +291,7 @@ $.fn.extend({
 	  // SSJ in lieu of html5 class binding to avoid double post
 	  this.each(function(){
 	    var $this = $(this);
-	    $this.html5form({
-	      
-				async:false,
+	    $this.html5form_custom({
 				action: ""
 			});
 	  });
