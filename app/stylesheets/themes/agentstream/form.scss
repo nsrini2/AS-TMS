@@ -14,9 +14,9 @@ form#registration_form  div#errors li{
   form#registration_form .fieldWithErrors { 
   	border: 1px dashed #990000; 
   }
-  #registration_form div#errors { 
+  form#registration_form div#errors { 
   	display: none; 
   }
-    form#registration_form  div.error h2{
+    form#registration_form div.error h2{
     	color: #990000;
     }
