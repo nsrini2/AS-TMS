@@ -6,6 +6,9 @@ ul.group_actions li {
 	display: inline;
 	margin: 0 20px 0 0px;
 }
+ul.group_actions li a {
+  text-decoration: underline;
+}
 #group_action_list.group_actions {
 	float: right;
 }
