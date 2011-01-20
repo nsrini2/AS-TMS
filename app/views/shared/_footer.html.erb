@@ -58,19 +58,20 @@
 	</div>	
 	<div class="footer-right">
 			<div id="google_translate_element"></div>
-			<script>
-			function googleTranslateElementInit() {
-			  new google.translate.TranslateElement({
-			    pageLanguage: 'en',
-			    includedLanguages: 'ar,en,fr,de,it,pt,es',
-			    multilanguagePage: true,
-			    gaTrack: true,
-			    gaId: 'UA-7721081',
-			    floatPosition: google.translate.TranslateElement.FloatPosition.TOP_RIGHT
-			  });
-			}
-			</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-			
+			<% unless Rails.env.development? -%>
+				<script>
+				function googleTranslateElementInit() {
+				  new google.translate.TranslateElement({
+				    pageLanguage: 'en',
+				    includedLanguages: 'ar,en,fr,de,it,pt,es',
+				    multilanguagePage: true,
+				    gaTrack: true,
+				    gaId: 'UA-7721081',
+				    floatPosition: google.translate.TranslateElement.FloatPosition.TOP_RIGHT
+				  });
+				}
+				</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+			<% end -%>
 			
 			
 			

@@ -10,7 +10,7 @@ text-indent: -9999px;}
 display: block;
 height: 100px;
 margin: 5px 0px 0px 10px;
-width: 220px; }
+width: 200px; }
 
 #header .nav {display: block; }
 	#header .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
@@ -30,7 +30,7 @@ width: 220px; }
 }
 
 #header .global_nav li:first-child {
-	margin-left: 70px;
+	margin-left:50px;
 }
 
 #header .global_nav li.active { border-bottom: 1px solid #4a6970; } 
@@ -40,34 +40,35 @@ width: 220px; }
 	padding: 30px 0 0 0;
 }
 
-#header .nav #hub_nav a {
+#header .nav #hub_nav {
 	background: url('/images/icons/as/nav/off/home.png') no-repeat 50% top;
 }
-#header .nav #hub_nav.active a, #header .nav #hub_nav a:hover {
+
+#header .nav #hub_nav.active, #header .nav #hub_nav:hover {
 	background: url('/images/icons/as/nav/on/home.png') no-repeat 50% top;
 }
-#header .nav #qa_nav a {
+#header .nav #qa_nav {
 	background: url('/images/icons/as/nav/off/help.png') no-repeat 50% top;
 }
-#header .nav #qa_nav.active a, #header .nav #qa_nav a:hover {
+#header .nav #qa_nav.active, #header .nav #qa_nav:hover {
 	background: url('/images/icons/as/nav/on/help.png') no-repeat 50% top;
 }
-#header .nav #group_nav a {
+#header .nav #group_nav {
 	background: url('/images/icons/as/nav/off/user-group.png') no-repeat 50% top;
 }
-#header .nav #group_nav.active a, #header .nav #group_nav a:hover {
+#header .nav #group_nav.active, #header .nav #group_nav:hover {
 	background: url('/images/icons/as/nav/on/user-group.png') no-repeat 50% top;
 }
-#header .nav #blog_nav a {
+#header .nav #blog_nav {
 	background: url('/images/icons/as/nav/off/write-note.png') no-repeat 50% top;
 }
-#header .nav #blog_nav.active a, #header .nav #blog_nav a:hover {
+#header .nav #blog_nav.active, #header .nav #blog_nav:hover {
 	background: url('/images/icons/as/nav/on/write-note.png') no-repeat 50% top;
 }
-#header .nav #news_nav a {
+#header .nav #news_nav {
 	background: url('/images/icons/as/nav/off/announcement.png') no-repeat 50% top;
 }
-#header .nav #news_nav.active a, #header .nav #news_nav a:hover {
+#header .nav #news_nav.active, #header .nav #news_nav:hover {
 	background: url('/images/icons/as/nav/on/announcement.png') no-repeat 50% top;
 }
 
