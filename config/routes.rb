@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.autocomplete_for_message_note '/messages/autocomplete', :controller => 'notes', :action => 'autocomplete_for_message'
   
   map.news '/news', :controller => 'news', :action => 'index'
+  
+  map.connect '/refer_a_friend', :controller => 'public_content', :action => 'refer_a_friend'
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
