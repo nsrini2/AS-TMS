@@ -8,7 +8,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.news '/news', :controller => 'news', :action => 'index'
   
+  # Refer a friend campaign
   map.connect '/refer_a_friend', :controller => 'public_content', :action => 'refer_a_friend'
+  map.connect '/refer-a-friend', :controller => 'public_content', :action => 'refer_a_friend'
+  map.connect '/referafriend', :controller => 'public_content', :action => 'refer_a_friend'
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
