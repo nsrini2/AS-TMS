@@ -2,6 +2,8 @@ require_cubeless_engine_file :model, :notifier
 
 class Notifier 
   helper :email
+  include ActionView::Helpers::TextHelper
+  
   
   def blog_post(blog_post)
     @subject = "#{blog_post.root_parent.screen_name} just wrote a new blog post"
@@ -37,7 +39,7 @@ class Notifier
   end
 
   def group_referral(referral)
-    @subject = "#{referral.owner.name} has been referred a question"
+    @subject = self.truncate("New Q: #{referral.question.question}", :length => 40, :omission => '...?')
     self.body = {:group => referral.owner, :referred_by => referral.referer, :question => referral.question}
   end
   
@@ -119,7 +121,7 @@ private
     profile = question_profile_match.profile
     question = question_profile_match.question
     @recipients = profile.email
-    @subject = "You have been matched with a question we think you can answer"
+    @subject = truncate("New Q: #{question.question}", :length => 40, :omission => '...?')
     self.body = { :profile => profile, :question => question }
   end
 
@@ -157,4 +159,5 @@ private
     self.body = {:question => question,
             :question_url => url_for(:controller => :questions, :action => :show, :id => question.id)}
   end
+  
 end
