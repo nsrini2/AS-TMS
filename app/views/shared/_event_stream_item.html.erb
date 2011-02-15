@@ -17,7 +17,7 @@
 		  <p class="what">
 		    <%= display[:what] %>
 		  </p>
-		  <p class="when"><br/><%= pretty_datetime event.created_at %></p>
+		  <p class="when"><br/><%= time_ago_in_words(event.created_at) %> ago</p>
 		  
 		</a>
 	</div>

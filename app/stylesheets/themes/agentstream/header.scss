@@ -96,7 +96,7 @@ width: 200px; }
 	padding-bottom: 4px;
 	padding-top: 1px;
 	text-align: center;
-	text-transform: capitalize;
+	text-transform: uppercase;
 	height: 22px;
 	width: 70px;
 }
@@ -109,6 +109,6 @@ width: 200px; }
 #header, #main { border: 1px solid #c4d7dc; border-width: 0 1px 0; }
 #main { border-width: 0 1px 1px;}
 #footer { clear: both; }
-.aside .module, .primary .module { margin: 0; padding: 10px 20px 10px; border: 1px solid #c4d7dc; border-width: 1px 0 0 0; background: #e5f1f4;}
+.aside .module, .primary .module { margin: 0; padding: 10px 20px 10px; border: 1px solid #c4d7dc; border-width: 1px 0 0 0; background: #fff;}
 .aside .module { border-width: 1px 0 0 1px; }
 	.aside .last { border-bottom: 1px solid #c4d7dc; }

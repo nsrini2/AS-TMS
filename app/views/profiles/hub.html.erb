@@ -25,9 +25,7 @@
 		</div>
 	</div>
 
-  <div id="groups" class="module">
-    <%= render :partial => "/hub/groups", :locals => { :groups => @groups } %>
-	</div>
+
 </div>
 
 <div class="aside">
@@ -39,13 +37,15 @@
 	<div id="referred_questions" class="module">
 	  <%= render :partial => "/hub/questions", :locals => { :questions_referred_to_me => @questions_referred_to_me, :latest_question => @latest_question }%>
 	</div>
-	<div id="statistics" class="module">
-		<%= render :partial => "/hub/stats", :locals => { :profile_stats => @profile_stats }%>
+	<div id="groups" class="module">
+    <%= render :partial => "/hub/groups", :locals => { :groups => @groups } %>
 	</div>
 	<div id="blog_posts" class="module">
 		<%= render :partial=> "/hub/blog_posts", :locals => { :blog_posts => @blog_posts }%>
 	</div>
-
+	<div id="statistics" class="module">
+		<%= render :partial => "/hub/stats", :locals => { :profile_stats => @profile_stats }%>
+	</div>
 	<div id="widget" class="widget">
 		<div class="module last">
       <% (1..@widgets.keys.size).to_a.reverse.each do |idx| %>      

@@ -11,9 +11,11 @@
 
 	</div>
 	<ul class="question_actions hub_question_actions">
-		<li class="answer"><%= link_to_answer question %></li>
-		<li class="refer"><%= link_to_refer question %></li>
-		<li class="watch"><%= link_to_watch_for question %></li>
-		<li class="shady"><%= render_abuse(question) %></li>
+		<li class="button answer"><%= link_to_answer question %></li>
+		<li class="button light refer"><%= link_to_refer question %></li>
+		<% if false %>
+		  <li class="watch"><%= link_to_watch_for question %></li>
+		  <li class="shady"><%= render_abuse(question) %></li>
+		<% end %>
 	</ul>
 </div>

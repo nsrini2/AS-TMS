@@ -98,12 +98,26 @@
 .note { clear: both; }
 
 .note:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-.note .text, .note .text a { margin: 0 10px 3px 0; font-size: 16px; color: #4a6970; }
+.note .text, .note .text a { margin: 0 10px 3px 0; font-size: 14px; color: #4a6970; }
 .note .text { background: url('/images/bg_notes_quote.png') no-repeat; padding: 0 0 0 25px;}
 .note .text { width: 330px; display: block; }
+.note .text p {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.note .text p:first-child {
+  margin-top: 10px;
+}
+.note .text p.actions {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.note .text a.button {
+  color: #fff;
+}
 /*.note .text a { width: 100%; display: block; }*/
-.note .title { clear: both; float: right; margin: 0; color: #4a6970;}
-.note .when { clear: both; float: right; margin: 0 0 10px 0; font-size:11px; color: #8ba2a7; }
+.note .title { clear: both; margin: 0; color: #4a6970; font-size: 1.2em;}
+.note .when { clear: both; margin: 0 0 0 0; font-size:11px; }
 .note object { width: 315px ! important; }
 
 #widget:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
@@ -111,7 +125,6 @@
 	margin: 10px 0 5px 0;
 }
 #widget div.content {
-	background-color: #E5F1F4;
 	border-bottom: 1px solid #C4D7DC;
 	margin-bottom: 30px;
 	padding-bottom: 30px;

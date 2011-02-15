@@ -39,8 +39,8 @@ class ProfilesController
     @latest_question = Question.last
     
     # TODO: Organized by the last ones I participated in
-    @groups = current_profile.groups
-    @groups = @groups[@groups.size-3..@groups.size-1].to_a.reverse
+    @groups = current_profile.groups.find(:all, :order => "rand()", :limit => 3)
+    # @groups = @groups[@groups.size-3..@groups.size-1].to_a.reverse
 
 
     # TODO: Clean this up...scraped from ExplorationsController.
@@ -48,12 +48,13 @@ class ProfilesController
     blog_options = blog_filters
     ModelUtil.add_joins!(blog_options,"left join groups pg on pg.id = blogs.owner_id and blogs.owner_type = 'Group' and pg.group_type = 2")
     ModelUtil.add_conditions!(blog_options,"pg.id is null")
+    blog_options[:limit] = 2
     @blog_posts = BlogPost.find(:all, blog_options)
 
     # TODO: Make into one query
     @messages = [current_profile.notes.recent, current_profile.sent_notes.recent].flatten.sort_by(&:created_at).reverse
     
-    @events = ActivityStreamEvent.find_summary(:all,:limit => 7)
+    @events = ActivityStreamEvent.find_summary(:all,:limit => 15)
     
     # For status or question creation
     @status = Status.new
