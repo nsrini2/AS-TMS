@@ -28,9 +28,19 @@ h2.page_title {
 
 /* Lists */
 #list { position: relative; background-color: #eff8fa; border-top: 1px solid #c4d7dc; padding: 10px 10px; }
-	#list .photo_wrapper { float: left; margin: 20px 20px 20px 0; }
-	#list .details { position: relative; display: block; float: left; width: 575px; margin-top: 20px;}
+  div.blog_post_p a, div.blog_post_p a:visited{
+    color: #900 ;
+/*    text-decoration: underline;*/
+  }
+  
+  div.blog_post_p a:hover{
+/*    color: #900 ;*/
+    text-decoration: underline;
+  }
+	#list .photo_wrapper { float: left; margin: 0px 20px 20px 0; }
+	#list .details { position: relative; display: block; float: left; width: 575px; margin-top: 0px;}
 	#list .details p { margin-bottom: 1em;}
+	#list .details p.meta { margin-bottom: 0.8em; font-size: 11px; color: #555; }
 	#list .action_buttons {
 		position: relative;
 	}
