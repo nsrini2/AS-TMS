@@ -136,38 +136,3 @@
 #promotions { padding: 0; height: 150px; position: relative; }
  #promotions h2 { position: absolute; top: 10px; left: 15px; z-index: 2; color: #fff; text-shadow: #999 0 -1px 0;}
 .promo_image { position: absolute; }
-
-/* LANDING PAGE */
-#main .primary .content .intro-text { 
-  /* SSJ: 3/11/11 Push all this off the page, txt is now on image, but keep for crawlers etc. */
-	text-indent: -5000px;
-	
-	clear: both; 
-	float:left; 
-	width: 350px; 
-	margin:30px 20px 20px 30px; 
-	background: transparent;
-	
-	
-	h5 {
-	  font-size: 32px; 
-	  line-height: 32px; 
-	  margin:0; font-weight:normal; 
-	  color: #6f563b;
-	}
-  h1 {
-    font-size: 48px; 
-    line-height: 40px; 
-    margin:0; 
-    color:#4a6970;
-  }
-  p {
-    font-size: 12px; 
-    line-height: 14pt; 
-    margin: 12px 0;
-  }
-  li {
-    color:#4a6970;
-    font-weight: bold;
-  }
-}
