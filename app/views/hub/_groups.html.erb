@@ -30,6 +30,7 @@
 		</div>
 	</div>
 <% end %>
+<%= "<br/><br/>" if groups.empty? %>
 
 <div class="see_all">
   <%= link_to "See All My Groups", groups_profile_path(current_profile) %>

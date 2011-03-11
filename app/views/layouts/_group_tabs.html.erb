@@ -4,7 +4,7 @@
 	<% group_member_or_public_content @group do -%>
 		<%= content_tag('li', link_to("Members", members_group_path(@group)), :class => @content_for_members_tab) -%>
 		<% non_private_content @group do -%>
-			<%= content_tag('li', link_to("Q &amp; A (<span class='inline' id='matchedq'>#{@group.questions_referred_to_me.count}</span>)", help_answer_group_path(@group)), :class => @content_for_help_answer_tab) -%>
+			<%= content_tag('li', link_to("Q &amp; A #{group_active_qa_count(@group)}", help_answer_group_path(@group)), :class => @content_for_help_answer_tab) -%>
 		<% end -%>
 		<%= content_tag('li', link_to("Blog", group_blog_path(@group)), :class => @content_for_blog_tab) -%>
 		<%= content_tag('li', link_to("Photos", group_gallery_photos_path(@group)), :class => @content_for_photos_tab) -%>

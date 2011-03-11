@@ -2,7 +2,11 @@
 	/* Hide the new group link in the filter section*/
   div#groups a.create_group { display: none; }
 </style>
-<div class="list_action_button" ><%= link_to "Create a Group", new_group_path, :class => 'modal create_group' %></div>
+<div class="list_action_button" >
+	<%= link_to "My Groups", groups_profile_path(current_profile) %>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+	<%= link_to "Create a Group", new_group_path, :class => 'modal create_group' %>
+</div>
 <h2 class="page_title">Groups</h2>
 
 <div class="group_results">

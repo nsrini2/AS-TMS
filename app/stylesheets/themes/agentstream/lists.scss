@@ -7,7 +7,9 @@ h2.page_title {
 	font-size: 1.2em;
 	font-weight: bold;
 	margin-right: 20px;
-	text-decoration: underline;
+	a {
+	  text-decoration: underline;
+	}  
 }
 
 .list .description .content { margin:  0 10px 10px; padding: 10px 10px 1px; background: #d5eae6; }

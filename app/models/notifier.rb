@@ -11,7 +11,7 @@ class Notifier
   end
   
   def group_blog_post(blog_post)
-    @subject = "A new blog post has been added to #{blog_post.blog.owner.name}"
+    @subject = self.truncate("New Blog: #{blog_post.title}", :length => 40, :omission => '...')
     self.body = {:blog_post => blog_post, :group => blog_post.blog.owner}
   end
   
