@@ -5,6 +5,7 @@ div.action_buttons {
 }
 
 div.action_buttons .button, div.action_buttons a.button {
+	display: block ;
 	width: 100px;
 }
 
@@ -12,7 +13,7 @@ div.action_buttons .button, div.action_buttons a.button {
 	margin: 0 2px 5px 0; 
 	background: #4A6970; 
 	border: 0; 
-	padding: 2px 5px; 
+	padding: 2px 0px; 
 	color: #fff; 
 	font-size: 1em; 
 	text-transform: uppercase; 

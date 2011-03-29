@@ -52,6 +52,15 @@
 			#news_feed .news_item .details p { display: inline; }
 			#news_feed .news_item h3 a { color: #4a6970; }
 
+/*	chats feed */
+.content { background: #fff; margin: 0 0 10px; }
+	.content .tabs-panel { padding: 10px 0; }
+    #list .chat_item{
+      .photo_wrapper { display: block; float: left; margin: 0px 15px 0 0; }
+      .details {margin-top: 0;}
+      .action_buttons {margin-top: 0;}
+    } 
+
 .content #ask { clear: both; margin: 15px 0 0; color: #4a6970; padding: 0 10px; }
 	.content #ask .photo_wrapper { display: block; float: left; margin: 0; }
 	.content #ask:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }

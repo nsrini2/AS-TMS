@@ -52,11 +52,19 @@ Rails::Initializer.run do |config|
   # require native mysql driver, not the ruby version
   config.gem 'fastercsv' # admin user import/export
   config.gem 'mysql'
-
-  config.gem 'rest-client', :lib => 'rest_client', :version => '1.5.0'
   
+  # MM2
+  # The s3 and right_aws gems must come before the rest-client/microreviewr gems
+  # Bad things happen if it doesn't
+  # Is that super scary? Yes.
   config.gem 's3'
   config.gem 'right_aws'
+
+  #config.gem 'rest-client', :lib => 'rest_client', :version => '1.5.0'
+  
+  config.gem "rest-client", :version => '1.6.1'
+  config.gem "hashie", :version => '>= 0.4.0'
+  config.gem "microreviewr", :lib => "microreview" # Must use rest-client 1.6.1 for this
 
   config.gem 'panda', :version => '0.2.1'
 

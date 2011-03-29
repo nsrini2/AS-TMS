@@ -26,6 +26,7 @@
 				<%= global_nav_link "Groups", groups_explorations_path, "group_nav" %>
 				<%= global_nav_link "Blogs", blogs_explorations_path, "blog_nav" %>
 				<%= global_nav_link "News", news_path, "news_nav" %>
+				<%= global_nav_link "Chat", chats_path, "chats_nav" %>
 			</ul>
 		</div>
 		<div class="utility">
@@ -106,6 +107,18 @@
   </script>
 -->
 
+<!-- SSJ tags from live_qa REFACTOR -->
+	<%#= stylesheet_link_tag "/themes/default/_css/style.css" %>
+	<%= stylesheet_link_tag "/javascripts/jquery-ui-1.8.9.custom/css/smoothness/jquery-ui-1.8.9.custom.css" %>
+
+
+	<%= javascript_include_tag "jquery-1.4.4" %>
+	<%= javascript_include_tag "/javascripts/jquery-ui-1.8.9.custom/js/jquery-ui-1.8.9.custom.min.js" %>
+	<%#= javascript_include_tag "jquery.html5_form_custom" %>
+	<%= javascript_include_tag "chat" %>
+	<%= javascript_include_tag "chat_live" if @chat && @chat.on_air? %>
+
+<!-- end live _qa -->
 
   <%= javascript_include_merged( :base ) -%>
   <%= javascript_include_merged( :admin ) if @content_for_admin_js -%>
@@ -121,5 +134,6 @@
   <% end %>
   
   <%= javascript_include_tag "global_extended" %>  
+  
 </body>
 </html>

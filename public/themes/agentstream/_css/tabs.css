@@ -1,0 +1,172 @@
+/* line 1, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs {
+  position: relative;
+  margin: 0 10px;
+  padding: 0;
+  zoom: 1;
+}
+
+/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+/* line 2, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 3, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li {
+  list-style: none;
+  float: left;
+  position: relative;
+  top: 1px;
+  margin: 0 10px 0 0;
+  /*border-bottom: 0 !important; */
+  padding: 0;
+  white-space: nowrap;
+  border: 1px solid #C4D7DC;
+  font-weight: bold;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li a, .tabs .tabs-nav li span {
+  float: left;
+  padding: .5em 1em;
+  text-decoration: none;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.tabs-selected {
+  margin-bottom: 0;
+  padding-bottom: 1px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.tabs-selected a, .tabs .tabs-nav li.state-disabled a, .tabs .tabs-nav li.state-processing a {
+  cursor: text;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li a, .tabs.tabs-collapsible .tabs-nav li.tabs-selected a {
+  cursor: pointer;
+}
+
+/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+/* line 20, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-panel {
+  display: block;
+  clear: left;
+  padding: 10px;
+  background: none;
+  border: 1px solid #C4D7DC;
+  position: relative;
+  top: -1px;
+  margin-top: -1px;
+  margin-bottom: 10px;
+}
+
+/* line 32, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-hide {
+  display: none !important;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav {
+  background: #fff;
+}
+
+/* required comment for clearfix to work in Opera \*/
+/* line 36, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+* html .tabs .tabs-nav {
+  height: 1%;
+}
+
+/* line 37, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav {
+  margin: 0;
+  display: block;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li {
+  white-space: nowrap;
+  background: #e6edea;
+  color: #92b5bd;
+  text-shadow: #fff 0 1px 0;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.active, .tabs .tabs-nav li.selected {
+  margin: 0 10px 1px 0;
+  background: #d8e9e6;
+  border-bottom: 1px solid #D8E9E6;
+  color: #4a6970;
+  z-index: 1;
+}
+
+/* line 47, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .st-tabs-nav li.active a:hover, .tabs .st-tabs-nav li.selected a:hover {
+  color: #333;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.disabled a {
+  color: #b4b4b4;
+  background-image: none;
+  cursor: default !important;
+}
+
+/* line 49, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.disabled a:hover {
+  color: #b4b4b4;
+}
+
+/* line 50, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li a:hover, .tabs .tabs-nav li.active a {
+  color: #888;
+  text-decoration: none;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.active a, .tabs .tabs-nav li.selected a, .tabs .tabs-nav li.disabled a {
+  cursor: text;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li a, .tabs.ui-tabs-collapsible .tabs-nav li.ui-tabs-selected a {
+  cursor: pointer;
+  color: #92b5bd;
+}
+
+/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+/* line 53, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-panel {
+  display: block;
+  border-width: 0;
+  background: #d8e9e6;
+  border: 1px solid #C4D7DC;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .hide {
+  display: none !important;
+}
+
+/* line 57, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li span#matchedq {
+  float: none;
+  padding: 0;
+}
+
+/* line 62, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-panel h3.lead {
+  margin-left: 10px;
+}

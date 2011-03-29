@@ -2,6 +2,19 @@ h2.page_title {
 	margin: 10px 0 0 10px;
 }
 
+h3.page_subtitle {
+	margin: 0 0 0 10px;
+}
+
+span.h5 {
+  font-size: 17px;
+  margin: 5px;
+}
+
+span.h6 {
+  font-size: 15px;
+}
+
 .list_action_button { 
 	float: right;
 	font-size: 1.2em;
@@ -12,7 +25,7 @@ h2.page_title {
 	}  
 }
 
-.list .description .content { margin:  0 10px 10px; padding: 10px 10px 1px; background: #d5eae6; }
+.list .description .content { margin:  0 10px 10px; padding: 10px 10px 1px; background: $highlight; }
 .list .description .photo_wrapper {float:left; margin:  0 20px 0 0;}
 .list .description .text { }
 .list .description .close2 { position: relative; float: right; }

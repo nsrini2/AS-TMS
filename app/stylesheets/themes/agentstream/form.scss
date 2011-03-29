@@ -7,6 +7,8 @@ textarea.fckeditor {
   height: 300px;
 }
 
+
+
 /* registration form Error formatting */
 form#registration_form  div#errors li{
 	color: #990000;
@@ -20,3 +22,38 @@ form#registration_form  div#errors li{
     form#registration_form div.error h2{
     	color: #990000;
     }
+
+/* New Live QA */
+form#new_live_chat_from input#chat_title {
+  font-size: 1.8em;
+  margin-bottom: 10px; 
+}
+
+div.datepicker_wrapper {
+  float: left;
+  margin: 0 20px 30px 0;
+}
+
+form#new_live_chat_from input#chat_description {
+  font-size: 1.2em;
+}
+
+div#new_live_qa div.details label {
+  line-height: 40px;
+  font-size: 17px;
+  margin: 0 10px 0 0;
+}
+
+/* Live QA Topic Form */
+form#create_topic div.error {
+  color: #990000;
+}
+
+form#create_topic input#topic_title {
+  font-size: 1.8em;
+  margin-bottom: 2px;
+}
+
+form#create_topic input.button {
+  margin-bottom: 50px;
+}

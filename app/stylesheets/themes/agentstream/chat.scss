@@ -1,0 +1,302 @@
+h2.chat_title {
+  margin-bottom: 0;
+}
+
+p.chat_time {
+  margin-bottom: 10px;
+}
+
+div.host {
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+div.host .photo_wrapper {
+  float: left;
+  margin-right: 5px;
+}
+
+div#chat_container h3.divider {
+  background: none;
+  border: 0;
+  color: #4A6970;
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+div#chat_queue_container {
+  @include grid-unit-base;
+  @include grid-width(4.75);
+  @include alpha;
+  @include grid-prefix(0.25);
+}
+div#chat_discuss_container {
+  @include grid-unit-base;
+  @include grid-width(11);
+  @include omega;
+  
+  margin-bottom: 20px;
+}
+
+div.list_item.chat_item {
+  clear: both;
+  min-height: 80px;
+}
+
+div.list_item.chat_item div.photowrapper {
+  margin-top: 0;
+}
+
+div#chat_queue_container h3, div#chat_discuss_container h3 {
+
+}
+div#chat_queue_container ul, div#chat_queue_container ol {
+
+}
+
+div#chat_queue_container > div {
+
+}
+div#chat_queue_container div {
+
+}
+
+div#chat_queue_container ul li {
+
+}
+
+.past_style {
+  color: #aaa;
+}
+
+div#chat_queue {
+  margin-bottom: 20px;
+}
+div#chat_queue > div {
+  /*background: $tertiary;*/
+}
+
+div#chat_queue #question_bin {
+    
+  form#new_chat_question_form input {
+      font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+      font-size: 0.9em;
+      float: right;
+      margin: 2px 10px;
+      padding: 2px 5px;
+      background: $light_blue;
+  }  
+}
+
+div#chat_queue_container {
+  div.accordion_open { 
+    
+    a.ui-accordion-header {
+      /*background: $secondary;*/
+      display: block;
+      clear: both;
+  
+      font-size: 0.9em;
+      font-family: inherit;
+  
+      -moz-border-radius: 0px 0px 0px 0px;
+      border-bottom-left-radius: 0px 0px;
+      border-bottom-left-radius: 0px 0px;
+      border-bottom-right-radius: 0px 0px;
+      border-bottom-right-radius: 0px 0px;
+      border-top-left-radius: 0px 0px;
+      border-top-left-radius: 0px 0px;
+      border-top-right-radius: 0px 0px;
+      border-top-right-radius: 0px 0px;
+    
+      margin-right: 0;
+      margin-bottom: 0;
+    
+      span {
+        display: none;
+      }
+    }
+    
+    div#new_chat_question_container {
+      margin-bottom: 20px;
+    }
+  }
+  
+  a#end_chat_link {
+    display: block;
+    padding : 2px 5px;
+    margin: 0 0 20px 0;
+    width: 70px;
+  }
+}
+
+
+div#chat_queue ul {
+  /*background: $tertiary;*/
+  margin-bottom: 0;
+}
+div#chat_queue li {
+  clear: both;
+  margin-left: 14px;
+}
+div#chat_queue li.past, div#chat_queue li.past div, div#chat_queue li.past div a {
+  @extend .past_style;
+}
+div#chat_queue ul li.present, div#chat_queue ol li.present {
+  @extend .medium;
+  
+  color: $primary;
+}
+div#chat_queue ul li.future, div#chat_queue ol li.future {
+
+}
+
+
+/* VOTING */
+div#chat_queue div.voting {
+  float: right;
+  display: inline;
+}
+div#chat_queue a.vote {
+  display: block;
+  float: left;
+  margin: 2px;
+  width: 15px;
+}
+div#chat_queue a.vote_up:hover {
+  margin-top: 0px;
+  margin-bottom: 4px;
+}
+div#chat_queue a.vote_down:hover {
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+
+div#chat_queue img.vote {
+  height: 12px;
+  padding: 0 3px 3px 2px;
+  vertical-align: top;
+}
+div#chat_queue img.vote_up {
+
+}
+div#chat_queue img.vote_down {
+  margin-top: 1px;
+}
+
+div#chat_participants div.photo_wrapper {
+  display: inline;
+}
+
+
+div#chat_discuss {
+
+}
+div#chat_discuss h3 {
+  background: $tertiary;
+  border: 1px solid $primary;
+}
+div#chat_dicuss h3:first-child {
+
+}
+div#chat_discuss #present_discussion_container h3.present a {
+  color: #fff;
+  padding-left: 12px;
+}
+div#chat_discuss h3.past, div#chat_discuss h3.past a {
+  @extend .past_style;
+  color: #fff;
+}
+div#chat_discuss h3 {
+  margin-top: 2px;
+}
+div#chat_discuss h3.past a small {
+  font-size: 0.9em;
+  text-align: right;
+  float: right;
+}
+
+div#chat_discuss div.ui-accordion-content {
+  border: 1px solid $primary;
+  border-top: 0;
+  padding: 0 ! important;
+}
+div#chat_discuss div.scrollable {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: $line-height*10;
+}
+div#chat_discuss table {
+  width: 100%;
+}
+div#chat_discuss table tr.host {
+  background: $highlight;
+}
+div#chat_discuss table tr td {
+    padding: 2px 5px;
+    
+    p {
+      margin: 0;
+    }
+}
+div#chat_discuss table tr td:first-child {
+  text-align: right;
+  /*margin-right: 10px;*/
+  
+  @include grid-width(2);
+  
+  background: #eee;
+  border-right: 1px solid #ccc;
+}
+div#chat_discuss table tr td.name {
+  border-top: 1px solid #ccc;
+  font-weight: bold;
+}
+div#chat_discuss table tbody tr:first-child td.name {
+  border-top: 0;
+}
+div#chat_discuss table tbody tr:last-child td.name {
+  border-bottom: 1px solid #ccc;
+}
+div#chat_discuss table tr.host td {
+  background: $highlight;
+}
+div#chat_discuss table tr td:last-child {
+  @extend .padded;
+  
+  @include grid-width(9);
+    border-bottom: 1px solid #ccc;
+}
+div#chat_discuss table tr td:last-child p {
+  margin-bottom: 0;
+}
+
+
+div#chat_discuss div#present_container #post_container {
+  @include grid-width(12);
+  @include clearfix;
+  
+  margin-top: $line-height;
+}
+div#chat_discuss div#present_container #post_container #post_text {
+  @include grid-unit-base;
+  @include grid-width(8);
+}
+div#chat_discuss div#present_container #post_container #post_submit {
+  @include grid-unit-base;
+  @include grid-width(2);
+  @include grid-prefix(1);
+  
+  text-align: right;
+}
+
+div#chat_discuss div#present_container #post_container textarea {
+  height: 38px;
+  width: 105%;
+
+}
+div#chat_discuss div#present_container #post_container input[type=submit] {
+  margin-right: 12px;
+  width: 90%;
+}

@@ -26,4 +26,7 @@ module IconHelper
   def profile_icon_path
     "#{icon_path}/user.png"
   end
+  def chat_icon_path
+    "#{icon_path}/chat.png"
+  end
 end

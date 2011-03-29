@@ -1,0 +1,426 @@
+/*	news feed */
+/* line 2, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds {
+  background: #fff;
+  margin: 0 0 10px;
+}
+
+/* line 3, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds .tabs-panel {
+  padding: 10px 0;
+}
+
+/* line 4, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item {
+  position: relative;
+  height: 80px;
+  clear: both;
+  margin: 20px 0 0;
+  color: #4a6970;
+  padding: 10px;
+}
+
+/* line 5, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .question {
+  background: #e1ecee;
+}
+
+/* line 6, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+/* line 8, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item .details {
+  display: block;
+  float: left;
+  width: 420px;
+}
+
+/* line 9, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item .details h3 {
+  margin: 0 6px 0 0;
+  display: inline;
+  font-weight: bold;
+}
+
+/* line 10, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item .details p {
+  display: inline;
+}
+
+/* line 11, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item .details p.what {
+  font-size: 14px;
+}
+
+/* line 12, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item .details p.what span {
+  font-size: 12px;
+}
+
+/* line 13, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#news_feed .news_item h3 a {
+  color: #4a6970;
+}
+
+/* line 15, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds #ask {
+  clear: both;
+  margin: 15px 0 0;
+  color: #4a6970;
+  padding: 0 10px;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds #ask .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 1px 0 0 0;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds #ask:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds #ask textarea {
+  height: 60px;
+  width: 415px;
+  padding: 10px;
+  border: 1px solid #90b4bc;
+  border-width: 1px 1px 1px 0;
+  font-size: 12px;
+  color: #4a6970;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds #ask img {
+  border: 1px solid #90b4bc;
+  border-width: 1px 0 1px 1px;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds #ask .button {
+  float: right;
+  margin: 0 2px 0 0;
+  background: #90b4bc;
+  border: 0;
+  padding: 5px 25px;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* feeds */
+/* STOLEN FROM news feed...made to be generic */
+/* line 24, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds {
+  background: #fff;
+  margin: 0 0 10px;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds .tabs-panel {
+  padding: 10px 0;
+}
+
+/* line 26, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.tabs-panel .news_item {
+  clear: both;
+  margin: 20px 0 0;
+  color: #4a6970;
+  padding: 10px;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.tabs-panel .question {
+  background: #e1ecee;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.tabs-panel .news_item:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.tabs-panel .news_item .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.tabs-panel .news_item .details {
+  display: block;
+  float: left;
+  width: 420px;
+}
+
+/* line 31, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.tabs-panel .news_item .details h3 {
+  margin: 0 10px 0 0;
+  display: inline;
+  font-weight: bold;
+}
+
+/* line 32, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.tabs-panel .news_item .details p {
+  display: inline;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.tabs-panel .news_item h3 a {
+  color: #4a6970;
+}
+
+/*groups*/
+/* line 37, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups {
+  position: relative;
+  background-color: #eff8fa;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.group_item {
+  clear: both;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.group_item:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups .group_item .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+/* line 41, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#hub #groups .details {
+  display: block;
+  float: left;
+  width: 410px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups .group_item .details h3 {
+  margin-bottom: 0px;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups .group_item .details h3 small {
+  font-size: 0.8em;
+}
+
+/*      #groups h3 a { color: #6f563b; }*/
+/* line 45, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups h3 .info {
+  color: #987d72;
+}
+
+/* line 47, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups h2 {
+  float: left;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups .nav {
+  display: block;
+  float: right;
+  margin: 0 0;
+  font-size: 16px;
+  text-transform: lowercase;
+}
+
+/* line 49, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups .nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 50, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups .nav li {
+  display: block;
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups .nav li.active {
+  border-bottom: 1px solid #4a6970;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#groups .nav a {
+  color: #4a6970;
+  font-weight: normal;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#statistics table {
+  width: 100%;
+}
+
+/* line 55, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#statistics table, #statistics table a {
+  color: #4a6970;
+}
+
+/* line 58, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.question {
+  margin: 0 0 10px;
+}
+
+/* line 59, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.question .text {
+  margin: 0 0 10px;
+}
+
+/* line 60, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.question .meta a {
+  color: #90b4bc;
+}
+
+/* line 61, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.question .meta p {
+  margin: 0;
+}
+
+/* line 62, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.question .question_actions {
+  margin: 5px 0 0 0;
+}
+
+/* line 63, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.question .question_actions li {
+  margin: 0 15px 0 0;
+  text-transform: capitalize;
+}
+
+/* line 64, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.question .question_actions a {
+  background: none;
+  color: #676767;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+
+/* line 74, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#promotions {
+  padding: 0;
+  height: 150px;
+  position: relative;
+}
+
+/* line 75, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#promotions h2 {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  z-index: 2;
+  color: #fff;
+  text-shadow: #999999 0 -1px 0;
+}
+
+/* line 76, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+.promo_image {
+  position: absolute;
+}
+
+/* line 78, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#ask span.counter {
+  /*color: #990000;*/
+  display: block !important;
+  float: left;
+  margin: 0 0 0 -80px;
+}
+
+/* line 84, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#ask .actions {
+  margin-top: 1px;
+  margin-left: 100px;
+}
+
+/* line 89, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#feeds #ask textarea.ask_text_placeholder {
+  font-size: 2.2em !important;
+  font-weight: normal;
+  padding: 5px 10px 15px 10px;
+  color: #a1a1a1;
+}
+
+/* line 96, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#ask .actions input[type=checkbox] {
+  float: left;
+  height: 18px;
+  margin: 0 2px 0 0;
+  width: 18px;
+}
+
+/* line 103, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#ask .actions .category_prompt {
+  float: right;
+  margin-right: 20px;
+  margin-top: 0;
+}
+
+/* line 116, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#following a.filter {
+  display: block;
+  float: right;
+  margin: 3px 5px 0 0;
+}
+
+/* line 121, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#following .list {
+  margin: 10px;
+}
+
+/* line 124, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+#following .news_item {
+  clear: both;
+}
+
+/* line 128, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+div.news_item div.details a.new_message.button {
+  color: #fff;
+}
+
+/* line 132, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+ul.hub_question_actions li a {
+  color: #90b4bc !important;
+  padding: 0;
+  text-decoration: underline;
+}

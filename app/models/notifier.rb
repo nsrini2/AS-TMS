@@ -1,4 +1,6 @@
 require_cubeless_engine_file :model, :notifier
+require "#{Rails.root}/vendor/plugins/live_qa/app/models/notifier"
+
 
 class Notifier 
   helper :email

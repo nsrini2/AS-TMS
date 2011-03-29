@@ -13,8 +13,8 @@ $ninesixty-grid-width: 960px;
 	
 	#header, #main, .alert, #footer { @include grid-width(16); }
 	
-		#logo { @include grid-width(4); @include alpha;}
-		.global_nav { @include grid-width(6); }
+		#logo { @include grid-width(3); @include alpha;}
+		.global_nav { @include grid-width(7); }
 		.utility { @include grid-width(5); @include omega;}
 	
 	#body {

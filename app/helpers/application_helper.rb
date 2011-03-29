@@ -13,12 +13,17 @@ module ApplicationHelper
                 :groups => /groups/,
                 :blogs => /blogs/,
                 :news => /news/,
-                :hub => /(questions|groups|blogs|news)/ }
+                :chat => /chat/,
+                :hub => /(questions|groups|blogs|news|chat)/ }
                 
     regex = regexes[name.downcase.to_sym]
     
     css_class = global_nav_link_active?(name, regex) ? "active" : ""
-    
+    # SSJ set class to new background images that are 30x30px 
+    if name =~ /chat/i
+      id = "new_nav" 
+      name += "&nbsp;" * 3
+    end  
     "<li id=\"#{id}\" class=\"#{css_class}\">#{link_to name, path}</li>"
   end
   
@@ -30,8 +35,4 @@ module ApplicationHelper
     end
   end
   
-  # Setup for central time
-  def pretty_datetime(date)
-    date.strftime("%b %d, %Y at %I:%M %p")
-  end
 end

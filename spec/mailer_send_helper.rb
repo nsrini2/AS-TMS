@@ -1,4 +1,4 @@
-require "#{Rails.root}/vendor/plugins/cubeless/lib/batch_mailer"
+require "#{Rails.root}/lib/batch_mailer"
 require "#{Rails.root}/app/models/notifier" # not sure if it is better to reference cubeless or agentstream version of this file
 # SSJ 11/16/2010
 #
@@ -9,8 +9,7 @@ require "#{Rails.root}/app/models/notifier" # not sure if it is better to refere
 class BatchMailer
   def self.send_batch_mail(tmail)
     users = ["scott.johnson@sabre.com"]
-    # tmail.charset
-    puts here(tmail.charset)
+    # here(tmail.charset)
     batch_me_up_scotty(tmail, users)
   end  
 end
@@ -105,6 +104,7 @@ class MailerSendHelper
     send_api_key_requested_for
     send_answer_to_question
     send_group_new_comment_on_group_post
+    send_chat_update
   end
   
   
@@ -282,4 +282,12 @@ class MailerSendHelper
     c = Comment.find_by_id(7)
     Notifiers::Group.deliver_new_comment_on_group_post(c)
   end
+  
+  def send_chat_update
+    chat = Chat.find_by_id(1)
+    # here chat.title
+    tmail = Notifier.create_chat_update(chat)
+    BatchMailer.send_batch_mail(tmail)
+  end
+  
 end

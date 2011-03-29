@@ -34,13 +34,13 @@ ul.group_actions li a {
 }
 
 /* Group Widgets */
-#group_widgets {
+#group_widgets, #chat_attendees {
 	margin: 10px 20px;
 }
-#group_widgets h3 {
+#group_widgets h3, #chat_attendees h3 {
 	margin-bottom: 2px;
 }
-#group_widgets #group_drive_bys .content .photo_wrapper {
+#group_widgets #group_drive_bys .content .photo_wrapper, #chat_attendees div.photo_wrapper{
 	float: left;
 	margin: 0 3px 3px 0;
 }
@@ -135,6 +135,40 @@ ul.thumbnails li a img {
 	border: 1px solid #C4D7DC;
 }
 ul.thumbnails:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
+
+ul li.no_bullet {
+  list-style: none;
+}
+ul#topic_list{
+  list-style: none;
+}
+ 
+ul#topic_list li.topic {
+  position: relative;
+  @include grid-width(6);
+  
+  span.h5 {
+    @include grid-width(3); @include alpha;
+  }  
+    
+  span.topic_buttons {
+    display: block;
+    @include grid-prefix(3); @include grid-width(2); @include omega;
+  } 
+}
+
+ul#topic_buttons {
+/*  margin-bottom: 5px;*/
+}
+
+span.topic_buttons {
+  a {
+    margin-left: 20px;
+    padding: 1px 5px;
+  }  
+  position: absolute;
+  top: 6%;
+}  
 
 .photo_details {
 	float: left;

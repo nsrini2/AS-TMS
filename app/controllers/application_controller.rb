@@ -21,4 +21,12 @@ class ApplicationController
     end
   end
   
+  # for live_qa
+  def find_chat
+    @chat = Chat.find(params[:chat_id])
+  end
+  def find_topic
+    @topic = Topic.find(params[:topic_id])
+  end
+  
 end

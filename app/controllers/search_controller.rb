@@ -48,6 +48,11 @@ class SearchController < ApplicationController
       @results << @statuses.to_a
     end
     
+    unless scope && scope != "chats" 
+      @topics = Topic.find_by_index(@query, topic_filters)
+      @results << @topics.to_a
+    end
+    
     # Sort based on rank
     @results = @results.flatten.compact.sort{ |a,b| b["rank"].to_f <=> a["rank"].to_f }
     
@@ -69,7 +74,8 @@ class SearchController < ApplicationController
                   "group" => "Groups",
                   "profile" => "People",
                   "question" => "Questions",
-                  "status" => "Updates"
+                  "status" => "Updates",
+                  "chats" => "Chats"
                 }
   end
   

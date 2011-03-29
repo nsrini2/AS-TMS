@@ -25,6 +25,9 @@
               when "Status"
                 icon = icon_image(:path => status_icon_path)
                 html = render :partial => "/statuses/status", :locals => { :status => result }
+							when "Topic"	
+                icon = icon_image(:path => chat_icon_path)
+                html = render :partial => "/chats/topic", :locals => { :topic => result }								
             end %>
     
           <% unless html.blank? %>

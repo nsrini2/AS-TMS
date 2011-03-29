@@ -72,6 +72,22 @@ width: 200px; }
 	background: url('/images/icons/as/nav/on/announcement.png') no-repeat 50% top;
 }
 
+#header .nav #chats_nav {
+	background: url('/images/icons/as/nav/off/chat.png') no-repeat 50% top;
+}
+
+#header .nav #chats_nav.active, #header .nav #chats_nav:hover {
+	background: url('/images/icons/as/nav/on/chat.png') no-repeat 50% top;
+}
+
+#header .nav #new_nav {
+  background: url('/images/icons/as/nav/off/new.png') no-repeat 50% top;
+} 
+
+#header .nav #new_nav.active, #header .nav #new_nav:hover {
+	background: url('/images/icons/as/nav/on/new.png') no-repeat 50% top;
+} 
+
 
 #header .utility { margin: 20px 0 0 50px; font-size: 14px; }
 #header .utility .nav { float: right; }
