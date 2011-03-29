@@ -10,7 +10,7 @@ $line-height: 1.6em;
 body {
   font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
   font-size: $font-size;
-  /*line-height: $line-height;*/
+  line-height: $line-height;
   color: #676767;
 }
 a:focus {
