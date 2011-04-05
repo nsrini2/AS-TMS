@@ -16,18 +16,25 @@ class << self
     matcher = MysqlSemanticMatcher.new
     options = {:direct_query => false }.merge options
     search_text = matcher.prep_text_for_match_query(search_text, true, !options.delete(:direct_query) )
-    # require words with a + dissallow results having a word that is -
-    if (search_text.index('+')) ||  (search_text.index('-'))
-      mode = "IN BOOLEAN MODE"
-    else
-      mode = ""
-    end    
+    # require words with a + dissallow results having a word that starts with -, also allow for 'like' adding * the end of words
+    mode = "IN BOOLEAN MODE"
+    
+    search_text = prep_text_for_boolean_match(search_text)
+    
     mysql_match_term = "MATCH (chat_topic_indices.chat_title_text, chat_topic_indices.topic_text, chat_topic_indices.posts_text) AGAINST (? #{mode})"
     ModelUtil.add_joins!(options, 'join chat_topic_indices on chat_topic_indices.topic_id = topics.id')
     ModelUtil.add_conditions!(options,["#{mysql_match_term}",search_text])
     options = matcher.options_with_rank(options, mysql_match_term, search_text, ["topics.*"])
     Topic.find(:all, options)
   end
+
+  def prep_text_for_boolean_match(text)
+    # add * to end of each word
+    text = text.squeeze(" ").strip.gsub(/\*/, '')
+    terms = text.split(/\s/).map { |t| t = t+"*" }
+    terms.join(" ")
+  end
+ 
  
 end 
   

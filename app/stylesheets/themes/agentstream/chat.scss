@@ -211,7 +211,7 @@ div#chat_discuss h3.past, div#chat_discuss h3.past a {
 div#chat_discuss h3 {
   margin-top: 2px;
 }
-div#chat_discuss h3.past a small {
+div#chat_discuss h3 a small {
   font-size: 0.9em;
   text-align: right;
   float: right;
@@ -240,13 +240,18 @@ div#chat_discuss table tr td {
       margin: 0;
     }
 }
+
+div#chat_discuss table tr:first-child {
+  font-style: italic;
+}
+
 div#chat_discuss table tr td:first-child {
   text-align: right;
   /*margin-right: 10px;*/
   
   @include grid-width(2);
   
-  background: #eee;
+  background: #EEE;
   border-right: 1px solid #ccc;
 }
 div#chat_discuss table tr td.name {
