@@ -21,10 +21,10 @@
     setInterval(function() { Topic.poll(); }, 30000), // 10000
      
     // Setup active topic polling every 3 seconds
-    setInterval(function() { ActiveTopic.poll(); }, 5000), // 3000
+    setInterval(function() { ActiveTopic.poll(); }, 8000), // 3000
     
     // Setup chat polling every 3 seconds
-    setInterval(function() { Post.poll(); PostQueue.dequeue(); }, 4000), // 3000
+    setInterval(function() { Post.poll(); PostQueue.dequeue(); }, 5000), // 3000
     
     // Setup participant polling every 8 seconds
     setInterval(function() { Chat.poll_participants(); }, 60000), // 8000
