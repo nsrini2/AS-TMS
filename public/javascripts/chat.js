@@ -116,7 +116,12 @@ Topic.change_active = function(data) {
   Topic.remove("topic_" + new_topic_id);
 };
 Topic.last_post_id = function(container) { 
-  return(parseInt(container.find('tr:last').attr('id').replace("post_","")));
+  if(container.find('tr:last').attr('id')) {
+    return(parseInt(container.find('tr:last').attr('id').replace("post_","")));
+  }
+  else {
+    return 0;
+  }
 };
 Topic.add_posts_from_json = function(container, last_post_id, json, options) {
   $.each(json, function(idx, post) {
