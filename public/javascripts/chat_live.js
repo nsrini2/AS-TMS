@@ -18,16 +18,16 @@
     $('div.present').show(),
     
     // Setup topic polling every 10 seconds
-    setInterval(function() { Topic.poll(); }, 10000),
+    setInterval(function() { Topic.poll(); }, 30000), // 10000
      
     // Setup active topic polling every 3 seconds
-    setInterval(function() { ActiveTopic.poll(); }, 3000),
+    setInterval(function() { ActiveTopic.poll(); }, 5000), // 3000
     
     // Setup chat polling every 3 seconds
-    setInterval(function() { Post.poll(); PostQueue.dequeue(); }, 3000),
+    setInterval(function() { Post.poll(); PostQueue.dequeue(); }, 4000), // 3000
     
     // Setup participant polling every 8 seconds
-    setInterval(function() { Chat.poll_participants(); }, 8000),
+    setInterval(function() { Chat.poll_participants(); }, 60000), // 8000
     
     // Load the posts from scripts varaible
     ActiveTopic.add_posts_from_json(present_discussion_posts, {delay_scroll:true}),
