@@ -25,6 +25,9 @@ class ApplicationController
   def find_chat
     @chat = Chat.find(params[:chat_id])
   end
+  def find_chat_include_host
+    @chat = Chat.find(params[:chat_id], :include => [:profile, :topics])
+  end
   def find_topic
     @topic = Topic.find(params[:topic_id])
   end

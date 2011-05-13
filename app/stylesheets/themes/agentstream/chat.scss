@@ -140,6 +140,9 @@ div#chat_queue li {
   clear: both;
   margin-left: 14px;
 }
+div#chat_queue li div.text {
+  display: inline;
+}
 div#chat_queue li.past, div#chat_queue li.past div, div#chat_queue li.past div a {
   @extend .past_style;
 }
@@ -156,7 +159,6 @@ div#chat_queue ul li.future, div#chat_queue ol li.future {
 /* VOTING */
 div#chat_queue div.voting {
   float: right;
-  display: inline;
 }
 div#chat_queue a.vote {
   display: block;

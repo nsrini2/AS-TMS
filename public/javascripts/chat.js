@@ -235,9 +235,9 @@ ActiveTopic.last_post_id = function() {
   return Topic.last_post_id(ActiveTopic.tbody());
 };
 ActiveTopic.add_posts_from_json = function(json, options) {
-  Topic.add_posts_from_json(ActiveTopic.tbody(), ActiveTopic.last_post_id, json, options);
+  Topic.add_posts_from_json(ActiveTopic.tbody(), ActiveTopic.last_post_id(), json, options);
   
-  if(options["delay_scroll"]) {
+  if(options["delay_scroll"] != true) {
     ActiveTopic.scroll();
   }
 };
