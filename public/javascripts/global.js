@@ -3,7 +3,9 @@
 
 $(document).ready(function() {
 	$('form.html5').setup_html5_form().end()
-  $('#registration_form').hijack_errors() // don't put .end() here
+  if ($('form#registration_form').length > 0){ 
+    $('form#registration_form').hijack_errors() // don't put .end() here
+  }
 	$('#primary')
 		// plugins/widgets/utilities
 		.find('.inline_editable').setup_inline_editor().end()
@@ -138,16 +140,12 @@ $.fn.extend({
     $this = $(this);
     modal_errors = $('#flash_error');
     if ( !modal_errors.has('ul li') ) return;
-    if ( modal_errors.html().match(/password is invalid/i) ){
-      // SSJ 1-11-2011 dont hijack login errors -- could look into attaching to login form if interested
-      return; 
-    } 
         
     form_erros = $("div#errors", $this);
     error_message = modal_errors.html();
     modal_errors.html("");
     form_erros.html(error_message) ;
-    form_erros.show('slow').blindDown('slow');
+    form_erros.show('slow'); 
   },
 
 	toggle_checkboxes: function() {
