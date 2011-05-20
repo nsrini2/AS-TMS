@@ -546,7 +546,7 @@ function set_send_notification_emails()  {
     }),
     
     // Question voting
-    $('a.vote').live('click', function(event) {
+    $('#question_bin a.vote').live('click', function(event) {
       Topic.vote($(this));
       return false;
     }),
