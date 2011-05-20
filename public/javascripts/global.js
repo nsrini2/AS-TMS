@@ -140,12 +140,16 @@ $.fn.extend({
     $this = $(this);
     modal_errors = $('#flash_error');
     if ( !modal_errors.has('ul li') ) return;
+    if ( modal_errors.html().match(/password is invalid/i) ){
+      // SSJ 1-11-2011 dont hijack login errors -- could look into attaching to login form if interested
+      return; 
+    } 
         
     form_erros = $("div#errors", $this);
     error_message = modal_errors.html();
     modal_errors.html("");
     form_erros.html(error_message) ;
-    form_erros.show('slow'); 
+    form_erros.show('slow').blindDown('slow');
   },
 
 	toggle_checkboxes: function() {
