@@ -149,7 +149,7 @@ $.fn.extend({
     error_message = modal_errors.html();
     modal_errors.html("");
     form_erros.html(error_message) ;
-    form_erros.show('slow').blindDown('slow');
+    form_erros.show('slow');
   },
 
 	toggle_checkboxes: function() {
