@@ -7,7 +7,7 @@
 
   <div class="description">
     <div class="content">
-      <div id="qaQuestion<%=@question_summary.id%>" class="question <%=@question_summary.id%> single_item list_item">
+      <div id="qaQuestion<%=@question_summary.id%>" class="question <%=@question_summary.id%> question_details single_item list_item">
           <%# MM2: I want to force the large avatar, but really don't want to copy the helper or partial from cubeless into here %>
           <% self.instance_eval do 
               alias :link_to_avatar_for_from_cubeless :link_to_avatar_for

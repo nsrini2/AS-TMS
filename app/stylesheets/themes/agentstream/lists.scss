@@ -20,9 +20,9 @@ span.h6 {
 	font-size: 1.2em;
 	font-weight: bold;
 	margin-right: 20px;
-	a {
-	  text-decoration: underline;
-	}  
+/*  a {
+    text-decoration: underline;
+  } */ 
 }
 
 .list .description .content { margin:  0 10px 10px; padding: 10px 10px 1px; background: $highlight; }
@@ -43,10 +43,17 @@ span.h6 {
 
 /* Lists */
 #list { position: relative; background-color: #eff8fa; border-top: 1px solid #c4d7dc; padding: 10px 10px; }
-  div.blog_post_p a, div.blog_post_p a:visited{
-    color: #900 ;
-/*    text-decoration: underline;*/
-  }
+
+div.blog_post_p a, div.blog_post_p a:visited, a.answer_link, a.answer_link:visited, div.alert div.content a {
+  color: #900 ;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+div.question_details p a {
+  color: #900 ;
+  text-decoration: underline; 
+}
   
   div.blog_post_p a:hover{
 /*    color: #900 ;*/
