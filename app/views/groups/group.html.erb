@@ -10,7 +10,7 @@ content_for(:page_title, @group.name)
 		<%= primary_photo_for(@group, :thumb => :thumb_large, :hide_sponsor_sash => true, :hide_group_icon => true) -%>
 		<div class="details">
 			<h3><%= @group.name -%></h3>
-			<p class="founded_on">Founded on <%= short_date(@group.created_at) -%> &nbsp;&ndash;&nbsp; <%= pluralize(@group.group_memberships_count, "member", "members") -%> &nbsp;&ndash;&nbsp; <%= "#{@group.stat_text} Activity"%></p>
+			<p class="founded_on">Founded on <%= short_date(@group.created_at) -%> &nbsp;&ndash;&nbsp; <%= pluralize(@group.group_memberships_count, "member", "members") -%></p>
 			<%= render_inline_editor_for(@group, :description, update_group_path( @group ), :class => 'description', :type => 'expandable', :maxlength => '500', :tooltip => "Click to edit the Group's description") -%>
 			<h4>Things We Know About</h4>
 			<%= render_inline_editor_for(@group, :tags, update_group_path( @group ), :class => 'tags', :type => 'expandable', :maxlength => '300', :tooltip => "Click to edit the Group's knowledge", :placeholder => "Click to add to your Group's knowledge") -%>
