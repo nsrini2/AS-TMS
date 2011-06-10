@@ -7,7 +7,7 @@
 	
         <div class="description">
           <div class="content">
-          	<div id="qaQuestion" class="question <%= @question_summary.id %> list_item single_item">
+          	<div id="qaQuestion" class="question <%= @question_summary.id %> question_details list_item single_item">
           		<%= render :partial => 'questions/question', :locals => { :show => { :answer => false, :answer_inline => true, :linked_question => false }, :question => @question_summary } -%>
           	</div>
           	<fieldset style="margin-left: 140px;">
