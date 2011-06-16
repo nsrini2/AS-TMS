@@ -22,7 +22,7 @@
     }
     #login {
       float: right;
-      padding: 7px 20px;
+      padding: 2px 20px;
       .button {
         padding: 8px;
       }  
@@ -90,9 +90,12 @@
       }  
     }
     div.footer-bottom {
-      margin: 10px 40px 40px 0px;
-      font-style: italic;
-      font-size: 0.8em;
+      margin-top: 10px;
+      p {
+        margin: 0 80px;
+        font-style: italic;
+        font-size: 0.8em;
+      }
     }
     div.footer-right {
       padding-right: 20px;
@@ -147,7 +150,7 @@
       margin-left: 20px;
       margin-top: 8px;
       float: left;
-      font-size: 0.8em;
+      font-size: 0.6em;
       text-decoration: underline;
       color: #555;
     }  
