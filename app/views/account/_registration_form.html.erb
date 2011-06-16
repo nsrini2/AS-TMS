@@ -12,13 +12,13 @@
 			</div>
 				<%= hidden_field(:user, :facebook_id, :value => facebook_uid) if facebook_uid %>
 			<p>
-			  <%= text_field :profile, :first_name, :style => "width:235px", :placeholder => "First Name", :value => @first_name %>
-			  <%= text_field :profile, :last_name, :style => "width:235px", :placeholder => "Last Name", :value => @last_name %>
+			  <%= text_field :profile, :first_name, :placeholder => "First Name", :value => @first_name %>
+			  <%= text_field :profile, :last_name, :placeholder => "Last Name", :value => @last_name %>
 			</p>
 		
 			<p>
-			  <%= text_field :user, :email, :style => "width:235px", :placeholder => "Email Address" %>
-			  <%= text_field :user, :login, :style => "width:235px", :placeholder => "Username" %>
+			  <%= text_field :user, :email, :placeholder => "Email Address" %>
+			  <%= text_field :user, :login, :placeholder => "Username" %>
 			</p>
 		
 			<% unless Config[:registration_queue] %>
@@ -32,9 +32,9 @@
 			  <%= "<p>" if idx%2 == 0 %>
 				<% attr_name = hash['label'].to_s.downcase.gsub(" ", "_") %>
 	  	  <% if hash['options'].to_s.blank? %>
-	  	    <%= text_field :registration, attr_name, :style => "width:235px", :placeholder => hash['label'] -%>
+	  	    <%= text_field :registration, attr_name, :placeholder => hash['label'] -%>
 	  	  <% else %>
-	  	    <%= select :registration, attr_name, hash['options'].split("\n"), {:prompt => "#{hash['label']}"}, :style => "width:237px", :placeholder => hash['label'] -%>
+	  	    <%= select :registration, attr_name, hash['options'].split("\n"), {:prompt => "#{hash['label']}"}, :placeholder => hash['label'] -%>
 	  	  <% end %>
 	  	  <%= "</p>" if (idx%2 == 1) || idx == @registration_fields.size-1 %>
 	  	<% end %>
