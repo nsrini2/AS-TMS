@@ -180,7 +180,7 @@ class AccountController < ApplicationController
       @facebook_logout = false
     end 
     add_to_notices "You have successfully logged out"
-    render :layout => 'naked', :action => 'welcome' 
+    redirect_to :action => 'welcome' 
   end
 
   
