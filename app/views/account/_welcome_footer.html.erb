@@ -1,0 +1,33 @@
+<div id="welcome-footer">
+	<div class="footer-top">
+		<a href="http://www.sabretravelnetwork.com/home/about/">About Us</a>&nbsp;•&nbsp;
+		<a href="/feedback">Feedback</a>&nbsp;•&nbsp;
+		<a href="/terms_and_conditions">Terms and Conditions</a>&nbsp;•&nbsp;  
+		<a href="/our_story">FAQ</a>&nbsp;•&nbsp;
+	  <a href="/feedback">Sponsorship Inquiry</a>&nbsp;•&nbsp;
+	  © 2011 Sabre Travel Network / AgentStream
+	</div>
+
+
+	<div class="footer-right">
+		<span><a href="http://www.sabretravelnetwork.com"><img src="/images/sabre_tn_logo.png"></a></span>
+		<div id="google_translate_element"></div>
+		<% unless Rails.env.development? -%>
+			<script>
+			function googleTranslateElementInit() {
+			  new google.translate.TranslateElement({
+			    pageLanguage: 'en',
+			    includedLanguages: 'ar,en,fr,de,it,pt,es',
+			    multilanguagePage: true,
+			    gaTrack: true,
+			    gaId: 'UA-7721081',
+			    floatPosition: google.translate.TranslateElement.FloatPosition.TOP_RIGHT
+			  });
+			}
+			</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		<% end -%>
+	</div>
+	<div class="footer-bottom">
+	  <p><%= Config[:disclaimer] -%></p>
+	</div>	
+</div>

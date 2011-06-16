@@ -9,14 +9,22 @@ $ninesixty-grid-width: 960px;
 	
 }
 
-	#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility  { @include grid-unit-base;}
+	#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats  { @include grid-unit-base;}
 	
 	#header, #main, .alert, #footer { @include grid-width(16); }
 	
 		#logo { @include grid-width(3); @include alpha;}
 		.global_nav { @include grid-width(7); }
 		.utility { @include grid-width(5); @include omega;}
-	
+		
+		.stats { 
+		  @include grid-width(12); @include omega;
+		  h4 { float :right; }	    
+		}
+		
+	#login-main { @include grid-width(8); @include grid-prefix(4); }	
+	#register-main { @include grid-width(12); @include grid-prefix(2); }
+	#login-agentstream-facebook-main { @include grid-width(6); @include grid-prefix(5); }
 	#body {
 	}
 	
@@ -30,3 +38,4 @@ $ninesixty-grid-width: 960px;
 	.profile .aside { @include grid-width(4); @include omega; }
 	
 	.profile .full_length { @include grid-width(16); clear: both; }
+

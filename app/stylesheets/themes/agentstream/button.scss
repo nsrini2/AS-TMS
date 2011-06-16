@@ -2,20 +2,23 @@ div.action_buttons {
 	float: right;
 	margin-top: 20px;
 	width: 15%;
+ 
+ .button {
+  	display: block ;
+  	width: 100px;
+  }	
+  a.button {
+    padding: 0px;
+  }
 }
 
-div.action_buttons .button, div.action_buttons a.button {
-	display: block ;
-	width: 100px;
-}
-
-.button, a.button { 
+.button, a.button {
 	margin: 0 2px 5px 0; 
 	background: #4A6970; 
 	border: 0; 
-	padding: 2px 0px; 
 	color: #fff; 
-	font-size: 1em; 
+	font-size: 1em;
+	padding: 3px 12px;  
 	text-transform: uppercase; 
 	font-weight: bold; 
 	text-align: center;
@@ -23,12 +26,12 @@ div.action_buttons .button, div.action_buttons a.button {
 
 .button.little, a.button.little {
 	font-size: 0.8em;
+	padding: 1px 4px; 
 }
 .button.light, a.button.light {
 	background: #90b4bc;
 }
-
-div.action_buttons .button {
-	
+.button.xlarge, a.button.xlarge {
+  font-size: 1.8em;
 }
 

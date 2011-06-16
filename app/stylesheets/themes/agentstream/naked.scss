@@ -1,0 +1,250 @@
+/* SSJ 6/14/11 -- This Stylesheet is not added to the style.scss 
+   and should only be loaded with the naked layout  */
+/*  body {
+    background-color: #999;
+  }*/
+  
+/*********  WELCOME PAGE  ************/
+  div#welcome-page{
+    background-color: #FFF;
+    border: 6px solid #DDD;
+  }
+
+  div#welcome-header {
+    background-color: #DDD; 
+    height: 50px;
+    .text-logo {
+      padding: 7px 20px;
+    }
+    #login {
+      float: right;
+      padding: 7px 20px;
+      .button {
+        padding: 8px;
+      }  
+    }
+  }  
+
+  div#welcome-main {
+    margin: 20px;
+    height: 751px;
+    div.left {
+      float: left;
+    }  
+    div.right{
+      float: right;
+      width: 490px;
+      h1 {
+        margin-bottom: -20px;
+      }  
+      h1 p {
+        color: #000;
+        text-align: right;
+        line-height: 1.0em;
+        font-size: 3.0em;
+      }
+      p {
+        text-align: right;
+        line-height: 1.2em;
+        font-size: 1.9em;
+      }
+      a.sing-up {
+        float:right;
+      }  
+    }
+    div.bottom {
+      clear: both;
+      padding-top: 10px;
+      text-align: center;
+      p {
+        font-size: 1.5em;
+        margin-bottom: 0px;
+      }  
+      div.bottom-left{
+        float: left;
+      }
+      div.bottom-right{
+        float:right;
+      }  
+    }  
+  }
+  
+  div#welcome-footer {
+    padding: 20px 0;
+    height: 60px;
+    background-color: #DDD;
+    text-align: center;
+    div.footer-top {
+     margin-bottom: 10px;
+      a, a.visited {
+        color: #676767;
+        text-decoration: underline;
+      }  
+    }
+    div.footer-bottom {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.8em;
+    }
+    div.footer-right {
+      padding-right: 20px;
+      float: right;
+    }
+      
+  }
+  div.disclaimer {
+    text-align: center;
+  }
+  
+/*********  LOGIN  ************/
+  div#login-main {
+    text-align:center;
+    margin-top: 100px;
+    form { 
+      margin-right: 20px;
+      input {
+        float: right;
+        font-size: 1.2em;
+        margin-bottom: 7px;
+      }
+      input[type="text"], input[type="password"] {
+        width: 190px; 
+      }  
+    }
+    div#public-focus{
+      border: 1px solid #888;
+      height: 240px;
+      div.header {
+
+        background-color: #DDD;
+        h1 {
+          padding: 10px 0px;
+          border-bottom: 1px solid #888; 
+        }
+      }
+    }
+    p#login-request {
+      margin-top: 10px;
+      text-align: right;
+    }    
+  }
+  
+  div#agentstream-login{
+    padding-top: 20px;
+    width: 236px;
+    height: 140px;
+    border-right: 1px solid #888; 
+    float: left;
+    a, a:visited {
+      margin-left: 20px;
+      margin-top: 8px;
+      float: left;
+      font-size: 0.8em;
+      text-decoration: underline;
+      color: #555;
+    }  
+  }
+  div#facebook-login{
+    padding-top: 20px;
+    width: 236px;
+    float: right;
+    p { 
+      margin-bottom: 5px; 
+      line-height: 1.2em;
+    }
+  }
+  
+  div.disclaimer{
+    margin-top: 30px;
+    font-size: 0.8em;
+    font-style: italic;
+  }
+  
+  /******* REGISTRATION PAGE *******/
+  div#register-main{
+    text-align:center;
+    margin-top: 100px;
+    form { 
+      input, select {
+        width: 240px;
+        font-size: 1.2em; 
+        margin: 5px 40px 0px 5px;
+      }  
+      .submit {
+        width: 90px;
+        margin-right: 105px;
+        margin-bottom: 20px;
+        float: right;
+      }
+      padding-bottom: 40px;  
+    }
+    div#public-focus{
+      border: 1px solid #888;
+      div.header {
+
+        background-color: #DDD;
+        h1 {
+          padding: 10px 0px;
+          border-bottom: 1px solid #888; 
+        }
+      }
+    }
+    p#login-request {
+     margin-top: 10px;
+     text-align: right;
+    }
+    p#submit {
+     padding-bottom: 30px;
+    }      
+  }
+  /******* FACEBOOK & AGENTSTREAM  PAGE *******/  
+  div#login-agentstream-facebook-main{
+    text-align:center;
+    margin-top: 100px;
+    form { 
+      input, select {
+        font-size: 1.2em; 
+        margin: 5px 5px 0px 5px;
+      } 
+      input[type="text"], input[type="password"] {
+        width: 230px; 
+      } 
+      .submit {
+        margin-right: 60px;
+        margin-bottom: 20px;
+        float: right;
+      }
+      padding-bottom: 10px;  
+    }
+    
+    div#agentstream-facebook-login{
+      padding-top: 20px;
+      height: 140px;
+      a, a:visited {
+        margin-left: 60px;
+        margin-top: 10px;
+        float: left;
+        font-size: 0.8em;
+        text-decoration: underline;
+        color: #555;
+      }  
+    }
+    
+    div#public-focus{
+      border: 1px solid #888;
+      div.header {
+
+        background-color: #DDD;
+        h1 {
+          padding: 10px 0px;
+          line-height: 1.0em;
+          border-bottom: 1px solid #888; 
+        }
+      }
+    }
+    p#login-request {
+     margin-top: 20px;
+     text-align: right;
+    }    
+  }
+

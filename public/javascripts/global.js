@@ -3,6 +3,7 @@
 
 $(document).ready(function() {
 	$('form.html5').setup_html5_form().end()
+  $('p#logout').logout()
   if ($('form#registration_form').length > 0){ 
     $('form#registration_form').hijack_errors() // don't put .end() here
   }
@@ -140,10 +141,10 @@ $.fn.extend({
     $this = $(this);
     modal_errors = $('#flash_error');
     if ( !modal_errors.has('ul li') ) return;
-    if ( modal_errors.html().match(/password is invalid/i) ){
-      // SSJ 1-11-2011 dont hijack login errors -- could look into attaching to login form if interested
-      return; 
-    } 
+    // if ( modal_errors.html().match(/password is invalid/i) ){
+    //   // SSJ 1-11-2011 dont hijack login errors -- could look into attaching to login form if interested
+    //   return; 
+    // } 
         
     form_erros = $("div#errors", $this);
     error_message = modal_errors.html();
@@ -162,12 +163,34 @@ $.fn.extend({
 		});
 	},
 	
+	
 	disable_on_submit: function() {
 		return this.bind('submit', function(event) {
 			$("input[type=submit]").attr("disabled","true");  				
 		});
 	},
 	
+  logout: function() {
+    $this = $(this);
+    $this.click(function() {
+      var myReturn = true;   
+      FB.getLoginStatus(function(response) {
+        if (response.session) {
+          // User logged into FB
+          FB.logout(function(response){
+            // cb  :  alert("hello crazy");  // Works
+            cb  :  window.location = "/account/login";  // not working
+          });
+          myReturn = false;
+        } else {
+          // window.location = "/account/login";
+        } 
+      });
+     return myReturn;
+    });  
+  },
+  
+
 	// Ajax post to toggle the privacy of a booking
 	privacy_toggle: function() {
 		return this.bind('click', function(event) {
