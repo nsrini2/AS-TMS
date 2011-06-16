@@ -173,8 +173,13 @@
     text-align:center;
     margin-top: 100px;
     form { 
-      input, select {
+      input {
         width: 240px;
+        font-size: 1.2em; 
+        margin: 5px 40px 0px 5px;
+      }
+      select {
+        width: 246px;
         font-size: 1.2em; 
         margin: 5px 40px 0px 5px;
       }  
