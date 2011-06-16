@@ -34,7 +34,7 @@
 	  	  <% if hash['options'].to_s.blank? %>
 	  	    <%= text_field :registration, attr_name, :style => "width:235px", :placeholder => hash['label'] -%>
 	  	  <% else %>
-	  	    <%= select :registration, attr_name, hash['options'].split("\n"), {:prompt => "#{hash['label']}"}, :style => "width:235px", :placeholder => hash['label'] -%>
+	  	    <%= select :registration, attr_name, hash['options'].split("\n"), {:prompt => "#{hash['label']}"}, :style => "width:237px", :placeholder => hash['label'] -%>
 	  	  <% end %>
 	  	  <%= "</p>" if (idx%2 == 1) || idx == @registration_fields.size-1 %>
 	  	<% end %>
