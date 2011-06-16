@@ -14,18 +14,11 @@ class ApplicationController
   
   private  
   def resolve_layout
-    case controller_name
-    when 'retrievals' # use this for Deals and Extras too...
-      'public'
-    when 'account'  
-      'naked'
+    if current_profile 
+      '_application'
     else
-      if current_profile 
-        '_application'
-      else
-        'public'
-      end    
-    end  
+      'public'
+    end
   end
   
   # for live_qa

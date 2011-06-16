@@ -6,12 +6,18 @@ class AccountController < ApplicationController
   skip_before_filter :require_auth, :only => [:welcome, :register, :login, :reset_password, :logout, :signup, :registration_confirmation]
   skip_before_filter :require_terms_acceptance, :only => [:welcome, :register, :login, :logout, :accept_terms_and_conditions, :sign_up, :registration_confirmation]
 
+  layout :naked
+
   def index
     render :action => 'welcome'
   end
     
   def welcome
     
+  end
+  
+  def registration_confirmation
+    render :layout => 'public'
   end
   
   def register
