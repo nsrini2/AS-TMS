@@ -19,22 +19,22 @@
     a { font-size: 0.4em; color: #981b1e; }
 	}
 	
-  div.sign-up {
+ div.sign-up {
      padding: 30px;
-     
-     p#login-request { 
-   		margin-top: 30px;
-   		font-weight: bold;
-   		font-size: 1.6em; 
-   		color:  #676767;                          
-       a { font-size: 0.6em; color: #981b1e; }
-   	}
-   	
-   }
    
-   form.retrieval {
-     margin: 30px 40px ;
-   }
+    p#login-request { 
+    	margin-top: 30px;
+    	font-weight: bold;
+    	font-size: 1.6em; 
+    	color:  #676767;                          
+     a { font-size: 0.6em; color: #981b1e; }
+    }
+ 	
+ }
+   
+ form.retrieval,  form.feedback {
+   margin: 30px 40px ;
+ }
 
 	/* OTHER */
 
