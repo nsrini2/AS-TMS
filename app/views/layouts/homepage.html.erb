@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<link rel="shortcut icon" href="/images/as_favicon.ico" type="image/x-icon">
+  	<title>AgentStream</title>
+  	<link rel="stylesheet" href="/themes/agentstream/_css/style.css" />
+  	<link rel="stylesheet" href="/themes/agentstream/_css/naked.css" />
+    <%= render :partial => "shared/ga" %>
+  	<script src="http://connect.facebook.net/en_US/all.js"></script>
+  </head>
+  <body>
+
+    <div id="page">
+    	<div id="welcome-page">
+      	<div id="welcome-header">
+      		<div id="logo">
+      			<%= link_to image_tag ("/images/welcome/AS_HomePageHeaderLogoText.png", 
+      									:alt => "AgentStream", :border =>0, :class => "text-logo"), {:controller => :account, :action => :welcome} %>
+      		</div>
+      		<div id="login">
+      			<%#= link_to("Login", login_account_path, :class => "button light") %>  
+      			<%= link_to image_tag ("/images/welcome/AS_LoginButton_blue_6811.gif", 
+      									:alt => "Login", :border =>0 ), login_account_path %>
+      		</div>								
+      	</div>
+
+	      <%= @content_for_content ? yield(:content) : yield %>
+
+      	<%= render :partial => "/account/welcome_footer" %>
+      </div>
+
+      <div id="fb-root"></div>
+      <script>
+      	// these have to be in page AFTER <div id="fb-root"></div> 
+      	// Initialize facebook elements	 
+      	FB.init({
+      	   appId  : <%=FB_APP_ID%>,
+      	   status : true, // check login status
+      	   cookie : true, // enable cookies to allow the server to access the session
+      	   xfbml  : true  // parse XFBML
+      	 });
+
+      	// logout of facebook
+      	<% if @facebook_logout %>
+      		FB.getLoginStatus(function(response) {
+      		  if (response.session) {
+      				// User logged into FB
+      		    FB.logout(function(response){
+      					// cb : window.location = "/account/login?logout=true";
+      				});
+      		  }
+      		});
+      	<% end %>	
+      </script>
+    		
+    	<%= render :partial => "/shared/notices" %>
+    </div>
+
+    <%= javascript_include_merged( :base ) -%>
+
+  </body>
+</html>
