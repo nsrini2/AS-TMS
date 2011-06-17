@@ -263,6 +263,57 @@
      text-align: right;
     }    
   }
+  
+  /******* PUBLIC PAGE *******/
+  div#public-main{
+    text-align:center;
+    margin-top: 10px;
+    form { 
+      input {
+        width: 240px;
+        font-size: 1.2em; 
+        margin: 5px 40px 0px 5px;
+      }
+      select {
+        width: 246px;
+        font-size: 1.2em; 
+        margin: 5px 40px 0px 5px;
+      }  
+      .submit {
+        width: 90px;
+        margin-right: 105px;
+        margin-bottom: 20px;
+        float: right;
+      }
+      padding-bottom: 40px;  
+    }
+    div#public-focus {
+      border: 1px solid #888;
+      text-align: left;
+      
+      div.header {
+        background-color: #DDD;
+        text-align: center;
+        h1 {
+          padding: 10px 0px;
+          border-bottom: 1px solid #888; 
+        }
+      }
+      h2 {
+        display: none;
+      }
+      div.content {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    p#submit {
+     padding-bottom: 30px;
+    }      
+  }
+  
+  
+  
  /******  OTHER ******/
  form.retrieval {
    margin: 30px 40px ;
