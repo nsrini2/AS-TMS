@@ -9,11 +9,11 @@ class AccountController < ApplicationController
   layout 'naked'
 
   def index
-    render :action => 'welcome', :layout => 'public'
+    redirect_to :action => 'welcome'
   end
     
   def welcome
-    render :layout => 'public'
+    render :layout => 'homepage'
   end
   
   def registration_confirmation
