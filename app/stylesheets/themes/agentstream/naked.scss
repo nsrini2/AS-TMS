@@ -31,26 +31,27 @@
 
   div#welcome-main {
     margin: 20px;
-    height: 751px;
+    height: 620px;
     div.left {
+      margin-left: 30px;
       float: left;
     }  
     div.right{
       float: right;
       width: 490px;
       h1 {
-        margin-bottom: -20px;
+        margin-bottom: -0px;
       }  
       h1 p {
         color: #000;
         text-align: right;
-        line-height: 1.0em;
-        font-size: 3.0em;
+        line-height: 0.9em;
+        font-size: 2.6em;
       }
       p {
         text-align: right;
         line-height: 1.2em;
-        font-size: 1.9em;
+        font-size: 1.6em;
       }
       a.sing-up {
         float:right;
@@ -150,7 +151,7 @@
       margin-left: 20px;
       margin-top: 15px;
       float: left;
-      font-size: 0.8em;
+      font-size: 10px;
       text-decoration: underline;
       color: #555;
     }  
