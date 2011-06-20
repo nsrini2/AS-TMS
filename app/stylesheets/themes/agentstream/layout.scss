@@ -6,8 +6,10 @@ $ninesixty-grid-width: 960px;
 
 #page {
   @include grid-container;
-	
+  #welcome-page {@include grid-width(14);}
 }
+
+
 
 	#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats  { @include grid-unit-base;}
 	
