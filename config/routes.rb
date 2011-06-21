@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/refer-a-friend', :controller => 'public_content', :action => 'refer_a_friend'
   map.connect '/referafriend', :controller => 'public_content', :action => 'refer_a_friend'
   
+  map.connect '/channels', :controller => 'display', :action => 'channels'
+  
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
