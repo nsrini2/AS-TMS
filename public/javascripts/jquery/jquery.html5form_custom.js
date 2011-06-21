@@ -116,7 +116,10 @@
                 
             });
             // SSJ 1-11-2011 remove placeholder values before submitting the form
-            $(':submit', this).bind('click', function(ev){                  
+            // $(':submit', this).bind('click', function(ev){
+               
+            // Move to binding to form submit event instead of click event on submit button 
+            $(this).bind('submit', function() {
               var input = $(':input:visible:not(:button, :submit, :radio, :checkbox, select)', form);                    
                    
               //Clear all empty value fields before Submit 
@@ -126,7 +129,7 @@
                   }
               });
               // submit form
-              // $(form).submit();
+              // $(this).submit();
               return true; // this should do the default submit action
             });
                         
