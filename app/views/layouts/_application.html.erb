@@ -108,11 +108,11 @@
 
 <!-- SSJ tags from live_qa REFACTOR -->
 	<%#= stylesheet_link_tag "/themes/default/_css/style.css" %>
-	<%= stylesheet_link_tag "/javascripts/jquery-ui-1.8.9.custom/css/smoothness/jquery-ui-1.8.9.custom.css" %>
+	<%= stylesheet_link_tag "/javascripts/jquery-ui/css/smoothness/jquery-ui.custom.css" %>
 
 
-	<%= javascript_include_tag "jquery-1.6.1" %>
-	<%= javascript_include_tag "/javascripts/jquery-ui-1.8.9.custom/js/jquery-ui-1.8.9.custom.min.js" %>
+	<%= javascript_include_tag "jquery-current" %>
+	<%= javascript_include_tag "/javascripts/jquery-ui/js/jquery-ui.min.js" %>
 	<%= javascript_include_tag "jquery.html5_form_custom" %>
 	<%= javascript_include_tag "chat" %>
 	<%= javascript_include_tag "chat_live" if @chat && @chat.on_air? %>

@@ -153,7 +153,7 @@ ul#topic_list li.topic {
     
   span.topic_buttons {
     display: block;
-    @include grid-prefix(3); @include grid-width(2); @include omega;
+    @include grid-prefix(7); @include grid-width(2); @include omega;
   } 
 }
 
