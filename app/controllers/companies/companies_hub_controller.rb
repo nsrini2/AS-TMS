@@ -7,7 +7,12 @@ class Companies::HubController < ApplicationController
     @aside_questions = current_profile.questions_referred_to_me
     if @aside_questions.size == 0 
       @aside_question_header = "Latest Question"
-      @aside_questions = [Question.company_questions(current_company.id).last]
+      last_question = Question.company_questions(current_company.id).last
+      @aside_questions = if last_question
+        [last_question]
+      else
+        []
+      end    
     end  
     set_events
   end
