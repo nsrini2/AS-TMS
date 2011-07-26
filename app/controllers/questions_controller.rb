@@ -1,6 +1,9 @@
 require_cubeless_engine_file(:controller, :questions_controller)
 
 class QuestionsController
+  
+  before_filter :check_for_company_question, :only => [:show]
+  
   def new
     # for some reason I have to restart Rails for this change to take affect - is this because I am 'freedom punching?'
     @question = Question.new(params[:question])
@@ -54,6 +57,13 @@ class QuestionsController
     end       
   end
   
+  protected
+  def check_for_company_question
+    @question = Question.unscoped(params[:id])
+    if @question.company?
+      redirect_to companies_question_path(@question) and return
+    end
+  end
 
   
   private
