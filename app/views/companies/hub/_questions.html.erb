@@ -1,0 +1,24 @@
+<h2><%= @aside_question_header %></h2>
+<% questions.each do |question| %>
+	<div class="question">
+		<h3 class="text"><%= link_to truncate(question.question, 140), company_or_question_path(question) %></h3>
+		<div class="meta">
+			<p class="asked">asked on <%= short_date question.created_at %> by <%= question.profile.full_name %></p>
+			<% if false %>
+			  <p class="open_until"> - Open Until <%= short_date question.open_until %></p>
+			<% end %>  
+			<br/>
+			<p class="category">category: <%= link_to question.category, companies_questions_path(:filter_category => question.category) %></p>
+			<p class="answers"> - <%= link_to pluralize(question.answers.count, " answer"), companies_question_path(question), :style => "color: inherit;" %></p><br/>
+
+		</div>
+		<ul class="question_actions hub_question_actions">
+			<li class="button answer"><%= link_to_answer question %></li>
+			<li class="button light refer"><%= link_to_refer question %></li>
+			<% if false %>
+			  <li class="watch"><%= link_to_watch_for question %></li>
+			  <li class="shady"><%= render_abuse(question) %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end -%>	
