@@ -3,6 +3,12 @@ class Companies::HubController < ApplicationController
   layout "_company_tabs"
   
   def show
+    @aside_question_header = "Question Reffered to me"
+    @aside_questions = current_profile.questions_referred_to_me
+    if @aside_questions.size == 0 
+      @aside_question_header = "Latest Question"
+      @aside_questions = [Question.company_questions(current_company.id).last]
+    end  
     set_events
   end
   

@@ -40,8 +40,6 @@ class << self
   def company_questions(company_id, opts={})
     opts[:page][:unscoped] = true if opts[:page]
     ModelUtil.add_conditions!(opts, ["questions.company_id = ?", company_id] )
-    here "A"
-    here opts.inspect
     self.with_exclusive_scope { find(:all, opts ) }
   end
   

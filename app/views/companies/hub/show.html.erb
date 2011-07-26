@@ -1,13 +1,12 @@
-<%# content_for :aside do %>
-<% content_for :ignore do %>
+<% content_for :aside do %>
   <div id="referred_questions" class="module">
-    <%= render :partial => "/hub/questions", :locals => { :questions_referred_to_me => [], :latest_question => Question.last }%>
+    <%= render :partial => "/companies/hub/questions", :locals => { :questions => @aside_questions }%>
   </div>
-  <div id="groups" class="module">
-    <%= render :partial => "/hub/company_groups", :locals => { :groups => Group.find(:all, :limit => 3) } %>
+  <div id="agency_groups" class="module">
+    <%= render :partial => "/companies/hub/groups", :locals => { :groups => [] } %>
   </div>
-  <div id="blog_posts" class="module">
-  	<%= render :partial=> "/hub/blog_posts", :locals => { :blog_posts => BlogPost.find(:all, :order => "blog_posts.id DESC", :limit => 3) }%>
+  <div id="blog_posts" class="module last">
+  	<%= render :partial=> "/companies/hub/blog_posts", :locals => { :blog_posts => [] }%>
   </div>
 <% end %>
 
