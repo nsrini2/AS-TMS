@@ -136,7 +136,7 @@ private
 
   def referral(referral)
     @recipients  = referral.owner.email
-    @subject = "A question has been referred to you"
+    @subject = "A question has been referred to you by #{referral.referer.full_name}."
     self.body = {:referred_to => referral.owner, :referred_by => referral.referer, :question => referral.question}
   end
 
