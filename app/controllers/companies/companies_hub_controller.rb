@@ -39,7 +39,7 @@ private
   end
   
   def set_seleted_tab
-    @company_hub_tab_selected = "Selected"
+    @company_hub_tab_selected = "selected"
   end
   
 end

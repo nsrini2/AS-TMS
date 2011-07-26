@@ -9,7 +9,7 @@ class Companies::MembersController < ApplicationController
 
 private
   def set_selected_tab
-    @company_members_tab_selected = "Selected"
+    @company_members_tab_selected = "selected"
   end
   
 end

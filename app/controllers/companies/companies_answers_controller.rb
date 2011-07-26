@@ -48,7 +48,7 @@ class Companies::AnswersController < ApplicationController
 private
   
   def set_selected_tab
-    @company_question_tab_selected = "Selected"
+    @company_question_tab_selected = "selected"
   end
 
 ## Probably should be in model -- also in answers_controller  
