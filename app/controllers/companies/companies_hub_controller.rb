@@ -19,8 +19,7 @@ class Companies::HubController < ApplicationController
     else  
       add_to_errors @question
     end  
-    set_events  
-    render :action => :show
+    redirect_to :action => :show
   end
 
 private  
