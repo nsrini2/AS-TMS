@@ -73,5 +73,5 @@ class ApplicationController
       @answers = Answer.all.count
     end  
   end
-
+    
 end
