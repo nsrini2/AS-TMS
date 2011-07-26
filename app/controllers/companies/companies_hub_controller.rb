@@ -6,7 +6,7 @@ class Companies::HubController < ApplicationController
     @aside_question_header = "Question Reffered to me"
     @aside_questions = current_profile.questions_referred_to_me
     if @aside_questions.size == 0 
-      @aside_question_header = "Latest Question"
+      @aside_question_header = "Latest Agency Q&A"
       last_question = Question.company_questions(current_company.id).last
       @aside_questions = if last_question
         [last_question]
