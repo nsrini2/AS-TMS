@@ -30,7 +30,7 @@ width: 200px; }
 }
 
 #header .global_nav li:first-child {
-	margin-left:50px;
+	margin-left:40px;
 }
 
 #header .global_nav li.active { border-bottom: 1px solid #4a6970; } 
@@ -46,6 +46,12 @@ width: 200px; }
 
 #header .nav #hub_nav.active, #header .nav #hub_nav:hover {
 	background: url('/images/icons/as/nav/on/home.png') no-repeat 50% top;
+}
+#header .nav #company_nav {
+	background: url('/images/icons/as/nav/off/agency.png') no-repeat 50% top;
+}
+#header .nav #company_nav.active, #header .nav #company_nav:hover {
+	background: url('/images/icons/as/nav/on/agency.png') no-repeat 50% top;
 }
 #header .nav #qa_nav {
 	background: url('/images/icons/as/nav/off/help.png') no-repeat 50% top;

@@ -1,0 +1,24 @@
+<% content_for(:page_title, truncate(@question_summary.question, 25)) -%>
+<% content_for(:body_class, "question_answers") -%>
+
+<div class="list_action_button">
+	<%= link_to("Show All", companies_questions_path) %>
+</div>
+
+<h2>Question and Answers</h2>
+<% if @wide_skyscraper %>
+<div class="question_answers wide_skyscraper">
+<% end %>
+
+<div class="list" id="list">
+	<div id="qaQuestion<%=@question_summary.id%>" class="question <%=@question_summary.id%> single_item list_item description">
+			<%= render :partial =>'questions/question', :locals => {:question => @question_summary, :show => {:linked_question => false, :close => true}}%>
+			<%= render(:partial => 'answers/best_answer', :locals => {:answer => @best_answer}) %>
+	</div>
+	<%= render( :partial => 'answers/answers', :locals =>{:answers => @answer_summaries, :question => @question_summary})%>
+</div>
+<% if @wide_skyscraper %>
+</div>
+<%= render :partial => 'ads/wide_skyscraper' %>
+<% end %>
+

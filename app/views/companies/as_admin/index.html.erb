@@ -1,0 +1,19 @@
+<% content_for :admin_tabs_submenu do %>
+	<div id="admin_header">
+		<div id="title"><h2>Company Channels</h2></div>
+		<div id="action_buttons"><%= link_to("New", new_company_admin_path, {:class => "button" }) %></div>
+	</div>	
+<% end %>
+
+<table id="companies_list">
+	<tr class="header">
+		<th class="image"></th>
+		<th class="id">ID</th>
+		<th class="name">Name</th>
+		<th class="description">Description</th>
+		<th class="members">Members</th>
+		<th class="groups">Groups</th>
+		<th class="edit"></th>
+	</tr>	
+	<%= render :partial => "companies/as_admin/list_company", :collection => @companies, :as => :company %>
+</table>	

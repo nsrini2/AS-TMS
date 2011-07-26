@@ -32,6 +32,18 @@ class ApplicationController
     @topic = Topic.find(params[:topic_id])
   end
   
+  #companies
+  def current_company
+    @company ||= current_profile.company
+    if @company.nil?
+      render :layout => false, :file => "/companies/channels"
+      return
+    end
+    @company
+  end
+  
+  helper_method :current_company
+  
   #for facebook login
   def find_facebook_uid
     @oauth = Koala::Facebook::OAuth.new(FB_APP_ID, FB_APP_SECRET)
@@ -61,5 +73,5 @@ class ApplicationController
       @answers = Answer.all.count
     end  
   end
-    
+
 end

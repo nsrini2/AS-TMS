@@ -1,0 +1,8 @@
+<tr class="member <%= cycle("even", "odd") -%>">
+	<td class="image"><%= link_to(primary_photo_for(member, :thumb => :thumb), profile_path(member.id) )%></td>
+	<td class="name"><%= member.screen_name %></td>
+	<td class="email"><%= member.user.email %></td>
+	<% if false %>
+		<td class="edit"><%= link_to("Edit", "/", {:class=>"button"}) %></td>
+	<% end %>	
+</tr>

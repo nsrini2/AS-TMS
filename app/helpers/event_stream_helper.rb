@@ -17,10 +17,20 @@ module EventStreamHelper
   def event_path(event)
     if event.group_id && !event.profile_id
       group_event_path(event)
+    # elsif event.company_id && event.company_id > 0 
+    #   case event.klass
+    #     when "Answer": companies_question_path(:id => event[:answer_question_id])
+    #     when "Question": companies_question_path(:id => event.klass_id)
+    #     # when "GroupMembership": group_path(:id => event.group_id)
+    #     # when "BlogPost": "/blog_posts/#{event.klass_id}"
+    #     # when "Comment": "/comments/#{event.klass_id}"
+    #     else
+    #       event.profile ? profile_path(event.profile) : ""
+    #   end
     else
       case event.klass
-        when "Answer": question_path(:id => event[:answer_question_id])
-        when "Question": question_path(:id => event.klass_id)
+        when "Answer": company_or_question_path(event[:answer_question_id])
+        when "Question": company_or_question_path(event.klass_id)
         when "GroupMembership": group_path(:id => event.group_id)
         when "BlogPost": "/blog_posts/#{event.klass_id}"
         when "Comment": "/comments/#{event.klass_id}"

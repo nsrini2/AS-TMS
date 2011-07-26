@@ -15,6 +15,22 @@ ActionController::Routing::Routes.draw do |map|
   
   map.connect '/channels', :controller => 'display', :action => 'channels'
   
+  # map.connect '/companies/create_question', :controller => 'companies', :action => 'create_question', :conditions => {:method => :post }
+  # map.resources :companies
+  map.namespace(:companies) do |companies|
+    companies.connect '/hub/:id', :controller => 'hub', :action => 'show', :conditions => {:method => :get }
+    companies.connect '/hub/create_question', :controller => 'hub', :action => 'create_question', :conditions => {:method => :post }
+    companies.resources :questions do |question|
+      question.connect 'update', :controller => 'questions', :action => 'update', :conditions => {:method => :post }
+      question.resources :answers do |answer|
+        answer.resource :vote, :controller => :votes, :collection => { :helpful => :post, :not_helpful => :post }
+      end  
+    end
+    # companies.resources :groups
+    companies.connect '/members/:id', :controller => 'members', :action => 'index'
+  end
+
+
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

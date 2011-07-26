@@ -204,3 +204,47 @@ div.single_item div.action_buttons {
 	font-size: 1.2em;
 	font-weight: bold;
 }
+
+/* Admin  */
+div#admin_header {
+  #title{ float: left;}
+  #action_buttons{ float: right;}
+}
+div#admin{
+  clear:both;
+  form#company_form{
+    margin: 20px;
+    font-size: 1.2em;
+    input[type="text"], textarea, label { font-size: 1.2em; margin-bottom: 20px; width: 300px; }
+  }  
+}  
+table#companies_list, table#company_members_list{
+  border: 1px solid $primary;
+  margin: 20px;
+  width: 840px;
+  tr.header {
+    color: #FFF;
+    background: $primary;
+  }  
+  th {
+    padding-left: 5px;
+    text-align: left;
+  }  
+  tr.company, tr.member {
+    .button{
+      float: right;
+      margin: 10px 10px 0 0;
+    }
+    
+    td {
+      padding-left: 5px;
+      text-align: left; 
+    }
+  }
+  .even {
+    background: $secondary;
+  }
+  .odd {
+    background: $light_blue;
+  }
+}

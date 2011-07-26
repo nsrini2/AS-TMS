@@ -26,7 +26,8 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.autoload_paths += %W( #{RAILS_ROOT}/extras )
-  config.autoload_paths += %W(  #{Rails.root}/vendor/plugins/cubeless/app/observers
+  config.autoload_paths += %W(  #{Rails.root}/app/observers
+                                #{Rails.root}/vendor/plugins/cubeless/app/observers
                                 #{Rails.root}/vendor/plugins/cubeless/components
                                 #{Rails.root}/vendor/plugins/cubeless/lib  ) # Shouldn't nested lib files be autoloaded by default?
                                                        
@@ -108,7 +109,7 @@ Rails::Initializer.run do |config|
   
   
   # More cubeless specific stuff
-  config.active_record.observers = :activity_stream_observer, :karma_observer, :general_observer, :watch_observer, :watch_event_observer
+  config.active_record.observers = :company_stream_observer, :activity_stream_observer, :karma_observer, :general_observer, :watch_observer, :watch_event_observer
 
   config.action_view.sanitized_allowed_attributes = 'style'
   config.after_initialize do

@@ -1,0 +1,28 @@
+<% if false %>
+  <table id="company_members_list">
+  	<tr class="header">
+  		<th class="image"></th>
+  		<th class="name">Name</th>
+  		<th class="email">Email</th>
+  		<% if false %>
+  			<th class="edit"></th>
+  		<% end %>	
+  	</tr>	
+  	<%= render :partial => "companies/members/list_member", :collection => @members, :as => :member %>
+  </table>
+<% end %>
+
+<div id="search_results" style="float:none !important;">
+  <div id="list">
+    <% @members.each do |member| %>
+      <div class="result_container">
+        <div class="icon_wrapper">
+          <%#= icon %>
+        </div>
+        <div class="result">
+          <%= render :partial => "/profiles/search", :locals => { :profile => member } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

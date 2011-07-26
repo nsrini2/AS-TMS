@@ -1,0 +1,40 @@
+<%# content_for :aside do %>
+<% content_for :ignore do %>
+  <div id="referred_questions" class="module">
+    <%= render :partial => "/hub/questions", :locals => { :questions_referred_to_me => [], :latest_question => Question.last }%>
+  </div>
+  <div id="groups" class="module">
+    <%= render :partial => "/hub/company_groups", :locals => { :groups => Group.find(:all, :limit => 3) } %>
+  </div>
+  <div id="blog_posts" class="module">
+  	<%= render :partial=> "/hub/blog_posts", :locals => { :blog_posts => BlogPost.find(:all, :order => "blog_posts.id DESC", :limit => 3) }%>
+  </div>
+<% end %>
+
+<div id="feeds">
+	<div id="ask" class="">				  
+		<% form_for @question, :url => url_for(:controller => 'hub', :action => 'create_question'), :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "html5"} do |f| -%>
+		 <%= link_to_avatar_for(current_profile, { :thumb => :thumb_large, :size=> "80x80", :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
+		<%= f.text_area :question, :maxlength => '4000', :placeholder => "Ask My Agency A Question", :class => "ask_text_placeholder", :required => "" %>
+		<%= f.hidden_field :company_id %>
+		<div class="actions">
+		  <input class="button" type="submit" value="Ask">
+
+		  <div class="category_prompt">
+				  <%# MM2: There's some railsness to make this cleaner somewhere %>
+		      <select name="question[category]" id="question_category">
+		        <option value="-1">Select a Category</option>
+		        <% Question.categories.each do |category| %>
+		          <option><%= category %></option>
+		        <% end %>
+		      </select>
+		    </div>
+		</div>				  
+		<% end %>
+	</div>
+
+
+	<% @events.each do |event| -%>
+		<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
+	<% end -%>
+</div>

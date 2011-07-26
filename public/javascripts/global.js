@@ -1328,6 +1328,7 @@ $.fn.extend({
 			$(this)
 				.bind('focus', function(event) { this.select(); })
 				.autocomplete($.extend({
+				  extraParams: { company_id:$('input.company_id').val() },
 					url: options.url,
 					minChars: 3,
 					formatResult: function(row) { return row[1]; }

@@ -21,9 +21,10 @@
 		<div class="global_nav">
 			<ul class="nav">			  
 				<%= global_nav_link "Hub", '/', "hub_nav" %>
+				<%= global_nav_link "My Agency", "/companies/hub", "company_nav" %>
 				<%= global_nav_link "Q&amp;A", questions_explorations_path, "qa_nav" %>
 				<%= global_nav_link "Groups", groups_explorations_path, "group_nav" %>
-				<%= global_nav_link "Blogs", blogs_explorations_path, "blog_nav" %>
+				<%#= global_nav_link "Blogs", blogs_explorations_path, "blog_nav" %>
 				<%= global_nav_link "News", news_path, "news_nav" %>
 				<%= global_nav_link "Chat", chats_path, "chats_nav" %>
 			</ul>
@@ -114,6 +115,7 @@
 	<%= javascript_include_tag "jquery-current" %>
 	<%= javascript_include_tag "/javascripts/jquery-ui/js/jquery-ui.min.js" %>
 	<%= javascript_include_tag "jquery.html5_form_custom" %>
+
 	<%= javascript_include_tag "chat" %>
 	<%= javascript_include_tag "chat_live" if @chat && @chat.on_air? %>
 
