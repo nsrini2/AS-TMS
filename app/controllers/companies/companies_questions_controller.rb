@@ -3,15 +3,7 @@ class Companies::QuestionsController < ApplicationController
   layout "_company_tabs"
   
   def index
-    # current_page = question_filters[:page][:current].to_i
-    # current_page = 1 unless current_page > 0
-    # 
-    # page_size = question_filters[:page][:size].to_i
-    
-    @question_summaries = Question.company_questions(@company.id, question_filters)
-    # paged_question_summaries = PagingEnumerator.new(page_size, question_summaries.size, false, current_page, 1) 
-    # paged_question_summaries.results = question_summaries[(current_page-1)*page_size..(current_page*page_size)-1]
-    # @question_summaries = paged_question_summariesct
+    @question_summaries = Question.company_questions(current_company.id, question_filters)
     @new_question_link = @template.link_to("Ask a Question", new_companies_question_path)
     render :template => '/questions/index'
   end
@@ -25,11 +17,9 @@ class Companies::QuestionsController < ApplicationController
     @question_summary.update_author_viewed_at current_profile
     @answer_summaries = @question_summary.answers.find(:all,answer_filters(:summary => true))
     @best_answer = @question_summary.best_answer
-    # redirect_to new_question_answer_path(:question_id => @question_summary.id) if @question_summary.is_open? and @answer_summaries.size==0
   end
   
   def new
-    # for some reason I have to restart Rails for this change to take affect - is this because I am 'freedom punching?'
     @question = Question.new(params[:question])
   end
   

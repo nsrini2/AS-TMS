@@ -27,7 +27,8 @@ class << self
     referral_owner = ModelUtil.get_options!(args).delete(:referral_owner)
     ModelUtil.add_selects!(args,"(select count(1) from question_referrals qr join profiles p_referer on qr.referer_id=p_referer.id where p_referer.status>0 and p_referer.visible=1 and questions.id=qr.question_id and qr.owner_id=#{referral_owner.id} and qr.owner_type='Profile') as num_referred_to_me, (select count(1) from question_referrals qr join profiles p_target on qr.referer_id=p_target.id where p_target.status>0 and p_target.visible=1 and questions.id=qr.question_id and qr.active = 1 and qr.referer_id=#{referral_owner.id}) as num_i_referred") if referral_owner
     if unscoped
-      self.with_exclusive_scope { find(*args ) }
+      ModelUtil.add_conditions!(args, ["questions.company_id = ?", current_profile.company_id] )
+      self.with_exclusive_scope { find(*args) }
     else
       find(*args)
     end  
