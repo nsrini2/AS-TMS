@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
   has_many :profiles
-  has_many :members, :class_name => "Profile"
+  has_many :members, :class_name => "Profile", :conditions => ["status = ?", 1]
   has_one :company_photo, :as => :owner, :dependent => :destroy
   belongs_to :primary_photo, :class_name => 'CompanyPhoto', :foreign_key => :primary_photo_id
   
