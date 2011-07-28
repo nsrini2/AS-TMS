@@ -1,6 +1,5 @@
 (function($) {  // $ = jQuery within this block
 
-
 $(document).ready(function() {
 	$('form.html5').setup_html5_form().end()
   $('p#logout').logout()
@@ -105,8 +104,8 @@ $(document).ready(function() {
 		.find('textarea.fckeditor').setup_ckeditor().end()
 		.find('#flagged a.view_log').open_in_new_window().end()
 		// Resize multiple hub iframes
-		// .find('#iframe_app_*').adjust_iframe_height().end()
-		.find("iframe:regex(id, iframe_app_.*)").adjust_iframe_height().end()
+    // .find('#iframe_app_*').adjust_iframe_height().end()
+    .find("iframe:regex(id, iframe_app_.*)").adjust_iframe_height().end()
 		.find('#group_preferences').setup_group_email_settings().end()
 		.find('#group').prepare_photo_upload_modal().end()
 		.find('#new_group_post').setup_group_talk_form().end()
@@ -1570,5 +1569,17 @@ String.prototype.titleCase = function () {
    return str;
 }
 
+$.expr[':'].regex = function(elem, index, match) {
+    var matchParams = match[3].split(','),
+        validLabels = /^(data|css):/,
+        attr = {
+            method: matchParams[0].match(validLabels) ? 
+                        matchParams[0].split(':')[0] : 'attr',
+            property: matchParams.shift().replace(validLabels,'')
+        },
+        regexFlags = 'ig',
+        regex = new RegExp(matchParams.join('').replace(/^\s+|\s+$/g,''), regexFlags);
+    return regex.test(jQuery(elem)[attr.method](attr.property));
+}
 
 })(jQuery);
