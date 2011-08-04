@@ -26,12 +26,12 @@
       a:link, a:visited {
         display:block;
         width:70px;
-        height:29px;
+        height:32px;
         text-indent:-9999px;
         background:url(/images/welcome/AS_LoginButton_blue.png)
       }
       a:hover, a:active {
-        background:url(/images/welcome/AS_LoginButton_blue.png) 0 29px
+        background:url(/images/welcome/AS_LoginButton_blue.png) 0 33px
       }
     }
   }  
@@ -138,7 +138,18 @@
       }
       input[type="text"], input[type="password"] {
         width: 190px; 
-      }  
+      }
+      input[type="image"]  {
+        display:block;
+        width:70px;
+        height:32px;
+        text-indent:-9999px;
+        background:url(/images/welcome/AS_LoginButton_blue.png)
+      }
+      input[type="image"]:hover, input[type="image"]:active {
+        background:url(/images/welcome/AS_LoginButton_blue.png) 0 33px
+      }
+      
     }
     div#public-focus{
       border: 1px solid #888;
