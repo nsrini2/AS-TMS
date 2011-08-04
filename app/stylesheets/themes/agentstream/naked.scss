@@ -130,8 +130,8 @@
     text-align:center;
     margin-top: 100px;
     form { 
-      margin-right: 20px;
-      input {
+      margin-right: 28px;
+      input, button {
         float: right;
         font-size: 1.2em;
         margin-bottom: 7px;
@@ -139,27 +139,29 @@
       input[type="text"], input[type="password"] {
         width: 190px; 
       }
-      input[type="image"]  {
+      button  {
+        border: 0 none;
         display:block;
         width:70px;
         height:32px;
         text-indent:-9999px;
         background:url(/images/welcome/AS_LoginButton_blue.png)
       }
-      input[type="image"]:hover, input[type="image"]:active {
+      button:hover, button:active {
         background:url(/images/welcome/AS_LoginButton_blue.png) 0 33px
       }
       
     }
     div#public-focus{
-      border: 1px solid #888;
+      border: 6px solid #DDDDDD;
       height: 240px;
       div.header {
 
         background-color: #DDD;
         h1 {
+          font-size: 22px;
+          border-bottom: 1px solid #DDDDDD;
           padding: 10px 0px;
-          border-bottom: 1px solid #888; 
         }
       }
     }
@@ -171,9 +173,9 @@
   
   div#agentstream-login{
     padding-top: 20px;
-    width: 236px;
+    width: 251px;
     height: 140px;
-    border-right: 1px solid #888; 
+    border-right: 1px solid #DDDDDD; 
     float: left;
     a, a:visited {
       margin-left: 20px;
@@ -186,7 +188,7 @@
   }
   div#facebook-login{
     padding-top: 20px;
-    width: 236px;
+    width: 215px;
     float: right;
     p { 
       margin-bottom: 5px; 
@@ -224,13 +226,14 @@
       padding-bottom: 40px;  
     }
     div#public-focus{
-      border: 1px solid #888;
+      border: 6px solid #DDDDDD;
       div.header {
 
         background-color: #DDD;
         h1 {
+          font-size: 22px;
+          border-bottom: 1px solid #DDDDDD;
           padding: 10px 0px;
-          border-bottom: 1px solid #888; 
         }
       }
     }
