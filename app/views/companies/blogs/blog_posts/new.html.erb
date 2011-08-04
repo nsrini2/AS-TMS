@@ -1,0 +1,9 @@
+<div id="blog">
+	<div id="blog_posts">
+		<% if @preview_blog_post -%>
+			<%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => @preview_blog_post, :full_post => true, :classname => 'odd', :preview => true } -%>
+		<% end -%>
+		<%= render :partial => 'form', :locals => {:blog_post => @blog_post, :owner => :companies } -%>
+	</div>
+	<%#= render :partial => 'blogs/side_bar', :locals => { :show_create => false } -%>
+</div>

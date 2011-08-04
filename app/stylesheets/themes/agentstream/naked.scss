@@ -23,6 +23,16 @@
     #login {
       float: right;
       padding: 8px 10px;
+      a:link, a:visited {
+        display:block;
+        width:70px;
+        height:29px;
+        text-indent:-9999px;
+        background:url(/images/welcome/AS_LoginButton_blue.png)
+      }
+      a:hover, a:active {
+        background:url(/images/welcome/AS_LoginButton_blue.png) 0 29px
+      }
     }
   }  
 
@@ -51,9 +61,17 @@
         line-height: 1.2em;
         font-size: 1.5em;
       }
-      a.sing-up {
+      a.sing-up:link, a.sing-up:visited  {
         float:right;
+        display:block;
+        width:170px;
+        height:61px;
+        text-indent:-9999px;
+        background:url(/images/welcome/AS_SignUpButton.gif)
       }  
+      a.sing-up:hover, a.sing-up:active {
+        background:url(/images/welcome/AS_SignUpButton.gif) 0 62px
+      }
     }
     div.bottom {
       clear: both;

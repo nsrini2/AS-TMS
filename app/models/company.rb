@@ -1,4 +1,5 @@
 class Company < ActiveRecord::Base
+  has_one :blog, :as => :owner, :dependent => :destroy
   has_many :profiles
   has_many :members, :class_name => "Profile", :conditions => ["status = ?", 1]
   has_one :company_photo, :as => :owner, :dependent => :destroy
@@ -34,5 +35,9 @@ class Company < ActiveRecord::Base
     # do to the unscoped nature of questions -- this is not a has_many
     Question.company_questions(self.id)
   end
+    
+  def after_create
+    self.create_blog
+  end  
     
 end

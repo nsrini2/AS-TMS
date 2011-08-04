@@ -26,6 +26,7 @@ ActionController::Routing::Routes.draw do |map|
         answer.resource :vote, :controller => :votes, :collection => { :helpful => :post, :not_helpful => :post }
       end  
     end
+    # companies.resources :blogs
     # companies.resources :groups
     companies.connect '/members/:id', :controller => 'members', :action => 'index'
   end

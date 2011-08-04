@@ -60,7 +60,6 @@ class ApplicationController
       graph = Koala::Facebook::GraphAPI.new(access_token)
       user_graph = graph.get_object("me")
     rescue 
-      here access_token
       Rails.logger.debug $!
       nil
     end    

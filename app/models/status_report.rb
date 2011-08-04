@@ -46,6 +46,7 @@ class << self
   end
   
   def sarah_report(filename)
+    # See CustomReport.sarah_report
     report =  ["User Id", "User Email", "User Created At", "User Updated At", 
               "Profile Screen Name", "Profile Status", "Profile Completion Percentage",
               "Profile Primary Photo", "Profile Karma Point", "Profile Last Accessed", "Profile Last Sent Welcome At"]
