@@ -1,6 +1,6 @@
 <?php
 
-include "../../config/hs_global.php";
+include "hs_global.php";
 include $login_file;
 
 $logged_in = false;
