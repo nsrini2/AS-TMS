@@ -14,7 +14,7 @@ $sql_database = "high_score";
 // Replace this value with the name of the database that the above
 // username and password will be working on (and will have access to).
 
-$hs_password = "password";
+$hs_password = "D34lsTacos&Extr4s";
 // Set this value to the password you'd like to use to protect
 // the high score manager system from unauthorized access.
 // A blank value ($hs_password = "";) disables the need for a password
