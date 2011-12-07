@@ -1,0 +1,30 @@
+<div class="list_item">
+  <div class="photo_wrapper"><a class="photo_link_to" href="/profiles/1"><img width="50" height="50" src="/attachments/0000/0086/cc2e715b81d96685dd0faf31e2d95010b452513f_thumb.jpg?1292451711" class="photo tooltip" alt=""></a></div>
+          
+  <div class="details">
+  	<div class="item_text">
+      <%= link_to chat.name, chat_path(chat.id) %>
+  	</div>
+  	<p>
+  		<%= pretty_datetime(chat.start_at) -%> to <%= pretty_datetime(chat.end_at) -%>
+  		<br/>
+  		Hosted by <%= chat.host %>
+  	</p>
+  </div>
+  
+  <div class="action_buttons">
+    <% unless chat.past %>
+      <% if chat.on_air %>
+        <%= link_to "Join Now", "/mocks/chat", :class => "button little" %>
+      <% else %>
+        <div id="chat_<%= chat.id %>_attending" <%= "style='display: none;'" if !chat.attending %> class="cancel_rsvp_container">
+          <strong>You are currently RSVPed for this event.</strong>
+          <%= link_to "Cancel my RSVP", "", :class => "cancel_rsvp" %>
+        </div>
+        <div id="chat_<%= chat.id %>_rsvp" <%= "style='display: none;'" if chat.attending %> class="rsvp_container">
+          <%= link_to "RSVP", "", :class => "button little light rsvp" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>  
+</div>

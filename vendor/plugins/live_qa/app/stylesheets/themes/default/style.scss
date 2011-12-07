@@ -1,0 +1,17 @@
+@import "meyer-reset";
+@import "960/grid";
+@import "compass/utilities/general/clearfix";
+
+$ninesixty-columns: 16;
+$ninesixty-grid-width: 960px;
+
+.debug {
+  border: 1px solid red;
+  border-left: 0;
+  border-right:0;
+}
+
+@import "color";
+@import "layout";
+@import "text";
+@import "chat";

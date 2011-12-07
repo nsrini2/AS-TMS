@@ -1,0 +1,25 @@
+<div id="questions">
+	<% unless referred_questions.size.zero? -%>
+		<h2>Questions Referred To Me</h2>
+		<%= render_referred_questions_for @profile, referred_questions -%>
+		<div id="paging">
+			<%= render_pagination referred_questions, :page_var => :referred_questions_page -%>
+		</div>
+	<% end %>
+	<% unless questions.size.zero? -%>
+		<h2>Questions I Can Answer</h2>
+		<%= render( :partial => 'questions/questions', :locals => {:domain => 'questions_i_can_answer',:questions => questions, :show => {:remove => true}, :questions_for => @profile} ) -%>
+		<div id="paging">
+			<%= render_pagination questions, :page_var => :questions_page -%>
+		</div>
+	<% else questions.size.zero? -%>
+		<h2>Questions I Can Answer</h2>
+		<div id="more_questions"><p>Want more questions? No problem, just click <%= link_to "Hit Me", more_matched_questions_profile_path(current_profile), :id => "more_matched_questions" -%> for a new question you can help answer.</p>
+			<% if referred_questions.size.zero? -%>
+				<div align="center">
+					<%= link_to("Add", profile_path(current_profile)) -%> some text to your profile to receive more questions
+				</div>
+			<% end %>
+		</div>
+	<% end -%>
+</div>

@@ -1,0 +1,26 @@
+<% content_for(:heading, 'Settings') -%>
+<% content_for(:settings_selected, 'selected') -%>
+<% content_for :tabs do -%>
+	<li<%= " class=\"selected\"" if yield(:email_subscriptions_tab) %>>
+		<%= link_to "Communications", email_subscriptions_account_path %>
+	</li>
+	<% if current_user.uses_login_pass? %>
+	  <li<%= " class=\"selected\"" if yield(:change_password_tab) %>>
+		  <%=link_to "Change Password", change_password_account_path%>
+	  </li>
+	
+		<% unless Config['frozen_emails'] %>
+		  <li<%= " class=\"selected\"" if yield(:change_email_tab) %>>
+			  <%=link_to "Change Email", change_email_account_path %>
+		  </li>
+		<% end %>
+		
+	<% end -%>
+<% end -%>
+
+<% content_for :settings_content do %>
+  <%= yield -%>
+<% end %>
+
+
+<%= render :file => 'layouts/_tab_structure' -%>

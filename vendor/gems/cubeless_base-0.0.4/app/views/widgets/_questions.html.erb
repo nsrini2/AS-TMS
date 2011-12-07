@@ -1,0 +1,19 @@
+<% if questions.size > 0 -%>
+	<% questions.slice(0..1).each do |question| -%>
+		<div class="question list_item">
+			<%= content_tag('div', home_link_to_answers(question, question.new_answers_count), :class => 'new_answers') if show[:answer_link] -%>
+			<%= link_to_avatar_for(question.profile, :size => (show[:full_text] ? "45x45" : "26x26"), :hide_status_indicator => !show[:full_text] ) if show[:avatar] -%>
+			<div class="details">
+				<% if show[:asked_by] -%>
+					<span class="asked_by">Asked by <%= link_to_author(question) -%> <%= content_tag('span', timeago(question.created_at), :class => 'created_at') if show[:full_text] -%></span>
+				<% end -%>
+				<div class="item_text">
+					<%= show[:full_text] ? link_to_question(question) : link_to_question_truncated(question,264,'... more') -%>
+				</div>
+			</div>
+		</div>
+	<% end -%>
+<% else -%>
+	<p class="no_questions"><%= empty_widget_message -%></p>
+<% end -%>
+<%= link_to "View all questions &#187;", view_all_url -%>

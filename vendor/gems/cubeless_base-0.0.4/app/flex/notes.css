@@ -1,0 +1,124 @@
+@font-face {
+    src: url("gemelli.ttf");
+	fontFamily: GemelliEmbedded;
+}
+
+Button {
+   cornerRadius: 0;
+   highlightAlphas: 0, 0;
+   fillAlphas: 1, 1, 1, 1;
+   fillColors: #6c8702, #6c8702, #6c8702, #6c8702;
+   color: #ffffff;
+   textRollOverColor: #ffffff;
+   textSelectedColor: #ffffff;
+   borderColor: #A3CB02;
+   themeColor: #6c8702;
+   fontFamily: Arial;
+   fontSize: 11;
+   fontWeight: bold;
+}
+
+CheckBox {
+   fillAlphas: 0.66, 0.4, 0.75, 0.65;
+   color: #000000;
+   textSelectedColor: #000000;
+   textRollOverColor: #000000;
+   themeColor: #666666;
+}
+
+@font-face {
+    src: local("Arial");
+    fontFamily: ArialEmbedded;
+    fontWeight: normal;
+}
+
+@font-face {
+    src: local("Arial");
+    fontFamily: ArialEmbedded;
+    fontWeight: bold;
+}
+
+Application {
+    fontFamily: ArialEmbedded;
+}
+
+TitleWindow {
+	backgroundColor: #cdbad6;
+	cornerRadius: 0;
+	color:#000000;
+	borderColor: #cdbad6;
+	borderAlpha:1;
+}
+Popup {
+	backgroundColor:#333333;
+	borderThickness:3;
+	borderStyle:solid;
+	borderColor:#990000;
+	paddingTop:20;
+	paddingLeft:8;
+	paddingBottom:8;
+	paddingRight:8;
+}
+
+.deleteText {
+	fontSize:12;
+	fontWeight:bold;
+	color:white;
+	textAlign:center;
+}
+
+.noteInput {
+	backgroundColor:white;
+	fontFamily: GemelliEmbedded;
+	fontSize: 12;
+	backgroundAlpha: 0;
+	borderThickness: 0;
+	focusAlpha: 0;
+}
+
+.invisibleTextArea {
+	backgroundAlpha: 0;
+	borderThickness: 0;
+	focusAlpha: 0;
+}
+
+.noteTextLarge {
+	fontFamily: GemelliEmbedded;
+	fontSize: 12;
+	borderThickness: 0;
+	backgroundAlpha: 0;
+	disabledColor: black;
+}
+.noteTextSmall {
+	fontFamily: GemelliEmbedded;
+	fontSize: 10;
+	borderThickness: 0;
+	backgroundAlpha: 0;
+	disabledColor: black;
+}
+.note {
+	verticalGap: 0;
+	textAlign: center;
+	horizontalAlign: center;
+}
+.senderLarge {
+	textAlign: left;
+	borderThickness: 0;
+	backgroundAlpha: 0;
+	disabledColor: black;
+}
+.senderSmall {
+	borderThickness: 0;
+	backgroundAlpha: 0;
+	disabledColor: black;
+}
+.leaveNote {
+	fontSize:12;
+	color:white;
+	textDecoration:underline;
+}
+.link {
+	color:navy;
+	textDecoration:underline;
+	textRollOverColor: black;
+}

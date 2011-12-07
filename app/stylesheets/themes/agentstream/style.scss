@@ -24,5 +24,7 @@
 
 @import "chat";
 
+@import "seals";
+
 /* Search does need to be last. It overwrites a lot of other settings for uniformity of results */
 @import "search";

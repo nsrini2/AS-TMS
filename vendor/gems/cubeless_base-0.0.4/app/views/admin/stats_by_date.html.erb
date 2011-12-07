@@ -1,0 +1,18 @@
+<%= form_tag "/admin/stats_by_date", :id => "stats_by_date" -%>
+	<fieldset>
+		<dl>
+			<dt><label for="start_date">Start Date</label></dt>
+			<dd><input type="text" name="start_date" id="start_date" value="<%= (Date.today - 30).strftime("%B %d, %Y") -%>" class="datepicker start"></dd>
+		</dl>
+		<dl>
+			<dt><label for="end_date">End Date</label></dt>
+			<dd><input type="text" name="end_date" id="end_date" value="<%= (Date.today).strftime("%B %d, %Y") -%>" class="datepicker end"></dd>
+		</dl>
+		<div class="buttons">
+			<input type="submit" name="submit" value="Submit" class="button medium">
+		</div>
+	</fieldset>
+</form>
+<% @reports.each do |rs| -%>
+	<%= render_reports_table rs -%>
+<% end -%>

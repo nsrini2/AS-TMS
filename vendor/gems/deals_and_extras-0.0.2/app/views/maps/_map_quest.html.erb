@@ -1,0 +1,44 @@
+<% if @offers.empty? %>
+  No Deals or Extras to Show
+<% else %>
+  <script type="text/javascript">
+
+
+    // MQA.withModule('smallzoom', function() {
+    MQA.withModule('largezoom', function() {
+
+      window.map = new MQA.TileMap(       // Constructs an instance of MQA.TileMap
+        document.getElementById('map'),   //the id of the element on the page you want the map to be added into 
+        3,                                //intial zoom level of the map
+        {lat:<%= @offers[0].locations[0].latitude %>, lng:<%= @offers[0].locations[0].longitude %>}, //the lat/lng of the map to center on
+        'map');                           //map type (map, sat, hyb)
+
+        var poi;
+      
+        <% @offers.each do |o| -%>
+          <% if o.locations[0].latitude && o.locations[0].longitude %>
+              window.map.addShape(new MQA.Poi({lat:<%= o.locations[0].latitude %>, lng:<%= o.locations[0].longitude %>}));
+          <% end %>
+        <% end %>
+        
+      // window.map.addControl(
+      //   new MQA.SmallZoom(),
+      //   new MQA.MapCornerPlacement(MQA.MapCorner.TOP_LEFT, new MQA.Size(5,5))
+      // );
+
+      window.map.addControl(
+        new MQA.LargeZoom(),
+        new MQA.MapCornerPlacement(MQA.MapCorner.TOP_LEFT, new MQA.Size(5,5))
+      ); 
+    }); 
+
+  </script>
+
+  <div id="map" style="height:600px; width:800px;"></div>
+  
+  <script type="text/javascript">
+    if(!isInSearchState()) {
+      $('#map').attr('style', "height:600px; width:960px;");
+    }
+  </script>
+<% end %>

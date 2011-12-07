@@ -3,20 +3,21 @@ class Companies::QuestionsController < ApplicationController
   layout "_company_tabs"
   
   def index
-    @question_summaries = Question.company_questions(current_company.id, question_filters)
-    @new_question_link = @template.link_to("Ask a Question", new_companies_question_path)
+    # SSJ -- this had to be broken out into two lines question_filters.merge! dose not work
+    filters = question_filters
+    filters.merge!(:page => params[:page])
+    @question_summaries = Question.company_questions(current_company.id, filters)
     render :template => '/questions/index'
   end
   
   def show
-    begin
-      @question_summary = Question.find_summary(params[:id], :include => [:best_answer], :auth => true, :unscoped => true)
+    @question_summary = Question.find_summary(params[:id], :include => [:best_answer], :auth => true, :unscoped => true)
+    @question_summary.update_author_viewed_at current_profile
+    @answer_summaries = @question_summary.answers.summary
+    @best_answer = @question_summary.best_answer   
+    
     rescue
       redirect_to(companies_questions_path) and return if @question_summary.blank?
-    end
-    @question_summary.update_author_viewed_at current_profile
-    @answer_summaries = @question_summary.answers.find(:all,answer_filters(:summary => true))
-    @best_answer = @question_summary.best_answer
   end
   
   def new
@@ -38,12 +39,12 @@ class Companies::QuestionsController < ApplicationController
   
   def edit
     respond_to do |format|
-      format.js { render(:partial => '/questions/question_edit_popup', :layout => 'layouts/_popup', :locals => { :question => Question.unscoped(params[:id]) }) }
+      format.js { render(:partial => '/questions/question_edit_popup', :layout => '/layouts/popup', :locals => { :question => Question.unscoped.find(params[:id]) }) }
     end
   end
 
   def update
-    @question = Question.unscoped(params[:question_id])
+    @question = Question.unscoped.find(params[:question_id])
     if is_editable?(@question)
       @question.open_until = params[:question][:open_until]
       if @question.answers_count < 1 || current_profile.has_role?(Role::ShadyAdmin)
@@ -65,7 +66,7 @@ class Companies::QuestionsController < ApplicationController
   end
   
   def destroy
-    @question = Question.unscoped(params[:id])
+    @question = Question.unscoped.find(params[:id])
     @question.destroy if is_editable?(@question)
     
     respond_to do |format|

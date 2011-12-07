@@ -1,0 +1,20 @@
+/* 
+	skin - red
+*/
+
+a{ color:#A00303; }
+
+#wrap{ border-color:#B82933; }
+
+#slideshow ul li .slidetext{ background-color:#7B0018; }
+	.slidetext h2, .slidetext h3{ color:#ffffff; }
+	.slidetext h2 a, .slidetext h3 a{ color:#ffffff; }
+	.slidetext p{ color:#ffffff; }	
+
+.inner-page-title{ background-color:#7B0018; }
+	.inner-page-title h2{}
+	.inner-page-title p{ color:#ffffff; }
+	
+ul#dropdown-menu li.current > a{ color:#A00303; }	
+
+

@@ -1,0 +1,7 @@
+
+There are <%= pluralize(@pending_offers.length, 'offer') %> pending
+<% if(@pending_offers.length > 0) %>
+    <div id="pending_offers">
+        <%= render :partial => 'admin/offers/offers', :locals => {:offers => @pending_offers, :quick_actions => true} %>
+    </div>
+<% end %>

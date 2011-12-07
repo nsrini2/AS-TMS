@@ -1,3 +1,5 @@
+# require_de_engine_file 'controller', :admin_controller
+
 require 'user_sync'
 class AdminController < ApplicationController
   include BackgroundProcessing
@@ -10,7 +12,8 @@ class AdminController < ApplicationController
   
   allow_access_for [:environment] => :cubeless_admin 
 
-  before_filter :report_queries_cache_hack
+  # MM2: Removed in the great Rails 3 upgrade of 2011
+  # before_filter :report_queries_cache_hack
 
   class Result
     attr_accessor :data, :table_id, :caption, :columns
@@ -94,6 +97,7 @@ class AdminController < ApplicationController
       # render :template => 'companies/as_admin/index', :layout => 'company_admin_sub_menu'
       redirect_to :controller => "admin", :action => "companies"
     else
+      flash[:errors] = @company.errors
       render :template => 'companies/as_admin/new', :layout => 'company_admin_sub_menu'
     end  
   end
@@ -109,7 +113,7 @@ class AdminController < ApplicationController
       end
       redirect_to :controller => "admin", :action => "companies"
     else
-      flash[:notice] = "Unable to update #{@company.name}"
+      flash[:errors] = "Unable to update #{@company.name}"
       render :template => 'companies/as_admin/show', :layout => 'company_admin_sub_menu'
     end
   end
@@ -411,8 +415,18 @@ class AdminController < ApplicationController
 
   #!H hack to fix old optimization that cached the total_profiles in a static... we need caching, but didnt have time
   # to refactor... resetting the cached var on any request.
-  def report_queries_cache_hack
-    ReportQueries.reset_total_profiles_cache!
+  # MM2: REMOVED IN THE GREAT RAILS 3 UPGRADE OF 2011 
+  # def report_queries_cache_hack
+  #     ReportQueries.reset_total_profiles_cache!
+  #   end
+  
+  def action_missing(method_name)    
+    if Rails.application.routes.recognize_path("/deals_and_extras/admin/#{method_name}")
+      puts "Found a DE route for #{method_name}"
+      redirect_to "/deals_and_extras/admin/#{method_name}" and return
+    else
+      super
+    end
   end
 
 end

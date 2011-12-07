@@ -19,5 +19,7 @@
   	<% end -%>
 	</div>
 
-	<%= render_pagination @blogs %>
+	<div class="see_all" style="margin-left: 10px;">
+		<%= will_paginate @blogs %>
+	</div>
 </div>

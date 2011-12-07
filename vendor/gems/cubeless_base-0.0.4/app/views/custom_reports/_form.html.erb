@@ -1,0 +1,15 @@
+<%#= form_tag("/custom_reports/new", :method => "get") %>
+  <%# = select_tag "klass", options_for_select([""] + klasses, klass_name), :id => "report_klass_select" %>
+  <!-- <input type="submit" name="klass_commit" value="Change Base Class" />
+</form> -->
+
+<h2 class="reporting">
+  <label>Build Report for </label>
+  <%= select_tag "klass", options_for_select([""] + @klasses.collect{ |k| [k.underscore.humanize.titlecase.pluralize, k] }, @klass_name), :id => "report_klass_select" %>
+</h2>
+
+
+
+<%# if klass %>
+  <%= render :partial => "form_details", :locals => { :klass => klass , :klass_name => klass_name, :table => table } %>
+<%# end %>

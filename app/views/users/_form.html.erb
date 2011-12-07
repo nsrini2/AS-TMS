@@ -1,0 +1,57 @@
+<%= form_for @user, :html => {:id => "user_setup_form"} do |f| -%>
+<h3><%= @content_for_page_title %></h3>
+<fieldset>
+	<dl class="user_details">
+		<dt><label for="profile_first_name">First Name</label></dt>
+		<dd><%= text_field :profile, :first_name, :size=>'20' %></dd>
+		<dt><label for="profile_last_name">Last Name</label></dt>
+		<dd><%= text_field :profile, :last_name, :size=>'20' %></dd>
+		<dt><label for="user_email">Email</label></dt>
+		<dd><%= f.text_field :email, :size=>'20'%></dd>
+		<dt><label for="profile_group_slots_override">Group Slots Override</label></dt>
+		<dd class="number"><%= text_field :profile, :group_slots_override, :size => '3'%></dd>
+		<dt><label for="profile_status">Status</label></dt>
+		<dd><%= select :profile, :status, [["pending", -3], ["activate on login", 2], ["active", 1], ["inactive",0], ["delete",-1] ] %></dd>
+		<dd class="checkbox"><%= check_box :profile, :visible %> <label for="profile_visible" id="visible_label" class="inline">Visible</label></dd>
+		<dd class="checkbox"><%= check_box :user, :sync_exclude %> <label for="user_sync_exclude" class="inline">Exclude from sync</label></dd>
+	</dl>
+</fieldset>
+<fieldset>
+	<dl class="user_details">
+		<% if @user.sso_id.nil? %>
+			<dt><label for="user_login">Login</label></dt>
+			<dd><%= f.text_field(:login, :size=>'20')%></dd>
+		<% end %>
+		<dt><label for="profile_screen_name">Screen Name</label></dt>
+		<dd><%= text_field :profile, :screen_name, :size=>'20'%></dd>
+		<dt><label for="profile_karma_points">Karma</label></dt>
+		<dd class="number"><%= text_field :profile, :karma_points, :size =>'5'%></dd>
+		<dt><label for="profile_roles">Admin Roles</label></dt>
+		<%
+			@roles = []
+			@roles.push(['None', 5])  
+			@roles.push(['Cubeless Admin', 0]) if current_profile.has_role?(Role::CubelessAdmin)
+			@roles.push(['Report Admin', 1], ['Content Admin', 2],['Shady Admin', 3],['User Admin', 4],['Awards Admin', 7])
+			@roles.push(['Sponsor Admin', 8]) if current_profile.has_role?(Role::CubelessAdmin)
+			# @roles.push(['Direct Member', 5])
+			# @roles.push( ['Sponsored Member', 6] ) if current_profile.has_role?(Role::SponsorAdmin)
+			selected_roles = @profile.roles.collect { |r| r.id unless (@profile.roles.collect.size > 1  && r.id==5) }.compact
+		%> 
+		<dd><select name="profile[roles][]" id="profile_roles" multiple size="5">
+			<%= options_for_select(@roles, selected_roles) %>
+		</select></dd>
+		<dt><label for="profile_knowledge">Knowledge</label></dt>
+		<dd><%= text_area :profile, :knowledge, :rows => '5' %></dd>
+	</dl>
+</fieldset>
+<fieldset>
+	<dl class="user_company_details" >
+		<dt><%= f.label "company_id" %></dt>
+		<dd><%= select :profile, :company_id, Company.view_selector, :include_blank => 'None' %></dt>
+	</dl>		
+</fieldset>	
+<div class="buttons">
+	<input type="submit" name="commit" value="Save" class="button large">
+	<input type="submit" name="reset" value="Cancel" class="button large light">
+</div>
+<% end -%>

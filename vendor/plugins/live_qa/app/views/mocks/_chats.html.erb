@@ -1,0 +1,6 @@
+<div id="list">
+  <% chats.each do |chat| %>
+    <%= render :partial => "chat", :locals => { :chat => chat }%>
+  <% end %>
+</div>
+<%#= render_pagination(@chats) %>

@@ -1,0 +1,13 @@
+<h2>New Profile Question Section</h2>
+
+<% form_for(:site_profile_question_section, @site_profile_question_section,
+ 						:url => site_admin_site_profile_question_sections_path,
+						:builder => AdminFormBuilder, 
+						:html => {:class => "admin_form"}) do |f| %>
+	<%= render :partial => "form", :locals => {:f => f} %>
+
+	<div class="buttons">
+    <%= f.submit "Create", :class => "button" %>
+		<input type="submit" name="reset" value="Cancel" class="button light">
+  </div>
+<% end %>

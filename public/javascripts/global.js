@@ -1542,15 +1542,6 @@ $.confirmation_dialog = function(options) {
 	return $dialog;
 };
 
-
-// Always send the authenticity_token with ajax
-$(document).ajaxSend(function(event, request, settings) {
-	if ( settings.type == 'post' ) {
-		settings.data = (settings.data ? settings.data + "&" : "") + "authenticity_token=" + encodeURIComponent( AUTH_TOKEN );
-		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	}
-});
-
 // When I say html I really mean script for rails
 $.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script;
 
@@ -1581,5 +1572,18 @@ $.expr[':'].regex = function(elem, index, match) {
         regex = new RegExp(matchParams.join('').replace(/^\s+|\s+$/g,''), regexFlags);
     return regex.test(jQuery(elem)[attr.method](attr.property));
 }
+
+})(jQuery);
+
+// Always send the authenticity_token with ajax
+(function ($) {
+
+  // Always send the authenticity_token with ajax
+  $(document).ajaxSend(function(event, request, settings) {
+  	if ( settings.type.toLowerCase() === 'post' || settings.type.toLowerCase() == 'delete' || settings.type.toLowerCase() == 'put') {
+  		settings.data = (settings.data ? settings.data + "&" : "") + "authenticity_token=" + encodeURIComponent( AUTH_TOKEN );
+  		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  	}
+  });
 
 })(jQuery);

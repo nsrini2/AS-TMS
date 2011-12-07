@@ -4,7 +4,7 @@
   show_create = true unless defined?(show_create)
   -%>
   <div id="blog_meta">
-  	<%= content_tag(:h4, link_to('Create Blog Post', url_for([@owner, :blog, :posts])+'/new')) if show_create && blogger_content(@blog) -%>
+  	<%= content_tag(:h4, link_to('Create Blog Post', url_for([@owner, :blog, :blog_posts])+'/new')) if show_create && blogger_content(@blog) -%>
   	<% unless @blog.archived_posts.size.zero? -%>
   		<h4>Archives</h4>
   		<ul class="archives">

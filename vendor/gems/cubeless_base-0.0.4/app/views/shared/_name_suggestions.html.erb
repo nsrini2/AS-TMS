@@ -1,0 +1,3 @@
+<% for suggestion in suggestions do -%>
+<span class="name"><%=suggestion.full_name%></span><span class="type"><%=suggestion.is_a?(Group) ? 'Group' : 'Person' %></span>|<%= suggestion.full_name %>|<%= suggestion.id %>|<%= suggestion.class.name %>
+<% end -%>

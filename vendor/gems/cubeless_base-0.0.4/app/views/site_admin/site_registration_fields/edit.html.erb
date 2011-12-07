@@ -1,0 +1,15 @@
+<h2>Editing Registration Field</h2>
+
+<% form_for(:site_registration_field, @site_registration_field, 
+						:url => site_admin_site_registration_field_path(@site_registration_field),
+						:html => {:class => "admin_form", :method => :put}, 
+						:builder => AdminFormBuilder) do |f| %>
+
+	<%= render :partial => "form", :locals => {:f => f} %>
+  
+	<div class="buttons">
+    <%= f.submit "Update", :class => "button" %>
+		<input type="submit" name="reset" value="Cancel" class="button light">
+  </div>
+<% end %>
+

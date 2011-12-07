@@ -1,0 +1,42 @@
+<% @events.each_with_index do |item,i| %>
+<% ai = item.action_item %>
+<div class="favorite_item <%= cycle('odd','even') %>">
+<% case item.action_item_type
+	when 'BlogPost': %>
+	<div class="watch_title">
+		<span class="watch_letter">B:</span>
+		<%= link_to(truncate(ai.title, :length => 50), blog_post_path(ai.id)) %>
+	</div>
+	<p><%= truncate(strip_tags(ai.text), :length => 100) %></p>
+	<div class="author">
+		<%= primary_photo_for(ai.profile, :align => "left", :size => "24x24", :hide_status_indicator => true) %>
+		Posted by <%= link_to_if(ai.profile.visible?, ai.profile.screen_name, profile_path(ai.profile)) %><br />
+		<%= timeago(ai.created_at) %>
+		<%= "in #{link_to(truncate(ai.blog.owner.name, :length => 22),blog_post_path(ai.id))}" if ai.blog.owner_type=='Group' %>
+	</div>
+<% when 'Question': %>
+	<div class="watch_title">
+		<span class="watch_letter">Q:</span>
+		<%= link_to(truncate(ai.question, :length => 150), question_path(ai.id)) %>
+	</div>
+	<div class="author">
+		<%= primary_photo_for(ai.profile, :align => "left", :size => "24x24", :hide_status_indicator => true) %>
+		Asked by <%= link_to_if(ai.profile.visible?, ai.profile.screen_name, profile_path(ai.profile)) %><br />
+		<%= timeago(ai.created_at) %>
+	</div>
+<% when 'QuestionReferral': %>
+	<div class="watch_title">
+		<span class="watch_letter">Q:</span>
+		<%= link_to(truncate(ai.question.question, :length => 150), question_path(ai.question.id)) %>
+	</div>
+	<div class="author">
+		<%= primary_photo_for(ai.referer, :align => "left", :size => "24x24", :hide_status_indicator => true) %>
+		Referred by <%= link_to_profile(ai.referer) %><br />
+		<%= timeago(ai.created_at) %>
+		<%= "to #{link_to_question_referral_owner(ai.owner)}" %>
+	</div>
+<% else %>
+	<%= item.action_item_type %> doesn't have a template.
+<% end -%>
+</div>
+<% end -%>

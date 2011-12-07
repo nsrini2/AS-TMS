@@ -1,0 +1,4 @@
+/*.tooltip { cursor: text; }*/
+#tooltip { position: absolute; z-index: 3000; border: 1px solid #111; padding: 5px; background: #ff9; }
+#tooltip h3 { font-size: 11px; font-weight: normal; }
+#tooltip h3, #tooltip div { margin: 0; }

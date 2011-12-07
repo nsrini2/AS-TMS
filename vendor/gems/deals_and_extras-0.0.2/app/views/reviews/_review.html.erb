@@ -1,0 +1,11 @@
+<hr/>
+<div>
+  <strong><%= review.user.profile.screen_name %></strong> on <%= review.created_at.strftime(" %m/%d/%Y") %>
+  <br/>
+  <%= review.rating == false ? de_thumbs_down_img(@offer) : de_thumbs_up_img(@offer) %>
+  <span class="reason">Based on <%= review.rating_category.rating_category.capitalize %></span>
+  <% unless review.review.blank? %>
+    <br/>
+    <%= review.review %>
+  <% end %>
+</div>

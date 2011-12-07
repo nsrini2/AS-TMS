@@ -1,0 +1,22 @@
+<% if question.status == "active" %>
+  <script type="text/javascript">
+    present_discussion_posts = <%= question.posts.to_json(:methods => Post.json_methods) %>;
+  </script>
+<% else %>
+  <script type="text/javascript">
+    discussion_posts["<%= question.id %>"] = <%= question.posts.to_json(:methods => Post.json_methods) %>;
+  </script>
+<% end %>
+
+<div class="scrollable">
+  <%# MM2: This table is important. It is the container we setup so we have somewhere to put our chats, which are rendered by javascript. %>
+  <table id="<%= @table_id %>">
+    <tbody>
+      <tr id="post_0">
+				<td colspan="2">
+					<%= "asked by #{question.display_name} " %><%= " on #{pretty_datetime(question.start_at)}" if question.start_at %>
+				</td>
+			</tr>
+    </tbody>
+  </table>
+</div>

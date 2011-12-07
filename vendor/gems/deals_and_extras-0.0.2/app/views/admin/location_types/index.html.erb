@@ -1,0 +1,20 @@
+<%= will_paginate @location_types %>
+<%= page_entries_info @location_types %>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @location_types.each do |l| -%>
+            <tr>
+                <td><%= l.id %></td>
+                <td><%= l.location_type %></td>
+            </tr>
+        <% end -%>
+    </tbody>
+</table>
+<%= will_paginate @location_types %>
+<%= page_entries_info @location_types %>

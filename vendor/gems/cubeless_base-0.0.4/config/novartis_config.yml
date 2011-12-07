@@ -1,0 +1,108 @@
+
+theme: 'theme_7'
+
+logo_file: "novartis_logo.png"
+
+favicon: "cubeless_favicon.ico"
+
+site_name: "Novartis Demo"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: ["Health", "Work", "Travel", "Play"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "My Job"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Division"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Location"
+    completes_profile: true
+    matchable: true
+  - question: profile_5
+    label: "Mobile #"
+    completes_profile: true
+    matchable: true
+  - question: profile_6
+    label: "Other #"
+    completes_profile: false
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'email'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_5',
+    'profile_6',
+    'email'
+  ]
+
+profile_complex_questions:
+  - title: "My Job"
+    questions:
+      - question: question_1
+        label: "For what topics should people contact you? (ie. your responsibilities)"
+        example: "e.g. Malaria, coartem"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "What topics are you interested in?"
+        example: "e.g. Community partnership day"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What kinds of work have you done that you are proud of? (ie. that people could contact you about to learn more)"
+        example: "e.g. Launching a new website"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What health or disease topics are you interested in?"
+        example: "e.g. cancer"
+        completes_profile: true
+        matchable: true
+
+  - title: "My Interests"
+    questions:
+      - question: question_5
+        label: "What do you want people to know about you?"
+        example: "e.g. I’m a fisherman"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "My configurable question?"
+        example: "Example answer"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "My configurable question?"
+        example: "Example answer"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "My configurable question?"
+        example: "Example answer"
+        completes_profile: true
+        matchable: true

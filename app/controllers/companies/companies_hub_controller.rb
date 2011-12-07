@@ -4,7 +4,7 @@ class Companies::HubController < ApplicationController
   
   def show
     @aside_question_header = "Question Reffered to me"
-    @aside_questions = current_profile.questions_referred_to_me
+    @aside_questions = current_profile.questions_referred_to_me 
     if @aside_questions.size == 0 
       @aside_question_header = "Latest Agency Q&A"
       last_question = Question.company_questions(current_company.id).last
@@ -15,6 +15,7 @@ class Companies::HubController < ApplicationController
       end    
     end  
     set_events
+    @blog_posts = current_company.blog.blog_posts.limit(2).order("created_at")
   end
   
   def create_question
@@ -35,7 +36,7 @@ private
   end
   
   def set_events
-    @events = CompanyStreamEvent.find_summary(:all, :conditions => ["company_stream_events.company_id = #{current_company.id}" ], :limit => 15)
+    @events = CompanyStreamEvent.find_summary(:all, :conditions => ["company_stream_events.company_id = #{current_company.id}" ], :page => params[:page])
   end
   
   def set_seleted_tab

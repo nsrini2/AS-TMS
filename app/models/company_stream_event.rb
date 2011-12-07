@@ -2,7 +2,9 @@ class CompanyStreamEvent < ActiveRecord::Base
   belongs_to :profile
   
   validates_numericality_of :company_id, :greater_than => 0
-
+  
+  self.per_page = 10
+  
   def primary_photo_path(which=:thumb)
     return Attachment.generate_photo_path(profile_photo_id,profile_photo_filename,which) if profile_photo_id
     return Attachment.generate_photo_path(group_photo_id,group_photo_filename,which) if group_photo_id
@@ -54,7 +56,8 @@ class CompanyStreamEvent < ActiveRecord::Base
 
       options = ModelUtil.get_options!(args)
       options[:order] = 'created_at desc'
-      find(*args)
+      args.shift if args.first.to_sym == :all
+      self.paginate(*args)
     end
     
 

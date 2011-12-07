@@ -39,5 +39,10 @@ class Company < ActiveRecord::Base
   def after_create
     self.create_blog
   end  
-    
+  
+  class << self
+    def view_selector
+      Company.all.map { |c| [c.name, c.id] }
+    end  
+  end  
 end

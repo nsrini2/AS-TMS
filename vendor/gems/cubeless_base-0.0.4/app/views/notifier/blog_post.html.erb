@@ -1,0 +1,8 @@
+<p><strong><%= link_to(@author.screen_name.titleize, profile_url(@author)) %>, someone you're following, has written a new blog post</strong></p>
+<p><strong><%= @blog_post.title.titleize %></strong><br />&#8220;<%= truncate @blog_post.text.gsub(/<\/?[^>]*>/, ""), :length => 256 %>&#8221;</p>
+<p><%= link_to('Click here', profile_blog_url(@author)) %> to view it.</p>
+
+Regards,<br />
+<%=@site_name%><br /><br /><br /></p>
+
+<p align="center">You control the communications you get from us. You can change your <%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.</p>

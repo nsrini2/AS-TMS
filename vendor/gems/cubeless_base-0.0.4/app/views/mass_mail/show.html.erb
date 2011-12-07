@@ -1,0 +1,10 @@
+<% form_for :mailer, :html => {:id => 'mass_mailer'} do |f|  %>
+	<h3>Community Email</h3>
+	<label for="mass_mail_subject">Subject</label>
+	<%= f.text_field :subject, :class => "text" %>
+	<%= f.text_area :body, :rows => nil, :cols => nil, :class => 'fckeditor' -%>
+	<div class="buttons">
+		<input type="submit" class="large button confirm" value="Send to Community Members">
+		<input type="submit" class="large button light" value="Send Preview" name="test_enabled">
+	</div>
+<% end%>

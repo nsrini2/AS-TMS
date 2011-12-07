@@ -1,0 +1,89 @@
+<style>
+	#footer { padding: 10px 0 30px 0;}
+	#footer a { color:#4a6970; text-decoration: none;}
+	#footer a:hover { text-decoration: underline;}
+  #footer h6 {
+    margin-bottom: 0;
+  }
+
+	#footer .footer-left { 
+	  float: left;
+	  margin: 0 60px 10px 0;
+	}
+	#footer .footer-right { float: right; text-align:right;}
+
+	#footer .footer-other { 
+	  border-top: 1px solid #C4D7DC;
+	  clear: both;
+	  padding: 20px 0 0 0;
+	}
+	
+	#footer .footer-left ul {
+	  margin: 0;
+	  padding: 0;
+	  list-style: none;
+	}
+	#footer .footer-left ul li {
+	  margin: 5px 0;
+	  padding: 0;
+	}
+
+</style>
+
+<div id="footer">
+	<div class="footer-left">
+	  <h6>About</h6>
+	  <ul>
+	    <li><a href="/feedback">Contact Us</a></li>
+	    <li><a href="/our_story">FAQ</a></li>	    
+	    <li><a href="/terms_and_conditions">Terms and Conditions</a></li>
+	    <li><a href="http://www.sabretravelnetwork.com/home/about/">About Sabre Travel Network</a></li>
+	  </ul>
+	</div>
+	<div class="footer-left">
+	  <h6>Explore</h6>
+	  <ul>	    
+	    <li><%= link_to "Q&A", questions_explorations_path %></li>
+	    <li><%= link_to "Groups", groups_explorations_path %></li>
+      <li><%= link_to "Blogs", blogs_explorations_path %></li>
+	    <li><%= link_to "News", news_path %></li>
+	  </ul>
+	</div>
+	<div class="footer-left">
+	  <h6>Partners</h6>
+    <ul>
+      <li><a href="http://www.tnooz.com">Tnooz – Talking Travel Tech</a></li>
+      <li><a href="http://www.agentstream.com/groups/78">Industry Insiders</a></li>
+    </ul>
+	</div>	
+	<div class="footer-right">
+		<% if(logged_in? && current_user.login == "cubeless_admin") -%>
+			<div id="google_translate_element"></div>
+			<script>
+				function googleTranslateElementInit() {
+				  new google.translate.TranslateElement({
+				    pageLanguage: 'en',
+				    includedLanguages: 'en,fr,de,it,pt,es',
+				    multilanguagePage: true,
+				    gaTrack: true,
+				    gaId: 'UA-7721081',
+				    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+				  }, 'google_translate_element');
+				}
+			</script>
+			<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		<% end -%>
+	</div>
+	<div class="footer-other">
+		<div class="footer-left">
+		  <p><%#= Config[:disclaimer] -%></p>
+		</div>
+		<div class="footer-right">
+			
+  		<span><a href="http://www.sabretravelnetwork.com"><img src="/images/sabre_tn_logo.png"></a></span>
+  	</div>
+	</div>
+	
+</div>
+
+

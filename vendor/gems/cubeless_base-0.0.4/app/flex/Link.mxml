@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" verticalAlign="middle" horizontalGap="2"
+	useHandCursor="{enabled}" buttonMode="{enabled}"
+	disabledOverlayAlpha="0">
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var text:String;
+			[Bindable]
+			public var linkImageVisible:Boolean = true;
+		]]>
+	</mx:Script>
+	<mx:Text id="link" enabled="false" disabledColor="{ enabled ? 0x000099 : 0 }"
+		textDecoration="{ enabled ? 'underline' : 'none' }" text="{text}"/>
+	<mx:Image id="link_image" source="/images/overlay.gif"
+		width="{linkImageVisible &amp;&amp; enabled ? 8 : 0}" height="8"/>
+</mx:HBox>

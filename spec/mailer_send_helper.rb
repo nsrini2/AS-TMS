@@ -1,8 +1,8 @@
-require "#{Rails.root}/lib/batch_mailer"
+require "#{Rails.root}/vendor/gems/cubeless_base-0.0.4/lib/batch_mailer"
 require "#{Rails.root}/app/models/notifier" # not sure if it is better to reference cubeless or agentstream version of this file
 # SSJ 11/16/2010
 #
-# when using in consule do require 'spec/mailer_send_helper'
+# when using in consule do: require 'spec/mailer_send_helper'
 #
 # monkey punching - duck punching cannot happen inside another class
 # these methods are not in cubeless, but help in testing ...

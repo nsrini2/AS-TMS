@@ -1,9 +1,9 @@
-<% hide_when_viewing_sponsored_profile do -%>
+<%= hide_when_viewing_sponsored_profile do -%>
   <% if owner_content %>
     <% @status = Status.new %>
   
     <% form_for :status, :url => statuses_path, :html => {:id => "profile_status_form", :class => "html5" } do |f| -%>
-      <%= f.text_area :body, :maxlength => '140', :rows => 2, :placeholder => "What are you working on today?" -%>
+      <%= f.text_area :body, :maxlength => '140', :rows => 2, :placeholder => "What are you working on today?", :class => "profile_container" -%>
       <%= hidden_field_tag :profile_status, true %>
     
       <div class="buttons">
@@ -11,26 +11,30 @@
       </div>
     <% end -%>
   <% else %>
-    <h3>Recent Updates</h3>
+    <% if false %>
+      <h3>Recent Updates</h3>
+    <% end %>
 
     <% first_status = statuses.delete_at(0) || Status.new(:body => "No Updates") %>
-  
-    <div id="first_status">
-      <%= first_status.body %>
-    </div>
-    <div id="first_status_extra">
-      <%= pretty_datetime first_status.created_at unless first_status.new_record? %>
-    </div>
-  <% end %>
 
-  <% if !owner_content %>
-    <div id="profile_status_events">
-      <% statuses[0..1].each do |status| %>
-        <%= render :partial => "/statuses/profile_status", :locals => { :status => status } %>
+    <div id="profile_status_events" class="profile_container">
+  
+      <div id="first_status">
+        <%= first_status.body %>
+      </div>
+      <div id="first_status_extra">
+        <%= pretty_datetime first_status.created_at unless first_status.new_record? %>
+      </div>
+
+      <% if false %>
+        <% statuses[0..1].each do |status| %>
+          <%= render :partial => "/statuses/profile_status", :locals => { :status => status } %>
+        <% end %>
       <% end %>
   
-      <br/>
-      <%= link_to "More", profile_statuses_path(@profile) unless statuses.empty? %>
+
+      <%= link_to "More", profile_statuses_path(@profile), :class => "more" unless statuses.empty? %>
     </div>
+
   <% end %>
 <% end %>

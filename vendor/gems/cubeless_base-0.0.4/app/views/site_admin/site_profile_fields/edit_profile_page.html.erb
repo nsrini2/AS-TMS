@@ -1,0 +1,32 @@
+<h2>Editing Profile Page</h2>
+
+<% form_for(:site_profile_field, @site_profile_field, 
+						:url => update_profile_page_site_admin_site_profile_fields_path,
+						:html => {:class => "admin_form", :method => :post}, 
+						:builder => AdminFormBuilder) do |f| %>
+
+	<h3>Fields with a '0' (zero) will NOT show up on the profile page</h3>
+
+	<dl class="admin_details">
+		<% @stuck_profile_page.each_with_index do |spp, idx| %>
+			<dt><%= spp.label %><dt>
+			<dd><%= idx + 1 %> (immovable)</dd>
+		<% end %>
+		
+		<% @site_profile_page.each_with_index do |spp, idx| %>
+			<%= f.label spp.label %>
+			<%= f.text_field :profile_page_position, :value => spp.profile_page_position+2, :name => "fields[#{spp.site_profile_page.id}]" %>
+		<% end %>
+		
+		<% @out_profile_page.each_with_index do |opp, idx| %>
+			<%= f.label opp.label %>
+			<%= f.text_field :profile_page_position, :value => 0, :name => "fields[#{opp.site_profile_page.id}]" %>
+		<% end %>
+	</dl>
+  
+	<div class="buttons">
+    <%= f.submit "Update", :class => "button" %>
+		<input type="submit" name="reset" value="Cancel" class="button light">
+  </div>
+<% end %>
+

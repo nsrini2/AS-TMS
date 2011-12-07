@@ -1,0 +1,118 @@
+
+theme: 'theme_6'
+
+logo_file: "agent_stream_logo.png"
+
+favicon: "agent_stream_favicon.ico"
+
+site_name: "AgentStream"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+open_registration: true
+registration_queue: true
+
+question_categories: ["Leisure Travel", "Corporate Travel", "Marketing", "Technology", "Suppliers"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Agency Name"
+    completes_profile: true
+    matchable: false
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Certifications"
+    completes_profile: false
+    matchable: false
+  - question: profile_4
+    label: "Years in Travel"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Office Location (city, state)"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_5',
+    'email',
+    'profile_3',
+    'profile_4'
+  ]
+  business_card: [
+    'profile_5',
+    'email'
+  ]
+
+profile_complex_questions:
+  - title: "Agency Life"
+    questions:
+      - question: question_1
+        label: "Agency type?"
+        example: "e.g. Leisure, corporate, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Your role in the agency?"
+        example: "e.g. Consultant, Backoffice, etc"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What you spend your day doing?"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What is the best tip you can give a new agent?"
+        completes_profile: true
+        matchable: true
+
+  - title: "On The Job"
+    questions:
+      - question: question_5
+        label: "What products, software, or booking engines do you use daily?"
+        example: "e.g. GDS, Clientbase, TRAMS backoffice, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "Who are your favorite travel suppliers and why?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What types of travel or destinations do you book the most?"
+        example: "e.g. destination weddings, Cancun, Mediterranean cruises, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "Who are your customers?"
+        example: "e.g. families, luxury travelers, small or large groups, etc."
+        completes_profile: true
+        matchable: true
+
+  - title: "Off The Job"
+    questions:
+      - question: question_9
+        label: "What is your hometown?"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "Why do you love to travel?"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What are your favorite vacation destinations?"
+        example: "e.g. Maui, New York City, Spain, Disney, beaches, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "Anything else you want to share with other members about yourself?"
+        completes_profile: true
+        matchable: true

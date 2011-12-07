@@ -16,7 +16,7 @@ class NotesController
     end
     
     respond_to do |format|
-      format.js { render :layout=> 'layouts/_popup' }
+      format.js { render :layout=> '/layouts/popup' }
     end
   end
   

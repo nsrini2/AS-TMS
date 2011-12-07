@@ -3,8 +3,8 @@ require_cubeless_engine_file(:controller, :account_controller)
 class AccountController < ApplicationController
   before_filter :find_facebook_uid, :only => [:login, :register, :signup, :logout]
 
-  skip_before_filter :require_auth, :only => [:welcome, :register, :login, :reset_password, :logout, :signup, :registration_confirmation]
-  skip_before_filter :require_terms_acceptance, :only => [:welcome, :register, :login, :logout, :accept_terms_and_conditions, :sign_up, :registration_confirmation]
+  skip_before_filter :require_auth, :only => [:welcome, :register, :login, :reset_password, :logout, :signup, :registration_confirmation, :quick_registration, :quick_login, :quick_register, :quick_registration_confirmation]
+  skip_before_filter :require_terms_acceptance, :only => [:welcome, :register, :login, :logout, :accept_terms_and_conditions, :sign_up, :registration_confirmation, :quick_registration, :quick_login, :quick_register, :quick_registration_confirmation]
 
   layout 'naked'
 
@@ -17,6 +17,10 @@ class AccountController < ApplicationController
   end
   
   def registration_confirmation
+    render :layout => 'public'
+  end
+  
+  def quick_registration_confirmation
     render :layout => 'public'
   end
   
@@ -51,15 +55,48 @@ class AccountController < ApplicationController
     end
   end
   
+  def quick_registration
+    @user = User.new
+    render :action => "quick_login", :layout => false    
+  end
+  def quick_login
+    @user = User.new
+    render :layout => false
+  end
+  
+  def quick_register
+    @temp_user = current_temp_user || TempUser.create
+    @temp_user.name = params[:name]
+    @temp_user.email = params[:email]
+    @temp_user.pcc = params[:pcc]
+    
+    if @temp_user.auto_approve?
+      @temp_user.upgrade
+      # redirect_to quick_registration_confirmation_account_path
+      redirect_to "/deals_and_extras", :notice => "Thank for you registering.<br/><br/>Please check your email now to confirm to your account."
+    elsif @temp_user.custom_valid? # But not auto_approved
+      redirect_to signup_account_path(:user => {:email => @temp_user.email}, 
+                                      :profile => {:name => @temp_user.name},
+                                      :registration => {:agency_pcc_or_iata => @temp_user.pcc}), :notice => "We could not automatically verify your account using only the PCC and email address provided.<br/><br/>Please fill out the additional information below."
+    else
+      render :json => {
+        :status => false,
+        :errors => "All fields are required" #render_to_string(:partial => 'errors')
+      }
+    end
+  end
+  
   def signup
     return redirect_back_or_default('/profile') unless Config[:open_registration]   
          
     @registration_fields = Config['registration_fields']
     @registration = Registration.new
 
+    @user = User.new
+    @profile = Profile.new
+    @registration = Registration.new
+
     if request.post?
-      @user = User.new
-      @profile = Profile.new
       @profile.attributes = params[:profile]
       @profile.status = 1
       @profile.visible = 1
@@ -94,6 +131,20 @@ class AccountController < ApplicationController
       else
         add_to_errors [@user, @profile, @registration]
       end 
+    else
+      # NOT A POST
+      # Grab potential entries from the quick login
+      if params[:user] && params[:user][:email]
+        @user.email = params[:user][:email]
+      end
+      if params[:profile] && params[:profile][:name]
+        name = params[:profile][:name].to_s.split(" ")
+        @first_name = name[0]
+        @last_name = name[1..-1]
+      end
+      if params[:registration] && params[:registration][:agency_pcc_or_iata]
+        @registration.agency_pcc_or_iata = params[:registration][:agency_pcc_or_iata]
+      end
     end
     
     if @facebook_uid

@@ -1,0 +1,30 @@
+<% content_for(:page_title, "Create a New Group for #{@sponsor_account.name}") -%>
+<h2>Create a New Group for <%= @sponsor_account.name %></h2>
+<% form_for(:sponsor_group, :url => [@sponsor_account, :sponsor_groups]) do |f| -%>
+
+	<label for="sponsor_group_owner">Group Owner</label>
+	<% sponsors = @sponsor_account.sponsors.collect { |s| ["#{s.first_name} #{s.last_name}", s.id] } %>
+	<%= sponsors.size > 0 ? select(:sponsor_group, :owner_id, sponsors) : "<strong class='big_action'><a href=\"#{new_sponsor_account_sponsor_member_path(@sponsor_account)} \">Create a sponsor member first</a></strong>" %>
+	<br /><br />
+
+	<label for="sponsor_group_type">Group Type</label>
+	<select name="sponsor_group[group_type]" id="sponsor_group_type"<%= sponsors.size > 0 ? "" : 'disabled="disabled"' %>>
+		<option value="0">Public</option>
+		<option value="1">Invitation Only</option>
+		<option value="2">Private</option>
+	</select><br /><br />
+
+	<label for="sponsor_group_name">Group Name</label>
+	<%= f.text_field :name, :disabled => sponsors.size > 0 ? false : true -%><br /><br />
+
+	<label for="sponsor_group_description">Group Description</label>
+	<%= f.text_area :description, :rows => "10", :disabled => sponsors.size > 0 ? false : true -%><br /><br />
+
+	<label for="sponsor_group_tags">Group Tags</label>
+	<%= f.text_field :tags, :class => 'input', :disabled => sponsors.size > 0 ? false : true -%><br /><br />
+
+	<%= f.submit "Create Group", :disabled => sponsors.size > 0 ? false : true %>
+<% end %>
+<style>
+ .big_action {font-size: 12px}
+</style>

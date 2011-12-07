@@ -4,21 +4,33 @@
   <%= render :partial => "system_announcements/system_announcement" %>
 <% end %>
 
+<% if @terms_and_conditions %>
+	<%= stylesheet_link_tag "facebox" %>
+	<%= render :partial => "terms_and_conditions", 
+						 :locals => {:terms_and_conditions => @terms_and_conditions } %>
+<% end %>	
+
 <div id="hub" class="primary">
   <div id="feeds">
 		<div class="tabs"> 
 			<ul class="tabs-nav">
 				<li class="active"><a href="#news_feed">Activity Stream</a></li>
-				<li class=""><a href="#following">Following</a></li> 
+				<%# NO MORE FOLLOWING FOR NOW %>
+				<% if false %>
+				  <li class=""><a href="#following">Following</a></li> 
+				<% end %>
 				<li class=""><a href="#inbox">Inbox</a></li> 
 			</ul>
 		
 			<div id="news_feed" class="tabs-panel" onclick="_gaq.push(['_trackEvent', 'hub_stream_tab', 'clicked'])">
 			  <%= render :partial => "/hub/news_feed_panel", :locals => { :events => @events } %>
 			</div> 
-			<div id="following" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_following_tab', 'clicked'])"> 
-			  <%= render :partial => "/hub/following_panel", :locals => { :followings => @followings } %>
-			</div> 
+      <%# NO MORE FOLLOWING FOR NOW%>
+			<% if false %>
+  			<div id="following" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_following_tab', 'clicked'])"> 
+  			  <%= render :partial => "/hub/following_panel", :locals => { :followings => @followings } %>
+  			</div> 
+			<% end %>
 			<div id="inbox" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_inbox_tab', 'clicked'])"> 
 			  <%= render :partial => "/hub/messages_panel", :locals => { :messages => @messages } %>
 			</div>
@@ -48,8 +60,10 @@
 	</div>
 	<div id="widget" class="widget">
 		<div class="module last">
-      <% (1..@widgets.keys.size).to_a.reverse.each do |idx| %>      
-        <%= render_widget @widgets[idx.to_s] -%>
+		  <% if false %>
+        <% (1..@widgets.keys.size).to_a.reverse.each do |idx| %>      
+          <%= render_widget @widgets[idx.to_s] -%>
+        <% end %>
       <% end %>
 		</div>
 	</div>

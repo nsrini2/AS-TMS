@@ -1,0 +1,11 @@
+<% content_for(:title, "We love #{comment_or_reply(@owner).pluralize}!") -%>
+<% remote_form_for :comment, :url => comments_poly_path(@owner, :comments) do |f| -%>
+	<div class="content">
+		Add your 2 cents to the conversation. <%= comment_or_reply(@owner).pluralize.capitalize %> are a great way to show your support and add another perspective.
+		<div class="form">
+			<label>Comment</label>
+			<%= f.text_area :text, :maxlength => "4000" %>
+		</div>
+	</div>
+	<%= submit_button('Submit') %>
+<% end -%>

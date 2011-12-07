@@ -1,7 +1,7 @@
 <h2><%= @aside_question_header %></h2>
 <% questions.each do |question| %>
 	<div class="question">
-		<h3 class="text"><%= link_to truncate(question.question, 140), company_or_question_path(question) %></h3>
+		<h3 class="text"><%= link_to truncate(question.question, {:length => 140, :omission => "..." }), company_or_question_path(question) %></h3>
 		<div class="meta">
 			<p class="asked">asked on <%= short_date question.created_at %> by <%= question.profile.full_name %></p>
 			<% if false %>
@@ -22,3 +22,5 @@
 		</ul>
 	</div>
 <% end -%>	
+
+<%#= will_paginate questions %>

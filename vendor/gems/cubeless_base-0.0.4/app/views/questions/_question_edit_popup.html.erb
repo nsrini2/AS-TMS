@@ -1,0 +1,19 @@
+<% content_for(:title, object_edit_popup_title(question)) -%>
+<% form_for :question, question, :url => update_question_path(question), :html => { :id => 'edit_question' } do |f| -%>
+	<%= f.hidden_field :open_until -%>
+	<p><%= object_edit_popup_message(question, "Had another one of those \"I didn't mean to say that\" moments? <br>You can edit the question text as long as nobody has answered.<br>(The closing date can be changed anytime)") -%></p>
+	<dl>
+		<dt><label for="question_category">Category</label></dt>
+		<% disabled = question.num_answers > 0 && !current_profile.has_role?(Role::ShadyAdmin) %>
+		<dd><%= f.select :category, Question.categories, {:prompt => 'Select a category'}, :disabled => disabled  -%></dd>
+		<dt><label for="question_question">Update Question</label></dt>
+		<dd><%= f.text_area :question, :rows => 6, :cols => 40, :disabled => disabled -%></dd>
+		<% unless question.best_answer -%>
+		<dt class="closing_date">This question will close on <span id="question_close_date"><%= question.open_until.strftime("%B %d, %Y") -%></span></dt>
+		<% end -%>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Submit" class="button medium">
+		<input type="button" name="cancel" value="Cancel" class="button medium light close">
+	</div>
+<% end -%>

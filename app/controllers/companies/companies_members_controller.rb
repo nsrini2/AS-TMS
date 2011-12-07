@@ -3,7 +3,7 @@ class Companies::MembersController < ApplicationController
   layout "_company_tabs"
   
   def index
-    @members = @company.members
+    @members = @company.members.paginate(:page => params[:page], :per_page => 20)
   end
   
 

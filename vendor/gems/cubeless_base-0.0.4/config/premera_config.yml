@@ -1,0 +1,143 @@
+
+theme: 'theme_14'
+
+logo_file: "premera_logo.gif"
+
+favicon: "premera_favicon.ico"
+
+site_name: "PremeraTown"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+feedback_email: "corpcomm@premera.com"
+
+email_from_address: 'Premera <no-reply@cubeless.com>'
+
+viewable_karma: true
+
+question_categories: ["Financial", "Technical", "Procedural", "Regulatory", "HR", "Operations", "Sales/Marketing", "Communications", "Planning/Development", "Personal"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Company"
+    completes_profile: true
+    matchable: false
+  - question: profile_4
+    label: "Department"
+    completes_profile: false
+    matchable: true
+  - question: profile_5
+    label: "Building"
+    completes_profile: true
+    matchable: false
+  - question: profile_6
+    label: "Floor"
+    completes_profile: false
+    matchable: false
+  - question: profile_7
+    label: "Phone Number"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+  - question: profile_8
+    label: "Grid"
+    completes_profile: true
+    matchable: true
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7',
+    'email',
+    'profile_8'
+  ]
+  business_card: [
+   'profile_3',
+   'profile_4',
+   'profile_7',
+   'email'
+  ]
+
+
+profile_complex_questions:
+  - title: "About Me (Personal)"
+    questions:
+      - question: question_1
+        label: "Where were you born and where have you lived?"
+        example: "Include where you grew up, the city you lived in while attending college."
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Where do you live now?"
+        example: "The community doesn’t want to come to your house, but it is nice to know a city and state."
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What schools have you attended and what degrees do you hold?"
+        example: "Give us a brain dump of your educational background.  Inquiring minds want to know."
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "Where have you traveled and where would you like to go?"
+        example: "Include places you have visited either for business or pleasure and those that you hope to visit."
+        completes_profile: true
+        matchable: true
+
+  - title: "About Me (Professional)"
+    questions:
+      - question: question_5
+        label: "What Question 1?"
+        example: "What Question 1"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What Question 2?"
+        example: "What Question 2"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What Question 3?"
+        example: "What Question 3"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What Question 4?"
+        example: "What Question 4"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What Question 5?"
+        example: "What Question 5"
+        completes_profile: true
+        matchable: true
+      - question: question_9
+        label: "What Question 6?"
+        example: "What Question 6"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "What Question 7?"
+        example: "What Question 7"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What Question 8?"
+        example: "What Question 8"
+        completes_profile: true
+        matchable: true

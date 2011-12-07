@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="*"
+	backgroundColor="{bgColor}"
+	filters="{[new DropShadowFilter(5, 45,0,0.6)]}"
+	styleName="note" width="240" height="155"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	paddingTop="2" paddingLeft="8" paddingBottom="8" paddingRight="8">
+	<mx:Script>
+		<![CDATA[
+			private var backgrounds:Array = ["0xfff2c4","0xa5d5e1","0xcdbad6","0xdeeeac","0xf8cde0"];
+			protected var bgColor:uint = backgrounds[Math.floor(Math.random()*(4))];
+			[Bindable]
+			public var onSend:Function;
+			[Bindable]
+			public var onCancel:Function;
+			protected function noteChanged():void {
+				if (!send_container.visible) {
+					instructions.text='';
+					instructions.height=0;
+					send_container.visible=true;
+					private_note.visible=true;
+				}
+				char_counter.text = note.text.length+' of '+note.maxChars+' characters';
+			}
+		]]>
+	</mx:Script>
+	<mx:HBox width="100%">
+		<mx:Text id="char_counter" text="{'0 of '+note.maxChars+' characters'}"/>
+		<mx:Spacer width="100%"/>
+		<local:Link text="close" click="onCancel.call(null,this)" linkImageVisible="false"/>
+	</mx:HBox>
+	<mx:Spacer height="5"/>
+	<mx:TextArea height="100%" width="100%" id="note" styleName="noteInput" maxChars="100"
+		enabled="true" verticalScrollPolicy="off" change="{noteChanged()}"/>
+	<mx:CheckBox visible="false" label="Private Note" fillAlphas="0,0,0,0" id="private_note"/>
+	<mx:HBox id="send_container" horizontalAlign="center" width="100%" visible="false">
+		<mx:Button height="18" label="Post" click="onSend.call(null,this)" id="send_note"/>
+	</mx:HBox>
+	<mx:TextArea enabled="false" width="100%" id="instructions" textAlign="center" styleName="invisibleTextArea" disabledColor="0"/>
+</mx:VBox>

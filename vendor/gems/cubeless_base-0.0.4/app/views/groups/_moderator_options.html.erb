@@ -1,0 +1,46 @@
+<% selected_option = @selected_option || params[:moderator_option] %>
+<div id="moderator_options">
+	<div class="moderator_option">
+		<%= link_to_select_moderator_option('All Group Members','moderators_all',selected_option)%>
+		<p class="help">
+			All members of this group will be allowed to edit the group's <strong>details</strong> (such as group name and description) and <strong>content</strong> (such as news and blog posts).
+		</p>
+	</div>
+
+	<div class="moderator_option">
+		<%= link_to_select_moderator_option('Only Myself','moderators_owner',selected_option)%>
+		<p class="help">
+			As the owner of this group, you will always be able to modify the group's <strong>details</strong> and <strong>content</strong>. By choosing this option, other group members will only be able to edit the group <strong>content</strong> they provided.
+		</p>
+	</div>
+
+	<div class="moderator_option">
+		<%= link_to_select_moderator_option('People I Choose','moderators_select',selected_option)%>
+		<p class="help">
+			As the owner of this group, you will always be able to modify the group's <strong>details</strong> and <strong>content</strong>. Assigning other members of the group as Moderators will allow them to edit group <strong>details</strong> and <strong>content</strong>. Other group members will only be able to edit the <strong>content</strong> they provided.
+		</p>
+	</div>
+</div>
+<% if selected_option=='moderators_select' %>
+		<div class="mod_list">
+			<h3>Current Moderators</h3>
+			<%= render :partial => 'groups/member', :locals => {:member => @group.owner, :is_moderator => true} %>
+			<% collection_content_for(@moderators) do %>
+				<div id="moderator_list">
+					<%= render :partial => 'groups/member', :collection => @moderators.reject{|x| x.id==@group.owner_id } , :locals => {:is_moderator => true} %>
+				</div>
+			<% end %>
+		</div>
+		<div class="mod_list">
+			<% collection_content_for(@non_moderators) do %>
+				<h3>Members</h3>
+				<form id="candidates_search" method="get" action="" class="member_search">
+					<input type="text" id="search" value="" name="q" />
+					<input type="submit" class="button small" value="Search" name="commit"/>
+				</form>
+				<div id="member_list">
+					<%= render :partial => 'groups/member', :collection => @non_moderators, :locals => {:is_moderator => false} %>
+				</div>
+			<% end %>
+		</div>
+<% end %>

@@ -1,0 +1,4 @@
+<% content_for(:page_title, "Questions I Can Answer") -%>
+<div id="matches">
+	<%= render :partial => 'matched_questions', :locals => {:questions => @questions, :referred_questions => @referred_questions}%>
+</div>

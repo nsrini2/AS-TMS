@@ -6,7 +6,7 @@
     <% if @results.empty? %>
       No Results Found
     <% else %>
-        <% @results.results.each do |result| %>
+        <% @results.each do |result| %>
           <% html = "" %>
           <% icon = "" %>
           <% case result.class.to_s
@@ -43,7 +43,8 @@
         <% end %>
         
         <br/>
-        <%= render_pagination @results, :page_var => :search_page %>
+        <%= will_paginate @results %>
+        <%#= render_pagination @results, :page_var => :search_page %>
     <% end %>
     <div style="clear:both;"></div>
   </div>

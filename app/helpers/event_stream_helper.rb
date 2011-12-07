@@ -44,7 +44,7 @@ module EventStreamHelper
     group_path(:id => event.group_id)
   end
   
-  def event_who_text(event)
+  def event_who_text(event)    
     if event.group_id && !event.profile_id
       event.group_name
     elsif event.respond_to?(:profile_screen_name)
@@ -77,25 +77,25 @@ module EventStreamHelper
      	  text << "updated profile photo"
       when 'Answer': 
      	  # text << "answered a question:"
-     	  text << truncate(event[:answer_answer],100)
-     	  text << "<br/><span>[answer to \"#{truncate(event.answer_question_question, 60)}\"]</span>"
+     	  text << truncate(event[:answer_answer], { :length => 100, :omission => "..." })
+     	  text << "<br/><span>[answer to \"#{truncate(event.answer_question_question, { :length => 60, :omission => "..." })}\"]</span>"
       when 'Question': 
      	  # text << "asked a question:"
-     	  text << truncate(event[:question_question],100)
+     	  text << truncate(event[:question_question], { :length => 100, :omission => "..." })
       when 'Login': 
      	  text << "logged in"
       when 'GroupMembership': 
      	  # text << "joined a group:"
-     	  text << truncate(event.group_name,100)
+     	  text << truncate(event.group_name, { :length => 100, :omission => "..." })
       when 'BlogPost': 
      	  # text << "added a blog post:"
-     	  text << truncate(event.blog_post_title,100)
+     	  text << truncate(event.blog_post_title, { :length => 100, :omission => "..." })
       when 'Comment': 
-     	  text << truncate(event.comment_text,100)
-     	  text << "<br/><span>[comment on \"#{truncate(event.comment_blog_post_title, 60)}\"]</span>"
+     	  text << truncate(event.comment_text, { :length => 100, :omission => "..." })
+     	  text << "<br/><span>[comment on \"#{truncate(event.comment_blog_post_title, { :length => 60, :omission => "..." })}\"]</span>"
       when 'ProfileAward': 
      	  # text << "received an award:"
-     	  text << truncate(event.award_title,100)
+     	  text << truncate(event.award_title, { :length => 100, :omission => "..." })
       when 'Status': 
      	  # text << "shared an update:"
      	  text << event.status_body 	

@@ -1,0 +1,32 @@
+@import "960/grid";
+@import "compass/utilities/general/clearfix";
+$ninesixty-columns: 16;
+$ninesixty-gutter-width: 0;
+$ninesixty-grid-width: 960px;
+
+#page {
+  @include grid-container;
+	
+}
+
+	#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility  { @include grid-unit-base;}
+	
+	#header, #main, .alert, #footer { @include grid-width(16); }
+	
+		#logo { @include grid-width(4); @include alpha;}
+		.global_nav { @include grid-width(6); }
+		.utility { @include grid-width(5); @include omega;}
+	
+	#body {
+	}
+	
+	.primary { width: 560px; @include alpha; }
+	.aside { margin-top: 30px; width: 400px; @include omega; }
+		.aside .module { margin: 0 10px 0; }
+	.list .primary { width: 720px;  }
+	.list .aside { width: 240px; }
+	
+	.profile .primary { @include grid-width(12); clear: both; @include alpha; }
+	.profile .aside { @include grid-width(4); @include omega; }
+	
+	.profile .full_length { @include grid-width(16); clear: both; }

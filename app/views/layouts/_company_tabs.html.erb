@@ -31,7 +31,7 @@
 
       <h3><%= @company.to_s %></h3>
       <div class="description">
-        <%= truncate(@company.description, :length => 260, :omissoin => "...") %>
+        <%= truncate(@company.description, :length => 250, :omissoin => "...") %>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
 	<%= content_tag('li', link_to("My Agency Stream", "/companies/hub"), :class => @company_hub_tab_selected) -%>
 	<%= content_tag('li', link_to("Q&A", companies_questions_path), :class => @company_question_tab_selected) -%>
 	<%#= content_tag('li', link_to("Groups", companies_groups_path), :class => @company_group_tab_selected) -%>
-	<%#= content_tag('li', link_to("Blog", companies_blogs_path), :class => @company_blog_tab_selected) -%>
+	<%= content_tag('li', link_to("Blog", companies_blog_blog_posts_path), :class => @company_blog_tab_selected) -%>
 	<%= content_tag('li', link_to("Members", "/companies/members"), :class => @company_members_tab_selected) -%>
 <% end -%>
 

@@ -1,0 +1,46 @@
+<%
+@page_var = (page_var ||= 'page').to_s
+
+@paging_uses_ajax = ajax || false
+if @paging_uses_ajax
+	@request_params = request.query_parameters.dup
+else
+	@request_params = request.format == 'text/javascript' ? {} : request.query_parameters.dup
+end
+
+def page_url_params(page_number)
+  @request_params[@page_var] = page_number
+	"?" + @request_params.collect{|key, value| "#{key}=#{URI.escape(value.to_s)}"}.join("&")
+end
+
+def page_url_params_for_ajax(page_number)
+	@request_params[@page_var] = page_number
+  @request_params
+end
+%>
+
+<% if collection.page_count != collection.first_page -%>
+<div class="pagination">
+<% if collection.previous_page? -%>
+<%= link_to('&#171; previous', page_url_params(collection.previous_page), :class => 'nextpage') unless @paging_uses_ajax %><%#= link_to_remote('&#171; previous', :url => page_url_params_for_ajax(collection.previous_page), :method => 'get', :class => 'nextpage') if @paging_uses_ajax %>
+<% else -%>
+<span class="disablepage">&#171; previous</span>
+<% end -%>
+<% last_page = 0 -%>
+<% windowed_pagination_links(collection, :window_size => 2, :link_to_current_page => true, :always_show_anchors => true) do |n| -%>
+<% if collection.page == n -%>
+<span class="currentpage"><%#= n %></span>
+<% else -%>
+<%= "<span>...</span>" if last_page+1 < n %>
+<%= link_to(n, page_url_params(n)) unless @paging_uses_ajax%><%#= link_to_remote(n, :url => page_url_params_for_ajax(n), :method => 'get') if @paging_uses_ajax%>
+<% end -%>
+<% last_page = n -%>
+<% end -%>
+<% if collection.next_page? -%>
+<%=  link_to('next &#187;', page_url_params(collection.next_page), :class => 'nextpage') unless @paging_uses_ajax %><%#=  link_to_remote('next &#187;', :url => page_url_params_for_ajax(collection.next_page), :method => 'get', :class => 'nextpage') if @paging_uses_ajax %>
+<% else -%>
+<span class="disablepage">&#171; next</span>
+<% end -%>
+</div>
+<% end -%>
+

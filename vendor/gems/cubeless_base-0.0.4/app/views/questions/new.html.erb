@@ -1,0 +1,25 @@
+<% 
+content_for(:ask_selected, 'selected')
+content_for(:page_title, 'Ask Community')
+-%>
+
+<% form_for :question, 
+            :url => questions_path, 
+            :html => { :id => 'ask_a_question', 
+                       :class => 'disable_buttons_on_submit'} do |f| -%>
+	<%= f.hidden_field :open_until, :value => (Date.today + 30).strftime("%B %d, %Y") -%>
+	<fieldset class="ask_question">
+		<h2>Ask Question</h2>
+		<dl>
+			<dt><%= f.label(:category, "Category") -%></dt>
+			<dd><%= f.select(:category, Question.categories, { :prompt => 'Select a category' }) -%></dd>
+			<dt><%= f.label(:question, "Question")%></dt>
+			<dd><%= f.text_area :question, :maxlength => '4000' -%></dd>
+			<dt class="closing_date">This question will close to new answers automatically on <span id="question_close_date"><%= (Date.today + 30).strftime("%B %d, %Y") -%></span></dt>
+		</dl>
+		<div class="buttons">
+			<input type="submit" value="Ask Question" name="commit" class="large button">
+		</div>
+	</fieldset>
+
+<% end -%>

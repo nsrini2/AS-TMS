@@ -1,0 +1,12 @@
+<% content_for(:page_title, "Manage #{params[:action].gsub('_', ' ').titleize}") -%>
+<div class="content">
+	<p>
+	  <b>Title:</b>
+	  <%=h @video.title %>
+	</p>
+
+	<p>
+	  <b>Description:</b>
+	  <%=h @video.description %>
+	</p>
+</div>

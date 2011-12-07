@@ -7,12 +7,10 @@
 
   
 <!-- <div id="groups"> -->
-<div id="list">  
-  <br/><br/>
-  
+<div id="list">   
 	<% owner_content do%>
 		<% collection_content_for @invitations do %>
-			<h3>Groups I've been invited to join</h3>
+			<h2>Groups I've been invited to join</h2>
 			<% @invitations.each do |invitation| %>
 				<%= render :partial =>'groups/group', :locals => { :group => invitation.group, :invitation => invitation, :classname => cycle('odd', 'even') } %>
 			<% end %>
@@ -20,7 +18,7 @@
 	<% end unless @profile.is_sponsored? %>
 
 	<% collection_content_for @groups do %>
-		<h3>Groups <%= current_profile == @profile ? "I've" : "#{@profile.screen_name} has" %> joined</h3>
+		<h2>Groups <%= current_profile == @profile ? "I've" : "#{@profile.screen_name} has" %> joined</h2>
 		<% @groups.each do |group| %>
 			<%= render :partial =>'groups/group', :locals => { :group => group, :classname => cycle('odd', 'even') } %>
 		<% end %>

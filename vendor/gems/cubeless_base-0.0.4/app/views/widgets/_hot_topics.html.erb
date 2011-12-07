@@ -1,0 +1,5 @@
+<div class="tag_cloud">
+	<% @random_terms.each do |tt| -%>
+		<%= link_to tt.term.gsub(' ','&nbsp;'), questions_explorations_path(:query => tt.term), :class => 'tag' + (tt.rank > 0 ? (tt.rank-1).to_s : tt.rank.to_s) -%>
+	<% end -%>
+</div>

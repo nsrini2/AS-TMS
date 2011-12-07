@@ -1,0 +1,12 @@
+/* line 5, ../../../../../app/stylesheets/themes/agentstream/icons.scss */
+div.news_item div.details div.icon {
+  float: right;
+  text-align: center;
+  width: 22px;
+}
+
+/* line 11, ../../../../../app/stylesheets/themes/agentstream/icons.scss */
+div.news_item div.details div.icon img.icon {
+  height: 22px;
+  /*opacity: 0.7;*/
+}

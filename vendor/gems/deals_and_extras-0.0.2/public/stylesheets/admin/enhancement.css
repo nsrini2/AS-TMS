@@ -1,0 +1,25 @@
+/*
+
+Title:      Admin Style Enhancements
+Author:     Daniel Marino
+Revised:		July
+
+*/
+
+
+/* Enhancement
+----------------------------------------------------------------------------------------------------*/
+
+@font-face {
+      font-family: "Gotham Bold";
+      src: url(fonts/Gotham-Bold.ttf);
+}
+
+.gotham {
+	font-family: "Gotham Bold";
+}
+
+.round {
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+}

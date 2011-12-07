@@ -1,0 +1,74 @@
+<!-- 
+
+  My Folder Deal
+
+-->
+<li class="my_folder_deal">
+    <div class="deal_info">
+    	<div class="deal_rate" >
+    		<%= de_badge_image(offer.offer) %>
+    		<div class="deal_thumbs">
+    			<% unless @current_user.reviewed_offers.include?(offer.offer) %>
+            <%= de_thumbs(offer.offer) %>
+          <% end %>
+    		</div>
+    	</div>
+    	<div class="deal_image" >
+          <%= de_image(offer.offer) %>
+    	</div>
+
+    	<div>
+    	  <% form_for offer, :url => favorite_path(offer), :method => :put do |f| %>
+      		<p style="font-weight: bold; margin: 0px"><%= offer.offer.suppliers.first.supplier_name %></p>
+      		<button class="linkButton deal_title" type="button"><%= offer.custom_title.nil? ? offer.offer.short_description : offer.custom_title %></button>
+      		<img class="my_folder_edit_deal" src="images/editDeal.gif"></img> 
+      		<input class="my_folder_title_editor" size="60"></input> 
+      		<img class="my_folder_save_changes" src="images/saveEditing.gif" title="<%= offer.id %>"></img> 
+      		<img class="my_folder_cancel_changes" src="images/cancelEditing.gif"></img>
+      		<p class="search_deal_line"><%= offer.offer.title_location %></p>
+    		<% end %>
+    	</div>
+    </div>
+
+    <%= render "/offers/details", :offer => offer.offer %>
+
+<% if false %>
+    <button class="linkButton show_more_style" type="button">+Show More</button>
+
+    <div class="details_style">
+    	<div class="deal_details_description">
+    		<p><%= offer.offer.description %></p>
+    		<div style="float: left">
+    			<p>Book by <%= offer.offer.sell_discontinue_date.inspect %></p>
+    			<a href="/reports/?id=<%= offer.offer.id %>" class='download_pdf_link'>Save as PDF</a><br />
+                <%= link_to 'Print', offer_path(offer.offer) %><br />
+                <span  class='st_twitter_large' ></span><span  class='st_facebook_large' ></span>
+    		</div>
+    		<div class="deal_detail_review_options">
+    			<button class="linkButton deal_view_reviews" type="button" value="<%= offer.offer.id %>">View Reviews (<%= offer.offer.reviews.length %>)</button>
+                <br />
+                <% unless @current_user.reviewed_offers.include?(offer) %>
+                    <button class="linkButton deal_write_review" type="button" value="<%= offer.id %>">Write a Review</button>
+                <% end %>
+    		</div>
+
+    	</div>
+        <%= image_tag offer.offer.static_map %>
+
+    </div>
+<% end %>
+
+
+    <div align="right" class="deal_book_add_buttons">
+        <div class="folder_container">
+          <%= image_to remove_from_folder_image_path, "Remove", favorites_path(:id => offer.offer.id), :remote => true, :class => "remove_from_favorites"  %>
+
+          <% if false %>
+            <button type="button" class="remove_from_favorites" value="<%= offer.offer.id %>">Remove</button>
+          <% end %>
+          <button class="booking_info" type="button" value="<%= offer.offer.id %>"><%= image_tag booking_info_image_path, :alt => "Booking Info" %></button>
+        </div>
+    </div>
+    
+    <div style="clear: both;"></div>
+</li>

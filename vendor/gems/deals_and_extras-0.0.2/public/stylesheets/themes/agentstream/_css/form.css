@@ -1,0 +1,31 @@
+/* line 1, ../../../../../app/stylesheets/themes/agentstream/form.scss */
+textarea {
+  font: inherit !important;
+  padding: 3px 5px;
+}
+
+/* line 6, ../../../../../app/stylesheets/themes/agentstream/form.scss */
+textarea.fckeditor {
+  height: 300px;
+}
+
+/* registration form Error formatting */
+/* line 11, ../../../../../app/stylesheets/themes/agentstream/form.scss */
+form#registration_form div#errors li {
+  color: #990000;
+}
+
+/* line 14, ../../../../../app/stylesheets/themes/agentstream/form.scss */
+form#registration_form .fieldWithErrors {
+  border: 1px dashed #990000;
+}
+
+/* line 17, ../../../../../app/stylesheets/themes/agentstream/form.scss */
+form#registration_form div#errors {
+  display: none;
+}
+
+/* line 20, ../../../../../app/stylesheets/themes/agentstream/form.scss */
+form#registration_form div.error h2 {
+  color: #990000;
+}

@@ -1,0 +1,65 @@
+<%
+	link_to_questions_answered = link_to('view...', questions_answered_profile_path(@profile))# if @profile_stats[:answers] > 0
+	link_to_my_questions = link_to('view...', @profile_stats[:questions] == 1 ? question_path(@profile.questions[0]) : questions_asked_profile_path(:id => @profile.id, :all=>true))# if @profile_stats[:questions] > 0
+	link_to_questions_referred = link_to('view...', questions_asked_profile_path(:id => @profile, :referred => true))# if @profile_stats[:questions_referred] > 0
+	link_to_questions_with_best_answers = link_to('view...', questions_with_best_answers_profile_path(@profile))# if @profile_stats[:best_answers] > 0
+%>
+
+<div id="stats_container">
+
+  <div id="stats" style="float: none; width: 100%; margin-left: 0;" >
+	
+  	<h4><%= owner_content ? "My" : "#{name}'#{'s' if(name.last!='s')}" %> Stats:</h4>
+	
+  	<table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
+  	  <tr>
+    		<%# unless @profile_stats[:best_answers].zero? %>
+    			<td class="first">
+            <h5>Best Answers</h5>
+    				<span class="count"><%= @profile_stats[:best_answers] %></span>
+    				<span class="extra">
+    				  <%= hide_for_sponsor{link_to_questions_with_best_answers} %>
+    				</span>
+    			</td>
+    		<%# end %>
+
+    		<%# unless @profile_stats[:answers].zero? %>
+    			<td>
+            <h5>Answers</h5>
+            <span class="count"><%= @profile_stats[:answers] %></span>
+            <span class="extra">
+    				  <%= hide_for_sponsor{link_to_questions_answered} %>
+    				</span>
+    			</td>
+    		<%# end %>
+
+    		<%# unless @profile_stats[:questions].zero? %>
+    			<td>
+            <h5>Questions</h5>
+    				<span class="count"><%= @profile_stats[:questions] %></span>
+    				<span class="extra">
+    				  <%= hide_for_sponsor{link_to_my_questions} %>
+    				</span>
+    			</td>
+    		<%# end %>
+
+    		<td>
+    			<h5>Profile Views</h5>
+    			<span class="count"><%= @profile_stats[:profile_views] %></span>
+    		</td>
+
+        <td class="">
+          <h5>Profile is</h5>
+          <span class="count"><%= @profile.completion_percentage.round %>%</span>
+          <span class="extra"><%= link_to "complete", completion_popup_profile_path(@profile),   :class => "completion_info" -%></span>
+        </td>
+        
+        <td class="last">
+          <h5>Overall Rank</h5>
+          <span class="count"><small>#</small> <%= @profile.karma_rank %></span>
+          <span class="extra">of <%= Profile.active.count -%></span>
+        </td>
+  	  </tr>
+  	</table>
+  </div>
+</div>

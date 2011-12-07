@@ -36,7 +36,7 @@ if(typeof(Topic)=='undefined') Topic = {};
 Topic.list = function() { return $('div#chat_queue div#question_bin ul:first'); };
 Topic.queued_link = function() { return $('a#queued_topics_link'); };
 Topic.queued_loading = function() { return $('div#chat_queue_loading'); };
-Topic.add = function(html) {
+Topic.add = function(html) {  
   Topic.list().append(html);                  
 };
 Topic.remove = function(element_id) {
@@ -67,9 +67,8 @@ Topic.discuss = function(topic) {
   $topic = $(topic);
   
   $.ajax({ url:$topic.attr('href'), type:'POST', dataType:'json',
-            beforeSend:function() {
-
-            },
+            // data: 'authenticity_token=' + AUTH_TOKEN,
+            data: 'authenticity_token=' + encodeURIComponent( AUTH_TOKEN ),
             success:function(data) {
               if(data["errors"]){
                 // $this.find('div.error').remove();
@@ -202,6 +201,7 @@ Topic.vote = function(topic) {
   $parent = $this.parent();
   
   $.ajax({  url:$this.attr('href'), type:'POST', dataType:'json',
+            data: 'authenticity_token=' + encodeURIComponent( AUTH_TOKEN ),
             beforeSend:function() {
               $parent.html("Saving Vote...");
             },
@@ -366,6 +366,11 @@ Post.poll = function() {
   //           }
   //         });
   
+  // Don't needless poll if there is no active topic
+  if(Post.polling_link().attr('href') === undefined) {
+    return true;
+  }
+  
   // JSON attempt...good for starters  
   PostQueue.queue(function() {
     $.ajax({ url:Post.polling_link().attr('href'), type:'GET', dataType:'json',
@@ -422,6 +427,7 @@ function set_send_notification_emails()  {
     $('a.rsvp_link').live('click', function(event) {
       $this = $(this);
       $.ajax( { url:$this.attr('href'), dataType:'html', type:'POST',
+                data: 'authenticity_token=' + encodeURIComponent( AUTH_TOKEN ),
                 success:function(data) {
                   $this.replaceWith(data);
                 }
@@ -433,7 +439,8 @@ function set_send_notification_emails()  {
 	  // DELETE for a topic (only in show window)
     $('a.delete_topic').live('click', function(event) {
       $this = $(this);
-      $.ajax( { url:$this.attr('href'), dataType:'html', type:'POST', data:"_method=delete",
+      $.ajax( { url:$this.attr('href'), dataType:'html', type:'DELETE', data:"_method=delete",
+                data: 'authenticity_token=' + encodeURIComponent( AUTH_TOKEN ),
                 success:function(data) {
                   $this.parent().parent().replaceWith(data);
                 }

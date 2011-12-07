@@ -1,0 +1,23 @@
+form#filter_form { margin-bottom: 10px; }
+	<%= clear_after('form#filter_form') %>
+
+	dl#filter_options { float: left; margin: 5px 0 0; overflow: hidden; }
+	dl#filter_options dt,
+	dl#filter_options dd { display: inline; margin: 0 -5px 0 5px; border-right: 1px solid #666; padding: 0 6px; font-size: 9px; white-space: nowrap; }
+	dl#filter_options dt { margin: 0 -5px 0 0; border-right: 0; padding: 0; font-weight: bold; font-size: 11px; }
+	dl#filter_options dd.selected { padding-left: 20px; background: url(<%= image("arrow_right.png") %>) 5px center no-repeat; font-weight: bold; }
+		dl#filter_options dd a,
+		dl#filter_options dd span { font-size: 11px; }
+
+	div.sort_options { float: right; }
+
+	<%= clear_after('avatars') %>
+
+	dl#avatar_filter { float: left; margin: 5px 0 0; overflow: hidden; width: 200px;}
+	#first_avatar_filter { border-right: 1px solid #666; }
+	dl#avatar_filter dt,
+	dl#avatar_filter dd { display: inline; margin: 0 -5px 0 5px; padding: 0 6px; font-size: 9px; white-space: nowrap; }
+	dl#avatar_filter dt { margin: 0 -5px 0 0; border-right: 0; padding: 0; font-weight: bold; font-size: 11px; }
+	dl#avatar_filter dd.selected { padding-left: 20px; background: url(<%= image("arrow_right.png") %>) 5px center no-repeat; font-weight: bold; }
+		dl#avatar_filter dd a,
+		dl#avatar_filter dd span { font-size: 11px; }

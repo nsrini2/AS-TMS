@@ -1,0 +1,8 @@
+<div class="video_results">
+	<h2 class="explore_header"><%= params[:query] ? "Video results for <strong>#{@query}</strong>" : "All #{site_name} Videos" %></h2>
+ 
+	<%= render({:partial => "/videos/list", :locals => { :videos => @videos }}) -%>
+</div>
+
+<%= render_pagination @videos %>
+ 

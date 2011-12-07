@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="*"
+	width="240" height="100">
+	<mx:Text width="100%" styleName="deleteText" text="Are you sure you want to delete?"/>
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Button label="Yes" id="submit" />
+		<mx:Button label="No" id="cancel" />
+	</mx:HBox>
+</mx:VBox>

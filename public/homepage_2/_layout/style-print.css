@@ -1,0 +1,18 @@
+/*--------------------------------------------------------------------------------------------- 
+
+	Print Css Stylesheet
+
+---------------------------------------------------------------------------------------------*/
+
+body{ padding:0; width:100%; }
+#wrap{ width:100%; margin:0; border:none; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none; }
+#header, #footer{ border:none; }
+
+ul#dropdown-menu, #search, #footer, .hr, .hr-alt, .side-nav, .pdf, .pagination{ display:none; }
+
+.inner-page-title{ padding:40px 0; }
+.inner-page-title h2{ float:none; width:100%; }
+.inner-page-title p{ float:none; width:100%; margin-left:0; }
+
+#contact-info{ list-style:none; }
+#contact-info li{ float:left; margin-right:20px; }

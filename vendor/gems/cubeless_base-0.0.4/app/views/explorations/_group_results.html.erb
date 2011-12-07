@@ -1,0 +1,6 @@
+<h2><%= params[:query] ? "Group results for \"#{@query}\"" : "Groups: All #{site_name} Groups" %></h2>
+<div class="group_results">
+	<%= filter_sort_controls('Group') %>
+	<%= render :partial => 'groups/groups' %>
+	<%= render_pagination @groups %>
+</div>

@@ -1,27 +1,2 @@
-<% content_for(:ask_selected, "selected"); content_for(:page_title, 'Ask Community')-%>
-
-<% form_for :question, 
-            :url => questions_path, 
-            :html => { :id => 'ask_a_question', 
-                       :class => 'disable_buttons_on_submit html5',
-											 :multipart => true } do |f| -%>
-	<%= f.hidden_field :open_until, :value => (Date.today + 30).strftime("%B %d, %Y") -%>
-	<fieldset class="ask_question">
-		<h3>Question</h3>
-		<dl>
-			<dt><%= f.label(:category, "Category") -%></dt>
-			<dd><%= f.select(:category, Question.categories, { :prompt => 'Select a category'}, :tabindex => "2") -%></dd>
-			<br />
-			<dt><%= f.label(:question, "Question")%></dt>
-			<dd><%= f.text_area :question, :rows => 10, :cols => 40, :tabindex => 3, :maxlength => '4000', :placeholder => "Ask Question" -%></dd>
-			<dt class="closing_date">This question will close to new answers on 
-				<span id="question_close_date"><%= (Date.today + 30).strftime("%B %d, %Y") -%></span>
-			</dt>
-		</dl>
-		<div class="buttons">
-			<input type="submit" name="commit" value="Ask Question" class="button large" tabindex="4">
-			<input type="reset" name="cancel" value="Cancel" class="button large light close" tabindex="5">
-		</div>
-	</fieldset>
-
-<% end -%>
+<%# I needed to make new a partial -- this is in case something references the new template %>
+<%= render :partial => 'questions/new' %>

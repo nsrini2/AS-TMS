@@ -1,0 +1,8 @@
+<h2>Latest Questions</h2>
+<div id="latest_questions">
+    <%= render :partial => 'questions/questions', :locals => {:questions => @new_questions} %>
+</div>
+<h2>Unanswered Questions</h2>
+<div id="unanswered_questions">
+    <%= render :partial => 'questions/questions', :locals => {:questions => @unanswered}%>
+</div>

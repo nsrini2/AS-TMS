@@ -3,6 +3,6 @@
 <p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
 	<p>A new blog post has been created for the group <strong><%= link_from_email(@group.name, group_url(@group)) %></strong>.</p>
 	<p><strong><%= link_from_email(@blog_post.title,  group_blog_url(@group) )%></strong><br />
-		&#8220;<%= truncate @blog_post.text.gsub(/<\/?[^>]*>/, ""), 256 %>&#8221;</p>
+		&#8220;<%= truncate @blog_post.text.gsub(/<\/?[^>]*>/, ""), { :length => 256, :omission => "..." } %>&#8221;</p>
 	<p><%= link_from_email('Click here', group_blog_url(@group)) %> to view it.</p>
 </font></p>	

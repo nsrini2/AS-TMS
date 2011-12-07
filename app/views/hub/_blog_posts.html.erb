@@ -5,7 +5,7 @@
 		<p class="when">posted on <%= short_date blog_post.created_at %> by <%= blog_post.profile.full_name %></p>
 		<div class="text">
 		  <%#= link_to truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 140, "&hellip;&nbsp;"), blog_post_path(blog_post) %>
-		  <%= textilize truncate(blog_post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), 140, "&hellip;&nbsp;") %>
+		  <%= textilize truncate(blog_post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), { :length => 140, :omission => "..." }) %>
 		
 		  <p class="actions">
 		    <%= link_to "Read", blog_post_path(blog_post), :class => "button little" %>

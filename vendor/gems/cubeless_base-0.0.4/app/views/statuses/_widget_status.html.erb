@@ -1,0 +1,7 @@
+<div class="event" style="clear: both;">
+  <%= primary_photo_for(status.profile, :size => '20x20', :hide_status_indicator => true, :hide_sponsor_sash => true) -%>
+  <div class="body">
+    <span><%= link_to(status.profile.screen_name, profile_path(:id => status.profile_id)) %></span>
+    <span><%= status.body %></span>
+  </div>
+</div>

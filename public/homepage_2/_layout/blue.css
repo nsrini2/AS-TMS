@@ -1,0 +1,20 @@
+/* 
+	skin - blue
+*/
+
+a{ color:#0E75B6; }
+
+#wrap{ border-color:#0188C2; }
+
+#slideshow ul li .slidetext{ background-color:#0996CE; }
+	.slidetext h2, .slidetext h3{ color:#ffffff; }
+	.slidetext h2 a, .slidetext h3 a{ color:#ffffff; }
+	.slidetext p{ color:#ffffff; }	
+
+.inner-page-title{ background-color:#0996CE; }
+	.inner-page-title h2{}
+	.inner-page-title p{ color:#ffffff; }
+
+ul#dropdown-menu li.current > a{ color:#0E75B6; }
+
+

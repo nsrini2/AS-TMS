@@ -1,0 +1,18 @@
+<div class="question list_item <%= cycle("odd", "even") %>" id="<%= dom_id(status) %>">
+	
+	<%= link_to_avatar_for(status.profile) %>
+
+  <div class="details">
+  	<div class="item_text">
+  	  <%= status.body %>
+  	</div>
+  	<p>
+  	  <%= pretty_datetime status.created_at %> by <%= link_to_author status %>
+  	</p>
+  	
+  	<% if @profile && @profile == current_profile %>
+  	  <%= link_to "Delete", profile_status_path(@profile, status),  :class=>"modal delete" %>
+  	<% end %>
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+div.photo_wrapper { position: relative; }
+	div.photo_wrapper img.online_now_indicator { position: absolute; right: -2px; bottom: -2px; }
+	div.photo_wrapper img.sponsor_indicator { position: absolute; bottom: -2px; left: -4px; }
+	div.photo_wrapper img.group_icon { position: absolute; right: -4px; bottom: -4px; }
+
+div.avatar_cloud {  }
+	<%= clear_after('div.avatar_cloud') %>
+	div.avatar_cloud div.photo_wrapper { float: left; margin: 4px; }
+
+
+div.avatar_large { background: #fff; float: left; width: 195px; height: 198px; padding: 7px 0; margin: 0 10px; text-align: center; display: inline; }
+	div.avatar_large div.photo_wrapper { float: none; }

@@ -1,0 +1,9 @@
+<h2>Editing Widget</h2>
+
+<% form_for(@widget, :html => { :class => "admin_form" }, :builder => AdminFormBuilder) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <div class="buttons">
+    <%= f.submit "Update", :class => "button" %>
+  </div>
+<% end %>

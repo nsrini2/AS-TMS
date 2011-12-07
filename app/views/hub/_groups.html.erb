@@ -23,7 +23,7 @@
   			  Founded on <%= short_date(group.created_at) %>
   			</p>
   			<p class="description">
-  			  <%= truncate(group.description, 200) %>
+  			  <%= truncate(group.description, { :length => 200, :omission => "..." }) %>
   			</p>
 			<% end %>
 

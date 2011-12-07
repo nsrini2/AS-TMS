@@ -1,0 +1,16 @@
+<% if @company_question_tab_selected =='selected' %>
+	<div class="list_action_button" >
+		<%= link_to("Ask a Question", new_companies_question_path) %>
+	</div>
+<% end -%>
+
+<% content_for(:page_title, 'Questions') -%>
+<h2>Questions <%=@questions_title unless @questions_title.nil?%></h2>
+<div class="listform">
+	<%= category_filter_sort_controls('Question') %>
+</div>
+<div id="list">		
+	<%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries})%>
+	<%#= OLD -> render_pagination @question_summaries %>
+	<%= will_paginate @question_summaries %>	
+</div>

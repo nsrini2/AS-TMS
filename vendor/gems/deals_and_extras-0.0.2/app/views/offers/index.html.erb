@@ -1,0 +1,25 @@
+<div id="dealsTable">
+
+    <ul id="search_deals" class="deal">
+      
+        <%= render :partial => 'offer', :collection => @offers %>
+    </ul>
+
+</div>
+
+<div id="pageNavigation">
+
+    <%= will_paginate @offers %>
+    <%= page_entries_info @offers %>
+
+</div>
+
+<%= javascript_include_tag "searchDeals.js" %>
+<script type="text/javascript">
+    var switchTo5x=false;
+</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">
+    stLight.options({publisher:'f19e4608-3e1a-4991-b352-a428d5468d9e'});
+    stButtons.locateElements();
+</script>

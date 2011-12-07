@@ -1,0 +1,97 @@
+/* link that fires a modal/popup */
+a.modal { padding-right: 10px; background: url(/images/overlay.gif) right 60% no-repeat; }
+
+/* popup styles */
+.popup { width: 425px; border: 3px solid <%= @theme_colors['primary_color'] %>; padding: 0; background: <%= @theme_colors['primary_color'] %>; zoom: 1; }
+	.popup .ui-dialog-titlebar { display: none; }
+	.popup .ui-dialog-content { position: relative; padding: 16px; border: 1px solid #000; <%= border_radius('5px') %> background: #ff9; }
+		.popup .ui-dialog-content h3 { margin-top: -5px; margin-bottom: 18px; }
+		.popup .ui-dialog-content a.close { position: absolute; top: 13px; right: 20px; color: <%= @theme_colors['link_color'] %>; font-weight: bold; }
+		.popup .ui-dialog-content img.icon { float: left; margin-right: 12px; }
+
+/* form popup styles */
+.form_popup {  }
+	.form_popup .ui-dialog-content {  }
+		.form_popup .ui-dialog-content form {  }
+			.form_popup .ui-dialog-content form dl { margin: 0; }
+				.form_popup .ui-dialog-content form dl dt { margin-bottom: 2px; font-weight: bold; }
+				.form_popup .ui-dialog-content form dl dd { margin: 0 0 5px; }
+					.form_popup .ui-dialog-content form dl dd textarea { width: 383px; height: 75px; }
+			.form_popup .ui-dialog-content form div.buttons { margin: 12px 0 0; text-align: center; }
+				.form_popup .ui-dialog-content form div.buttons input { display: inline; margin: 0 5px; }
+
+/* shady dialog */
+.shady {  }
+	.shady .ui-dialog-content {  }
+
+
+/* question edit dialog */
+.edit_question {  }
+	.edit_question .ui-dialog-content {  }
+		.edit_question .ui-dialog-content form {  }
+			.edit_question .ui-dialog-content form dl {  }
+				.edit_question .ui-dialog-content form dl dt {  }
+				.edit_question .ui-dialog-content form dl dd {  }
+				.edit_question .ui-dialog-content form dl dt.closing_date { zoom: 1; position: relative; margin: 12px 0; text-align: center; }
+					.edit_question .ui-dialog-content form dl dt.closing_date span { font-weight: bold; }
+					.edit_question #question_close_datepicker { position: absolute; bottom: 0; right: 20px; display: none; }
+
+
+/* answer edit dialog */
+.edit_answer {  }
+	.edit_answer .ui-dialog-content {  }
+
+
+/* question refer dialog */
+.refer_question {  }
+	.refer_question .ui-dialog-content {  }
+		.refer_question .ui-dialog-content form {  }
+			.refer_question .ui-dialog-content form dl {  }
+					#question_referral_name, #invitation_profile_name { width: 385px; }
+
+
+
+/* assign award dialog */
+.assign_award {  }
+	.assign_award .ui-dialog-content {  }
+		.assign_award .ui-dialog-content form {  }
+			.assign_award .ui-dialog-content form dl { margin: 0 0 0 45px; }
+				.assign_award .ui-dialog-content form dd input { width: 310px; }
+
+
+/* reply to answer dialog */
+.reply_answer {  }
+	.reply_answer .ui-dialog-content {  }
+		.reply_answer .ui-dialog-content form {  }
+
+
+/* edit reply to answer dialog */
+.edit_reply {  }
+	.edit_reply .ui-dialog-content {  }
+
+
+/* new reply to group_post dialog */
+.reply_talk {  }
+	.reply_talk .ui-dialog-content {  }
+
+
+/* confirmation dialogs */
+.confirmation {  }
+	.confirmation .ui-dialog-content { text-align: center; }
+		.confirmation .ui-dialog-content h3 { font-size: 14px; }
+		.confirmation .ui-dialog-content div.buttons { margin: 12px 0 0; text-align: center; }
+			.confirmation .ui-dialog-content div.buttons input { display: inline; margin: 0 5px; }
+
+
+/* notice and error dialogs */
+#flash_notice { display: none; }
+.notice_dialog { border: 1px solid #4cab07; <%= box_shadow('2px 2px 3px #888') %> padding: 5px; width: 500px; font-size: 12px; }
+	.notice_dialog #flash_notice { display: block; }
+	.notice_dialog .ui-dialog-titlebar { display: none; }
+	.notice_dialog .ui-dialog-content { <%= border_radius('5px') %> padding: 3px 10px 3px 80px; background: #d3ffb0 url(<%= global_image("messageIcon.png") %>) 15px 15px no-repeat; }
+
+#flash_error { display: none; }
+.error_dialog { border: 1px solid #f00; <%= box_shadow('2px 2px 3px #888') %> padding: 5px; width: 500px; font-size: 12px; }
+	.error_dialog #flash_error { display: block; }
+	.error_dialog .ui-dialog-titlebar { display: none; }
+	.error_dialog .ui-dialog-content { <%= border_radius('5px') %> padding: 3px 10px 3px 80px; background: #fdd9d9 url(<%= global_image("errorIcon.png") %>) 15px 15px no-repeat; }

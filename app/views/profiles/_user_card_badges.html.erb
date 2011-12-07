@@ -1,0 +1,20 @@
+<table class="badges">
+  <tr>
+    <% if badges.empty? %>
+      <td>No Badges Awarded.</td>
+    <% else %>
+      <% badges.each_with_index do |badge,idx| %>
+        <td>
+          <%= award_image_for(badge, :full, :height => 75, :width => 75) %>
+          <p>
+            <%= badge.title %>
+          </p>
+        </td>
+      
+        <% if idx!=0 && idx%3==0 %>
+          </tr><tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tr>
+</table>

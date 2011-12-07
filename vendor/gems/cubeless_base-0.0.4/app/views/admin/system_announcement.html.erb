@@ -1,0 +1,35 @@
+<%
+model = @object.class.to_s.underscore
+model = "#{model}s" if model.last!='s'
+content_for(:page_title, "Manage #{params[:action].gsub('_', ' ').titleize}")
+content_for(model, '')
+-%>
+ 
+	<h3>Post a System Announcement</h3>
+	<% form_for model, :html => {:class => 'user_input_frame'}, :url => {:controller => model, :action => :create}  do |f|  -%>
+		<p class="help">Update the system announcement on the <a href="/">hub page</a>.</p>
+		<%= text_area :object, :content, :rows => nil, :cols => nil, :class => 'fckeditor' -%>
+		<p>Start and end dates are optional.</p>
+		<p>If none are given, the announcement will start immediately and run indefinitely.</p>
+		<fieldset id="dates">
+			<dl>
+				<dt><label for="object_start_date">Start Date</label></dt>
+				<dd><input type="text" name="object[start_date]" id="object_start_date" value="<%= @object.start_date.strftime("%B %d, %Y") if @object.start_date %>" class="datepicker start"></dd>
+			</dl>
+			<dl>
+				<dt><label for="object_end_date">End Date</label></dt>
+				<dd><input type="text" name="object[end_date]" id="object_end_date" value="<%= @object.end_date.strftime("%B %d, %Y") if @object.end_date %>" class="datepicker end"></dd>
+			</dl>
+		</fieldset>
+		<div class="buttons">
+			<input type="submit" class="large button" value="Save" name="commit">
+			<input type="submit" class="large button light" value="Remove" name="commit">
+		</div>
+	<% end -%>
+ 
+<div class="content_management content">
+	<h3>The current content is:</h3>
+	<div class="fck_styled">
+		<%= @object.content -%>
+	</div>
+</div>

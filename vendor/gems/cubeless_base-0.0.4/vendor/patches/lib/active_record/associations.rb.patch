@@ -1,0 +1,34 @@
+--- /associations.rb	Wed Jan 09 12:33:01 2008
++++ /associations.rb	Mon Jan 14 14:49:09 2008
+@@ -1247,7 +1247,14 @@
+ 
+         def construct_finder_sql_with_included_associations(options, join_dependency)
+           scope = scope(:find)
+-          sql = "SELECT #{column_aliases(join_dependency)} FROM #{(scope && scope[:from]) || options[:from] || quoted_table_name} "
++          #sql = "SELECT #{column_aliases(join_dependency)} FROM #{(scope && scope[:from]) || options[:from] || quoted_table_name} "
++
++          #patch from http://dev.rubyonrails.org/attachment/ticket/8212/eager-calculated-columns.patch
++          select = (scope && scope[:select]) || options[:select]
++          sql  = "SELECT #{select.to_s + ', ' if select}#{column_aliases(join_dependency)} "
++          sql << "FROM #{(scope && scope[:from]) || options[:from] || quoted_table_name} "
++          #end patch
++
+           sql << join_dependency.join_associations.collect{|join| join.association_join }.join
+  
+           add_joins!(sql, options, scope)
+@@ -1536,7 +1543,14 @@
+             end
+ 
+             def extract_record(row)
+-              column_names_with_alias.inject({}){|record, (cn, an)| record[cn] = row[an]; record}
++              #column_names_with_alias.inject({}){|record, (cn, an)| record[cn] = row[an]; record}
++
++              #patch
++              extracted = column_names_with_alias.inject({}){|record, (cn, an)| record[cn] = row[an]; record}
++              extracted.merge!(row.reject{|k, v| k =~ /^t\d+_r\d+$/}) if aliased_prefix == "t0"
++              return extracted
++              #end patch
++
+             end
+ 
+             def record_id(row)

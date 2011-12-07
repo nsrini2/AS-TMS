@@ -1,0 +1,14 @@
+xml.groups :type => "array" do
+  @groups.each do |group|
+    xml.group do
+      xml.id group.id
+      xml.name group.name
+      xml.tags group.tags
+      xml.type (group.is_public? ? "Public" : "Invite Only")
+      xml.description group.description
+      xml.created_at group.created_at
+      xml.member_count group.group_memberships_count
+      xml.activity_status group.activity_status
+    end
+  end
+end

@@ -13,8 +13,8 @@ should_show = question_render_toggle_list(show)
 <% end %>
 
 <% avatar_content_for_question(should_show) do %>
-	<%=link_to_avatar_for(question.profile, :reference => question.id)%>
-<%end %>
+	<% link_to_avatar_for(question.profile, :reference => question.id) %>
+<% end %>
 <div class="details">
 	<div class="item_text">
 		<%= question_link_content_for(should_show, question) %>
@@ -42,7 +42,7 @@ should_show = question_render_toggle_list(show)
 		link_to_watch_for(question),
 		(render_abuse(question) if shady_content(should_show)),
 		(link_to_edit_question(question) if question_author_or_shady_admin_content(question)),
-		(link_to_delete_question(question))
+		(link_to_delete_question(question) if question_author_or_shady_admin_content(question))
 	]) -%>
 </div>
 <div class="action_buttons">
@@ -50,9 +50,9 @@ should_show = question_render_toggle_list(show)
 		<%= answer_button_content(should_show) { link_to_answer question } -%>
 		<%= refer_button_content(should_show) { link_to_refer question } -%>
 		<%= remove_match_and_referral_button_content(should_show) { link_to_remove_match_and_referral_for(questions_for, question) } -%>
-		<%= close_button_content(should_show) { link_to_close question } -%>
+		<% close_button_content(should_show) { link_to_close question } -%>
 	<% end -%>
-	<% closed_question_content question do %>
+	<% unless question.is_open? -%>
 		<div class="closed">Closed to new answers</div>
 	<% end -%>
 	<%= remove_watched_question_button_content(should_show){ link_to('Remove', remove_bookmark_path(question), :class => 'button little light') } -%>

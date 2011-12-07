@@ -58,7 +58,7 @@
 	</div>	
 	<div class="footer-right">
 			<div id="google_translate_element"></div>
-			<% unless Rails.env.development? -%>
+			<% if Rails.env.production? && !de_request -%>
 				<script>
 				function googleTranslateElementInit() {
 				  new google.translate.TranslateElement({

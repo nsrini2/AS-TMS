@@ -1,0 +1,33 @@
+<p>
+  <b>Label:</b>
+  <%=h @site_profile_question.label %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%=h @site_profile_question.question %>
+</p>
+
+<p>
+  <b>Example:</b>
+  <%=h @site_profile_question.example %>
+</p>
+
+<p>
+  <b>Completes profile:</b>
+  <%=h @site_profile_question.completes_profile %>
+</p>
+
+<p>
+  <b>Matchable:</b>
+  <%=h @site_profile_question.matchable %>
+</p>
+
+<p>
+  <b>Site profile question section:</b>
+  <%=h @site_profile_question.site_profile_question_section_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_profile_question_path(@site_profile_question) %> |
+<%= link_to 'Back', site_profile_questions_path %>

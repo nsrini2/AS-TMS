@@ -1,0 +1,123 @@
+
+theme: 'theme_4'
+
+logo_file: "devstream_logo.png"
+
+favicon: "devstream_favicon.ico"
+
+site_name: "DevStream"
+
+feedback_email: "devstream@sabre.com"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: false
+
+question_categories: ["Formats", "Workflow", "Faults", "Platform", "Getting Started"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Job Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Company Name"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Location"
+    completes_profile: false
+    matchable: false
+  - question: profile_5
+    label: "Work Phone"
+    completes_profile: true
+    matchable: true
+  - question: profile_6
+    label: "Mobile Phone"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'email'
+  ]
+  business_card: [
+    'profile_1',
+    'profile_2',
+    'profile_4'
+  ]
+
+profile_complex_questions:
+  - title: "Out & About"
+    questions:
+      - question: question_1
+        label: "What travel segments have you worked in?"
+        example: "I own a travel agency and was a TFP developer for an airline.  I also wrote a booking engine for a small chain of B&Bs."
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Where do you live now?"
+        example: "e.g. Italy, Texas, USA"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "Where did you get your education?"
+        example: "e.g. University of Texas, US Air Force"
+        completes_profile: true
+        matchable: true
+
+  - title: "On the Job"
+    questions:
+      - question: question_5
+        label: "What are your special skills?"
+        example: "I rule at Fortran and crocheting tea cozies.  I also build miniature fusion reactors in my spare time."
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What do you really do for a living?"
+        example: "I build wonderful widgets while working with wild weirdos in Walla Walla, Washington."
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What would you like to do when you grow up?"
+        example: "Be independently wealthy and look down on all the little people from my penthouse apartment high atop the 4th floor of the Feed and Grain building."
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What is your favorite job responsibility?"
+        example: "Finding ways to do things that others have said can’t be done."
+        completes_profile: true
+        matchable: true
+
+
+  - title: "Things that make my socks roll up and down"
+    questions:
+      - question: question_9
+        label: "What gets you up in the morning?"
+        example: "Knowing I’m working for the best boss in the world; me!"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "What are your favorite online networking and collaboration sites?"
+        example: "e.g. webdeveloper.com, forums.devshed.com, www.crochetville.com"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What Sabre development tools are you working with now or have you worked with in the past?"
+        example: "e.g. JCSAPI, Sabre QIK Developer, SDS and MySabre API."
+        completes_profile: true
+        matchable: true

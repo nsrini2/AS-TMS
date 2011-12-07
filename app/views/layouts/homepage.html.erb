@@ -5,58 +5,74 @@
   	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   	<link rel="shortcut icon" href="/images/as_favicon.ico" type="image/x-icon">
   	<title>AgentStream</title>
-  	<link rel="stylesheet" href="/themes/agentstream/_css/style.css" />
-  	<link rel="stylesheet" href="/themes/agentstream/_css/naked.css" />
+  	
+  	<% if false %>
+    	<link rel="stylesheet" href="/themes/agentstream/_css/style.css" />
+    	<link rel="stylesheet" href="/themes/agentstream/_css/naked.css" />
+  	<% end %>
+  	
+  	<style>
+    	/* notice and error dialogs */
+      #flash_notice { display: none; }
+
+      .notice_dialog #flash_notice { display: block; }
+
+      .notice_dialog .ui-dialog-titlebar { display: none; }
+
+      #flash_notice ul.notice_messages { margin-bottom: 0; list-style: none; }
+
+      #flash_notice ul.notice_messages li { margin: 5px 0; }
+
+      #flash_error { border: 3px solid #990000; display: none; }
+
+      .error_dialog #flash_error { display: block; }
+
+      .error_dialog #flash_error h2 { margin-top: 16px; }
+
+      .error_dialog .ui-dialog-titlebar { display: block; position: relative; top: 32px; text-align: right; margin: 40px 5px 10px; width: 405px; }
+  	</style>
+  	
+  	<%= render "/layouts/homepage_2/head" %>
+  	
     <%= render :partial => "shared/ga" %>
+    <%= render :partial => "shared/mint" %>
+    <%= render :partial => "shared/crazyegg" %>
+    <%= render :partial => "shared/userfly" %>
+    
   	<script src="http://connect.facebook.net/en_US/all.js"></script>
   </head>
   <body>
 
-    <div id="page">
-    	<div id="welcome-page">
-      	<div id="welcome-header">
-      		<div id="logo">
-      			<%= link_to image_tag ("/images/welcome/AS_HomePageHeaderLogoText.png", 
-      									:alt => "AgentStream", :border =>0, :class => "text-logo"), {:controller => :account, :action => :welcome} %>
-      		</div>
-      		<div id="login">
-      			<%= link_to image_tag ("", :alt => "Login", :border =>0 ), login_account_path %>
-      		</div>								
-      	</div>
+    <%= render "/layouts/homepage_2/body" %>
 
-	      <%= @content_for_content ? yield(:content) : yield %>
+    <div id="fb-root"></div>
+    <script>
+    	// these have to be in page AFTER <div id="fb-root"></div> 
+    	// Initialize facebook elements	 
+    	FB.init({
+    	   appId  : <%=FB_APP_ID%>,
+    	   status : true, // check login status
+    	   cookie : true, // enable cookies to allow the server to access the session
+    	   xfbml  : true  // parse XFBML
+    	 });
 
-      	<%= render :partial => "/account/welcome_footer" %>
-      </div>
-
-      <div id="fb-root"></div>
-      <script>
-      	// these have to be in page AFTER <div id="fb-root"></div> 
-      	// Initialize facebook elements	 
-      	FB.init({
-      	   appId  : <%=FB_APP_ID%>,
-      	   status : true, // check login status
-      	   cookie : true, // enable cookies to allow the server to access the session
-      	   xfbml  : true  // parse XFBML
-      	 });
-
-      	// logout of facebook
-      	<% if @facebook_logout %>
-      		FB.getLoginStatus(function(response) {
-      		  if (response.session) {
-      				// User logged into FB
-      		    FB.logout(function(response){
-      					// cb : window.location = "/account/login?logout=true";
-      				});
-      		  }
-      		});
-      	<% end %>	
-      </script>
-    		
-    	<%= render :partial => "/shared/notices" %>
+    	// logout of facebook
+    	<% if @facebook_logout %>
+    		FB.getLoginStatus(function(response) {
+    		  if (response.session) {
+    				// User logged into FB
+    		    FB.logout(function(response){
+    					// cb : window.location = "/account/login?logout=true";
+    				});
+    		  }
+    		});
+    	<% end %>	
+    </script>
+  		
+  	<div id="page">	
+  	  <%= render :partial => "/shared/notices" %>
+      <%= javascript_include_merged( :base ) -%>
     </div>
-
-    <%= javascript_include_merged( :base ) -%>
 
   </body>
 </html>

@@ -1,0 +1,60 @@
+<%= stylesheet_link_tag "/stylesheets/jquery.selectBox.css" %>
+
+<div id="filter_header" class="results_title_box">
+  <div class="results_title">
+    <h4 id="filter_header_line1">Results</h4>
+    <h5 id="filter_header_line2">Refine Results</h5>
+  </div>
+  <div class="results_title_arrow"></div>
+</div>
+<form id="filter_form">
+  <fieldset>
+    <label for="filter_origin">Origin:</label> 
+    <select id="filter_origin" name="filter_origin">
+        <option value="">All</option>
+        <% @cities.each do |city| %>
+            <option value='<%= city %>'><%= city.to_s %></option>
+        <% end %>
+    </select>
+
+    <label for="filter_destination" class="filter_form_label">Destination:</label> 
+    <select id="filter_destination" name="filter_destination">
+        <option value="">All</option>
+        <% @cities.each do |city| %>
+            <option value='<%= city %>'><%= city.to_s %></option>
+        <% end %>
+    </select> 
+    <% if false %>
+      <button id="filter_uncheck_all" type="button" class="linkButton">Uncheck All</button> 
+    <% end %>
+    <label for="filter_includes" class="filter_form_label">Include: </label>
+    
+    <div id="filter_includes" align="left">
+        <% @offer_types.each do |offer_type| %>
+            <input type="checkbox" id="filter_include_<%= offer_type.offer_type %>" name="filter_includes[]" value="<%= offer_type.id %>" checked='checked'><label for="filter_include_<%= offer_type.offer_type %>"><%= offer_type.offer_type.titlecase %></label><br>
+        <% end %>
+    </div>
+     <br />
+
+     <div id="filter_dates" class="filter_form_label">
+       <%= label 'date_filter', '', 'Dates:'%>
+       
+       <div id="filter_dates_1">
+       
+         <input id="start_date" type="text" name="date_filter[start_date]" placeholder="mm/dd/yyyy"/> to
+       </div>
+
+       
+       <div id="filter_dates_2">
+         <input id="end_date" type="text" name="date_filter[end_date]" placeholder="mm/dd/yyyy"/>
+       </div>
+       
+     </div>
+    </fieldset>
+
+    <div id="filter_clear_and_search" align="center">
+        <br/>
+        <button class="imgButton" id="filterSearchButton" style="background-color: #E6F1F3;"><%= image_tag "/images/de/search_btn.png", :alt => "Search" %></button><br/>
+        <button id="filter_clear_search" type="button" class="linkButton">Clear Search</button>
+    </div>
+</form>

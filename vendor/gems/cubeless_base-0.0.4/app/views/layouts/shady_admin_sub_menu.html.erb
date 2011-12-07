@@ -1,0 +1,12 @@
+<% content_for(:shady_admin_tab_selected, 'selected') -%>
+
+<% content_for :admin_tabs_submenu do %>
+  <%=
+  sub_menu_for([
+  	sub_menu_li_for(shady_admin_admin_path, :text => "Shady Admin") ,
+  	sub_menu_li_for(shady_history_admin_path, :text => "Shady History")
+  ])
+  -%>
+<% end %>
+
+<%= render :file => 'layouts/_admin_tabs' %>

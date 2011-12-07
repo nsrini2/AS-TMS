@@ -1,0 +1,57 @@
+<button id="showMore" class="linkButton show_more_style" type="button">+Show More</button>
+
+<div id="details" class="details_style">
+    <%#= image_tag offer.static_map.to_s, :class => "small_map" %>
+    
+    <%= offer.dynamic_map %>
+  
+    <div class="deal_details_description">
+        <p>
+          <strong>Details:</strong><br/>
+          <%= offer.description_html %>
+        </p>
+        <!-- <div class="search_deal_book_by_share"> -->
+        <% if offer.offer_type.offer_type.to_s[/deal/i] %>
+          <p>
+            <strong>Dates:</strong><br/>
+            Book by <%= offer.sell_discontinue_date.inspect %>
+          </p>
+        <% end %>
+        <% unless offer.commission_discount.blank? %>
+          <p>
+            <strong>Agency Commission:</strong><br/>
+            <%= offer.commission_discount %>
+          </p>
+        <% end %>
+        <% unless offer.redemption_policies.blank? %>
+          <p>
+            <strong>Redemption:</strong><br/>
+            <%= offer.redemption_policies %>
+          </p>
+        <% end %>
+        <!-- </div> -->
+        <div class="deal_detail_review_options">
+            <button class="linkButton deal_view_reviews" type="button" value="<%= offer.id %>">View Reviews (<%= offer.reviews.verified.length %>)</button>
+            <br />
+            <% if logged_in? %>
+              <% unless current_user.reviewed_offers.include?(offer) %>
+                  <button class="linkButton deal_write_review" type="button" value="<%= offer.id %>">Write a Review</button>
+              <% end %>
+            <% else %>
+              <button class="linkButton deal_write_review" type="button" value="<%= offer.id %>">Write a Review</button>
+            <% end %>
+        </div>
+        <div class="deal_detail_share_options" style="width: 200px; line-height: 0px;">
+            
+            <a href="/reports/?id=<%= offer.id %>" class='download_pdf_link stButton'><%= image_tag("/images/de/share_pdf_small.gif", :class => "stLarge") %></a>
+
+            <%= link_to image_tag("/images/de/share_print_small.gif", :class => "stLarge"), offer_path(offer), {:target => "_blank", :class => "stButton"} %>
+            <span  class='st_twitter_large' ></span>
+            <span  class='st_facebook_large' ></span>
+            
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    
+    <div style="clear:both;"></div>
+</div>

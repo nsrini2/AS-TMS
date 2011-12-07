@@ -1,0 +1,99 @@
+<%
+  def link_to_audit_filter(filter_id,filter_value,value)
+    link_to_if (filter_value.blank? and !value.blank?), value || '&nbsp', 'javascript:void(0);', :onclick => "audit_filter('#{filter_id}','#{value}')"
+  end
+%>
+<div id="audit">
+    <script>
+    	function audit_filter(id,value) {
+    		$(id).value = value;
+			if (id=='query_auditable_id') {
+				$('query_action').value = '';
+				$('query_attribute').value = '';
+			}
+    		$('filter').click();
+    	}
+    </script>
+
+    <%remote_form_for :query, :url => '/audit/query' do%>
+	<table cellpadding="4" cellspacing="0" border="0" id="searchTable">
+		<tr>
+			<th>Type</th><th>ID</th><th>Action</th><th>Attribute</th><th>Who ID</th>
+		</tr>
+		<tr>
+			<td>
+		        <select id="query_auditable_type" name="query[auditable_type]">
+		        	<option value="">&nbsp;</option>
+    		        <%=options_for_select(data.types,form.auditable_type)%>
+    		    </select>
+			</td>
+			<td>
+		        <%=text_field :query, :auditable_id, :value => form.auditable_id, :size => 6 %>
+			</td>
+			<td>
+		        <select id="query_action" name="query[action]">
+            	<option value="">&nbsp;</option>
+            	<%=options_for_select(data.actions,form.action)%>
+        		</select>
+			</td>
+			<td>
+		        <select id="query_attribute" name="query[attribute]">
+		    	        <option value="">&nbsp;</option>
+						<%=options_for_select(data.attributes,form.attribute)%>
+        		</select>
+			</td>
+			<td>
+				<%=text_field :query, :who_id, :value => form.who_id, :size => 6 %>
+			</td>
+			<td>
+				<%=submit_tag 'filter!', :id => 'filter'%>
+			</td>
+		</tr>
+        <%if data.can_comment%>
+		<tr>
+            <td colspan="4"><%=text_field_tag :comment%><input type="submit" value="add comment"/></td>
+        </tr>
+		<%end%>
+	</table>
+    <%end%>
+
+	<%if (form.errors.on_base)%>
+		<div><b><%=form.errors.on_base%></b></div>
+	<%end%>
+
+    <%if data.audits.size > 0%>
+        <table class="border_table" width="96%" cellspacing="0" cellpadding="3">
+            <caption>Audit History</caption>
+            <tbody>
+        	<tr>
+        	   <th>time</th>
+			   <%if true || form.auditable_id.blank?%><th>id</th><%end%>
+			   <%if true || form.action.blank?%><th>action</th><%end%>
+			   <%if true || form.attribute.blank?%><th>attribute</th><%end%>
+			   <th>value</th>
+			   <th>screen name</th>
+			   <%if true || form.who_id.blank?%><th>who_id</th><%end%>
+        	</tr>
+        	<%data.audits.each do |audit|%>
+        	<tr class="<%= cycle("even", "odd") -%>">
+        		<td nowrap><%=pretty_datetime(audit.created_at)%></td>
+				<%if true || form.auditable_id.blank?%><td nowrap><%=link_to_audit_filter 'query_auditable_id', form.auditable_id, audit.auditable_id %></td><%end%>
+				<%if true || form.action.blank?%><td nowrap><%=link_to_audit_filter 'query_action', form.action, audit.action %></td><%end%>
+				<%if true || form.attribute.blank?%><td nowrap><%=link_to_audit_filter 'query_attribute', form.attribute, audit.attribute %></td><%end%>
+				<td width="100%">
+				<%if audit.attribute=='>GenericAttachment'
+					photo = GenericAttachment.find(audit.value.to_i)
+				%>
+					<img src="<%=photo.public_filename%>"/>
+				<%else%>
+	        		<%=audit.value.blank? ? '&nbsp;' : h(audit.value) %>
+				<%end%>
+				</td>
+        		<td nowrap><a href="/profiles/<%=audit.who_id%>"><%=audit.who_screen_name%></a></td>
+				<%if true || form.who_id.blank?%><td nowrap><%=link_to_audit_filter 'query_who_id', form.who_id, audit.who_id %></td><%end%>
+        	</tr>
+        	<%end%>
+	    	</tbody>
+        </table>
+    <%end%>
+</div>

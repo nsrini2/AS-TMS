@@ -159,3 +159,42 @@
       #groups .nav li { display: block; float: left; margin: 0 20px 0 0; }
         #groups .nav li.active { border-bottom: 1px solid #4a6970; }
       #groups .nav a { color: #4a6970; font-weight: normal;  }*/
+.tac_facebox {
+  margin-left: 100px;
+  margin-top: 30px;
+}
+      
+.tac_facebox .popup {
+  width: 500px !important;
+  h1 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }  
+  h4 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  div.buttons {
+    margin-top:5px;
+  }
+  h3 {
+    line-height: 15px;
+    margin-bottom: 5px;
+  }
+  h3.tagline {
+    margin-bottom: 15px;
+  }
+  hr {
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+  center.none h4 {
+    height: 0px;
+    margin: 0;
+  }  
+  form {
+    .facebox_sign_in_label {
+      float:left;
+    }
+  }    
+}

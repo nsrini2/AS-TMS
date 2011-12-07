@@ -1,0 +1,14 @@
+<%= filter_sort_controls('Question') %>
+
+<div align="center">
+	 <%= empty_questions_image_for @question_summaries %>
+</div>
+
+<% my_question_content_for questions do%>
+	<div id="questions">
+		<%= render( :partial => 'questions/questions', :locals => {:questions => questions, :questions_for => @profile, :show => {:avatar => false, :close => true, :referred_to => true, :referred_to_groups => false}} )%>
+	</div>
+	<div id="paging">
+		<%= render_pagination questions %>
+	</div>
+<%end%>

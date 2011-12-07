@@ -1,0 +1,28 @@
+
+.my_folder_edit_deal
+{
+}
+.my_folder_title_editor
+{
+}
+.my_folder_save_changes
+{
+}
+.my_folder_cancel_changes
+{
+}
+
+#myFolder h2.prompt {
+  margin: 0;
+  padding: 10px 10px 0;
+}
+
+#myFolder h2.prompt a {
+  text-decoration: underline;
+}
+  
+.folder_login {
+  font-size: 0.9em;
+  font-style: italic;
+  padding-top: 6px;
+}

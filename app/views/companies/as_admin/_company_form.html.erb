@@ -1,8 +1,4 @@
 <% form_for company, :url => url, :html => { :multipart => true, :class => "html5", :id => "company_form", "accept-charset" => "utf-8"} do |f| %>
-	<div id="errors" class="error" >
-		<!-- This is a place holder DIV where any error messages about this form will be placed -->
-		<%= error_messages_for 'company' %>
-	</div>
 	<p>
 		<%= f.label :name %></br>
 	  <%= f.text_field :name, :size => '32', :placeholder => "Name" %><br />

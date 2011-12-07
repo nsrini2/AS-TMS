@@ -1,0 +1,336 @@
+/* line 1, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+h2.page_title {
+  margin: 10px 0 0 10px;
+}
+
+/* line 5, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list_action_button {
+  float: right;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 20px;
+}
+/* line 10, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list_action_button a {
+  text-decoration: underline;
+}
+
+/* line 15, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .content {
+  margin: 0 10px 10px;
+  padding: 10px 10px 1px;
+  background: #d5eae6;
+}
+
+/* line 16, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .photo_wrapper {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+/* line 18, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .close2 {
+  position: relative;
+  float: right;
+}
+
+/* line 20, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform p, .listform a, .listform dt, .listform dd {
+  display: inline;
+  padding: 0 10px;
+}
+
+/* line 21, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dl {
+  float: right;
+}
+
+/* line 22, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dd {
+  border-right: 1px solid #676767;
+}
+
+/* line 23, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dl dd:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+/* line 25, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div.categories {
+  display: inline;
+}
+
+/* line 26, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div {
+  margin: 10px 0;
+}
+
+/* line 27, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div strong {
+  float: left;
+  width: 80px;
+}
+
+/* line 29, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.tabs-header {
+  margin: 0;
+  padding: 10px 10px 1px;
+  background: #d5eae6;
+}
+
+/* Lists */
+/* line 32, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list {
+  position: relative;
+  background-color: #eff8fa;
+  border-top: 1px solid #c4d7dc;
+  padding: 10px 10px;
+}
+
+/* line 33, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.blog_post_p a, div.blog_post_p a:visited {
+  color: #900;
+  /*    text-decoration: underline;*/
+}
+
+/* line 38, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.blog_post_p a:hover {
+  /*    color: #900 ;*/
+  text-decoration: underline;
+}
+
+/* line 42, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .photo_wrapper {
+  float: left;
+  margin: 0px 20px 20px 0;
+}
+
+/* line 43, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details {
+  position: relative;
+  display: block;
+  float: left;
+  width: 575px;
+  margin-top: 0px;
+}
+
+/* line 44, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details p {
+  margin-bottom: 1em;
+}
+
+/* line 45, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details p.meta {
+  margin-bottom: 0.8em;
+  font-size: 11px;
+  color: #555;
+}
+
+/* line 46, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .action_buttons {
+  position: relative;
+}
+
+/* Same as H3 */
+/* line 51, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details div.item_text, #list .details div.item_text a {
+  color: #4A6970;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* line 57, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.list_item:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Content */
+/* line 60, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content {
+  position: relative;
+  background-color: #eff8fa;
+  border-top: 1px solid #c4d7dc;
+}
+
+/* line 61, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content .photo_wrapper {
+  float: left;
+  margin: 20px;
+}
+
+/* line 62, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content .details {
+  display: block;
+  float: left;
+  width: 575px;
+  margin-top: 20px;
+}
+
+/* Groups */
+/* line 65, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+.group_item h3 {
+  margin-bottom: 0;
+}
+
+/* Questions */
+/* line 68, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item .question_text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4A6970;
+}
+
+/* line 74, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top {
+  clear: both;
+}
+
+/* line 78, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top h4 {
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+/* line 83, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item .details {
+  float: left;
+  width: 65%;
+}
+
+/* line 87, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item div.photo_wrapper img {
+  width: 120px;
+  height: 120px;
+}
+
+/* line 91, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item div.action_buttons {
+  float: right;
+  width: 15%;
+}
+
+/* line 96, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details ul.action_list li, div.single_item .details ul.action_list li {
+  display: inline;
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+/* line 101, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details ul.action_list li a, div.single_item .details ul.action_list li a {
+  color: #90b4bc;
+  text-decoration: underline;
+}
+
+/* line 105, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.action_buttons a, div.single_item div.action_buttons a {
+  display: block;
+}
+
+/* line 108, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.action_buttons a.best {
+  display: inline;
+}
+
+/* line 111, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.vote_wrap a {
+  display: inline;
+}
+
+/* line 115, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#answer_form fieldset {
+  position: relative;
+  clear: both;
+  margin-top: 10px;
+}
+
+/* line 120, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list #answers .answer {
+  clear: both;
+}
+
+/* line 125, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.answer:after, div.single_item:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Blog Posts */
+/* line 128, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details {
+  width: 470px;
+}
+
+/* line 131, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details h3, #list .blog_post_item .details h3 a {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+/* line 135, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details .summary {
+  margin-bottom: 10px;
+}
+
+/* line 138, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details ul.action_list {
+  margin-top: 5px;
+}
+
+/* line 141, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details ul.action_list li span.tags {
+  display: block;
+}
+
+/* line 144, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#blog_meta h4 {
+  margin-bottom: 0;
+}
+
+/* line 147, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#blog_meta h4:first-child {
+  margin-bottom: 1em;
+}
+
+/* Ratings */
+/* line 152, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.rate {
+  position: relative;
+  float: right;
+  margin-top: 14px;
+}
+
+/* Comments */
+/* line 159, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div#comments {
+  clear: both;
+}
+
+/* line 162, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div#comments:before {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Status */
+/* line 165, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .status_results .list_item {
+  clear: both;
+}
+
+/* line 169, ../../../../../app/stylesheets/themes/agentstream/lists.scss */
+#filter_options .selected {
+  font-size: 1.2em;
+  font-weight: bold;
+}

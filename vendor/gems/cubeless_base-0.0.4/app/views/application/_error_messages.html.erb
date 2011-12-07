@@ -1,0 +1,10 @@
+<div class="flash_content">
+	<h2><%= pluralize(flash[:errors].size, "error needs", "errors need") %> to be fixed.</h2>
+	<strong>There were problems with the following:</strong>
+	<ul>
+	<% for error in flash[:errors] -%>
+		<li><%= error %></li>
+	<% end -%>
+	</ul>
+</div>
+<% flash[:errors] = nil%>

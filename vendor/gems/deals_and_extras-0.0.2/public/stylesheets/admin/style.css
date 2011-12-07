@@ -1,0 +1,297 @@
+﻿/*
+
+Title:      Admin Styles
+Author:     Daniel Marino
+Revised:		July 2009
+
+*/
+
+
+/* Elements
+----------------------------------------------------------------------------------------------------*/
+
+a {
+	color: #1b67b2;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+body {
+	background: #f4f4f4 url(/images/admin/navigation-bg.gif) 0 100px repeat-x;
+	color: #333;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+img {
+	display: block;
+}
+
+ol, ul {
+	list-style: decimal;
+	margin: 0 0 15px 22px;
+	padding: 0;
+}
+
+p {
+	margin-bottom: 15px;
+}
+
+ul {
+	list-style: disc;
+	margin-left: 18px;
+}
+
+
+/* Header
+----------------------------------------------------------------------------------------------------*/
+
+#header {
+	background: #1e1e1e;
+	height: 100px;
+}
+
+#header h1 {
+	left: 10px;
+	position: absolute;
+	top: 41px;
+}
+
+#header h1 a {
+	color: #fff;
+	font-size: 30px;
+	text-decoration: none;
+	text-shadow: #000 1px 1px 1px;
+}
+
+
+/* Global Navigation
+----------------------------------------------------------------------------------------------------*/
+
+#global_nav {
+	line-height: 100px;
+	position: absolute;
+	right: 10px;
+	top: 0;
+}
+
+#global_nav li {
+	float: left;
+	list-style: none;
+}
+
+#global_nav li a {
+	border-right: 1px solid #666;
+	color: #ccc;
+	font-size: 12px;
+	padding: 0 5px;
+}
+
+#global_nav li:last-child a {
+	border-right: none;
+}
+
+
+/* Main
+----------------------------------------------------------------------------------------------------*/
+
+#title {
+	background: #1e1e1e;
+	margin-bottom: 30px;
+}
+
+#title h1 {
+	color: #fff;
+	font-size: 22px;
+	margin: 15px;
+}
+
+.box {
+	background: #fff;
+	border: 1px solid #e4e4e4;
+	margin-bottom: 30px;
+	padding: 15px;
+}
+
+.box h2 {
+	color: #000;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.box h3 {
+	color: #1b57aa;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.box h4 {
+	color: #000;
+	font-size: 14px;
+	font-weight: normal;
+	margin-bottom: 15px;
+}
+
+
+/* Tabs
+----------------------------------------------------------------------------------------------------*/
+
+.idTabs {
+	list-style: none;
+	margin-bottom: 15px;
+}
+
+.idTabs li {
+	display: inline;
+	padding: 0 10px 0 0;
+	margin: 0 10px 0 0;
+	border-right: 1px solid #c4c4c4;
+}
+
+.idTabs li a.selected {
+	color: #ca0002;
+}
+
+.idTabs li.last {
+	border-right: none;
+}
+
+.idTabs li a {
+	color: #999;
+	text-decoration: none;
+}
+
+.idTabs li a:hover {
+	text-decoration: underline;
+}
+
+.idTabs li a:active,
+.idTabs li a:visited {
+	outline: none;
+}
+
+
+/* Pagination
+----------------------------------------------------------------------------------------------------*/
+
+#pagination {
+	margin: 0 0 15px;
+	padding: 0;
+	border: none;
+}
+
+#pagination li {
+	border:0; 
+	margin:0; 
+	padding:0;
+	list-style:none;
+}
+
+#pagination li, #pagination a {
+	margin-right:2px;
+	display: inline;
+}
+
+#pagination .previous-off,
+#pagination .next-off {
+	color:#999;
+	display:block;
+	float:left;
+	font-weight:bold;
+	padding:0 4px;
+}
+	
+#pagination .next a,
+#pagination .previous a {
+	border:none;
+	font-weight:bold;
+}
+	
+#pagination .active {
+	color:#000000;
+	font-weight:bold;
+	display:block;
+	float:left;
+	padding:0 4px;
+}
+
+#pagination a:link, 
+#pagination a:visited {
+	display:block;
+	float:left;
+	padding:0 4px;
+	text-decoration:underline;
+}
+
+#pagination a:hover {
+	text-decoration:none;
+}
+
+
+/* Aside
+----------------------------------------------------------------------------------------------------*/
+
+#aside {
+	color: #666;
+	font-size: 11px;
+	margin-top: 18px;
+}
+
+#aside li {
+	margin-bottom: 10px;
+}
+
+#aside ul {
+	list-style: none;
+	margin: 0;
+}
+
+.side-box {
+	margin-bottom: 30px;
+}
+
+.side-box h3 {
+	color: #222;
+	font-size: 16px;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+
+
+/* Search
+----------------------------------------------------------------------------------------------------*/
+
+#search {
+	margin-bottom: 15px;
+}
+
+#search-text {
+	padding: 3px 5px;
+}
+
+
+/* Footer
+----------------------------------------------------------------------------------------------------*/
+
+#footer {
+	clear: both;
+	background: #1e1e1e;
+	color: #999;
+	height: 40px;
+}
+
+#footer p {
+	margin: 0;
+	padding: 0 20px;
+	line-height: 40px;
+	font-size: 11px;
+}
+
+#footer a {
+	color: #ccc;
+}

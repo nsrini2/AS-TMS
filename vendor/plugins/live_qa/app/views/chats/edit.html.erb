@@ -1,0 +1,37 @@
+<div class="list">
+	<div class="list_action_button" >
+	  <%= link_to "Show all", chats_path %>
+	</div>
+
+	<h2 class="page_title">Update <%= @chat.title %></h2>
+	<div class="description">
+		<div class="content">
+			<div id="new_live_qa" class="">
+				<% form_for(@chat, :html => {:class => "html5", :id=> "new_live_chat_from"}) do |f| %>
+					<div class="form_fields">
+						<%= f.hidden_field :host_id %>
+						<%= f.hidden_field :start_at %>
+						<%= f.text_field :title, :size => 40, :placeholder => "Title" %><br />
+						<div class="datepicker_wrapper">
+							<div class="future_datepicker"></div>
+						</div>	
+						<div class="action_buttons">
+							<%= link_to "Cancel", chats_path, :class=> 'button light' %> 
+							<%= f.submit "Update", :name => 'submit_button button', :class=>"button large" %>
+							<input type="checkbox" id="email_notifications" name="send_notification" value="true">Notify Attendees
+						</div>	
+						<div class="details">
+							<%= f.text_area :description, :rows => 3, :cols => 60,  :placeholder => "Description" %><br />
+							<%= f.label "Start Time: "%>
+							<%= select_tag('time[hour]', options_for_select((1..24), @hour.to_i ), :id => "start_hour" )%> : 
+							<%= select_tag('time[minutes]', options_for_select(['00', '15', '30', '45'], @minutes), :id => "start_minutes" )%>
+							<%#= select("time", "am_pm", ['AM', 'PM'].collect { |h| h })%>
+							<%=  time_zone_select( "time", "zone", ActiveSupport::TimeZone.us_zones, :default => @zone) %><br />
+							<%= f.label "Duration: "%>
+							<%= f.select(:duration, @durations.collect { |d| [d[:label], d[:value]] },	{:selected => @chat.duration || 60 }) %><br />
+						<div class="details">
+					</div>	
+				<% end %> 
+		</div>
+	</div>
+</div>

@@ -1,15 +1,17 @@
 require_cubeless_engine_file(:controller, :questions_controller)
 
 class QuestionsController
-  
   before_filter :check_for_company_question, :only => [:show]
   
   def new
     # for some reason I have to restart Rails for this change to take affect - is this because I am 'freedom punching?'
     @question = Question.new(params[:question])
     respond_to do |format|
-      format.js { render(:template => 'questions/new', :layout=> 'layouts/_popup') }
-      format.html { render :template => 'questions/new', :layout=> false }
+      # format.js { render :template => 'questions/new', :layout=> '/layouts/_popup' }
+      # format.js { render :template => 'questions/new', :layout=> '_popup'  }
+      # format.js { render :layout => '_popup' }
+      format.js { render(:partial => 'questions/new', :layout => '/layouts/popup') }
+      format.html { render :template => 'questions/new', :layout => nil }
       # format.html { render :layout => false }
     end
   end
@@ -57,9 +59,10 @@ class QuestionsController
     end       
   end
   
+  
   protected
   def check_for_company_question
-    @question = Question.unscoped(params[:id])
+    @question = Question.unscoped.find(params[:id])
     if @question.company?
       redirect_to companies_question_path(@question) and return
     end

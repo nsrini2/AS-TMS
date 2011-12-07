@@ -1,6 +1,6 @@
 require_cubeless_engine_file :model, :notifier
 require "#{Rails.root}/vendor/plugins/live_qa/app/models/notifier"
-
+# require "#{Rails.root}/vendor/gems/cubeless_base-0.0.4/app/models/notifier"
 
 class Notifier 
   helper :email
@@ -14,6 +14,7 @@ class Notifier
   
   def group_blog_post(blog_post)
     @subject = self.truncate("New Blog: #{blog_post.title}", :length => 40, :omission => '...')
+    # when blog_post.company? this fails
     self.body = {:blog_post => blog_post, :group => blog_post.blog.owner}
   end
   
@@ -57,6 +58,18 @@ class Notifier
     self.body = { :comment => comment }
   end
   
+  def new_comment_on_company_blog_post(comment)
+    @recipients = comment.owner.profile.email
+    @subject = "#{comment.owner.title} just received a new comment"
+    self.body = { :comment => comment }
+  end
+  
+  def company_blog_post(blog_post)
+    @subject = self.truncate("New Blog: #{blog_post.title}", :length => 40, :omission => '...')
+    # why group?
+    self.body = {:blog_post => blog_post, :group => blog_post.blog.owner}
+  end
+  
   def new_user(user)
     @subject = "A new user has signed up for #{Config[:site_name]}"
     self.body = {:user => user}
@@ -81,7 +94,15 @@ class Notifier
     prepare_password_retrieval(retrieval) if retrieval.item == 'password'
   end
 
-private  
+  def sabre_red_sso_welcome(user)
+    # Send SRW SSO Welcome email stuff here
+    @subject = "Welcome to AgentStream!" 
+    @recipients = user.email
+    self.body = { :login => user.login, :screen_name => user.profile.screen_name,
+                  :password_set_link => url_for(:controller => 'retrievals', :action => 'password_reset', :id => user.id, :auth => user.temp_crypted_password ) }
+  end
+
+# private  
   def prepare_welcome_email(user)
     if user.profile.has_role?(Role::SponsorMember)
       subject = "Welcome to #{Config[:site_name]}"
@@ -93,7 +114,8 @@ private
     end
     if user.crypted_password.blank?
       user.generate_temp_crypted_password(7.days.from_now)
-      user.save_without_validation
+      # user.save_without_validation
+      user.save!
     end
     @subject = subject
     @recipients = user.email

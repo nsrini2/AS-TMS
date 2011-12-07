@@ -181,6 +181,9 @@ div.single_item div.action_buttons {
 #blog_meta h4:first-child {
 	margin-bottom: 1em;
 }
+#blog_meta h4 a:hover {
+  text-decoration: underline;
+}
 
 /* Ratings */
 #list div.rate {

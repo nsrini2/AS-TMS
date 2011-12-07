@@ -7,5 +7,5 @@
 
 <%= render :partial => "/companies/as_admin/company_form", 
 					 :locals => {:company => @company, :button => "Update", 
-					 :url => "/admin/update_company/#{@company.id}" } %>
+					 :url => update_company_admin_path(:id => @company) } %>
 	

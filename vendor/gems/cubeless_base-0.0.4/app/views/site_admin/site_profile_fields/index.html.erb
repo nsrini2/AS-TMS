@@ -1,0 +1,92 @@
+<style>
+	th {
+		text-align: left;
+	}
+	
+	.admin_form {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+</style>
+
+<h2>Profile Fields</h2>
+
+<div class="admin_form">
+
+	<% if SiteProfileField.fields_available? %>
+		<%= link_to 'Add Field', new_site_admin_site_profile_field_path %>
+		<i>(<%= SiteProfileField.fields_available %> still available)</i>
+	<% else %>
+		<i>You have used all the available profile fields.</i>
+	<% end %>
+
+	<br/><br/>
+
+	<table>
+	  <tr>
+	    <th>Label</th>
+	    <th>Identifier</th>
+	    <th>Completes profile?</th>
+	    <th>Matchable?</th>
+	  </tr>
+
+	<% for site_profile_field in @site_profile_fields %>
+	  <tr>
+	    <td style="width: 150px"><%=h site_profile_field.label %></td>
+	    <td style="width: 100px;"><%=h site_profile_field.question %></td>
+	    <td style="width: 125px"><%=h site_profile_field.completes_profile %></td>
+	    <td style="width: 75px"><%=h site_profile_field.matchable %></td>
+
+			<% if site_profile_field.question == "email" %>
+				<td colspan=2><i>The Email Field is Required</i></td>
+			<% elsif site_profile_field.sticky? %>			
+				<td><%= link_to 'Edit', edit_site_admin_site_profile_field_path(site_profile_field) %></td>
+	    	<td><i>This field is required but its label is editable</i></td>
+			<% else %>
+	    	<td><%= link_to 'Edit', edit_site_admin_site_profile_field_path(site_profile_field) %></td>
+	    	<td><%= link_to 'Destroy', site_admin_site_profile_field_path(site_profile_field), :confirm => 'Are you sure?', :method => :delete %></td>
+			<% end %>
+	  </tr>
+	<% end %>
+	</table>
+
+</div>
+
+<br />
+
+<h2>Profile Page Fields</h2>
+
+<div class="admin_form">
+	<%= link_to "Edit Fields and Order", edit_profile_page_site_admin_site_profile_fields_path %>
+	
+	<br/>
+	
+	<ol>
+		<% @stuck_profile_page.each do |spp| %>
+			<li><%= spp.label %></li>
+		<% end %>
+		<% @site_profile_page.each do |spp| %>
+			<li><%= spp.label %></li>
+		<% end %>
+	</ol>
+</div>
+
+
+<br />
+
+<h2>Biz Card Fields</h2>
+
+<div class="admin_form">
+	<%= link_to "Edit Fields and Order", edit_biz_card_site_admin_site_profile_fields_path %>
+	
+	<br/>
+	
+	<ol>
+		<% @stuck_biz_card.each do |sbc| %>
+			<li><%= sbc.label %></li>
+		<% end %>
+		<% @site_biz_card.each do |sbc| %>
+			<li><%= sbc.label %></li>
+		<% end %>
+	</ol>
+</div>

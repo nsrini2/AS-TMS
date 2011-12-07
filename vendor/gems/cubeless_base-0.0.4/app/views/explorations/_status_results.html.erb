@@ -1,0 +1,14 @@
+<div class="status_results">
+	<h2 class="explore_header">
+		<%= !params[:query].blank? ? "Update results for query: <strong>#{@query}</strong>" : "All #{site_name} Updates" %>
+	</h2>
+	<%= filter_control('Status') unless params[:query].blank? %>
+
+
+  <div class="explore_results">
+    <%= render :partial => "/statuses/list", :locals => { :statuses => @statuses} %>
+  </div>
+  
+  <%= render_pagination @statuses %>
+  
+</div>

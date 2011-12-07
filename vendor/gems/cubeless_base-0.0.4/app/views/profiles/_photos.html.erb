@@ -1,0 +1,19 @@
+<div class="alternate_photos">
+	<%= render_alternate_photos_for(@profile, @profile.profile_photos.reject { |p| @selected_photo && p == @selected_photo }) -%>
+</div>
+<div class="avatar_large profile_container">
+	<%= image_tag(photo_path_for(@profile, @selected_photo, :thumb_large), :alt => "", :size => '175x175', :class => 'photo avatar') %>
+	<% if @profile.editable_by?(current_profile) %>
+	<ul class="action_links">
+		<% if !@selected_photo.nil? %>
+			<%= link_to("change", edit_profile_photo_path(@profile, @selected_photo), :class => "modal change_photo") -%>
+			<%= link_to("delete", profile_photo_path(@profile, @selected_photo), :class => "modal delete") -%>
+			<%= link_to("make default", make_primary_profile_photo_path(@profile,@selected_photo), :class => "make_default") unless @selected_photo.is_primary? -%>
+		<% else %>
+			<%= link_to("upload", new_profile_photo_path(@profile), :class => "modal new_photo") -%>
+		<% end %>
+	</ul>
+	<% elsif @profile.online_now? %>
+		<div id='active_users'><%= image_tag("/images/onlineNow.gif", :size => "21x17", :alt => '') %> Online Now</div>
+	<% end %>
+</div>

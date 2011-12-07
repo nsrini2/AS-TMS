@@ -1,0 +1,27 @@
+<%
+require 'enumerator'
+-%>
+<div class="profile_results">
+<%= "<h2 class=\"result_header\">Results for \"<strong>#{@query}</strong>\"</h2>" if @query -%>
+<%= sort_control('Profile') %>
+	<% @profile_results.each do |profile| %>
+	<div class="profile <%= cycle('odd','even') %>">
+		<%= link_to_avatar_for(profile, :thumb => :thumb_80) %>
+		<dl class="profile_info">
+			<dt class="name"><%= profile.screen_name.blank? ?  "No Name Provided" : link_to(profile.screen_name, profile) %></dt>
+			<dd class="title"><%= profile.profile_1.blank? ? "No #{profile_question_label_for :profile_1} Provided" : replace_newline_with_br(auto_link(profile.profile_1)) %></dd>
+			<dd class="tagline"><%= profile.profile_2.blank? ? "No #{profile_question_label_for :profile_2} Provided" : replace_newline_with_br(auto_link(profile.profile_2)) %></dd>
+			<dd class="contact_info">
+				<h3>Contact Information</h3>
+				<% contact_info_order(profile)['business_card'].each do |item| %>
+					<dl>
+						<dt><%= profile_question_label_for item %>:</dt>
+						<dd><%= profile.send(item).blank? ? "No #{profile_question_label_for item} Provided" : replace_newline_with_br(auto_link(profile.send(item))) %></dd>
+					</dl>
+				<% end -%>
+			</dd>
+		</dl>
+	</div>
+	<% end -%>
+</div>
+<%= render_pagination @profile_results %>

@@ -1,0 +1,12 @@
+<% content_for(:title, "Thanks for the answer!") -%>
+<% form_for [@answer, @reply] do |f| -%>
+	<p>Now's your chance to respond directly to the answers you've received. Great for clarification and witty banter!</p>
+	<dl>
+		<dt><label for="replay_text">Reply</label></dt>
+		<dd><%= f.text_area :text, :rows => 6, :cols => 40 -%></dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Submit" class="button medium">
+		<input type="button" name="cancel" value="Cancel" class="button medium light close">
+	</div>
+<% end -%>

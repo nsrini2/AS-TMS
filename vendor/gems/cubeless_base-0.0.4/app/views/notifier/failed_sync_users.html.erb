@@ -1,0 +1,9 @@
+<p>
+	The lastest user sync attempt failed. The details of the job are below:
+</p>
+
+<pre>
+<%=h @user_sync_job.to_xml(:skip_instruct => true, :except => [:data]) -%>
+</pre>
+
+<p align="center">You control the communications you get from us. You can change your <%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.</p>

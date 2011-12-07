@@ -1,0 +1,4 @@
+<% for error in flash[:errors] -%>
+	<li><%= error -%></li>
+<% end -%>
+<% flash[:errors] = nil -%>

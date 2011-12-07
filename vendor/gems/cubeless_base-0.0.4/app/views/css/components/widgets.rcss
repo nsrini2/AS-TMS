@@ -1,0 +1,128 @@
+div.widget { position: relative; margin-bottom: 20px; width: 290px; }
+	div.widget div.header { padding: 4px 7px 4px 0; background: <%= @theme_colors['primary_color'] %> url(<%= image("widget_bar.png") %>) repeat-x; color: #fff; }
+	div.widget.draggable div.header { cursor: move; }
+		<%= clear_after('div.widget div.header') %>
+		div.widget div.header h3 { float: left; margin: 0; padding-left: 5px; font-size: 11px; color: <%= @theme_colors['widget_head_text_color'] %>; }
+		div.widget.draggable div.header h3 { padding-left: 21px; background: url(<%= image("widget_handle.png") %>) left center no-repeat; }
+		div.widget div.header a.toggle { float: right; width: 13px; height: 13px; margin-left: 8px; background: url(<%= image("icon_collapse_widget.png") %>) no-repeat; text-indent: -9999px; overflow: hidden; }
+		div.widget div.header a.refresh { float: right; width: 14px; height: 13px; margin-left: 3px; background: url(<%= global_image("refresh.png") %>) no-repeat; text-indent: -9999px; overflow: hidden;  }
+		div.widget div.header a.refresh { _cursor: hand; _background-image: none; _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='<%= global_image("refresh.png") %>'); }
+		div.widget.collapsed div.header a.toggle { background: url(<%= image("icon_expand_widget.png") %>) no-repeat; }
+		div.widget div.header a.settings { float: right; color: <%= @theme_colors['widget_link_text_color'] %>; }
+		div.widget div.header a.settings:hover { text-decoration: none; color: <%= @theme_colors['widget_link_hover_text_color'] %>;}
+	div.widget div.content {  }
+		div.widget div.loading { background: url(/images/ajax_spinner.gif) no-repeat 50% 50%; }
+	div.widget.collapsed div.content { display: none; }
+
+		div.widget div.content div.list_item { margin: 6px 0 0; padding: 0; }
+			div.widget div.content div.list_item div.photo_wrapper { margin-right: 10px; }
+			div.widget div.content div.list_item div.details { width: 230px; }
+
+
+/* my widget */
+div#app_1 {  }
+	div#app_1 iframe { width: 290px; }
+
+/* other custom user generated widgets */
+div.app_external {  }
+	div.app_external iframe { width: 290px; }
+
+/* latest community question widget */
+div.app_latest_community_question {  }
+	div.app_latest_community_question div.content { padding: 8px 8px 0; }
+		div.app_latest_community_question div.content div.list_item {  }
+			div.app_latest_community_question div.content div.list_item div.details {  }
+		div.app_latest_community_question div.content p.no_questions { color: #777; text-align: center; font-weight: bold; }
+
+
+/* recent notes widget */
+div.app_recent_notes {  }
+
+
+/* hot topics widget */
+div.app_hot_topics {  }
+	div.app_hot_topics div.content { padding: 5px 5px 0; }
+
+
+/* watch list widget */
+div.app_watch_list {  }
+	div.app_watch_list div.content { padding: 8px 8px 0; }
+		div.app_watch_list div.content div.list_item { margin: 6px 0 0; padding: 0; }
+		div.app_watch_list div.content p.no_questions { color: #777; text-align: center; font-weight: bold; }
+
+/* update status widget */
+div.app_updates { z-index: 100; }
+	div.app_updates div.content { padding: 10px; background-color: #ddd; }
+		div.app_updates div.content form {  }
+			div.app_updates div.content form fieldset { position: relative; margin: 0; }
+				div.app_updates div.content form fieldset dl { margin: 0; }
+					div.app_updates div.content form fieldset dl dt { padding-bottom: 3px; }
+					div.app_updates div.content form fieldset dl dd { padding-bottom: 7px; margin: 0; }
+						div.app_updates div.content form fieldset dl dd textarea { width: 264px; height: 50px; }
+					div.app_updates div.content form fieldset dl dt.category { float: left; padding: 3px 5px 0 0; }
+					div.app_updates div.content form fieldset dl dd.category { float: left; }
+					div.app_updates div.content form fieldset dl dt.question { clear: left; }
+				div.app_updates div.content form fieldset div.buttons { margin: 0 0 15px 0; padding: 0; text-align: left; }
+					div.app_updates div.content form fieldset div.buttons input.button { margin: 0;}
+		div.app_updates div.content h3 {
+			margin: 0 0 6px 0;
+		}
+		div.app_updates div.content div.event {
+			margin-bottom: 6px;
+		}
+			div.app_updates div.content div.event div.photo_wrapper {
+				clear: both;
+				float: left;
+				padding: 2px 5px 0 0;
+				width: 20px;
+			}
+			div.app_updates div.content div.event div.body {
+				margin-left: 25px;
+			}
+
+/* ask question widget */
+div.app_ask_a_question { z-index: 100; }
+	div.app_ask_a_question div.content { padding: 10px; background-color: #ddd; }
+		div.app_ask_a_question div.content form {  }
+			div.app_ask_a_question div.content form fieldset { position: relative; margin: 0; }
+				div.app_ask_a_question div.content form fieldset dl { margin: 0; }
+					div.app_ask_a_question div.content form fieldset dl dt { padding-bottom: 3px; }
+					div.app_ask_a_question div.content form fieldset dl dd { padding-bottom: 7px; margin: 0; }
+						div.app_ask_a_question div.content form fieldset dl dd textarea { width: 264px; height: 50px; }
+					div.app_ask_a_question div.content form fieldset dl dt.category { float: left; padding: 3px 5px 0 0; }
+					div.app_ask_a_question div.content form fieldset dl dd.category { float: left; }
+					div.app_ask_a_question div.content form fieldset dl dt.question { clear: left; }
+					div.app_ask_a_question div.content form fieldset dl dt.closing_date { clear: both; position: relative; margin-top: 5px; padding: 0 10px 10px; text-align: center; }
+						div.app_ask_a_question div.content form fieldset dl dt.closing_date span#question_close_date { font-weight: bold; background-color: #ddd; }
+						div.app_ask_a_question div.content form fieldset dl dt.closing_date div#question_close_datepicker { display: none; position: absolute; top: 0; right: 0; }
+				div.app_ask_a_question div.content form fieldset div.buttons { margin: 0; text-align: center; }
+
+
+/* explore profiles widget */
+div.app_explore_profiles {  }
+	div.app_explore_profiles div.content { padding: 5px 5px 0; }
+		div.app_explore_profiles div.content div#avatar_cloud {  }
+			<%= clear_after('div.app_explore_profiles div.content div#avatar_cloud') %>
+			div.app_explore_profiles div.content div#avatar_cloud div.photo_wrapper { float: left; margin: 3px; _display: inline; }
+				div.app_explore_profiles div.content div#avatar_cloud div.photo_wrapper img { display: block; }
+
+
+/* questions with new answers widget */
+div.app_questions_with_new_answers {  }
+	div.app_questions_with_new_answers div.content { padding: 8px 8px 0; }
+		div.app_questions_with_new_answers div.content div.list_item { margin: 6px 0 0; padding: 0; }
+		div.app_questions_with_new_answers div.content p.no_questions { color: #777; text-align: center; font-weight: bold; }
+
+
+/* referred question widget */
+div.app_referred_question {  }
+	div.app_referred_question div.content { padding: 8px 8px 0; }
+		div.app_referred_question div.content div.list_item { margin: 6px 0 0; padding: 0; }
+		div.app_referred_question div.content p.no_questions { color: #777; text-align: center; font-weight: bold; }
+
+
+/* questions i can help answer widget */
+div.app_questions_i_can_help_answer {  }
+	div.app_questions_i_can_help_answer div.content { padding: 8px 8px 0; }
+		div.app_questions_i_can_help_answer div.content div.list_item { margin: 6px 0 0; padding: 0; }
+		div.app_questions_i_can_help_answer div.content p.no_questions { color: #777; text-align: center; font-weight: bold; }

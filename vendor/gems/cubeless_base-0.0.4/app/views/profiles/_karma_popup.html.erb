@@ -1,0 +1,44 @@
+<% content_for(:title, "So what's up with this karma number?") -%>
+<p>It's a simple number to represent your activity within the community. By doing good things like asking great questions,
+answering others' questions, and visiting the site regularly, your Karma will increase. And, as an added bonus, your
+top-notch questions and answers that others vote as positive or as the "Best Answer" will also boost your community Karma.</p>
+      <p>As your Karma increases you'll gain the ability to add additional photos to your profile and receive special recognition and status in the community.</p>
+<p>FYI - What goes around comes around... shady activities can also lower your Karma.</p>
+<p>Here are the details (for all the bean counters out there):</p>
+<table cellpadding="3" class="karma">
+	<tr class="first">
+		<td>Community Status</td>
+		<td>Karma</td>
+		<td>Represented By</td>
+	</tr>
+	<tr class="even">
+		<td>Newbie</td>
+		<td>0-9</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr class="odd">
+		<td>Novice</td>
+		<td>10-19</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr class="even">
+		<td>Member</td>
+		<td>20-39</td>
+		<td><%= render_karma_icons_for_level(1, :large) %></td>
+	</tr>
+	<tr class="odd">
+		<td>Guide</td>
+		<td>40-79</td>
+		<td><%= render_karma_icons_for_level(2, :large) %></td>
+	</tr>
+	<tr class="even">
+		<td>Advanced</td>
+		<td>80-199</td>
+		<td><%= render_karma_icons_for_level(3, :large) %></td>
+	</tr>
+	<tr class="odd">
+		<td>Community Leader</td>
+		<td>200+</td>
+		<td><%= render_karma_icons_for_level(4, :large) %></td>
+	</tr>
+</table>

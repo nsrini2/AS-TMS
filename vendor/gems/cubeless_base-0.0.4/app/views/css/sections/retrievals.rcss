@@ -1,0 +1,14 @@
+form.retrieval { margin: 60px auto; border: 1px solid <%= @theme_colors['ask_answer_border'] %>; <%= border_radius('5px') %> padding: 20px; width: 300px; background-color: <%= @theme_colors['contrast_color'] %>; text-align: left; }
+	form.retrieval h2 { margin-bottom: 18px; }
+	form.retrieval fieldset { margin: 0; }
+		form.retrieval fieldset p { text-align: justify; }
+		form.retrieval fieldset dl { margin: 18px 18px 0; }
+			form.retrieval fieldset dl dt { margin: 0 0 3px; }
+				<%= clear_after('form.retrieval fieldset dl dt') %>
+				form.retrieval fieldset dl dt label { float: left; font-size: 11px; font-weight: bold; }
+				form.retrieval fieldset dl dt span.forgot { float: right; font-size: 10px; color: #666; }
+					form.retrieval fieldset dl dt span.forgot a { color: #666; text-decoration: underline; }
+					form.retrieval fieldset dl dt span.forgot a:hover { color: #333; text-decoration: underline; }
+			form.retrieval fieldset dl dd { margin: 0; }
+				form.retrieval fieldset dl dd input { width: 258px; }
+	form.retrieval div.buttons { margin-top: 18px; text-align: center; }

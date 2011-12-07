@@ -1,4 +1,4 @@
-<% content_for(:page_title, truncate(@question_summary.question, 25)) -%>
+<% content_for(:page_title, truncate(@question_summary.question, { :length => 25, :omission => "..." })) -%>
 <% content_for(:body_class, "question_answers") -%>
 
 <h2 class="page_title">Question and Answers</h2>
@@ -16,7 +16,7 @@
               end
             end
           %>
-        
+        <%#= fail @question_summary.inspect %>
       		<%= render :partial =>'questions/question', :locals => {:question => @question_summary, :show => {:linked_question => false, :close => true}}%>
       		
       		<%# MM2: Put everything back to normal after my big avatar is rendered %>

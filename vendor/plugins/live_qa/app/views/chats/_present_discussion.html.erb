@@ -1,0 +1,30 @@
+<div id="present_container">
+
+  <div id="present_discussion_container" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons">
+    <% if question %>    
+      <h3 class="present ui-accordion-header ui-helper-reset ui-state-active ui-corner-top">
+        <a href="#question_<%= question.id %>_link"><strong>Current Question:</strong> <%= question.title %></a>
+      </h3>
+      <div id="question_<%= question.id %>_container" class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
+        <% @table_id = "present_discussion" %>
+        <%= render :partial => "/chats/discussion", :locals => { :question => question } %>
+        <%= link_to "Update Discussion", poll_chat_topic_posts_path(chat, question, :since_id => newest_post_id), :id => "post_polling_link", :style => "display: none;" %>
+      </div>
+    <% end %>
+  </div>
+  
+  <% if question %>
+  <div id="post_container">
+  	<% form_for(:post, :url => chat_topic_posts_path(chat, question), :html => { :class => "", :id => "new_post_form"} ) do |f| %>
+  		<%= f.hidden_field :author_id, :value => current_profile.id %>
+  		<%= f.hidden_field :topic_id, :value => question.id %>
+    	<div id="post_text">
+    	  <%= f.text_area :body, :rows => 5, :placeholder => "Contribute", :id => "present_discussion_text", :maxlength => "255" %>
+    	</div>
+    	<div id="post_submit">
+  		  <%= f.submit "Post", :name => 'submit_button', :method => "Post", :id => "present_discussion_post", :class => "button light" %>  
+  		</div>
+  	<% end %>	
+  </div>
+  <% end %>
+</div>

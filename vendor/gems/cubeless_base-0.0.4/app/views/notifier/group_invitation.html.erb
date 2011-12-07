@@ -1,0 +1,7 @@
+<p>Come join the fun! <%= @sender.screen_name %> has invited you to join <%= @group.name %>, a group on <%=@site_name%>.</p>
+<p><strong><%= link_to "Visit the group page", @site_base_url + group_path(@group) %> and click 'Join'.</strong></p>
+<p>Interested in other groups? You can always <%= link_to "Explore&nbsp;groups", @site_base_url + groups_explorations_path %>.</p>
+<p><br />Regards,<br /><%=@site_name%></p>
+<p>P.S. If you're not interested in joining this group, just go to your <strong><%= link_to "My&nbsp;Groups&nbsp;tab", @site_base_url + groups_profile_path(@receiver) %></strong> to decline this invitation.</p>
+<p style="padding:20px 0 0 30px;font-size:12px;">You control the communications you get from us. You can change your
+	<%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.<br /></p>

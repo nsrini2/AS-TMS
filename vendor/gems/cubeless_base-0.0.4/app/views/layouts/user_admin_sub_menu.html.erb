@@ -1,0 +1,14 @@
+<% content_for(:user_admin_tab_selected, 'selected') -%>
+
+<% content_for :admin_tabs_submenu do %>
+  <%= 
+  sub_menu_for([
+  	sub_menu_li_for(users_path, :text => 'Manage Users'),
+  	sub_menu_li_for(new_user_path, :text => 'Add User'),
+  	sub_menu_li_for(upload_users_admin_path, :text => 'Upload Users'),
+  	sub_menu_li_for(never_logged_in_users_path, :text => 'Users Never Logged In')
+  ])
+  -%>
+<% end %>
+
+<%= render :file => 'layouts/_admin_tabs' -%>

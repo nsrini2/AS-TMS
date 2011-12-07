@@ -1,0 +1,18 @@
+xml.blog_posts :type => "array" do
+  content = RSS::Maker.make("2.0")
+  @items.each do |post|
+    xml.blog_post do
+      xml.id post.id
+      xml.title post.title
+      xml.text post.text
+      xml.created_at post.created_at
+      xml.posted_by do
+        xml.id post.profile_id
+        xml.name post.profile.full_name
+        xml.url site_base_url + profile_path(post.profile)
+      end
+      @owner = post.blog.owner
+      xml.url site_base_url + polymorphic_path([@owner, :blog])
+    end
+  end
+end

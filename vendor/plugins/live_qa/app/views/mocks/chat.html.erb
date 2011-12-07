@@ -1,0 +1,62 @@
+<h2 class="page_title">Live Chat - Sabre Red Workspace Chat</h2>
+
+<p style="margin-bottom: 0; margin-left: 10px;">
+  <small><%= pretty_datetime Time.now %> - <%= pretty_datetime Time.now.advance(:hours => 1) %></small>
+</p>
+
+<hr style="margin-top: 5px;"/>
+
+
+<div id="chat_queue_container">
+  <div id="chat_queue">
+    <h3>Completed Discussions</h3>
+
+    <div>
+      <ol>
+        <% @past_questions.each do |q| %>
+          <%= render :partial => "queue_question", :locals => { :question => q } %>
+        <% end %>
+      </ol>
+    </div>
+    
+    <h3>Question Bin</h3>
+
+    <div id="question_bin">
+      <% unless @finished %>
+        <div class="accordion">
+          <a href="#new_chat_question_link">Add a Question to the Bin</a>
+          <div id="new_chat_question_container" style="display: none;">
+            <% form_for :question, :url => "/mocks/new_question", :html => { :id => "new_chat_question_form" } do |f| %>
+              <textarea name="question[text]" style="width: 90%;"></textarea>
+              <%= hidden_field_tag "host", @host %>
+              <br/>
+              <input type="submit" value="Submit" />
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <ol>
+        <% @future_questions.each do |q| %>
+          <%= render :partial => "queue_question", :locals => { :question => q } %>
+        <% end %>
+      </ol>
+      
+      <% if @host %>
+        <%= link_to "END CHAT SESSION", "/mocks/end_chat", :confirm => "Are you sure you would like end this chat session?\r\n\r\nThis will close the last discussion and archive this chat.", :id => "end_chat_link" %>
+      <% end %>
+    </div>    
+
+  </div>
+  
+  <div id="chat_participants">
+    <h3><%= @finished ? "Who Attended" : "Who's Here" %></h3>
+    <ul>
+      <% [@past_questions, @present_question].flatten.compact.collect{ |q| q.entries.collect{ |e| e.display_name } }.flatten.uniq.each do |name| %>
+        <li><%= name %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<%= render :partial => "discussions" %>
+

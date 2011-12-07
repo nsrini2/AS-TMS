@@ -1,0 +1,24 @@
+<%
+model = @object.class.to_s.underscore
+model = "#{model}s" if model.last!='s'
+content_for(:page_title, "Manage #{params[:action].gsub('_', ' ').titleize}")
+content_for(model, '')
+-%>
+ 
+	<h3>Set the About Us Content</h3>
+	<% form_for model, :html => {:class => 'user_input_frame'}, :url => { :controller => model, :action => :create } do |f| -%>
+		<p class="help">This content will be on the "<a href="/our_story">About Us</a>" page</p>
+		<%= text_area :object, :content, :rows => nil, :cols => nil, :class => 'fckeditor' -%>
+		<div class="buttons">
+			<input type="submit" class="large button" value="Save" name="commit">
+			<input type="submit" class="large button light" value="Remove" name="commit">
+		</div>
+	<% end -%>
+ 
+<div class="about_us content">
+	<h3>The current content is:</h3>
+	<div class="fck_styled">
+		<%= @object.content -%>
+	</div>
+</div>
+

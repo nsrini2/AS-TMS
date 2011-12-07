@@ -1,0 +1,23 @@
+<p>
+  <b>Label:</b>
+  <%=h @site_profile_field.label %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%=h @site_profile_field.question %>
+</p>
+
+<p>
+  <b>Completes profile:</b>
+  <%=h @site_profile_field.completes_profile %>
+</p>
+
+<p>
+  <b>Matchable:</b>
+  <%=h @site_profile_field.matchable %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_profile_field_path(@site_profile_field) %> |
+<%= link_to 'Back', site_profile_fields_path %>

@@ -1,4 +1,4 @@
-<% content_for(:page_title, "Answer: #{truncate(@question_summary.question, 25)}") -%>
+<% content_for(:page_title, "Answer: #{truncate(@question_summary.question, { :length => 25, :omission => "..." })}") -%>
 
 <div class="list">
   <% if @question_summary.is_open? -%>
@@ -11,7 +11,7 @@
           		<%= render :partial => 'questions/question', :locals => { :show => { :answer => false, :answer_inline => true, :linked_question => false }, :question => @question_summary } -%>
           	</div>
           	<fieldset style="margin-left: 140px;">
-          		<%= f.text_area :answer, :style => "width: 600px; height: 100px;" -%>
+          		<%= f.text_area :answer, :style => "width: 600px; height: 100px;", :value => "" -%>
           		<div class="buttons">
           			<input type="submit" name="commit" value="Answer" class="button large">
           		</div>

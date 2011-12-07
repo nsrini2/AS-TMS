@@ -1,0 +1,120 @@
+<%= form_tag suppliers_offers_path do %>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if current_user.profile.has_role?(Role::CubelessAdmin, Role::ContentAdmin) %>
+            <fieldset class="deal_type">
+                <tr class="">
+                    <td><%= label_tag 'supplier_id', 'Supplier' %></td>
+                    <td><%= select_tag 'supplier_id', options_from_collection_for_select(Supplier.all, 'id', 'supplier_name') %></td>
+                </tr>
+            </fieldset>
+            <% end %>
+            
+            <fieldset class="deal_type">
+                <tr class="">
+                    <td><%= label_tag 'offer[offer_type_id]', 'Offer Type' %></td>
+                    <td><%= select_tag 'offer[offer_type_id]', options_from_collection_for_select(OfferType.all, 'id', 'offer_type', {:selected => 4}) %></td>
+                </tr>
+            </fieldset>
+            
+            <fieldset class='geo_data'>
+
+                <tr class="odd">
+                    <td><%= label_tag 'supplier[address_1]', 'Address 1' %></td>
+                    <td><%= text_field_tag 'supplier[address_1]', '', {:class => 'long'} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'supplier[address_2]', 'Address 2' %></td>
+                    <td><%= text_field_tag 'supplier[address_2]', '', {:class => 'long'} %></td>
+                </tr>
+                <tr class="odd">
+                    <td><%= label_tag 'supplier[address_3]', 'Address 3' %></td>
+                    <td><%= text_field_tag 'supplier[address_3]', '', {:class => 'long'} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'supplier[city]', 'City' %></td>
+                    <td><%= text_field_tag 'supplier[city]', '', {:class => 'long'} %></td>
+                </tr>
+                <tr class="odd">
+                    <td><%= label_tag 'supplier[state_province_id]', 'State' %></td>
+                    <td><%= select_tag 'supplier[state_province_id]', options_from_collection_for_select(StateProvince.all, 'id', 'state'), {} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'supplier[postal_code]', 'Postal Code' %></td>
+                    <td><%= text_field_tag 'supplier[postal_code]', '', {:class => 'long'} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'supplier[country_id]', 'Country' %></td>
+                    <td><%= select_tag 'supplier[country_id]', options_from_collection_for_select(Country.all, 'id', 'country'), {} %></td>
+                </tr>
+
+            </fieldset>
+            
+            <fieldset class="offer">
+                <tr>
+                    <td><%= label_tag 'offer[url]', 'URL' %></td>
+                    <td><%= text_field_tag 'offer[url]', '', {:class => 'long'} %></td>
+                </tr>
+                <tr class="odd">
+                    <td><%= label_tag 'offer[price]', 'Price' %></td>
+                    <td><%= text_field_tag 'offer[price]', '', {:class => 'long'} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'offer[description]', 'Description' %></td>
+                    <td><%= text_area_tag 'offer[description]', '', {:class => 'long', :cols => 67, :rows => 5} %></td>
+                </tr>
+                <tr class="odd">
+                    <td><%= label_tag 'offer[operating_hours]', 'Operating Hours' %></td>
+                    <td><%= text_area_tag 'offer[operating_hours]', '', {:class => 'long', :cols => 67, :rows => 5} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'offer[inclusions]', 'Inclusions' %></td>
+                    <td><%= text_area_tag 'offer[inclusions]', '', {:class => 'long', :cols => 67, :rows => 5} %></td>
+                </tr>
+                <tr class="odd">
+                    <td><%= label_tag 'offer[exclusions]', 'Exclusions' %></td>
+                    <td><%= text_area_tag 'offer[exclusions]', '', {:class => 'long', :cols => 67, :rows => 5} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'offer[notes]', 'Notes' %></td>
+                    <td><%= text_field_tag 'offer[notes]', '', {:class => 'long', :cols => 67, :rows => 5} %></td>
+                </tr>
+                <tr class="odd">
+                    <td><%= label_tag 'offer[redemption_policies]', 'Redemption Policies' %></td>
+                    <td><%= text_area_tag 'offer[redemption_policies]', '', {:class => 'long', :cols => 67, :rows => 5} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'offer[commission_discount]', 'Agency Commission/Discount' %></td>
+                    <td><%= text_field_tag 'offer[commission_discount]', '', {:class => 'long'} %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'offer[sell_effective_date]', 'Start' %></td>
+                    <td><%= datetime_select :offer, 'sell_effective_date' %></td>
+                </tr>
+                <tr>
+                    <td><%= label_tag 'offer[sell_discontinue_date]', 'End' %></td>
+                    <td><%= datetime_select :offer, 'sell_discontinue_date' %></td>
+                </tr>
+                <!-- <tr class="odd">
+                                    <td><%= label_tag 'offer[booking]', 'Booking URL/Phone Number' %></td>
+                                    <td><%= text_field_tag 'offer[booking]', '', {:class => 'long'} %></td>
+                                </tr> -->
+
+            </fieldset>
+
+            <fieldset class="submit">
+                <tr>
+                    <td colspan="2"><%= submit_tag 'Submit' %></td>
+                </tr>
+            </fieldset>
+
+        </tbody>
+    </table>
+<% end %>

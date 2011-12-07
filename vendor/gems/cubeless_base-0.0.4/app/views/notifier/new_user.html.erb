@@ -1,0 +1,7 @@
+<p>A new member, <%="#{@user.profile.first_name} #{@user.profile.last_name}"%>, has signed up to join <%=@site_name%>.</p>
+<p>To activate this user please visit the <a href="<%= users_url %>">user administration page</a>.</p>
+<p>This user will receive a welcome email after activated.</p>
+<p>Thanks,<br />
+<%=@site_name%><br />
+<a href="<%=@site_base_url%>"><%=@site_base_url%></a>
+</p>

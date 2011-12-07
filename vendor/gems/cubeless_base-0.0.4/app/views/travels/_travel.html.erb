@@ -1,0 +1,24 @@
+<tr class="<%= classname %>">
+	<td class="photo">
+		<%#= primary_photo_for(travel.profile, :size => '20x20', :hide_status_indicator => true) %>
+		<%= link_to_avatar_for(travel.profile) %>
+	</td>
+	<td><%= link_to(travel.profile.screen_name, '/profile', :class => 'name') %></td>
+	<td><%= travel.start_location %></td>
+	<td><%= travel.locations %></td>
+	<td class="date"><%= pretty_datetime travel.start_time %></td>
+	<td class="date"><%= pretty_datetime travel.end_time %></td>
+	<td class="itinerary">
+		<%= link_to "Itinerary", itinerary_travel_path(travel) %>
+	</td>
+	<td class="itinerary">
+		<% bxml = BookingXML.new(REXML::Document.new(travel.xml).root) %>
+		<% legs = [] %>
+		<% legs << "Air" if bxml.has_air_legs? %>
+		<% legs << "Hotel" if bxml.has_hotels? %>
+		<% legs << "Car" if bxml.has_cars? %>
+		<small>
+			<%= legs.join(", ") %>
+		</small>
+	</td>			
+</tr>

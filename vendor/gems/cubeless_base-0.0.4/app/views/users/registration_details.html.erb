@@ -1,0 +1,22 @@
+<% content_for(:page_title, 'User Registration Details') -%>
+
+<div class="admin_form" style="padding-left: 10px;">
+  
+  <h3><%= @profile.screen_name %></h3>
+
+  <p>
+    <b>Actions:</b> <%= render :partial => "actions", :locals => {:profile => @profile} %>
+  </p>
+
+  <p>
+    <b>Email</b><br/>
+    <%= @user.email %>
+  </p>
+  <% @profile_registration_fields.each do |prf| %>
+    <p>
+      <b><%= prf.site_registration_field.label %></b><br/>
+      <%=h prf.value %>
+    </p>
+  <% end %>
+
+</div>

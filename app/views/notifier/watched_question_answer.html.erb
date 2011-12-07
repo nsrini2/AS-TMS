@@ -3,7 +3,7 @@
 <p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
 	<p><strong><%= @answered_by.full_name %> answered a question you are watching.</strong></p>
 	<p><strong>Q:</strong> &#8220;<%= @question.question %>&#8221;</p>
-	<p><strong>A:</strong> &#8220;<%= truncate @answer.answer, 75 %>&#8221;</p>
+	<p><strong>A:</strong> &#8220;<%= truncate @answer.answer, { :length => 100, :omission => "..." } %>&#8221;</p>
 	<p><strong><%= link_from_email("Click here", @answer_url )%> to read it.</strong></p>
 	<p>
 		Now that you're "in the know", how about sharing with others? Take a

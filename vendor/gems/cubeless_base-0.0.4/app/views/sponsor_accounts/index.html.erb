@@ -1,0 +1,21 @@
+<% content_for(:page_title, "Manage Sponsor Accounts") -%>
+<h2>Sponsor Accounts <a href="<%= new_sponsor_account_url %>">Create a new Account</a></h2>
+
+<% @sponsor_accounts.each_index do |index| -%>
+<% account = @sponsor_accounts[index] -%>
+<% klass = index%2 != 0 ? 'even' : 'odd' -%>
+<div class="sponsor_account sponsor_account_<%= klass %>">
+	<h3><%= account.name%></h3>
+	<p class="sponsor_account_notes"><%= replace_newline_with_br(auto_link(account.notes, :all))%></p>
+	<p><a href="<%= sponsor_account_sponsor_groups_path(account) %>"><%= pluralize(account.groups.size, 'group') %> created</a> - <%= pluralize(account.group_slots_remaining, 'unused group slot') %></p>
+	<p><a href="<%= sponsor_account_sponsor_members_path(account) %>"><%= pluralize(account.sponsors.size, 'sponsor member') %></a></p>
+	<div class="container">
+		<ul class="action_list">
+			<li><%= link_to "Edit", edit_sponsor_account_path(account) %></li>
+			<li><%= link_to "Delete", sponsor_account_path(account), :method => :delete %></li>
+			<li><%= link_to "Create Sponsor Member", new_sponsor_account_sponsor_member_url(account) %></li>
+			<li><%= link_to "Create Group", new_sponsor_account_sponsor_group_url(account) %></li>
+		</ul>
+	</div>
+</div>
+<% end -%>

@@ -18,5 +18,7 @@
 	  <%= render :partial => 'groups/groups' %>
 	</div>
 
-	<%= render_pagination @groups %>
+	<div class="see_all" style="margin-left: 10px;">
+		<%= will_paginate @groups %>
+	</div>
 </div>

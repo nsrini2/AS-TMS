@@ -1,0 +1,41 @@
+@xml = xml
+xml.profile do
+  xml.id(@profile.id)
+  xml.first_name(@profile.first_name)
+  xml.last_name(@profile.last_name)
+  xml.screen_name(@profile.screen_name)
+  xml.url @profile.id ? site_base_url + profile_path(@profile) : ''
+  xml.summary do
+    xml.item do
+      xml.type "Matched Questions"
+      xml.count @matched_questions
+      xml.url(site_base_url + matched_questions_profile_path(@profile))
+    end
+    
+    xml.item do
+      xml.type "New Group Posts"
+      xml.count @new_group_posts
+      xml.url(site_base_url + groups_profile_path(@profile))
+    end
+    
+    xml.item do
+      xml.type "New Blog Posts"
+      xml.count @new_blog_posts
+      xml.url(site_base_url + profile_watches_path(@profile)+"?filter_scope=blog_posts")
+    end
+  end
+
+  xml.latest_group_post do
+    xml.group_name @latest_group_post ? @latest_group_post.group.name : ''
+    xml.group_post @latest_group_post ? @latest_group_post.post : ''
+    xml.url @latest_group_post ? site_base_url + group_post_path(@latest_group_post) : ''
+  end
+
+  xml.latest_watch_list_question_answered do
+    xml.question @latest_answered_on_watch_list ? @latest_answered_on_watch_list.question : ''
+    xml.answer @latest_answered_on_watch_list ? @latest_answered_on_watch_list.answers.last.answer : ''
+    xml.url @latest_answered_on_watch_list ? site_base_url + question_path(@latest_answered_on_watch_list) : ''
+  end
+end
+
+

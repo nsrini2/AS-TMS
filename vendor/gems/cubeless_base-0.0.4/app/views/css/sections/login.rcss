@@ -1,0 +1,19 @@
+form.login { margin: 60px auto; border: 1px solid <%= @theme_colors['ask_answer_border'] %>; <%= border_radius('5px') %> padding: 20px; width: 300px; background-color: <%= @theme_colors['contrast_color'] %>; text-align: left; }
+	form.login .instr { color: #666;}
+	form.login fieldset { margin-bottom: 0; }
+		form.login fieldset h2 { margin-bottom: 18px; }
+		form.login fieldset dl { margin: 0; }
+			form.login fieldset dl dt { margin: 11px 0 4px; }
+				<%= clear_after('form.login fieldset dl dt') %>
+				form.login fieldset dl dt label { float: left; font-size: 11px; font-weight: bold; }
+				form.login fieldset dl dt span.forgot { float: right; font-size: 10px; color: #666; }
+					form.login fieldset dl dt span.forgot a { color: #666; text-decoration: underline; }
+					form.login fieldset dl dt span.forgot a:hover { color: #333; text-decoration: underline; }
+			form.login fieldset dl dd { margin: 0; }
+				form.login fieldset dl dd input { width: 294px; }
+		form.login fieldset div.buttons { margin-top: 18px; text-align: center; }
+			<%= clear_after('form.signup fieldset div.buttons') %>
+			form.signup fieldset div.buttons input.button { float: left; }
+			form.signup fieldset div.buttons span.signup { float: right; margin-top: 8px; color: #333; }
+				form.signup fieldset div.buttons span.signup a { color: #333; }
+				form.signup fieldset div.buttons span.signup a:hover { color: #000; }

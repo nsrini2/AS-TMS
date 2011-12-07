@@ -1,0 +1,41 @@
+<style>
+	th {
+		text-align: left;
+	}
+	
+	.admin_form {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+</style>
+
+<h2>Hub Widgets</h2>
+
+
+
+<div class="admin_form">
+
+<%= link_to 'Add a Widget', new_widget_path %>
+
+<br/>
+
+<table>
+  <tr>
+  </tr>
+  <tr>
+    <td style="width: 200px;">Default Widget</td>
+    <td><%= link_to 'Preview', default_widget_path(:id => "1") %> | <%= link_to 'Edit', default_widget_widgets_path %></td>
+  </tr>
+<% for widget in @widgets %>
+  <tr>
+    <td style="width: 200px;"><%= widget.title %></td>
+    <td><%= link_to 'Preview', widget_path(widget) %> | <%= link_to 'Edit', edit_widget_path(widget) %> | <%= link_to 'Destroy', widget, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+</div>
+
+<br />
+
+

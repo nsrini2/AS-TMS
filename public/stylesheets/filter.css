@@ -1,0 +1,126 @@
+
+form#filter_form {
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+form#filter_form fieldset {
+/*  background-color: #DCEBEF;*/
+  margin: 10px 0 0 0;
+  padding: 4px;
+}
+
+label.filter_form_label
+{
+	margin-top:20px;
+}
+
+#filter_includes label{
+  display: inline;
+}
+
+div.filterShowing form#filter_form select {
+	width: 100%;
+}
+
+div#filter_header {
+	color: white;
+	text-align: center;
+}
+
+/*h4#filter_header_line1 {
+  font: bold 26px Helvetica Neue;
+  width: 100%;
+  background-color: #174a6f;
+  margin: 0px;
+  padding: 12px 0;
+}
+
+h5#filter_header_line2 {
+  font: bold 18px Helvetica Neue;
+  height: 25%;
+  background-color: #174a6f;
+  margin: 0px
+}*/
+
+img.arrow {
+  margin: 0;
+  padding: 0;
+  height: 14px;
+}
+
+button#filter_uncheck_all {
+	float: right;
+	margin-top: 15px
+}
+
+div#filter_includes {
+  background-color: #FFFFFF;
+/*
+  height: 90px;
+  overflow: auto;
+*/
+	border: #535353 solid thin;
+}
+div#filter_includes input {
+  margin: 8px 8px 6px 10px;
+   /*vertical-align: baseline;*/
+}
+div#filter_includes label {
+  margin-top: 2px;
+}
+
+div#filter_dates {
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+}
+
+div#filter_dates input {
+  width: 86px;
+}
+
+div#filter_dates_1 {
+	float:left;
+}
+
+div#filter_dates_2 {
+	float:right;
+}
+
+div#filter_clear_and_search {
+	width: 100%;
+	margin-top: 10px
+}
+
+
+
+
+.results_title_box {
+	/*width:247px;*/
+}
+.results_title {
+	color:#fff;
+	background:url('/images/de/results_title_bg.gif') repeat-x;
+	font-size:15px;
+	text-align:center;
+	/*height:54px;*/
+	overflow:hidden;
+}
+.results_title h4 {
+	margin:6px 0 0;
+	font-size:20px;
+	font-weight:normal;
+	line-height:24px;
+}
+.results_title h5 {
+  margin-bottom: 0px;
+  font-size: 15px;
+  font-weight: normal;
+}
+.results_title_arrow {
+	background:url('/images/de/results_title_arrow.png') repeat-x;
+	width:14px;
+	height:11px;
+	margin:0 auto;
+}

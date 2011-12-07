@@ -1,8 +1,7 @@
 require_cubeless_engine_file(:controller, :application_controller)
 
 class ApplicationController
-
-  before_filter :active_users, :set_stats
+  before_filter :active_users, :set_stats, :identify
   
   helper :all
   
@@ -72,5 +71,43 @@ class ApplicationController
       @answers = Answer.all.count
     end  
   end
+  
+  def current_temp_user
+    @current_temp_user ||=  if session[:temp_user] && !session[:temp_user].blank?
+                              TempUser.find(session[:temp_user])
+                            else
+                              nil
+                            end
+  end
+  def current_temp_user=(temp_user)
+    session[:temp_user] = temp_user.id
+    @current_temp_user = temp_user
+  end
+  
+  helper_method :current_temp_user
+  
+  before_filter :check_current_temp_user, :except => [:logout]
+  def check_current_temp_user
+    # here session[:temp_user]
+    # here current_temp_user
+
+  end
+  
+  def identify
+    Rails.logger.info "Controller: #{params[:controller]}"
+    Rails.logger.info "Action: #{params[:action]}"
+  end
+
+  # if Rails.env.production?
+  #   prepend_before_filter :staging_auth
+  #   
+  #   USER, PASSWORD = 'asdepre', '$^Br3!'
+  # 
+  #   def staging_auth
+  #     authenticate_or_request_with_http_basic do |user, password|
+  #       user == USER && password == PASSWORD
+  #     end
+  #   end
+  # end
     
 end

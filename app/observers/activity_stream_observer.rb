@@ -4,11 +4,12 @@ class ActivityStreamObserver < ActiveRecord::Observer
   private
   
   def skip_logging?(model)
+    # skip logging any company events 
+    if model.respond_to? :company?
+      return model.company? if model.company?
+    end
+    
     case model
-      when Question
-        return model.company_question?
-      when Answer  
-        return model.question.company_question?
       when BlogPost  
         return model.blog.owner_type=='Group' && model.blog.owner.is_private? 
       when Comment

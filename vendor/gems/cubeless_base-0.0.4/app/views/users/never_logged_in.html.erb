@@ -1,0 +1,29 @@
+<% content_for(:page_title, 'Resend Welcome Message') -%>
+<%= form_tag resend_welcome_bulk_users_path, :method => :post -%>
+<div align="right">
+	<input type="submit" name="swm" value="Send Welcome Message" class="button small">
+</div> 
+<table class="border_table" cellspacing="0" width="100%">
+	<caption>Users' Resend Welcome Status</caption>
+	<tr>
+	 <th><%= sort_link_helper "First Name", "first_name" -%></th>
+	 <th><%= sort_link_helper "Last Name", "last_name" -%></th>
+	 <th><%= sort_link_helper "Screen Name", "screen_name" -%></th>
+	 <th><%= sort_link_helper "Last Welcome Sent", "last_sent_welcome_at" -%></th>
+     <th><input type="checkbox" value="resend_welcome" class="cbtoggle" /> Resend Welcome Email To All Users</th>
+	</tr>
+	<% @profiles.each_with_index do |profile, i| -%> 
+ 	   <tr class="<%= cycle("even", "odd") -%>">
+	    <td><%= profile.first_name -%></td>
+	    <td><%= profile.last_name -%></td>
+	    <td><%= link_to profile.screen_name, profile_path(profile)-%></td>
+	    <td><%= resent_status(profile.last_welcome_at) -%></td>		
+	    <td><%= enableCBox(profile.last_welcome_at, 
+	            profile.user.id, i.to_s) -%>
+	  	    <%= mail_to profile.user.email, profile.user.email -%></td>
+	   </tr>
+ 	<% end -%>
+</table>
+
+ <%= render_pagination @profiles -%>
+</form> <!-- close from_tag -->

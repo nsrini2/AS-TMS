@@ -1,0 +1,46 @@
+<div class="list_action_button" >
+  <%= link_to "Create Chat Event", new_chat_path if Chat.allowed_to_create?(current_profile) %>
+</div>
+<% unless @live_chats.empty? %>
+	<h2 class="page_title">Live Chat Events</h2>
+	<div id="list">
+	  <% @live_chats.each do |chat| %>
+	    <%= render :partial => 'chat_details', :locals => { 
+						:chat => chat, :show_questions => false, :show_closed_questions => false
+			}%>
+			<%= "<hr />" unless chat == @live_chats.last %>
+	  <% end %>
+	</div>
+<% end %>
+
+<h2 class="page_title">Upcoming Chat Events</h2>	
+<div id="list">
+  <% if @upcoming_chats.empty? %>
+    There are currently no scheduled upcoming chat events.<br/><br/>
+    <small>(Currently, only Agentstream admins and Sponsors can schedule chat events.)</small>
+  <% else %>
+    <% @upcoming_chats.each do |chat| %>
+      <%= render :partial => 'chat_details', :locals => { 
+  					:chat => chat, :show_questions => false, :show_closed_questions => false  
+  		}%>
+  		<%= "<hr />" unless chat == @upcoming_chats.last %>
+    <% end %>
+  	<%= link_to("more...", {:controller => 'chats', :action => 'index', :all_current => 'true'} ) if @more_chats 	%>
+  <% end %>
+</div>
+
+<br/>
+<h2>Past Chat Events</h2>
+<div id="list">
+  <% if @past_chats.empty?%>
+    There are currently no past chat events.
+  <% else %>
+    <% @past_chats.each do |chat| %>
+      <%= render :partial => 'chat_details', :locals => { 
+  					:chat => chat, :show_questions => false, :show_closed_questions => false  
+  		}%>
+  		<%= "<hr />" unless chat == @past_chats.last %>
+    <% end %>
+  	<%= link_to("more...", {:controller => 'chats', :action => 'index', :all_past => 'true'} ) if @more_past_chats 	%>
+	<% end %>
+</div>

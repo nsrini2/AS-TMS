@@ -1,0 +1,40 @@
+#profile_status {
+  border-left: 1px solid;
+  margin-left: 538px;
+  padding-left: 12px;
+  min-height: 210px;
+
+}
+	#profile_status h3 {
+	  font-size: 1.0em;
+	  margin: 0 0 2px 0;
+	}
+	#profile_status textarea {
+	  width: 192px;
+	}
+	#profile_status div#first_status, #profile_status textarea {
+	  -moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	  border: 1px solid #cecece;
+	  background: #fff;
+	  color: #3d3d3d;
+	  font-size: 1.4em;
+	  padding: 5px;
+	}
+	#profile_status #profile_status_form input[type="text"] {
+	  -moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		display: block;
+	}
+	#profile_status div#first_status_extra {
+	  color: #3d3d3d;
+	}
+	#profile_status div.event {
+	  margin: 15px 0 0 0;
+	}
+		#profile_status div.event div.body {
+		  font-size: 1.1em;
+		}
+		#profile_status div.event div.extra {
+		  color: #3d3d3d;
+		}

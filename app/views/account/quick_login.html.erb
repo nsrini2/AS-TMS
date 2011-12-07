@@ -1,0 +1,118 @@
+<% if current_temp_user %>
+	<div id="login-header" class="header">
+		<!-- <h1>Your review has been saved.</h1> -->
+	</div>
+	<% temp_text = " for your review to be published" %>
+<% else %>
+  <% temp_text = "" %>
+<% end %>
+
+<!-- <div id="login-header" class="header">
+  <h1>Login Required</h1>
+</div> -->
+
+<% if false %>
+
+<p>
+  Please <b><u><a href="/account/login">login</a></u></b> to your AgentStream account to complete this activity.
+  <br/><br/>
+  Your reviews and other activities have been saved and will be activated once you login.
+</p>
+
+<% end %>
+
+
+<% if true %>
+  <style>
+    #logins {
+      float: left;
+    }
+  
+    #quick-registration {
+      margin-left: 300px;
+      width: 300px;
+    }
+    .disclaimer {
+      clear: both;
+    }
+    
+    #agentstream-login small {
+      font-size: 0.8em;
+    }
+    
+    #public-focus input {
+      margin-top: 3px;
+    }
+    
+    #public-focus input.submit {
+      margin-top: 5px;
+    }
+  </style>
+
+	<div id="login-header" class="header">
+		<h1>Please login to your AgentStream account or create a new one below.</h1>
+	</div>
+
+  <div id="public-focus">	
+  	<% if current_temp_user %>	  
+  	  <p>Your activity has been saved and will be published once you're logged in.</p>
+  	<% end %>
+
+    <div id="logins">
+      <strong>Already A Member?</strong>
+
+    	<div id="agentstream-login">
+    			<% @user = User.new %>
+    			<% form_for @user, :url => login_account_path, 
+    												 :html => { :id => "login_form", :class => "html5", "accept-charset" => "utf-8" } do %>
+    				  <label class="quick_registration_label">Username:</label>
+							<input type="text" name="login" placeholder="Username" id="one" /><br/>
+							<label class="quick_registration_label">Password:</label>
+    				  <input type="password" name="password" placeholder="Password" id="two"/><br/>
+    					<!-- <input type="checkbox" name="remember_me" value="true" />Remember Me<br /> -->
+    			   	<input class="submit" type="image" src="/images/welcome/AS_LoginButton_blue_6811.gif" name="Login" width="61" height="25"/>
+    			   	<br/>
+    			<% end %>
+    			<!-- <div style="clear:both;"></div> -->
+    			<br/>
+    			<small><a href="/retrievals/new">Forgot username or password?</a></small>
+    	</div>
+	
+  	</div>
+	
+  	<div id="quick-registration">
+	    <strong>Not A Member?</strong>
+    
+      <div>
+  	    <% form_for @user, :url => "/account/quick_register", 
+  												 :html => { :class => "html5", "accept-charset" => "utf-8" } do %>
+						<label class="quick_registration_label">Name:</label>
+  				  <input type="text" name="name" placeholder="Name" id="one" /><br/>
+						<label class="quick_registration_label">Work Email:</label>	
+  				  <input type="text" name="email" placeholder="Work Email" id="two"/><br/>
+						<label class="quick_registration_label">PCC:</label>
+  				  <input type="text" name="pcc" placeholder="PCC" id="two"/><br/>
+  					<!-- <input type="checkbox" name="remember_me" value="true" />Remember Me<br /> -->
+  					<input type="image" class="submit" src="/images/welcome/AS_Reg_RegisterButton_6811.gif" name="Register" width="81" height="25"/>
+            <!-- <input class="submit" type="image" src="/images/welcome/AS_LoginButton_blue_6811.gif" name="Login" width="61" height="25"/> -->
+  			   	<br/>
+  			<% end %>
+    	  <% if false %>
+        	<p id="login-request">
+        		Need an account?<%= link_to (" register &rsaquo;", signup_account_path )%>
+        	</p>
+      	<% end %>
+    	</div>
+  	</div>
+
+  </div>
+
+  <% if false %>
+    <div class="disclaimer">
+      <p><%= Config[:disclaimer] -%></p>
+    </div>
+  <% end %>
+<% end %>
+
+
+

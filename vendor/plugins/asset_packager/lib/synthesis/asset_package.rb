@@ -4,8 +4,8 @@ module Synthesis
     # class variables
     @@asset_packages_yml = $asset_packages_yml ||
       (File.exists?("#{RAILS_ROOT}/config/asset_packages.yml") ? YAML.load_file("#{RAILS_ROOT}/config/asset_packages.yml") : nil) ||
-      (File.exists?("#{Rails.root}/vendor/plugins/cubeless/config/asset_packages.yml") ? YAML.load_file("#{Rails.root}/vendor/plugins/cubeless/config/asset_packages.yml") : nil) #Fix for engine based cubeless
-
+      (File.exists?("#{CubelessBase::Engine.root}/config/asset_packages.yml") ? YAML.load_file("#{CubelessBase::Engine.root}/config/asset_packages.yml") : nil) #Fix for engine based cubeless
+    
     # singleton methods
     class << self
 
@@ -26,6 +26,9 @@ module Synthesis
       end
 
       def find_by_target(asset_type, target)
+        puts "::::::::::::::"
+        puts @@asset_packages_yml
+        
         package_hash = @@asset_packages_yml[asset_type].find {|p| p.keys.first == target }
         package_hash ? self.new(asset_type, package_hash) : nil
       end

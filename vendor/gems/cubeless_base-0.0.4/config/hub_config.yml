@@ -1,0 +1,117 @@
+
+theme: 'theme_3'
+
+logo_file: "hub_logo.gif"
+
+favicon: "hub_favicon.ico"
+
+site_name: "The Hub"
+
+feedback_email: "airlinecommunity@sabre.com"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: ["Business", "Freetime", "Industry", "Software", "Travel"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Job Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Location"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Work Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_5
+    label: "Organization"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'email',
+    'profile_5'
+  ]
+  business_card: [
+    'profile_1',
+    'profile_2'
+  ]
+
+profile_complex_questions:
+  - title: "On the Job"
+    questions:
+      - question: question_1
+        label: "In what areas of the airline business are you an expert?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "What business and technology skills do you have?"
+        example: "e.g. sales, public speaking, revenue management, fleet management, airport check-in"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What attracted you to and keeps you in the airline industry?"
+        example: "e.g. sales, public speaking, revenue management, fleet management, airport check-in"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What do you spend your work day doing?"
+        completes_profile: true
+        matchable: true
+
+  - title: "Out & About"
+    questions:
+      - question: question_5
+        label: "Where do you consider home?"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "Where do you live now and where have you lived?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What are your favorite places that you have traveled?"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "List the places you dream about traveling:"
+        completes_profile: true
+        matchable: true
+
+
+  - title: "Away From Work"
+    questions:
+      - question: question_9
+        label: "What do you enjoy doing in your free time?"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "List your favorite movies, books, and music:"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What sports do you like?"
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "What are your favorite foods?"
+        completes_profile: true
+        matchable: true

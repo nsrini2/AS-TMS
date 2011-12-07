@@ -1,0 +1,12 @@
+form#ask_a_question { margin: 23px 40px; }
+	form#ask_a_question fieldset.ask_question { position: relative; margin: 0 auto 30px; border: 1px solid <%= @theme_colors['ask_answer_border'] %>; <%= border_radius('5px') %> padding: 12px 16px 0; background: <%= @theme_colors['contrast_color'] %>; }
+		form#ask_a_question fieldset.ask_question h2 { color: <%= @theme_colors['ask_answer_header'] %>; }
+		form#ask_a_question fieldset.ask_question dl { margin: 16px; }
+			form#ask_a_question fieldset.ask_question dl dt { padding-bottom: 3px; font-weight: bold; }
+			form#ask_a_question fieldset.ask_question dl dd { margin: 0; padding-bottom: 10px; }
+				form#ask_a_question fieldset.ask_question dl dd textarea { width: 676px; height: 55px; }
+			form#ask_a_question fieldset dl dt.closing_date { position: relative; margin-top: 12px; padding: 0; text-align: center; font-weight: bold; font-size: 13px; }
+				form#ask_a_question fieldset dl dt.closing_date span#question_close_date { color: <%= @theme_colors['secondary_color'] %>; background-color: <%= @theme_colors['contrast_color'] %>; }
+				form#ask_a_question fieldset dl dt.closing_date div#question_close_datepicker { display: none; position: absolute; top: 0; right: 0; }
+
+	form#ask_a_question div.buttons { margin: 18px auto 18px; text-align: center; }

@@ -1,0 +1,44 @@
+/* line 1, ../../../../app/stylesheets/themes/agentstream/button.scss */
+div.action_buttons {
+  float: right;
+  margin-top: 20px;
+  width: 15%;
+}
+/* line 6, ../../../../app/stylesheets/themes/agentstream/button.scss */
+div.action_buttons .button {
+  display: block;
+  width: 100px;
+}
+/* line 10, ../../../../app/stylesheets/themes/agentstream/button.scss */
+div.action_buttons a.button {
+  padding: 0px;
+}
+
+/* line 15, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button, a.button {
+  margin: 0 2px 5px 0;
+  background: #4A6970;
+  border: 0;
+  color: #fff;
+  font-size: 1em;
+  padding: 3px 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.little, a.button.little {
+  font-size: 0.8em;
+  padding: 1px 4px;
+}
+
+/* line 31, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.light, a.button.light {
+  background: #90b4bc;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.xlarge, a.button.xlarge {
+  font-size: 1.8em;
+}

@@ -1,0 +1,89 @@
+/* line 1, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results {
+  /*margin-left: 240px;*/
+  float: right;
+  width: 720px;
+}
+
+/* line 6, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 8, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results div.result_container {
+  clear: both;
+}
+
+/* line 11, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .icon_wrapper {
+  float: right;
+  margin-top: 20px;
+  width: 50px;
+}
+
+/* line 16, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .icon_wrapper img {
+  height: 30px;
+  padding: 2px;
+}
+
+/* Normalize Search Results */
+/* line 22, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result .photo_wrapper {
+  margin-bottom: 0;
+}
+
+/* line 26, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result .photo_wrapper img.photo {
+  height: 50px;
+  width: 50px;
+}
+
+/* line 31, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result .group_item {
+  clear: none;
+}
+
+/* line 35, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result #list {
+  border-top: 0;
+  padding: 0;
+  position: static;
+}
+
+/* line 41, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result .action_list, div#search_results .result .action_buttons, div#search_results .result .rate, div#search_results .result .referred {
+  display: none;
+}
+
+/* line 46, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_filter {
+  /*float: left;*/
+  width: 239px;
+}
+
+/* line 51, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_filter .accordionButton {
+  background: #C4D7DC;
+  border-bottom: 1px solid #fff;
+  padding: 10px;
+}
+
+/* line 57, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_filter .accordionButton.active {
+  background: #4a6970;
+}
+
+/* line 61, ../../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_filter .accordionButton a {
+  color: white;
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: lowercase;
+}

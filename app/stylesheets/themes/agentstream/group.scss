@@ -9,8 +9,20 @@ ul.group_actions li {
 ul.group_actions li a {
   text-decoration: underline;
 }
+ul.group_actions li a.button {
+  border: 1px solid #fff;
+  display: block;
+  text-decoration: none;
+  width: 100px;
+}
+ul.group_actions li a.button:hover {
+  border: 1px solid #ccc;
+}
 #group_action_list.group_actions {
 	float: right;
+}
+ul.group_actions.full_screen {
+  float: right;
 }
 
 /* Group Hub */

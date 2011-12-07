@@ -110,6 +110,7 @@
 .note .text, .note .text a { margin: 0 10px 3px 0; font-size: 14px; color: #4a6970; }
 .note .text { background: url('/images/bg_notes_quote.png') no-repeat; padding: 0 0 0 25px;}
 .note .text { width: 330px; display: block; }
+.agency .note .text { width: 180px; display: block; }
 .note .text p {
   margin-top: 20px;
   margin-bottom: 0;
@@ -180,3 +181,14 @@
     font-weight: bold;
   }
 }
+/* inherits from ul.action_list */  
+ul.sub_nav {
+  list-style: none;
+  li { float: left; }
+  li.selected { 
+    padding-left: 20px; 
+    background: url(/themes/theme_1/images/arrow_right.png) 5px center no-repeat; 
+    font-weight: bold; 
+    a { color: #000; text-decoration: none; cursor: default; }
+  }
+}	  	

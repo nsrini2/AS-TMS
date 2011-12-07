@@ -1,0 +1,48 @@
+<div class="event" id="<%= dom_id(event) %>">
+	<%= primary_photo_for(event, :size => '20x20', :hide_status_indicator => true, :hide_sponsor_sash => true) -%>
+	<div class="when" style="display: none;"><%= pretty_datetime event.created_at %></div>
+	<% if event.profile_id -%>
+		<div class="detail">
+			<span class="who"><%= link_to(event.profile_screen_name, profile_path(:id => event.profile_id), :class => "karma_level_#{Karma.new(event.profile_karma_points).recognition_level}")%></span>
+			<% case event.klass
+			   when 'Profile': %>
+				<span class="did">[updated profile]</span>
+			<% when 'ProfilePhoto': %>
+				<span class="did">[updated photo]</span>
+			<% when 'Answer': %>
+				<span class="did">[answered question]</span>
+				<div class="what"><span class="letter">A:</span><%=truncate(event[:answer_answer], :length => 100)%> <%=link_to('more', question_path(:id => event[:answer_question_id]))%></div>
+			<% when 'Question': %>
+				<span class="did">[asked question]</span>
+				<div class="what"><span class="letter">Q:</span><%=truncate(event[:question_question], :length => 100)%> <%=link_to('more', question_path(:id => event.klass_id))%></div>
+			<% when 'Login': %>
+				<span class="did">[logged in]</span>
+			<% when 'GroupMembership': %>
+				<span class="did">[joined group]</span>
+				<div class="what"><span class="letter">G:</span><%=link_to(truncate(event.group_name, :length => 100),group_path(:id => event.group_id))%></div>
+			<% when 'BlogPost': %>
+				<span class="did">[added blog post]</span>
+				<div class="what"><span class="letter">B:</span><%=truncate(event.blog_post_title, :length => 100)%> <%=link_to('more', "/blog_posts/#{event.klass_id}")%></div>
+			<% when 'Comment': %>
+				<span class="did">[added a comment]</span>
+				<div class="what"><span class="letter">C:</span><%=truncate(event.comment_text, :length => 100)%> <%=link_to('more', "/comments/#{event.klass_id}")%></div>
+			<% when 'ProfileAward': %>
+				<span class="did">[award presented]</span>
+				<div class="what"><span class="letter">A:</span><%=truncate(event.award_title, :length => 100)%></div>
+			<% when 'Status': %>
+				<span class="did">[shared an update]</span>
+				<div class="what"><span class="letter">S:</span><%= event.status_body %></div>	
+			<% end %>
+		</div>
+	<% elsif event.group_id -%>
+		<div class="detail">
+			<span class="who"><%=link_to(event.group_name,group_path(:id => event.group_id))%></span>
+			<% case event.klass
+			   when 'Group': %>
+				<span class="did">[group <%=event.action%>d]</span>
+			<% when 'GroupPhoto': %>
+				<span class="did">[updated group photo]</span>
+			<% end %>
+		</div>
+	<% end -%>
+</div>

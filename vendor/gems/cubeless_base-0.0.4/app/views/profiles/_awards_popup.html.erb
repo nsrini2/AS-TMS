@@ -1,0 +1,11 @@
+<% content_for(:title, "#{show_posession_for(@profile.screen_name)} Awards") -%>
+<% collection_content_for(@profile_awards.visible) do |profile_awards| %>
+	<%= render :partial => 'profiles/profile_award', :collection => profile_awards, :locals => { :visible => true } %>
+<% end %>
+
+<% owner_content do %>
+	<% collection_content_for(@profile_awards.hidden) do |profile_awards| %>
+		<h3 class="title">Hidden Awards</h3>
+		<%= render :partial => 'profiles/profile_award', :collection => profile_awards, :locals => { :visible => false } %>
+	<% end %>
+<% end %>

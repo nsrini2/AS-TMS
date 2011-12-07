@@ -4,7 +4,7 @@ class QuestionReferralsController < ApplicationController
   def create
     referral = params[:question_referral]
     refer_to = find_by_type_and_id(referral[:suggestion_type], referral[:suggestion_id])
-    question = Question.unscoped(referral[:question_id])
+    question = Question.unscoped.find(referral[:question_id])
     question_referral = QuestionReferral.create(:question => question, :owner => refer_to, :referer => current_profile)
     respond_to do |format|
       format.json {

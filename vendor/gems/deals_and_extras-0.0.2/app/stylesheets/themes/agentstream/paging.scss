@@ -1,0 +1,10 @@
+div.pagination { background-color: inherit; margin: 0px 0 0px; padding: 0; font-size: 16px; text-align: center; position: relative; clear: both; }
+		div.pagination a, div.pagination span { display: inline; list-style-type: none; background-color: #fff; }
+			div.pagination a, 
+			div.pagination a:visited { border: 1px solid #888; padding: 2px 5px 0; color: #888; font-weight: bold; text-decoration: none; }
+			div.pagination a:hover, 
+			div.pagination a:active { border: 1px solid #000; background-color: #EFF8FA; color: #888; }
+		div.pagination span { background-color: inherit; }
+		div.pagination span.currentpage { font-weight: bold; border: 1px solid #000; padding: 2px 5px 0; background-color: #EFF8FA; color: #888; }
+		div.pagination span.disablepage { display: none; }
+		div.pagination span.nextpage { font-weight: bold; }

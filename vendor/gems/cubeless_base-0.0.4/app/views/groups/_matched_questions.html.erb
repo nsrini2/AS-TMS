@@ -1,0 +1,13 @@
+<div id="questions">
+    <%if referred_questions.size > 0%>
+        <h3>Questions Referred To This Group</h3>
+            <%= render_referred_questions_for @group, referred_questions, @group.editable_by?(current_profile) %>
+		<div id="paging">
+        	<%= render_pagination referred_questions, :page_var => :referred_questions_page %>
+        </div>
+	<%else%>
+      <div align="center">
+		<%="No Matched Questions"%>
+      </div>
+	<%end%>
+</div>

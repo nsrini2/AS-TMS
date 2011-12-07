@@ -1,5 +1,6 @@
 require 'yaml'
-require "#{Rails.root}/vendor/plugins/cubeless/vendor/plugins/asset_packager/lib/synthesis/asset_package"
+#require "#{Rails.root}/vendor/plugins/cubeless/vendor/plugins/asset_packager/lib/synthesis/asset_package"
+require_cubeless_engine_file "vendor/plugins", "asset_packager/lib/synthesis/asset_package"
 
 # MM2: Apparently you can get to nested plugin rake files. Copied from the asset_packager plugin.
 namespace :asset do

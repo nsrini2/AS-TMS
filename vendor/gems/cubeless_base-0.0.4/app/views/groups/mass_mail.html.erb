@@ -1,0 +1,11 @@
+<% content_for(:page_title, "Send Group Email for #{@group.name}") -%>
+<% form_for :mailer, :url => mass_mail_group_path, :html => {:id => 'mass_mailer'} do |f|  %>
+	<h3>Group Email</h3>
+	<label for="mass_mail_subject">Subject</label>
+	<%= f.text_field :subject, :class => "text" %>
+	<%= f.text_area :body, :rows => nil, :cols => nil, :class => 'fckeditor' -%>
+	<div class="buttons">
+		<input type="submit" class="large button confirm" value="Send to All">
+		<input type="submit" class="large button light" value="Preview" name="test_enabled">
+	</div>
+<% end%>

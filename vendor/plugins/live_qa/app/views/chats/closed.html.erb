@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  var present_discussion_posts = [];
+  var discussion_posts = {};
+</script>
+
+<div class="list">	
+	<h2 class="page_title">Live Chat Event: <%= @chat.title %></h2>
+	<div id="list">
+		<div class="list_item">
+			<div id="chat_discuss" class="">
+				<%= render :partial => 'chat_details', :locals => 
+					{ :chat => @chat, :show_questions => false, :current_topic => @topic, :show_closed_questions => true }%>
+			</div>
+		</div>
+	</div>		
+
+	<div id="chat_attendees" class="post-panel">
+		<div class="header">
+			<h3>Attendees:</h3>
+		</div>
+		<div class="content">
+			<% @attendees.each do |attendee| -%>
+				<%= link_to_avatar_for(attendee, :size => '37x37') %>
+			<% end -%>	
+		</div>	
+	</div>	
+</div>

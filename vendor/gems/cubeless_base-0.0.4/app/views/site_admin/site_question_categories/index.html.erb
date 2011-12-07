@@ -1,0 +1,40 @@
+<style>
+	th {
+		text-align: left;
+	}
+	
+	.admin_form {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+</style>
+
+<h2>Question Categories</h2>
+
+<div class="admin_form">
+
+	<%= link_to 'Add', new_site_admin_site_question_category_path %>
+	&nbsp;|&nbsp;
+	<%= link_to 'Reorder', edit_order_site_admin_site_question_categories_path %>
+<br/><br/>
+<table>
+  <tr>
+    <th>Position</th>
+    <th>Name</th>
+  </tr>
+
+<% for site_question_category in @site_question_categories %>
+  <tr>
+	  <td style="width: 70px;"><%=h site_question_category.position %></td>
+    <td style="width: 150px;"><%=h site_question_category.name %></td>
+    <td><%= link_to 'Edit', edit_site_admin_site_question_category_path(site_question_category) %></td>
+    <td><%= delete_status site_question_category %></td>
+  </tr>
+<% end %>
+</table>
+
+</div>
+
+<br />
+
+

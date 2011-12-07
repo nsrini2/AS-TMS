@@ -1,0 +1,14 @@
+# tfce_sso_my_domain: 'cubeless'
+# tfce_sso_domain: 'cubeless'
+# tfce_sso_url: 'http://localhost:3000'
+# tfce_sso_secret: 'a243f9b243f7caac5e2ef24a73c15aa6ce26bc7c3cadc0ae9bc23b7419da236847112813a68df421638f07a90e2eea3ae71f18704b41eae7f6fc1fd899653b2c'
+
+# header_sso_id_key: 'HTTP_SM_USER'
+# header_sso_secret_key: 'HTTP_SSO_SECRET'
+# header_sso_secret_value: 'b6a51fbe911975bce1624974ce7b5afd216e2b50f7e3ed3ef52e26737f41d4ae2e5f13604a439ce253d7314f4a79793daacffe564ff4d9e729a3caa2aafbab62'
+
+getthere_site_name: 'sabreinc'
+getthere_user_name: 'DirDatasabre'
+getthere_password:  '6B43B866'
+
+video_enabled: true

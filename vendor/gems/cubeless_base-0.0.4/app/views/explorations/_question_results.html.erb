@@ -1,0 +1,4 @@
+<h2><%= params[:query] ? "Question results for query: #{@query}" : "Questions: All #{site_name} Questions" %></h2>
+<%= category_filter_sort_controls('Question') %>
+<%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries} )%>
+<%= render_pagination(@question_summaries) %>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	title="Why is this shady?" showCloseButton="true"
+	width="500" height="165"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	paddingTop="5" paddingBottom="5" paddingLeft="5" paddingRight="5"
+	creationComplete="{init()}">
+	<mx:Script>
+		<![CDATA[
+			private function init():void {
+				description.setFocus();
+			}
+		]]>
+	</mx:Script>
+	<mx:HBox verticalAlign="top" width="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:Image source="/images/bamguyReport.png"/>
+		<mx:VBox width="100%" verticalGap="2" horizontalAlign="center" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+			<mx:Text width="100%" text="Thanks for helping to keep this a fun and quality place to hang out. Please use the box below to give us a clue to why you think this content is shady. Remember, not agreeing with someone's opinion isn't really a good reason to report this as shady"/>
+			<mx:Label text="Brief description:" textAlign="left" width="100%"/>
+			<mx:TextArea id="description" width="98%"/>
+			<mx:Button height="16" label="Submit" id="submit" />
+		</mx:VBox>
+	</mx:HBox>
+</mx:TitleWindow>

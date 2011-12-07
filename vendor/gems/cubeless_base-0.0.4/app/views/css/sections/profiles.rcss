@@ -1,0 +1,232 @@
+/* profile/my stuff */
+#profile {  }
+	#profile .add_pad_top { padding-left:4px; }
+	#profile .add_pad_bottom { padding-bottom:4px; }
+	#profile .add_pad_left { padding-left:4px; }
+	#profile .add_pad_right { padding-right:4px; }
+    
+	#profile ul.action_list { float: right; margin: 0 0 8px; }
+	#profile .user_card { clear: both; position: relative; margin: 0 auto; border: 1px solid #000; <%= border_radius('5px', '0px') %> padding: 15px 15px 5px 15px; width: 754px; background: url(<%= global_image("userCardBG.png") %>); }
+		<%= clear_after('#profile .user_card') %>
+
+		#photos { float: left; }
+			#photos .sponsor_ribbon { width: 235px; height: 30px; background: url(/images/sponsor_ribbon_large.png) bottom right no-repeat; }
+			#photos .no_alt_photos { width: 172px; }
+			#photos .alternate_photos { float: left; }
+				#photos .alternate_photos img { display: block; margin: 0 10px 4px 0; }
+			#photos .disabledPhotoHover { display: none; position: absolute; z-index: 40; width: 150px; background: #ff9; border: 3px solid <%= @theme_colors['secondary_color'] %>; }
+				#photos .disabledPhotoHover .pad { border: 1px solid #000; padding: 10px; padding: 10px; }
+				#photos .disabledPhotoHover .disabledPointer { background: url(<%= image("pointerDown.png") %>); width: 34px; height: 19px; position: absolute; left: 60px; top: 49px; }
+
+		#profile dl.profile_info { float: left; margin: 0; width: 250px; padding-right: 10px; min-height: 210px; }
+			#profile dl.profile_info dt { margin: 0; font-weight: bold; }
+			
+			#profile dl.profile_info dt.required {
+				color: <%= @theme_colors['secondary_color'] %>;
+			}	 
+			
+			#profile a.spacer {
+				 line-height:18px; 
+			}
+
+			#profile dl.profile_info dd { margin: 0; }
+				#profile dl.profile_info dd.contact_info h3 { margin: 12px 0 0; font-size: 12px; }
+				#profile dl.profile_info dd.contact_info dl { margin: 0; }
+					#profile dl.profile_info dd.contact_info dl dt { clear: left; float: left; margin: 0 5px 1px 0; }
+					#profile dl.profile_info dd.contact_info dl dd { float: left; margin-bottom: 1px; }
+			#profile dl.profile_info dt.name { margin-bottom: 3px; font-size: 16px; font-weight: bold; }
+			#profile dl.profile_info dt.title { float: left; margin-right: 5px; }
+			#profile dl.profile_info dd.tagline { clear: left; padding-top: 5px; color: <%= @theme_colors['primary_color'] %>; font-size: 14px; font-weight: bold; font-style: italic; }
+			#profile dl.profile_info dd.inline_editable {  }
+				#profile dl.profile_info dd.inline_editable form {  }
+					#profile dl.profile_info dd.inline_editable form input { width: 100%; }
+					#profile dl.profile_info dd.inline_editable form input.button { width: auto; }
+					#profile dl.profile_info dd.inline_editable form span.counter { color: #111; font-weight: normal; font-style: normal; }
+					#profile dl.profile_info dd.tagline form input { margin-top: -5px; color: <%= @theme_colors['primary_color'] %>; font-size: 14px; font-weight: bold; font-style: italic; }
+					#profile dl.profile_info dd.tagline form input.button { margin-top: 2px; color: #fff; font-size: 11px; font-weight: bold; font-style: normal; }
+
+		#stats { float: left; margin-left: 10px; width: 200px; font-weight: bold; }
+			#stats h3 { margin-top: 0; margin-bottom: 5px; color: <%= @theme_colors['primary_color'] %>; }
+			#stats table {  }
+				#stats table tbody {  }
+					#stats table tbody tr {  }
+						#stats table tbody tr td { font-weight: bold; }
+						#stats table tbody tr td.left { width: 90px; }
+						#stats table tbody tr td.middle { width: 35px; text-align: right; }
+						#stats table tbody tr td.right { width: 55px; text-align: right; }
+						#stats table tbody tr.karma td { font-size: 13px; }
+						#stats table tbody tr.completion td { font-size: 13px; }
+
+	#profile_awards_and_notes { margin-left: 4px; }
+		<%= clear_after('#profile_awards_and_notes') %>
+
+		#awards { float: left; padding-top: 8px; width: 140px; height: 185px; background: #68401C; text-align: center; display: inline; }
+			#awards h3 { margin-top: 0; font-size: 16px; color: #fff; font-weight: bold; text-shadow: #111 4px 4px 3px; }
+				#awards .award { margin: 15px auto 10px; border: 4px solid #fff; padding: 1px; width: 90px; background: #f00; }
+					#awards .award .award_details { background: #fff; }
+						#awards .award .award_details img { margin: 5px 5px 7px; }
+						#awards .award .award_details span.award_caption { display: block; padding: 0 3px 3px; }
+			#awards a { color: #fff; }
+
+		#notes { float: left; margin: 0; padding: 0; }
+
+	#profile_questions { clear: both; position: relative; margin: 0 4px; padding-top: 25px; }
+		#profile_questions h3 { clear: both; margin: 0 0 15px; border-bottom: 1px solid; color: <%= @theme_colors['primary_color'] %>; }
+		#profile_questions .profile_questions_sec { margin-bottom: 10px; }
+			<%= clear_after('#profile_questions .profile_questions_sec') %>
+			#profile_questions .question { float: left; margin: 0; width: 359px; background: #fff; }
+				#profile_questions .question p { width: 350px;  margin: 0; }
+			#profile_questions .odd { clear: left; _display: inline; margin-right: 20px; }
+				#profile_questions .question h4 { margin: 0 0 8px; color: #333; }
+				#profile_questions .question p.instr { margin-top: -5px; color: #555; }
+    #profile_questions h4.required { color: <%= @theme_colors['secondary_color'] %>;} 
+
+	.profile_popup { text-align:justify; }	
+
+/* explore */
+div.profile_results {  }
+	div.profile_results h2.result_header { float: left; margin: 0 0 10px; font-weight: normal; }
+	div.profile_results #filter_form { margin: 0 0 10px; }
+<%= clear_after('#filter_form') %>
+<%= clear_after('div.profile_results') %>
+#explore_results { clear: both;}
+	div.profile_results div.profile { float: left; margin: 0 0 15px; border: 1px solid #666; padding: 0 0 13px; width: 387px; background: transparent url(<%= global_image("userCardBG.png") %>) repeat scroll 0 0; zoom: 1; <%= border_radius('5px') %>}
+	div.profile_results div.odd { clear: left; margin: 0 15px 15px 0; }
+		div.profile_results div.photo_wrapper { float: left; margin: 13px; padding: 0; width: 80px; display: inline; }
+			div.profile_results div.photo_wrapper img.photo { display: block; }
+		div.profile_results dl.profile_info { float: left; margin: 10px 0 0; width: 230px; display: block; }
+			<%= clear_after('div.profile_results dl.profile_info') %>
+			div.profile_results dl.profile_info dt { font-weight: bold; }
+			div.profile_results dl.profile_info dt.name { font-size: 16px; }
+				div.profile_results dl.profile_info dt.name a { color: #000; text-decoration: none; }
+					div.profile_results dl.profile_info dt.name a:hover { color: <%= @theme_colors['link_color'] %>; text-decoration: underline; }
+			div.profile_results dl.profile_info dd { margin: 0; }
+			div.profile_results dl.profile_info dd.title { margin-top: 3px; color: #111; }
+			div.profile_results dl.profile_info dd.tagline { margin: 8px 0; color: <%= @theme_colors['primary_color'] %>; font-size: 14px; font-weight: bold; font-style: italic; }
+				div.profile_results dl.profile_info dd.contact_info h3 { margin: 0; font-size: 12px; }
+				div.profile_results dl.profile_info dd.contact_info dl { margin: 0; }
+					div.profile_results dl.profile_info dd.contact_info dl dt { clear: left; float: left; margin-right: 5px; }
+					div.profile_results dl.profile_info dd.contact_info dl dd { float: left; }
+
+/* hub */
+#hub { float: left; width: 595px; }
+	<%= clear_after('#hub') %>
+	#marketing_message { float: left; margin-bottom: 18px; width: 595px; }
+		#marketing_message img { display: block; }
+
+	#system_announcement { float: left; margin-bottom: 18px; width: 595px; }
+		#system_announcement div.header { padding: 4px 7px 4px 0; background: <%= @theme_colors['primary_color'] %> url(<%= image("widget_bar.png") %>) repeat-x; color: <%= @theme_colors['system_announcement_text_color'] %>; }
+			#system_announcement div.header h3 { margin: 0; padding-left: 5px; font-size: 11px; }
+		#system_announcement div.content { padding: 7px; }
+
+	#hub_widgets { float: left; margin-bottom: 18px; padding: 2px; width: 595px; }
+		<%= clear_after('#hub_widgets') %>
+		#hub_widgets div.hub_widgets_col_1 { float: left; width: 290px; }
+		#hub_widgets div.hub_widgets_col_2 { float: left; margin-left: 15px; _margin-left: 12px; width: 290px; }
+
+
+/* following */
+#group_action_links, #profile_action_links { float: right; padding: 0 4px 10px; }
+
+dl#watch_list { float: left; margin: 1px 15px 8px 0; padding: 8px 8px 15px; width: 180px; font-size: 1.2em; background: <%= @theme_colors['contrast_color'] %>; <%= border_radius('5px') %> }
+		dl#watch_list dt, dl#watch_list dd { padding: 2px 0; }
+		<%= clear_after('#watch_list dt') %>
+		<%= clear_after('#watch_list dd') %>
+		dl#watch_list dt { font-weight: bold; margin: 0 0 0 5px; padding-top: 5px; }
+		dl#watch_list dd.selected { margin: 0 -17px 0 -8px; padding-left: 20px; background: #fff url(/images/watch_selected_bg.png) right center no-repeat; }
+		dl#watch_list dd a, #watch_list dd span { float: left; }
+		dl#watch_list dd a.item_remove { float: right; margin: 0 0 0 8px; padding: 2px 2px 2px 3px; font-size: 11px; line-height: 1em; text-decoration: none; color: #00f; background: #fff; }
+		dl#watch_list dd.selected a.item_remove { margin-right: 17px; }
+
+#favorites { float: left; width: 582px; padding-bottom: 10px; }
+<%= clear_after('#favorites') %>
+
+#favorites #filter_form { margin-bottom: 10px; }
+	<%= clear_after('#favorites #events') %>
+		#favorites #events .favorite_item { position: relative; margin: 15px 0 0; padding: 10px; width: 264px; height: 136px; background: #ddd; font-size: 1.2em; overflow: hidden; <%= border_radius('5px') %> }
+		#favorites #events .odd { float: left; }
+		#favorites #events .even { float: right; }
+		#favorites #events .watch_title { font-weight: bold; }
+			#favorites #events .watch_title .watch_letter { font-weight: bold; color: #f00; }
+			#favorites #events .watch_title a { color: #000; text-decoration: none; }
+				#favorites #events .watch_title a:hover { color: #1802ad; text-decoration: underline; }
+	#favorites #events p { font-size: 13px; margin: 0.8em 0; }
+	#favorites #events .author { position: absolute; bottom: 10px; width: 258px; font-size: 11px; }
+		#favorites #events .author .photo_wrapper { float: left; }
+		#favorites #events .author img.photo { margin: 2px 8px 0 0; }
+
+
+/* awards pop-up */
+div.awards { width: 460px; }
+	div.awards .title { margin: -10px 0 5px; padding-bottom: 5px; }
+	div.awards .award { padding-bottom: 15px; clear: both; }
+	div.awards .award_image { width: 100px; float: left }
+	div.awards .details { padding-left: 15px; width: 285px; float: left; color: #333;}
+	<%= clear_after('.details') %>
+	<%= clear_after('.award') %>
+		div.awards .details h3 { padding: 0; margin: 0; color: #000;}
+		div.awards .details p { padding: 0; margin: 0; }
+	
+/* Notification - Informational */
+div.profile_notification {  }
+	    div.profile_notification  { color:<%= @theme_colors['secondary_color'] %>; 
+	                                font-weight: bold; font-style: italic; 
+	                              }
+	    div.profile_notification.informational { color:green; }
+	    div.profile_notification.alert { color:yellow; }
+	    div.profile_notification.urgent { color:red; }
+
+span.profile_notification {  }
+	    span.profile_notification  {	color:<%= @theme_colors['secondary_color'] %>; 
+										float: right; 
+										margin-left: 10px;
+										margin-bottom: 1px;
+	                                	font-weight: bold; 
+										font-style: italic; 
+	                               }
+	    span.profile_notification.informational { color:green; }
+	    span.profile_notification.alert { color:yellow; }
+	    span.profile_notification.urgent { color:red; }
+		
+
+/* stats */
+#stats_container {
+  border-top: 1px solid #3d3d3d;
+  margin-top: 10px;
+}
+
+#stats h4 {
+  color: #78756e;
+  margin: 5px 0 5px 0;
+}
+
+#stats table td {
+  border-right: 1px solid #78756e;
+  padding: 0 15px 0 15px;
+  text-align: left;
+}
+#stats table td.first {
+  padding-left: 0;
+}
+#stats table td.last {
+  border-right: 0;
+}
+
+#stats table td h5 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+#stats table td span.count {
+  color: <%= @theme_colors['primary_color'] %>;
+  font-size: 2.0em;
+  letter-spacing: -0.1em;
+  line-height: 1em;
+  margin-right: 0.2em;
+}
+
+#stats table td span.extra a {
+  font-style: italic;
+  font-weight: normal;
+  
+}

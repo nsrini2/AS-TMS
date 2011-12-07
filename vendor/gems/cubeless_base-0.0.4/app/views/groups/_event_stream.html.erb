@@ -1,0 +1,36 @@
+<h5>Group Activity Stream</h5>
+<% WatchEvent.find_for_group(group.id).each do |event| -%>
+	<% item = event.action_item -%>
+	<% fail event.inspect unless item %>
+	<% profile = item.respond_to?(:referer) && item.referer || item.respond_to?(:member) && item.member || item.respond_to?(:sender) && item.sender || item.respond_to?(:profile) && item.profile || Profile.last #event.profile 
+	-%>
+	<%# fail item.inspect if profile == Profile.last %>
+	<div class="event">
+		<%= primary_photo_for(profile, :size => '20x20', :hide_tooltip => true, :hide_status_indicator => true, :hide_sponsor_sash => true) %>
+		<div class="detail">
+			<span class="who"><%= link_to_profile(profile) %></span>
+			<% case item.class.name -%>
+			<% when 'QuestionReferral': -%>
+				<span class="did">[referred a question]</span>
+				<div class="what"><span class="letter">Q:</span><%=truncate(item.question.question, :length => 100)%> <%=link_to('more', question_path(:id => item.question_id))%></div>
+			<% when 'GroupMembership': -%>
+				<span class="did">[joined the group]</span>
+			<% when 'GroupPost': -%>
+				<span class="did">[added post]</span>
+				<div class="what"><span class="letter">P:</span><%=truncate(event[:group_post_text], :length => 100)%> <%=link_to('more', group_post_path(item))%></div>
+			<% when 'BlogPost': -%>
+				<span class="did">[added blog post]</span>
+				<div class="what"><span class="letter">B:</span><%=truncate(event[:blog_post_title], :length => 100)%> <%=link_to('more', "/blog_posts/#{event.action_item_id}")%></div>
+			<% when 'Comment': -%>
+				<span class="did"><%= item.owner.is_a?(GroupPost) ? '[replied to post]' : '[commented on a blog post]' %></span>
+				<div class="what"><span class="letter"><%= item.owner.is_a?(GroupPost) ? 'R:' : 'C:' %></span><%=truncate(event[:comment_text], :length => 100)%> <%=link_to('more', "#{polymorphic_path(item.owner)}")%></div>
+			<% when 'Note': -%>
+				<span class="what">[wrote a note]</span>
+			<% when 'GroupPhoto': -%>
+				<span class="what">[updated group photo]</span>
+			<% when 'Group': -%>
+				<span class="detail">[updated group info]</span>
+			<% end -%>
+		</div>
+	</div>
+<% end -%>

@@ -1,0 +1,32 @@
+<%# unless question.status == "future" && @finished %>
+  <li class="<%= question.status unless @finished %>" id="<%= dom_id(question) %>">
+    <% if question.status == "open" %>
+      <% if @chat.host == current_profile %>
+        <div class="voting">
+          <span class="vote_up"><%= question.votes_up.to_i %></span><%= vote_up_image %>
+          <span class="vote_down"><%= question.votes_down.to_i %></span><%= vote_down_image %>
+          <% unless @finished %>
+            <%= link_to "Discuss Now", discuss_chat_topic_path(@chat, question), :class => "discuss_now" %>
+          <% end %>
+        </div>    
+      <% elsif !@finished %>
+        <div class="voting">
+          <% if ratable %>           
+            <%= link_to vote_up_image, rate_chat_topic_path(@chat, question, :direction => "up"), :class => "vote vote_up" %>
+            <%= link_to vote_down_image, rate_chat_topic_path(@chat, question, :direction => "down"), :class => "vote vote_down" %>
+          <% end %>
+          
+          <%= link_to "Am I ratable?", check_ratability_chat_topic_path(@chat, question), :style => "display:none;" %>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="text">
+      <% if question.status == "closed" %>
+        <%= link_to question.title + " <small>(expand)</small>", "#", :id => "question_#{question.id}_link_past", :class => "past_link" %>
+      <% else %>
+        <%= question.title %>
+      <% end %>
+    </div>
+
+  </li>
+<%# end %>

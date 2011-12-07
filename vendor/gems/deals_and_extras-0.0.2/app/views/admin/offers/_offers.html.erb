@@ -1,0 +1,56 @@
+<% quick_actions = false if local_assigns[:quick_actions].nil? %>
+
+<%= will_paginate offers rescue nil %>
+
+<% if quick_actions %>
+  <%= form_tag(mass_update_admin_offers_path) %>
+<% end %>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Supplier</th>
+            <th>Description</th>
+            <th>Is Enabled</th>
+            <% if quick_actions %>
+              <th>Approve</th>
+              <th>Delete</th>
+            <% end %>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% offers.each do |offer| %>
+            <tr class="<%= cycle('even', 'odd') %>">
+                <td>
+                    <%= offer.id %>
+                </td>
+                <td>
+                    <%= offer.suppliers.first.supplier_name unless offer.suppliers.empty? %>
+                </td>
+                <td>
+                    <%= offer.short_description %>
+                </td>
+                <td>
+                    <%= offer.is_approved %>
+                </td>
+                <% if quick_actions %>
+                  <td><%= check_box_tag "offer[#{offer.id}][approve]" %></td>
+                  <td><%= check_box_tag "offer[#{offer.id}][delete]" %></td>
+                <% end %>
+                <td>
+                    <%= link_to 'edit', edit_admin_offer_path(offer) %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<% if quick_actions %>
+    <%= submit_tag "Update Checked Items" %>
+  </form>
+<% end %>
+
+<%= will_paginate offers rescue nil %>
+<%= page_entries_info offers rescue nil %>

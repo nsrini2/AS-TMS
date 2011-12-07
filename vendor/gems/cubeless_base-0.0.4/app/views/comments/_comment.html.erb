@@ -1,0 +1,15 @@
+<div id="<%="comment#{comment.id}"%>">
+	<div class="list_item">
+		<div class="item_text">
+			<p id="comment_<%= comment.id.to_s%>_text"><%= comment_text(comment) %></p>
+			posted by <%= link_to_author(comment) %> on <%= pretty_datetime(comment.created_at) %>
+			<div class="links">
+				<!-- FIX SSJ -->
+				<%#= action_list_for([
+					render_abuse(comment),
+					(link_to_edit(comments_poly_path(@owner, comment, :action => :edit)) if author_or_shady_admin_content_for(comment))
+				])%>
+			</div>
+		</div>
+	</div>
+</div>

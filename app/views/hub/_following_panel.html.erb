@@ -1,6 +1,7 @@
-<%= link_to "View and Filter All the Things your Following", profile_watches_path(current_profile), :class => "filter" %>
+<%#= link_to "View and Filter All the Things your Following", profile_watches_path(current_profile), :class => "filter" %>
 <h3 class="lead">Things I'm Following</h3>
 
+We are currently experiencing technical difficulties with the following feature. We expect to have it restored quickly.
 <% followings.each do |event| -%>
 	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
 <% end -%>

@@ -1,0 +1,10 @@
+<strong>Recipients</strong>
+<% award.profile_awards.each do |profile_award| %>
+<li>
+	<span class="recipient">
+		<%= primary_photo_for(profile_award.profile, :size => '20x20', :hide_status_indicator => true) %>
+	 	<%= link_to profile_award.profile.screen_name, profile_path(profile_award.profile) %> <%= profile_award.awarded_on %> |
+	 	<%= link_to("remove", profile_award_path(profile_award), :class => "delete")%>
+	</span>
+</li>
+<% end %>

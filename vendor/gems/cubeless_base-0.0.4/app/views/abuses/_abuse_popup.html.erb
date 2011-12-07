@@ -1,0 +1,12 @@
+<% content_for(:title, "Why is this shady?") -%>
+<% form_tag @form_path do |f| -%>
+	<p>Thanks for helping to keep this a fun and quality place to hang out.  Please use the box below to give us a clue to why you think this content is shady.  Remember, not agreeing with someone's opinion isn't really a good reason to report this as shady.</p>
+	<dl>
+		<dt><label for="reason_text">Brief description</label></dt>
+		<dd><textarea name="abuse[reason]" id='reason_text'></textarea></dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Submit" class="button medium">
+		<input type="button" name="reset" value="Cancel" class="button light medium close">
+	</div>
+<% end -%>

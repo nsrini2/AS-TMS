@@ -1,0 +1,16 @@
+<% content_for(:reports_stats_tab_selected, 'selected') -%>
+
+<% content_for :admin_tabs_submenu do %> 
+  <% links = [
+  	sub_menu_li_for(stats_summary_admin_path, :text => "Stats Summary"),
+  	sub_menu_li_for(stats_by_date_admin_path, :text => "Stats By Date"),
+  	sub_menu_li_for(profiles_summary_admin_path, :text => "Profiles"),
+  	sub_menu_li_for(top_10_admin_path, :text => "Top 10"),
+  	sub_menu_li_for(metasearch_admin_path, :text => "Global Content Search"),
+  	sub_menu_li_for(custom_reports_path, :text => "Custom Reports", :selected => (params[:controller] == "custom_reports"))] %>
+	
+  <% links << sub_menu_li_for(environment_admin_path, :text => "Environment") if current_profile.has_role?(Role::CubelessAdmin) %>
+  <%= sub_menu_for(links) -%>
+<% end %>
+
+<%= render :file => 'layouts/_admin_tabs' -%>

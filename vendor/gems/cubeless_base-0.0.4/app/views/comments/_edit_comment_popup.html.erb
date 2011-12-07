@@ -1,0 +1,12 @@
+<% content_for(:title, object_edit_popup_title(@comment)) -%>
+<% form_for @comment, :url => comments_poly_path(@owner, :comment) do |f| -%>
+	<p><%= object_edit_popup_message(@comment, "Go ahead and fix it! You can change your #{comment_or_reply(@owner)} anytime it strikes your fancy.") -%></p>
+	<dl>
+		<dt><label for="comment_text"><%= comment_or_reply(@owner).capitalize -%></label></dt>
+		<dd><%= f.text_area :text, :rows => 6, :cols => 40, :value => @comment.text -%></dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Submit" class="button medium">
+		<input type="button" name="cancel" value="Cancel" class="button medium light close">
+	</div>
+<% end -%>

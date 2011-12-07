@@ -1,0 +1,41 @@
+<div id="dealsTable">
+
+    <ul id="myFolder" style="width:100%;" class="deal">
+      <% if @favorites.empty? %>
+        <li class="even">
+          <h2 class="prompt">
+            <% if logged_in? %>
+              When you add items to your folder, they will show up here
+            <% else %>
+              You must <%= link_to "login", "/account/login" %> to view or update your folder
+            <% end %>
+          </h2>
+        </li>
+      <% else %>
+        <%= render :partial => 'offer', :collection => @favorites %>
+      <% end %>
+    </ul>
+
+</div>
+
+<div id="pageNavigation">
+
+    <%= will_paginate @favorites %>
+    <%= page_entries_info @favorites unless @favorites.empty? %>
+    <br />
+    <% unless @favorites.empty? %>
+        <%= link_to image_tag("/images/de/btn_download_pdf.png", :alt => "Download page to PDF"), "/reports/favorites?per_page=#{@per_page}&page=#{@page}", {:id => 'download_pdf_link'} %>
+    <% end %>
+
+</div>
+
+<%= javascript_include_tag 'myFolder'%>
+
+<script type="text/javascript">
+    var switchTo5x=false;
+</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">
+    stLight.options({publisher:'f19e4608-3e1a-4991-b352-a428d5468d9e'});
+    stButtons.locateElements();
+</script>

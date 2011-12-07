@@ -1,7 +1,7 @@
 require_cubeless_engine_file(:controller, :profiles_controller)
 
 class ProfilesController
-
+  skip_before_filter :require_terms_acceptance, :only => [:hub]
   helper :event_stream
   helper :watches
   
@@ -9,23 +9,18 @@ class ProfilesController
     @widgets = {}
         
     # Add the default widget
-    @widgets["1"] = { :id => "1", :title => "Facebook Activity", :url=>"/profiles/my_widget", :internal => false }
+    # @widgets["1"] = { :id => "1", :title => "Facebook Activity", :url=>"/profiles/my_widget", :internal => false }
 
     # Add the other content admin widgets
-    w_idx = 2
+    w_idx = @widgets.size + 1
     Widget.all.each do |w|
       @widgets[w_idx.to_s] = { :id => w_idx, :title => w.title, :url => widget_path(w), :internal => false, :hide_settings => true }
       w_idx += 1
     end
     
-    
-    # MM2: Please don't leave this as is. I'm talking to you Mark
-    @followings = current_profile.watch_events(watch_filters({:order => 'created_at desc'}))
-    
-    
-    
-    
-    
+    # MM2: No longer using followings
+    # MM2: If you do bring them back, the current_profile.watch_events is SUPER SLOW!
+    # @followings = [] # current_profile.watch_events(watch_filters({:order => 'created_at desc'}))
     
     @system_announcement = SystemAnnouncement.get_if_active    
     @random_marketing_message = MarketingMessage.random_active_message
@@ -46,19 +41,27 @@ class ProfilesController
     # TODO: Clean this up...scraped from ExplorationsController.
     # Special options needed to ensure only personal posts or group posts that I can access show up
     blog_options = blog_filters
+    
     ModelUtil.add_joins!(blog_options,"left join groups pg on pg.id = blogs.owner_id and blogs.owner_type = 'Group' and pg.group_type = 2")
     ModelUtil.add_conditions!(blog_options,"pg.id is null")
-    blog_options[:limit] = 2
-    @blog_posts = BlogPost.find(:all, blog_options)
+    ModelUtil.add_conditions!(blog_options,"blogs.owner_type <> 'Company'")
+    @blog_posts = BlogPost.find(:all, blog_options, :limit => 2)
+    
 
     # TODO: Make into one query
     @messages = [current_profile.notes.recent, current_profile.sent_notes.recent].flatten.sort_by(&:created_at).reverse
     
-    @events = ActivityStreamEvent.find_summary(:all,:limit => 15)
+    @events = ActivityStreamEvent.find_summary(:all, :page => params[:page])
     
     # For status or question creation
     @status = Status.new
     @question = Question.new
+      
+    @terms_and_conditions = TermsAndConditions.get.content unless current_user.terms_accepted
+  end
+  
+  def badges
+    
   end
   
 end

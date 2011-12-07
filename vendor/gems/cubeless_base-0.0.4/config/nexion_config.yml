@@ -1,0 +1,179 @@
+
+theme: 'theme_2'
+
+logo_file: "nexiontown_logo.jpg"
+
+viewable_karma: true
+
+favicon: "nexiontown_favicon.ico"
+
+site_name: "Nexion Town"
+
+ad_units:
+  hub:
+    square_button_1: <a href="http://www.nexion.com/ad-images/ntown-square-left.html" target="_blank"><img src="http://www.nexion.com/ad-images/ntown-square-left.gif" width="125" height="125"></a>
+    square_button_2: <a href="http://www.nexion.com/ad-images/ntown-square-right.html" target="_blank"><img src="http://www.nexion.com/ad-images/ntown-square-right.gif" width="125" height="125"></a>
+  explorations:
+    questions:
+      wide_skyscraper:  <a href="http://www.nexion.com/ad-images/ntown-skyscrape-question.html" target="_blank"><img src="http://www.nexion.com/ad-images/ntown-skyscrape-question.gif" width="160" height="600"></a>
+    groups:
+      wide_skyscraper:  <a href="http://www.nexion.com/ad-images/ntown-skyscrape-group.html" target="_blank"><img src="http://www.nexion.com/ad-images/ntown-skyscrape-group.gif" width="160" height="600"></a>
+    blogs:
+      wide_skyscraper:  <a href="http://www.nexion.com/ad-images/ntown-skyscrape-blog.html" target="_blank"><img src="http://www.nexion.com/ad-images/ntown-skyscrape-blog.gif" width="160" height="600"></a>
+
+ 
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: false
+
+question_categories: ["Destinations", "Best Practices", "Networking", "Marketing", "Suppliers", "Training", "Corporate", "Technical", "FAMS/Inspections", "Industry Events", "Referrals"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Location (City, State)"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline (e.g. mantra, sales tips, mission statement, etc.)"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Agency Name"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Years with Nexion"
+    completes_profile: false
+    matchable: false
+  - question: profile_5
+    label: "Phone Number"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Travel Certifications"
+    completes_profile: false
+    matchable: false
+  - question: profile_7
+    label: "Years in Travel"
+    completes_profile: true
+    matchable: false
+  - question: profile_8
+    label: "Company Name"
+    completes_profile: false
+    matchable: false
+  - question: profile_9
+    label: "Title"
+    completes_profile: false
+    matchable: false
+  - question: profile_10
+    label: "Web Site"
+    completes_profile: false
+    matchable: false
+  - question: profile_11
+    label: "Product/Destination"
+    completes_profile: false
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+
+
+
+contact_info_order:
+  profile: [
+    'email',
+    'profile_5',
+    'profile_3',
+    'profile_6',
+    'profile_7',
+    'profile_4'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_5',
+    'email',
+    'profile_7'
+  ]
+
+sponsor_member_contact_info_order:
+  profile: [
+    'profile_8',
+    'profile_11',
+    'profile_10',
+    'profile_9',
+    'profile_5',
+    'email'
+  ]
+  business_card: [
+    'profile_8',
+    'profile_10',
+    'profile_5'
+  ]
+
+
+profile_complex_questions:
+  - title: "About Me"
+    questions:
+      - question: question_1
+        label: "What's your hometown?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Where do you live now?"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "Places you've traveled:"
+        example: "e.g. Europe, Texas, Mumbai, La Paz... you name it."
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What organizations are you involved with?"
+        example: "e.g. networking groups, chambers of commerce, community organizations, professional affiliations, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_5
+        label: "What other jobs have you had in the past?"
+        example: "e.g. retail sales, graphic artist, programmer, etc."
+        completes_profile: true
+        matchable: true
+
+  - title: "On The Job"
+    questions:
+      - question: question_6
+        label: "What type of travel do you book?"
+        example: "e.g. corporate, leisure"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "Do you specialize in a particular type of travel?"
+        example: "e.g. destination weddings, eco tours, cruises only, luxury"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What destinations do you book and/or have expertise in?"
+        example: "e.g. Disney, Caribbean, Hawaii, Europe, Alaska Cruises"
+        completes_profile: true
+        matchable: true
+      - question: question_9
+        label: "Which suppliers do you book most frequently?"
+        example: "e.g. Air, Car, Hotel, Rail, Cruise, Limo, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "Tell us about your primary office location"
+        example: "e.g. Storefront/home office/corporate office"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What booking engines do you use?"
+        example: "e.g. Sabre/Apollo/Sabre Cruise"
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "What Nexion programs have you participated in?"
+        example: "e.g. TMA marketing, conference, Boot Camp, full service ticketing"
+        completes_profile: true
+        matchable: true

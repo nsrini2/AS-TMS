@@ -1,0 +1,9 @@
+<div class="blog_results">
+	<h2 class="explore_header"><%= params[:query] ? "Blog results for <strong>#{@query}</strong>" : "All #{site_name} Blogs" %></h2>
+	<%= category_filter_sort_controls('BlogPost') -%>
+	<% @blogs.each do |blog_post| -%>
+		<%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => blog_post, :blog_explore => true, :classname => cycle('odd', 'even') } %>
+	<% end -%>
+	
+</div>
+<%= render_pagination @blogs %>

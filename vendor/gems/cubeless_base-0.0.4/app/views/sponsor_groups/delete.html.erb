@@ -1,0 +1,5 @@
+<% content_for(:page_title, "Delete #{@sponsor_group.name} Group") -%>
+<% form_for :sponsor_group, :url => sponsor_account_sponsor_group_path(@sponsor_account, @sponsor_group), :html => { :method => :delete } do |f| -%>
+	<h3>Are you sure you want to delete <%= @sponsor_group.name -%>?</h3><br />
+	<%= submit_tag "Yes" -%>&nbsp;&nbsp;&nbsp;<%= submit_tag "No" -%>
+<% end -%>

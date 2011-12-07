@@ -1,0 +1,13 @@
+<%
+	content_for(:travel_tab, 'selected')
+	content_for(:page_title, 'My Travel')
+-%>
+
+<h2>My Travel</h2>
+
+<% if @travels.empty? %>
+	There are currently no trips that have been imported from GetThere.
+	Feel free to <%= link_to "explore travel", travels_explorations_path %> and see where others community members are traveling.
+<% else %>
+	<%= render :partial => "my_list", :locals => {:travels => @travels} %>
+<% end %>

@@ -1,0 +1,37 @@
+<tr class="<%= classname %>">
+	<td class="photo">
+		<%#= primary_photo_for(travel.profile, :size => '50x50', :hide_status_indicator => true) %>
+		<%= link_to_avatar_for(travel.profile) %>
+	</td>
+	<td class="details">
+		<%= link_to(travel.profile.screen_name, profile_path(travel.profile), :class => 'name') %>
+		<!-- <br/>
+		4 shared bookings -->
+		<br/>
+		<%= link_to "Itinerary", itinerary_travel_path(travel) %>
+	</td>
+	<td>
+		<%= display_location travel %>
+	</td>
+	<!-- <td><%= travel.locations %></td> -->
+	<td class="date"  style="vertical-align: top;">
+		<%= pretty_datetime travel.start_time %> to
+		<br/>
+		<%= pretty_datetime travel.end_time %>
+	</td>
+	<!-- <td class="date"><%= pretty_datetime travel.end_time %></td> -->
+	<!-- <td class="itinerary">
+		<%= link_to "Itinerary", itinerary_travel_path(travel) %>
+	</td> -->
+	<td class="itinerary">
+		<% bxml = BookingXML.new(REXML::Document.new(travel.xml).root) %>
+		<% legs = [] %>
+		<% legs << image_tag("travel/TC_tripIcons_flight.png", :alt => "Air") if bxml.has_air_legs? %>
+		<% legs << image_tag("travel/TC_tripIcons_hotel.png", :alt => "Hotel") if bxml.has_hotels? %>
+		<% legs << image_tag("travel/TC_tripIcons_car.png", :alt => "Car") if bxml.has_cars? %>
+		<%= legs.join("") %>
+	</td>			
+</tr>
+<tr class="spacer">
+	
+</tr>

@@ -1,0 +1,8 @@
+@for $i from 0 through 100 {
+  $j: -61.86px*$i;
+  .seal_#{$i} { background-position: 1px+$j 0px; }
+}
+
+/*div.seal_100 {
+  background-position: -4997px 0px;
+}*/

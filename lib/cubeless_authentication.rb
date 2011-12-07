@@ -1,4 +1,4 @@
-require "#{Rails.root}/vendor/plugins/cubeless/lib/cubeless_authentication"
+require_cubeless_engine_file :lib, :cubeless_authentication
 
 module CubelessAuthentication
   def require_auth

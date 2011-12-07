@@ -1,0 +1,30 @@
+<% if false %>
+<table class="explore_table">
+	<thead>
+		<tr>
+			<th colspan="2">Person</th>
+			<th>Departure Location</th>
+			<th>Arrival Locations</th>
+			<th>Start Travel Time</th>
+			<th>End Travel Time</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @travels.each do |travel| -%>  
+			<%= render :partial => 'travels/travel', :locals => { :travel => travel, :classname => cycle('odd', 'even') } %>
+		<% end -%>		
+	</tbody>
+</table>
+
+<% end %>
+
+
+<table class="explore_table">
+	<tbody>
+		<% @travels.each do |travel| -%>  
+			<%= render :partial => 'travels/travel2', :locals => { :travel => travel, :classname => cycle('odd', 'even') } %>
+		<% end -%>		
+	</tbody>
+</table>
+

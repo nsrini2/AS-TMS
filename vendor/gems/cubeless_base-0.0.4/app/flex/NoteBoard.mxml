@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application
+	creationComplete="{initApp()}"
+	paddingTop="0" paddingRight="0" paddingBottom="0" paddingLeft="0" layout="horizontal"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:SimpleComponents="SimpleComponents.*" xmlns:flash="flash.filters.*" xmlns:local="*">
+	<mx:Style source="notes.css"/>
+	<mx:Script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+			import mx.effects.easing.Back;
+			import mx.charts.chartClasses.StackedSeries;
+			import mx.collections.ArrayCollection;
+			import mx.events.EffectEvent;
+			import mx.events.FlexEvent;
+			import mx.core.*;
+			import mx.controls.*;
+			import mx.managers.PopUpManager;
+			import mx.events.CloseEvent;
+			import mx.effects.*;
+			import mx.rpc.*;
+			import mx.rpc.events.*;
+			import mx.utils.*;
+			private var scroller:Scroller;
+			private var largeNoteEnabled:Boolean = true;
+
+			private function debug(msg):void {
+				ExternalInterface.call("console.log", msg);
+			}
+
+			public function initApp():void {
+				noteDisplayService.url = parameters.note_url;
+				if ("preview"==parameters.mode) {
+					application.setStyle('backgroundImage','/images/corkBG.gif');
+					top_info.height = 6;
+					largeNoteEnabled = false;
+					//application.setStyle('backgroundAlpha',0);
+					notes_container.height = 110;
+					notes_container.setStyle('paddingLeft',0);
+					notes_container.setStyle('horizontalAlign','center');
+					notes_container_trailspace.width=0;
+					application.addEventListener(MouseEvent.CLICK,function(event){navigateToURL(new URLRequest(application.parameters.redirect_path), '_self')});
+				} else {
+					application.setStyle('backgroundImage','/images/corkBG.gif');
+					scroller = new Scroller(notes_container);
+					application.addEventListener(MouseEvent.ROLL_OUT, function(event){scroller.stopScrolling(event)});
+					application.addEventListener(MouseEvent.MOUSE_MOVE, scroller.logarithmicScroller);
+				}
+				noteDisplayService.send();
+			}
+
+			protected function set scrollingPaused(b:Boolean):void {
+				if (scroller!=null) scroller.paused = b;
+			}
+
+			public function httpResult(event:ResultEvent):void {
+				var numNotes:int = new int;
+				var result:Object = event.result;
+				if(result.notes != null){
+					notes.dataProvider = result.notes.note;
+					numNotes = result.notes.note.length;
+					if (numNotes == 0) {
+						numNotes++; // for some reason only 1 note gets displayed as 0, so we add 1
+					}
+					notes_heading.text = "Notes ("+numNotes+")";
+				}
+				else {
+					notes.dataProvider = null;
+					notes_heading.text = "Notes";
+				}
+			}
+
+			private function onNoteDelete(note:Note):void {
+				var deleteNote:Popup = new Popup();
+				PopUpManager.addPopUp(deleteNote, this, true);
+				PopUpManager.centerPopUp(deleteNote);
+				deleteNote.submit.addEventListener("click", function ():void {
+					var noteDeleteService:HTTPService = new HTTPService();
+					noteDeleteService.url = "/notes/"+ note.noteData.id + "/destroy";
+					noteDeleteService.method = "POST";
+					noteDeleteService.addEventListener(ResultEvent.RESULT,function(event:ResultEvent):void {
+						PopUpManager.removePopUp(deleteNote);
+						httpResult(event);
+						showStatusMessage("Note deleted");
+					});
+					noteDeleteService.send({
+						authenticity_token: parameters.authenticity_token
+					});
+				});
+				deleteNote.cancel.addEventListener("click", function ():void {
+					PopUpManager.removePopUp(deleteNote);
+				});
+			}
+
+			private function onNoteShady(note:Note):void {
+				var shady:CreateShady = new CreateShady();
+				PopUpManager.addPopUp(shady, this, true);
+				PopUpManager.centerPopUp(shady);
+				shady.addEventListener("close",function ():void {
+					PopUpManager.removePopUp(shady);
+				});
+				shady.submit.addEventListener("click",function ():void {
+					shady.enabled = false;
+					var noteShadyService:HTTPService = new HTTPService();
+					noteShadyService.method = "POST";
+					noteShadyService.url = "/notes/"+note.noteData.id+"/shady";
+					noteShadyService.addEventListener(ResultEvent.RESULT,function(event:ResultEvent):void {
+						PopUpManager.removePopUp(shady);
+						httpResult(event);
+						showStatusMessage("Note marked as shady.");
+					});
+					noteShadyService.send({
+						'abuse[reason]' : shady.description.text,
+						receiver_id : parameters.receiver_id,
+						authenticity_token: parameters.authenticity_token
+					});
+				});
+			}
+
+			private function onNoteReply(note:Note):void {
+				initCreateNote(note.noteData);
+			}
+
+			public function initCreateNote(reply_to:*):void {
+				var reply_to_id = reply_to == null ? null : reply_to.id
+				var msgBegin:String = reply_to_id==null ? "Begin typing..." : "Begin typing your reply...";
+				var newNote:CreateNote = new CreateNote();
+				newNote.onSend = function():void {
+					if(newNote.note.text.length > 100){
+						Alert.show("Hey, its a note, not an email. Remove " + (newNote.note.text.length - 100) + " characters and try sending again.");
+					} else if (StringUtil.trim(newNote.note.text) == msgBegin || newNote.note.text == "") {
+						Alert.show("I think you forgot to put a note.");
+					} else {
+						noteCreateService.send({
+							authenticity_token: parameters.authenticity_token,
+							message : newNote.note.text,
+							private_note: newNote.private_note.selected,
+							receiver_id : parameters.receiver_id,
+							receiver_type : parameters.receiver_type,
+							reply_to_note_id : reply_to_id});
+						PopUpManager.removePopUp(newNote);
+						showStatusMessage("Shazam! Your note's been posted.");
+					}
+				};
+				newNote.onCancel = function():void {
+					PopUpManager.removePopUp(newNote)
+				};
+
+				PopUpManager.addPopUp(newNote, this, true);
+				PopUpManager.centerPopUp(newNote);
+				newNote.note.text = msgBegin;
+				if(parameters.receiver_type == 'Group'){
+					newNote.private_note.label = "Private Group Note";
+					newNote.instructions.text = "Just a reminder, notes can only be seen by group members if marked private.";
+				}else{
+					newNote.instructions.text = "Just a reminder, notes can be seen by all community members unless marked private.";
+				}
+				if(reply_to_id!=null){
+					newNote.instructions.text = "Reply notes are sent to the profile of the person you're replying to.";
+				}
+				newNote.note.setFocus();
+				newNote.note.setSelection(0, newNote.note.text.length);
+				if(reply_to_id != null && reply_to.private == true){
+					newNote.private_note.selected = true;
+				}
+
+			}
+
+			// Queue for messages to stack up in, since they take time to fade off the screen
+			private var statusMessages:Array = new Array();
+			public var statusMessageShowing:Boolean = false;
+			private function showStatusMessage(msg:String):void {
+				if (msg!=null) statusMessages.unshift(msg);
+				if (statusMessages.length==0 || statusMessageShowing) return;
+				statusMessageShowing = true;
+				var msg:String = String(statusMessages.shift());
+				alertText.text = msg;
+				alertBox.alpha = 1.0;
+				alertBox.visible = true;
+				alertBox.validateNow();
+
+				var myFade:Fade = new Fade(alertBox);
+				myFade.startDelay = 4000;
+				myFade.duration = 2000;
+				myFade.alphaTo = 0.0;
+				myFade.addEventListener(EffectEvent.EFFECT_END,function():void {
+					alertBox.visible = false;
+					statusMessageShowing = false;
+					showStatusMessage(null);
+				});
+				myFade.play();
+			}
+
+		]]>
+	</mx:Script>
+	<mx:HTTPService id="noteDisplayService" result="httpResult(event)" url="{Application.application.parameters.note_url}" />
+	<mx:HTTPService id="noteCreateService" url="/notes" result="httpResult(event)" method="POST"/>
+	<mx:Canvas verticalScrollPolicy="off" horizontalScrollPolicy="off">
+		<mx:VBox height="100%" verticalGap="0" id="outerWrapper" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+			<mx:HBox id="top_info" width="100%" paddingTop="5" paddingLeft="10" paddingRight="10">
+				<mx:Label fontSize="16" fontWeight="bold" id="notes_heading" color="white"
+					filters="{[new DropShadowFilter(5, 45)]}" />
+				<mx:Spacer width="100%"/>
+				<mx:HBox visible="false" id="alertBox" backgroundColor="0xffff99" borderColor="0x990000" verticalAlign="middle" width="0%" height="28" horizontalScrollPolicy="off" verticalScrollPolicy="off" paddingRight="10">
+					<mx:Image source="/images/noticeIcon.gif"/>
+					<mx:Label id="alertText" color="0x990000" fontWeight="bold" fontSize="12"/>
+				</mx:HBox>
+				<mx:Spacer width="100%"/>
+				<mx:Canvas>
+					<mx:HBox horizontalGap="0" verticalAlign="middle">
+						<mx:Text id="linkText" text="leave a note" styleName="leaveNote"/>
+						<mx:Image source="/images/overlay.gif" width="8" height="8"/>
+					</mx:HBox>
+					<mx:LinkButton rollOver="{linkText.filters=[new DropShadowFilter(5, 45)]}"
+						rollOut="{linkText.filters = null}" height="{linkText.height + 2}"
+						width="{linkText.width}" alpha="0" styleName="leaveNote" id="leave_note"
+						click="{this.initCreateNote(null)}" />
+				</mx:Canvas>
+			</mx:HBox>
+			<mx:HBox horizontalScrollPolicy="off" paddingLeft="5" height="145" horizontalGap="-3"
+				id="notes_container" backgroundAlpha="0" width="{application.width}" paddingBottom="4">
+				<mx:Repeater id="notes">
+					<local:Note id="note" admin="{parameters.admin}"
+						mine="{parameters.mine}"
+						largeNoteEnabled="{largeNoteEnabled}"
+						rollOut="application.scrollingPaused = false"
+						rollOver="application.scrollingPaused = true"
+						noteData="{notes.currentItem}" rotateNotes="true" onDelete="onNoteDelete"
+						onReply="onNoteReply"
+						onShady="onNoteShady"/>
+				</mx:Repeater>
+				<mx:Spacer id="notes_container_trailspace" width="200"/>
+			</mx:HBox>
+		</mx:VBox>
+	</mx:Canvas>
+</mx:Application>
+

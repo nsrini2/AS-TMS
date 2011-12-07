@@ -1,0 +1,6 @@
+<div id="groups">
+	<%= link_to("Create a new group", new_group_path, :class => "modal create_group") if current_profile.num_group_slots_remaining > 0 -%>
+	<% @groups.each do |group| -%>
+		<%= render :partial =>'groups/group', :locals => { :group => group, :classname => cycle('odd', 'even') } -%>
+	<% end -%>
+</div>

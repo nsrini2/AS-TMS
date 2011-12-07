@@ -1,0 +1,91 @@
+<% if @profile
+		content_for(:travel_tab, 'selected')
+		content_for(:page_title, 'My Itinerary')
+	else
+		content_for(:page_title, 'Travel Itinerary')
+	end -%>
+
+<div class="travel list_item">
+	<%= link_to_avatar_for(@travel.profile) %>
+
+	<div class="details travel">
+		<div class="item_text">
+			<%= link_to @travel.profile.screen_name, profile_path(@travel.profile) %></a>
+		</div>
+		<p>
+			<strong><%= pretty_datetime @travel.start_time %></strong>
+			to
+			<strong><%= pretty_datetime @travel.end_time %></strong>		
+			<br/>
+			<%= [@travel.start_location, @travel.locations].compact.join(" to ") %>
+		</p>
+	</div>
+
+	<div style="clear:both;">		
+		<% if @bxml.has_air_legs? %>
+			<div>			
+				<h3>
+					<%= image_tag("travel/TC_tripIcons_flight.png", :alt => "Air", :style => "vertical-align: middle;") %>
+					AIR
+				</h3>
+				<% @bxml.air_legs_xml do |alxml| %>
+					<p>
+						Flight: <%= alxml.find_airline_name %> <%= alxml.find_flight_number %><br/>
+						Depart: <%= alxml.find_from_city %> (<%= alxml.find_from_apt_code %>) <%= pretty_datetime alxml.find_departing_date_time.to_time if alxml.find_departing_date_time %><br/>		
+						Arrive: <%= alxml.find_to_city %> (<%= alxml.find_to_apt_code %>) <%= pretty_datetime alxml.find_arrival_date_time.to_time if alxml.find_arrival_date_time %>
+					</p>
+				<% end %>
+			</div>
+		<% end %>
+
+		<% if @bxml.has_hotels? %>
+			<div>
+				<h3>
+					<%= image_tag("travel/TC_tripIcons_hotel.png", :alt => "Hotel", :style => "vertical-align: middle;") %>
+					HOTEL
+				</h3>
+				<% @bxml.hotels_xml do |hxml| %>
+				<p>
+					<strong><%= hxml.find_hotel_name.to_s.titlecase %></strong><br/>
+					<%= hxml.find_hotel_phone_nbr %><br/>
+				</p>
+				<p>
+					<%= hxml.find_hotel_address("<br/>") %><br/>		
+					<%= hxml.find_hotel_region %>				
+				</p>
+				<p>
+					Checkin: <%= pretty_datetime hxml.find_checkin_date_time.to_time %><br/>
+					Checkout: <%= pretty_datetime hxml.find_checkout_date_time.to_time %>
+				</p>
+				<% end %>
+			</div>
+		<% end %>
+		
+		<% if @bxml.has_cars? %>
+			<div>
+				<h3>
+					<%= image_tag("travel/TC_tripIcons_car.png", :alt => "Car", :style => "vertical-align: middle;") %>
+					CAR
+				</h3>
+				<% @bxml.cars_xml do |cxml| %>
+				<p>
+					<strong><%= cxml.find_vendor_name %></strong><br/>
+					
+					Car Type: <%= cxml.find_car_type %><br/>
+					<% if cxml.find_make_model %>
+						Make/Model: <%= cxml.find_make_model %><br/>
+					<% end %>
+				</p>
+				<p>	
+					Pickup Location: <%= cxml.find_pickup_city_name %>, <%= cxml.find_pickup_state_name.to_s.titlecase %>, <%= cxml.find_pickup_country_name.to_s.titlecase %><br/>
+					Pickup Time: <%= pretty_datetime cxml.find_pickup_date_time.to_time %>
+				</p>
+				<p>
+					Dropoff Location: <%= cxml.find_dropoff_city_name %>, <%= cxml.find_dropoff_state_name.to_s.titlecase %>, <%= cxml.find_dropoff_country_name.to_s.titlecase %><br/>
+					Dropoff Time: <%= pretty_datetime cxml.find_dropoff_date_time.to_time %>
+				</p>
+				<% end %>
+			</div>		
+		<% end %>
+	</div>
+</div>

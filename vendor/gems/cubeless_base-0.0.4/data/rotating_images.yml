@@ -1,0 +1,63 @@
+askCommunity.gif:
+    url: new_question_path
+    alt: ""
+viewUnanswered.gif:
+    url: questions_explorations_path(:filter_scope => 'unanswered')
+    alt: ""
+youCanAnswer.gif:
+    url: matched_questions_profile_path(current_profile)
+    alt: ""
+searchPeople.gif:
+    url: people_explorations_path
+    alt: ""
+rotator001.gif:
+    url: new_question_path
+    alt: ""
+rotator002.gif:
+    url: people_explorations_path
+    alt: ""
+rotator003.gif:
+    url: "'/profile'"
+    alt: ""
+rotator004.gif:
+    url: new_question_path
+    alt: ""
+rotator005.gif:
+    url: "'/profile'"
+    alt: ""
+rotator006.gif:
+    url: questions_explorations_path
+    alt: ""
+rotator007.gif:
+    url: "'/terms_and_conditions'"
+    alt: ""
+rotator008.gif:
+    url: "'/profile'"
+    alt: ""
+rotator009.gif:
+    url: people_explorations_path
+    alt: ""
+rotator010.gif:
+    url: smarts_explorations_path
+    alt: ""
+rotator011.gif:
+    url: "'/profile'"
+    alt: ""
+rotator012.gif:
+    url: "'/terms_and_conditions'"
+    alt: ""
+rotator013.gif:
+    url: questions_explorations_path(:filter_scope => 'unanswered')
+    alt: ""
+rotator014.gif:
+    url: new_question_path
+    alt: ""
+rotator015.gif:
+    url: questions_explorations_path
+    alt: ""
+rotator016.gif:
+    url: people_explorations_path
+    alt: ""
+rotator017.gif:
+    url: people_explorations_path
+    alt: ""

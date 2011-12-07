@@ -1,0 +1,28 @@
+<% content_for(:page_title, 'Manage Users') -%>
+<h3>Search Users</h3>
+<%= form_tag users_path, :method => :get, :id => 'users_search' -%>
+	<div class="form_section">
+		<label>Role</label>
+		<%= select_tag(:role, options_for_select(@roles, params[:role]))%>
+	</div>
+	<div class="form_section">
+		<label>Status</label>
+		<%= select_tag(:status, options_for_select([['Any', ''], ['Active', '1'], ['Activate on Login', '2'], ['Pending Approval', '-3'], ['Inactive', '0'], ['Queued for Deletion', '-1']], params[:status])) -%>
+	</div>
+	<div class="form_section">
+		<label>Visible</label>
+		<%= select_tag(:visible, options_for_select([['Any', ''], ['Yes', '1'], ['No', '0']], params[:visible])) -%>
+	</div>
+	<div class="form_section">
+		<label>Name</label>
+		<%= text_field_tag(:name, params[:name]) -%>
+	</div>
+	<div class="form_section">
+		<input type="submit" name="commit" value="Search" class="button small">
+	</div>
+</form>
+
+<h3>Results (<%= @profiles.size -%>)</h3>
+<div id="profile_results">
+	<%= render :partial => 'results' -%>
+</div>

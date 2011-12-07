@@ -1,0 +1,16 @@
+<table class="border_table" id="<%=result.table_id%>" cellspacing="0" width="96%">
+	<caption><%= result.caption %></caption>
+	<tbody>
+	<tr><% result.columns.each do |col| %><th <%= "width='#{col[:column_width]}'" if col[:column_width] %>><%= col[:title] %></th><% end -%></tr>
+	<% result.data.each do |row| %>
+		<tr class="<%= cycle("even", "odd") -%>">
+			<% row.each_with_index do |col,i| %>
+				<td<%= result.columns[i][:align_data] && " align=\"#{result.columns[i][:align_data]}\"" %><%= result.columns[i][:class] && " class=\"#{result.columns[i][:class]}\"" %>>
+					<%=col || '&nbsp;' %>
+				</td>
+			<% end -%>
+		</tr>
+	<% end -%>
+	<% reset_cycle -%>
+	</tbody>
+</table>

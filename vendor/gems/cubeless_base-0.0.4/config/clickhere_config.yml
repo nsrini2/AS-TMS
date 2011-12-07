@@ -1,0 +1,136 @@
+
+theme: 'theme_4'
+
+logo_file: "clickhere_logo.png"
+
+favicon: "clickhere_favicon.ico"
+
+site_name: "Cubeless @ Click Here"
+
+feedback_email: "cubeless@clickhere.com"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: ["Life", "Work", "Play", "Travel"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Job Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Location"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Cube #"
+    completes_profile: false
+    matchable: false
+  - question: profile_5
+    label: "Work Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Cell Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_7
+    label: "Organization"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'email',
+    'profile_7'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_5',
+    'email',
+    'profile_7'
+  ]
+
+profile_complex_questions:
+  - title: "Out & About"
+    questions:
+      - question: question_1
+        label: "What's your hometown?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Where do you live now?"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "Places you've traveled:"
+        example: "e.g. Europe, Texas, Mumbai, La Paz... you name it."
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "Places you dream about going:"
+        example: "e.g. China, Norway, Tuscany, Paris, Grand Canyon, etc."
+        completes_profile: true
+        matchable: true
+
+  - title: "On The Job"
+    questions:
+      - question: question_5
+        label: "What do you really do for a living?"
+        example: "e.g. I sell sardines by the tin. Real stuff, not resume/CV mumbo jumbo."
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What are your corporate gigs and contacts?"
+        example: "Customers and companies I have an 'in' with like P&G, Semco, Dunder-Mifflin, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What are your skills, expertise or things you rule in?"
+        example: "e.g. TPF programming whiz, SAP, Java, AirCrews, presentation god, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What is your favorite lunchspot or watering hole?"
+        example: "e.g. The coffee shop around the corner or the vendor on the street."
+        completes_profile: true
+        matchable: true
+
+  - title: "Stuff I Like"
+    questions:
+      - question: question_9
+        label: "What are the sports you can't live without?"
+        example: "e.g. Watch it on TV or play it on the weekends. Wii video games count."
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "What's the music you put on continuous repeat?"
+        example: "e.g. That band you crank up in the car."
+        completes_profile: true
+        matchable: false
+      - question: question_11
+        label: "What are your favorite hobbies?"
+        example: "e.g. The stuff you do when you have a choice about what to do."
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "What celebrity are you most like?"
+        example: "Not just looks but personality and wit count, too."
+        completes_profile: true
+        matchable: false

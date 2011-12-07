@@ -1,4 +1,3 @@
-
 <%
 full_post = false unless defined?(full_post)
 classname = '' unless defined?(classname)
@@ -24,14 +23,14 @@ preview = false unless defined?(preview)
   		<% else -%>
   			<div class="summary">
 					<div class="blog_post_p">
-	  			  <%= textilize_without_paragraph truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 114, "&hellip;&nbsp;&nbsp;") -%>
+	  			  <%= textilize truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), { :length => 114, :omission => "&hellip;&nbsp;&nbsp;" }) -%>
 					</div>
 					<p>
 						<%= link_to("read", blog_post_path(blog_post), :class => "button little") -%>
 						<%= link_to("comment", "#{blog_post_path(blog_post)}#comments", :class => "button little light") -%>
 					</p>
   			</div>
-  			<%#= action_list_for([
+  			<%= action_list_for([
   				(content_tag(:span, "No comments yet") if blog_post.comments.count.zero?),
   				(link_to(pluralize(blog_post.comments.count, 'comment'), "#{blog_post_path(blog_post)}#comments") unless blog_post.comments.count.zero?),
   				render_abuse(blog_post),
@@ -68,7 +67,7 @@ preview = false unless defined?(preview)
   						<h5><%= link_to_author(comment) -%> says:</h5>
   						<p class="meta">on <%= pretty_datetime(comment.created_at) %></p>
   						<p id="comment_<%= comment.id.to_s%>_text" class="text"><%= comment_text(comment) %></p>
-  						<%= action_list_for([
+							<%= action_list_for([
   							render_abuse(comment),
   							(link_to_edit_comment(comments_poly_path(blog_post, comment, :action => :edit)) if author_or_shady_admin_content_for(comment)),
   							link_to("permanent link", "#{blog_post_url(blog_post)}#comment_#{comment.id.to_s}")
@@ -77,13 +76,14 @@ preview = false unless defined?(preview)
   				</div>
   			<% end -%>
   		<% end -%>
-  		<% form_for :comment, :url => new_comment_blog_post_path(blog_post), :html => { :id => 'new_comment' } do |f| -%>
+  		
+			<% form_for :comment, :url => blog_post_comments_path(blog_post), :html => { :id => 'new_comment' } do |f| -%>
   			<h5>Add your 2 cents to the conversation</h5>
   			<p>Comments are a great way to show your support and add another perspective.</p>
   			<%= content_tag(:p, flash[:error], :class => 'error') unless flash[:error].blank? -%>
   			<fieldset>
   				<label for="blog_post_comment_text">Your Comment</label><br/>
-  				<textarea name="comment[text]" id="blog_post_comment_text" maxlength="4000" style="width: 500px; height: 120px;"><%= params[:comment] -%></textarea>
+  				<textarea name="comment[text]" id="blog_post_comment_text" maxlength="4000" style="width: 500px; height: 120px;"><%#= params[:comment] -%></textarea>
   			</fieldset>
   			<div class="buttons">
   				<input type="submit" name="commit" value="Submit" class="button medium">

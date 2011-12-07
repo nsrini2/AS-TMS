@@ -1,4 +1,5 @@
 require_cubeless_engine_file(:helper, :application_helper)
+require_de_engine_file(:helper, :application_helper)
 
 module ApplicationHelper
 
@@ -16,8 +17,9 @@ module ApplicationHelper
                 :chat => /chat/,
                 :company => /companies/,
                 :"my agency" => /companies/,
+                :de => /deals_and_extras/,
                 :hub => /(questions|groups|blogs|news|chat|companies)/ }
-                
+                    
     regex = regexes[name.downcase.to_sym]    
     css_class = global_nav_link_active?(name, regex) ? "active" : ""
     # SSJ set class to new background images that are 30x30px 
@@ -29,8 +31,12 @@ module ApplicationHelper
   end
   
   def global_nav_link_active?(name, regex)
+    name = "de" if name[/deals/i]
+    
     if request.url[/companies/]
         name.downcase.to_sym == :"my agency"
+    elsif request.url[/deals/i]
+        name.downcase.to_sym == :de
     else 
       if name.downcase == "hub"
         (regex && !request.url[regex])
@@ -39,5 +45,19 @@ module ApplicationHelper
       end
     end  
   end
+  
+  def show_logout
+    current_profile && !sabre_red_workspace_user
+  end
+  
+  def sabre_red_workspace_user
+    # user logged in from SRW
+    true if session[:srw_user] && session[:srw_user] == true
+  end
+  
+  def de_request
+    request.url[/\/deals_and_extras/]
+  end
+  alias :de_request? :de_request
   
 end

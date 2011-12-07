@@ -1,32 +1,32 @@
 <% content_for :content do -%>
-  <% unless @content_for_tab_heading.blank? %>
+  <% if content_for? :tab_heading %>
     <h2 class="page_title">
       <%= yield :tab_heading %>
     </h2>
   <% end %>
 
   <div class="profile">
-    <div class="primary <%= "full_length" if @content_for_aside.blank? %>">
+    <div class="primary <%= "full_length" unless content_for?(:aside) %>">
       <div class="tabs"> 
       	<ul class="tabs-nav standard">
       		<%= yield :tabs %>
       	</ul>
 
         <div class="tabs-panel">
-          <%= @content_for_tab_panel ? yield(:tab_panel) : yield %>
+          <%= content_for?(:tab_panel) ? yield(:tab_panel) : yield %>
           
           <div style="clear: both;"></div>
         </div>
       </div>
       
-      <% unless @content_for_post_panel.blank? %>
+      <% if content_for? :post_panel %>
         <div class="post-panel">
           <%= yield :post_panel %>
         </div>
       <% end %>
     </div>
   
-    <% unless @content_for_aside.blank? %>
+    <% if content_for? :aside %>
       <div class="aside">
       	<%= yield :aside %>
       </div>

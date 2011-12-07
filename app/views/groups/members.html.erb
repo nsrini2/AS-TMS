@@ -1,0 +1,36 @@
+<% 
+content_for(:members_tab, 'selected')
+content_for(:page_title, "Members of #{@group.name}")
+-%>
+
+<% if @members.size.zero? -%>
+	<div>
+		No members in this group 
+	</div>
+<% else -%>
+  <% action_list_items = [
+		(link_for_group_members_action(@group) unless hide_for_sponsor),
+		(link_for_resend_action(@group) unless hide_for_sponsor)
+	].uniq.compact %>
+	<%= action_list_for(action_list_items, :class => 'group_actions', :id => "group_action_list") unless action_list_items.empty? -%>
+	
+	<div class="group_members">
+		<%= render :partial => 'groups/member_card', :locals => { :member => @members.first } -%>
+		<%= render :partial => 'groups/member_table' -%>
+
+		<dl class="group_owner">
+			<dt>Group Owner:</dt>
+			<dd><%= link_to_profile(@group.owner, false) -%></dd>
+		</dl>
+	</div>
+
+	<% unless @group.moderators.size.zero? %>
+	<dl class="moderators">
+		<dt>Moderators:</dt>
+		<dd><%= @group.moderators.collect{ |mod| link_to_profile(mod, false) }.join(", ") -%></dd>
+	</dl>
+	<% end %>
+
+	<%= render :partial => 'groups/invitations_pending' %>
+	<%= render :partial => 'groups/invitation_requests' %>
+<% end -%>

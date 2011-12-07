@@ -5,7 +5,7 @@ module QuestionsHelper
     if question.is_being_watched_by_current_user?
       content_tag(:span, 'following', :class => "clicked")
     else
-      content_tag(:span, link_to("follow", create_bookmarks_path(:question_id => question.id)), :class => 'watch')
+      content_tag(:span, link_to("follow", bookmarks_path(:question_id => question.id, :method => :post)),  :class => 'watch')
     end
   end
   
@@ -13,7 +13,9 @@ module QuestionsHelper
   # SSJ -- Allow company questions to be found
   def company_or_question_path(question, company=nil)
     company = Company.find(company) if company && company.class != Company
-    question = Question.unscoped(question) unless question.class == Question
+    # SSJ if the passed question is an int, get the question
+    question = Question.unscoped.find(question) unless question.class == Question
+      
     if company || question.company?
       companies_question_path(question)
     else  
@@ -27,7 +29,7 @@ module QuestionsHelper
   end
 
   def link_to_question_truncated(question, length, truncate_string = "...", company=nil)
-    link_to_question(question, company) { |question| truncate(question,length,truncate_string) }
+    link_to_question(question, company) { |question| truncate(question, { :length => length, :omission => truncate_string }) }
   end
 
   def question_link_content_for(should_show, question)

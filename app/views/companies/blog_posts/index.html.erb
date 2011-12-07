@@ -1,0 +1,23 @@
+<% content_for :aside do %>
+	<%= render :partial => '/companies/blog_posts/side_bar' -%>
+<% end %>
+
+
+<div id="blog">
+	<div id="blog_posts">
+		<% @blog_posts.each do |blog_post| -%>
+			<%= render :partial => 'blog_item', 
+								 :locals => { :blog_post => blog_post, :full_post => (false), :classname => cycle('odd', 'even') } -%>
+		<% end -%>
+		<% if @blog_posts.empty? -%>
+			<div id="no-blog-posts">
+				<p><%="No blog posts have been created for #{current_company.name}.  Why not be the first?"%></p>
+				<p><%= link_to("Create a company blog post", new_companies_blog_blog_post_path) %></p>
+			</div>	
+		<% end -%>
+	</div>
+	<div class="see_all" style="margin-left: 10px;">
+		<%= will_paginate @blog_posts %>
+	</div>
+</div>
+

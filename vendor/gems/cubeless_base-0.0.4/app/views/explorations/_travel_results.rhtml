@@ -1,0 +1,8 @@
+<div class="travel_results">
+	<h2 class="explore_header">
+		<%= !params[:query].blank? ? "Travel results for <strong>#{@query}</strong>" : "All #{site_name} Shared Trips" %>
+	</h2>
+	<%= filter_control('Travel') unless params[:query].blank? %>
+	<%= render :partial => "travels/travels", :locals => {:travels => @travels} %>
+</div>
+<%= render_pagination @travels %>

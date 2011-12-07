@@ -1,0 +1,87 @@
+<style>
+	th {
+		text-align: left;
+	}
+	
+	.admin_form {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+</style>
+
+<h2>Profile Question Sections</h2>
+
+<div class="admin_form">
+
+	<%= link_to 'Add', new_site_admin_site_profile_question_section_path %>
+	&nbsp;|&nbsp;
+	<%= link_to 'Reorder', edit_order_site_admin_site_profile_question_sections_path %>
+
+	<br/><br/>
+
+	<table>
+	  <tr>
+	    <th>Position</th>
+	    <th>Name</th>
+	  </tr>
+
+	<% for site_profile_question_section in @site_profile_question_sections %>
+	  <tr>
+	    <td style="width: 75px;"><%=h site_profile_question_section.position %></td>	
+	    <td style="width: 150px;"><%=h site_profile_question_section.name %></td>
+			<td><%= link_to "Reorder Questions", edit_questions_order_site_admin_site_profile_question_section_path(site_profile_question_section) %>&nbsp;&nbsp;</td>
+	    <td><%= link_to 'Edit', edit_site_admin_site_profile_question_section_path(site_profile_question_section) %>&nbsp;&nbsp;</td>
+	    <td><%= link_to 'Destroy', site_admin_site_profile_question_section_path(site_profile_question_section), :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+
+</div>
+
+<br />
+
+
+<h2>Profile Questions</h2>
+
+<div class="admin_form">
+
+	<% if SiteProfileQuestion.questions_available? %>
+		<%= link_to 'Add Question', new_site_admin_site_profile_question_path %>
+		<i>(<%= SiteProfileQuestion.questions_available %> still available)</i>
+	<% else %>
+		<i>You have used all the available profile fields.</i>
+	<% end %>
+
+	<br /><br />
+
+	<table style="width: 100%;">
+	  <tr>
+	    <th>Section</th>		
+	    <th>Label</th>
+	    <th>Example</th>
+      <th>Identifier</th>
+	    <th>Completes profile</th>
+	    <th>Matchable</th>
+	  </tr>
+
+	<% @site_profile_questions.group_by(&:site_profile_question_section_id).each do |section_id, site_profile_questions|  %>
+		<tr><td colspan="7"><hr /></td></tr>
+		<% site_profile_questions.each do |site_profile_question| %>
+		  <tr>
+		    <td style="width: 100px;"><%=h site_profile_question.site_profile_question_section.name if site_profile_question.site_profile_question_section %></td>		
+		    <td style="width: 150px;"><%=h site_profile_question.label %></td>
+		    <td style="width: 250px;"><%=h site_profile_question.example %></td>
+				<td><%=h site_profile_question.question %></td>
+		    <td><%=h site_profile_question.completes_profile %></td>
+		    <td><%=h site_profile_question.matchable %></td>
+		    <td><%= link_to 'Edit', edit_site_admin_site_profile_question_path(site_profile_question) %></td>
+		    <td><%= link_to 'Destroy', site_admin_site_profile_question_path(site_profile_question), :confirm => 'Are you sure?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+	<% end %>
+	</table>
+
+</div>
+
+
+

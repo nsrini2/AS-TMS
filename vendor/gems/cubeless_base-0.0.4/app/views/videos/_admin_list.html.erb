@@ -1,0 +1,22 @@
+<table class="border_table" cellspacing="0" width="100%">
+  <tr>
+	<th width="5%"> </th>
+    <th width="25%">Title</th>
+    <th width="30%">Description</th>
+    <th width="25%">Tags</th>
+    <%= "<th width=\"15%\">&nbsp;</th>"   if current_profile.is_content_admin?  -%>
+  </tr>
+
+<% videos.each_with_index do |video, i| -%> 
+  <tr class="<%= cycle("even", "odd") -%>">
+		<td><%= link_to image_tag(remote_image_video_url(video), :style => "width: 100px;"), admin_video_path(video) -%></td>
+    <td width="25%"><%= link_to  video.title, admin_video_path(video) -%></td>
+   	<td width="25%"><%=h truncate(video.description, :length => 25) -%></td>
+   	<td width="25%"><%= video.tag_list -%></td>
+    <%= "<td> #{link_to 'Edit', edit_video_path(video)} |"  if current_profile.is_content_admin? -%>
+     <%= "#{link_to 'Remove', video, :confirm => 'Are you sure?', :method => :delete} </td> "   if current_profile.is_content_admin?  -%> 
+ 
+  </tr>
+<% end -%>
+<% reset_cycle -%>
+</table>

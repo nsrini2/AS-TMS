@@ -1,0 +1,8 @@
+<p><strong>Hello, <%= "#{@group.owner.first_name}" %>!</strong></p>
+
+<p>You are now the owner of the group "<strong><%=@group.name%></strong>"</p>
+<p>As the new owner of the group, you can assign moderators and even transfer ownership to someone else! Wear your crown with pride!</p>
+<%= link_to("Click here", @group_url )%> to view this group.
+<br /><br />
+Regards,<br />
+<%=@site_name%><br /><br /><br /></p>

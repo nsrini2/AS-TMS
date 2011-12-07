@@ -1,0 +1,77 @@
+xml.stream_events :type => "array" do
+  @stream_events.each do |event|
+    xml.event do
+      xml.created_at event.created_at
+      xml.id event.id
+      if event.profile_id
+        xml.who do
+          xml.name event.profile_screen_name
+          xml.url site_base_url + profile_path(event.profile)
+        end
+        
+        case event.klass
+        when 'Profile':
+          xml.did "updated profile"
+          xml.url site_base_url + profile_path(event.profile)
+        when 'ProfilePhoto':
+          xml.did "updated photo"
+          xml.url site_base_url + profile_path(event.profile)
+        when 'Answer':
+          xml.did "answered question"
+          xml.what do 
+            xml.answer truncate(event[:answer_answer], :length => 100)
+          end
+          xml.url site_base_url + question_path(:id => event[:answer_question_id])
+        when 'Question':
+          xml.did "asked question"
+          xml.what do
+            xml.question truncate(event[:question_question], :length => 100)
+          end
+          xml.url site_base_url + question_path(:id => event.klass_id)
+        when 'GroupMembership':
+          xml.did "joined group"
+          xml.what do
+            xml.group truncate(event.group_name, :length => 100)
+          end
+          xml.url site_base_url + group_path(:id => event.group_id)
+        when 'BlogPost':
+          xml.did "added blog post"
+          xml.what do
+            xml.blog_post truncate(event.blog_post_title, :length => 100)
+          end
+          xml.url site_base_url + blog_post_path(:id => event.klass_id)
+        when 'Comment':
+          xml.did "added a comment"
+          xml.what do
+            xml.comment truncate(event.comment_text, :length => 100)
+          end
+          xml.url site_base_url + comment_path(:id => event.klass_id)
+        when 'ProfileAward':
+          xml.did "award presented"
+          xml.what do
+            xml.award truncate(event.award_title, :length => 100)
+          end
+          xml.url # site_base_url + profile_path(:id => event[:profile_award_profile_id])
+        when 'Status':
+          xml.did "status updated"
+          xml.what do
+            xml.status event.status_body
+          end
+          xml.url site_base_url + profile_statuses_path(:profile_id => event.profile_id)
+        end
+      elsif event.group_id
+        xml.who do
+          xml.name event.group_name
+          xml.url site_base_url + group_path(:id => event.group_id)
+        end
+        case event.klass
+        when 'Group':
+          xml.did "group #{event.action}d"
+        when 'GroupPhoto':
+          xml.did "updated group photo"
+        end
+      end
+      xml.photo_url(site_base_url + primary_photo_path_for(event))
+    end
+  end
+end

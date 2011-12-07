@@ -1,7 +1,8 @@
 require_cubeless_engine_file :model, :answer
 
 class Answer < ActiveRecord::Base
-
+  stream_to :company
+  
   def company?
     self.question.company?
   end
@@ -17,7 +18,7 @@ class Answer < ActiveRecord::Base
   end
   
   def unscoped_question
-    Question.unscoped(self.question_id)
+    Question.unscoped.find(self.question_id)
   end
 
   def editable_by?(profile)

@@ -1,0 +1,15 @@
+<%
+content_for(:terms_selected, 'selected')
+content_for(:page_title, 'Terms and Conditions')
+-%>
+<h2><%= site_name -%> Community Rules, Legal Terms and Privacy Policy Disclaimer</h2>
+<div id="policy">
+<%= TermsAndConditions.get.content -%>
+<% if logged_in? && Config[:terms_acceptance_required] && !current_user.terms_accepted -%>
+<% form_tag '/account/accept_terms_and_conditions' do -%>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Accept" class="button large">
+	</div>
+<% end -%>
+<% end -%>
+</div>

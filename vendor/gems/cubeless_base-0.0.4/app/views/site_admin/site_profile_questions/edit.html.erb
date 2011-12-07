@@ -1,0 +1,15 @@
+<h2>Editing Profile Question</h2>
+
+<% form_for(:site_profile_question, @site_profile_question,
+						:url => site_admin_site_profile_question_path(@site_profile_question),
+						:html => {:class => "admin_form", :method => :put}, 
+						:builder => AdminFormBuilder) do |f| %>
+
+	<%= render :partial => "form", :locals => {:f => f} %>
+
+	<div class="buttons">
+    <%= f.submit "Update", :class => "button" %>
+		<input type="submit" name="reset" value="Cancel" class="button light">
+  </div>
+
+<% end %>

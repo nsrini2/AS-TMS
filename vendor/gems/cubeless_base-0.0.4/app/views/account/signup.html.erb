@@ -1,0 +1,55 @@
+<% content_for(:page_title, 'Sign Up') -%>
+<% form_for :user, :url => signup_account_path, :html => { :class => "sign_up"} do |f| -%>
+	<h2>Sign up for <%= Config[:site_name] %></h2>
+
+	<fieldset>
+		<dl class="first_name">
+			<dt><label for="profile_first_name">First Name*</label></dt>
+			<dd><%= text_field :profile, :first_name, :size =>'20 '-%></dd>
+		</dl>
+		<dl class="last_name">
+			<dt><label for="profile_last_name">Last Name*</label></dt>
+			<dd><%= text_field :profile, :last_name, :size =>'20' -%></dd>
+		</dl>
+		<dl class="email">
+			<dt><label for="user_email">Email*</label></dt>
+			<dd><%= text_field :user, :email, :size =>'20' -%></dd>
+		</dl>
+		<dl class="login">
+			<dt><label for="user_login">Login ID*</label></dt>
+			<dd><%= text_field :user, :login, :size =>'20' -%></dd>
+		</dl>
+		
+		<% unless Config[:registration_queue] %>
+		<dl class="password">
+			<dt><label for="user_password">Password*</label></dt>
+			<dd><%= password_field :user, :password, :size =>'20' -%></dd>
+		</dl>
+		<dl class="password_confirmation">
+			<dt><label for="user_password_confirmation">Password Confirmation*</label></dt>
+			<dd><%= password_field :user, :password_confirmation, :size =>'20' -%></dd>
+		</dl>
+		<% end %>		
+		
+		<% @registration_fields.each do |hash| %>
+			<% attr_name = hash['label'].to_s.downcase.gsub(" ", "_") %>
+			<dl class="<%= attr_name %> <%= cycle("left","right") %>">
+				<dt><label for="registration_<%= hash['id'] %>"><%= hash['label'] %><%= "*" if hash['required'] %></label></dt>
+				<dd>
+				  <% if hash['options'].to_s.blank? %>
+				    <%= text_field :registration, attr_name, :size =>'20' -%>
+				  <% else %>
+				    <%= select :registration, attr_name, hash['options'].split("\n"), {}, :style => "width:180px" -%>
+				  <% end %>
+				</dd>
+			</dl>		
+		<% end %>
+	</fieldset>
+
+	<div class="buttons">
+		<input type="submit" name="commit" value="Sign Up" class="button large">
+		
+		<br/><br/>
+		<small>* required fields</small>
+	</div>
+<% end -%>

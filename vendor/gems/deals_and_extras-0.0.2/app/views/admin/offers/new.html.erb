@@ -1,0 +1,53 @@
+<%- unless @offer.id %>
+        <%= form_tag '/deals_and_extras/admin/offers/', :multipart => true do %>
+            <label for="file">File to Upload</label> <%= file_field_tag "file" %>
+            <%= submit_tag 'upload' %>
+        <% end %>
+
+        <h4>OR</h4>
+
+        <%- end %>
+
+<h3><%= @offer.suppliers.first.supplier_name unless @offer.suppliers.empty? %></h3>
+<h4><%= @offer.short_description %></h4>
+
+        <%= form_for [:admin, @offer] do |f| %>
+            <table>
+                <tr>
+                    <td><%= f.label :sell_effective_date %></td>
+                    <td><%= f.date_select :sell_effective_date, {:include_blank => true} %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :sell_discontinue_date %></td>
+                    <td><%= f.date_select :sell_discontinue_date, {:include_blank => true} %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :offer_type_id %></td>
+                    <td><%= f.select :offer_type_id, @offer_types, {:include_blank => true} %> </td>
+                </tr>
+                <tr>
+                    <td><%= f.label :description %></td>
+                    <td><%= f.text_area :description, {:class => "textarea", :cols => 70, :rows => 10} %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :short_description %></td>
+                    <td><%= f.text_area :short_description, {:class => "textarea", :cols => 70, :rows => 2} %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :is_approved %></td>
+                    <td><%= f.check_box :is_approved %> <%= @offer.is_approved? ? @offer.approved_at : nil %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :is_deleted %></td>
+                    <td><%= f.check_box :is_deleted %><%= @offer.is_deleted? ? @offer.deleted_at : nil %></td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td><%= f.select :location_id, Location.OPTIONIZE %></td>
+                </tr>
+            </table>
+            <%= submit_tag @offer.id ? 'update' : 'add', {:class => 'button'} %>
+        <% end %>
+<div id="add_offer_type_dialog" style="display:none">
+    <%= render :partial => 'admin/shared/create_offer_type'%>
+</div>

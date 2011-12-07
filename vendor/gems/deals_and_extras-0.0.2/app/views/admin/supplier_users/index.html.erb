@@ -1,0 +1,30 @@
+<%= link_to 'NEW', new_admin_supplier_user_path %>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>email</th>
+            <th>Sign In Count</th>
+            <th>Assigned Supplier</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @supplier_users.each do |supplier_user| %>
+            <tr>
+                <td><%= supplier_user.id %></td>
+                <td><%= supplier_user.email %></td>
+                <td><%= supplier_user.sign_in_count %></td>
+                <td><%= supplier_user.supplier.supplier_name rescue "none" %></td>
+                <td><%= link_to 'Edit', edit_admin_supplier_user_path(supplier_user) %></td> 
+                <td>
+                    <% form_for [:admin, supplier_user], :html => { :method => 'delete' } do |f| %>
+                        <%= submit_tag "Destroy" %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

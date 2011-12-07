@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="imagetoolbar" content="no">
+		<link rel="shortcut icon" href="/images/custom/<%= Config[:favicon] %>" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" media="screen" href="/css/screen.css">
+		<%= stylesheet_link_tag('print', :media => 'print') -%>
+
+		<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+		<%= javascript_include_merged :base -%>
+
+		<title><%= "#{@content_for_page_title} - " if @content_for_page_title %><%= site_name %></title>
+</head>
+<body>
+<%=render @audit_partial %>
+</body>
+</html>

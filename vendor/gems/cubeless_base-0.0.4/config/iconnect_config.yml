@@ -1,0 +1,148 @@
+site_name: "iConnect"
+
+site_base_url: "http://iConnect.cubeless.com"
+
+theme: 'theme_19'
+
+logo_file: "iConnect_logo.jpg"
+
+favicon: "iConnect_favicon.ico"
+
+terms_acceptance_required: true
+
+feedback_email: "ShelleyA@cfbisd.edu"
+
+email_from_address: 'iConnect <no-reply@cubeless.com>'
+
+viewable_karma: true
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+question_categories: [
+	"Curriculum", 
+	"Classroom", 
+	"Professional Development", 
+	"Technology", 
+	"Extracurricular", 
+	"Publicity / Public Information", 
+	"Travel", 
+	"Life", 
+	"Fun", 
+	"iConnect"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Job Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tag Line"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Campus"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Grade Level(s)"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Content(s)"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Work Phone"
+    completes_profile: true
+    matchable: false
+  - question: profile_7
+    label: "Technologies/software proficient in"
+    completes_profile: true
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'email',
+    'profile_7'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_4',
+    'profile_5'
+  ]
+
+profile_complex_questions:
+  - title: "About Me"
+    questions:
+      - question: question_1
+        label: "What schools have you attended and what degrees or professional certifications do you hold?"
+        example: "Don’t be shy; tell us all about your educational background."
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "What skills and expertise do you possess?"
+        example: "Even if you aren’t using them in your current position let the community know about what you can do."
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What is your hometown? Name three places you have lived?"
+        example: "Perhaps your path has crossed with someone else and you never knew it…tell us places where you’ve called “home” so we can find out."
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What are your hobbies or interests?"
+        example: "When you step away from school, how do you occupy your free time (or you wish you could if you had free time)?"
+        completes_profile: true
+        matchable: true
+  - title: "On The Job"
+    questions:
+      - question: question_5
+        label: "What do you really do?"
+        example: "Everyone has a job title but in our business you wear a lot of different hats, so let us know yours."                
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "Who is the most influential person in your life (past or present)?"
+        example: "The person who has most shaped your thoughts and actions?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What organizations are you involved with?"
+        example: "e.g. networking groups, chambers of commerce, community organizations, professional affiliations, etc."        
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What Social Networks are you active in? (daily/weekly)"
+        example: "e.g. Facebook, LinkedIn, Plaxo and Twitter"        
+        completes_profile: true
+        matchable: true
+  - title: "Stuff I Like"
+    questions:
+      - question: question_9
+        label: "What is the one thing you can’t live without?"
+        example: "We all need food and oxygen, so those don’t count here. Cell phone, coffee, that Elvis cassette; what is it you can’t live without?"        
+        completes_profile: true
+        matchable: true     
+      - question: question_9
+        label: "What three people (living, deceased, fictional) would you like to invite to dinner?"
+        example: "Don’t worry; You don’t have to plan out the menu, just the guest list."        
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "What actor or actress would play you in the movie of your life?"
+        example: "Is your life’s script more worthy of Brad Pitt or Jackie Chan? Julia Roberts or Hallie Berry?"        
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What are your favorite places to travel? (including dreams)"
+        example: "e.g. Napa Valley, Cruising on small ships, Spa, Safari"        
+        completes_profile: true
+        matchable: true

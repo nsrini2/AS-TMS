@@ -1,0 +1,52 @@
+<% 
+content_for(:page_title, params[:action].gsub('_', ' ').titleize)
+hide ||= {}
+-%>
+<div class="content">
+	<% unless hide[:search] -%>
+		<%= form_tag "/admin/shady_history", :id => "shady_history" -%>
+			<fieldset>
+				<dl>
+					<dt><label for="start_date">Start Date</label></dt>
+					<dd><input type="text" name="start_date" id="shady_history_start_date" value="<%= @start_date.strftime("%B %d, %Y") -%>" class="datepicker start"></dd>
+				</dl>
+				<dl>
+					<dt><label for="end_date">End Date</label></dt>
+					<dd><input type="text" name="end_date" id="shady_history_end_date" value="<%= @end_date.strftime("%B %d, %Y") -%>" class="datepicker end"></dd>
+				</dl>
+				<div class="buttons">
+					<input type="submit" name="submit" value="Submit" class="button medium">
+			</fieldset>
+		</form>
+	<% end -%>
+	<%if flagged.size > 0%>
+		<table class="border_table" id="flagged" cellspacing="0" width="96%">
+			<caption>Flagged Questions/Answers/Profiles</caption>
+			<tbody>
+				<tr>
+					<th>Link</th>
+					<th>Audit Log</th>
+					<th>Suspect</th>
+					<th>Reason</th>
+					<th>Created At</th>
+					<th>Reported By</th>
+					<th><%=hide[:delete] ? 'Deleted By' : 'Remove Flag'%></th>
+				</tr>
+				<% flagged.each do |abuse|
+					type = abuse.abuseable_type
+					reporter = abuse.profile %>
+					<tr class="<%= cycle("even", "odd") -%>">
+						<td><%=link_to_shady_abuse(abuse)%></td>
+						<td><%=link_to "view log", "/audit/query?query[auditable_type]=#{type}&query[auditable_id]=#{abuse.abuseable_id}", :target => '_blank', :class => 'view_log' %></td>
+						<td><%=abuse.owner ? link_to(abuse.owner.screen_name, "/profiles/#{abuse.owner_id}") : "&nbsp;"%></td>
+						<td><%=abuse.reason%></td>
+						<td><%=abuse.created_at.strftime('%b %d, %Y %H:%M')%></td>
+						<td><%=link_to reporter.screen_name, profile_path(reporter)%></td>
+							<td><%=hide[:delete] ? link_to(abuse.remover.screen_name,"/profiles/#{abuse.remover_id}") : link_to('delete', abuse_path(abuse), :method => :delete)%></td>
+						</tr>
+					<% end -%>
+					<% reset_cycle -%>
+				</tbody>
+			</table>
+		<%end%>
+	</div>

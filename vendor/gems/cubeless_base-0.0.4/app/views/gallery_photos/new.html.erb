@@ -1,0 +1,18 @@
+<% form_for(:gallery_photo, :url => group_gallery_photos_path(@group), :html => { :multipart => true, :id => "new_gallery_photo" }) do |f| -%>
+<fieldset>
+	<h3>Upload a Gallery Photo</h3>
+	<p>Click browse to find an image on your computer. We like JPG, GIF or PNG files 2MB or smaller.</p>
+	<dl>
+		<dt><label for="asset_uploaded_data">Photo</label></dt>
+		<dd><%= file_field :asset, :uploaded_data -%></dd>
+		<dt><label for="gallery_photo_caption">Caption</label></dt>
+		<dd><%= text_field :gallery_photo, :caption, :size=>'30' -%></dd>
+		<dt><label for="gallery_photo_tags">Tags</label></dt>
+		<dd><%= text_field :gallery_photo, :tag_list, :size => '30' -%></dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Upload" class="button medium">
+		<input type="button" name="reset" value="Cancel" class="button light medium close">
+	</div>
+</fieldset>
+<% end -%>

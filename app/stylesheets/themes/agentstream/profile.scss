@@ -27,7 +27,7 @@
 
 #photos .no_alt_photos { width: 172px; }
 
-#photos .alternate_photos { float: left; }
+#photos .alternate_photos { float: left; width: 60px; }
 
 #photos .alternate_photos img { display: block; margin: 0 10px 4px 0; }
 
@@ -37,7 +37,7 @@
 
 #photos .disabledPhotoHover .disabledPointer { background: url(/themes/theme_5/images/pointerDown.png); width: 34px; height: 19px; position: absolute; left: 60px; top: 49px; }
 
-#profile_tab dl.profile_info { float: left; margin: 0; width: 250px; padding-right: 10px; padding-left: 10px; min-height: 210px; }
+#profile_tab dl.profile_info { float: left; margin: 0; width: 250px; padding-right: 10px; padding-left: 10px; min-height: 380px; }
 
 #profile_tab dl.profile_info dt { margin: 0; font-weight: bold; }
 
@@ -55,7 +55,7 @@
 
 #profile_tab dl.profile_info dd.contact_info dl dd { float: left; margin-bottom: 1px; }
 
-#profile_tab dl.profile_info dt.name { margin-bottom: 3px; font-size: 20px; font-weight: bold; }
+#profile_tab dl.profile_info dt.name { margin-bottom: 3px; font-size: 28px; font-weight: bold; margin-top: 8px; }
 
 #profile_tab dl.profile_info dt.title { float: left; margin-right: 5px; }
 
@@ -70,6 +70,33 @@
 #profile_tab dl.profile_info dd.tagline form input { margin-top: -5px; color: #1E678A; font-size: 14px; font-weight: bold; font-style: italic; }
 
 #profile_tab dl.profile_info dd.tagline form input.button { margin-top: 2px; color: #000; font-size: 11px; font-weight: bold; font-style: normal; }
+
+
+/* PROFILE KARMA */
+
+#profile_karma {
+  background: white;
+  margin: 230px 10px 0 70px;
+  padding: 5px;
+}
+
+#profile_karma span.count { 
+  color: #1E678A; 
+  font-size: 3.0em; 
+  font-weight: bold;
+  line-height: 1em; 
+  margin-right: 0.2em; 
+}
+#profile_karma span.extra { 
+  font-size: 1.2em; 
+  font-weight: normal; 
+  text-transform: uppercase;
+  
+  .karma_info img {
+    height: 18px;
+    width: 18px;
+  } 
+}
 
 #stats { float: left; margin-left: 10px; width: 200px; font-weight: bold; }
 
@@ -354,7 +381,12 @@ span.profile_notification.urgent { color: red; }
 
 #stats table td span.count { color: #1E678A; font-size: 2.0em; letter-spacing: -0.1em; line-height: 1em; margin-right: 0.2em; }
 
-#stats table td span.extra a { font-style: italic; font-weight: normal; }
+#stats table td span.count small {
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
+#stats table td span.extra, #stats table td span.extra a { color: #4A6970; font-style: italic; font-weight: normal; }
 
 
 /* avatar */
@@ -368,9 +400,28 @@ div.photo_wrapper img.group_icon { position: absolute; right: -4px; bottom: -4px
 
 
 /* status */
+#profile_status_events {
+  padding: 5px;
+  
+  .more {
+    font-size: 0.9em;
+    text-decoration: underline; 
+  }
+  
+  .more:hover {
+    text-decoration: none;
+  }
+}
+
 .profile div#profile_status {
 	margin-left: 566px;
+	margin-bottom: 10px;
 	width: 340px;
+	
+	h5 {
+	  margin-bottom: 2px; 
+	  color: #6F563B;
+	}
 }
 
 .profile div#profile_status span.counter {
@@ -386,9 +437,81 @@ div.photo_wrapper img.group_icon { position: absolute; right: -4px; bottom: -4px
 .profile div#profile_status div.event {
 	margin-top: 10px;
 }
+.profile div#profile_status div.event .extra, #first_status_extra {
+	font-size: 0.8em;
+}
+
+.profile div#profile_badges {
+	margin-left: 566px;
+	width: 340px;
+	
+	h5 {
+	  margin-bottom: 2px; 
+	  color: #6F563B;
+	}
+	
+	div {
+	  background: white;
+	  padding: 5px;
+	}
+}
 
 .profile h4 {
 	font-size: 1.3em;
 }
 
 div.avatar_large { background: #fff; float: left; width: 195px; height: 198px; padding: 7px 0; margin: 0 10px; text-align: center; display: inline; }
+
+/* terms and conditions */
+div#terms_and_conditions {
+  height: 175px; overflow: auto;
+  border: 2px solid #ccc;
+  p {
+    margin: 10px;
+  }  
+}
+
+div#agentstream-srw-login{
+  margin: 10px 0px;
+  form {
+    width: 273px;
+    input[type="text"], input[type="password"]{
+      width: 265px;
+      font-size: 1.2em;
+    } 
+    input[type="image"]{
+      float: right;
+    }
+    a {
+      font-size: 0.9em;
+      float: left;
+    }
+  }  
+}
+
+.profile_container {
+  background: white;
+  border: 2px solid #eaeaeb;
+}
+
+
+table.badges {
+  margin: 3px 0;
+  min-height: 200px;
+  
+  td {
+    margin-top: 3px;
+    text-align: center;
+    font-size: 0.8em;
+    width: 25%;
+    
+    img {
+      width: 75px;
+    }
+    
+    p {
+      margin: -3px 0 0 0;
+      line-height: 1em;
+    }
+  }
+}

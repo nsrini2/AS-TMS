@@ -1,0 +1,16 @@
+<%
+content_for(:change_email_tab, 'selected')
+content_for(:page_title, 'Change Email')
+-%>
+<% form_for :user, :html => {:class => "account_settings"} do |f| -%>
+  <div class="instr">
+    The email address used for your answer notifications is listed below.  If you need to change it just
+    enter a new working email address. Once that is done scroll to the bottom of this page, fill in your
+    current password and click the update button.
+  </div>
+  <label>Email Address</label>
+  <%= f.text_field :email, :size=>'35'%>
+  <label>Current Password (Required)</label>
+  <%= f.password_field :current_password, :size=>'35'%>
+  <%= submit_button('Update') %>
+<% end -%>

@@ -1,12 +1,12 @@
 <% content_for :aside do %>
-  <div id="referred_questions" class="module">
+  <div id="referred_questions" class="agency module">
     <%= render :partial => "/companies/hub/questions", :locals => { :questions => @aside_questions }%>
   </div>
-  <div id="agency_groups" class="module">
+  <div id="agency_groups" class="agency module">
     <%= render :partial => "/companies/hub/groups", :locals => { :groups => [] } %>
   </div>
-  <div id="blog_posts" class="module last">
-  	<%= render :partial=> "/companies/hub/blog_posts", :locals => { :blog_posts => [] }%>
+  <div id="blog_posts" class="agency module last">
+  	<%= render :partial=> "/companies/hub/blog_posts", :locals => { :blog_posts => @blog_posts }%>
   </div>
 <% end %>
 
@@ -36,4 +36,9 @@
 	<% @events.each do |event| -%>
 		<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
 	<% end -%>
+	
+	<div class="see_all" style="margin-left: 10px;">
+		<%= will_paginate @events %>
+	</div>
+	
 </div>

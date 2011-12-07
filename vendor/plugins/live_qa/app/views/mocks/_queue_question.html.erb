@@ -1,0 +1,27 @@
+<%# unless question.status == "future" && @finished %>
+  <li class="<%= question.status unless @finished %>">
+    <div>
+      <% if question.status == "past" %>
+        <%= link_to question.question + " <small>(expand)</small>", "#", :id => "question_#{question.id}_link_past", :class => "past_link" %>
+      <% else %>
+        <%= question.question %>
+      <% end %>
+    </div>
+    <% if question.status == "future" %>
+      <% if @host %>
+        <div class="voting">
+          <span class="vote_up"><%= @fresh ? 0 : (6..12).to_a.rand.to_i %></span> Votes Up&nbsp;/&nbsp;
+          <span class="vote_down"><%= @fresh ? 0 : (1..7).to_a.rand.to_i %></span> Vote Down&nbsp;|&nbsp;
+          <% unless @finished %>
+            <a href="/mocks/discuss_question" class="discuss_now">Discuss Now</a>
+          <% end %>
+        </div>    
+      <% elsif !@finished %>
+        <div class="voting">
+          <a href="/mocks/vote/<%= question.id %>/up/<%= current_profile.id %>" class="vote">Vote Up</a>&nbsp;/&nbsp;
+          <a href="/mocks/vote/<%= question.id %>/down/<%= current_profile.id %>" class="vote">Vote Down</a>
+        </div>
+      <% end %>
+    <% end %>
+  </li>
+<%# end %>

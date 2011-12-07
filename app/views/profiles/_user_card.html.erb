@@ -1,0 +1,62 @@
+<% @status = Status.new %>
+<% @statuses = Status.by_profile(@profile).most_recent %>
+
+<div class="user_card" class="<%= "sponsor" if @profile.is_sponsored? -%>">
+	<div id="photos">
+		<%= render :partial => "photos" -%>
+		
+		<%= karma_viewable_content do %>
+		  <div id="profile_karma" class="profile_container">
+  			<span class="count"><%= @profile.karma_points %></span>
+
+  			<span class="extra">
+  			  <a href="/profiles/karma_popup" class="karma_info"><%= render_karma_icons_for_points(@profile.karma_points, :large) %></a>
+  			  <br/>
+  			  <%= @profile.karma.title %>
+  			</span>
+  		</div>
+  	<% end %>
+  	
+	</div>
+	<dl class="profile_info profile_container">   	
+		<dt class="name"><%= @profile.screen_name -%> </dt>
+		<dt <%= @profile.question_field_required?(:profile_1) ? 'class="title  "> ' : 'class="title">' -%> <%= profile_question_label_for :profile_1 -%>: </dt>
+		<%= render_inline_editor_for(@profile, :profile_1, update_profile_path( @profile ), :class => 'title', :tag => :dd, :width => 'none', :height => 'none', :maxlength => '255', :tooltip => "Click to edit your #{profile_question_label_for(:profile_1).downcase}", :placeholder => "Click here to add your #{profile_question_label_for(:profile_1).downcase}") -%>
+		<%= render_inline_editor_for(@profile, :profile_2, update_profile_path( @profile ), :class => 'tagline', :tag => :dd, :width => 'none', :height => 'none', :maxlength => '255', :tooltip => "Click to edit your #{profile_question_label_for(:profile_2).downcase}", :placeholder => "Click here to add #{profile_question_label_for(:profile_2).downcase}") -%>
+		<dd class="contact_info" >
+			<h3>Contact Information</h3>
+			<% contact_info_order(@profile)['profile'].each do |item| -%>
+				<dl><dt <%= @profile.question_field_required?(item) ? 'class="title"> ' : 'class="title">' -%> <%= profile_question_label_for item -%>: </dt>		<% if item == 'email' -%>
+						<%= content_tag(:dd, link_to(@profile.email, "mailto:#{@profile.email}")) -%>
+					<% else -%>
+						<%= render_inline_editor_for(@profile, item, update_profile_path( @profile ), :tag => :dd, :width => 'none', :height => 'none', :maxlength => '255', :tooltip => "Click to edit your #{profile_question_label_for(item).downcase}", :placeholder => "#{@profile.question_field_required?(item) ? "*" : ''} Click here to add your #{profile_question_label_for(item).downcase}") -%>
+					<% end -%>
+				</dl>
+			<% end -%>
+		</dd>	
+	</dl>
+	
+	
+	<% unless @hide_updates %>
+    <div id="profile_status">
+      <h5>My Status</h5>
+      <%= render :partial => "user_card_status", :locals => { :statuses => @statuses } %>
+  	</div>
+	<% end %>
+	
+	<% unless @hide_badges %>
+    <div id="profile_badges">
+      <h5>My Badges</h5>
+      <div class="profile_container" style="width: 340px;">
+        <%= render :partial => "user_card_badges", :locals => { :badges => @profile.awards } %>
+      </div>
+  	</div>
+  <% end %>
+  
+  <div style="clear:both;">
+    
+  </div>
+	  
+	<%= render :partial => 'shared/stats_horizontal', :locals => {:name => @profile.first_name} -%>
+	
+</div>

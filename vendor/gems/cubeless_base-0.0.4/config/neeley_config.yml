@@ -1,0 +1,106 @@
+site_name: "The Neeley Connection"
+
+site_base_url: "http://Neeley.cubeless.com"
+
+theme: 'theme_16'
+
+logo_file: "neeley_logo.gif"
+
+favicon: "neeley_favicon.ico"
+
+terms_acceptance_required: true
+
+feedback_email: "Neeleynews@tcu.edu"
+
+email_from_address: 'Neeley <no-reply@cubeless.com>'
+
+viewable_karma: true
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+question_categories: ["Life in General", "Leisure Activities", "Faculty Research", "Faculty Publications", "Academics", "Media Requests"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Job Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tag Line"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Business Unit"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Business Group"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Location"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Work Phone"
+    completes_profile: true
+    matchable: false
+  - question: profile_7
+    label: "Mobile Phone (optional)"
+    completes_profile: true
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_1',
+    'email',
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7'
+  ]
+  business_card: [
+    'email',
+    'profile_1' 
+  ]
+
+profile_complex_questions:
+  - title: "About Me"
+    questions:
+      - question: question_1
+        label: "What are your hobbies outside of TCU?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "What is your hometown?"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What is the most innovative business practice you have been exposed to?"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What are some examples of professional organizations you are involved with?"
+        completes_profile: true
+        matchable: true
+      - question: question_5
+        label: "What are degrees or professional certifications do you hold?"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What is something unique that sets you apart from your colleagues?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What are your skills or area of expertise?"         
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What is the largest contributing factor that got you where you are today?"
+        completes_profile: true
+        matchable: true

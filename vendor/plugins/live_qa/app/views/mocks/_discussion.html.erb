@@ -1,0 +1,16 @@
+<div class="scrollable">
+  <table id="<%= @table_id %>">
+    <tbody>
+      <% question.entries.each_with_index do |e, idx| %>
+        <tr class="<%= "host" if e.host %>">
+          <td>
+            <% if idx==0 || question.entries[idx-1].name != e.name %>
+              <strong><%= e.display_name %></strong>
+            <% end %>
+          </td>
+          <td><%= e.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

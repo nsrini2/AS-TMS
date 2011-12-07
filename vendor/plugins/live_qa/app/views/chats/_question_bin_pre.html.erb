@@ -1,0 +1,20 @@
+<hr />
+<h5>Question Bin</h5>
+
+<ul id="topic_list">
+<% chat.topics.each do |topic| -%>
+	<%= list_topic(topic, current_profile) %>
+<% end -%>
+</ul>
+
+<% form_for(chat.topics.new, :url => chat_topics_path(chat), :html => 
+												{:class => "html5", :id => "create_topic"} ) do |f| %>
+	<div class="form_fields">
+		<%= f.hidden_field :chat_id %>
+		<%= f.hidden_field :owner_id, :value => current_profile.id %>
+		<%= f.text_field :title, :size => 30, :placeholder => "Question" %><br />
+		<div class="buttons">
+			<%= f.submit "Add New Question", :name => "submit_button", :class=>"button" %> 
+		</div>	
+	</div>	
+<% end %>

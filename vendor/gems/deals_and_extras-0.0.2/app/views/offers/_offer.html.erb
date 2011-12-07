@@ -1,0 +1,46 @@
+<li class="search_deal">
+    <div class="deal_info">
+
+        <div class="deal_rate" >
+            <%= de_badge_image(offer) %>
+            <div class="deal_thumbs">
+                <% if !logged_in? || (logged_in? && !current_user.reviewed_offers.include?(offer)) %>
+                  <%= de_thumbs(offer) %>
+                <% end %>
+            </div>
+        </div>
+        <div class="deal_image" >
+            <%= de_image(offer) %>
+        </div>
+        <div>
+            <p class="search_deal_line deal_title"><%= offer.suppliers.first.supplier_name %></p>
+            <p id="dealTitle" class="search_deal_line search_deal_sub linkButton"><%= offer.short_description_html %></p>
+            <p class="search_deal_line"><%= offer.title_location %></p>
+        </div>
+
+    </div>
+
+    <%= render "details", :offer => offer %>
+
+    <div align="right" class="deal_book_add_buttons">
+          <div class="folder_container">
+            <% if logged_in? %>
+              <% if current_user.offers.include?(offer) %>
+                <div class="folder_login">Added to Folder</div>
+              <% else %>
+                <%= image_to add_to_folder_image_path, "Add to Folder", favorites_path(:id => offer.id), :remote => true, :class => "add_remove_folder add"  %>
+              <% end %>
+            <% else %>
+                <%= image_to add_to_folder_image_path, "Add to Folder", favorites_path(:id => offer.id), :remote => true, :class => "add_remove_folder add"  %>
+                <% if false %>
+                  <button class="add_remove_folder" type="button" value="">Add to Folder</button>
+                <% end %>
+            <% end %>
+          </div>
+
+        <%#= button_to "Booking Info", book_offer_path(offer.id), :class => "booking_info"%>
+        <button class="booking_info" type="button" value="<%= offer.id %>"><%= image_tag booking_info_image_path, :alt => "Booking Info" %></button>
+    </div>
+    
+    <div style="clear:both;"></div>
+</li>

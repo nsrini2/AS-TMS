@@ -1,0 +1,18 @@
+<%
+content_for(:login_selected, 'selected')
+content_for(:page_title, 'Login')
+-%>
+<% form_for :user, :html => { :class => "login #{Config[:open_registration] && 'signup'}" } do |f| -%>
+	<fieldset>
+		<h2>Login to an account</h2>
+		<dl>
+			<dt><label for="loginid">Login</label> <span class="forgot"><a href="/retrievals/new?forgot=login" tabindex="4">Forgot login?</a></span></dt>
+			<dd><input type="text" id="loginid" name="login" size="40" class="text" tabindex="1"></dd>
+			<dt><label for="password">Password</label> <span class="forgot"><a href="/retrievals/new?forgot=password" tabindex="5">Forgot password?</a></span></dt>
+			<dd><input type="password" id="password" name="password" size="40" class="text" tabindex="2"></dd>
+		</dl>
+		<div class="buttons">
+			<input type="submit" name="commit" value="Login" class="button large" tabindex="3"> <% if Config[:open_registration] -%><span class="signup"><a href="/account/signup" tabindex="4">Sign up for an account &raquo;</a></span><% end -%>
+		</div>
+	</fieldset>
+<% end -%>

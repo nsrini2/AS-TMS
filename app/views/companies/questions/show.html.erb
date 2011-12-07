@@ -1,4 +1,4 @@
-<% content_for(:page_title, truncate(@question_summary.question, 25)) -%>
+<% content_for(:page_title, truncate(@question_summary.question, { :length => 25, :omission => "..." })) -%>
 <% content_for(:body_class, "question_answers") -%>
 
 <div class="list_action_button">

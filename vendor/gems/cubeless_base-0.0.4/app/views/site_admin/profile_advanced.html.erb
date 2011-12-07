@@ -1,0 +1,46 @@
+<% @qs = [["What do you really do for a living?", "We wear many hats beyond our titles. What are yours?"],
+					["What are the sports you can't live without?", "e.g. Watch it on TV or play it on the weekends. Wii video games count."]
+	]%>
+<% @ss = ["Out and About", "On the Job", "Stuff I Like"] %>
+
+<h1>Advanced Profile Questions</h1>
+
+<h3>Sections</h3>
+<%= link_to "Add", "" %>
+<%= link_to "Reorder", "" %>
+<ol>
+	<% @ss.each do |s| %>
+		<li>
+			<%= s %> <%= link_to "Edit", "" %> <%= link_to "Delete", "" %>
+		</li>
+	<% end %>
+</ol>
+
+<h3>Questions</h3>
+
+<%= link_to "Add a Question", "#"%>
+
+<table>
+	<thead>
+		<tr>
+			<th>Question</th>
+			<th>Example Text</th>
+			<th>Completes Profile?</th>
+			<th>Matchable?</th>
+			<th>Section</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @qs.each do |q| %>
+			<tr>
+				<td><%= q[0] %></td>
+				<td><%= q[1] %></td>
+				<td>True</td>
+				<td>True</td>
+				<td><%= @ss[rand(2)] %></td>
+				<td><%= link_to "Edit", "" %></td>
+				<td><%= link_to "Delete", "" %></td>				
+			</tr>
+		<% end %>
+	</tbody>
+</table>

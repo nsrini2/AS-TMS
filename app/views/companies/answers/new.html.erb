@@ -1,4 +1,4 @@
-<% content_for(:page_title, "Answer: #{truncate(@question_summary.question, 25)}") -%>
+<% content_for(:page_title, "Answer: #{truncate(@question_summary.question, { :length => 25, :omission => "..." })}") -%>
 
 <div class="list">
   <% if @question_summary.is_open? -%>

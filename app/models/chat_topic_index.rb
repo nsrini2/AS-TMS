@@ -1,6 +1,9 @@
 require "#{Rails.root}/vendor/plugins/live_qa/app/models/chat_topic_index"
-require "#{Rails.root}/vendor/plugins/cubeless/components/semantic_matcher"
-require "#{Rails.root}/vendor/plugins/cubeless/components/mysql_semantic_matcher"
+# require "#{Rails.root}/vendor/plugins/cubeless/components/semantic_matcher"
+# require "#{Rails.root}/vendor/plugins/cubeless/components/mysql_semantic_matcher"
+require_cubeless_engine_file 'components', 'semantic_matcher'
+require_cubeless_engine_file 'components', 'mysql_semantic_matcher'
+
 
 class ChatTopicIndex < ActiveRecord::Base
 

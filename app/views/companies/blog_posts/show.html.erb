@@ -1,0 +1,10 @@
+<% content_for :aside do %>
+	<%= render :partial => '/companies/blog_posts/side_bar' -%>
+<% end %>
+
+<div id="blog">
+	<div id="blog_posts">
+				<%= render :partial => 'blog_post', 
+									 :locals => { :blog_post => @blog_post, :full_post => (true) } -%>
+	</div>
+</div>
