@@ -36,7 +36,9 @@ class ProfilesController
     # TODO: Organized by the last ones I participated in
     @groups = current_profile.groups.find(:all, :order => "rand()", :limit => 3)
     # @groups = @groups[@groups.size-3..@groups.size-1].to_a.reverse
-
+    @deals = Offer.not_in_folder(current_user.id).random(3)
+    # ids = @deals.map { |d| d.id }
+    # fail ids.inspect
 
     # TODO: Clean this up...scraped from ExplorationsController.
     # Special options needed to ensure only personal posts or group posts that I can access show up

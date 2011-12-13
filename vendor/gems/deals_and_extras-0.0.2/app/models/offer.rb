@@ -37,7 +37,7 @@ class Offer < ActiveRecord::Base
   scope :not_updated_since, lambda{ |time|
     where('updated_at < ?', time)
   }
-
+  
   scope :not_approved, where(:is_approved => false)
   scope :not_deleted, where(:is_deleted => false)
   scope :pending, where(:is_approved => false)
@@ -51,7 +51,20 @@ class Offer < ActiveRecord::Base
   def cache_supplier_name
     self.cached_supplier_name = suppliers.first.supplier_name rescue nil
   end
+  
+  def self.not_in_folder(user_id)
+    folder_offers = Favorite.where(:user_id => user_id ).map { |favorite| favorite.offer_id }
+    if folder_offers.blank?
+      active.approved
+    else
+      where(@t[:id].not_eq(folder_offers)).active.approved
+    end  
+  end
 
+  def self.random(num=1)
+    approved.active.order("RAND()").limit(num)
+  end  
+    
   def self.new_from_xml(xml_string)        
     # Create Suppliers first
     # MM2: I don't think we need this...
@@ -173,8 +186,6 @@ class Offer < ActiveRecord::Base
   end
 
   def self.filter(params)
-    here params
-    
     # TO DO:
     #   See about moving these out to scopes
     
@@ -219,6 +230,12 @@ class Offer < ActiveRecord::Base
         predicates.push("(".concat("locations.city = ?").concat(")"))
       end
     end
+    
+    # SSJ 12-11-2012, I am really sorry to be adding to this mess and not fixing it
+    if params[:deal] && !params[:deal].blank?
+      args.push(params[:deal])
+      predicates.push("(".concat("offers.id = ?").concat(")"))
+    end  
 
     predicate = predicates.join(" AND ")
 

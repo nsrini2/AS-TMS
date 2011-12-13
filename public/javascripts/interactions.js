@@ -1,3 +1,20 @@
+$.extend({
+  getUrlVars: function(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  },
+  getUrlVar: function(name){
+    return $.getUrlVars()[name];
+  }
+});
+
 $(function() {
     
     //$('#filter').html("loading filter").load("/filters");
@@ -70,19 +87,32 @@ function loadingImage() {
 function filterDealsTable(e, url){
     var url;
     var y = parseInt(url);
-
+    // SSJ 12-11-2011 only limit results to passed id on pageLoad
+    // any ajax updates should ignore this param -- there has got to be a better way to do this
+    if(url === undefined) {
+      var deal_id = $.getUrlVar('deal');
+    };
+    
     if(!url){
         // if a url is not specified try to get to the last page viewed
         url = '/offers?page=' + lastPage;
     }else if(!isNaN(y) && (url == y && url.toString() == y.toString())){
         // check to see if this is just a number and go to that page
         url = '/offers?page=' + url.toString();
+        // if a number is passed, then don't limit results to one id
+        deal_id = undefined;
     }
     
     $('#contentContainer').html(loadingImage());
     
     // do the call to filter offers
-    var get_string = $('#filter_form').serialize() + "&" + $('#sorts_filter').serialize()
+    if(deal_id === undefined) {
+      var get_string = $('#filter_form').serialize() + "&" + $('#sorts_filter').serialize()
+    } else {
+      var get_string = "deal=" + deal_id ;
+    };
+    
+    
     $.get(url, get_string, function(data){
         $('#contentContainer').html(data);
         

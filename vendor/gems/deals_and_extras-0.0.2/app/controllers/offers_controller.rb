@@ -2,6 +2,8 @@ class OffersController < ApplicationController
   layout nil
 
   def index
+    5.times { Rails.logger.info "----------------" } 
+    Rails.logger.info params.inspect
     @page_title = "Offers"
     params[:per_page] = 20
     @offers = Offer.filter(params)
@@ -11,7 +13,7 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     respond_to do |f|
-      f.html
+      f.html # { render :layout => "main" }
       f.js { render :partial => 'offers/offer', :locals => {:offer => @offer} }
     end
   end
