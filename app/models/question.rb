@@ -4,7 +4,7 @@ class Question
   # SSJ -- it would be cool to do this with a lamda for curent_profile.company_id, but I could not get it to work in 2.3.9
   default_scope :conditions => ["questions.company_id = 0"]
   belongs_to :company
-  stream_to :company
+  stream_to :company, :activity
   
   def company?
     self.company_question?
@@ -12,6 +12,10 @@ class Question
   
   def company_question?
     self.company_id != 0
+  end
+  
+  def private?
+    false
   end
   
   class << self

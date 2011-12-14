@@ -1,8 +1,8 @@
 class ActivityStreamObserver < ActiveRecord::Observer
 
-  observe Answer, Profile, Question, ProfilePhoto, Group, GroupPhoto, BlogPost, Comment, GroupMembership, ProfileAward, Status
+  observe Profile, ProfilePhoto, Group, GroupPhoto, BlogPost, Comment, GroupMembership, ProfileAward, Status
 
-  @@monitor_create = [Question, Answer, Group, BlogPost, Comment, GroupMembership, ProfileAward, Status].to_set
+  @@monitor_create = [Group, BlogPost, Comment, GroupMembership, ProfileAward, Status].to_set
   def after_create(model)    
     return unless @@monitor_create.member?(model.class)
     return if skip_logging?(model)
@@ -40,6 +40,8 @@ class ActivityStreamObserver < ActiveRecord::Observer
   end
 
   def before_destroy(model)
+    ## skip models that have been moved to concerns
+    return if [Question, Answer].member?(model.class) 
     return ActivityStreamEvent.delete_all("profile_id=#{model.id}") if model.class==Profile
     return ActivityStreamEvent.delete_all("group_id=#{model.id}") if model.class==Group
     ActivityStreamEvent.delete_all("klass='#{model.class}' and klass_id=#{model.id}")

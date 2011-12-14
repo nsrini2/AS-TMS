@@ -1,7 +1,7 @@
 require_cubeless_engine_file :model, :answer
 
 class Answer < ActiveRecord::Base
-  stream_to :company
+  stream_to :company, :activity
   
   def company?
     self.question.company?
@@ -9,6 +9,10 @@ class Answer < ActiveRecord::Base
   
   def company_id
     self.question.company_id
+  end
+  
+  def private?
+    false
   end
   
   def question

@@ -7,11 +7,38 @@ module Streamed
   
   module InstanceMethods
     def add_to_activity_stream
-      #
+      
+      if skip_logging?
+        Rails.logger.info "object.private? && object.compnay? must be false to be added to activity_stream"
+      else
+        Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent"
+        opts = {}
+        # REFACTOR
+        case self
+          when Group then opts[:group_id] = self.id
+          when GroupPhoto then opts[:group_id] = self.owner_id
+          when GroupMembership then opts.merge!(:profile_id => self.profile_id, :group_id => self.group_id)
+          when ProfileAward then opts[:profile_id] = self.profile.id
+          else opts[:profile_id] = self.profile_id
+        end
+        ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+      end    
     end
     
     def remove_from_activity_stream
-      #
+      Rails.logger.info "Removing #{self.class} #{self.id} from ActivityStreamEvent"
+      # REFACTOR
+      stream_events = case self.class
+                        when Profile
+                          ActivityStreamEvent.where("profile_id=#{self.id}") 
+                        when Group
+                          ActivityStreamEvent.where("group_id=#{self.id}") if self.class==Group
+                        else   
+                          ActivityStreamEvent.where("klass='#{self.class}' and klass_id=#{self.id}")
+                      end 
+      stream_events.each do |event|
+        event.destroy
+      end                 
     end
     
     def add_to_company_stream
@@ -33,6 +60,34 @@ module Streamed
         end  
       end
     end
+    
+    private
+    # SSJ 
+    # this needs some more refactoring
+    def skip_logging?
+      # skip logging any company or private events 
+      if respond_to?(:company?) && respond_to?(:private?)
+        return company? || private?
+      end
+      
+      if respond_to? :company?
+        return company?
+      end
+      
+      if respond_to? :private?
+        return private?
+      end
+      
+      # REFACTOR classes below to implement :private?
+      case self.class
+        when BlogPost  
+          return self.blog.owner_type=='Group' && self.blog.owner.is_private? 
+        when Comment
+          return self.owner.is_a?(GroupPost) || (self.owner.is_a?(BlogPost) && self.owner.blog.owner.is_a?(Group) && self.owner.blog.owner.is_private?)
+      end
+      false
+    end
+    
   end
   
   module ClassMethods
@@ -45,7 +100,15 @@ module Streamed
         self.after_create "add_to_#{stream}_stream".to_sym
         self.after_destroy "remove_from_#{stream}_stream".to_sym
       end  
+    end
+    
+    def stream_on_update
+      #
     end  
+    
+    def stream_on_save
+      #
+    end
   end    
   
 end  
