@@ -57,7 +57,7 @@ class Offer < ActiveRecord::Base
     if folder_offers.blank?
       active.approved
     else
-      where(@t[:id].not_eq(folder_offers)).active.approved
+      where(@t[:id].not_in(folder_offers)).active.approved
     end  
   end
 
