@@ -1,6 +1,8 @@
 require_cubeless_engine_file :model, :question
 
 class Question
+  include Notifications::Question
+  
   # SSJ -- it would be cool to do this with a lamda for curent_profile.company_id, but I could not get it to work in 2.3.9
   default_scope :conditions => ["questions.company_id = 0"]
   belongs_to :company

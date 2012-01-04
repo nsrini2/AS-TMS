@@ -63,6 +63,10 @@ FactoryGirl.define do
     f.association :profile
   end  
 
+  Factory.define :abuse do |f|
+    f.reason "Factory abuse reason"
+  end  
+  
   # # This will use the User class (Admin would have been guessed)
   # factory :admin, :class => User do
   #   first_name 'Admin'

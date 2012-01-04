@@ -26,7 +26,7 @@ class GroupEmailPreferences < OpenStruct
 end
 
 class GroupMembership < ActiveRecord::Base
-
+  include Notifications::GroupMembership
   acts_as_modified
 
   xss_terminate :except => [:email_preferences]

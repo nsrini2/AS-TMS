@@ -1,6 +1,7 @@
 require_cubeless_engine_file :model, :group
 
-class Group < ActiveRecord::Base  
+class Group < ActiveRecord::Base
+  include Notifications::Group  
   belongs_to :company
   
   has_many :questions_referred_to_me, :through => :referred_questions, :source => :question,

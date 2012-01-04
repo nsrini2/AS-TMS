@@ -1,5 +1,5 @@
 class Abuse < ActiveRecord::Base
-
+  include Notifications::Abuse
   belongs_to :abuseable, :polymorphic => true
   belongs_to :owner, :class_name => 'Profile', :foreign_key => "owner_id"
   belongs_to :remover, :class_name => 'Profile', :foreign_key => "remover_id"

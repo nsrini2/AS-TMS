@@ -78,4 +78,143 @@ describe Notifications do
       @company_blog_post.should be_company
     end
   end
+  
+  describe Question do
+    
+    before(:each) do
+      # SSJ I may have done a bad thing, but I could not get @question.profile_id to pass 
+      # into SQL INSERT statment, so I removed the requirement from cubeless_trunk_test.questions
+      @question = Factory.build(:question)
+      SemanticMatcher.default.stub!(:match_question_to_profiles).and_return(:true)
+    end
+    
+    
+    it "should call fire_notifications after it is saved" do
+      @question.should be_valid
+      @question.should_receive(:fire_notifications).and_return(:true)
+      @question.save
+    end
+    
+    it "should call SemanticMatcher.default.match_question_to_profiles when a question is saved" do
+      SemanticMatcher.default.should_receive(:match_question_to_profiles).with(@question)
+      @question.fire_notifications
+    end
+    
+    it "should call Notifier.send_question_match_notifications when a question is saved" do
+      dj_count =  Delayed::Job.count
+      @question.fire_notifications
+      Delayed::Job.count.should == dj_count + 1
+    end
+
+  end
+  
+  describe Answer do
+    
+    before(:each) do
+      @question = Factory.build(:question)
+      @answer = Factory.build(:answer)
+      @answer.stub!(:question).and_return(@question)
+    end
+    
+    it "should have a fire_notifications method" do
+      @answer.methods.include?('fire_notifications').should be_true
+    end  
+    
+    it "should have a fire_update_notifications method" do
+     @answer.methods.include?('fire_update_notifications').should be_true 
+    end
+    
+    it "should send notification to question if its question per_answer_notification is true" do
+      @question.stub!(:per_answer_notification).and_return(:true)
+      Notifier.should_receive(:deliver_answer_to_question).with(@answer) 
+      @answer.fire_notifications
+    end  
+    
+    it "should send watched question answered notification if the question has watchers" do
+      @watcher = Profile.new
+      @watcher.stub!(:email).and_return("scott.johnson@sabre.com")
+      @watcher.stub!(:watched_question_answer_email_status).and_return(1)
+      @question.stub!(:watchers).and_return([@watcher])
+      Notifier.should_receive(:deliver_watched_question_answer).with(@answer) 
+      @answer.fire_notifications
+    end  
+    
+     
+  end
+  
+  describe Abuse do
+    before(:each) do
+      @abuse = Factory.build(:abuse)
+    end  
+    
+    it "should have a fire_notifications method" do
+      @abuse.methods.include?('fire_notifications').should be_true
+    end
+    
+    it "should have a class.send_batch_email method" do
+      @abuse.class.methods.include?('send_batch_email').should be_true
+    end
+    
+    it "should send a new abuse notifiaction to all shady_admins" do
+      Abuse.should_receive(:send_batch_email)
+      @abuse.fire_notifications
+    end
+  end  
+  
+  describe Group do
+    before(:each) do
+      @group = Factory.build(:group)
+    end  
+    
+    it "should have a fire_update_notifications method" do
+       @group.methods.include?('fire_update_notifications').should be_true
+    end
+    
+    it "should send a group owner changed email if the owner is changed" do
+      Notifier.should_receive(:deliver_group_owner).with(@group)
+      @group.stub!(:attribute_modified?).and_return(:true)
+      @group.fire_update_notifications
+    end
+  end
+  
+  describe GroupMembership do
+    before(:each) do
+      @groupmembership = GroupMembership.new({ :profile_id => 1, :group_id => 1 })
+    end  
+    
+    it "should have a fire_update_notifications method" do
+       @groupmembership.methods.include?('fire_update_notifications').should be_true
+    end
+    
+    it "should send a group owner changed email if the owner is changed" do
+      allow_message_expectations_on_nil
+      Notifier.should_receive(:deliver_group_moderator).with(@groupmembership)
+      @groupmembership.stub!(:attribute_modified?).and_return(:true)
+      @groupmembership.stub!(:moderator).and_return(:true)
+      @groupmembership.stub!(:profile_id).and_return(1)
+      @groupmembership.group.stub!(:owner_id).and_return(2)
+      @groupmembership.fire_update_notifications
+    end
+  end
+  
+  describe GroupInvitation do
+    before(:each) do
+      @groupinvitation = GroupInvitation.new({ :sender_id => 1, :group_id => 1, :receiver_id => 2 })
+    end  
+    
+    it "should have a fire_notifications method" do
+       @groupinvitation.methods.include?('fire_notifications').should be_true
+    end
+    
+    it "should have a fire_update_notifications method" do
+       @groupinvitation.methods.include?('fire_update_notifications').should be_true
+    end
+    
+    it "should send a group group invitation email if a new invite is created" do
+      allow_message_expectations_on_nil
+      @groupinvitation.receiver.stub!(:group_invitation_email_status).and_return(:true)
+      Notifier.should_receive(:deliver_group_invitation).with(@groupinvitation)
+      @groupinvitation.fire_update_notifications
+    end
+  end
 end

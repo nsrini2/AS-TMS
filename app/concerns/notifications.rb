@@ -132,4 +132,112 @@ module Notifications
     end
   end
   
+  module Question
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+    end
+   
+    
+    module InstanceMethods
+      def fire_notifications      
+        SemanticMatcher.default.match_question_to_profiles(self)
+        Notifier.delay.send_question_match_notifications(self.id)     
+      end
+    end
+
+  end
+  
+  module Answer
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+      self.after_update :fire_update_notifications
+    end
+   
+    
+    module InstanceMethods
+      def fire_notifications      
+        Notifier.deliver_answer_to_question(self) if self.question.per_answer_notification
+        Notifier.deliver_watched_question_answer(self) unless self.question.watchers.collect {|watcher| watcher.email if watcher.watched_question_answer_email_status==1 }.compact.empty?
+      end
+      
+      def fire_update_notifications
+        q = Question.unscoped.find_by_id(self.question_id)
+        Notifier.deliver_best_answer(self) if self.best_answer and self.attribute_modified?(:best_answer) and q.is_closed?
+      end
+    end
+
+  end
+  
+  module Abuse
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+      self.send :include, Notifications::BatchMailer
+    end
+   
+    module InstanceMethods
+      def fire_notifications
+        send_new_abuse_email      
+      end
+      
+      def send_new_abuse_email
+        recipients = ::Profile.include_shady_admins.collect { |admin| admin.email }
+        tmail = Notifier.new_abuse
+        self.class.send_batch_email(tmail, recipients)
+      end  
+    end
+  end
+  
+  module Group
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_update :fire_update_notifications
+    end
+    
+    module InstanceMethods
+      def fire_update_notifications
+        Notifier.deliver_group_owner(self) if self.attribute_modified?(:owner_id) 
+      end
+    end  
+  end
+  
+  module GroupMembership
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_update :fire_update_notifications
+    end
+    
+    module InstanceMethods
+      def fire_update_notifications
+        not_owner = self.profile_id!=self.group.owner_id
+        Notifier.deliver_group_moderator(self) if self.moderator and not_owner and self.attribute_modified?(:moderator)
+      end  
+    end  
+  end  
+  
+  module GroupInvitation
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+      self.after_update :fire_update_notifications
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        Notifier.deliver_group_invitation(self) if self.receiver.group_invitation_email_status
+      end
+      
+      def fire_update_notifications
+        Notifier.deliver_group_invitation(self) if self.receiver.group_invitation_email_status
+      end  
+    end  
+  end
 end  
