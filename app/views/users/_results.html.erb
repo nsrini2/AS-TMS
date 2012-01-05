@@ -7,20 +7,20 @@
 		<th>Company</th>
 		<th>URL</th>
 		<th><%= sort_link_helper "Email", "email" -%></th>
-		<th>Registration_date</th>
+		<th>Registration</th>
 		<th><%= sort_link_helper "Status", "status" -%></th>
 		<th>Action</th>
 	</tr>
 	<% @profiles.each do |profile| -%>
 		<tr class="<%= cycle("even", "odd") -%>">
-			<td><%= link_to(truncate(profile.screen_name, :length => 12), profile_path(profile)) -%></td>
+			<td><%= link_to(truncate(profile.screen_name, :length => 15), profile_path(profile)) -%></td>
 			<td><%= profile.registration_field(1) -%></td>
 			<td><%= profile.registration_field(2) -%></td>
 			<td><%= profile.registration_field(3) -%></td>
 			<td><%= mail_to profile.user.email, 
 			        truncate(profile.user.email, :length => 19) -%></td>
 			
-			<td><%= pretty_date profile.user.created_at %></td>
+			<td><%= mini_date profile.user.created_at %></td>
 
 			<td><%= profile.status_name -%></td>
 			<td>
