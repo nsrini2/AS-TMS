@@ -238,6 +238,7 @@ AgentstreamDe::Application.routes.draw do
       post :clear_lock
       get :registration_details
       post :activate
+      post :activate_on_login
     end
   end
 

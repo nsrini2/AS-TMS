@@ -8,6 +8,13 @@ class Profile
     where(Profile.arel_table[:karma_points].gt(points))
   }
   
+  def registration_field(site_registration_field_id)
+    profile_registration_field = ProfileRegistrationField.where(:profile_id => self.id).where(:site_registration_field_id => site_registration_field_id)
+    profile_registration_field.first.value
+    rescue
+      "NONE"
+  end
+  
   def company?
     !company.nil?
   end

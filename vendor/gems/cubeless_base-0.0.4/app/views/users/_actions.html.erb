@@ -13,6 +13,7 @@
 	<% end -%>
 	<% if profile.status == -3 -%>
 	<option value="activate_user">Activate User</option>
+	<option value="activate_on_login_user">Activate On Login</option>
 	<% end -%>
 	<% if profile.last_login_date == nil -%>
 	<option value="resend_welcome">Resend Welcome</option>
@@ -26,6 +27,7 @@
 		:reset_password_url => admin_reset_retrievals_path(:login => profile.user.login),
 		:clear_lock_url => clear_lock_user_url(profile.user),
 		:activate_user_url => activate_user_url(profile.user),
+		:activate_on_login_user_url => activate_on_login_user_url(profile.user),
 		:resend_welcome_url => resend_welcome_user_url(profile.user)
 	}.to_json
 -%></script>

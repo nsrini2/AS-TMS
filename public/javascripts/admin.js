@@ -136,6 +136,16 @@ $.fn.extend({
 						}
 					});
 					break;
+					case "activate_on_login_user":
+  					$.confirmation_dialog({
+  						title: 'Are you sure you want to activate this user on login?',
+  						yes: function() {
+  							$.ajax({ url: urls.activate_on_login_user_url, type: 'post',
+  								success: function(data) { window.location.reload(); }
+  							});
+  						}
+  					});
+  					break;	
 				case "resend_welcome":
 					$.confirmation_dialog({
 						title: 'Are you sure you want to resend a welcome email to this user?',

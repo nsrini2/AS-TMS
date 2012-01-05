@@ -111,6 +111,15 @@ class UsersController < ApplicationController
       format.js { render :nothing => true }
     end
   end
+  
+  def activate_on_login
+    u = User.find(params[:id])
+    u.profile.update_attributes('status' => 2)
+    respond_to do |format|
+      format.html { redirect_to users_path }
+      format.js { render :nothing => true }
+    end
+  end
 
   def resend_welcome
     user = User.find(params[:id])
