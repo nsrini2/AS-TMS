@@ -70,7 +70,7 @@ module IterEngineRails3
   
     # See Rails::Configuration for more options
     #
-    config.active_record.observers = :activity_stream_observer, :karma_observer, :general_observer, :watch_observer, :watch_event_observer
+    config.active_record.observers = :activity_stream_observer, :karma_observer, :watch_observer, :watch_event_observer
   
     config.action_view.sanitized_allowed_attributes = 'style'
     config.after_initialize do

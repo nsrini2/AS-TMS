@@ -101,9 +101,9 @@ describe Notifications do
     end
     
     it "should call Notifier.send_question_match_notifications when a question is saved" do
-      dj_count =  Delayed::Job.count
+      Notifier.should_receive(:delay).and_return(Notifier)
+      Notifier.should_receive(:send_question_match_notifications).with(@question.id)
       @question.fire_notifications
-      Delayed::Job.count.should == dj_count + 1
     end
 
   end
@@ -217,4 +217,154 @@ describe Notifications do
       @groupinvitation.fire_update_notifications
     end
   end
+  
+  describe GroupPost do
+    before(:each) do
+      @group_post = GroupPost.new({ :post => "rSpec GroupPost", :group_id => 1, :profile_id => 1 })
+    end  
+    
+    it "should have a fire_notifications method" do
+       @group_post.methods.include?('fire_notifications').should be_true
+    end
+    
+    it "should receive fire_notifications when saved" do
+      @group_post.stub!(:valid?).and_return(:true)
+      @group_post.should_receive(:fire_notifications)
+      @group_post.save
+    end
+  end
+  
+  describe ProfileAward do
+    before(:each) do
+      @profile_award = ProfileAward.new()
+      @profile_award.stub!(:valid?).and_return(:true)
+    end  
+    
+    it "should have a fire_notifications method" do
+       @profile_award.methods.include?('fire_notifications').should be_true
+    end
+    
+    it "should call deliver_profile_award with self on Notifier when saved" do
+      Notifier.should_receive(:deliver_profile_award).with(@profile_award)
+      @profile_award.fire_notifications
+    end
+  end
+  
+  describe Reply do
+    before(:each) do
+      @reply = Reply.new()
+      @reply.stub!(:valid?).and_return(:true)
+    end  
+    
+    it "should have a fire_notifications method" do
+       @reply.methods.include?('fire_notifications').should be_true
+    end
+    
+    it "should call deliver_profile_award with self on Notifier when saved" do
+      @answer = Factory.build(:answer)
+      @profile = Factory.build(:profile)
+      @reply.answer = @answer
+      @answer.profile = @profile
+      @profile.stub!(:new_reply_on_answer_notification).and_return(:true)
+      Notifier.should_receive(:deliver_reply).with(@reply)
+      @reply.fire_notifications
+    end
+  end
+  
+  describe GetthereBooking do
+    before(:each) do
+      @get_there_booking = GetthereBooking.new()
+    end  
+    
+    it "should have a fire_notifications method" do
+       @get_there_booking.methods.include?('fire_notifications').should be_true
+    end
+    
+    it "should call deliver_new_getthere_booking with self on Notifiers::Travel when saved" do
+      @profile = Factory.build(:profile)
+      @profile.stub!(:travel_email_status).and_return(:true)
+      @get_there_booking.profile = @profile
+      @get_there_booking.stub!(:past?).and_return(:true)
+      Notifiers::Travel.should_receive(:deliver_new_getthere_booking).with(@get_there_booking) if @get_there_booking.profile.travel_email_status && !@get_there_booking.past?
+      @get_there_booking.fire_notifications
+    end
+  end
+  
+  describe Comment do
+    before(:each) do
+      @comment = Factory.build(:comment)
+    end
+    
+    it "should have a fire_notifications method" do
+      @comment.respond_to?('fire_notifications').should be_true
+    end
+    
+    it "should call deliver_new_comment_on_group_blog_post with self on Notifier if it belongs_to_group_blog_post" do
+      @comment.stub!(:belongs_to_group_blog_post?).and_return(true)
+      Notifier.should_receive(:deliver_new_comment_on_group_blog_post).with(@comment)
+      @comment.fire_notifications
+    end
+    
+    it "should call deliver_new_comment_on_group_post with self on Notifiers::Group if it belongs_to_group_post" do      
+      @comment.stub!(:belongs_to_group_blog_post?).and_return(false)
+      @comment.stub!(:belongs_to_group_post?).and_return(true) 
+      
+      Notifiers::Group.should_receive(:deliver_new_comment_on_group_post).with(@comment).and_return
+      @comment.fire_notifications
+    end
+    
+    it "should call deliver_new_comment_on_company_blog_post with self on Notifier if it is a company comment" do
+      @comment.stub!(:belongs_to_group_blog_post?).and_return(false)
+      @comment.stub!(:belongs_to_group_post?).and_return(false)
+      @comment.stub!(:company?).and_return(true)
+      Notifier.should_receive(:deliver_new_comment_on_company_blog_post).with(@comment)
+      @comment.fire_notifications
+    end
+    
+    it "should call deliver_new_comment_on_group_blog_post with self on Notifier if it is a new_comment_on_blog_notification -- comment is made on a blog post" do
+      @comment.stub!(:belongs_to_group_blog_post?).and_return(false)
+      @comment.stub!(:belongs_to_group_post?).and_return(false)
+      @comment.stub!(:company?).and_return(false)
+      @comment.stub!(:root_parent_profile?).and_return(true)
+      
+      @blog_post = Factory.build(:blog_post, :id => 1)
+      @comment.owner = @blog_post 
+      @blog = Factory.build(:blog)
+      @blog_post.blog = @blog
+      @profile = Factory.build(:profile)
+      @blog.owner = @profile
+      @profile.stub!(:new_comment_on_blog_notification).and_return(true)
+      
+      Notifier.should_receive(:deliver_new_comment_on_blog).with(@comment).and_return
+      @comment.fire_notifications
+    end
+  end
+  
+  describe Note do
+    before(:each) do
+      @note = Factory.build(:note)
+    end
+    
+    it "should repond to fire_notofications" do
+      @note.respond_to?(:fire_notifications).should be_true
+    end  
+    
+    it "should delay send group note if the receiver is a group" do
+      @group = Factory.build(:group)
+      @note.stub!(:receiver).and_return(@group)
+      @note.should_receive(:delay).and_return(@note)
+      @note.should_receive(:send_group_note)
+      @note.fire_notifications
+
+    end
+    
+    it "should deliver a note if the receiver is set to receive notes" do
+      @profile = Factory.build(:profile)
+      @note.stub!(:receiver).and_return(@profile)
+      @profile.stub!(:note_email_status).and_return(1)
+      
+      Notifier.should_receive(:deliver_note).with(@note)
+      @note.fire_notifications
+    end
+  end        
 end

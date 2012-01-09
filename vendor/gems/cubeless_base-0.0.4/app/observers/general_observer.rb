@@ -1,7 +1,7 @@
 class GeneralObserver < ActiveRecord::Observer
 
-  observe Comment, GroupPost, Note, Profile, ProfileAward, QuestionReferral, Reply, GetthereBooking
-
+  observe Comment, Note, Profile, ProfileAward, QuestionReferral
+   
   @@monitor_after_create = Set.new([Comment, GroupPost, Note, Profile, ProfileAward, QuestionReferral, Reply, GetthereBooking])
   def after_create(model)
     return unless @@monitor_after_create.member?(model.class)
@@ -18,34 +18,34 @@ class GeneralObserver < ActiveRecord::Observer
       #   elsif model.blog.owner_type == 'Company'
       #     BlogPost.delay.send_company_blog_post(model.id)
       #   end
-      when Comment      
-        if model.belongs_to_group_blog_post? 
-          Notifier.deliver_new_comment_on_group_blog_post(model)
-        elsif model.belongs_to_group_post?
-           Notifiers::Group.deliver_new_comment_on_group_post(model)
-        elsif model.company?
-          Notifier.deliver_new_comment_on_company_blog_post(model)
-        else    
-           if model.root_parent_profile? && 
-              model.owner.root_parent.new_comment_on_blog_notification  
-              Notifier.deliver_new_comment_on_blog(model)
-           end        
-        end       
+      # when Comment      
+      #   if model.belongs_to_group_blog_post? 
+      #     Notifier.deliver_new_comment_on_group_blog_post(model)
+      #   elsif model.belongs_to_group_post?
+      #      Notifiers::Group.deliver_new_comment_on_group_post(model)
+      #   elsif model.company?
+      #     Notifier.deliver_new_comment_on_company_blog_post(model)
+      #   else    
+      #      if model.root_parent_profile? && 
+      #         model.owner.root_parent.new_comment_on_blog_notification  
+      #         Notifier.deliver_new_comment_on_blog(model)
+      #      end        
+      #   end       
       # when GroupInvitation
       #   Notifier.deliver_group_invitation(model) if model.receiver.group_invitation_email_status
-      when GroupPost
-        model.delay.send_group_post
-      when Note
-        if model.receiver.is_a?(Group)
-          model.delay.send_group_note
-        else
-          Notifier.deliver_note(model) if model.receiver.note_email_status==1
-        end
+      # when GroupPost
+      #   model.delay.send_group_post
+      # when Note
+      #   if model.receiver.is_a?(Group)
+      #     model.delay.send_group_note
+      #   else
+      #     Notifier.deliver_note(model) if model.receiver.note_email_status==1
+      #   end
       # SSJ 10-11-2011  Moved to concerns/notifications.rb  
       # when Profile
       #   Notifier.deliver_welcome(model.user) if model.new_user?
-      when ProfileAward
-        Notifier.deliver_profile_award(model)
+      # when ProfileAward
+      #   Notifier.deliver_profile_award(model)
       # when Question
       #   SemanticMatcher.default.match_question_to_profiles(model)
       #   Notifier.delay.send_question_match_notifications(model.id)
@@ -55,10 +55,10 @@ class GeneralObserver < ActiveRecord::Observer
         else
           Notifier.deliver_referral(model) if model.owner.referral_email_status==1
         end
-      when Reply
-        Notifier.deliver_reply(model) if model.answer.profile.new_reply_on_answer_notification
-      when GetthereBooking
-        Notifiers::Travel.deliver_new_getthere_booking(model) if model.profile.travel_email_status && !model.past?
+      # when Reply
+      #   Notifier.deliver_reply(model) if model.answer.profile.new_reply_on_answer_notification
+      # when GetthereBooking
+      #   Notifiers::Travel.deliver_new_getthere_booking(model) if model.profile.travel_email_status && !model.past?
     end
   end
 
@@ -89,13 +89,13 @@ class GeneralObserver < ActiveRecord::Observer
   #       # Notifier.deliver_welcome(model.user) if model.new_user? && model.status_was <= 0
   #   end
   # end
-
-
-  private
-
-  def get_group_recipients(model, memberships)
-    subscriptions = memberships.select { |membership| membership.wants_notification_for?(model) && !model.authored_by?(membership.member) }
-    subscriptions.collect { |subscription| subscription.member.email }
-  end
+  # 
+  # 
+  # private
+  # 
+  # def get_group_recipients(model, memberships)
+  #   subscriptions = memberships.select { |membership| membership.wants_notification_for?(model) && !model.authored_by?(membership.member) }
+  #   subscriptions.collect { |subscription| subscription.member.email }
+  # end
 
 end

@@ -1,5 +1,6 @@
 class Note < ActiveRecord::Base
   include GroupOwned
+  include Notifications::Note
 
   acts_as_auditable :audit_unless_owner_attribute => :receiver_id, :exclude_events => [:create]
 

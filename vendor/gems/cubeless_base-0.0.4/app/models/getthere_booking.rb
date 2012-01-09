@@ -1,5 +1,6 @@
 class GetthereBooking < ActiveRecord::Base
-
+  include Notifications::GetthereBooking
+  
   xss_terminate :except => [:xml]
   validates_presence_of :ord_key, :profile_id, :xml, :start_time, :end_time
   belongs_to :profile

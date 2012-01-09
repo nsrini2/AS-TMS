@@ -1,5 +1,6 @@
 class GroupPost < ActiveRecord::Base
   include GroupOwned
+  include Notifications::GroupPost
 
   acts_as_auditable :audit_unless_owner_attribute => :profile_id
   

@@ -45,6 +45,16 @@ FactoryGirl.define do
 
   end
   
+  Factory.define :note do |f|
+    f.message "Factory note message"
+  end 
+    
+  Factory.define :post do |f|
+    f.topic_id "1"
+    f.author_id "1"
+    f.body "Factory Post Body"
+  end
+  
   Factory.define :question do |f|
     f.category "Life"
     f.question "This is the spec factory question"
@@ -65,6 +75,12 @@ FactoryGirl.define do
 
   Factory.define :abuse do |f|
     f.reason "Factory abuse reason"
+  end  
+  
+  Factory.define :group_post do |f|
+    f.post "Factory GroupPost"
+    f.association :profile
+    f.association :group
   end  
   
   # # This will use the User class (Admin would have been guessed)

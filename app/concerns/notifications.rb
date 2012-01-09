@@ -240,4 +240,103 @@ module Notifications
       end  
     end  
   end
+  
+  module GroupPost
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        self.delay.send_group_post
+      end
+    end  
+  end
+  
+  module ProfileAward
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        Notifier.deliver_profile_award(self)
+      end
+    end  
+  end
+  
+  module Reply
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        Notifier.deliver_reply(self) if self.answer.profile.new_reply_on_answer_notification
+      end
+    end  
+  end
+  
+  module GetthereBooking
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        Notifiers::Travel.deliver_new_getthere_booking(self) if self.profile.travel_email_status && !self.past?
+      end
+    end  
+  end
+  
+  module Comment
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        if self.belongs_to_group_blog_post? 
+          Notifier.deliver_new_comment_on_group_blog_post(self)
+        elsif self.belongs_to_group_post?
+          Notifiers::Group.deliver_new_comment_on_group_post(self)
+        elsif self.company?
+          Notifier.deliver_new_comment_on_company_blog_post(self)
+        else
+          if self.root_parent_profile? && self.owner.root_parent.new_comment_on_blog_notification  
+            Notifier.deliver_new_comment_on_blog(self)
+          end     
+        end
+      end
+    end  
+  end
+  
+  module Note
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        if self.receiver.is_a?(Group)
+          self.delay.send_group_note
+        else
+          Notifier.deliver_note(self) if self.receiver.note_email_status==1
+        end
+      end
+    end  
+  end
+
 end  

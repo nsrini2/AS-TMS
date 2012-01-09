@@ -1,4 +1,5 @@
 class Reply < ActiveRecord::Base
+  include Notifications::Reply
 
   acts_as_auditable :audit_unless_owner_attribute => :profile_id
   belongs_to :answer

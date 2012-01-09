@@ -1,4 +1,5 @@
 class ProfileAward < ActiveRecord::Base
+  include Notifications::ProfileAward
   belongs_to :award
   belongs_to :profile
   
