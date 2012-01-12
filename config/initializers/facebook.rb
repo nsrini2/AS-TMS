@@ -24,11 +24,11 @@ require 'yaml'
 #   Koala.proxy = ENV["http_proxy"]
 # end
 
-if Rails.env.development?
+# if Rails.env.development?
   Koala.http_service.http_options = {
     :proxy => ENV["http_proxy"]
   }
-end  
+# end  
 
 fb_config = YAML.load(File.read("#{Rails.root}/config/facebook.yml"))
 
