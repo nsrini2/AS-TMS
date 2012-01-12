@@ -49,8 +49,9 @@ class ApplicationController
     # user_facebook_session = @oauth.get_user_info_from_cookies(cookies)
     @facebook_uid = @oauth.get_user_from_cookies(cookies)
     rescue Exception => e
-      Rails.logger.error "*** An error occured trying to get a users Facebook ID ***"
+      Rails.logger.error "*** An error occured in ApplicationController#find_facebook_uid ***"
       Rails.logger.error e.message
+      Rails.logger.error e.backtrace.inspect
       nil
   end
   
