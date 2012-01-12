@@ -48,7 +48,9 @@ class ApplicationController
     @oauth = Koala::Facebook::OAuth.new(FB_APP_ID, FB_APP_SECRET)
     # user_facebook_session = @oauth.get_user_info_from_cookies(cookies)
     @facebook_uid = @oauth.get_user_from_cookies(cookies)
-    rescue
+    rescue Exception => e
+      Rails.logger.error "*** An error occured trying to get a users Facebook ID ***"
+      Rails.logger.error e.message
       nil
   end
   
