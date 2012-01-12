@@ -46,7 +46,7 @@ class AccountController < ApplicationController
           redirect_to :action => :registration_confirmation
         end 
       else
-        # Default Action -- Assign FB user to AS user 
+        # Default Action -- Assign FB user to AS user -- so this line does not need to be here -- it just is for easy reading
         render :action => :register
       end
     else
