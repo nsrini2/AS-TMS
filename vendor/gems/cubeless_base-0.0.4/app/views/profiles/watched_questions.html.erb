@@ -5,6 +5,6 @@
 		<%= render :partial => 'questions/questions', :locals => { :questions => @questions, :show => {:remove_watch => (@profile == current_profile)}, :model => 'bookmarks', :questions_for => @profile} -%>
 	</div>
 	<div id="paging">
-		<%= render_pagination @questions %>
+		<%= will_paginate @questions %>
 	</div>
 </div>

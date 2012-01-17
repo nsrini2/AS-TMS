@@ -117,7 +117,6 @@ class Profile < ActiveRecord::Base
     end
   end
 
-
   def current_bookings
     getthere_bookings.find :all, :conditions => 'end_time > now()', :order => 'start_time asc'
   end
@@ -175,6 +174,10 @@ class Profile < ActiveRecord::Base
 
   def is_sponsored?
     self && self.has_role?(Role::SponsorMember)
+  end
+
+  def sponsor?
+    is_sponsored?
   end
 
   def has_global_group_email_preferences?

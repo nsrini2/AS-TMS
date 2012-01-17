@@ -134,13 +134,14 @@ module ContentHelper
     puts profile.is_sponsored?
     block_text unless profile.is_sponsored?
   end
-
-  def show_when_viewing_sponsored_profile(profile=@profile, &block)
-    return profile.is_sponsored? unless block_given?
-    # yield if profile.is_sponsored?
-    block_text = capture(&block)
-    block_text if profile.is_sponsored?
-  end
+  
+  # SSJ Depricated 1/17/2012
+  # def show_when_viewing_sponsored_profile(profile=@profile, &block)
+  #   return profile.is_sponsored? unless block_given?
+  #   # yield if profile.is_sponsored?
+  #   block_text = capture(&block)
+  #   block_text if profile.is_sponsored?
+  # end
 
   def show_for_sponsor(&block)
     return current_profile.is_sponsored? unless block_given?

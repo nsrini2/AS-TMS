@@ -46,6 +46,7 @@ class Question < ActiveRecord::Base
   self.per_page = 10
   
   def self.find(*args)
+    Rails.logger.warn "Called Question.find with #{args}"
     # for use with collections (ie. profile.open_questions), otherwise use Question.find_summary
     return find_summary(*args) if ModelUtil.get_options!(args).delete(:summary)
     return auth_find(*args) if ModelUtil.get_options!(args).delete(:auth)
@@ -129,6 +130,7 @@ class Question < ActiveRecord::Base
   ### Summary Methods ###
 
   def self.find_summary(*args)
+    Rails.logger.warn "Calling Question.find_summary witn #{args}"
     args.insert(0, :all) unless args.first == :all || args.first == :first || args.first == :last
     ModelUtil.get_options!(args).delete(:summary)
     ModelUtil.add_includes!(args,{:profile => [:user,:primary_photo]}, :abuse)

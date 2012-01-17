@@ -4,7 +4,7 @@ require 'enumerator'
 <% if @invitations_pending.size > 0 && @group.invitation_can_be_accepted_by?(current_profile) -%>
 <div id="invitation_requests">
 	<h3>People You Invited</h3>
-	<p>The following people have been invited to the group but have not accepted to date. You can <% hide_for_sponsor do -%>view their profile,<% end -%> resend an invitation or recall your original invitation.</p>
+	<p>The following people have been invited to the group but have not accepted to date. You can <%= "view their profile," unless current_profile.sponsor? -%> resend an invitation or recall your original invitation.</p>
 	<div class="profile_results">
 		<% @invitations_pending.each do |invitations_pending| -%>
 		<% profile = invitations_pending.receiver -%>
@@ -23,11 +23,9 @@ require 'enumerator'
 		</div>
 		<% end -%>
 	</div>
-	<%= render_pagination @invitations_pending -%>
+	<%#= put pagination stuff here -%>
 </div>
 <% end -%>
 
-
-<!--profile.user_id.to_s + '|' + @group.id.to_s, -->
 
  

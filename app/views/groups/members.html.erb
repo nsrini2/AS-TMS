@@ -30,7 +30,8 @@ content_for(:page_title, "Members of #{@group.name}")
 		<dd><%= @group.moderators.collect{ |mod| link_to_profile(mod, false) }.join(", ") -%></dd>
 	</dl>
 	<% end %>
-
-	<%#= render :partial => 'groups/invitations_pending' %>
-	<%#= render :partial => 'groups/invitation_requests' %>
+	<% unless current_profile.sponsor? %>
+		<%= render :partial => 'groups/invitations_pending' %>
+		<%= render :partial => 'groups/invitation_requests' %>
+	<% end %>	
 <% end -%>

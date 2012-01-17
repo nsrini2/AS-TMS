@@ -121,8 +121,8 @@ class GroupsController < ApplicationController
   def members
     max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
     @members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 200).to_a.sort! { |a,b| rand(3)-1 }
-    @invitation_requests = GroupInvitationRequest.find(:all, :conditions => "group_id = #{params[:id]}", :page => default_paging)
-    @invitations_pending = GroupInvitation.find(:all, :conditions => "group_id = #{params[:id]}", :page => default_paging)
+    @invitation_requests = GroupInvitationRequest.find(:all, :conditions => "group_id = #{@group.id}")
+    @invitations_pending = GroupInvitation.find(:all, :conditions => "group_id = #{@group.id}")
   end
 
   def select_member

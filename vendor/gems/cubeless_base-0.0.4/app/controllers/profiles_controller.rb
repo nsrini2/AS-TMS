@@ -250,7 +250,7 @@ class ProfilesController < ApplicationController
   end
 
   def watched_questions
-    @questions = @profile.watched_questions.find(:all, :summary => true, :page => default_paging)
+    @questions = @profile.watched_questions.paginate(:page => params[:page])
     respond_to do |format|
       format.html {render :layout => 'q_and_a_sub_menu'}
     end
