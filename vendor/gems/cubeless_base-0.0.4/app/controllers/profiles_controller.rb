@@ -159,7 +159,7 @@ class ProfilesController < ApplicationController
   end
 
   def questions_asked
-    @question_summaries = @profile.questions.find(:all, question_filters({:referral_owner => @profile}))
+    @question_summaries = @profile.questions.paginate(:page => params[:page]) #.find(:all, question_filters({:referral_owner => @profile}))
     render :layout => 'q_and_a_sub_menu'
   end
 

@@ -4425,7 +4425,7 @@ div.single_item .details {
 }
 
 /* line 121, ../../../../app/stylesheets/themes/agentstream/lists.scss */
-div.single_item div.photo_wrapper img {
+div.single_item div.photo_wrapper img.photo {
   width: 120px;
   height: 120px;
 }

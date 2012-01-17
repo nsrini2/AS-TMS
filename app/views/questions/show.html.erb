@@ -9,18 +9,18 @@
     <div class="content">
       <div id="qaQuestion<%=@question_summary.id%>" class="question <%=@question_summary.id%> question_details single_item list_item">
           <%# MM2: I want to force the large avatar, but really don't want to copy the helper or partial from cubeless into here %>
-          <% self.instance_eval do 
+          <%# self.instance_eval do 
               alias :link_to_avatar_for_from_cubeless :link_to_avatar_for
               def link_to_avatar_for(profile, options={})
                 link_to_avatar_for_from_cubeless(profile, options.merge!({:thumb => :thumb_large}))
               end
             end
           %>
-        <%#= fail @question_summary.inspect %>
+
       		<%= render :partial =>'questions/question', :locals => {:question => @question_summary, :show => {:linked_question => false, :close => true}}%>
       		
       		<%# MM2: Put everything back to normal after my big avatar is rendered %>
-      		<% self.instance_eval { alias :link_to_avatar_for :link_to_avatar_for_from_cubeless } %>
+      		<%# self.instance_eval { alias :link_to_avatar_for :link_to_avatar_for_from_cubeless } %>
       		
       		<%= render(:partial => 'answers/best_answer', :locals => {:answer => @best_answer}) %>
       		

@@ -13,7 +13,7 @@ should_show = question_render_toggle_list(show)
 <% end %>
 
 <% avatar_content_for_question(should_show) do %>
-	<% link_to_avatar_for(question.profile, :reference => question.id) %>
+	<% link_to_avatar_for(question.profile, :reference => question.id, :thumb => :thumb_large) %>
 <% end %>
 <div class="details">
 	<div class="item_text">

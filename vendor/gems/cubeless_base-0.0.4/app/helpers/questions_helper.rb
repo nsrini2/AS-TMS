@@ -102,10 +102,6 @@ module QuestionsHelper
     end
   end
 
-  def my_question_content_for(questions)
-    yield if questions.size > 0
-  end
-
   def link_to_edit_question(question)
     link_to('edit', edit_question_path(:id => question.id), :class => 'modal edit')
   end
