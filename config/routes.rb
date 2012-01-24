@@ -275,7 +275,7 @@ AgentstreamDe::Application.routes.draw do
     end
   end
 
-  resources :api do
+  resources :api, :controller => "apis" do
     collection do
       get :photos
       get :groups
