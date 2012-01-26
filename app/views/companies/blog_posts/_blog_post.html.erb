@@ -36,7 +36,7 @@ preview = false unless defined?(preview)
 							<%= action_list_for([
   							render_abuse(comment),
 								(link_to("edit", edit_comment_path(comment), :class => 'modal edit_comment') if author_or_shady_admin_content_for(comment)),
-								( link_to('destroy', comment, :class => 'delete') if author_or_shady_admin_content_for(comment)),
+								( link_to('delete', comment, :class => 'delete') if author_or_shady_admin_content_for(comment)),
   							link_to("permanent link", "#{companies_blog_blog_post_path(blog_post)}#comment_#{comment.id.to_s}")
   						])%>
   					</div>
