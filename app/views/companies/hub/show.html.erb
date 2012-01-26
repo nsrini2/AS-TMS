@@ -2,9 +2,11 @@
   <div id="referred_questions" class="agency module">
     <%= render :partial => "/companies/hub/questions", :locals => { :questions => @aside_questions }%>
   </div>
-  <div id="agency_groups" class="agency module">
-    <%= render :partial => "/companies/hub/groups", :locals => { :groups => [] } %>
-  </div>
+	<% if @groups %>
+	  <div id="agency_groups" class="agency module">
+	    <%= render :partial => "/companies/hub/groups", :locals => { :groups => [] } %>
+	  </div>
+	<% end %>
   <div id="blog_posts" class="agency module last">
   	<%= render :partial=> "/companies/hub/blog_posts", :locals => { :blog_posts => @blog_posts }%>
   </div>

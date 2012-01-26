@@ -9,12 +9,14 @@ class Comment < ActiveRecord::Base
 
   validates_length_of :text, :within => 1..4000, :too_long => "is too long. Limit to 4000 characters.", :too_short => "cannot be blank."
 
+  default_scope :conditions => ["active = 1"]
+  
   def self.find(*args)
     with_scope(:find => {:include => [:profile, :abuse]}) do
       super(*args)
     end
   end
-
+  
   def author
     self.profile
   end

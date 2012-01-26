@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :set_parents, :except => [:show]
+  before_filter :identify, :set_parents, :except => [:show]
   deny_access_for :show => :sponsor_member
   deny_access_for [:new, :create, :edit, :update, :index] => :sponsor_member, :when => lambda{|c| c.instance_variable_get(:@root_parent).is_a?(Profile) }
 
@@ -76,6 +76,13 @@ class CommentsController < ApplicationController
         } 
       end
     end
+  end
+  
+  def destroy
+    comment = Comment.find(params[:id])
+    Rails.logger.info "DELETING COMMENT #{comment.id}"
+    comment.destroy
+    render :json => ""
   end
 
   def index
