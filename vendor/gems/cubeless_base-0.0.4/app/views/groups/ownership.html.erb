@@ -13,11 +13,9 @@
 				<input type="text" id="search" value="search..." class="member_search" onfocus="this.select()" name="q" />
 				<input type="submit" class="button small" value="Search" name="commit"/>
 			</form>
-			<%# @members.each do %>
 				<div id="member_list">
 					<%= render :partial => 'groups/member', :collection => @members, :locals => {:transfer_ownership => true} %>
 				</div>
-			<%# end %>
 		</div>
 	</div>
 	

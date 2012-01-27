@@ -177,9 +177,10 @@ class GroupsController < ApplicationController
 
   def ownership
    return redirect_to(group_path(@group)) unless (@group.owner == current_profile || current_profile.has_role?(Role::ShadyAdmin))
-   @members = params[:q].blank? ? owner_transfer_results(@group) : owner_transfer_results(@group, params[:q])
    
    add_to_notices "Oops, we couldn't find a member with '#{params[:q]}' their name." if @members && @members.size.zero?
+   @members = owner_transfer_results(@group, params[:q])
+   
    respond_to do |format|
      format.html { render :layout => 'group_manage_sub_menu' }
    end
@@ -263,12 +264,8 @@ class GroupsController < ApplicationController
   private
 
   def owner_transfer_results(group, name='')
-    options = { :order => "screen_name" }
-    if group.is_sponsored?
-      members = group.members.include_sponsor_members.find_by_full_name(name, options)
-    else
-      members = group.members.find_by_full_name(name, options)
-    end
+    members = group.members.where("first_name LIKE ? OR last_name LIKE ?", "%#{name}%", "%#{name}%").order(:screen_name).paginate(:page => params[:page], :per_page => 20)
+    members.include_sponsor_members if group.is_sponsored?    
     return members
   end
 
