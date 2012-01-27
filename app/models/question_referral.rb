@@ -1,6 +1,7 @@
 require_cubeless_engine_file :model, :question_referral
 
 class QuestionReferral < ActiveRecord::Base
+  include Notifications::QuestionReferral
 
   def validate
     cant_find_match_error = "Hum? We can't seem to find a match.  You might try an alternate spelling or word order. "

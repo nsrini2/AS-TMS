@@ -367,4 +367,34 @@ describe Notifications do
       @note.fire_notifications
     end
   end        
+  
+  describe QuestionReferral do
+    before(:each) do
+      @group = Factory.build(:group)
+      @group.stub!(:id).and_return(1)
+      @group.stub!(:members).and_return(Array.wrap Factory.build(:profile))
+      @question_referral = QuestionReferral.new()
+      @question_referral.owner = @group
+      @question_referral.group = @group
+      @question_referral.owner_id = @group.id
+      @question_referral.question = Factory.build(:question)
+      @question_referral.referer = Factory.build(:profile)
+    end
+    
+    it "should repond to fire_notofications" do
+      @question_referral.respond_to?(:fire_notifications).should be_true
+    end  
+    
+    it "should delay call send group referral email if receiver is a group" do
+      @question_referral.should_receive(:delay).and_return(@question_referral)
+      @question_referral.should_receive(:send_group_referral_email).and_return(true)
+      @question_referral.fire_notifications
+    end
+    
+    it "should batch email a referral is send_group_email is called" do
+      QuestionReferral.methods.include?('send_batch_email').should be_true
+      QuestionReferral.should_receive(:send_batch_email).with(anything, @group.members ).and_return(true)
+      @question_referral.send_group_referral_email
+    end
+  end  
 end

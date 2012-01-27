@@ -133,9 +133,7 @@ class GroupsController < ApplicationController
 
   def help_answer
     redirect_to group_path(@group) and return if @group.is_private?
-    # SSJ FIX
-    # @referred_questions = @group.questions_referred_to_me.find(:all, :summary => true, :referral_owner => @group, :order => 'questions.created_at desc', :page => {:size => 5, :current => params[:referred_questions_page]})
-    @referred_questions = []
+    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 6)
   end
 
   def moderators

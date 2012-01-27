@@ -339,4 +339,26 @@ module Notifications
     end  
   end
 
+  module QuestionReferral
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_save :fire_notifications
+      self.send :include, Notifications::BatchMailer
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        if self.owner.is_a?(Group)
+          delay.send_group_referral_email
+        end
+      end
+      
+      def send_group_referral_email
+        tmail = Notifier.group_referral(self)
+        recipients = self.group.members
+        self.class.send_batch_email(tmail, recipients)
+      end
+    end  
+  end
 end  

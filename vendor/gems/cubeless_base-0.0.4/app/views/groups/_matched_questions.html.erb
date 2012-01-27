@@ -3,7 +3,7 @@
         <h3>Questions Referred To This Group</h3>
             <%= render_referred_questions_for @group, referred_questions, @group.editable_by?(current_profile) %>
 		<div id="paging">
-        	<%= render_pagination referred_questions, :page_var => :referred_questions_page %>
+        	<%= will_paginate referred_questions %>
         </div>
 	<%else%>
       <div align="center">

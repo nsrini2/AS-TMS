@@ -12,7 +12,7 @@ class Group < ActiveRecord::Base
   has_many :referred_questions, :class_name => 'QuestionReferral', :as => :owner, :dependent => :destroy
 
   has_many :questions_referred_to_me, :through => :referred_questions, :source => :question,
-    :conditions => ['active = 1 and questions.open_until > ?', Date.today], :uniq  => true
+    :conditions => ['question_referrals.active = 1 and questions.open_until > ?', Date.today], :uniq  => true
 
   has_many :invitations, :class_name => 'GroupInvitation', :dependent => :destroy
   has_many :invitation_requests, :class_name => 'GroupInvitationRequest', :dependent => :destroy

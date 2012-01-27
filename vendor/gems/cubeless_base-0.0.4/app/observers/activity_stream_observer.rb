@@ -2,7 +2,7 @@ class ActivityStreamObserver < ActiveRecord::Observer
 
   observe Profile, ProfilePhoto, Group, GroupPhoto, BlogPost, Comment, GroupMembership, ProfileAward, Status
 
-  @@monitor_create = [Group, BlogPost, Comment, GroupMembership, ProfileAward, Status].to_set
+  @@monitor_create = [Group, BlogPost, GroupMembership, ProfileAward, Status].to_set
   def after_create(model)    
     return unless @@monitor_create.member?(model.class)
     return if skip_logging?(model)
