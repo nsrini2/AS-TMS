@@ -11,7 +11,6 @@ module Streamed
       if skip_logging?
         Rails.logger.info "object.private? && object.compnay? must be false to be added to activity_stream"
       else
-        Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent"
         opts = {}
         # REFACTOR
         case self
@@ -21,6 +20,7 @@ module Streamed
           when ProfileAward then opts[:profile_id] = self.profile.id
           else opts[:profile_id] = self.profile_id
         end
+        Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
         ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
       end    
     end

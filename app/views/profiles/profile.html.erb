@@ -9,7 +9,7 @@
 <% content_for(:profile_tab_selected, 'selected') %>
 		
 <div id="profile_tab">
-  <% @hide_updates = false %>
+  <% @hide_updates = true if current_profile.sponsor? %>
   <%= render :partial => 'profiles/user_card' -%>
 </div> 
 
