@@ -57,7 +57,7 @@ module GroupsHelper
   end
 
   def group_owner_or_shady_admin_content(group)
-    yield if group.owner==current_profile || current_profile.has_role?(Role::ShadyAdmin)
+    group.owner==current_profile || current_profile.has_role?(Role::ShadyAdmin)
   end
 
   def link_to_delete(group)
@@ -77,7 +77,7 @@ module GroupsHelper
   end
 
   def link_to_remove_member(profile, group=@group)
-    group_owner_or_shady_admin_content(group) do
+    if group_owner_or_shady_admin_content(group)
       link_to("remove member", remove_member_group_path(group, :profile_id => profile.id), :class => "modal remove_member") unless group.owner == profile
     end
   end
