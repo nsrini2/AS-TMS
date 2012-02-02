@@ -1,0 +1,19 @@
+<%= form_for activity_stream_message, :html => {:id => 'activity_stream_message_form'} do |f| -%>
+	<p class="help">This message will show up as the first event in the hub activity stream.</p>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </div>
+	<div class="buttons">
+		<%= f.submit "Save", :html => {:class =>  "large button", :name => "commit"} %>
+		<!-- <input type="submit" class="large button" value="Save" name="commit"> -->
+	</div>
+<% end -%>

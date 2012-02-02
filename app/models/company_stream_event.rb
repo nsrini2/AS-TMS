@@ -1,4 +1,6 @@
 class CompanyStreamEvent < ActiveRecord::Base
+  include ActivityStreamInterface
+  
   belongs_to :profile
   
   validates_numericality_of :company_id, :greater_than => 0

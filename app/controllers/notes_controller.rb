@@ -1,7 +1,6 @@
 require_cubeless_engine_file :controller, :notes_controller
 
 class NotesController
-  
   def index
     @profile = current_profile
     @messages = [current_profile.notes, current_profile.sent_notes].flatten.sort_by(&:created_at).reverse
@@ -16,12 +15,15 @@ class NotesController
     end
     
     respond_to do |format|
-      format.js { render :layout=> '/layouts/popup' }
+      format.js { render :partial => '/notes/new', :layout => '/layouts/popup'  }
+      format.html { render :partial => '/notes/new', :layout => '/layouts/popup'  }
     end
+    
   end
   
   # MM2: Really don't like copying from cubeless engine, but need to change the respond for json
   def create
+    Rails.logger.info "CREATING NEW NOTE with params #{params}"
     receiver = find_by_type_and_id(params[:receiver_type], params[:receiver_id])
     note = Note.new(:message => params[:message], :sender => current_profile, :private => params[:private_note], :receiver => receiver)
     if (reply_to_note_id = params[:reply_to_note_id])
@@ -36,7 +38,7 @@ class NotesController
   
   def autocomplete_for_message
     name = params[:q]
-    profiles = Profile.exclude_sponsor_members.find_by_full_name(name, :status => :active, :limit => 20)
+    profiles = Profile.exclude_sponsor_members.active.limit(20).find_by_full_name(name)
     # groups = Group.find_by_full_name_and_type(name, [0,1], :limit => 20)
     # results = (profiles + groups).sort{|x,y| x.full_name <=> y.full_name }
     results = profiles.sort{|x,y| x.full_name <=> y.full_name }

@@ -945,21 +945,25 @@ $.fn.extend({
 		}).end();
 	},
 	
-	dialog_for_new_message: function() {
-		return this.dialog_for_form({
-			dialogClass: 'new_message',
-			success: function($dialog, data) {
-				window.location.reload();
-			},
-
-			onShow: function($dialog) {
-				$dialog.find('#message_name').setup_name_autocomplete({ url: "/messages/autocomplete" });
-				$dialog.find(':input[maxlength]').setup_character_counter();
-
-				$dialog.find('form.html5').setup_html5_form();
-			}
-		});
-	},
+  dialog_for_new_message: function() {
+   return this.dialog_for_form({
+     dialogClass: 'new_message',
+     success: function($dialog, data) {
+       window.location.reload();
+     },
+  
+     onShow: function($dialog) {
+       $dialog.find('#message_name').setup_name_autocomplete({ url: "/messages/autocomplete" });
+       $dialog.find(':input[maxlength]').setup_character_counter();
+  
+       $dialog.find('form.html5').setup_html5_form();
+     }
+   });
+  },
+  
+  // dialog_for_new_message: function() {
+  //   return this.dialog_for_form({ dialogClass: 'new_message'});
+  // },
 
   dialog_for_new_question: function() {
 		return this.dialog_for_form({

@@ -131,6 +131,7 @@ AgentstreamDe::Application.routes.draw do
       get :no_photos
       get :metasearch
       get :about_us
+      get :activity_stream_messages
       get :marketing_messages
       match :stats_by_date
       match :welcome_note
@@ -433,6 +434,12 @@ AgentstreamDe::Application.routes.draw do
   end
 
   resources :marketing_messages do
+    member do
+      match :toggle_activation
+    end
+  end
+  
+  resources :activity_stream_messages do
     member do
       match :toggle_activation
     end

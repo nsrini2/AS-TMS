@@ -230,8 +230,7 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
 
 /* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .utility {
-  width: 300px;
-  margin-right: 0;
+  width: 320px;
 }
 
 /* line 22, ../../../../app/stylesheets/themes/agentstream/layout.scss */
@@ -1779,8 +1778,9 @@ div.action_buttons a.button {
 
 /* line 124, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility {
-  margin: 20px 0 0 50px;
+  margin: 20px 10px 0 0;
   font-size: 14px;
+  float: right;
 }
 
 /* line 125, ../../../../app/stylesheets/themes/agentstream/header.scss */

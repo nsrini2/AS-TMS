@@ -22,11 +22,13 @@
   <% end %>
 </div>
 
+<% if ACTIVITY_STREAM_ADS && @stream_ad %>
+	<%= render :partial => 'shared/event_stream_item', :locals => { :event => @stream_ad, :index => 0 } -%>
+<% end -%>
 
-<% events.each do |event| -%>
-	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
+<% events.each_with_index do |event, index| -%>
+	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event, :index => (index + 1) } -%>
 <% end -%>
 <div class="see_all" style="margin-left: 10px;">
 	<%= will_paginate @events %>
-	<!-- <a href=<%#= stream_events_path(:page => 2) %>>More</a> -->
 </div>

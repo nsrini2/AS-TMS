@@ -184,8 +184,9 @@
 
 /* line 124, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility {
-  margin: 20px 0 0 50px;
+  margin: 20px 10px 0 0;
   font-size: 14px;
+  float: right;
 }
 
 /* line 125, ../../../../app/stylesheets/themes/agentstream/header.scss */

@@ -1,4 +1,6 @@
 class ActivityStreamEvent < ActiveRecord::Base
+  include ActivityStreamInterface
+  
   self.per_page = 15
   belongs_to :profile
 

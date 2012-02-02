@@ -1,0 +1,30 @@
+<% content_for(:activity_stream_message, 'selected') -%>
+<% content_for(:page_title, 'Manage Activity Stream Messages') -%>
+<h3>Activity Stream Messages</h3>
+<p class="help">You can have an unlimited number of rotating messages. Be creative and have fun with them.</p>
+<p><%= link_to("new activity stream message", new_activity_stream_message_path ) %></p>
+<table id="admin_marketing">
+	<tbody>
+		<tr>
+			<th>Active</th>
+			<th>Preview</th>
+			<th>Image</th>
+			<th>Link</th>
+		</tr>
+		<% @activity_stream_messages.each do |activity_stream_message| -%>
+		<tr id="activity_stream_message_<%= activity_stream_message.id %>">
+			<td><%= link_to_toggle_activity_stream_message_activation(activity_stream_message) %></td>
+			<td><%#= link_to(image_tag(marketing_image_path(activity_stream_message,:thumbnail), :alt => '', :width => '119', :height => '44'), marketing_image_path(activity_stream_message), :target => '_blank') -%></td>
+			<td>
+				<%#= activity_stream_message.is_default ? '(default)' : link_to_change_image(activity_stream_message) -%>
+			</td>
+			<td class="link">
+				<%#= render_inline_editor_for(activity_stream_message, :link_to_url, marketing_message_path( activity_stream_message ), :tag => :p, :editable => !activity_stream_message.is_default, :tooltip => "Click to edit the link", :placeholder => 'Click to add a link') -%>
+			</td>
+			<td>
+				<%#= link_to_remove(activity_stream_message) unless activity_stream_message.is_default -%>
+			</td>
+		</tr>
+		<% end -%>
+	</tbody>
+</table>

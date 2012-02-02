@@ -51,6 +51,8 @@ class AccountController < ApplicationController
       end
     else
       # Unable to get FB info (user probably canceled)
+      # or server is unalbe to talk to facebook.com
+      flash[:notice] = "Due to changes at facebook.com, this feature is temporarily unavailable.<br>We hope to have this resolved soon. In the meantime, please use your<br>AgentStream username and password to access AgentStream." 
       redirect_to :action => :login  
     end
   end

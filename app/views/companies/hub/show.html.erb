@@ -35,8 +35,8 @@
 	</div>
 
 
-	<% @events.each do |event| -%>
-		<%= render :partial => 'shared/event_stream_item', :locals => { :event => event } -%>
+	<% @events.each_with_index do |event, index| -%>
+		<%= render :partial => 'shared/event_stream_item', :locals => { :event => event, :index => (index + 1) } -%>
 	<% end -%>
 	
 	<div class="see_all" style="margin-left: 10px;">

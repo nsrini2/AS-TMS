@@ -17,7 +17,7 @@ $ninesixty-grid-width: 960px;
 	
 		#logo { @include grid-width(3); @include alpha;}
 		.global_nav { @include grid-width(7); }
-		.utility { @include grid-width(5); @include omega;}
+		.utility { width: 320px;}
 		
 		.stats { 
 		  @include grid-width(12); @include omega;

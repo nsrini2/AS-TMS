@@ -63,6 +63,12 @@ class AdminController < ApplicationController
  
     render :layout => 'report_stats_sub_menu'
   end
+  
+  def activity_stream_messages
+    # @activity_stream_messages = ActivityStreamMessage.find(:all)
+    @activity_stream_messages = MarketingMessage.find(:all, :order => 'is_default desc, id asc')
+    render :template => 'activity_stream_messages/activity_stream_messages', :layout => 'home_admin_sub_menu'
+  end
 
   def marketing_messages
     @marketing_messages = MarketingMessage.find(:all, :order => 'is_default desc, id asc')
