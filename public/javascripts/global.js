@@ -840,7 +840,7 @@ $.fn.extend({
 	dialog_for_form: function(options) {
 		options = $.extend({
 			dialogClass: '', onShow: function() {  },
-			success: function() { window.location.reload();  }
+      success: function() { window.location.reload(); }
 		}, options);
 		return this.live('click', function(event) {
 			var $this = $(this);
@@ -849,10 +849,9 @@ $.fn.extend({
 				success: function(data) {
 					var $dialog = $(data); 
 					$dialog
-						.dialog({ modal: true, bgiframe: true, dialogClass: 'popup form_popup ' + options.dialogClass, draggable: false, width: null, height: 'auto', minHeight: 0 })  //.find(':input:not(:hidden):first').focus().end() // breaks auto completer
+						.dialog({ modal: true, bgiframe: true, dialogClass: 'popup form_popup ' + options.dialogClass, draggable: false, width: 350, height: 'auto', minHeight: 0 })  //.find(':input:not(:hidden):first').focus().end() // breaks auto completer
 						.find('form').bind('submit', function(event) {
 							var $form = $(this);
-
 							$.ajax({
 								url: $form.attr('action'), type: 'post', data: $form.serialize(), dataType: 'json',
 								success: function(data) {

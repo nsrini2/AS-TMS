@@ -3,5 +3,5 @@
 <p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
 	<p><%= link_from_email(@sender.full_name, profile_url(@sender)) %> has left you a private message.</p>
 	<p>&#8220;<%= @note.message %>&#8221;</p>
-	<p><%= link_from_email('Click here', profile_url(@receiver)) %> to view it.</p>
+	<p><%= link_from_email('Click here', notes_path(:only_path => false)) %> to view it.</p>
 </font></p>	
