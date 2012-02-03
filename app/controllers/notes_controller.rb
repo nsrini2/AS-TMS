@@ -30,10 +30,12 @@ class NotesController
       note.receiver = Note.find(reply_to_note_id).sender
       note.replied_to = reply_to_note_id
     end
-    note.save
-    # render_for_receiver(receiver)
-    
-    render :text => { }.to_json
+    note.save!   
+    flash[:notice] = "Your message has ben sent."   
+    render :text => {:message => "Messsage Sent" }.to_json
+    rescue Exception => e
+      flash[:errors] = "There was an error sending your message, please try again."
+      render :text => {:message => "Unable to save message.", :error => e.message }.to_json
   end
   
   def autocomplete_for_message

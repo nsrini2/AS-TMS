@@ -9,7 +9,7 @@
 </style>
 
 <% content_for(:title, 'New Message') -%>
-<%= form_for :message, :url => notes_path, :html => {:class => "html5", :onSubmit => "window.location.reload();"} do |f| -%>
+<%= form_for :message, :url => notes_path, :html => {:class => "html5"} do |f| -%>
 	<%= hidden_field_tag :receiver_id, @reply_to_profile ? @reply_to_profile.id : "", :class => 'suggestion_id' -%>
 	<%= hidden_field_tag :receiver_type, @reply_to_profile ? "Profile" : "" , :class => 'suggestion_type' -%>
   <%= hidden_field_tag :private_note, "true" %>
