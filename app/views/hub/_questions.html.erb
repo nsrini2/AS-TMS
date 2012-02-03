@@ -1,9 +1,0 @@
-<% if !questions_referred_to_me.empty? %>
-	<h2>Referred Questions</h2>
-	<% questions_referred_to_me.each do |question| %>
-		<%= render :partial => "/questions/hub", :locals => { :question => question } %>
-	<% end %>
-<% else %>
-  <h2>Latest Question</h2>
-	<%= render :partial => "/questions/hub", :locals => { :question => latest_question } %>  	  
-<% end %>
