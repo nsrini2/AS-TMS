@@ -81,7 +81,7 @@ module ActivityStreamInterface
     	  text << "logged in"
      when 'GroupMembership': 
     	  # text << "joined a group:"
-    	  text << truncate(self.group_name, { :length => 100, :omission => "..." })
+    	  text << "joined the group: " + truncate(self.group_name, { :length => 100, :omission => "..." })
      when 'BlogPost': 
     	  # text << "added a blog post:"
     	  text << truncate(self.blog_post_title, { :length => 100, :omission => "..." })
@@ -90,7 +90,7 @@ module ActivityStreamInterface
     	  text << "<br/><span>[comment on \"#{truncate(self.comment_blog_post_title, { :length => 60, :omission => "..." })}\"]</span>"
      when 'ProfileAward': 
     	  # text << "received an award:"
-    	  text << truncate(self.award_title, { :length => 100, :omission => "..." })
+    	  text << "was awwarded the " + truncate(self.award_title, { :length => 100, :omission => "..." })
      when 'Status': 
     	  # text << "shared an update:"
     	  text << self.status_body 	

@@ -13,7 +13,7 @@ content_for(:page_title, @group.name)
 	<div class="group_card <%= 'sponsored' if @group.is_sponsored? -%>">
 		<%= primary_photo_for(@group, :thumb => :thumb_large, :hide_sponsor_sash => true, :hide_group_icon => true) -%>
 		<div class="details">
-			<h3><%= @group.name -%></h3>
+			<h2><%= @group.name -%></h2>
 			<p class="founded_on">Founded on <%= short_date(@group.created_at) -%> &nbsp;&ndash;&nbsp; <%= pluralize(@group.group_memberships_count, "member", "members") -%></p>
 			<%= render_inline_editor_for(@group, :description, group_path(@group, {:method => :put} ), :class => 'description', :type => 'expandable', :maxlength => '500', :tooltip => "Click to edit the Group's description") -%>
 			<h4>Things We Know About</h4>

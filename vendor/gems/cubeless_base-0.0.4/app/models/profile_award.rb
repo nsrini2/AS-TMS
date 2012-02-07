@@ -26,6 +26,8 @@ class ProfileAward < ActiveRecord::Base
   
   def awarded_on
     self.created_at.strftime("%b %d, %Y")
+    rescue NoMethodError
+      ""
   end
 
   def make_default!
