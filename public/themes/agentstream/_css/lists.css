@@ -1,22 +1,26 @@
 /*
-Syntax error: Undefined variable: "$highlight".
-        on line 28 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss
+Syntax error: Undefined variable: "$primary".
+        on line 239 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss
 
-23: /*  a {
-24:     text-decoration: underline;
-25:   } */ 
-26: }
-27: 
-28: .list .description .content { margin:  0 10px 10px; padding: 10px 10px 1px; background: $highlight; }
-29: .list .description .photo_wrapper {float:left; margin:  0 20px 0 0;}
-30: .list .description .text { }
-31: .list .description .close2 { position: relative; float: right; }
-32: 
-33: .listform p, .listform a, .listform dt, .listform dd {display:inline; padding: 0 10px;  }
+234:   p.what { font-size: 14px; }
+235:   p.what span { font-size: 12px;}
+236: }
+237:  
+238: table#companies_list, table#company_members_list{
+239:   border: 1px solid $primary;
+240:   margin: 20px;
+241:   width: 840px;
+242:   tr.header {
+243:     color: #FFF;
+244:     background: $primary;
 
 Backtrace:
-/Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss:28
+/Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss:239
 /Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/variable.rb:50:in `_perform'
+/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/node.rb:40:in `perform'
+/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/list.rb:69:in `_perform'
+/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/list.rb:69:in `map'
+/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/list.rb:69:in `_perform'
 /Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/node.rb:40:in `perform'
 /Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:214:in `visit_prop'
 /Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
@@ -116,4 +120,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$highlight\".\A         on line 28 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss\A \A 23: /*  a {\A 24:     text-decoration: underline;\A 25:   } */ \A 26: }\A 27: \A 28: .list .description .content { margin:  0 10px 10px; padding: 10px 10px 1px; background: $highlight; }\A 29: .list .description .photo_wrapper {float:left; margin:  0 20px 0 0;}\A 30: .list .description .text { }\A 31: .list .description .close2 { position: relative; float: right; }\A 32: \A 33: .listform p, .listform a, .listform dt, .listform dd {display:inline; padding: 0 10px;  }"; }
+  content: "Syntax error: Undefined variable: \"$primary\".\A         on line 239 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss\A \A 234:   p.what { font-size: 14px; }\A 235:   p.what span { font-size: 12px;}\A 236: }\A 237:  \A 238: table#companies_list, table#company_members_list{\A 239:   border: 1px solid $primary;\A 240:   margin: 20px;\A 241:   width: 840px;\A 242:   tr.header {\A 243:     color: #FFF;\A 244:     background: $primary;"; }

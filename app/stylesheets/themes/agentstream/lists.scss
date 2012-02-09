@@ -236,12 +236,12 @@ td#stream_message_preview {
 }
  
 table#companies_list, table#company_members_list{
-  border: 1px solid $primary;
+  border: 1px solid #4A6970;
   margin: 20px;
   width: 840px;
   tr.header {
     color: #FFF;
-    background: $primary;
+    background: #4A6970;
   }  
   th {
     padding-left: 5px;
@@ -259,9 +259,9 @@ table#companies_list, table#company_members_list{
     }
   }
   .even {
-    background: $secondary;
+    background: #D8E9E6;
   }
   .odd {
-    background: $light_blue;
+    background: #90B4BC;
   }
 }
