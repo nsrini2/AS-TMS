@@ -2,6 +2,7 @@ module ActivityStreamInterface
   def self.included(base)
     base.send :include, Rails.application.routes.url_helpers
     base.send :include, ActionView::Helpers::TextHelper
+    base.send :include, ActionView::Helpers::DateHelper
     base.default_url_options[:host]= 'www.agentstream.com'
   end
   
@@ -116,6 +117,6 @@ module ActivityStreamInterface
   end
 
   def when
-    created_at
+    "#{time_ago_in_words(created_at)} ago"
   end 
 end 

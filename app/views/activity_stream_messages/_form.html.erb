@@ -1,4 +1,4 @@
-<%= form_for activity_stream_message, :html => {:id => 'activity_stream_message_form'} do |f| -%>
+<%= form_for activity_stream_message, :html => {:id => 'activity_stream_message_form', :multipart => true} do |f| -%>
 	<p class="help">This message will show up as the first event in the hub activity stream.</p>
   <div class="field">
     <%= f.label :title %><br />
@@ -9,11 +9,22 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :link %><br />
-    <%= f.text_field :link %>
+    <%= f.label :owner_link %> i.e. "/groups/5"<br />
+    <%= f.text_field :owner_link %>
   </div>
+  <div class="field">
+    <%= f.label :event_link %> i.e. "/groups/5"<br />
+    <%= f.text_field :event_link %>
+  </div>
+  <div class="field">
+    <%= f.label :subline %><br />
+    <%= f.text_field :subline %>
+  </div>
+	<div>
+		<%= f.label "Promo Image" %>  recommended size is 175x175<br />
+		<%= file_field_tag :"asset[uploaded_data]" %>
+	</div>	
 	<div class="buttons">
 		<%= f.submit "Save", :html => {:class =>  "large button", :name => "commit"} %>
-		<!-- <input type="submit" class="large button" value="Save" name="commit"> -->
 	</div>
 <% end -%>

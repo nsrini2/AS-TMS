@@ -54,6 +54,7 @@ class ProfilesController
     @messages = [current_profile.notes.recent, current_profile.sent_notes.recent].flatten.sort_by(&:created_at).reverse
     
     @events = ActivityStreamEvent.find_summary(:all, :page => params[:page])
+    @activity_stream_message = ActivityStreamMessage.active.find(:all, :order => "rand()", :limit => 1).first
     
     # For status or question creation
     @status = Status.new

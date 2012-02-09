@@ -220,7 +220,21 @@ div#admin{
     font-size: 1.2em;
     input[type="text"], textarea, label { font-size: 1.2em; margin-bottom: 20px; width: 300px; }
   }  
-}  
+} 
+
+
+td#stream_message_preview {
+  display: block;
+  width: 500px;
+  padding-right: 30px;
+  .photo_wrapper { display: block; float: left; margin: 0 15px 0 0; }
+  h3 { margin: 0 6px 0 0; display: inline; font-weight: bold; }
+  h3 a { color: #4a6970; }
+  p { display: inline; }
+  p.what { font-size: 14px; }
+  p.what span { font-size: 12px;}
+}
+ 
 table#companies_list, table#company_members_list{
   border: 1px solid $primary;
   margin: 20px;

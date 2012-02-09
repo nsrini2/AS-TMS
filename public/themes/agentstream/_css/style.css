@@ -4588,37 +4588,72 @@ div#admin form#company_form input[type="text"], div#admin form#company_form text
   width: 300px;
 }
 
-/* line 224, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 226, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview {
+  display: block;
+  width: 500px;
+  padding-right: 30px;
+}
+/* line 230, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+/* line 231, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview h3 {
+  margin: 0 6px 0 0;
+  display: inline;
+  font-weight: bold;
+}
+/* line 232, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview h3 a {
+  color: #4a6970;
+}
+/* line 233, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p {
+  display: inline;
+}
+/* line 234, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p.what {
+  font-size: 14px;
+}
+/* line 235, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p.what span {
+  font-size: 12px;
+}
+
+/* line 238, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list, table#company_members_list {
   border: 1px solid #4a6970;
   margin: 20px;
   width: 840px;
 }
-/* line 228, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.header, table#company_members_list tr.header {
   color: #FFF;
   background: #4a6970;
 }
-/* line 232, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 246, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list th, table#company_members_list th {
   padding-left: 5px;
   text-align: left;
 }
-/* line 237, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 251, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.company .button, table#companies_list tr.member .button, table#company_members_list tr.company .button, table#company_members_list tr.member .button {
   float: right;
   margin: 10px 10px 0 0;
 }
-/* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 256, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.company td, table#companies_list tr.member td, table#company_members_list tr.company td, table#company_members_list tr.member td {
   padding-left: 5px;
   text-align: left;
 }
-/* line 247, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 261, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .even, table#company_members_list .even {
   background: #d8e9e6;
 }
-/* line 250, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 264, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .odd, table#company_members_list .odd {
   background: #90b4bc;
 }
