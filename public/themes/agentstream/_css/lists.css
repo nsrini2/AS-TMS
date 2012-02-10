@@ -1,123 +1,475 @@
-/*
-Syntax error: Undefined variable: "$primary".
-        on line 239 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss
+/* line 1, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+h2.page_title {
+  margin: 10px 0 0 10px;
+}
 
-234:   p.what { font-size: 14px; }
-235:   p.what span { font-size: 12px;}
-236: }
-237:  
-238: table#companies_list, table#company_members_list{
-239:   border: 1px solid $primary;
-240:   margin: 20px;
-241:   width: 840px;
-242:   tr.header {
-243:     color: #FFF;
-244:     background: $primary;
+/* line 5, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+h3.page_subtitle {
+  margin: 0 0 0 10px;
+}
 
-Backtrace:
-/Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss:239
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/variable.rb:50:in `_perform'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/node.rb:40:in `perform'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/list.rb:69:in `_perform'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/list.rb:69:in `map'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/list.rb:69:in `_perform'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/script/node.rb:40:in `perform'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:214:in `visit_prop'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:234:in `visit_rule'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/root_node.rb:20:in `render'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/engine.rb:300:in `_render'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/engine.rb:248:in `render'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/util.rb:297:in `silence_sass_warnings'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/engine.rb:248:in `render'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:319:in `update_stylesheet'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:181:in `update_stylesheets'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:175:in `each'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:175:in `update_stylesheets'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:173:in `each'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:173:in `update_stylesheets'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin.rb:81:in `update_stylesheets'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin.rb:54:in `check_for_updates'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/plugin/rack.rb:51:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/warden-1.0.6/lib/warden/manager.rb:35:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/warden-1.0.6/lib/warden/manager.rb:34:in `catch'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/warden-1.0.6/lib/warden/manager.rb:34:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/head.rb:14:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/methodoverride.rb:24:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/flash.rb:182:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/cookies.rb:302:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/activerecord-3.0.10/lib/active_record/query_cache.rb:32:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/activerecord-3.0.10/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/activerecord-3.0.10/lib/active_record/query_cache.rb:12:in `cache'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/activerecord-3.0.10/lib/active_record/query_cache.rb:31:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/activerecord-3.0.10/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/activesupport-3.0.10/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/sendfile.rb:106:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/rack/logger.rb:13:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/runtime.rb:17:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/activesupport-3.0.10/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/lock.rb:11:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/lock.rb:11:in `synchronize'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/lock.rb:11:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/actionpack-3.0.10/lib/action_dispatch/middleware/static.rb:30:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/application.rb:168:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/application.rb:77:in `send'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/application.rb:77:in `method_missing'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/content_length.rb:13:in `call'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/handler/webrick.rb:52:in `service'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:95:in `start'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `each'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:92:in `start'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:23:in `start'
-/Users/scott/.rvm/rubies/ree-1.8.7-2010.02/lib/ruby/1.8/webrick/server.rb:82:in `start'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/handler/webrick.rb:13:in `run'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/rack-1.2.4/lib/rack/server.rb:217:in `start'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/commands/server.rb:65:in `start'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/commands.rb:30
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/commands.rb:27:in `tap'
-/Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/railties-3.0.10/lib/rails/commands.rb:27
-script/rails:6:in `require'
-script/rails:6
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$primary\".\A         on line 239 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/lists.scss\A \A 234:   p.what { font-size: 14px; }\A 235:   p.what span { font-size: 12px;}\A 236: }\A 237:  \A 238: table#companies_list, table#company_members_list{\A 239:   border: 1px solid $primary;\A 240:   margin: 20px;\A 241:   width: 840px;\A 242:   tr.header {\A 243:     color: #FFF;\A 244:     background: $primary;"; }
+/* line 9, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+span.h5 {
+  font-size: 17px;
+  margin: 5px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+span.h6 {
+  font-size: 15px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list_action_button {
+  float: right;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 20px;
+  /*  a {
+      text-decoration: underline;
+    } */
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .content {
+  margin: 0 10px 10px;
+  padding: 10px 10px 1px;
+  background: #eff8fa;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .photo_wrapper {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+/* line 31, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .close2 {
+  position: relative;
+  float: right;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform p, .listform a, .listform dt, .listform dd {
+  display: inline;
+  padding: 0 10px;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dl {
+  float: right;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dd {
+  border-right: 1px solid #676767;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dl dd:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div.categories {
+  display: inline;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div {
+  margin: 10px 0;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div strong {
+  float: left;
+  width: 80px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.tabs-header {
+  margin: 0;
+  padding: 10px 10px 1px;
+  background: #d5eae6;
+}
+
+/* Lists */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list {
+  position: relative;
+  background-color: #eff8fa;
+  border-top: 1px solid #c4d7dc;
+  padding: 10px 10px;
+}
+
+/* line 47, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.blog_post_p a, div.blog_post_p a:visited, a.answer_link, a.answer_link:visited, div.alert div.content a {
+  color: #900;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question div.item_text {
+  margin-bottom: 20px;
+}
+/* line 56, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question div.item_text span, div.question div.item_text a {
+  font-size: 1.3em !important;
+}
+/* line 60, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question ul.action_list {
+  margin-top: 10px;
+}
+/* line 63, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question p {
+  margin: 0 !important;
+}
+/* line 66, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question p a {
+  color: #900;
+  text-decoration: underline;
+}
+
+/* line 72, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.blog_post_p a:hover {
+  /*    color: #900 ;*/
+  text-decoration: underline;
+}
+
+/* line 76, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .photo_wrapper {
+  float: left;
+  margin: 0px 20px 20px 0;
+}
+
+/* line 77, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details {
+  position: relative;
+  display: block;
+  float: left;
+  width: 575px;
+  margin-top: 0px;
+}
+
+/* line 78, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details p {
+  margin-bottom: 1em;
+}
+
+/* line 79, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details p.meta {
+  margin-bottom: 0.8em;
+  font-size: 11px;
+  color: #555;
+}
+
+/* line 80, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .action_buttons {
+  position: relative;
+}
+
+/* Same as H3 */
+/* line 85, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details div.item_text, #list .details div.item_text a {
+  color: #4A6970;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* line 91, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.list_item:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Content */
+/* line 94, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content {
+  position: relative;
+  background-color: #eff8fa;
+  border-top: 1px solid #c4d7dc;
+}
+
+/* line 95, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content .photo_wrapper {
+  float: left;
+  margin: 20px;
+}
+
+/* line 96, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content .details {
+  display: block;
+  float: left;
+  width: 575px;
+  margin-top: 20px;
+}
+
+/* Groups */
+/* line 99, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.group_item h3 {
+  margin-bottom: 0;
+}
+
+/* Questions */
+/* line 102, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item .question_text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4A6970;
+}
+
+/* line 108, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top {
+  clear: both;
+}
+
+/* line 112, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top h4 {
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+/* line 117, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item .details {
+  float: left;
+  width: 65%;
+}
+
+/* line 121, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item div.photo_wrapper img.photo {
+  width: 120px;
+  height: 120px;
+}
+
+/* line 125, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item div.action_buttons {
+  float: right;
+  width: 15%;
+}
+
+/* line 130, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details ul.action_list li, div.single_item .details ul.action_list li {
+  display: inline;
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+/* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details ul.action_list li a, div.single_item .details ul.action_list li a {
+  color: #90b4bc;
+  text-decoration: underline;
+}
+
+/* line 139, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.action_buttons a, div.single_item div.action_buttons a {
+  display: block;
+}
+
+/* line 142, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.action_buttons a.best {
+  display: inline;
+}
+
+/* line 145, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.vote_wrap a {
+  display: inline;
+}
+
+/* line 149, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#answer_form fieldset {
+  position: relative;
+  clear: both;
+  margin-top: 10px;
+}
+
+/* line 154, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list #answers .answer {
+  clear: both;
+}
+
+/* line 159, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.answer:after, div.single_item:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Blog Posts */
+/* line 162, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details {
+  width: 470px;
+}
+
+/* line 165, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details h3, #list .blog_post_item .details h3 a {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+/* line 169, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details .summary {
+  margin-bottom: 10px;
+}
+
+/* line 172, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details ul.action_list {
+  margin-top: 5px;
+}
+
+/* line 175, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details ul.action_list li span.tags {
+  display: block;
+}
+
+/* line 178, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#blog_meta h4 {
+  margin-bottom: 0;
+}
+
+/* line 181, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#blog_meta h4:first-child {
+  margin-bottom: 1em;
+}
+
+/* line 184, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#blog_meta h4 a:hover {
+  text-decoration: underline;
+}
+
+/* Ratings */
+/* line 189, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.rate {
+  position: relative;
+  float: right;
+  margin-top: 14px;
+}
+
+/* Comments */
+/* line 196, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div#comments {
+  clear: both;
+}
+
+/* line 199, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div#comments:before {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Status */
+/* line 202, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .status_results .list_item {
+  clear: both;
+}
+
+/* line 206, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#filter_options .selected {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Admin  */
+/* line 213, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin_header #title {
+  float: left;
+}
+/* line 214, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin_header #action_buttons {
+  float: right;
+}
+
+/* line 216, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin {
+  clear: both;
+}
+/* line 218, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin form#company_form {
+  margin: 20px;
+  font-size: 1.2em;
+}
+/* line 221, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin form#company_form input[type="text"], div#admin form#company_form textarea, div#admin form#company_form label {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+/* line 226, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview {
+  display: block;
+  width: 500px;
+  padding-right: 30px;
+}
+/* line 230, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+/* line 231, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview h3 {
+  margin: 0 6px 0 0;
+  display: inline;
+  font-weight: bold;
+}
+/* line 232, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview h3 a {
+  color: #4a6970;
+}
+/* line 233, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p {
+  display: inline;
+}
+/* line 234, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p.what {
+  font-size: 14px;
+}
+/* line 235, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p.what span {
+  font-size: 12px;
+}
+
+/* line 238, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list, table#company_members_list {
+  border: 1px solid #4A6970;
+  margin: 20px;
+  width: 840px;
+}
+/* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list tr.header, table#company_members_list tr.header {
+  color: #FFF;
+  background: #4A6970;
+}
+/* line 246, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list th, table#company_members_list th {
+  padding-left: 5px;
+  text-align: left;
+}
+/* line 251, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list tr.company .button, table#companies_list tr.member .button, table#company_members_list tr.company .button, table#company_members_list tr.member .button {
+  float: right;
+  margin: 10px 10px 0 0;
+}
+/* line 256, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list tr.company td, table#companies_list tr.member td, table#company_members_list tr.company td, table#company_members_list tr.member td {
+  padding-left: 5px;
+  text-align: left;
+}
+/* line 261, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list .even, table#company_members_list .even {
+  background: #D8E9E6;
+}
+/* line 264, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list .odd, table#company_members_list .odd {
+  background: #90B4BC;
+}

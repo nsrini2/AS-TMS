@@ -4625,14 +4625,14 @@ td#stream_message_preview p.what span {
 
 /* line 238, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list, table#company_members_list {
-  border: 1px solid #4a6970;
+  border: 1px solid #4A6970;
   margin: 20px;
   width: 840px;
 }
 /* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.header, table#company_members_list tr.header {
   color: #FFF;
-  background: #4a6970;
+  background: #4A6970;
 }
 /* line 246, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list th, table#company_members_list th {
@@ -4651,11 +4651,11 @@ table#companies_list tr.company td, table#companies_list tr.member td, table#com
 }
 /* line 261, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .even, table#company_members_list .even {
-  background: #d8e9e6;
+  background: #D8E9E6;
 }
 /* line 264, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .odd, table#company_members_list .odd {
-  background: #90b4bc;
+  background: #90B4BC;
 }
 
 /* line 1, ../../../../app/stylesheets/themes/agentstream/rating.scss */

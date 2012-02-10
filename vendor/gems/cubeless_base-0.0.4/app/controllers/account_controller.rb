@@ -162,8 +162,13 @@ class AccountController < ApplicationController
     # send welcome note
     msg = WelcomeNote.get
     cp.notes.create(:sender_id => msg.profile_id, :message => msg.text) if msg.profile && msg.text
-
+    
     redirect_back_or_default profile_path(current_profile)
+    rescue Exception => e
+      Rails.logger.error "*** An error occured in account/accept_trems_and_conditions ***"
+      Rails.logger.error e.message
+      Rails.logger.error e.backtrace.inspect
+      redirect_to "/"
   end
   
   def registration_confirmation
