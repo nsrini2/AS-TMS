@@ -1,7 +1,8 @@
 class Chat < ActiveRecord::Base
   belongs_to :profile, :foreign_key => :host_id
   has_many :topics
-  has_many :participants 
+  has_many :participants, :order => 'presenter DESC' 
+  has_many :presenters, :class_name => "Participant", :conditions => "presenter=1"
   
   default_scope :conditions => ['active > 0']
   
@@ -45,6 +46,10 @@ class Chat < ActiveRecord::Base
   def host
     # Profile.find(self.host_id)
     self.profile
+  end
+  
+  def presenter?(profile)
+    presenters.collect {|p| p.profile_id }.include? profile.id
   end
   
   def end_at

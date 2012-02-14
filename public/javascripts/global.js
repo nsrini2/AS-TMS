@@ -25,6 +25,7 @@ $(document).ready(function() {
 		.find('.profile .make_default').make_default_photo().end()
 		.find('.select_moderator_option').setup_select_moderator_option_links().end()
 		.find('.cbtoggle').toggle_checkboxes().end()
+		.find(':checkbox.is_presenter').toggle_presenter().end()
 		.find('.toggle').toggle_containers().end()
 		.find('.booking_privacy').privacy_toggle().end()
 		.find('#site_registration_field_has_options').toggle_site_registration_field_options().end()
@@ -151,7 +152,27 @@ $.fn.extend({
     form_erros.html(error_message) ;
     form_erros.show('slow');
   },
-
+  toggle_presenter: function(){
+		return this.live('click', function(event) {
+			var $this = $(this);
+      // alert($this.attr('id')); 
+      $.ajax({ url: '/chats/' + $this.attr('id') + '/toggle_presenter', dataType: 'json', type: 'post',
+       success: function(data) {
+         if ( data["errors"] ) {
+           for ( var i=0; i<data["errors"].length; i++ ) {
+             $('#flash_error ul').append('<li>' + data["errors"][i] + '</li>');
+             $('#flash_error').setup_notices();
+           }
+         } else {
+           text = data["participant"]["presenter"] == true ? "This participant is now a presenter." : "This participant is no longer a presenter."
+           $('#flash_notice ul').append('<li>' + text +'</li>');
+           $('#flash_notice').setup_notices();
+         } 
+       }
+      });  	
+		});
+  },
+  
 	toggle_checkboxes: function() {
 		return this.live('click', function(event) {
 			var $this = $(this);

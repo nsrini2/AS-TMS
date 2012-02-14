@@ -307,3 +307,12 @@ div#chat_discuss div#present_container #post_container input[type=submit] {
   margin-right: 12px;
   width: 90%;
 }
+
+div.attendees table#attendees {
+  tr.odd { background: #C4D7DC; }
+  th {
+    text-align: left;
+    width: 200px;
+  } 
+  td { vertical-align: middle; }  
+}

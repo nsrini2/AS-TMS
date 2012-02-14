@@ -5122,6 +5122,20 @@ div#chat_discuss div#present_container #post_container input[type=submit] {
   width: 90%;
 }
 
+/* line 312, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.attendees table#attendees tr.odd {
+  background: #C4D7DC;
+}
+/* line 313, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.attendees table#attendees th {
+  text-align: left;
+  width: 200px;
+}
+/* line 317, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.attendees table#attendees td {
+  vertical-align: middle;
+}
+
 /* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_0 {
   background-position: 1px 0px;

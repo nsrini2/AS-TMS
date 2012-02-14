@@ -10,12 +10,23 @@ class Participant < ActiveRecord::Base
   named_scope :rsvp, :conditions => 'status = "rsvp" '
   named_scope :attendee, :conditions => 'status = "attended" OR status = "contributed" '
   
+  delegate :screen_name, :to => :profile
+  
   def active?
     true
   end
   
   def contributor?
     true
+  end
+  
+  def presenter?
+    presenter
+  end
+  
+  def toggle_presenter
+    self.presenter = !self.presenter
+    save!
   end
   
   class << self

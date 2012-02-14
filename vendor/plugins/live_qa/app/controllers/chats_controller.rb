@@ -41,6 +41,7 @@ class ChatsController < ApplicationController
   
   # GET /chats/1/edit
   def edit
+    @participants = @chat.participants
     #SSJ offset is set to Central Time, NOT GMT
     @hour = @chat.start_at.hour.to_s
     @minutes = @chat.start_at.min.to_s
@@ -127,6 +128,12 @@ class ChatsController < ApplicationController
     else
       render(:text => "Error saving RSVP change -- Please refresh this page")
     end  
+  end
+  
+  def toggle_presenter
+    participant = Participant.find(params[:id])
+    participant.toggle_presenter
+    render :text => participant.to_json
   end
   
   # GET /chats/1/participants

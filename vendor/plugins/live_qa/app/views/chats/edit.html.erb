@@ -29,9 +29,21 @@
 							<%=  time_zone_select( "time", "zone", ActiveSupport::TimeZone.us_zones, :default => @zone) %><br />
 							<%= f.label "Duration: "%>
 							<%= f.select(:duration, @durations.collect { |d| [d[:label], d[:value]] },	{:selected => @chat.duration || 60 }) %><br />
-						<div class="details">
+						</div>
 					</div>	
 				<% end %> 
+			</div>
+			<div class="attendees">
+				<h2>Attendees</h2>
+				<table id="attendees">
+					<tr>
+						<th></th>
+						<th>Name</th>	
+						<th>Presenter<th>
+					</tr>	
+					<%= render :partial => "participant", :collection => @participants %>
+				</table>	
+			</div>		
 		</div>
 	</div>
 </div>
