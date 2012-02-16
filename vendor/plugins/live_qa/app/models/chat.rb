@@ -29,6 +29,17 @@ class Chat < ActiveRecord::Base
     end
   end
   
+  def primary_photo_path(which=:thumb)
+    if presenter.respond_to? :primary_photo_path
+      presenter.primary_photo_path(which)
+    else
+      "/images/gen_avatar_large.png"
+    end
+    rescue Exception => e
+      Rails.logger.warn e.message
+      "/images/gen_avatar_large.png"     
+  end
+  
   def start_message
     if on_air? && !in_progress?
       if self.start_at >= Time.now()
@@ -73,7 +84,11 @@ class Chat < ActiveRecord::Base
   end
   
   def presenter
-    presenters.first.profile || host
+    if presenters.first
+      presenters.first.profile || host
+    else
+      host
+    end    
   end
   
   def end_at

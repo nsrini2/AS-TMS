@@ -1,5 +1,5 @@
 <div class="list_item chat_item <%= cycle("even", "odd") %>">
-  <%=link_to_avatar_for(chat.host, {:thumb => :thumb_80})%>
+  <%=link_to_avatar_for(chat, {:thumb => :thumb_80})%>
 
           
   <div class="details">
@@ -7,7 +7,7 @@
       <%= link_to h(chat.title),  chat_path(chat.id) %>
   	</div>
   	<p>
-			<strong>Hosted by: <%= h(chat.host.screen_name) %></strong><br />
+			<strong>Presented by: <%= h(chat.presenter.screen_name) %></strong><br />
   		Start Time: <%= pretty_datetime(chat.start_at) + " Central Time (US & Canada)" -%>
 		</p>	
 

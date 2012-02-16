@@ -7,6 +7,17 @@ module ActivityStreamInterface
   end
   
   ####  PRESENTER METHODS -- perhaps put in ActivityStreamInterface module ??? ####
+  def reference
+    #SSJ 2/16/2012 -- I would like to put all of this in the classes the events reference, but this allows us to move them one at a time
+    case klass
+    when /Topic/ 
+      klass.constantize.find(klass_id)
+    else
+      self
+    end    
+  end
+  
+  
   def owner_path
    group_id ? url_for(group_path(:id => self.group_id)) : self.profile ? url_for(profile_path(self.profile)) : ""
   end
@@ -42,11 +53,11 @@ module ActivityStreamInterface
 
   def who
    if group_id && !profile_id
-     group_name
+     group_name 
    elsif respond_to?(:profile_screen_name)
      profile_screen_name
    elsif respond_to?(:profile) && profile
-     profile.screen_name
+     profile.screen_name    
    else
      ""
    end

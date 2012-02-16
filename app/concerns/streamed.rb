@@ -102,11 +102,10 @@ module Streamed
       end  
     end
     
-    def stream_on_update
-      #
+    def stream_to_on_update(*args)
     end  
     
-    def stream_on_save
+    def stream_to_on_save
       #
     end
   end    
