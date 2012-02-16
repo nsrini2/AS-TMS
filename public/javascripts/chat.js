@@ -20,13 +20,28 @@ Chat.discussion_container = function() { return $('div#chat_discuss'); };
 Chat.queue_container = function() { return $('div#chat_queue_container'); };
 Chat.participants_container = function() { return $('div#chat_participants'); };
 Chat.participants_polling_link = function() { return $('a#participants_polling_link'); };
+Chat.start_message_polling_link = function() { return $('a#start_message_polling_link'); };
+Chat.start_message_container = function() { return $('div#chat_start_message p'); };
 Chat.poll_participants = function() {
   $.ajax({ url:Chat.participants_polling_link().attr('href'), type:'GET', dataType:'html',
-            success:function(data) {
-              Chat.participants_container().html(data);
-            }
-          });
-}
+    success:function(data) {
+      Chat.participants_container().html(data);
+    }
+  });        
+};
+Chat.poll_start = function() {
+  $.ajax({ url:Chat.start_message_polling_link().attr('href'), type:'GET', dataType:'html',
+    success:function(data) {
+      if (data && data.length >1 ) {
+        Chat.start_message_container().html(data);
+      } else {
+        Chat.start_message_container().slideUp(1000, function() {
+            Chat.start_message_container().remove();
+        });
+      }   
+    }
+  });
+};
 
 
 //
@@ -76,6 +91,7 @@ Topic.discuss = function(topic) {
               }
               else {
                 ActiveTopic.poll();
+                Chat.poll_start();
               }
             },
             complete:function() {
@@ -435,7 +451,8 @@ function set_send_notification_emails()  {
 
       return false;
     }),
-	  
+    
+
 	  // DELETE for a topic (only in show window)
     $('a.delete_topic').live('click', function(event) {
       $this = $(this);
@@ -587,7 +604,6 @@ function set_send_notification_emails()  {
       
       return false;
     }),
-
 
     // TODO: Make work for all topics
     $('div.past_container').each(function() {

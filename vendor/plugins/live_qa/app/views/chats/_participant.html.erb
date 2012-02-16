@@ -1,5 +1,6 @@
 <tr class="attendee <%= cycle('odd', 'even') %>">
 	<td><%=link_to_avatar_for(participant.profile, {:thumb => :thumb})%></td>
 	<td><%= participant.screen_name %></td>
+	<td><%= participant.bio %></td>
 	<td><%= check_box_tag("presenter", value = "1", checked = participant.presenter, options = { :class => "is_presenter", :id => participant.id }) %></td>
 </tr>

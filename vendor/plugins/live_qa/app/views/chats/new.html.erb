@@ -7,29 +7,36 @@
 	<div class="description">
 		<div class="content">
 			<div id="new_live_qa" class="">
-				<% form_for(@chat, :html => {:class => "html5", :id=> "new_live_chat_from"}) do |f| %>
+				<%= form_for(@chat, :html => {:class => "html5", :id=> "new_live_chat_from"}) do |f| %>
 					<div class="form_fields">
 						<%= f.hidden_field :host_id %>
 						<%= f.hidden_field :start_at %>
-						<%= f.text_field :title, :size => 40, :placeholder => "Title" %><br />
+						<%= f.text_field :title, :size => 80, :placeholder => "Title" %><br />
+						<div class="avatar_large profile_container">
+							<td><%=link_to_avatar_for(@chat.host, {:thumb => :thumb_large})%></td>
+							<ul class="action_links">
+									<%#= link_to("upload", new_profile_photo_path(@profile), :class => "modal new_photo") -%>
+							</ul>
+						</div>
 						<div class="datepicker_wrapper">
 							<div class="future_datepicker"></div>
 						</div>	
-						<div class="action_buttons">	
-							<%= f.submit "Create", :name => 'submit_button button', :class=>"button large" %> 
-						</div>	
 						<div class="details">
-							<%= f.text_area :description, :rows => 3, :cols => 60,  :placeholder => "Description" %><br />
+							<%= f.label "Description: "%>
+							<%= f.text_area :description, :rows => 3, :cols => 40,  :placeholder => "Description" %><br />
 							<%= f.label "Start Time: "%>
-							<%= select_tag('time[hour]', options_for_select((1..24), Time.now().hour.to_i + 1 ) )%> : 
-							<%= select_tag('time[minutes]', options_for_select(['00', '15', '30', '45'], '00' ) )%>
+							<%= select_tag('time[hour]', options_for_select((1..24), @hour.to_i ), :id => "start_hour" )%> : 
+							<%= select_tag('time[minutes]', options_for_select(['00', '15', '30', '45'], @minutes), :id => "start_minutes" )%>
 							<%#= select("time", "am_pm", ['AM', 'PM'].collect { |h| h })%>
-							<%=  time_zone_select( "time", "zone", ActiveSupport::TimeZone.us_zones, :default => 'Central Time (US & Canada)' ) %><br />
+							<%=  time_zone_select( "time", "zone", ActiveSupport::TimeZone.us_zones, :default => @zone) %><br />
 							<%= f.label "Duration: "%>
 							<%= f.select(:duration, @durations.collect { |d| [d[:label], d[:value]] },	{:selected => @chat.duration || 60 }) %><br />
-						<div class="details">
+						</div>
+						<div>
+							<%= f.submit "Create", :name => 'submit_button button', :class=>"button large" %>
+						</div>
 					</div>	
-				<% end %> 
+				<% end %>
 		</div>
 	</div>
 </div>

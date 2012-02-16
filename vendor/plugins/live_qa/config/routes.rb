@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
   map.connect '/mocks/vote/:topic_id/:direction/:profile_id', :controller => 'mocks', :action => 'vote'
 
-  map.resources :chats, :member => { :rsvp => :post, :toggle_presenter => :post, :close => :get, :participants => :get } do |chats|
+  map.resources :chats, :member => { :rsvp => :post, :toggle_presenter => :post, :close => :get, :start_message => :get, :participants => :get } do |chats|
     chats.resources :topics, :collection => { :poll => :get, :rated_by_current_profile => :get, :queued => :get }, :member => { :discuss => :post, :discussion => :get, :rate => :post, :check_ratability => :get } do |topic|
       topic.resources :posts, :collection => { :poll => :get }
     end

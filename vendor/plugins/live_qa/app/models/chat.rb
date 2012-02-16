@@ -1,4 +1,6 @@
 class Chat < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+  
   belongs_to :profile, :foreign_key => :host_id
   has_many :topics
   has_many :participants, :order => 'presenter DESC' 
@@ -27,12 +29,30 @@ class Chat < ActiveRecord::Base
     end
   end
   
+  def start_message
+    if on_air? && !in_progress?
+      if self.start_at >= Time.now()
+        "This Live Chat will start in #{distance_of_time_in_words_to_now(self.start_at)}." 
+      else
+        "This Live Chat will start soon." 
+      end           
+    end  
+  end
+  
   def active?
     self.active > 0
   end  
   
   def on_air?
     self.started_at != nil && self.ended_at == nil
+  end
+  
+  def in_progress?
+   if on_air?
+     # dropping into SQL to optimise query that will get called alot in live chats
+     topic_count = Topic.find_by_sql("SELECT count(id) as topic_count FROM topics WHERE chat_id= '#{self.id}' AND status IN ('active', 'closed');").first.topic_count
+     topic_count.to_i > 0
+    end 
   end
   
   def closed?
@@ -50,6 +70,10 @@ class Chat < ActiveRecord::Base
   
   def presenter?(profile)
     presenters.collect {|p| p.profile_id }.include? profile.id
+  end
+  
+  def presenter
+    presenters.first.profile || host
   end
   
   def end_at

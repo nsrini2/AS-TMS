@@ -1,5 +1,5 @@
 class ChatsController < ApplicationController
-  before_filter :find_chat, :only => [:show, :rsvp, :close, :participants]
+  before_filter :find_chat, :only => [:show, :rsvp, :close, :participants, :start_message]
   before_filter :editable?, :only => [:edit, :update, :destroy]
   before_filter :apply_start_time, :only => [:create, :update] 
   before_filter :set_durations
@@ -141,6 +141,11 @@ class ChatsController < ApplicationController
     @attendees = @chat.attendees
     
     render :partial => "/chats/chat_participants", :locals => { :attendees => @attendees }
+  end
+  
+  #GET /chats/1/start_message
+  def start_message    
+    render :text => @chat.start_message
   end
   
 private

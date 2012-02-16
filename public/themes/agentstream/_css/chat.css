@@ -1,23 +1,23 @@
 /*
 Syntax error: Undefined mixin 'grid-unit-base'.
-        on line 29 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss, in `grid-unit-base'
-        from line 29 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss
+        on line 38 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss, in `grid-unit-base'
+        from line 38 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss
 
-24:   font-weight: normal;
-25:   margin-bottom: 5px;
-26: }
-27: 
-28: div#chat_queue_container {
-29:   @include grid-unit-base;
-30:   @include grid-width(4.75);
-31:   @include alpha;
-32:   @include grid-prefix(0.25);
-33: }
-34: div#chat_discuss_container {
+33:   font-weight: normal;
+34:   margin-bottom: 5px;
+35: }
+36: 
+37: div#chat_queue_container {
+38:   @include grid-unit-base;
+39:   @include grid-width(4);
+40:   @include alpha;
+41:   @include grid-prefix(0.25);
+42: }
+43: div#chat_discuss_container {
 
 Backtrace:
-/Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss:29:in `grid-unit-base'
-/Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss:29
+/Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss:38:in `grid-unit-base'
+/Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss:38
 /Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:168:in `visit_mixin'
 /Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
 /Users/scott/.rvm/gems/ree-1.8.7-2010.02@AgentStream3.0/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
@@ -116,4 +116,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid-unit-base'.\A         on line 29 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss, in `grid-unit-base'\A         from line 29 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss\A \A 24:   font-weight: normal;\A 25:   margin-bottom: 5px;\A 26: }\A 27: \A 28: div#chat_queue_container {\A 29:   @include grid-unit-base;\A 30:   @include grid-width(4.75);\A 31:   @include alpha;\A 32:   @include grid-prefix(0.25);\A 33: }\A 34: div#chat_discuss_container {"; }
+  content: "Syntax error: Undefined mixin 'grid-unit-base'.\A         on line 38 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss, in `grid-unit-base'\A         from line 38 of /Users/scott/Projects/cubeless/communities/agentstream/app/stylesheets/themes/agentstream/chat.scss\A \A 33:   font-weight: normal;\A 34:   margin-bottom: 5px;\A 35: }\A 36: \A 37: div#chat_queue_container {\A 38:   @include grid-unit-base;\A 39:   @include grid-width(4);\A 40:   @include alpha;\A 41:   @include grid-prefix(0.25);\A 42: }\A 43: div#chat_discuss_container {"; }

@@ -2,13 +2,22 @@ h2.chat_title {
   margin-bottom: 0;
 }
 
-p.chat_time {
-  margin-bottom: 10px;
+p.chat_start_message_pre {
+  margin:  30px;
+  text-align: center;
+  font-size: 36px;
+  color: #900;
 }
 
 div.host {
-  height: 25px;
-  margin-bottom: 10px;
+  position: relative; 
+  background-color: #eff8fa; 
+  border-top: 1px solid #c4d7dc; 
+  border-bottom: 1px solid #c4d7dc; 
+  padding: 0px 10px;
+  h4 {
+    margin-bottom: 0px;
+  }  
 }
 
 div.host .photo_wrapper {
@@ -27,7 +36,7 @@ div#chat_container h3.divider {
 
 div#chat_queue_container {
   @include grid-unit-base;
-  @include grid-width(4.75);
+  @include grid-width(4);
   @include alpha;
   @include grid-prefix(0.25);
 }
@@ -35,7 +44,7 @@ div#chat_discuss_container {
   @include grid-unit-base;
   @include grid-width(11);
   @include omega;
-  
+  margin-left:10px;
   margin-bottom: 20px;
 }
 
@@ -157,9 +166,9 @@ div#chat_queue ul li.future, div#chat_queue ol li.future {
 
 
 /* VOTING */
-div#chat_queue div.voting {
+/*div#chat_queue div.voting {
   float: right;
-}
+}*/
 div#chat_queue a.vote {
   display: block;
   float: left;

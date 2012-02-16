@@ -11,17 +11,19 @@
 					<div class="form_fields">
 						<%= f.hidden_field :host_id %>
 						<%= f.hidden_field :start_at %>
-						<%= f.text_field :title, :size => 40, :placeholder => "Title" %><br />
+						<%= f.text_field :title, :size => 80, :placeholder => "Title" %><br />
+						<div class="avatar_large profile_container">
+							<td><%=link_to_avatar_for(@chat.host, {:thumb => :thumb_large})%></td>
+							<ul class="action_links">
+									<%#= link_to("upload", new_profile_photo_path(@profile), :class => "modal new_photo") -%>
+							</ul>
+						</div>
 						<div class="datepicker_wrapper">
 							<div class="future_datepicker"></div>
 						</div>	
-						<div class="action_buttons">
-							<%= link_to "Cancel", chats_path, :class=> 'button light' %> 
-							<%= f.submit "Update", :name => 'submit_button button', :class=>"button large" %>
-							<input type="checkbox" id="email_notifications" name="send_notification" value="true">Notify Attendees
-						</div>	
 						<div class="details">
-							<%= f.text_area :description, :rows => 3, :cols => 60,  :placeholder => "Description" %><br />
+							<%= f.label "Description: "%>
+							<%= f.text_area :description, :rows => 3, :cols => 40,  :placeholder => "Description" %><br />
 							<%= f.label "Start Time: "%>
 							<%= select_tag('time[hour]', options_for_select((1..24), @hour.to_i ), :id => "start_hour" )%> : 
 							<%= select_tag('time[minutes]', options_for_select(['00', '15', '30', '45'], @minutes), :id => "start_minutes" )%>
@@ -30,15 +32,22 @@
 							<%= f.label "Duration: "%>
 							<%= f.select(:duration, @durations.collect { |d| [d[:label], d[:value]] },	{:selected => @chat.duration || 60 }) %><br />
 						</div>
+						<div>
+							<%= link_to "Cancel", chats_path, :class=> 'button light' %> 
+							<%= f.submit "Update", :name => 'submit_button button', :class=>"button large" %>
+							<input type="checkbox" id="email_notifications" name="send_notification" value="true">Notify Attendees
+						</div>
 					</div>	
 				<% end %> 
 			</div>
+			<hr>
 			<div class="attendees">
 				<h2>Attendees</h2>
 				<table id="attendees">
 					<tr>
 						<th></th>
-						<th>Name</th>	
+						<th>Name</th>
+						<th>Bio</th>	
 						<th>Presenter<th>
 					</tr>	
 					<%= render :partial => "participant", :collection => @participants %>

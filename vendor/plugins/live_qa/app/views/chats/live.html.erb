@@ -4,56 +4,57 @@
   var chat_host_present = <%= @chat.host == current_profile ? true : false %>;
 </script>
 
-<h2 class="chat_title">Live Chat Event: <%= @chat.title %></h2>
-
-<p class="chat_time">
-  <%= short_date @chat.start_at %>: <%= short_time24_tz @chat.start_at %> - <%= short_time24_tz @chat.end_at %>
-</p>
-
-<div class="host">
-  <%= link_to_avatar_for(@chat.host, {:thumb => :thumb, :size => '20x20'}) %>
-  Hosted by: <%= @chat.host.screen_name %>
-</div>
-
-<div id="chat_container">
-
-  <%= render :partial => "discussions", :locals => { :chat => @chat, :newest_post_id => @chat.newest_post_id } %>
-
-  <div id="chat_queue_container">
-    <% if @chat.on_air? %>
-      <h3 class="divider">Question Bin</h3>
+<h2 class="chat_title page_title">Live Chat Event: <%= @chat.title %></h2>
+<div id="live_chat">
+	<div class="host">
+		<h4>Presented by:</h4>
+		<% @chat.presenters.each do |presenter| %>
+			<%= render :partial => "/profiles/search", :locals => { :profile => presenter.profile } %>
+		<% end %>
+	</div>
+	<div id="chat_start_message">
+		<%= link_to "Refresh Start Message", start_message_chat_path(@chat), :id => "start_message_polling_link", :style => "display:none;" %>
+		<% if @chat.start_message %>
+			<p class="chat_start_message_pre">
+			  <%= @chat.start_message %>
+			</p>
+		<% end %>	
+	</div>	
+	<div id="chat_container">
+	  <%= render :partial => "discussions", :locals => { :chat => @chat, :newest_post_id => @chat.newest_post_id } %>
+	  <div id="chat_queue_container">
+	    <% if @chat.on_air? %>
+	      <h3 class="divider">Question Bin</h3>
     
-      <div id="chat_queue_loading">
-        Loading...
-      </div>
-      <%#= render :partial => "/chats/chat_queue", :locals => 
-									{ :chat => @chat, :topics => @topics.open, :newest_topic_id => @chat.newest_topic_id, :rated_topics => [] } %>
-      <%= link_to "Fetch Queued Topics", queued_chat_topics_path(@chat), :id => "queued_topics_link", :style => "display: none;" %>
+	      <div id="chat_queue_loading">
+	        Loading...
+	      </div>
+	      <%#= render :partial => "/chats/chat_queue", :locals => 
+										{ :chat => @chat, :topics => @topics.open, :newest_topic_id => @chat.newest_topic_id, :rated_topics => [] } %>
+	      <%= link_to "Fetch Queued Topics", queued_chat_topics_path(@chat), :id => "queued_topics_link", :style => "display: none;" %>
       
-      <div class="accordion_open">
-        <a href="#new_chat_question_link" class="button">Add New Question</a>
-        <div id="new_chat_question_container">
-          <% form_for :question, :url => chat_topics_path(@chat), :html => { :id => "new_chat_question_form" } do |f| %>
-            <textarea name="topic[title]" style="width: 90%;"></textarea>
-            <%= hidden_field_tag "host", @chat.host %>
-            <br/>
-            <input type="submit" value="Submit" class="button light"/>
-          <% end %>
-        </div>
-      </div>
+	      <div class="accordion_open">
+	        <a href="#new_chat_question_link" class="button">Add New Question</a>
+	        <div id="new_chat_question_container">
+	          <% form_for :question, :url => chat_topics_path(@chat), :html => { :id => "new_chat_question_form" } do |f| %>
+	            <textarea name="topic[title]" style="width: 90%;"></textarea>
+	            <%= hidden_field_tag "host", @chat.host %>
+	            <br/>
+	            <input type="submit" value="Submit" class="button light"/>
+	          <% end %>
+	        </div>
+	      </div>
       
-      <% if @chat.host?(current_profile) %>
-        <div>
-          <%= link_to('End Chat', close_chat_path(@chat), :class=> 'button large light', :method => :get, :confirm => "Are you sure you would like end this chat session?\r\n\r\nThis will close the last discussion and archive this chat.", :id => "end_chat_link") %>
-        </div>
-      <% end %>
-    <% end %>
+	      <% if @chat.host?(current_profile) %>
+	        <div>
+	          <%= link_to('End Chat', close_chat_path(@chat), :class=> 'button large light', :method => :get, :confirm => "Are you sure you would like end this chat session?\r\n\r\nThis will close the last discussion and archive this chat.", :id => "end_chat_link") %>
+	        </div>
+	      <% end %>
+	    <% end %>
   
-    <div id="chat_participants">
-      <%= render :partial => "/chats/chat_participants", :locals => { :attendees => @attendees }%>
-    </div>
-  </div>
-
-
-
-</div>
+	    <div id="chat_participants">
+	      <%= render :partial => "/chats/chat_participants", :locals => { :attendees => @attendees }%>
+	    </div>
+	  </div>
+	</div>
+</div>	

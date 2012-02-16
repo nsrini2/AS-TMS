@@ -28,6 +28,8 @@
     
     // Setup participant polling every 8 seconds
     setInterval(function() { Chat.poll_participants(); }, 60000), // 8000
+    // Setup start message polling every 30 seconds
+    setInterval(function() { Chat.poll_start(); }, 30000), // 8000
     
     // Load the posts from scripts varaible
     ActiveTopic.add_posts_from_json(present_discussion_posts, {delay_scroll:true}),

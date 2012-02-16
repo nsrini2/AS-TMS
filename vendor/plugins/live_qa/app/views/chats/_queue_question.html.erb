@@ -1,6 +1,13 @@
 <%# unless question.status == "future" && @finished %>
   <li class="<%= question.status unless @finished %>" id="<%= dom_id(question) %>">
     <% if question.status == "open" %>
+			<div class="text">
+	      <% if question.status == "closed" %>
+	        <%= link_to question.title + " <small>(expand)</small>", "#", :id => "question_#{question.id}_link_past", :class => "past_link" %>
+	      <% else %>
+	        <%= question.title %>
+	      <% end %>
+	    </div>
       <% if @chat.host == current_profile %>
         <div class="voting">
           <span class="vote_up"><%= question.votes_up.to_i %></span><%= vote_up_image %>
@@ -20,13 +27,5 @@
         </div>
       <% end %>
     <% end %>
-    <div class="text">
-      <% if question.status == "closed" %>
-        <%= link_to question.title + " <small>(expand)</small>", "#", :id => "question_#{question.id}_link_past", :class => "past_link" %>
-      <% else %>
-        <%= question.title %>
-      <% end %>
-    </div>
-
   </li>
 <%# end %>
