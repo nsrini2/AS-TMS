@@ -96,9 +96,9 @@ $.extend({
 			
 			if ( data.indexOf( '{' ) < 0 )
 				data = "{" + data + "}";
-			// SSJ 2/17/2012 -- this was creating a runtime error, so I changed it.
-      // data = eval("(" + data + ")");
-			data = eval(data);
+			// SSJ 2/17/2012 -- this was creating a runtime error, so I changed it.  next line is origial, my edit is after
+      data = eval("(" + data + ")");
+      // data = eval(data);
 			
 			$.data( elem, settings.single, data );
 			return data;
