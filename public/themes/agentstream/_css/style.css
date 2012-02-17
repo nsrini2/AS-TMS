@@ -3410,24 +3410,216 @@ table.badges td p {
   line-height: 1em;
 }
 
+/* Lighter Blue */
+/*$tertiary: #EFF8FA;*/
+/*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
+/*$font-size: 12px;
+$line-height: 18px;*/
+/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
+body {
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #676767;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/text.scss */
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h1 {
+  font-size: 25px;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h2 {
+  font-size: 23px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h3 {
+  font-size: 21px;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h4 {
+  font-size: 19px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h5 {
+  font-size: 17px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h6 {
+  font-size: 15px;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ul {
+  list-style: square;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
+li {
+  margin-left: 30px;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page #welcome-page {
+  width: 840px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer {
+  width: 960px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#logo {
+  width: 180px;
+  margin-left: 0;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.global_nav {
+  width: 420px;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.utility {
+  width: 320px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats {
+  width: 720px;
+  margin-right: 0;
+}
+/* line 24, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats h4 {
+  float: right;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-main {
+  width: 480px;
+  padding-left: 240px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#register-main {
+  width: 720px;
+  padding-left: 120px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-agentstream-facebook-main {
+  width: 360px;
+  padding-left: 300px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.primary {
+  width: 560px;
+  margin-left: 0;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside {
+  margin-top: 30px;
+  width: 400px;
+  margin-right: 0;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside .module {
+  margin: 0 10px 0;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .primary {
+  width: 720px;
+}
+
+/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .aside {
+  width: 240px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .primary {
+  width: 720px;
+  clear: both;
+  margin-left: 0;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .aside {
+  width: 240px;
+  margin-right: 0;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .full_length {
+  width: 960px;
+  clear: both;
+}
+
 /* Group Actions */
-/* line 2, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 6, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .group_actions {
   text-align: left;
 }
 
-/* line 5, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 9, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions li {
   display: inline;
   margin: 0 20px 0 0px;
 }
 
-/* line 9, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 13, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions li a {
   text-decoration: underline;
 }
 
-/* line 12, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 16, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions li a.button {
   border: 1px solid #fff;
   display: block;
@@ -3435,43 +3627,43 @@ ul.group_actions li a.button {
   width: 100px;
 }
 
-/* line 18, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 22, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions li a.button:hover {
   border: 1px solid #ccc;
 }
 
-/* line 21, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 25, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_action_list.group_actions {
   float: right;
 }
 
-/* line 24, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 28, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions.full_screen {
   float: right;
 }
 
 /* Group Hub */
-/* line 29, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 33, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub #notes {
   display: none;
 }
 
-/* line 32, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 36, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub .group_card .photo_wrapper {
   float: left;
 }
 
-/* line 35, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 39, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub .group_card .details {
   margin-left: 190px;
 }
 
-/* line 38, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub .group_card .details h3 {
   margin-bottom: 0;
 }
 
-/* line 41, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub .group_card .details h4 {
   font-size: 1.0em;
   font-weight: bold;
@@ -3480,53 +3672,53 @@ ul.group_actions.full_screen {
 }
 
 /* Group Widgets */
-/* line 49, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 53, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_widgets, #chat_attendees {
   margin: 10px 20px;
 }
 
-/* line 52, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 56, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_widgets h3, #chat_attendees h3 {
   margin-bottom: 2px;
 }
 
-/* line 55, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 59, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_widgets #group_drive_bys .content .photo_wrapper, #chat_attendees div.photo_wrapper {
   float: left;
   margin: 0 3px 3px 0;
 }
 
 /* Group Stream */
-/* line 61, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 65, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group h5 {
   margin-bottom: 0;
 }
 
-/* line 64, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 68, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group .events .evemt {
   clear: both;
   margin-top: 10px 0 40px 0;
 }
 
-/* line 68, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 72, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group .events .event .photo_wrapper {
   float: left;
   margin: 0 3px;
 }
 
-/* line 72, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 76, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group .events .event .detail {
   margin: 10px 0 20px 30px;
 }
 
-/* line 75, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 79, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group .events .event .detail .did, #stream.group .events .event .detail .what, #stream.group .events .event .detail .detail {
   display: block;
   margin: 0;
 }
 
 /* Group Members */
-/* line 81, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 85, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .group_members:after {
   content: '.';
   display: block;
@@ -3535,7 +3727,7 @@ ul.group_actions.full_screen {
   visibility: hidden;
 }
 
-/* line 83, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 87, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card {
   position: relative;
   clear: right;
@@ -3553,7 +3745,7 @@ ul.group_actions.full_screen {
   overflow: hidden;
 }
 
-/* line 84, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 88, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card ul.group_member_card_actions {
   float: right;
   _display: inline;
@@ -3561,7 +3753,7 @@ ul.group_actions.full_screen {
   list-style: none;
 }
 
-/* line 85, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 89, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card div.member_photo_and_meta {
   clear: right;
   float: left;
@@ -3569,34 +3761,34 @@ ul.group_actions.full_screen {
   width: 100px;
 }
 
-/* line 86, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 90, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card div.photo_wrapper {
   margin-bottom: 5px;
   zoom: 1;
 }
 
-/* line 87, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 91, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card div.photo_wrapper img.photo {
   display: block;
 }
 
-/* line 88, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 92, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.meta {
   margin: 0;
   text-align: center;
 }
 
-/* line 89, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 93, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl dt {
   font-weight: bold;
 }
 
-/* line 90, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 94, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl dd {
   margin: 0 0 5px 0;
 }
 
-/* line 91, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 95, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl dd.owner {
   margin-top: 5px;
   padding-top: 35px;
@@ -3606,7 +3798,7 @@ ul.group_actions.full_screen {
   text-transform: uppercase;
 }
 
-/* line 92, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 96, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl dd.moderator {
   margin-top: 5px;
   padding-top: 50px;
@@ -3616,35 +3808,35 @@ ul.group_actions.full_screen {
   text-transform: uppercase;
 }
 
-/* line 93, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 97, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info {
   float: left;
   margin: 0;
   width: 255px;
 }
 
-/* line 94, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 98, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dt {
   font-weight: bold;
 }
 
-/* line 95, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 99, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dt.name {
   font-size: 16px;
 }
 
-/* line 96, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 100, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd {
   margin: 0;
 }
 
-/* line 97, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 101, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.title {
   margin-top: 3px;
   color: #111;
 }
 
-/* line 98, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 102, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.tagline {
   margin: 8px 0;
   font-size: 14px;
@@ -3652,13 +3844,13 @@ ul.group_actions.full_screen {
   font-style: italic;
 }
 
-/* line 99, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 103, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.contact_info dl {
   margin: 0;
   zoom: 1;
 }
 
-/* line 100, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 104, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.contact_info dl dt {
   clear: left;
   float: left;
@@ -3666,19 +3858,19 @@ ul.group_actions.full_screen {
   margin-right: 5px;
 }
 
-/* line 101, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 105, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.contact_info dl dd {
   float: left;
   margin: 0;
 }
 
-/* line 104, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 108, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #members_images_wrapper {
   float: left;
   width: 484px;
 }
 
-/* line 108, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 112, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #members_images {
   position: relative;
   margin: 0;
@@ -3686,37 +3878,37 @@ ul.group_actions.full_screen {
   overflow: hidden;
 }
 
-/* line 109, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 113, ../../../../app/stylesheets/themes/agentstream/group.scss */
 table#members {
   font-size: 0;
 }
 
-/* line 113, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 117, ../../../../app/stylesheets/themes/agentstream/group.scss */
 table#members tbody tr td div.photo_wrapper {
   margin: 0 3px 3px 0;
 }
 
-/* line 114, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 118, ../../../../app/stylesheets/themes/agentstream/group.scss */
 table#members tbody tr td.last div.photo_wrapper {
   margin-right: 0;
 }
 
-/* line 115, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 119, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_scrollers {
   width: 384px;
 }
 
-/* line 116, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 120, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #left_scroll {
   float: left;
 }
 
-/* line 117, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 121, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #right_scroll {
   float: right;
 }
 
-/* line 119, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 123, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.group_owner {
   clear: both;
   float: left;
@@ -3724,7 +3916,7 @@ dl.group_owner {
   width: 350px;
 }
 
-/* line 120, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 124, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.group_owner dt {
   float: left;
   padding: 4px 0 0 32px;
@@ -3734,14 +3926,14 @@ dl.group_owner dt {
   text-transform: uppercase;
 }
 
-/* line 121, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 125, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.group_owner dd {
   float: left;
   margin: 0 0 0 5px;
   padding: 4px 0 0;
 }
 
-/* line 122, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 126, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.moderators {
   clear: left;
   float: left;
@@ -3749,7 +3941,7 @@ dl.moderators {
   width: 350px;
 }
 
-/* line 123, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 127, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.moderators dt {
   float: left;
   padding: 5px 0 5px 32px;
@@ -3759,62 +3951,62 @@ dl.moderators dt {
   text-transform: uppercase;
 }
 
-/* line 124, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 128, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.moderators dd {
   float: left;
   margin: 0 0 0 5px;
   padding: 4px 0 0;
 }
 
-/* line 126, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 130, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #invitation_requests {
   clear: left;
   padding-top: 25px;
 }
 
-/* line 128, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 132, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #invitation_requests div.profile_results dl.profile_info {
   width: 200px;
 }
 
-/* line 129, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 133, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #invitation_requests div.profile_results dd.invite_requested_on {
   margin-top: 13px;
   color: #444;
   font-weight: bold;
 }
 
-/* line 130, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 134, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #invitation_requests div.action_buttons {
   margin: 13px 13px 0 0;
 }
 
 /* Photo Gallery */
-/* line 133, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 137, ../../../../app/stylesheets/themes/agentstream/group.scss */
 h3.gallery a.title_action_link {
   display: block;
   float: right;
   font-size: 0.9em;
 }
 
-/* line 138, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 142, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails {
   list-style: none;
   margin: 5px 0;
 }
 
-/* line 142, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 146, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails li {
   float: left;
   margin: 2px;
 }
 
-/* line 146, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 150, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails li a img {
   border: 1px solid #C4D7DC;
 }
 
-/* line 149, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 153, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails:after {
   content: '.';
   display: block;
@@ -3823,27 +4015,27 @@ ul.thumbnails:after {
   visibility: hidden;
 }
 
-/* line 151, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 155, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul li.no_bullet {
   list-style: none;
 }
 
-/* line 154, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 158, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_list {
   list-style: none;
 }
 
-/* line 158, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 162, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_list li.topic {
   position: relative;
   width: 360px;
 }
-/* line 162, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 166, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_list li.topic span.h5 {
   width: 180px;
   margin-left: 0;
 }
-/* line 166, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 170, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_list li.topic span.topic_buttons {
   display: block;
   padding-left: 420px;
@@ -3851,29 +4043,29 @@ ul#topic_list li.topic span.topic_buttons {
   margin-right: 0;
 }
 
-/* line 172, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 176, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_buttons {
   /*  margin-bottom: 5px;*/
 }
 
-/* line 176, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 180, ../../../../app/stylesheets/themes/agentstream/group.scss */
 span.topic_buttons {
   position: absolute;
   top: 6%;
 }
-/* line 177, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 181, ../../../../app/stylesheets/themes/agentstream/group.scss */
 span.topic_buttons a {
   margin-left: 20px;
   padding: 1px 5px;
 }
 
-/* line 185, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 189, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details {
   float: left;
   width: 500px;
 }
 
-/* line 189, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 193, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details .gallery_photo_full {
   background: #fff;
   margin-bottom: 5px;
@@ -3882,58 +4074,58 @@ span.topic_buttons a {
   text-align: center;
 }
 
-/* line 196, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 200, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details p {
   margin-bottom: 0;
 }
 
-/* line 200, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 204, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details .gallery_photo_rate {
   float: right;
   margin-top: -20px;
   margin-right: 10px;
 }
 
-/* line 205, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 209, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details dl {
   margin-top: 10px;
 }
 
-/* line 208, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 212, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details dl dt {
   float: left;
   margin-right: 5px;
 }
 
-/* line 212, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 216, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details ul.action_list {
   list-style: none;
 }
 
-/* line 215, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 219, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details ul.action_list li {
   display: inline;
   margin-left: 0;
   margin-right: 20px;
 }
 
-/* line 221, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 225, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .current {
   border: 1px solid #990000;
 }
 
-/* line 222, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 226, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .thumbnail_link {
   float: left;
 }
 
-/* line 223, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 227, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details img {
   margin-right: 8px;
   border: 1px solid #bbb;
 }
 
-/* line 224, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 228, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .at_last_photo {
   display: block;
   margin-top: 40px;
@@ -3944,7 +4136,7 @@ span.topic_buttons a {
   color: #666;
 }
 
-/* line 225, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 229, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .at_first_photo {
   display: block;
   margin-top: 40px;
@@ -3955,56 +4147,56 @@ span.topic_buttons a {
   color: #666;
 }
 
-/* line 227, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 231, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details {
   margin-left: 510px;
   width: 300px;
   overflow: hidden;
 }
 
-/* line 228, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 232, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments {
   clear: both;
   padding-top: 4px;
 }
 
-/* line 229, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 233, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments img {
   border: 0;
 }
 
-/* line 230, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 234, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details textarea#comment_text {
   width: 290px;
   height: 60px;
 }
 
-/* line 231, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 235, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details div.buttons {
   clear: both;
   margin-top: 14px;
   text-align: center;
 }
 
-/* line 234, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 238, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments div.comment_item div.details {
   margin-left: 0;
   width: 225px;
 }
 
-/* line 235, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 239, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments div.comment_item div.details h5 {
   margin: 3px 0 3px;
 }
 
-/* line 236, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 240, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments div.comment_item div.details p.meta {
   margin-bottom: 1.2em;
   font-size: 11px;
   color: #555;
 }
 
-/* line 237, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 241, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments div.comment_item div.details p.text {
   margin-bottom: 3px;
   color: #333;
@@ -4014,7 +4206,7 @@ span.topic_buttons a {
 }
 
 /* group talk */
-/* line 240, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 244, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post {
   position: relative;
   float: left;
@@ -4024,39 +4216,39 @@ form#new_group_post {
   width: 227px;
 }
 
-/* line 241, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 245, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post h2 {
   font-size: 1.5em;
   line-height: 1.2em;
 }
 
-/* line 242, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 246, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post textarea {
   width: 223px;
   height: 100px;
 }
 
-/* line 243, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 247, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post div.buttons {
   margin: 20px 0;
   text-align: center;
 }
 
-/* line 244, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 248, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post p.meta {
   text-align: center;
   color: #333;
   font-size: 11px;
 }
 
-/* line 246, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 250, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts {
   width: 500px;
   margin-left: 140px;
   float: left;
 }
 
-/* line 247, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 251, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts:after {
   content: '.';
   display: block;
@@ -4065,52 +4257,52 @@ form#new_group_post p.meta {
   visibility: hidden;
 }
 
-/* line 248, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 252, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item {
   padding-bottom: 2px;
 }
 
-/* line 249, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 253, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.photo_wrapper {
   float: left;
 }
 
-/* line 250, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 254, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.details {
   margin-left: 65px;
   width: 400px;
 }
 
-/* line 251, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 255, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.details h5 {
   margin-bottom: 0;
 }
 
-/* line 253, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 257, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.details div.item_text {
   margin-top: -3px;
 }
 
-/* line 254, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 258, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.details div.asked_by {
   margin-top: 3px;
   color: #333;
 }
 
-/* line 255, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 259, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.details ul.action_list {
   margin: 4px 0 5px -2px;
   color: #333;
   list-style: none;
 }
 
-/* line 256, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 260, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.details ul.action_list li {
   display: inline;
   margin: 0 10px 0 0px;
 }
 
-/* line 258, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 262, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies {
   clear: both;
   margin-left: 65px;
@@ -4118,65 +4310,65 @@ form#new_group_post p.meta {
   width: 400px;
 }
 
-/* line 259, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 263, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies div.comment_item {
   margin-bottom: 10px;
 }
 
 /*#group_posts div.group_post_item div.replies div.odd { background: #f0f0f0; }*/
-/* line 261, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 265, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies div.even {
   border-top: 1px solid #4A6970;
   padding-top: 14px;
 }
 
-/* line 262, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 266, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies h4 {
   margin-bottom: 12px;
   font-size: 13px;
 }
 
-/* line 263, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 267, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies div.comment_item div.details {
   width: 300px;
 }
 
-/* line 264, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 268, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form {
   margin-bottom: 18px;
   padding: 0px;
 }
 
-/* line 265, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 269, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form h5 {
   margin: 0 0 8px;
   font-size: 12px;
 }
 
-/* line 266, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 270, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form p.error {
   font-weight: bold;
   color: #f00;
 }
 
-/* line 267, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 271, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form fieldset {
   margin-bottom: 0;
 }
 
-/* line 268, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 272, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form fieldset label {
   display: block;
   font-weight: bold;
 }
 
-/* line 269, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 273, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form fieldset textarea {
   width: 355px;
   height: 100px;
 }
 
-/* line 271, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 275, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form div.buttons input.button {
   display: inline;
   margin-right: 10px;
@@ -4784,12 +4976,204 @@ div.rate p.rating_total {
   text-align: right;
 }
 
-/* line 1, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* Lighter Blue */
+/*$tertiary: #EFF8FA;*/
+/*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
+/*$font-size: 12px;
+$line-height: 18px;*/
+/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
+body {
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #676767;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/text.scss */
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h1 {
+  font-size: 25px;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h2 {
+  font-size: 23px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h3 {
+  font-size: 21px;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h4 {
+  font-size: 19px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h5 {
+  font-size: 17px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h6 {
+  font-size: 15px;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ul {
+  list-style: square;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
+li {
+  margin-left: 30px;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page #welcome-page {
+  width: 840px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer {
+  width: 960px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#logo {
+  width: 180px;
+  margin-left: 0;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.global_nav {
+  width: 420px;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.utility {
+  width: 320px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats {
+  width: 720px;
+  margin-right: 0;
+}
+/* line 24, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats h4 {
+  float: right;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-main {
+  width: 480px;
+  padding-left: 240px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#register-main {
+  width: 720px;
+  padding-left: 120px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-agentstream-facebook-main {
+  width: 360px;
+  padding-left: 300px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.primary {
+  width: 560px;
+  margin-left: 0;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside {
+  margin-top: 30px;
+  width: 400px;
+  margin-right: 0;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside .module {
+  margin: 0 10px 0;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .primary {
+  width: 720px;
+}
+
+/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .aside {
+  width: 240px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .primary {
+  width: 720px;
+  clear: both;
+  margin-left: 0;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .aside {
+  width: 240px;
+  margin-right: 0;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .full_length {
+  width: 960px;
+  clear: both;
+}
+
+/* line 6, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 h2.chat_title {
   margin-bottom: 0;
 }
 
-/* line 5, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 10, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 p.chat_start_message_pre {
   margin: 30px;
   text-align: center;
@@ -4797,7 +5181,7 @@ p.chat_start_message_pre {
   color: #900;
 }
 
-/* line 12, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 17, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.host {
   position: relative;
   background-color: #eff8fa;
@@ -4805,18 +5189,18 @@ div.host {
   border-bottom: 1px solid #c4d7dc;
   padding: 0px 10px;
 }
-/* line 18, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 23, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.host h4 {
   margin-bottom: 0px;
 }
 
-/* line 23, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 28, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.host .photo_wrapper {
   float: left;
   margin-right: 5px;
 }
 
-/* line 28, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 33, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_container h3.divider {
   background: none;
   border: 0;
@@ -4826,7 +5210,7 @@ div#chat_container h3.divider {
   margin-bottom: 5px;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container {
   display: inline;
   float: left;
@@ -4837,7 +5221,7 @@ div#chat_queue_container {
   padding-left: 15px;
 }
 
-/* line 43, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 48, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss_container {
   display: inline;
   float: left;
@@ -4848,39 +5232,39 @@ div#chat_discuss_container {
   margin-left: 10px;
   margin-bottom: 20px;
 }
-/* line 49, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 54, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss_container span.counter {
   color: #900;
   font-size: 1.4em;
 }
 
-/* line 55, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 60, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.list_item.chat_item {
   clear: both;
   min-height: 80px;
 }
 
-/* line 60, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 65, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.list_item.chat_item div.photowrapper {
   margin-top: 0;
 }
 
-/* line 82, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 87, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 .past_style, div#chat_queue li.past, div#chat_queue li.past div, div#chat_queue li.past div a, div#chat_discuss h3.past, div#chat_discuss h3.past a {
   color: #aaa;
 }
 
-/* line 86, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 91, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue {
   margin-bottom: 20px;
 }
 
-/* line 89, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 94, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue > div {
   /*background: $tertiary;*/
 }
 
-/* line 95, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 100, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue #question_bin form#new_chat_question_form input {
   font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
   font-size: 0.9em;
@@ -4890,7 +5274,7 @@ div#chat_queue #question_bin form#new_chat_question_form input {
   background: #90b4bc;
 }
 
-/* line 108, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 113, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container div.accordion_open a.ui-accordion-header {
   /*background: $secondary;*/
   display: block;
@@ -4909,15 +5293,15 @@ div#chat_queue_container div.accordion_open a.ui-accordion-header {
   margin-right: 0;
   margin-bottom: 0;
 }
-/* line 129, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 134, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container div.accordion_open a.ui-accordion-header span {
   display: none;
 }
-/* line 134, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 139, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container div.accordion_open div#new_chat_question_container {
   margin-bottom: 20px;
 }
-/* line 139, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 144, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container a#end_chat_link {
   display: block;
   padding: 2px 5px;
@@ -4925,24 +5309,24 @@ div#chat_queue_container a#end_chat_link {
   width: 70px;
 }
 
-/* line 148, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 153, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue ul {
   /*background: $tertiary;*/
   margin-bottom: 0;
 }
 
-/* line 152, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 157, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue li {
   clear: both;
   margin-left: 14px;
 }
 
-/* line 156, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 161, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue li div.text {
   display: inline;
 }
 
-/* line 162, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 167, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue ul li.present, div#chat_queue ol li.present {
   color: #4a6970;
 }
@@ -4951,7 +5335,7 @@ div#chat_queue ul li.present, div#chat_queue ol li.present {
 /*div#chat_queue div.voting {
   float: right;
 }*/
-/* line 176, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 181, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue a.vote {
   display: block;
   float: left;
@@ -4959,103 +5343,103 @@ div#chat_queue a.vote {
   width: 15px;
 }
 
-/* line 182, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 187, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue a.vote_up:hover {
   margin-top: 0px;
   margin-bottom: 4px;
 }
 
-/* line 186, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 191, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue a.vote_down:hover {
   margin-top: 4px;
   margin-bottom: 0px;
 }
 
-/* line 191, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 196, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue img.vote {
   height: 12px;
   padding: 0 3px 3px 2px;
   vertical-align: top;
 }
 
-/* line 199, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 204, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue img.vote_down {
   margin-top: 1px;
 }
 
-/* line 203, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 208, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_participants div.photo_wrapper {
   display: inline;
 }
 
-/* line 211, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 216, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss h3 {
   background: #4a6970;
   border: 1px solid #4a6970;
 }
 
-/* line 218, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 223, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss #present_discussion_container h3.present a {
   color: #fff;
   padding-left: 12px;
 }
 
-/* line 222, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 227, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss h3.past, div#chat_discuss h3.past a {
   color: #fff;
 }
 
-/* line 226, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 231, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss h3 {
   margin-top: 2px;
 }
 
-/* line 229, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 234, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss h3 a small {
   font-size: 0.9em;
   text-align: right;
   float: right;
 }
 
-/* line 235, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 240, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div.ui-accordion-content {
   border: 1px solid #4a6970;
   border-top: 0;
   padding: 0 !important;
 }
 
-/* line 240, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 245, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div.scrollable {
   overflow: scroll;
   overflow-x: hidden;
   height: 16em;
 }
 
-/* line 245, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 250, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table {
   width: 100%;
 }
 
-/* line 248, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 253, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr.host {
   background: #eff8fa;
 }
 
-/* line 251, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 256, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td {
   padding: 2px 5px;
 }
-/* line 254, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 259, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td p {
   margin: 0;
 }
 
-/* line 259, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 264, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr:first-child {
   font-style: italic;
 }
 
-/* line 263, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 268, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td:first-child {
   text-align: right;
   /*margin-right: 10px;*/
@@ -5064,39 +5448,39 @@ div#chat_discuss table tr td:first-child {
   border-right: 1px solid #ccc;
 }
 
-/* line 272, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 277, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td.name {
   border-top: 1px solid #ccc;
   font-weight: bold;
 }
 
-/* line 276, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 281, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tbody tr:first-child td.name {
   border-top: 0;
 }
 
-/* line 279, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 284, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tbody tr:last-child td.name {
   border-bottom: 1px solid #ccc;
 }
 
-/* line 282, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 287, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr.host td {
   background: #eff8fa;
 }
 
-/* line 285, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 290, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td:last-child {
   width: 540px;
   border-bottom: 1px solid #ccc;
 }
 
-/* line 291, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 296, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td:last-child p {
   margin-bottom: 0;
 }
 
-/* line 296, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 301, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container {
   width: 720px;
   overflow: hidden;
@@ -5104,7 +5488,7 @@ div#chat_discuss div#present_container #post_container {
   margin-top: 1.6em;
 }
 
-/* line 302, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 307, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container #post_text {
   display: inline;
   float: left;
@@ -5113,7 +5497,7 @@ div#chat_discuss div#present_container #post_container #post_text {
   width: 480px;
 }
 
-/* line 306, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 311, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container #post_submit {
   display: inline;
   float: left;
@@ -5124,533 +5508,725 @@ div#chat_discuss div#present_container #post_container #post_submit {
   text-align: right;
 }
 
-/* line 314, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 319, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container textarea {
   height: 38px;
   width: 105%;
 }
 
-/* line 319, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 324, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container input[type=submit] {
   margin-right: 12px;
   width: 90%;
 }
 
-/* line 325, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 330, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.attendees table#attendees tr.odd {
   background: #C4D7DC;
 }
-/* line 326, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 331, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.attendees table#attendees th {
   text-align: left;
   width: 200px;
 }
-/* line 330, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 335, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.attendees table#attendees td {
   vertical-align: middle;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* Lighter Blue */
+/*$tertiary: #EFF8FA;*/
+/*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
+/*$font-size: 12px;
+$line-height: 18px;*/
+/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
+body {
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #676767;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/text.scss */
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h1 {
+  font-size: 25px;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h2 {
+  font-size: 23px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h3 {
+  font-size: 21px;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h4 {
+  font-size: 19px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h5 {
+  font-size: 17px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h6 {
+  font-size: 15px;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ul {
+  list-style: square;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
+li {
+  margin-left: 30px;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page #welcome-page {
+  width: 840px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer {
+  width: 960px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#logo {
+  width: 180px;
+  margin-left: 0;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.global_nav {
+  width: 420px;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.utility {
+  width: 320px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats {
+  width: 720px;
+  margin-right: 0;
+}
+/* line 24, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats h4 {
+  float: right;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-main {
+  width: 480px;
+  padding-left: 240px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#register-main {
+  width: 720px;
+  padding-left: 120px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-agentstream-facebook-main {
+  width: 360px;
+  padding-left: 300px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.primary {
+  width: 560px;
+  margin-left: 0;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside {
+  margin-top: 30px;
+  width: 400px;
+  margin-right: 0;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside .module {
+  margin: 0 10px 0;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .primary {
+  width: 720px;
+}
+
+/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .aside {
+  width: 240px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .primary {
+  width: 720px;
+  clear: both;
+  margin-left: 0;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .aside {
+  width: 240px;
+  margin-right: 0;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .full_length {
+  width: 960px;
+  clear: both;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_0 {
   background-position: 1px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_1 {
   background-position: -60.86px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_2 {
   background-position: -122.72px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_3 {
   background-position: -184.58px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_4 {
   background-position: -246.44px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_5 {
   background-position: -308.3px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_6 {
   background-position: -370.16px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_7 {
   background-position: -432.02px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_8 {
   background-position: -493.88px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_9 {
   background-position: -555.74px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_10 {
   background-position: -617.6px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_11 {
   background-position: -679.46px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_12 {
   background-position: -741.32px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_13 {
   background-position: -803.18px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_14 {
   background-position: -865.04px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_15 {
   background-position: -926.9px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_16 {
   background-position: -988.76px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_17 {
   background-position: -1050.62px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_18 {
   background-position: -1112.48px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_19 {
   background-position: -1174.34px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_20 {
   background-position: -1236.2px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_21 {
   background-position: -1298.06px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_22 {
   background-position: -1359.92px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_23 {
   background-position: -1421.78px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_24 {
   background-position: -1483.64px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_25 {
   background-position: -1545.5px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_26 {
   background-position: -1607.36px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_27 {
   background-position: -1669.22px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_28 {
   background-position: -1731.08px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_29 {
   background-position: -1792.94px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_30 {
   background-position: -1854.8px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_31 {
   background-position: -1916.66px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_32 {
   background-position: -1978.52px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_33 {
   background-position: -2040.38px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_34 {
   background-position: -2102.24px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_35 {
   background-position: -2164.1px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_36 {
   background-position: -2225.96px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_37 {
   background-position: -2287.82px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_38 {
   background-position: -2349.68px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_39 {
   background-position: -2411.54px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_40 {
   background-position: -2473.4px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_41 {
   background-position: -2535.26px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_42 {
   background-position: -2597.12px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_43 {
   background-position: -2658.98px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_44 {
   background-position: -2720.84px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_45 {
   background-position: -2782.7px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_46 {
   background-position: -2844.56px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_47 {
   background-position: -2906.42px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_48 {
   background-position: -2968.28px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_49 {
   background-position: -3030.14px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_50 {
   background-position: -3092px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_51 {
   background-position: -3153.86px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_52 {
   background-position: -3215.72px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_53 {
   background-position: -3277.58px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_54 {
   background-position: -3339.44px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_55 {
   background-position: -3401.3px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_56 {
   background-position: -3463.16px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_57 {
   background-position: -3525.02px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_58 {
   background-position: -3586.88px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_59 {
   background-position: -3648.74px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_60 {
   background-position: -3710.6px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_61 {
   background-position: -3772.46px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_62 {
   background-position: -3834.32px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_63 {
   background-position: -3896.18px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_64 {
   background-position: -3958.04px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_65 {
   background-position: -4019.9px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_66 {
   background-position: -4081.76px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_67 {
   background-position: -4143.62px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_68 {
   background-position: -4205.48px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_69 {
   background-position: -4267.34px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_70 {
   background-position: -4329.2px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_71 {
   background-position: -4391.06px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_72 {
   background-position: -4452.92px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_73 {
   background-position: -4514.78px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_74 {
   background-position: -4576.64px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_75 {
   background-position: -4638.5px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_76 {
   background-position: -4700.36px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_77 {
   background-position: -4762.22px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_78 {
   background-position: -4824.08px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_79 {
   background-position: -4885.94px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_80 {
   background-position: -4947.8px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_81 {
   background-position: -5009.66px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_82 {
   background-position: -5071.52px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_83 {
   background-position: -5133.38px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_84 {
   background-position: -5195.24px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_85 {
   background-position: -5257.1px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_86 {
   background-position: -5318.96px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_87 {
   background-position: -5380.82px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_88 {
   background-position: -5442.68px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_89 {
   background-position: -5504.54px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_90 {
   background-position: -5566.4px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_91 {
   background-position: -5628.26px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_92 {
   background-position: -5690.12px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_93 {
   background-position: -5751.98px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_94 {
   background-position: -5813.84px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_95 {
   background-position: -5875.7px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_96 {
   background-position: -5937.56px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_97 {
   background-position: -5999.42px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_98 {
   background-position: -6061.28px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_99 {
   background-position: -6123.14px 0px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
 .seal_100 {
   background-position: -6185px 0px;
 }

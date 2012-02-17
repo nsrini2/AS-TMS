@@ -1,3 +1,7 @@
+@import "color";
+@import "text";
+@import "layout";
+
 @for $i from 0 through 100 {
   $j: -61.86px*$i;
   .seal_#{$i} { background-position: 1px+$j 0px; }
