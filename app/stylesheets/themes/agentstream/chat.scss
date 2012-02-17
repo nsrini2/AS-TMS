@@ -46,6 +46,10 @@ div#chat_discuss_container {
   @include omega;
   margin-left:10px;
   margin-bottom: 20px;
+  span.counter {
+    color: #900;
+    font-size: 1.4em;
+  }  
 }
 
 div.list_item.chat_item {
