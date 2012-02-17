@@ -9,7 +9,7 @@
 	<div class="host">
 		<h4>Presented by:</h4>
 		<% @chat.presenters.each do |presenter| %>
-			<%= render :partial => "/profiles/search", :locals => { :profile => presenter.profile } %>
+			<%= render :partial => "presenter", :locals => { :profile => presenter.profile } %>
 		<% end %>
 	</div>
 	<div id="chat_start_message">

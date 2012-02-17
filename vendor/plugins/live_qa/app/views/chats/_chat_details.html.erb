@@ -7,7 +7,12 @@
       <%= link_to h(chat.title),  chat_path(chat.id) %>
   	</div>
   	<p>
-			<strong>Presented by: <%= h(chat.presenter.screen_name) %></strong><br />
+			<% chat.presenters.each do |presenter| %>
+				<strong>Presented by: <%= h("#{presenter.profile.screen_name}, #{presenter.profile.profile_1}") %></strong><br />
+			<% end -%>
+			<% if chat.presenters.empty? -%>	
+				<strong>Hosted by: <%= h("#{chat.host.screen_name}, #{chat.host.profile_1}") %></strong><br />
+			<% end -%>
   		Start Time: <%= pretty_datetime(chat.start_at) + " Central Time (US & Canada)" -%>
 		</p>	
 
@@ -15,17 +20,7 @@
 			<% if chat.description%>
 				<p>Description: <%= h chat.description %></p>	
 			<% end %>
-			<% if chat.host?(current_profile) %>
-				<%= render :partial => 'question_bin_pre', :locals => { :chat => chat }%>
-			<% else %>
-				<p>
-					<ul><strong>Questions to be addressed:</strong>
-						<% chat.topics.each do |topic| %>
-							<li><%= h topic.title %></li>
-						<% end %>
-					</ul>
-				</p>
-			<% end %>
+			<%= render :partial => 'question_bin_pre', :locals => { :chat => chat }%>
 		<% else %>
 			<% if chat.description%>
 				<% if chat.closed? %>
