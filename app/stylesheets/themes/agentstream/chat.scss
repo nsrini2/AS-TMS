@@ -3,6 +3,17 @@
 @import "layout";
 
 
+div.chat_image_large {
+  background: white;
+  float: left;
+  width: 177px;
+  height: 177px;
+  padding: 0;
+  margin-right: 10px;
+  text-align: center;
+  display: inline;
+}
+
 h2.chat_title {
   margin-bottom: 0;
 }

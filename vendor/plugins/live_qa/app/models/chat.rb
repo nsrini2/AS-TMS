@@ -6,6 +6,8 @@ class Chat < ActiveRecord::Base
   has_many :participants, :order => 'presenter DESC' 
   has_many :presenters, :class_name => "Participant", :conditions => "presenter=1"
   
+  has_one :chat_photo, :as => :owner, :dependent => :destroy
+  
   default_scope :conditions => ['active > 0']
   
   validates_presence_of :start_at, :duration, :title, :host_id
@@ -30,7 +32,9 @@ class Chat < ActiveRecord::Base
   end
   
   def primary_photo_path(which=:thumb)
-    if presenter.respond_to? :primary_photo_path
+    if !chat_photo.nil?
+      chat_photo.public_filename(which)
+    elsif presenter.respond_to? :primary_photo_path
       presenter.primary_photo_path(which)
     else
       "/images/gen_avatar_large.png"

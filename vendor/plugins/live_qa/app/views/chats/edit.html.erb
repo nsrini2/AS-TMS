@@ -7,17 +7,19 @@
 	<div class="description">
 		<div class="content">
 			<div id="new_live_qa" class="">
-				<% form_for(@chat, :html => {:class => "html5", :id=> "new_live_chat_from"}) do |f| %>
+				<% form_for(@chat, :html => {:class => "html5", :id=> "new_live_chat_from", :multipart => true}) do |f| %>
 					<div class="form_fields">
 						<%= f.hidden_field :host_id %>
 						<%= f.hidden_field :start_at %>
 						<%= f.text_field :title, :size => 80, :placeholder => "Title" %><br />
-						<div class="avatar_large profile_container">
-							<td><%=link_to_avatar_for(@chat.host, {:thumb => :thumb_large})%></td>
-							<ul class="action_links">
-									<%#= link_to("upload", new_profile_photo_path(@profile), :class => "modal new_photo") -%>
-							</ul>
+						<div class="chat_image_large">
+							<%=primary_photo_for(@chat, {:thumb => :thumb_large})%><br />
+							<div>
+								<%= f.label "Chat Image (175x175)" %>
+								<%= file_field_tag :"asset[uploaded_data]" %>
+							</div>
 						</div>
+
 						<div class="datepicker_wrapper">
 							<div class="future_datepicker"></div>
 						</div>	

@@ -191,11 +191,23 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
 }
 
 /* line 6, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.chat_image_large {
+  background: white;
+  float: left;
+  width: 177px;
+  height: 177px;
+  padding: 0;
+  margin-right: 10px;
+  text-align: center;
+  display: inline;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 h2.chat_title {
   margin-bottom: 0;
 }
 
-/* line 10, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 21, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 p.chat_start_message_pre {
   margin: 30px;
   text-align: center;
@@ -203,7 +215,7 @@ p.chat_start_message_pre {
   color: #900;
 }
 
-/* line 17, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 28, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.host {
   position: relative;
   background-color: #eff8fa;
@@ -211,18 +223,18 @@ div.host {
   border-bottom: 1px solid #c4d7dc;
   padding: 0px 10px;
 }
-/* line 23, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 34, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.host h4 {
   margin-bottom: 0px;
 }
 
-/* line 28, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 39, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.host .photo_wrapper {
   float: left;
   margin-right: 5px;
 }
 
-/* line 33, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 44, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_container h3.divider {
   background: none;
   border: 0;
@@ -232,7 +244,7 @@ div#chat_container h3.divider {
   margin-bottom: 5px;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 53, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container {
   display: inline;
   float: left;
@@ -243,7 +255,7 @@ div#chat_queue_container {
   padding-left: 15px;
 }
 
-/* line 48, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 59, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss_container {
   display: inline;
   float: left;
@@ -254,39 +266,39 @@ div#chat_discuss_container {
   margin-left: 10px;
   margin-bottom: 20px;
 }
-/* line 54, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 65, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss_container span.counter {
   color: #900;
   font-size: 1.4em;
 }
 
-/* line 60, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 71, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.list_item.chat_item {
   clear: both;
   min-height: 80px;
 }
 
-/* line 65, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 76, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.list_item.chat_item div.photowrapper {
   margin-top: 0;
 }
 
-/* line 87, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 98, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 .past_style, div#chat_queue li.past, div#chat_queue li.past div, div#chat_queue li.past div a, div#chat_discuss h3.past, div#chat_discuss h3.past a {
   color: #aaa;
 }
 
-/* line 91, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 102, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue {
   margin-bottom: 20px;
 }
 
-/* line 94, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 105, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue > div {
   /*background: $tertiary;*/
 }
 
-/* line 100, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 111, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue #question_bin form#new_chat_question_form input {
   font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
   font-size: 0.9em;
@@ -296,7 +308,7 @@ div#chat_queue #question_bin form#new_chat_question_form input {
   background: #90b4bc;
 }
 
-/* line 113, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 124, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container div.accordion_open a.ui-accordion-header {
   /*background: $secondary;*/
   display: block;
@@ -315,15 +327,15 @@ div#chat_queue_container div.accordion_open a.ui-accordion-header {
   margin-right: 0;
   margin-bottom: 0;
 }
-/* line 134, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 145, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container div.accordion_open a.ui-accordion-header span {
   display: none;
 }
-/* line 139, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 150, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container div.accordion_open div#new_chat_question_container {
   margin-bottom: 20px;
 }
-/* line 144, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 155, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue_container a#end_chat_link {
   display: block;
   padding: 2px 5px;
@@ -331,24 +343,24 @@ div#chat_queue_container a#end_chat_link {
   width: 70px;
 }
 
-/* line 153, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 164, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue ul {
   /*background: $tertiary;*/
   margin-bottom: 0;
 }
 
-/* line 157, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 168, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue li {
   clear: both;
   margin-left: 14px;
 }
 
-/* line 161, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 172, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue li div.text {
   display: inline;
 }
 
-/* line 167, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 178, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue ul li.present, div#chat_queue ol li.present {
   color: #4a6970;
 }
@@ -357,7 +369,7 @@ div#chat_queue ul li.present, div#chat_queue ol li.present {
 /*div#chat_queue div.voting {
   float: right;
 }*/
-/* line 181, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 192, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue a.vote {
   display: block;
   float: left;
@@ -365,103 +377,103 @@ div#chat_queue a.vote {
   width: 15px;
 }
 
-/* line 187, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 198, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue a.vote_up:hover {
   margin-top: 0px;
   margin-bottom: 4px;
 }
 
-/* line 191, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 202, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue a.vote_down:hover {
   margin-top: 4px;
   margin-bottom: 0px;
 }
 
-/* line 196, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 207, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue img.vote {
   height: 12px;
   padding: 0 3px 3px 2px;
   vertical-align: top;
 }
 
-/* line 204, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 215, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue img.vote_down {
   margin-top: 1px;
 }
 
-/* line 208, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 219, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_participants div.photo_wrapper {
   display: inline;
 }
 
-/* line 216, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 227, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss h3 {
   background: #4a6970;
   border: 1px solid #4a6970;
 }
 
-/* line 223, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 234, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss #present_discussion_container h3.present a {
   color: #fff;
   padding-left: 12px;
 }
 
-/* line 227, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 238, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss h3.past, div#chat_discuss h3.past a {
   color: #fff;
 }
 
-/* line 231, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 242, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss h3 {
   margin-top: 2px;
 }
 
-/* line 234, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 245, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss h3 a small {
   font-size: 0.9em;
   text-align: right;
   float: right;
 }
 
-/* line 240, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 251, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div.ui-accordion-content {
   border: 1px solid #4a6970;
   border-top: 0;
   padding: 0 !important;
 }
 
-/* line 245, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 256, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div.scrollable {
   overflow: scroll;
   overflow-x: hidden;
   height: 16em;
 }
 
-/* line 250, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 261, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table {
   width: 100%;
 }
 
-/* line 253, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 264, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr.host {
   background: #eff8fa;
 }
 
-/* line 256, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 267, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td {
   padding: 2px 5px;
 }
-/* line 259, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 270, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td p {
   margin: 0;
 }
 
-/* line 264, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 275, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr:first-child {
   font-style: italic;
 }
 
-/* line 268, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 279, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td:first-child {
   text-align: right;
   /*margin-right: 10px;*/
@@ -470,39 +482,39 @@ div#chat_discuss table tr td:first-child {
   border-right: 1px solid #ccc;
 }
 
-/* line 277, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 288, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td.name {
   border-top: 1px solid #ccc;
   font-weight: bold;
 }
 
-/* line 281, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 292, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tbody tr:first-child td.name {
   border-top: 0;
 }
 
-/* line 284, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 295, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tbody tr:last-child td.name {
   border-bottom: 1px solid #ccc;
 }
 
-/* line 287, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 298, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr.host td {
   background: #eff8fa;
 }
 
-/* line 290, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 301, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td:last-child {
   width: 540px;
   border-bottom: 1px solid #ccc;
 }
 
-/* line 296, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 307, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td:last-child p {
   margin-bottom: 0;
 }
 
-/* line 301, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 312, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container {
   width: 720px;
   overflow: hidden;
@@ -510,7 +522,7 @@ div#chat_discuss div#present_container #post_container {
   margin-top: 1.6em;
 }
 
-/* line 307, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 318, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container #post_text {
   display: inline;
   float: left;
@@ -519,7 +531,7 @@ div#chat_discuss div#present_container #post_container #post_text {
   width: 480px;
 }
 
-/* line 311, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 322, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container #post_submit {
   display: inline;
   float: left;
@@ -530,28 +542,28 @@ div#chat_discuss div#present_container #post_container #post_submit {
   text-align: right;
 }
 
-/* line 319, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 330, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container textarea {
   height: 38px;
   width: 105%;
 }
 
-/* line 324, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 335, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss div#present_container #post_container input[type=submit] {
   margin-right: 12px;
   width: 90%;
 }
 
-/* line 330, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 341, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.attendees table#attendees tr.odd {
   background: #C4D7DC;
 }
-/* line 331, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 342, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.attendees table#attendees th {
   text-align: left;
   width: 200px;
 }
-/* line 335, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+/* line 346, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div.attendees table#attendees td {
   vertical-align: middle;
 }

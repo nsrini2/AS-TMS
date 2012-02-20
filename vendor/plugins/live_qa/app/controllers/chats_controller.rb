@@ -29,6 +29,9 @@ class ChatsController < ApplicationController
   # POST /chats
   def create
     @chat = Chat.new(params[:chat])
+    if params[:asset]
+      @chat.chat_photo = ChatPhoto.new(params[:asset])
+    end
     if @chat.save
       # once created route to INDEX
       redirect_to(:action => @chat.id)
@@ -60,6 +63,9 @@ class ChatsController < ApplicationController
   def update
     
     org_chat = Chat.new(@chat.attributes)
+    if params[:asset]
+      @chat.chat_photo = ChatPhoto.new(params[:asset])
+    end
     if @chat.update_attributes(params[:chat])
       flash[:notice] = 'Job was successfully updated.'
       if @chat.change_notification_trigger?(org_chat) || params[:send_notification]
