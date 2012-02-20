@@ -1,7 +1,9 @@
 class Participant < ActiveRecord::Base
+  extend PsuedoInheritance::ClassMethods
   @@STATES = ["rsvp", "canceled", "attended", "contributed" ]
   
-  belongs_to :profile
+  # belongs_to :profile
+  inherits_from :profile
   belongs_to :chat
   has_many :posts
   validates_uniqueness_of   :profile_id, :scope => :chat_id
@@ -10,7 +12,8 @@ class Participant < ActiveRecord::Base
   named_scope :rsvp, :conditions => 'status = "rsvp" '
   named_scope :attendee, :conditions => 'status = "attended" OR status = "contributed" '
   
-  delegate :screen_name, :to => :profile
+  # delegate :screen_name, :to => :profile
+
   
   def active?
     true

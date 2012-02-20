@@ -20,4 +20,9 @@ class Notifier < ActionMailer::Base
     self.body = {:headline => @subject, :chat => chat  }
   end
 
+  def chat_rsvp_reminder(chat)
+    @subject = "AgentStream Chat Event \"#{chat.title}\" is about to start"
+    self.body = {:headline => @subject, :chat => chat  }
+  end
+
 end

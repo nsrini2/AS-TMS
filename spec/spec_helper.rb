@@ -11,7 +11,7 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
-  # config.mock_with :rspec
+  config.mock_with :rspec
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -20,6 +20,11 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+  
+  # This will pick up all of the fixtures defined in spec/fixtures into your
+  # database and you'll be able to test with some sample data 
+  # (eg. Countries, States, etc.)
+  config.global_fixtures = :all
   
   def login_as_cubeless_admin
     stub_current_user_and_profile( create_user_and_profile(:login => 'cubeless_admin', :roles => Role::CubelessAdmin) )
