@@ -1,5 +1,5 @@
 class Participant < ActiveRecord::Base
-  extend PseudoInheritance::ClassMethods
+  include InheritsFrom
   @@STATES = ["rsvp", "canceled", "attended", "contributed" ]
   
   # belongs_to :profile

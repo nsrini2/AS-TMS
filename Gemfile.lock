@@ -96,6 +96,8 @@ GEM
       rake (~> 0.8)
     hpricot (0.8.4)
     i18n (0.5.0)
+    inherits_from (0.0.2)
+      activerecord
     json (1.2.4)
     koala (1.2.1)
       faraday (~> 0.7.0)
@@ -214,6 +216,7 @@ DEPENDENCIES
   feedzirra (~> 0.1.2)
   hashie (>= 0.4.0)
   hpricot
+  inherits_from (~> 0.0.2)
   json (= 1.2.4)
   koala (= 1.2.1)
   microreviewr
