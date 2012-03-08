@@ -124,6 +124,9 @@ namespace :bam do
     Visitation.remove_additional!('Group',21)
     Visitation.remove_additional!('Profile',48)
     # DirectDataQuery.query_getthere_bookings
+    
+    # pull RSS feeds
+    RssFeed.pull_to_blogs
   end
   
   desc 'Run Queued User Sync Job'

@@ -161,7 +161,7 @@ class AccountController < ApplicationController
     add_to_notices 'Thanks for accepting the Terms and Conditions.'
     # send welcome note
     msg = WelcomeNote.get
-    cp.notes.create(:sender_id => msg.profile_id, :message => msg.text) if msg.profile && msg.text
+    current_profile.notes.create(:sender_id => msg.profile_id, :message => msg.text) if msg.profile && msg.text
     
     redirect_back_or_default profile_path(current_profile)
     rescue Exception => e

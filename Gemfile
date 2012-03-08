@@ -76,6 +76,7 @@ gem 'devise', '1.3.1'
 gem 'ym4r'
 gem 'hpricot'
 gem 'prawn'
+gem "feedzirra", "~> 0.1.2"
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
