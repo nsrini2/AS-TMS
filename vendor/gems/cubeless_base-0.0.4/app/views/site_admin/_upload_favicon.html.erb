@@ -1,5 +1,5 @@
 <% content_for(:title, "Upload Favicon") -%>
-<% form_for :asset, :url => update_favicon_site_admin_path, :html => { :multipart => true, :method => :put } do |f| -%>
+<% form_for :asset, :url => update_favicon_site_admin_index_path, :html => { :multipart => true, :method => :put } do |f| -%>
 	<p>Click browse to find an image on your computer. Your new image will appear after you click the save button below. Please only use .ico files.</p>
 	<p>
 		We will automatically resize your logo to fit in the 16x16 standard favicon size.

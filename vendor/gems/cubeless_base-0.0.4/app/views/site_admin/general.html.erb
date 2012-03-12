@@ -12,7 +12,7 @@
 															:placeholder => "Click here to add a Site Name") -%>
 
 <% form_for :site_config, @config, 
-						:url => publish_general_site_admin_path, 
+						:url => publish_general_site_admin_index_path, 
 						:html => {:method => :post, :class => "admin_form"}, 
 						:builder => AdminFormBuilder do |f| %>
 
@@ -88,14 +88,14 @@
 		<dd>
 			<%= image_tag(site_logo, :alt => "", :class => 'avatar') %>		
 			<p id="site_logo">
-				<%= link_to("change", edit_logo_site_admin_path, :class => "modal change_photo") -%>
+				<%= link_to("change", edit_logo_site_admin_index_path, :class => "modal change_photo") -%>
 			</p>
 		</dd>
 		<dt><label>Favicon</label></dt>
 		<dd>
 			<%= image_tag(favicon, :alt => "", :class => 'avatar') %>		
 			<p id="site_favicon">
-				<%= link_to("change", edit_favicon_site_admin_path, :class => "modal change_photo") -%>
+				<%= link_to("change", edit_favicon_site_admin_index_path, :class => "modal change_photo") -%>
 			</p>
 		</dd>
 	</dl>
