@@ -19,7 +19,7 @@
 
 
 class SiteConfig < ActiveRecord::Base
-  xss_terminate :except => [ :feedback_email, :email_from_address, :analytics_tracker_code, :monitor_email_address ]
+  xss_terminate :except => [ :feedback_email, :email_from_address, :analytics_tracker_code, :monitor_email_address, :welcome_promo_title_1, :welcome_promo_1, :welcome_promo_title_2, :welcome_promo_2, :welcome_promo_title_3, :welcome_promo_3 ]
 
 
   has_many :site_logos, :as => :owner

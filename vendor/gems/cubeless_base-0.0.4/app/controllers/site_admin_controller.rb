@@ -21,14 +21,14 @@ class SiteAdminController < ApplicationController
 
   def publish_general
     @config = SiteConfig.first
-    
-    if @config.update_attributes(params[:site_config])    
+    if @config.update_attributes(params[:site_config])
       flash[:notice] = "Success"
-      redirect_to general_site_admin_url
+      redirect_to general_site_admin_index_url
     else
       flash[:errors] = "Error"
-      redirect_to general_site_admin_url
+      redirect_to general_site_admin_index_url
     end
+
   end
   
   def edit_logo

@@ -13,6 +13,7 @@ class AccountController < ApplicationController
   end
     
   def welcome
+    @config = SiteConfig.first
     render :layout => 'homepage'
   end
   
