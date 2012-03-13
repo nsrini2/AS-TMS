@@ -440,36 +440,49 @@ td#stream_message_preview p.what span {
 }
 
 /* line 238, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#rss_feed {
+  width: 800px;
+}
+/* line 240, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#rss_feed td {
+  text-align: center;
+}
+/* line 243, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#rss_feed tr.odd {
+  background-color: #FEFFED;
+}
+
+/* line 248, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list, table#company_members_list {
   border: 1px solid #4A6970;
   margin: 20px;
   width: 840px;
 }
-/* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 252, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.header, table#company_members_list tr.header {
   color: #FFF;
   background: #4A6970;
 }
-/* line 246, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 256, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list th, table#company_members_list th {
   padding-left: 5px;
   text-align: left;
 }
-/* line 251, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 261, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.company .button, table#companies_list tr.member .button, table#company_members_list tr.company .button, table#company_members_list tr.member .button {
   float: right;
   margin: 10px 10px 0 0;
 }
-/* line 256, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 266, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.company td, table#companies_list tr.member td, table#company_members_list tr.company td, table#company_members_list tr.member td {
   padding-left: 5px;
   text-align: left;
 }
-/* line 261, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 271, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .even, table#company_members_list .even {
   background: #D8E9E6;
 }
-/* line 264, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 274, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .odd, table#company_members_list .odd {
   background: #90B4BC;
 }

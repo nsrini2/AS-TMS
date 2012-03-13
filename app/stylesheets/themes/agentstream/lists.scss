@@ -235,6 +235,16 @@ td#stream_message_preview {
   p.what span { font-size: 12px;}
 }
  
+table#rss_feed {
+  width: 800px;
+  td {
+    text-align: center;
+  }
+  tr.odd {
+    background-color: #FEFFED;
+  }  
+} 
+ 
 table#companies_list, table#company_members_list{
   border: 1px solid #4A6970;
   margin: 20px;

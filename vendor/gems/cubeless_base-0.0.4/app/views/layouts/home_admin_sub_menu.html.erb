@@ -2,8 +2,9 @@
 
 <% content_for :admin_tabs_submenu do %>
   <% admin_links = [
+		sub_menu_li_for(marketing_messages_admin_path, :text => 'Marketing Message'),
 		sub_menu_li_for(activity_stream_messages_admin_path, :text => 'Activity Stream Message'),
-  	sub_menu_li_for(marketing_messages_admin_path, :text => 'Marketing Message'),
+  	sub_menu_li_for(rss_feeds_admin_path, :text => 'RSS Feeds'),
   	sub_menu_li_for(system_announcement_admin_path, :text => 'System Announcement'),
   	sub_menu_li_for(welcome_note_admin_path, :text => 'Welcome Note'),
   	sub_menu_li_for(welcome_email_admin_path, :text => 'Welcome Email'),

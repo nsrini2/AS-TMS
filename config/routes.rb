@@ -133,6 +133,7 @@ AgentstreamDe::Application.routes.draw do
       get :about_us
       get :activity_stream_messages
       get :marketing_messages
+      get :rss_feeds
       match :stats_by_date
       match :welcome_note
       get :user_setup
@@ -438,6 +439,12 @@ AgentstreamDe::Application.routes.draw do
       match :toggle_activation
     end
   end
+  
+  resources :rss_feeds do
+    member do
+      match :toggle_activation
+    end
+  end  
   
   resources :activity_stream_messages do
     member do

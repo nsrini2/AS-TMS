@@ -1,4 +1,8 @@
 class RssFeed < ActiveRecord::Base
+  belongs_to :blog
+  belongs_to :profile
+  
+  scope :available, where("active <= '1' ")
   scope :active, where("active = '1'")
   
   class Feedzirra::Parser::RSSEntry
@@ -25,9 +29,15 @@ class RssFeed < ActiveRecord::Base
   end
   
   
-  def self.pull_to_blogs
-    active.each do |feed|
-      feed.add_blog_posts
-    end  
+  def toggle_activation
+     toggle!(:active)
+  end
+  
+  class << self
+    def pull_to_blogs
+      active.each do |feed|
+        feed.add_blog_posts
+      end  
+    end
   end
 end

@@ -69,6 +69,12 @@ class AdminController < ApplicationController
     # @activity_stream_messages = MarketingMessage.find(:all, :order => 'is_default desc, id asc')
     render :template => 'activity_stream_messages/activity_stream_messages', :layout => 'home_admin_sub_menu'
   end
+  
+  def rss_feeds
+    @rss_feeds = RssFeed.available
+    # render :text => "You found it!"
+    render :template => 'rss_feeds/rss_feeds', :layout => 'home_admin_sub_menu'
+  end
 
   def marketing_messages
     @marketing_messages = MarketingMessage.find(:all, :order => 'is_default desc, id asc')
