@@ -186,6 +186,10 @@ class Chat < ActiveRecord::Base
       ActiveSupport::TimeWithZone.new(nil, input_timezone,input_datetime)
     end
     
+    def next
+      Chat.order('start_at DESC').limit(1).first
+    end
+    
     def current
       Chat.find(:all, :conditions => ["ended_at IS null AND active > 0"], :order => 'start_at' )
     end
