@@ -43,7 +43,8 @@ class BlogPostsController < ApplicationController
       redirect_to view_context.companies_blog_blog_post_path(params[:id])
     else
       unless private_group_protection_needed(@owner)
-        @blog_posts = [@blog.blog_posts.find_by_id(params[:id])]
+        @blog_posts = @blog.blog_posts.where(:id => params[:id])
+        @blog_posts = @blog_posts.page(params[:page])
         @archives = @blog.archived_posts
         instance_variable_set("@#{@owner.class.name.downcase}", @owner)
         @blog_posts[0].increment_post_views! unless @owner==current_profile

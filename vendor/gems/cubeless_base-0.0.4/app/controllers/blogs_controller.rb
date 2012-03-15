@@ -6,10 +6,12 @@ class BlogsController < ApplicationController
     @blog = @owner.blog
     unless private_group_protection_needed(@owner)
       Visitation.add_visitor_for(@owner,current_profile)
-      if !params[:tag].blank?
-        @blog_posts = @blog.blog_posts.find_tagged_with( params[:tag] )
-      else
-        @blog_posts = @blog.blog_posts.find(:all, (params[:date] ? {:conditions => ['created_at_year_month = ?', params[:date]]} : {:limit => 5}))
+      @blog_posts = @blog.blog_posts.page(params[:page])
+      if params[:tag]
+        @blog_posts = @blog_posts.where("cached_tag_list LIKE ?", "%#{params[:tag]}%")
+      end
+      if params[:date]
+        @blog_posts = @blog_posts.where("created_at_year_month = ?", "#{params[:date]}")
       end
       if @owner.is_a?(Profile) && @owner == current_profile && @blog_posts.blank?
         redirect_to url_for([@owner, :blog, :posts])+'/new'
