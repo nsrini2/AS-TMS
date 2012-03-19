@@ -5,6 +5,11 @@ class RssFeed < ActiveRecord::Base
   scope :available, where("active <= '1' ")
   scope :active, where("active = '1'")
   
+  validates :description, :presence => true
+  validates :feed_url, :presence => true
+  validates :blog_id, :presence => true
+  validates :profile_id, :presence => true
+  
   class Feedzirra::Parser::RSSEntry
     element :source, :as => :source
   end  

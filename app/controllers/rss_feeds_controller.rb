@@ -13,12 +13,12 @@ class RssFeedsController < ApplicationController
   end
   
   def create
-    @rss_feed = RssFeed.new(params[:activity_stream_message])
+    @rss_feed = RssFeed.new(params[:rss_feed])
     if @rss_feed.save
       flash[:notice] = "RSS Feed Created"
       redirect_to rss_feeds_admin_path
     else  
-      flash[:errors] = "An error occured creating Activity Stream Message."
+      add_to_errors @rss_feed
       render :action => "new"
     end  
   end
@@ -35,8 +35,9 @@ class RssFeedsController < ApplicationController
       flash[:notice] = "RSS Feed has been updated!"
       redirect_to rss_feeds_admin_path
     else
-      flash[:errors] = @rss_feed.errors
-      render :action => "create" 
+      # flash[:errors] = @rss_feed.errors
+      add_to_errors @rss_feed
+      render :action => "edit" 
     end    
   end
   
