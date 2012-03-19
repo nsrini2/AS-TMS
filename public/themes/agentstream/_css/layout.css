@@ -81,33 +81,34 @@
 
 /* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .aside .module {
-  margin: 0 10px 0;
+  margin-right: 0px;
+  margin-left: 5px;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .primary {
   width: 720px;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .aside {
   width: 240px;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .primary {
   width: 720px;
   clear: both;
   margin-left: 0;
 }
 
-/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .aside {
   width: 240px;
   margin-right: 0;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .full_length {
   width: 960px;
   clear: both;

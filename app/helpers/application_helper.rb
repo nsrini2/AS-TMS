@@ -5,7 +5,7 @@ module ApplicationHelper
 
   # MM2: Overwrite the default cubeless engine marketing_image_tag method to change the width and height
   def marketing_image_tag(message)
-    link_to_if(message.link_to_url, image_tag( marketing_image_path(message), :alt => '', :width => "399", :height => "150"),message.link_to_url) if message
+    link_to_if(message.link_to_url, image_tag( marketing_image_path(message), :alt => '', :width => "394", :height => "150"),message.link_to_url) if message
   end
     
   def global_nav_link(name, path, id="")

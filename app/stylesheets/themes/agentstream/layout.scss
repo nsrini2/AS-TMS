@@ -32,7 +32,10 @@ $ninesixty-grid-width: 960px;
 	
 	.primary { width: 560px; @include alpha; }
 	.aside { margin-top: 30px; width: 400px; @include omega; }
-		.aside .module { margin: 0 10px 0; }
+		.aside .module { 
+		  margin-right: 0px;
+		  margin-left: 5px; 
+		}
 	.list .primary { width: 720px;  }
 	.list .aside { width: 240px; }
 	

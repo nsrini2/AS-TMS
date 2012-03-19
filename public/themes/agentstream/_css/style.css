@@ -276,33 +276,34 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
 
 /* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .aside .module {
-  margin: 0 10px 0;
+  margin-right: 0px;
+  margin-left: 5px;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .primary {
   width: 720px;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .aside {
   width: 240px;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .primary {
   width: 720px;
   clear: both;
   margin-left: 0;
 }
 
-/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .aside {
   width: 240px;
   margin-right: 0;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .full_length {
   width: 960px;
   clear: both;
@@ -3565,33 +3566,34 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
 
 /* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .aside .module {
-  margin: 0 10px 0;
+  margin-right: 0px;
+  margin-left: 5px;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .primary {
   width: 720px;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .aside {
   width: 240px;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .primary {
   width: 720px;
   clear: both;
   margin-left: 0;
 }
 
-/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .aside {
   width: 240px;
   margin-right: 0;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .full_length {
   width: 960px;
   clear: both;
@@ -4630,12 +4632,10 @@ div.single_item div.action_buttons {
   margin-right: 30px;
 }
 
-/* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
-#list .details ul.action_list li a, div.single_item .details ul.action_list li a {
+/*#list .details ul.action_list li a, div.single_item .details ul.action_list li a {
   color: #90b4bc;
   text-decoration: underline;
-}
-
+}*/
 /* line 139, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.action_buttons a, div.single_item div.action_buttons a {
   display: block;
@@ -5144,33 +5144,34 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
 
 /* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .aside .module {
-  margin: 0 10px 0;
+  margin-right: 0px;
+  margin-left: 5px;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .primary {
   width: 720px;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .aside {
   width: 240px;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .primary {
   width: 720px;
   clear: both;
   margin-left: 0;
 }
 
-/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .aside {
   width: 240px;
   margin-right: 0;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .full_length {
   width: 960px;
   clear: both;
@@ -5714,33 +5715,34 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
 
 /* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .aside .module {
-  margin: 0 10px 0;
+  margin-right: 0px;
+  margin-left: 5px;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .primary {
   width: 720px;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .aside {
   width: 240px;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .primary {
   width: 720px;
   clear: both;
   margin-left: 0;
 }
 
-/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .aside {
   width: 240px;
   margin-right: 0;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .full_length {
   width: 960px;
   clear: both;

@@ -259,12 +259,10 @@ div.single_item div.action_buttons {
   margin-right: 30px;
 }
 
-/* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
-#list .details ul.action_list li a, div.single_item .details ul.action_list li a {
+/*#list .details ul.action_list li a, div.single_item .details ul.action_list li a {
   color: #90b4bc;
   text-decoration: underline;
-}
-
+}*/
 /* line 139, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.action_buttons a, div.single_item div.action_buttons a {
   display: block;
