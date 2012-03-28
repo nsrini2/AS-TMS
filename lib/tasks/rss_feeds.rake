@@ -6,6 +6,7 @@ namespace :rss do
     begin      
       RssFeed.pull_to_blogs
     rescue
+      STDERR.puts "Problem fetching RSS feeds: #{$!}"
       Rails.logger.error "Problem fetching RSS feeds: #{$!}"
     end
   end

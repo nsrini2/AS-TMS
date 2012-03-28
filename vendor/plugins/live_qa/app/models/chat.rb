@@ -187,7 +187,7 @@ class Chat < ActiveRecord::Base
     end
     
     def next
-      Chat.order('start_at DESC').limit(1).first
+      self.upcoming.limit(1).first
     end
     
     def current
@@ -195,7 +195,8 @@ class Chat < ActiveRecord::Base
     end
     
     def upcoming
-      Chat.find(:all, :conditions => ["started_at IS null AND ended_at IS null AND active > 0"], :order => 'start_at' )
+      # Chat.find(:all, :conditions => ["started_at IS null AND ended_at IS null AND active > 0"], :order => 'start_at' )
+      Chat.where("started_at IS null AND ended_at IS null").order("start_at")
     end
     
     def live

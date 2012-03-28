@@ -27,4 +27,8 @@ describe Chat do
     assert_equal 0, chats_to_email_after, "Chat starting soon notifications should only be sent once."
   end
   
+  it "should return the next live chat event to start with next" do
+    assert_equal Chat.next, chats(:starting_soon), "Did not return the starting_soon fixture, which should be next"
+  end
+  
 end
