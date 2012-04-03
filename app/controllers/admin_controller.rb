@@ -206,7 +206,7 @@ class AdminController < ApplicationController
 
   def shady_admin
     #!H need to deal with poi's in a migration, not the sql
-    render :partial => 'admin/shady_template', :locals => {:flagged => Abuse.find(:all, :conditions => ['remover_id is null and abuseable_type <> ?', 'Poi']), :hide => {:search => true}}, :layout => 'shady_admin_sub_menu'
+    render :layout => 'shady_admin_sub_menu', :template => 'admin/_shady_template', :locals => {:flagged => Abuse.find(:all, :conditions => ['remover_id is null and abuseable_type <> ?', 'Poi']), :hide => {:search => true}}
   end
 
   def shady_history
