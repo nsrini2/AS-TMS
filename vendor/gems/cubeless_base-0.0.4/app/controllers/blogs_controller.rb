@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
         @blog_posts = @blog_posts.where("created_at_year_month = ?", "#{params[:date]}")
       end
       if @owner.is_a?(Profile) && @owner == current_profile && @blog_posts.blank?
-        redirect_to url_for([@owner, :blog, :posts])+'/new'
+        redirect_to url_for([@owner, :blog, :blog_posts])+'/new'
       else
         render :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
       end
