@@ -136,7 +136,8 @@ class ReportQueries
 # profile stats page
 
   def self.total_active_profiles
-    @@total_profiles ||= ActiveRecord::Base.count_by_sql("select count(1) from profiles where #{@@active}") # putting here so it will quit running this query everytime!
+    # SSJ 2012-4-4 -- I don't like these class variables, but not going to tackle those today.
+    @@total_profiles ||= Profile.count(:conditions => @@active )
   end
 
   def self.total_inactive_profiles
@@ -200,9 +201,16 @@ class ReportQueries
   # @@profile_field_labels = Profile.get_questions_from_config
 
   def self.profile_completion
-    Profile.profile_complete_fields.collect { |field|
-      field == "email" ? nil : Profile.get_questions_from_config[field].nil? ? nil : [Profile.get_questions_from_config[field]['label'],"#{100*db_number("select count(1) from profiles where #{field} is not null and #{@@active}")/total_active_profiles}%"]
-    }.compact
+    fields = Profile.profile_complete_fields
+    values = []
+    fields.each do |field|
+      break if field == "email"
+      break if Profile.get_questions_from_config[field].nil?
+      populated = Profile.count(:conditions => "#{field} is NOT NULL AND #{@@active}")
+      percent = (100*populated/total_active_profiles).to_s + "%"
+      values << [Profile.get_questions_from_config[field]['label'], percent]
+    end
+    values.compact
   end
 
 # top 10 report page
