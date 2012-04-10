@@ -21,6 +21,7 @@ class RssFeed < ActiveRecord::Base
         BlogPost.create(
           :profile_id   => self.profile_id,
           :blog_id      => self.blog_id,
+          :tagline      => self.tagline,
           :guid         => entry.id,
           :title        => entry.title,
           :text         => entry.summary,

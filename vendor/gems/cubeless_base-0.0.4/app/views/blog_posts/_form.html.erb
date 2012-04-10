@@ -6,6 +6,10 @@
 			<dd class="title"><%= f.text_field :title -%></dd>
 			<dt class="post"><label>Post</label></dt>
 			<dd class="post"><%= f.text_area(:text, :rows => nil, :cols => nil, :class => 'fckeditor') %></dd> 
+			<% if @blog_post.tagline %>
+				<dt class="post"><label>Tagline (Enter copy for link to original content)</label></dt>
+				<dd class="post"><%= f.text_field(:tagline) %></dd>
+			<% end %>	 
 			<dt class="tags"><label for="blog_post_tag_list">Add Tags: (example: news, technology, weather, food)</label></dt>
 			<dd class="tags">
 				<%= f.text_field :tag_list, :class => 'blog_tags' -%>
