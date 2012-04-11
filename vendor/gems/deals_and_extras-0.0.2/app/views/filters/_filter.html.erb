@@ -31,7 +31,7 @@
     
     <div id="filter_includes" align="left">
         <% @offer_types.each do |offer_type| %>
-            <input type="checkbox" id="filter_include_<%= offer_type.offer_type %>" name="filter_includes[]" value="<%= offer_type.id %>" checked='checked'><label for="filter_include_<%= offer_type.offer_type %>"><%= offer_type.offer_type.titlecase %></label><br>
+            <input type="checkbox" id="filter_include_<%= offer_type.offer_type %>" name="filter_includes[]" value="<%= offer_type.id %>" <%= "checked" if offer_type.html_checked %> ><label for="filter_include_<%= offer_type.offer_type %>"><%= offer_type.offer_type.titlecase %></label><br>
         <% end %>
     </div>
      <br />
