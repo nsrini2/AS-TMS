@@ -198,7 +198,7 @@ div#deals-header {
   padding: 0px 5px;
 }
 /* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
-div#deals-header h5 {
+div#deals-header h2, div#deals-header p {
   margin-bottom: 0px;
 }
 
@@ -3497,7 +3497,7 @@ div#deals-header {
   padding: 0px 5px;
 }
 /* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
-div#deals-header h5 {
+div#deals-header h2, div#deals-header p {
   margin-bottom: 0px;
 }
 
@@ -5086,7 +5086,7 @@ div#deals-header {
   padding: 0px 5px;
 }
 /* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
-div#deals-header h5 {
+div#deals-header h2, div#deals-header p {
   margin-bottom: 0px;
 }
 
@@ -5666,7 +5666,7 @@ div#deals-header {
   padding: 0px 5px;
 }
 /* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
-div#deals-header h5 {
+div#deals-header h2, div#deals-header p {
   margin-bottom: 0px;
 }
 
