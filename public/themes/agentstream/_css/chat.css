@@ -75,6 +75,15 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
   margin-bottom: 20px;
 }
 
+/* line 58, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header {
+  padding: 0px 5px;
+}
+/* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header h5 {
+  margin-bottom: 0px;
+}
+
 /* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 #page {
   margin-left: auto;

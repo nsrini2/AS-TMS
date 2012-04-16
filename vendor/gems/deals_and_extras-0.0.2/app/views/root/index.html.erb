@@ -12,19 +12,21 @@
   <%= render "/filters/filter" %>
 </div>
 
-<div id="rightContent" class="dealTablePartial">      
+<div id="rightContent" class="dealTablePartial">
+	<div id="deals-header">
+		<h5>DEALS & EXTRAS</h5>
+		<p>Demonstrate travel expertise and deliver a unique customer experience with Deals & Extras. Access unique travel extras, from admissions to attractions or shows to transfers, city tours and parking all in one place.  Interested in hotel deals?  Simply click the Deals check box to view deals here, too.</p>
+	</div>     
+  <div id="sortView">
+    <%= render "/sorts/sort" %>
+  </div>                     
 
-    <div id="sortView">
-      <%= render "/sorts/sort" %>
-    </div>                     
+  <div id="navigationView">
+    <%= render "/navigations/navigation" %>
+  </div>
 
-    <div id="navigationView">
-      <%= render "/navigations/navigation" %>
-    </div>
-
-    <div id="contentContainer">
-    </div>
-
+  <div id="contentContainer">
+  </div>
 </div>
 
 

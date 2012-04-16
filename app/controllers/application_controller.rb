@@ -46,7 +46,6 @@ class ApplicationController
   #for facebook login
   def find_facebook_uid
     @oauth = Koala::Facebook::OAuth.new(FB_APP_ID, FB_APP_SECRET)
-    # user_facebook_session = @oauth.get_user_info_from_cookies(cookies)
     @facebook_uid = @oauth.get_user_from_cookies(cookies)
     rescue Exception => e
       Rails.logger.error "*** An error occured in ApplicationController#find_facebook_uid ***"
@@ -58,15 +57,13 @@ class ApplicationController
   def facebook_graph
     # SSJ - if the website is unable to contact Facebook 
     # present registration form without pre-filled options
-    begin
-      @facebook_cookies ||= Koala::Facebook::OAuth.new(FB_APP_ID, FB_APP_SECRET).get_user_info_from_cookie(cookies)
-      access_token = @facebook_cookies["access_token"]      
-      graph = Koala::Facebook::GraphAPI.new(access_token)
-      user_graph = graph.get_object("me")
+    @facebook_cookies ||= Koala::Facebook::OAuth.new(FB_APP_ID, FB_APP_SECRET).get_user_info_from_cookie(cookies)
+    access_token = @facebook_cookies["access_token"]      
+    graph = Koala::Facebook::GraphAPI.new(access_token)
+    user_graph = graph.get_object("me")
     rescue 
       Rails.logger.debug $!
-      nil
-    end    
+      nil 
   end
   
   def set_stats
