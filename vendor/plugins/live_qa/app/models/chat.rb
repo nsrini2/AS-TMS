@@ -10,7 +10,7 @@ class Chat < ActiveRecord::Base
   
   default_scope :conditions => ['active > 0']
   
-  scope :starting_soon, lambda { { :conditions => ["started_at IS NULL AND start_at BETWEEN ? AND ?", Time.now.advance(:minutes => -90), Time.now.advance(:minutes => 40)]} }
+  scope :starting_soon, lambda { { :conditions => ["start_at BETWEEN ? AND ?", Time.now.advance(:minutes => -20), Time.now.advance(:minutes => 20)]} }
   scope :not_notified,  :conditions => ['notifications_sent = 0']
   
   validates_presence_of :start_at, :duration, :title, :host_id
