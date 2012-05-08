@@ -67,10 +67,12 @@ class ApplicationController
   end
   
   def set_stats
+    # SSJ 5/8/12 This is killing our performance.  I at least fixed the queries
+    # and add momoization but it may be best to remove this altogether 
     if !current_profile
-      @members = User.all.count
-      @groups = Group.all.count
-      @answers = Answer.all.count
+      @members ||= User.count
+      @groups ||= Group.count
+      @answers ||= Answer.count
     end  
   end
   

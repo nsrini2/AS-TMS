@@ -43,7 +43,7 @@ common: &default_settings
 
   # Developer mode should be off in every environment but
   # development as it has very high overhead in memory.
-  developer_mode: false
+  # developer_mode: true
 
   # The newrelic agent generates its own log file to keep its logging
   # information separate from that of your application.  Specify its
@@ -58,7 +58,7 @@ common: &default_settings
   # asynchronously to the threads that process your application code,
   # so it should not impact response times.
   ssl: false
-
+    
   # EXPERIMENTAL: enable verification of the SSL certificate sent by
   # the server. This setting has no effect unless SSL is enabled
   # above. This may block your application. Only enable it if the data
@@ -192,7 +192,7 @@ development:
   # 'enabled').
   # NOTE: for initial evaluation purposes, you may want to temporarily 
   # turn agent communication on in development mode.
-  monitor_mode: false
+  monitor_mode: true
 
   # Rails Only - when running in Developer Mode, the New Relic Agent will 
   # present performance information on the last 100 transactions you have
