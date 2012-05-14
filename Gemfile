@@ -53,7 +53,7 @@ gem 'panda', '0.2.1'
 
 gem 'capistrano', '2.5.18'
 
-gem 'delayed_job'
+gem 'delayed_job', '~>2.1.4'
 gem 'spawn'
 
 gem 'koala', '1.2.1'
