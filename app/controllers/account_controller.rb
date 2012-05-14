@@ -76,11 +76,11 @@ class AccountController < ApplicationController
     if @temp_user.auto_approve?
       @temp_user.upgrade
       # redirect_to quick_registration_confirmation_account_path
-      redirect_to "/deals_and_extras", :notice => "Thank for you registering.<br/><br/>Please check your email now to confirm to your account."
+      redirect_to "/deals_and_extras", :notice => @temp_user.notice
     elsif @temp_user.custom_valid? # But not auto_approved
       redirect_to signup_account_path(:user => {:email => @temp_user.email}, 
                                       :profile => {:name => @temp_user.name},
-                                      :registration => {:agency_pcc_or_iata => @temp_user.pcc}), :notice => "We could not automatically verify your account using only the PCC and email address provided.<br/><br/>Please fill out the additional information below."
+                                      :registration => {:agency_pcc_or_iata => @temp_user.pcc}), :notice => @temp_user.notice
     else
       render :json => {
         :status => false,

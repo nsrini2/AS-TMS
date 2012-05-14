@@ -64,15 +64,16 @@ module Notifications
  	    end
  	    
  	    def should_receive_welcome_email?
-        if self.status == 2  && self.id_was.nil?
-          # creating new user with status activate_on_login
-          true
-        elsif  self.user.srw_agent_id.to_i != 0
+        if self.user.srw_agent_id.to_i != 0
           # Sabre Red User -- They get Sabre Red Welcome email -- see user
           false
-        else  
+        elsif self.id_was.nil? && (self.status == 2 || self.status == 1) 
+          # Admin Created Users -- manually created or bulk uploaded
+          true
+        else
           # if the user is active, but has never logged in does not use SSO and had a status <= 0
-          self.new_user? && self.status_was <= 0
+          # i.e. change a user from pending to active or activate_on_login
+          self.new_user? && self.status_was.to_i <= 0
         end  
       end
 

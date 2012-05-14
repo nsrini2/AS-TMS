@@ -28,6 +28,14 @@ class TempUser < ActiveRecord::Base
     custom_valid? && ConfirmedEmailPcc.match(self.email, self.pcc)
   end
   
+  def notice
+    if auto_approve?
+      "Thank for you registering.<br/><br/>PLEASE ALLOW 2-3 BUSINESS DAYS FOR PROCESSING as we manually verify your registration.  Your patience with our detailed review process is certainly appreciated as member privacy and security continues to be our top priority."
+    elsif custom_valid?
+      "We could not automatically verify your account using only the PCC and email address provided.<br/><br/>Please fill out the additional information below."
+    end     
+  end
+  
   def upgrade
     user = User.new(:email => self.email)
     user.login = self.email
@@ -36,9 +44,6 @@ class TempUser < ActiveRecord::Base
     profile.user = user
     profile.first_name = self.first_name
     profile.last_name = self.last_name
-    
-    here user.inspect
-    here profile.inspect
 
     profile.status = 3 # Lazy registration
     profile.visible = 0
@@ -51,19 +56,11 @@ class TempUser < ActiveRecord::Base
     # @registration = Registration.new(params[:registration])
     # @profile.registration = @registration
     
-    here user.valid?
-    here profile.valid?
-    
-    here user.errors.full_messages
-    here profile.errors.full_messages
-    
     saved = user.save && profile.save
     
     if saved
       self.update_attribute(:user_id, user.id)
       user.profile = profile
-      here user.inspect
-      here profile.inspect
       
       Notifier.deliver_welcome(user)
     end

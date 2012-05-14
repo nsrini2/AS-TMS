@@ -5,7 +5,7 @@ class OffersController < ApplicationController
     5.times { Rails.logger.info "----------------" } 
     Rails.logger.info params.inspect
     @page_title = "Offers"
-    params[:per_page] = 20
+    params[:per_page] = 10
     @offers = Offer.filter(params)
     @current_user = current_user
   end

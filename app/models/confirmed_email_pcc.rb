@@ -6,7 +6,7 @@ class ConfirmedEmailPcc < ActiveRecord::Base
     # CHECK FOR EXACT MATCH
     if find_by_email_and_pcc(email, pcc)
       true
-    # OK. Really is the email addresses matches, that's good enough
+    # OK. Really if the email addresses matches, that's good enough
     elsif find_by_email(email)
       true
     # CHECK FOR PCC MATCH AND SAME EMAIL EXTENSION
