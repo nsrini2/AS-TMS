@@ -107,7 +107,7 @@
 					noteShadyService.addEventListener(ResultEvent.RESULT,function(event:ResultEvent):void {
 						PopUpManager.removePopUp(shady);
 						httpResult(event);
-						showStatusMessage("Note marked as shady.");
+						showStatusMessage("Note marked as inappropriate.");
 					});
 					noteShadyService.send({
 						'abuse[reason]' : shady.description.text,

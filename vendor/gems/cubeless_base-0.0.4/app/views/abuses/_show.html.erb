@@ -1,1 +1,1 @@
-<% if @abuseable.abuse -%><span class="clicked">reported as shady</span><% elsif logged_in? -%><span class="shady"><%=link_to_mark_shady(@abuseable) %></span><% end -%>
+<% if @abuseable.abuse -%><span class="clicked">reported as inappropriate</span><% elsif logged_in? -%><span class="shady"><%=link_to_mark_shady(@abuseable) %></span><% end -%>

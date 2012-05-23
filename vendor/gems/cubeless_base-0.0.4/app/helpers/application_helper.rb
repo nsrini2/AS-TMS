@@ -211,7 +211,7 @@ module ApplicationHelper
   end
 
   def link_to_mark_shady(abuseable)
-    link_to('shady', polymorphic_url([abuseable, :abuse], :action => :new, :routing_type => :path), :class => "modal")
+    link_to('inappropriate', polymorphic_url([abuseable, :abuse], :action => :new, :routing_type => :path), :class => "modal")
   end
 
   def render_pagination(collection, options={})

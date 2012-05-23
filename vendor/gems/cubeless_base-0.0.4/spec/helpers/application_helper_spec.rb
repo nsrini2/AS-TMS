@@ -89,9 +89,9 @@ describe ApplicationHelper do
       
       helper.link_for_group_post_delete(@post,@group).should == "<a href=\"/group_posts/#{@post.id}\" class=\"modal delete\">delete</a>"
     end
-    it "should display a mark as shady link" do
+    it "should display a mark as inappropriate link" do
       @question = mock_model(Question)
-      helper.link_to_mark_shady(@question).should == "<a href=\"/questions/#{@question.id}/abuse/new\" class=\"modal\">shady</a>"
+      helper.link_to_mark_shady(@question).should == "<a href=\"/questions/#{@question.id}/abuse/new\" class=\"modal\">inappropriate</a>"
     end
     it "should display a link to author" do
       @profile.stub!(:is_sponsored?).and_return(false)

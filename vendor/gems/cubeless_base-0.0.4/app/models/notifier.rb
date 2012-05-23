@@ -87,7 +87,7 @@ class Notifier < ActionMailer::Base
   end
 
   def new_abuse
-    @subject = "A new item has been marked as shady"
+    @subject = "A new item has been marked as inappropriate"
     self.body = {}
   end
   
