@@ -135,7 +135,7 @@ describe UsersController do
       @profile.should_receive(:last_sent_welcome_at=).and_return(true)
       
       @user.should_receive(:generate_temp_crypted_password).with(7.days.from_now)
-      @user.should_receive(:save_without_validation)
+      @user.should_receive(:save).with(:validate => false)
       Notifier.should_receive(:deliver_welcome).with(@user)
       
       post :resend_welcome, :id => @user.id.to_s

@@ -46,7 +46,7 @@ class GroupInvitationsController < ApplicationController
      invite_pending = GroupInvitation.find_by_id(params[:id])
      if is_editable?(invite_pending.group)
          invite_pending.created_at = Time.now
-         invite_pending.save_without_validation!
+         invite_pending.save!(:validate => false )
          redirect_to request.referer
      end
   end

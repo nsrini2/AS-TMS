@@ -114,8 +114,7 @@ class Notifier
     end
     if user.crypted_password.blank?
       user.generate_temp_crypted_password(7.days.from_now)
-      # user.save_without_validation
-      user.save!
+      user.save(:validate => false )
     end
     @subject = subject
     @recipients = user.email

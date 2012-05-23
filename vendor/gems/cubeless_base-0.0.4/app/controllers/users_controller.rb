@@ -125,7 +125,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.generate_temp_crypted_password(7.days.from_now)
     user.profile.last_sent_welcome_at = Time.now
-    user.save_without_validation
+    user.save(:validate => false )
     Notifier.deliver_welcome(user)
     add_to_notices("Welcome email has been resent to #{user.email}")
     respond_to do |format|

@@ -253,7 +253,7 @@ class GroupsController < ApplicationController
      if is_editable?(@group)
          @group.invitations.each do | pending |
            pending.created_at = Time.now
-           pending.save_without_validation!
+           pending.save!(:validate => false )
          end
          redirect_to request.referer
      end

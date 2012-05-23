@@ -189,7 +189,6 @@ class Notifier < ActionMailer::Base
   def prepare_password_retrieval(retrieval)
     user = User.find(:first, {:conditions => ["login = ?", retrieval.login]})
     user.generate_temp_crypted_password(24.hours.from_now)
-    # user.save_without_validation
     user.save(:validate => false)
     @recipients = user.email
     self.body = {
@@ -225,7 +224,6 @@ class Notifier < ActionMailer::Base
     end
     if user.crypted_password.blank?
       user.generate_temp_crypted_password(7.days.from_now)
-      # user.save_without_validation
       user.save(:validate => false)
     end
     @subject = subject
