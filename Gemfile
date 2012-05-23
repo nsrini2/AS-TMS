@@ -68,7 +68,7 @@ gem 'cubeless_base', '0.0.4', :path => 'vendor/gems/cubeless_base-0.0.4'
 gem 'ruport'
 gem 'acts_as_reportable'
 
-gem 'acts_as_reportable'
+# gem 'acts_as_reportable'
 
 gem 'deals_and_extras', '0.0.2', :path => 'vendor/gems/deals_and_extras-0.0.2'
 
