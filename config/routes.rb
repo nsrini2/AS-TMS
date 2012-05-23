@@ -588,11 +588,9 @@ AgentstreamDe::Application.routes.draw do
     end
 
     resources :answers do
-      resources :vote do
-        collection do
-          post :helpful
-          post :not_helpful
-        end
+      resource :vote do
+        post :helpful
+        post :not_helpful
       end
     end
   end

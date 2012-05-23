@@ -38,15 +38,12 @@ class QuestionsController < ApplicationController
 
   def show
     # @question_summary = Question.find(params[:id], :include => [:best_answer], :auth => true).first
-    # SSJ THIS IS MESSED UP!! -- If I don't use unscope it fails to find questions from links 
-    # but unscopeing and adding back the default params seems to work
-    @question_summary = Question.unscoped.find(params[:id], :conditions => ["questions.company_id = 0"])
+    # SSJ not sure how to update the :auth => true param in 3.x
+    @question_summary = Question.where(:id => params[:id]).includes(:best_answer).first
     @question_summary.update_author_viewed_at current_profile
     @answer_summaries = @question_summary.answers.summary(:all, answer_filters())
     @best_answer = @question_summary.best_answer
     redirect_to new_question_answer_path(:question_id => @question_summary.id) if @question_summary.is_open? and @answer_summaries.size==0
-    rescue
-      fail params.inspect
   end
 
   def new

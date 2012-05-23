@@ -38,6 +38,8 @@ class Answer < ActiveRecord::Base
   ### Summary Methods ###
 
   def self.find_summary(*args)
+    # 2012-05-22 SSJ I would like to redo all of these find summary methods, but not ready to pull trigger -- using where where needed
+    # need to determine a good way to find all methods that call this find_summary as most are done with a generic model.find_summary
     args.insert(0, :all) unless args.first == :all
     ModelUtil.get_options!(args).delete(:summary)
     ModelUtil.get_options!(args).delete(:page)
@@ -48,11 +50,15 @@ class Answer < ActiveRecord::Base
   end
 
   def current_user_voted_positive
-    attributes['current_user_voted_positive'].to_i > 0
+    current_profile = AuthenticatedSystem.current_profile
+    # attributes['current_user_voted_positive'].to_i > 0
+    self.votes.where(:profile_id => current_profile.id).where(:vote_value => true).count > 0
   end
 
   def current_user_voted_negative
-    attributes['current_user_voted_negative'].to_i > 0
+    current_profile = AuthenticatedSystem.current_profile
+    # attributes['current_user_voted_negative'].to_i > 0
+     self.votes.where(:profile_id => current_profile.id).where(:vote_value => false).count > 0
   end
 
   def current_user_has_voted?

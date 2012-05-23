@@ -17,14 +17,14 @@
             end
           %>
 
-      		<%= render :partial =>'questions/question', :locals => {:question => @question_summary, :show => {:linked_question => false, :close => true}}%>
-      		
-      		<%# MM2: Put everything back to normal after my big avatar is rendered %>
-      		<%# self.instance_eval { alias :link_to_avatar_for :link_to_avatar_for_from_cubeless } %>
-      		
-      		<%= render(:partial => 'answers/best_answer', :locals => {:answer => @best_answer}) %>
-      		
-      		<div style="clear: both;"></div>
+          <%= render :partial =>'questions/question', :locals => {:question => @question_summary, :show => {:linked_question => false, :close => true}}%>
+          
+          <%# MM2: Put everything back to normal after my big avatar is rendered %>
+          <%# self.instance_eval { alias :link_to_avatar_for :link_to_avatar_for_from_cubeless } %>
+          
+          <%= render(:partial => 'answers/best_answer', :locals => {:answer => @best_answer}) %>
+          
+          <div style="clear: both;"></div>
       </div>
     </div>
   </div>
