@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_filter :set_answer
+  before_filter :set_answer, :except => [:vote_best_answer]
   deny_access_for :show  => :sponsor_member
 
   def new
@@ -39,14 +39,15 @@ class AnswersController < ApplicationController
   end
 
   def vote_best_answer
-    question = @answer.question
-    if question.authored_by?(current_profile) && !@answer.authored_by?(current_profile)
+    @answer = Answer.find(params[:answer_id])
+    @question = Question.unscoped.find(params[:question_id])
+    if @question.authored_by?(current_profile) && !@answer.authored_by?(current_profile)
       Answer.transaction do
         @answer.mark_best_answer
       end
     end
     respond_to do |format|
-      format.html { redirect_to question_path(question) }
+      format.html { redirect_to question_path(@question) }
       format.json { render :text => @answer.to_json }
     end
   end

@@ -146,6 +146,13 @@ div.single_item div.action_buttons {
 	display: inline;
 }
 
+.vote_wrap { 
+  text-align: left; padding-left: 7px; color: #000; 
+  span { display: block; float: left; width: 2.5em; padding-left: 12px; color: #6c8702; }
+  .no { color: #9d2d08; }
+  .selected { background: url(/images/helpfulArrow.png) left center no-repeat; }
+}
+
 #answer_form fieldset {
 	position: relative;
 	clear: both;

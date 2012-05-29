@@ -42,12 +42,15 @@ class ProfilesController
 
     # TODO: Clean this up...scraped from ExplorationsController.
     # Special options needed to ensure only personal posts or group posts that I can access show up
-    blog_options = blog_filters
+    blog_options = {} #blog_filters
     
     ModelUtil.add_joins!(blog_options,"left join groups pg on pg.id = blogs.owner_id and blogs.owner_type = 'Group' and pg.group_type = 2")
     ModelUtil.add_conditions!(blog_options,"pg.id is null")
     ModelUtil.add_conditions!(blog_options,"blogs.owner_type <> 'Company'")
     @blog_posts = BlogPost.find(:all, blog_options, :limit => 2)
+    
+    
+    # @blog_posts = BlogPost.joins(:blog).where(["blogs.owner_type <> ?", "Company"]).order("rand()").limit(2)
     
 
     # TODO: Make into one query

@@ -166,7 +166,7 @@ module Notifications
       end
       
       def fire_update_notifications
-        q = Question.unscoped.find_by_id(self.question_id)
+        q = ::Question.unscoped.find_by_id(self.question_id)
         Notifier.deliver_best_answer(self) if self.best_answer and self.attribute_modified?(:best_answer) and q.is_closed?
       end
     end

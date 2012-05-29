@@ -14,19 +14,17 @@
     ])%>
   </div>
   <div class="action_buttons">
-    <%# if false %>
-      <%= voting_is_allowed(answer, question) do %>
-       <div class="bestAnswer">
-        <div><%= best_label_display(answer, question, "Best?") %></div> 
-        </div>
-      <% end %>
-      <% if answer.is_best?  %>
-        <div class="bestAnswer">
-          Best! <div><img src="/images/best.png" width="25" height="27"></div>
-        </div>
-      <% end %>
-      <%=render_voting_mechanism_for answer %>
-    <%# end %>
+    <%= voting_is_allowed(answer, question) do %>
+     <div class="bestAnswer">
+      <div><%= best_label_display(answer, question, "Best?") %></div> 
+      </div>
+    <% end %>
+    <% if answer.is_best?  %>
+      <div class="bestAnswer">
+        Best! <div><img src="/images/best.png" width="25" height="27"></div>
+      </div>
+    <% end %>
+    <%=render_voting_mechanism_for answer %>
   </div>
   <% reply_content_for(answer) do %>
     <div class="reply_wrapper">

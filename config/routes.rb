@@ -588,6 +588,7 @@ AgentstreamDe::Application.routes.draw do
     end
 
     resources :answers do
+        get :vote_best_answer
       resource :vote do
         post :helpful
         post :not_helpful

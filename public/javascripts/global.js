@@ -870,7 +870,7 @@ $.fn.extend({
 				success: function(data) {
 					var $dialog = $(data); 
 					$dialog
-						.dialog({ modal: true, bgiframe: true, dialogClass: 'popup form_popup ' + options.dialogClass, draggable: false, width: 350, height: 'auto', minHeight: 0 })  //.find(':input:not(:hidden):first').focus().end() // breaks auto completer
+						.dialog({ modal: true, bgiframe: true, dialogClass: 'popup form_popup ' + options.dialogClass, draggable: false, width: 375, height: 'auto', minHeight: 0 })  //.find(':input:not(:hidden):first').focus().end() // breaks auto completer
 						.find('form').bind('submit', function(event) {
 							var $form = $(this);
 							$.ajax({
@@ -883,7 +883,7 @@ $.fn.extend({
 											$('#flash_error').setup_notices();
 										}
 									} else
-										options.success.call($this[0], $dialog, data);								
+										options.success.call($this[0], $dialog, data);
 								}
 							}); 								
 							$form.find('textarea, input').attr('disabled', true);

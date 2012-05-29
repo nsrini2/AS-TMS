@@ -44,7 +44,7 @@ module VotesHelper
              :conditions => ['question_id =? and best_answer is true', question.id ])    
 
         if( (question.is_open? || question.is_closed?) )
-            label << link_to_vote_best(answer)
+            label << link_to_vote_best(question, answer)
         else
             label = nil
         end
@@ -64,12 +64,11 @@ module VotesHelper
     block_text if voting_is_allowed_for(answer, question)
   end
 
-  def link_to_vote_best(answer)
-    # link_to(image_tag("/images/voteBest.png", 
-    #                   :size => '17x21', 
-    #                   :alt => "Best answer?"), 
-    #                   vote_best_answer_answers_path(:id => answer.id), :class => 'best')
-    ""
+  def link_to_vote_best(question, answer)
+    link_to(image_tag("/images/voteBest.png", 
+                      :size => '17x21', 
+                      :alt => "Best answer?"), 
+                      question_answer_vote_best_answer_path(question, answer, :method => :post), :class => 'best')
   end
 
 end

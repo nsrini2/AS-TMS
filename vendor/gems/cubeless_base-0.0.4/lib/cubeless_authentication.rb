@@ -67,8 +67,7 @@ module CubelessAuthentication
   # end
 
   def current_profile
-    # logged_in? ? [current_user.profile].flatten.compact.last : false
-    logged_in? ? Profile.find_by_user_id(current_user.id) : false
+    @current_profile ||= logged_in? ? Profile.find_by_user_id(current_user.id) : false
   end
 
   def verify_session
