@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   acts_as_auditable :audit_unless_owner_attribute => :profile_id
 
   belongs_to :profile
-  has_many :answers, :order => "answers.created_at DESC", :dependent => :destroy
+  has_many :answers, :dependent => :destroy
 
   has_many :referred_to_profiles, :source => :profile, :through => :referrals, :conditions => "question_referrals.owner_type = 'Profile'"
   has_many :referred_to_groups, :source => :group, :through => :referrals, :conditions => "question_referrals.owner_type = 'Group'"

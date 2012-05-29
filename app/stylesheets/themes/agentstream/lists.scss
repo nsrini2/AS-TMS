@@ -126,6 +126,11 @@ div.single_item div.action_buttons {
   float: right;
 	width: 15%;
 }
+div.answer div.action_buttons {
+  float: right;
+  margin-top: 0px;
+	width: 15%;
+}
 
 #list .details ul.action_list li, div.single_item .details ul.action_list li { 
 	display: inline; 
@@ -141,17 +146,29 @@ div.single_item div.action_buttons {
 }
 #list div.action_buttons a.best {
 	display: inline;
+	padding-left: 5px;
 }
+
+div.bestAnswer img{
+  padding-left: 3px; 
+}
+
 #list div.vote_wrap a {
 	display: inline;
 }
 
-.vote_wrap { 
-  text-align: left; padding-left: 7px; color: #000; 
-  span { display: block; float: left; width: 2.5em; padding-left: 12px; color: #6c8702; }
-  .no { color: #9d2d08; }
-  .selected { background: url(/images/helpfulArrow.png) left center no-repeat; }
+div.voteRating {
+  float: right;
+  .vote_wrap { 
+    text-align: left; padding-left: 0px; color: #000; 
+    span { display: block; float: left; width: 2.5em; padding-left: 12px; color: #6c8702; }
+    .no { color: #9d2d08; }
+    .selected { background: url(/images/helpfulArrow.png) left center no-repeat; }
+  }
 }
+
+ 
+
 
 #answer_form fieldset {
 	position: relative;

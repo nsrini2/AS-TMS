@@ -38,7 +38,7 @@ class Answer < ActiveRecord::Base
   ### Summary Methods ###
 
   def self.find_summary(*args)
-    # 2012-05-22 SSJ I would like to redo all of these find summary methods, but not ready to pull trigger -- using where where needed
+    # 2012-05-22 SSJ I would like to redo all of these find summary methods, but not ready to pull trigger -- using where, where needed
     # need to determine a good way to find all methods that call this find_summary as most are done with a generic model.find_summary
     args.insert(0, :all) unless args.first == :all
     ModelUtil.get_options!(args).delete(:summary)

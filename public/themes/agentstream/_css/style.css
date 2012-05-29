@@ -4643,70 +4643,87 @@ div.single_item div.action_buttons {
   width: 15%;
 }
 
-/* line 130, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 129, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.answer div.action_buttons {
+  float: right;
+  margin-top: 0px;
+  width: 15%;
+}
+
+/* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .details ul.action_list li, div.single_item .details ul.action_list li {
   display: inline;
   margin-left: 0;
   margin-right: 30px;
 }
 
-/* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 140, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .details ul.action_list li a, div.single_item .details ul.action_list li a {
   color: #90b4bc;
   text-decoration: underline;
 }
 
-/* line 139, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 144, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.action_buttons a, div.single_item div.action_buttons a {
   display: block;
 }
 
-/* line 142, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 147, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.action_buttons a.best {
   display: inline;
+  padding-left: 5px;
 }
 
-/* line 145, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 152, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.bestAnswer img {
+  padding-left: 3px;
+}
+
+/* line 156, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.vote_wrap a {
   display: inline;
 }
 
-/* line 149, ../../../../app/stylesheets/themes/agentstream/lists.scss */
-.vote_wrap {
+/* line 160, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating {
+  float: right;
+}
+/* line 162, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating .vote_wrap {
   text-align: left;
-  padding-left: 7px;
+  padding-left: 0px;
   color: #000;
 }
-/* line 151, ../../../../app/stylesheets/themes/agentstream/lists.scss */
-.vote_wrap span {
+/* line 164, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating .vote_wrap span {
   display: block;
   float: left;
   width: 2.5em;
   padding-left: 12px;
   color: #6c8702;
 }
-/* line 152, ../../../../app/stylesheets/themes/agentstream/lists.scss */
-.vote_wrap .no {
+/* line 165, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating .vote_wrap .no {
   color: #9d2d08;
 }
-/* line 153, ../../../../app/stylesheets/themes/agentstream/lists.scss */
-.vote_wrap .selected {
+/* line 166, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating .vote_wrap .selected {
   background: url(/images/helpfulArrow.png) left center no-repeat;
 }
 
-/* line 156, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 173, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #answer_form fieldset {
   position: relative;
   clear: both;
   margin-top: 10px;
 }
 
-/* line 161, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 178, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list #answers .answer {
   clear: both;
 }
 
-/* line 166, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 183, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.answer:after, div.single_item:after {
   content: '.';
   display: block;
@@ -4716,49 +4733,49 @@ div.single_item div.action_buttons {
 }
 
 /* Blog Posts */
-/* line 169, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 186, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details {
   width: 470px;
 }
 
-/* line 172, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 189, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details h3, #list .blog_post_item .details h3 a {
   margin-bottom: 0;
   font-weight: bold;
 }
 
-/* line 176, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 193, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details .summary {
   margin-bottom: 10px;
 }
 
-/* line 179, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 196, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details ul.action_list {
   margin-top: 5px;
 }
 
-/* line 182, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 199, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details ul.action_list li span.tags {
   display: block;
 }
 
-/* line 185, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 202, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #blog_meta h4 {
   margin-bottom: 0;
 }
 
-/* line 188, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 205, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #blog_meta h4:first-child {
   margin-bottom: 1em;
 }
 
-/* line 191, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 208, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #blog_meta h4 a:hover {
   text-decoration: underline;
 }
 
 /* Ratings */
-/* line 196, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 213, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.rate {
   position: relative;
   float: right;
@@ -4766,12 +4783,12 @@ div.single_item div.action_buttons {
 }
 
 /* Comments */
-/* line 203, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 220, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div#comments {
   clear: both;
 }
 
-/* line 206, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 223, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div#comments:before {
   content: '.';
   display: block;
@@ -4781,122 +4798,122 @@ div.single_item div.action_buttons {
 }
 
 /* Status */
-/* line 209, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 226, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .status_results .list_item {
   clear: both;
 }
 
-/* line 213, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 230, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #filter_options .selected {
   font-size: 1.2em;
   font-weight: bold;
 }
 
 /* Admin  */
-/* line 220, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 237, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin_header #title {
   float: left;
 }
-/* line 221, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 238, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin_header #action_buttons {
   float: right;
 }
 
-/* line 223, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 240, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin {
   clear: both;
 }
-/* line 225, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin form#company_form {
   margin: 20px;
   font-size: 1.2em;
 }
-/* line 228, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 245, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin form#company_form input[type="text"], div#admin form#company_form textarea, div#admin form#company_form label {
   font-size: 1.2em;
   margin-bottom: 20px;
   width: 300px;
 }
 
-/* line 233, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 250, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview {
   display: block;
   width: 500px;
   padding-right: 30px;
 }
-/* line 237, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 254, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview .photo_wrapper {
   display: block;
   float: left;
   margin: 0 15px 0 0;
 }
-/* line 238, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 255, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview h3 {
   margin: 0 6px 0 0;
   display: inline;
   font-weight: bold;
 }
-/* line 239, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 256, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview h3 a {
   color: #4a6970;
 }
-/* line 240, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 257, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview p {
   display: inline;
 }
-/* line 241, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 258, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview p.what {
   font-size: 14px;
 }
-/* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 259, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview p.what span {
   font-size: 12px;
 }
 
-/* line 245, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 262, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#rss_feed {
   width: 800px;
 }
-/* line 247, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 264, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#rss_feed td {
   text-align: center;
 }
-/* line 250, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 267, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#rss_feed tr.odd {
   background-color: #FEFFED;
 }
 
-/* line 255, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 272, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list, table#company_members_list {
   border: 1px solid #4A6970;
   margin: 20px;
   width: 840px;
 }
-/* line 259, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 276, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.header, table#company_members_list tr.header {
   color: #FFF;
   background: #4A6970;
 }
-/* line 263, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 280, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list th, table#company_members_list th {
   padding-left: 5px;
   text-align: left;
 }
-/* line 268, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 285, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.company .button, table#companies_list tr.member .button, table#company_members_list tr.company .button, table#company_members_list tr.member .button {
   float: right;
   margin: 10px 10px 0 0;
 }
-/* line 273, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 290, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.company td, table#companies_list tr.member td, table#company_members_list tr.company td, table#company_members_list tr.member td {
   padding-left: 5px;
   text-align: left;
 }
-/* line 278, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 295, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .even, table#company_members_list .even {
   background: #D8E9E6;
 }
-/* line 281, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 298, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .odd, table#company_members_list .odd {
   background: #90B4BC;
 }

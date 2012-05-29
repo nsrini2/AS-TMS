@@ -41,10 +41,9 @@ module VotesHelper
   
   def best_label_display(answer, question, label)
         best = Answer.find(:all, 
-             :conditions => ['question_id =? and best_answer is true', question.id ])    
-
+             :conditions => ['question_id =? and best_answer is true', question.id ])
         if( (question.is_open? || question.is_closed?) )
-            label << link_to_vote_best(question, answer)
+            label << "<br />" << link_to_vote_best(question, answer)
         else
             label = nil
         end

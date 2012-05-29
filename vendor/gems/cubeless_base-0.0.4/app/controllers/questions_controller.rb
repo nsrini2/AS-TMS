@@ -38,10 +38,10 @@ class QuestionsController < ApplicationController
 
   def show
     # @question_summary = Question.find(params[:id], :include => [:best_answer], :auth => true).first
-    # SSJ not sure how to update the :auth => true param in 3.x
+    # SSJ not sure what the :auth => true param does exactly...
     @question_summary = Question.where(:id => params[:id]).includes(:best_answer).first
     @question_summary.update_author_viewed_at current_profile
-    @answer_summaries = @question_summary.answers.summary(:all, answer_filters())
+    @answer_summaries = @question_summary.answers.order(answer_filters[:order])
     @best_answer = @question_summary.best_answer
     redirect_to new_question_answer_path(:question_id => @question_summary.id) if @question_summary.is_open? and @answer_summaries.size==0
   end

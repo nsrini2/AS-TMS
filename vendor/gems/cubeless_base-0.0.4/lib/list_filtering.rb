@@ -19,7 +19,9 @@ module ListFiltering
   @@answer_sort_options_list = {'newest_to_oldest' => 'answers.created_at desc', 'oldest_to_newest' => 'answers.created_at', 'most_helpful' => 'net_helpful desc, num_positive_votes desc'}
   def answer_filters(find_options={})
     find_options[:order] ||= @@answer_sort_options_list[params['filter_order'] || params.store('filter_order','newest_to_oldest')]
-    find_options[:page] ||= default_paging
+    # SSJ now using will_paginate so delete this
+    # find_options[:page] ||= default_paging
+    find_options.delete(:page)
     find_options[:summary] ||= true
     find_options
   end

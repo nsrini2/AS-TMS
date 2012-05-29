@@ -14,6 +14,7 @@
     ])%>
   </div>
   <div class="action_buttons">
+    <%=render_voting_mechanism_for answer %>
     <%= voting_is_allowed(answer, question) do %>
      <div class="bestAnswer">
       <div><%= best_label_display(answer, question, "Best?") %></div> 
@@ -24,7 +25,6 @@
         Best! <div><img src="/images/best.png" width="25" height="27"></div>
       </div>
     <% end %>
-    <%=render_voting_mechanism_for answer %>
   </div>
   <% reply_content_for(answer) do %>
     <div class="reply_wrapper">
