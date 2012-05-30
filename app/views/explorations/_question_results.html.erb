@@ -11,8 +11,7 @@
   	  <%#= filter_sort_controls('Question') %>
   	  <%= category_filter_sort_controls('Question') %>
   	</div>
-    <%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries} )%>
+    <%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries, :avatar_size => :thumb_80 } )%>
 	</div>
-  <%#= render_pagination(@question_summaries) %>
 	<%= will_paginate @question_summaries %>
 </div>

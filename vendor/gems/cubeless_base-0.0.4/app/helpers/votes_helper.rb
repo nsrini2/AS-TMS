@@ -15,14 +15,14 @@ module VotesHelper
 
   def link_to_vote_helpful(model)
     url = helpful_question_answer_vote_path(@question_summary || model.question, model)
-    # url = "/"
-    link_to(image_tag("/images/helpfulYes.png", :alt => "Helpful", :size => '48x20', :title => "Helpful"), url, :class => 'vote helpful')
+    # link_to(image_tag("/images/helpfulYes.png", :alt => "Helpful", :size => '48x20', :title => "Helpful"), url, :class => 'vote helpful')
+    link_to(image_tag("/images/de/thumbs_up_small.png", :alt => "Helpful", :title => "Helpful"), url, :class => 'vote helpful')
   end
 
   def link_to_vote_not_helpful(model)
     url = not_helpful_question_answer_vote_path(@question_summary || model.question, model)
-     # url = "/"
-    link_to(image_tag("/images/helpfulNo.png", :alt => "Not Helpful", :size => '48x20', :title => "Not Helpful"), url, :class => 'vote not_helpful')
+    #link_to(image_tag("/images/helpfulNo.png", :alt => "Not Helpful", :size => '48x20', :title => "Not Helpful"), url, :class => 'vote not_helpful')
+    link_to(image_tag("/images/de/thumbs_down_small.png", :alt => "Not Helpful", :title => "Not Helpful"), url, :class => 'vote not_helpful')
   end
 
   def render_voting_mechanism_for(model)
