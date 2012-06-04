@@ -42,6 +42,8 @@ class Offer < ActiveRecord::Base
   scope :not_deleted, where(:is_deleted => false)
   scope :pending, where(:is_approved => false)
   scope :approved, where(:is_approved => true)
+  scope :deals, where(:offer_type_id => 1)
+  scope :extras, where("offer_type_id != ?", 1)
 
   #default_scope :order => 'description'
 
