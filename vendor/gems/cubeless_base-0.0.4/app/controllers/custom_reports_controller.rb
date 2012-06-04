@@ -20,6 +20,13 @@ class CustomReportsController < ApplicationController
               :filename => "as_data_dump.csv")
   end
   
+  
+  def weekly_report
+    data = StatusReport.weekly_dump
+    filename = "AgentStream-weekly-#{Date.today.strftime("%Y-%m-%d")}.csv"
+    send_data(data, :type => 'text/csv; charset=utf-8', :filename => filename)
+  end
+  
   # GET /custom_reports
   # GET /custom_reports.xml
   def index

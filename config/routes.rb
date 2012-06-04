@@ -199,7 +199,7 @@ AgentstreamDe::Application.routes.draw do
     end
   end
 
-  match 'custom_reports/:action' => 'custom_reports#(?i-mx:usage|data_dump)'
+  match 'custom_reports/:action' => 'custom_reports#(?i-mx:usage|data_dump|weekly_report)'
   resources :custom_reports do
     collection do
       post :create_preview

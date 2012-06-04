@@ -9,10 +9,11 @@
 <br/><br/>
 
 <% if Config[:open_registration] -%>
-	<div id="agent_stream_usage_report">
-		<%= link_to 'Download Registration and Content CSV', :controller => 'custom_reports', :action => 'usage' %><br />
-		<%= link_to 'Download Data Dump', :controller => 'custom_reports', :action => 'data_dump' %>
-	</div>	
+  <div id="agent_stream_usage_report">
+    <%= link_to 'Download Weekly Report', :controller => 'custom_reports', :action => 'weekly_report' %><br />
+    <%= link_to 'Download Registration and Content CSV', :controller => 'custom_reports', :action => 'usage' %><br />
+    <%= link_to 'Download Data Dump', :controller => 'custom_reports', :action => 'data_dump' %>
+  </div>  
 <% end -%>
 
 <% unless @custom_reports.empty? %>
