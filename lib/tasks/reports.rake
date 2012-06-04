@@ -11,5 +11,14 @@ namespace :reports do
       Rails.logger.warn "Problem with running data_dump: #{$!}"
     end
   end
-
+  desc "email the weekly_report"
+  task :send_weekly_report => :environment do
+    puts "Running ..."
+    begin        
+      StatusReport.mail_weekly_report
+    rescue
+      puts "Problem with running weekly_report: #{$!}"
+      Rails.logger.warn "Problem with running weekly_report: #{$!}"
+    end
+  end
 end
