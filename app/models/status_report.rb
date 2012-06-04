@@ -9,8 +9,8 @@ class StatusReport
   
 class << self
   def mail_weekly_report
-    recipient = "AgentStreamData@sharepointemail.sabre.com"
-    recipient = "scott.johnson@sabre.com"
+    recipient = ["AgentStreamData@sharepointemail.sabre.com"]
+    recipient << "scott.johnson@sabre.com"
     Notifier.weekly_status_report(recipient).deliver
   end  
   

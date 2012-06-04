@@ -16,8 +16,11 @@ class Notifier < ActionMailer::Base
   def weekly_status_report(recipient)
     data = StatusReport.weekly_dump
     filename = "AgentStream-weekly-#{Date.today.strftime("%Y-%m-%d")}.csv"
-    attachments[filename] = data
-    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report")
+    mail.attachments[filename.to_s] = {
+      :mime_type => "text/csv", 
+      :content => data
+    }
+    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report")  
   end
 
   def api_key_for(requester)
