@@ -34,6 +34,7 @@ class << self
     weekly_visitor_count_by_countries = SiteVisit.weekly_visitors_by_country  
     weekly_visitor_count_by_countries.each do |visitor_count_by_countries|
       visitor_count_by_countries.each do |visitor_count_by_country|
+        visitor_count_by_country.gsub!(/\n/, '')
         data << "Number of unique visitors on, #{visitor_count_by_country}\n"
       end
     end
@@ -41,7 +42,7 @@ class << self
     
     profile_count_by_countries = SiteVisit.active_profiles_by_country
     profile_count_by_countries.each do |profile_count_by_country|
-      data << "Number of active profiles from, #{profile_count_by_country.country}, #{profile_count_by_country.profile_count}\n"
+      data << "Number of active profiles from, #{profile_count_by_country.country.gsub(/\n/, '')}, #{profile_count_by_country.profile_count}\n"
     end
     
     data
