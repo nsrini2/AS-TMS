@@ -4712,7 +4712,7 @@ div.voteRating .vote_wrap span {
   display: block;
   float: left;
   width: 2.5em;
-  padding-left: 8px;
+  padding-left: 12px;
   color: #6c8702;
 }
 /* line 178, ../../../../app/stylesheets/themes/agentstream/lists.scss */
