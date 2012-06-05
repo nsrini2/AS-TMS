@@ -39,6 +39,7 @@ class QuestionsController < ApplicationController
   def show
     # @question_summary = Question.find(params[:id], :include => [:best_answer], :auth => true).first
     # SSJ not sure what the :auth => true param does exactly...
+    # debugger
     @question_summary = Question.where(:id => params[:id]).includes(:best_answer).first
     @question_summary.update_author_viewed_at current_profile
     @answer_summaries = @question_summary.answers.order(answer_filters[:order])

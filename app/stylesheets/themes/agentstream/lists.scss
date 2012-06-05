@@ -106,7 +106,8 @@ div.single_item .question_text {
 }
 
 div.single_item #best_answer_top {
-	clear:both;
+	clear: both;
+	margin-left: 40px;
 }
 
 div.single_item #best_answer_top h4 {
@@ -119,9 +120,18 @@ div.single_item .details {
 	width: 65%;
 }
 div.single_item div.photo_wrapper img.photo {
-	width: 120px;
-	height: 120px;
+  width: 120px;
+  height: 120px;
 }
+/*div#best_answer_top div.photo_wrapper {
+  margin-right: 10px;
+}*/
+
+div#best_answer_top div.photo_wrapper img.photo {
+  width: 80px;
+  height: 80px;
+} 
+
 div.single_item div.action_buttons {
   float: right;
 	width: 15%;

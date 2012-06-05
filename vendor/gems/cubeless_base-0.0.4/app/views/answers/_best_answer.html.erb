@@ -1,10 +1,15 @@
-<% if best_answer %>
-<div id="best_answer_top">
+<% if answer %>
+<div id="best_answer_top" class="answer">
   <h4>Best Answer</h4>
   <div class="avatar">
-    <%= link_to_avatar_for(answer.profile) %>
+    <%= link_to_avatar_for(answer.profile, :thumb => :thumb_80) %>
   </div>
   <div class="details">
+    <div class="action_buttons">
+      <div class="bestAnswer">
+        Best! <div><img src="/images/best.png"></div>
+      </div>
+    </div>  
     <div class="answer_text">
       <%=truncated_auto_linked_answer_text(answer)%>
     </div>

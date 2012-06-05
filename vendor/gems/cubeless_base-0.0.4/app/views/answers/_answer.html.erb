@@ -16,8 +16,8 @@
   <div class="action_buttons">
     <%=render_voting_mechanism_for answer %>
     <%= voting_is_allowed(answer, question) do %>
-     <div class="bestAnswer">
-      <div><%= best_label_display(answer, question, "Best?") %></div> 
+      <div class="bestAnswer">
+        <div><%= best_label_display(answer, question, "Best?") %></div> 
       </div>
     <% end %>
     <% if answer.is_best?  %>
