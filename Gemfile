@@ -84,6 +84,7 @@ gem 'newrelic_rpm', '~> 3.3.4.1'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'ruby-debug'
   gem 'seed_me'
   # gem 'factory_girl_rails'
   gem 'rspec-rails'
