@@ -226,22 +226,29 @@ div.single_item .question_text {
 /* line 108, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.single_item #best_answer_top {
   clear: both;
-  margin-left: 40px;
 }
-
-/* line 113, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 110, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.single_item #best_answer_top h4 {
   margin-bottom: 0px;
   margin-top: 20px;
 }
+/* line 114, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top #best_burst {
+  text-align: center;
+}
+/* line 117, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top div.bestAnswer img {
+  padding-left: 5px;
+  margin-top: -10px;
+}
 
-/* line 118, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 123, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.single_item .details {
   float: left;
   width: 65%;
 }
 
-/* line 122, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 127, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.single_item div.photo_wrapper img.photo {
   width: 120px;
   height: 120px;
@@ -250,73 +257,73 @@ div.single_item div.photo_wrapper img.photo {
 /*div#best_answer_top div.photo_wrapper {
   margin-right: 10px;
 }*/
-/* line 130, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#best_answer_top div.photo_wrapper img.photo {
   width: 80px;
   height: 80px;
 }
 
-/* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 140, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.single_item div.action_buttons {
   float: right;
   width: 15%;
 }
 
-/* line 139, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 144, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.answer div.action_buttons {
   float: right;
   margin-top: 0px;
   width: 15%;
 }
 
-/* line 145, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 150, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .details ul.action_list li, div.single_item .details ul.action_list li {
   display: inline;
   margin-left: 0;
   margin-right: 30px;
 }
 
-/* line 150, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 155, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .details ul.action_list li a, div.single_item .details ul.action_list li a {
   color: #90b4bc;
   text-decoration: underline;
 }
 
-/* line 154, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 159, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.action_buttons a, div.single_item div.action_buttons a {
   display: block;
 }
 
-/* line 157, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 162, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.action_buttons a.best {
   display: inline;
   padding-left: 5px;
 }
 
-/* line 162, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 167, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.bestAnswer img {
   padding-left: 5px;
 }
 
-/* line 166, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 171, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.vote_wrap a {
   display: inline;
   padding-left: 18px;
 }
 
-/* line 171, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 176, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.voteRating {
   float: right;
   font-weight: bold;
 }
-/* line 174, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 179, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.voteRating .vote_wrap {
   font-weight: normal;
   text-align: left;
   padding-left: 0px;
   color: #000;
 }
-/* line 177, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 182, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.voteRating .vote_wrap span {
   display: block;
   float: left;
@@ -324,33 +331,33 @@ div.voteRating .vote_wrap span {
   padding-left: 12px;
   color: #6c8702;
 }
-/* line 178, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 183, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.voteRating .vote_wrap .no {
   color: #9d2d08;
 }
-/* line 179, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 184, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.voteRating .vote_wrap .selected {
   background: url(/images/helpfulArrow.png) left center no-repeat;
 }
 
-/* line 183, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 188, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.bestAnswer {
   font-weight: bold;
 }
 
-/* line 187, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 192, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #answer_form fieldset {
   position: relative;
   clear: both;
   margin-top: 10px;
 }
 
-/* line 192, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 197, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list #answers .answer {
   clear: both;
 }
 
-/* line 197, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 202, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.answer:after, div.single_item:after {
   content: '.';
   display: block;
@@ -360,49 +367,49 @@ div.bestAnswer {
 }
 
 /* Blog Posts */
-/* line 200, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 205, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details {
   width: 470px;
 }
 
-/* line 203, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 208, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details h3, #list .blog_post_item .details h3 a {
   margin-bottom: 0;
   font-weight: bold;
 }
 
-/* line 207, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 212, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details .summary {
   margin-bottom: 10px;
 }
 
-/* line 210, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 215, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details ul.action_list {
   margin-top: 5px;
 }
 
-/* line 213, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 218, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .blog_post_item .details ul.action_list li span.tags {
   display: block;
 }
 
-/* line 216, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 221, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #blog_meta h4 {
   margin-bottom: 0;
 }
 
-/* line 219, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 224, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #blog_meta h4:first-child {
   margin-bottom: 1em;
 }
 
-/* line 222, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 227, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #blog_meta h4 a:hover {
   text-decoration: underline;
 }
 
 /* Ratings */
-/* line 227, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 232, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div.rate {
   position: relative;
   float: right;
@@ -410,12 +417,12 @@ div.bestAnswer {
 }
 
 /* Comments */
-/* line 234, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 239, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div#comments {
   clear: both;
 }
 
-/* line 237, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list div#comments:before {
   content: '.';
   display: block;
@@ -425,122 +432,122 @@ div.bestAnswer {
 }
 
 /* Status */
-/* line 240, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 245, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #list .status_results .list_item {
   clear: both;
 }
 
-/* line 244, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 249, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 #filter_options .selected {
   font-size: 1.2em;
   font-weight: bold;
 }
 
 /* Admin  */
-/* line 251, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 256, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin_header #title {
   float: left;
 }
-/* line 252, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 257, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin_header #action_buttons {
   float: right;
 }
 
-/* line 254, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 259, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin {
   clear: both;
 }
-/* line 256, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 261, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin form#company_form {
   margin: 20px;
   font-size: 1.2em;
 }
-/* line 259, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 264, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#admin form#company_form input[type="text"], div#admin form#company_form textarea, div#admin form#company_form label {
   font-size: 1.2em;
   margin-bottom: 20px;
   width: 300px;
 }
 
-/* line 264, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 269, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview {
   display: block;
   width: 500px;
   padding-right: 30px;
 }
-/* line 268, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 273, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview .photo_wrapper {
   display: block;
   float: left;
   margin: 0 15px 0 0;
 }
-/* line 269, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 274, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview h3 {
   margin: 0 6px 0 0;
   display: inline;
   font-weight: bold;
 }
-/* line 270, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 275, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview h3 a {
   color: #4a6970;
 }
-/* line 271, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 276, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview p {
   display: inline;
 }
-/* line 272, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 277, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview p.what {
   font-size: 14px;
 }
-/* line 273, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 278, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 td#stream_message_preview p.what span {
   font-size: 12px;
 }
 
-/* line 276, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 281, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#rss_feed {
   width: 800px;
 }
-/* line 278, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 283, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#rss_feed td {
   text-align: center;
 }
-/* line 281, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 286, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#rss_feed tr.odd {
   background-color: #FEFFED;
 }
 
-/* line 286, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 291, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list, table#company_members_list {
   border: 1px solid #4A6970;
   margin: 20px;
   width: 840px;
 }
-/* line 290, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 295, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.header, table#company_members_list tr.header {
   color: #FFF;
   background: #4A6970;
 }
-/* line 294, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 299, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list th, table#company_members_list th {
   padding-left: 5px;
   text-align: left;
 }
-/* line 299, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 304, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.company .button, table#companies_list tr.member .button, table#company_members_list tr.company .button, table#company_members_list tr.member .button {
   float: right;
   margin: 10px 10px 0 0;
 }
-/* line 304, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 309, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list tr.company td, table#companies_list tr.member td, table#company_members_list tr.company td, table#company_members_list tr.member td {
   padding-left: 5px;
   text-align: left;
 }
-/* line 309, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 314, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .even, table#company_members_list .even {
   background: #D8E9E6;
 }
-/* line 312, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+/* line 317, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list .odd, table#company_members_list .odd {
   background: #90B4BC;
 }
