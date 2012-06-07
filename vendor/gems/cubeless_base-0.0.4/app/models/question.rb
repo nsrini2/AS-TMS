@@ -79,7 +79,7 @@ class Question < ActiveRecord::Base
   end
 
   def self.recalculate_all_answer_counts!
-    update_all('answers_count=(select count(1) from answers where answers.question_id=questions.id)')
+    unscoped.update_all('answers_count=(select count(1) from answers where answers.question_id=questions.id)')
   end
 
   def new_answers_count
@@ -155,7 +155,8 @@ class Question < ActiveRecord::Base
   end
 
   def num_answers
-    answers_count
+    # answers_count
+    answers.count
   end
 
   def is_being_watched_by_current_user?

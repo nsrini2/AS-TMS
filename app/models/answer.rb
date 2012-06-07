@@ -4,6 +4,8 @@ class Answer < ActiveRecord::Base
   include Notifications::Answer
   stream_to :company, :activity
   
+  self.per_page = 7
+  
   def company?
     self.question.company?
   end

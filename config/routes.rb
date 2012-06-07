@@ -269,14 +269,6 @@ AgentstreamDe::Application.routes.draw do
     end
   end
 
-  resources :answers do
-    resources :abuse, :controller => "abuses" do
-      collection do
-        get :abuse_popup
-      end
-    end
-  end
-
   resources :api, :controller => "apis" do
     collection do
       get :photos
@@ -586,12 +578,20 @@ AgentstreamDe::Application.routes.draw do
         get :abuse_popup
       end
     end
-
+    
     resources :answers do
         get :vote_best_answer
       resource :vote do
         post :helpful
         post :not_helpful
+      end
+    end
+  end
+
+  resources :answers do
+    resources :abuse, :controller => "abuses" do
+      collection do
+        get :abuse_popup
       end
     end
   end

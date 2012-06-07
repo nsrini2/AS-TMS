@@ -56,7 +56,7 @@ private
     # @question_summary = Question.find_summary(:first, :conditions => ['questions.id=?',params[:question_id]], :auth => true, :unscoped => true)
     # @answer_summaries = @question_summary.answers.find(:all, answer_filters(:summary => true)) if @question_summary
     @question_summary = Question.find_summary(:first, :conditions => ['questions.id=?',params[:question_id]], :unscoped => true)
-    @answer_summaries = @question_summary.answers.summary if @question_summary
+    @answer_summaries = @question_summary.answers.order(answer_filters[:order]).paginate(:page => params[:page]) if @question_summary
   end
   
 end

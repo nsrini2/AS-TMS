@@ -1,8 +1,7 @@
 <div id="answers">
-	<% if answers && answers.size > 0 %>
-		<h3 class="answers">Answers <span class="count">(<%= answers.size -%>)</span></h3>
-		<%= sort_control('Answer') %>
-	<%end%>
-	<%=render :partial => 'answers/answer', :collection => answers, :locals => {:question => question}%>
-	<%#= render_pagination answers %>
+  <% if answers && answers.size > 0 %>
+    <h3 class="answers">Answers <span class="count">(<%= question.num_answers -%>)</span></h3>
+    <%= sort_control('Answer') %>
+  <%end%>
+  <%=render :partial => 'answers/answer', :collection => answers, :locals => {:question => question}%>
 </div>

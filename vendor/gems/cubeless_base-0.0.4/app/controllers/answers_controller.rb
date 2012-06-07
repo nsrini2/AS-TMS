@@ -31,9 +31,8 @@ class AnswersController < ApplicationController
   end
 
   def for_new
-    # SSJ I dont like this but I have to unscope, then reapply scope
-    @question_summary = Question.unscoped.find(params[:question_id],:conditions => ["questions.company_id = 0"])
-    @answer_summaries = @question_summary.answers if @question_summary
+    @question_summary = Question.find(params[:question_id])
+    @answer_summaries = @question_summary.answers.order(answer_filters[:order]).paginate(:page => params[:page]) if @question_summary
     rescue ActiveRecord::RecordNotFound
       false
   end

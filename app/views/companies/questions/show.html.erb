@@ -2,7 +2,7 @@
 <% content_for(:body_class, "question_answers") -%>
 
 <div class="list_action_button">
-	<%= link_to("Show All", companies_questions_path) %>
+  <%= link_to("Show All", companies_questions_path) %>
 </div>
 
 <h2>Question and Answers</h2>
@@ -11,11 +11,15 @@
 <% end %>
 
 <div class="list" id="list">
-	<div id="qaQuestion<%=@question_summary.id%>" class="question <%=@question_summary.id%> single_item list_item description">
-			<%= render :partial =>'questions/question', :locals => {:question => @question_summary, :show => {:linked_question => false, :close => true}}%>
-			<%= render(:partial => 'answers/best_answer', :locals => {:answer => @best_answer}) %>
-	</div>
-	<%= render( :partial => 'answers/answers', :locals =>{:answers => @answer_summaries, :question => @question_summary})%>
+  <div id="qaQuestion<%=@question_summary.id%>" class="question <%=@question_summary.id%> single_item list_item description">
+      <%= render :partial =>'questions/question', :locals => {:question => @question_summary, :show => {:linked_question => false, :close => true}}%>
+      <%= render(:partial => 'answers/best_answer', :locals => {:answer => @best_answer}) %>
+  </div>
+  <%= render( :partial => 'answers/answers', 
+              :locals =>{:answers => @answer_summaries, :question => @question_summary})%>
+  <div class="see_all" style="margin-left: 10px;">
+    <%= will_paginate @answer_summaries %>
+  </div>            
 </div>
 <% if @wide_skyscraper %>
 </div>

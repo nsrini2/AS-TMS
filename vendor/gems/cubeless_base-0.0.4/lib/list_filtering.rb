@@ -21,7 +21,7 @@ module ListFiltering
     find_options[:order] ||= @@answer_sort_options_list[params['filter_order'] || params.store('filter_order','newest_to_oldest')]
     # SSJ now using will_paginate so delete this
     # find_options[:page] ||= default_paging
-    find_options.delete(:page)
+    # find_options.delete(:page)
     find_options[:summary] ||= true
     find_options
   end

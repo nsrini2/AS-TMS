@@ -13,7 +13,7 @@ class Companies::QuestionsController < ApplicationController
   def show
     @question_summary = Question.find_summary(params[:id], :include => [:best_answer], :auth => true, :unscoped => true)
     @question_summary.update_author_viewed_at current_profile
-    @answer_summaries = @question_summary.answers.order(answer_filters[:order])
+    @answer_summaries = @question_summary.answers.order(answer_filters[:order]).paginate(:page => params[:page])
     @best_answer = @question_summary.best_answer   
     
     rescue
