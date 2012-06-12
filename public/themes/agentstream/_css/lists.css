@@ -234,7 +234,7 @@ div.single_item #best_answer_top h4 {
 }
 /* line 114, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.single_item #best_answer_top #best_burst {
-  text-align: center;
+  padding-left: 25px;
 }
 /* line 117, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.single_item #best_answer_top div.bestAnswer img {
@@ -259,8 +259,8 @@ div.single_item div.photo_wrapper img.photo {
 }*/
 /* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div#best_answer_top div.photo_wrapper img.photo {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
 }
 
 /* line 140, ../../../../app/stylesheets/themes/agentstream/lists.scss */

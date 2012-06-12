@@ -2,19 +2,19 @@
 <div id="best_answer_top" class="answer">
   <h4>Best Answer</h4>
   <div class="avatar">
-    <%= link_to_avatar_for(answer.profile, :thumb => :thumb_80) %>
+    <%= link_to_avatar_for(answer.profile, :thumb => :thumb_large) %>
   </div>
-  <div class="details">
-    <div class="action_buttons">
-      <div class="bestAnswer">
-        <div id="best_burst">Best!</div> 
-        <div><img src="/images/best_large.png"></div>
-      </div>
-    </div>  
+  <div class="details">  
     <div class="answer_text">
       <%=truncated_auto_linked_answer_text(answer)%>
     </div>
     <p>answered by <%=link_to_author answer%> on <%=pretty_datetime(answer.created_at)%></p>
+  </div>
+  <div class="action_buttons">
+    <div class="bestAnswer">
+      <div id="best_burst">Best!</div> 
+      <div><img src="/images/best_large.png"></div>
+    </div>
   </div>
 </div>
 <% end %>
