@@ -12,8 +12,8 @@
         <% @countries.each do |c| -%>
             <tr class="<%= cycle("odd", "even") %>">
                 <td><%= c.id %></td>
-                <td><%= c.country %></td>
-                <td><%= c.abbreviation %></td>
+                <td><%= c.name %></td>
+                <td><%= c.cctld %></td>
             </tr>
         <% end -%>
     </tbody>

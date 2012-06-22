@@ -30,7 +30,7 @@ class Location < ActiveRecord::Base
     #   self.longitude = results[0].longitude
     #   self.city = results[0].locality || results[0].sub_administrative_area
     #   self.state_province = StateProvince.find_by_abbreviation(results[0].administrative_area) rescue nil
-    #   self.country = Country.find_or_create_by_abbreviation(results[0].country_code) rescue nil
+    #   self.country = Country.find_or_create_by_cctld(results[0].country_code) rescue nil
     # end
     
     # New MapQuest way
@@ -44,7 +44,7 @@ class Location < ActiveRecord::Base
         self.longitude = location_data["latLng"]["lng"]
         self.city = location_data["adminArea5"]
         self.state_province = StateProvince.find_by_abbreviation(location_data["adminArea3"]) rescue nil
-        self.country = Country.find_or_create_by_abbreviation(location_data["adminArea1"]) rescue nil
+        self.country = Country.find_or_create_by_cctld(location_data["adminArea1"]) rescue nil
       end
       self.save      
     rescue

@@ -7,15 +7,24 @@ class Country < ActiveRecord::Base
 
   # after_create :update_data
 
-  validates_uniqueness_of :abbreviation, :country
+  validates_uniqueness_of :name, :cctld_code, :srw_country_code
 
   serialize :location_data
+  
+  def abbreviation
+    # the code that calls this is actually looking for the Country Code Top Level Domain (ccTLD)
+    cctld || srw_country_code
+  end
+  
+  def country
+    name
+  end
 
   def update_data
-    results = Geocoding::get(abbreviation || country)
+    results = Geocoding::get(cctld || name)
     if results.status == Geocoding::GEO_SUCCESS
-      self.country = results[0].address
-      self.abbreviation = results[0].country_code
+      self.name = results[0].address
+      self.cctld = results[0].country_code
       self.location_data = results[0]
     end
     self.save
@@ -23,7 +32,7 @@ class Country < ActiveRecord::Base
 
   def self.OPTIONIZE
     self.all.collect do |c|
-      [c.country, c.id]
+      [c.name, c.id]
     end
   end
 
