@@ -70,6 +70,13 @@ class SabreRedWorkspaceTicket
     "#{self.agentid}_#{self.pcc.to_s}"
   end
   
+  def country_name
+    Country.find_by_srw_country_code(self.country).name
+    rescue NoMethodError
+      # if a matching Country is not found, just return the SWR code provided
+      self.country
+  end
+  
   def find_or_create_agentstream_user
     # double chek user dose not exist before creating it
     if !agent_stream_user && self.valid?
@@ -93,7 +100,7 @@ class SabreRedWorkspaceTicket
         user.save! && profile.save!
       end
       profile_registration_values = [{:site_registration_field_id => 5, :value => self.city}]
-      profile_registration_values << {:site_registration_field_id => 4, :value => self.country} 
+      profile_registration_values << {:site_registration_field_id => 4, :value => self.country_name} 
       profile_registration_values << {:site_registration_field_id => 1, :value => self.pcc} 
       profile_registration_values << {:site_registration_field_id => 2, :value => self.agencyname}
       
@@ -103,7 +110,7 @@ class SabreRedWorkspaceTicket
       end      
     end 
     agent_stream_user
-    rescue Exception => e 
+    rescue Exception => e
       Rails.logger.error "An error occured creating a user from SRW"
       Rails.logger.error self.inspect
       Rails.logger.error e.message

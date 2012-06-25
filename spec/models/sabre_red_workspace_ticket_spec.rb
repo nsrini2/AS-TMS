@@ -41,6 +41,7 @@ describe User do
   end
    
   it "should create a new agentstream user if one does not exist with the provided AgentID_PCC" do
+    # pending "double check of test database"
     user = @@valid_ticket.find_or_create_agentstream_user
     profile = user.profile
     assert profile.valid?
@@ -59,5 +60,20 @@ describe User do
     user = @@valid_ticket_bad_email.find_or_create_agentstream_user
     user.should be_nil
   end  
+  
+  it "sould return the AgentStream country name that matches the srw_country_code when calling country_name" do
+    class Result
+      def name
+        "United States"
+      end
+    end  
+    @result = Result.new
+    Country.stub!(:find_by_srw_country_code).and_return(@result)
+    assert_equal("United States", @@valid_ticket.country_name)
+  end  
 
+  it "sould return the srw_country_code if the srw_country_code does not match a Country when calling country_name" do
+    Country.stub!(:find_by_srw_country_code).and_return(nil)
+    assert_equal("US", @@valid_ticket.country_name)
+  end
 end
