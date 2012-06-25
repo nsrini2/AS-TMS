@@ -122,6 +122,13 @@ class ChatsController < ApplicationController
     end  
   end
   
+  #GET /chats/report/:id
+  def report
+    # lock this up in the model
+    @chat = Chat.find(params[:id]) 
+    send_data @chat.attendance_report(current_profile), :filename => "#{@chat.title}_attendance.csv"
+  end
+  
   def rsvp
     if Participant.set_status(@chat, current_profile.id, params[:status])      
       link = view_context.link_to_rsvp(@chat)

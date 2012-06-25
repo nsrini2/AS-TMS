@@ -52,6 +52,9 @@ ul.group_actions.full_screen {
 /* Group Widgets */
 #group_widgets, #chat_attendees {
 	margin: 10px 20px;
+	a.right {
+	  float: right;
+	}  
 }
 #group_widgets h3, #chat_attendees h3 {
 	margin-bottom: 2px;

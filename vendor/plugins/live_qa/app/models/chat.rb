@@ -123,6 +123,14 @@ class Chat < ActiveRecord::Base
     
   end
   
+  def attendance_report(current_profile)
+    if current_profile.has_role?(Role::CubelessAdmin)
+      data = self.participants.map { |attendee| 
+        "#{attendee.screen_name},#{attendee.pcc},#{attendee.status}\n" 
+      }
+    end  
+  end
+  
   def attending?
     false
   end
