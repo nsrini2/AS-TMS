@@ -68,8 +68,6 @@ gem 'cubeless_base', '0.0.4', :path => 'vendor/gems/cubeless_base-0.0.4'
 gem 'ruport'
 gem 'acts_as_reportable'
 
-# gem 'acts_as_reportable'
-
 gem 'deals_and_extras', '0.0.2', :path => 'vendor/gems/deals_and_extras-0.0.2'
 
 gem 'devise', '1.3.1'
@@ -86,7 +84,7 @@ gem 'newrelic_rpm', '~> 3.3.4.1'
 group :development, :test do
   gem 'ruby-debug'
   gem 'seed_me'
-  # gem 'factory_girl_rails'
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'rcov'  
   # gem 'ruby-prof'

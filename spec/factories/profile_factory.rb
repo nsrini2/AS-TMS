@@ -42,7 +42,7 @@ FactoryGirl.define do
   end  
   
   Factory.define :blog do |f|
-
+    
   end
   
   Factory.define :note do |f|

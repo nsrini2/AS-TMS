@@ -1,10 +1,12 @@
-require 'rake'
-require 'spec/rake/spectask'
+begin
+  require 'rake'
+  require 'spec/rake/spectask'
 
-desc "Run all specs"
-Spec::Rake::SpecTask.new('spec') do |t|
-	t.spec_files = FileList['spec/*_spec.rb']
+  desc "Run all specs"
+  Spec::Rake::SpecTask.new('spec') do |t|
+    t.spec_files = FileList['spec/*_spec.rb']
+  end
+  task :default => :spec
+rescue Exception => e
+  puts "Failed to load spec/rake/spectask, rspec tests in file #{__FILE__} will not be ececuted!"
 end
-
-task :default => :spec
-
