@@ -2,6 +2,7 @@ class BlogPostsController < ApplicationController
   skip_before_filter :require_auth, :only => [:index]
   skip_before_filter :require_terms_acceptance, :only => [:index]
   before_filter :set_owner, :except => [:show, :rate, :new_comment, :destroy]
+  before_filter :check_for_news_post, :only => [:show]
   before_filter :clean_tags, :only => [:create, :update]
   deny_access_for :all => :sponsor_member, :when => lambda{|c| c.instance_variable_get(:@owner).is_a?(Profile)}
 
@@ -121,6 +122,13 @@ class BlogPostsController < ApplicationController
   end
 
   private
+
+  def check_for_news_post
+    @post = BlogPost.unscoped.find(params[:id])
+    if @post.news?
+      redirect_to news_post_path(@post) and return
+    end
+  end
 
   def set_owner
     @owner = parent

@@ -18,11 +18,12 @@
         </div>    
       <% elsif !@finished %>
         <div class="voting">
-          <% if ratable %>           
-            <%= link_to vote_up_image, rate_chat_topic_path(@chat, question, :direction => "up"), :class => "vote vote_up" %>
-            <%= link_to vote_down_image, rate_chat_topic_path(@chat, question, :direction => "down"), :class => "vote vote_down" %>
+          <% if false %>
+            <% if ratable %>           
+              <%= link_to vote_up_image, rate_chat_topic_path(@chat, question, :direction => "up"), :class => "vote vote_up" %>
+              <%= link_to vote_down_image, rate_chat_topic_path(@chat, question, :direction => "down"), :class => "vote vote_down" %>
+            <% end %>
           <% end %>
-          
           <%= link_to "Am I ratable?", check_ratability_chat_topic_path(@chat, question), :style => "display:none;" %>
         </div>
       <% end %>

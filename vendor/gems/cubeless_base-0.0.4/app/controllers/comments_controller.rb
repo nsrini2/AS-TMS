@@ -44,9 +44,14 @@ class CommentsController < ApplicationController
       }
       format.html {
         if comment.save
-          redirect_to url_for(@owner), :notice => "Comment saved."
+          notice = "Comment saved."
         else
-          redirect_to url_for(@owner), :notice => "There was an error saving your comment."
+          notice = "There was an error saving your comment."
+        end
+        if @owner.news?
+          redirect_to "#{news_post_path(@owner)}#comments", :notice => notice
+        else  
+          redirect_to url_for(@owner), :notice => notice
         end
       }
       

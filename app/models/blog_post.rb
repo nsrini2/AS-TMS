@@ -37,6 +37,10 @@ class BlogPost < ActiveRecord::Base
     self.blog.owner.class == Company
   end
   
+  def news?
+    self.blog.owner.class == News
+  end
+  
   def tagline
     return nil unless link
     read_attribute(:tagline).present? ? read_attribute(:tagline) : "View original content here."
@@ -84,8 +88,8 @@ class BlogPost < ActiveRecord::Base
     return true if profile.has_role?(Role::ShadyAdmin)
     if self.root_parent.is_a?(Group)
       return self.root_parent.is_owner?(profile) || self.root_parent.is_moderator?(profile) 
-    elsif self.root_parent.is_a?(Profile)
-      return self.profile == profile
+    elsif self.root_parent.is_a?(Profile) || self.root_parent.is_a?(News)
+      return self.profile == profile        
     end
     return false
   end

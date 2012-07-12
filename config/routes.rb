@@ -6,7 +6,6 @@ AgentstreamDe::Application.routes.draw do
   match '/search' => 'search#index', :as => :search
   match '/notes/new' => 'notes#new', :as => :new_note
   match '/messages/autocomplete' => 'notes#autocomplete_for_message', :as => :autocomplete_for_message_note
-  match '/news' => 'news#index', :as => :news
   match '/refer_a_friend' => 'public_content#refer_a_friend'
   match '/refer-a-friend' => 'public_content#refer_a_friend'
   match '/referafriend' => 'public_content#refer_a_friend'
@@ -20,6 +19,14 @@ AgentstreamDe::Application.routes.draw do
   # scope "/de" do 
   #     
   #   end
+  
+  match '/news' => 'news#index', :as => :news, :via => :get
+  match '/news/post/:id' => 'news#post', :as => :news_post, :via => :get
+  match '/news/post/:id/edit' => 'news#edit_post', :as => :edit_news_post, :via => :get
+  match '/news/post/:id/update' => 'news#update_post', :as => :update_news_post, :via => :post
+  match '/news/post/:id/delete' => 'news#destroy', :as => :delete_news_post, :via => :delete
+  
+  
   
   # MM2: I have no idea why this won't work in the de routes file...but it won't... :(
   match '/offers/:id/book', :to => 'offers#book', :as => :book_offer
