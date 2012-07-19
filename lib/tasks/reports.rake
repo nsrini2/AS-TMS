@@ -11,6 +11,7 @@ namespace :reports do
       Rails.logger.warn "Problem with running data_dump: #{$!}"
     end
   end
+  
   desc "email the weekly_report"
   task :send_weekly_report => :environment do
     puts "Running ..."
@@ -21,4 +22,44 @@ namespace :reports do
       Rails.logger.warn "Problem with running weekly_report: #{$!}"
     end
   end
+  
+  
+  desc "email the monthly_activity_report"
+  task :send_monthly_activity_report => [:update_monthly_karma_tracking] do
+    puts "Sending Monthly Activity Report"
+    begin        
+      StatusReport.mail_monthly_activity_report
+    rescue
+      puts "Problem with running monthly_activity_report: #{$!}"
+      Rails.logger.warn "Problem with running monthly_activity_report: #{$!}"
+    end
+  end
+  
+  desc "email the active_users_by_country_report"
+  task :send_active_users_by_country_report => :environment do
+    puts "Sending Active Users By Country Report"
+    begin        
+      StatusReport.mail_users_by_country_report
+    rescue
+      puts "Problem with running active_users_by_country_report: #{$!}"
+      Rails.logger.warn "Problem with running active_users_by_country_report: #{$!}"
+    end
+  end
+  
+  desc "update karma earned in the last month"
+  task :update_monthly_karma_tracking => :environment do
+    puts "Updating Karma Earned During month"
+    begin        
+      # update Karma earned
+    rescue
+      puts "Problem with updated Karma history: #{$!}"
+      Rails.logger.warn "Problem updating karma history: #{$!}"
+    end
+  end
+  
+  desc "email ALL monthly reports"
+  task :send_monthly_reports => [:send_monthly_activity_report, :send_active_users_by_country_report] do
+    puts "Sending all monthly reports"
+  end
+  
 end

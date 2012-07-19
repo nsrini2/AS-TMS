@@ -23,6 +23,26 @@ class Notifier < ActionMailer::Base
     mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report")  
   end
 
+  def monthly_activity_report(recipient)
+    data = StatusReport.monthly_activity_report
+    filename = "AgentStream-monthly-activity#{Date.today.strftime("%Y-%m-%d")}.csv"
+    mail.attachments[filename.to_s] = {
+      :mime_type => "text/csv", 
+      :content => data
+    }
+    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Monthly ActivityReport")
+  end
+  
+  def users_by_country_report(recipient)
+    data = StatusReport.users_by_country
+    filename = "AgentStream-users-by-country.csv"
+    mail.attachments[filename.to_s] = {
+      :mime_type => "text/csv", 
+      :content => data
+    }
+    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Users By Country Report")
+  end
+
   def api_key_for(requester)
     @recipients  = requester.email
     @subject = "Your API key"

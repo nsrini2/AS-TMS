@@ -54,8 +54,69 @@ class << self
     data
   end
   
-
+  def mail_monthly_activity_report
+    recipient = ["AgentStreamData@sharepointemail.sabre.com"]
+    recipient << "scott.johnson@sabre.com"
+    Notifier.monthly_activity_report(recipient).deliver
+  end
   
+  def monthly_activity_report
+    data = "Number of Deals, #{Offer.approved.deals.count}\n" 
+    data << "Number of Extras, #{Offer.approved.extras.count}\n\n"  
+    
+    # Community Karma Levels
+    admin_reporter = AdminController.new  
+    karma_values = admin_reporter.send(:karma_summary_result).data
+    karma_values.each do |karma_value|
+      data << "#{karma_value.join(',')}\n"
+    end  
+    data << "\n"
+    
+    # Top 10 Karma earners this month
+    
+    # Question Details
+    question_values = admin_reporter.send(:questions_summary_result).data
+    question_values.each do |question_value|
+      data << "#{question_value.join(',')}\n"
+    end
+    data << "\n"
+    
+    # Answers
+    data << "Total Answers,#{Answer.count}\n"
+    
+    # Number of unique visitors by week
+    # weeks_visitor_count = SiteVisit.weeks_visitors
+    # weeks_visitor_count.each do |week|
+    #   data << "Number of unique visitors week, #{week}\n"
+    # end
+    # data << "\n"
+    
+    # Top ten countries with most visitors by week for the given month
+    
+    
+    # weekly_visitor_count_by_countries = SiteVisit.weekly_visitors_by_country  
+    # weekly_visitor_count_by_countries.each do |visitor_count_by_countries|
+    #   visitor_count_by_countries.each do |visitor_count_by_country|
+    #     visitor_count_by_country.gsub!(/[\n\r]/, '')
+    #     data << "Number of unique visitors on, #{visitor_count_by_country}\n"
+    #   end
+    # end
+    # data << "\n"
+    
+    data
+  end
+  
+  def mail_users_by_country_report
+    recipient = ["AgentStreamData@sharepointemail.sabre.com"]
+    recipient << "scott.johnson@sabre.com"
+    Notifier.users_by_country_report(recipient).deliver
+  end
+  
+  def users_by_country
+    SiteVisit.active_profiles_by_country.map do |profile_count_by_country|
+       "Number of active profiles from, #{profile_count_by_country.country.gsub(/[\n\r]/, '')}, #{profile_count_by_country.profile_count}\n"
+    end
+  end
   
   def data_dump
     # reset timer
