@@ -13,19 +13,20 @@ class Notifier < ActionMailer::Base
     super(method_name, *parameters)
   end
 
-  def weekly_status_report(recipient)
-    data = StatusReport.weekly_dump
-    filename = "AgentStream-weekly-#{Date.today.strftime("%Y-%m-%d")}.csv"
-    mail.attachments[filename.to_s] = {
-      :mime_type => "text/csv", 
-      :content => data
-    }
-    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report")  
-  end
+  # def weekly_status_report(recipient)
+  #   data = StatusReport.weekly_dump
+  #   filename = "AgentStream-weekly-#{Date.today.strftime("%Y-%m-%d")}.csv"
+  #   mail.attachments[filename.to_s] = {
+  #     :mime_type => "text/csv", 
+  #     :content => data
+  #   }
+  #   mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report")  
+  # end
 
   def monthly_activity_report(recipient)
     data = StatusReport.monthly_activity_report
-    filename = "AgentStream-monthly-activity-#{(Date.today -1).strftime("%Y-%m")}.csv"
+    # filename = "AgentStream-monthly-activity-#{(Date.today -1).strftime("%Y-%m")}.csv"
+    filename = "monthly.csv"
     mail.attachments[filename.to_s] = {
       :mime_type => "text/csv", 
       :content => data
@@ -35,7 +36,8 @@ class Notifier < ActionMailer::Base
   
   def users_by_country_report(recipient)
     data = StatusReport.users_by_country
-    filename = "AgentStream-users-by-country.csv"
+    # filename = "AgentStream-users-by-country.csv"
+    filename = "ubc.csv"
     mail.attachments[filename.to_s] = {
       :mime_type => "text/csv", 
       :content => data

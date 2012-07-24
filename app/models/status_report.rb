@@ -8,51 +8,51 @@ class StatusReport
   
   
 class << self
-  def mail_weekly_report
-    recipient = ["AgentStreamData@sharepointemail.sabre.com"]
-    recipient << "scott.johnson@sabre.com"
-    Notifier.weekly_status_report(recipient).deliver
-  end  
-  
-  def weekly_dump
-    data = "Number of Deals, #{Offer.approved.deals.count}\n" 
-    data << "Number of Extras, #{Offer.approved.extras.count}\n\n"  
-    
-    admin_reporter = AdminController.new  
-    karma_values = admin_reporter.send(:karma_summary_result).data
-    question_values = admin_reporter.send(:questions_summary_result).data
-    karma_values.each do |karma_value|
-      data << "karma level #{karma_value.join(',')}\n"
-    end  
-    data << "\n"
-    
-    question_values.each do |question_value|
-      data << "#{question_value.join(',')}\n"
-    end
-    data << "\n"
-    
-    weekly_visitor_count = SiteVisit.weekly_visitors
-    weekly_visitor_count.each do |day_count|
-      data << "Number of unique visitors on, #{day_count}\n"
-    end
-    data << "\n"
-    
-    weekly_visitor_count_by_countries = SiteVisit.weekly_visitors_by_country  
-    weekly_visitor_count_by_countries.each do |visitor_count_by_countries|
-      visitor_count_by_countries.each do |visitor_count_by_country|
-        visitor_count_by_country.gsub!(/[\n\r]/, '')
-        data << "Number of unique visitors on, #{visitor_count_by_country}\n"
-      end
-    end
-    data << "\n"
-    
-    profile_count_by_countries = SiteVisit.active_profiles_by_country
-    profile_count_by_countries.each do |profile_count_by_country|
-      data << "Number of active profiles from, #{profile_count_by_country.country.gsub(/[\n\r]/, '')}, #{profile_count_by_country.profile_count}\n"
-    end
-    
-    data
-  end
+  # def mail_weekly_report
+  #   recipient = ["AgentStreamData@sharepointemail.sabre.com"]
+  #   recipient << "scott.johnson@sabre.com"
+  #   Notifier.weekly_status_report(recipient).deliver
+  # end  
+  # 
+  # def weekly_dump
+  #   data = "Number of Deals, #{Offer.approved.deals.count}\n" 
+  #   data << "Number of Extras, #{Offer.approved.extras.count}\n\n"  
+  #   
+  #   admin_reporter = AdminController.new  
+  #   karma_values = admin_reporter.send(:karma_summary_result).data
+  #   question_values = admin_reporter.send(:questions_summary_result).data
+  #   karma_values.each do |karma_value|
+  #     data << "karma level #{karma_value.join(',')}\n"
+  #   end  
+  #   data << "\n"
+  #   
+  #   question_values.each do |question_value|
+  #     data << "#{question_value.join(',')}\n"
+  #   end
+  #   data << "\n"
+  #   
+  #   weekly_visitor_count = SiteVisit.weekly_visitors
+  #   weekly_visitor_count.each do |day_count|
+  #     data << "Number of unique visitors on, #{day_count}\n"
+  #   end
+  #   data << "\n"
+  #   
+  #   weekly_visitor_count_by_countries = SiteVisit.weekly_visitors_by_country  
+  #   weekly_visitor_count_by_countries.each do |visitor_count_by_countries|
+  #     visitor_count_by_countries.each do |visitor_count_by_country|
+  #       visitor_count_by_country.gsub!(/[\n\r]/, '')
+  #       data << "Number of unique visitors on, #{visitor_count_by_country}\n"
+  #     end
+  #   end
+  #   data << "\n"
+  #   
+  #   profile_count_by_countries = SiteVisit.active_profiles_by_country
+  #   profile_count_by_countries.each do |profile_count_by_country|
+  #     data << "Number of active profiles from, #{profile_count_by_country.country.gsub(/[\n\r]/, '')}, #{profile_count_by_country.profile_count}\n"
+  #   end
+  #   
+  #   data
+  # end
   
   def mail_monthly_activity_report
     recipient = ["AgentStreamData@sharepointemail.sabre.com"]
