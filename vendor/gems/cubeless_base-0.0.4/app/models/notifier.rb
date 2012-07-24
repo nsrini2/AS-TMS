@@ -20,29 +20,27 @@ class Notifier < ActionMailer::Base
   #     :mime_type => "text/csv", 
   #     :content => data
   #   }
-  #   mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report")  
+  #   mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report", :template_name => 'attachment')  
   # end
 
   def monthly_activity_report(recipient)
     data = StatusReport.monthly_activity_report
-    # filename = "AgentStream-monthly-activity-#{(Date.today -1).strftime("%Y-%m")}.csv"
-    filename = "monthly.csv"
+    filename = "AgentStream-monthly-activity-#{(Date.today -1).strftime("%Y-%m")}.csv"
     mail.attachments[filename.to_s] = {
       :mime_type => "text/csv", 
       :content => data
     }
-    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Monthly ActivityReport")
+    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Monthly ActivityReport", :template_name => 'attachment')
   end
   
   def users_by_country_report(recipient)
     data = StatusReport.users_by_country
-    # filename = "AgentStream-users-by-country.csv"
-    filename = "ubc.csv"
+    filename = "AgentStream-users-by-country.csv"
     mail.attachments[filename.to_s] = {
       :mime_type => "text/csv", 
       :content => data
     }
-    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Users By Country Report")
+    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Users By Country Report", :template_name => 'attachment')
   end
 
   def api_key_for(requester)
