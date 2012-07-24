@@ -61,6 +61,11 @@ class << self
   end
   
   def monthly_activity_report
+    # This report should be run on the first day of the month and capture the previous months stats
+    today = Date.today
+    first_day_of_month = (today - 2).at_beginning_of_month
+    last_day_of_month = first_day_of_month.at_end_of_month
+    
     data = "Number of Deals, #{Offer.approved.deals.count}\n" 
     data << "Number of Extras, #{Offer.approved.extras.count}\n\n"  
     
@@ -73,6 +78,11 @@ class << self
     data << "\n"
     
     # Top 10 Karma earners this month
+    top_monthly_contributors = KamraHistory.top_ten_karma_earners_for_month(first_day_of_month)
+    top_monthly_contributors.each do |c|
+      data << "#{c.screen_name},#{c.karma_earned}\n"
+    end  
+    data << "\n"
     
     # Question Details
     question_values = admin_reporter.send(:questions_summary_result).data
@@ -82,26 +92,21 @@ class << self
     data << "\n"
     
     # Answers
-    data << "Total Answers,#{Answer.count}\n"
+    data << "Total Answers,#{Answer.count}\n\n"
     
     # Number of unique visitors by week
-    # weeks_visitor_count = SiteVisit.weeks_visitors
-    # weeks_visitor_count.each do |week|
-    #   data << "Number of unique visitors week, #{week}\n"
-    # end
-    # data << "\n"
+  
+    (1..52).each do |week|
+      start_date = (today - week.weeks).beginning_of_week
+      data << "Number of unique visitors week of #{start_date}, #{SiteVisit.visitors_by_week(start_date)}\n"
+    end  
+    data << "\n"
     
     # Top ten countries with most visitors by week for the given month
-    
-    
-    # weekly_visitor_count_by_countries = SiteVisit.weekly_visitors_by_country  
-    # weekly_visitor_count_by_countries.each do |visitor_count_by_countries|
-    #   visitor_count_by_countries.each do |visitor_count_by_country|
-    #     visitor_count_by_country.gsub!(/[\n\r]/, '')
-    #     data << "Number of unique visitors on, #{visitor_count_by_country}\n"
-    #   end
-    # end
-    # data << "\n"
+    top_visitor_countries = SiteVisit.visitors_by_country(first_day_of_month, last_day_of_month)
+    top_visitor_countries.each do | visit |
+      data << "Number of unique visitors from, #{visit.country.chomp}, #{visit.profile_count}\n"
+    end
     
     data
   end

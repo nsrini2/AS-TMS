@@ -50,7 +50,7 @@ namespace :reports do
   task :update_monthly_karma_tracking => :environment do
     puts "Updating Karma Earned During month"
     begin        
-      # update Karma earned
+      KarmaHistory.capture_points
     rescue
       puts "Problem with updated Karma history: #{$!}"
       Rails.logger.warn "Problem updating karma history: #{$!}"

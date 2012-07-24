@@ -98,6 +98,8 @@ namespace :bam do
     Notifier.send_question_match_notifications
     
     SemanticMatcher.default.generate_top_terms
+    
+    KarmaHistory.capture_points
   end
 
   desc 'Weekly Maintenance'

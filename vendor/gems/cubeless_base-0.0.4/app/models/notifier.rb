@@ -25,7 +25,7 @@ class Notifier < ActionMailer::Base
 
   def monthly_activity_report(recipient)
     data = StatusReport.monthly_activity_report
-    filename = "AgentStream-monthly-activity#{Date.today.strftime("%Y-%m-%d")}.csv"
+    filename = "AgentStream-monthly-activity-#{(Date.today -1).strftime("%Y-%m")}.csv"
     mail.attachments[filename.to_s] = {
       :mime_type => "text/csv", 
       :content => data
