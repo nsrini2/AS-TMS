@@ -78,7 +78,7 @@ class << self
     data << "\n"
     
     # Top 10 Karma earners this month
-    top_monthly_contributors = KamraHistory.top_ten_karma_earners_for_month(first_day_of_month)
+    top_monthly_contributors = KarmaHistory.top_ten_karma_earners_for_month(first_day_of_month)
     top_monthly_contributors.each do |c|
       data << "#{c.screen_name},#{c.karma_earned}\n"
     end  
