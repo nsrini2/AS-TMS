@@ -23,7 +23,7 @@ AgentstreamDe::Application.routes.draw do
   match '/news' => 'news#index', :as => :news, :via => :get
   match '/news/post/:id' => 'news#post', :as => :news_post, :via => :get
   match '/news/post/:id/edit' => 'news#edit_post', :as => :edit_news_post, :via => :get
-  match '/news/post/:id/update' => 'news#update_post', :as => :update_news_post, :via => :post
+  match '/news/post/:id/update' => 'news#update_post', :via => [:post, :put], :as => :update_news_post
   match '/news/post/:id/delete' => 'news#destroy', :as => :delete_news_post, :via => :delete
   
   

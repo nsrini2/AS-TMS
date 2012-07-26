@@ -17,6 +17,7 @@ class BlogPost < ActiveRecord::Base
  
   belongs_to :blog, :counter_cache => true
   belongs_to :profile
+  belongs_to :creator, :polymorphic => true
 
   has_one :abuse, :as => :abuseable, :conditions => 'remover_id is null'
 

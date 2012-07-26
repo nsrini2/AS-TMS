@@ -6,7 +6,7 @@ AgentstreamDe::Application.configure do
   # since you don't have to restart the webserver when you make code changes.
   # -- This needs to be off if you are monkeypunching a library, so it does not get re-punched
   # config.cache_classes = false
-  config.cache_classes = true
+  # config.cache_classes = true
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true

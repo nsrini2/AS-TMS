@@ -10,11 +10,32 @@ class NewsController < ApplicationController
   end
   
   def edit_post
-    render :text => "edit post #{@post.id}" 
+    render :show unless @post.editable_by? current_profile  
   end
   
   def update_post
-    render :text => "update post #{@post.id}"
+    if @post.editable_by? current_profile
+      if params[:preview].present?
+        @preview_blog_post = News.blog_posts.new(params[:blog_post])
+        @preview_blog_post.profile_id = current_profile.id
+        render :edit_post
+      elsif params[:commit].present?
+        @post.update_attributes(params[:blog_post])
+        if @post.save
+          flash[:notice] = "#{@post.title} has been updated."
+          render :show
+        else  
+          flash[:notice] = "Unabel to save post: #{@post.errors.full_messages}"
+          render :edit_post
+        end
+      else
+        render :show   
+      end
+    else
+      # this profiel cannot edit this post
+      flash[:notice] = "This profile lacks the privileges to update this post."
+      render :show
+    end
   end
   
   def destroy
