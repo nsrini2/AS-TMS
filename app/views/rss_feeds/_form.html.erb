@@ -1,5 +1,5 @@
-<%= form_for rss_feed, :html => {:id => 'rss_feed_form'} do |f| -%>
-	<p class="help">This will pull RSS Feed content into a blog.</p>
+<%= form_for rss_feed, :html => {:id => 'rss_feed_form', :multipart => true } do |f| -%>
+  <p class="help">This will pull RSS Feed content into a blog.</p>
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description, :style => "width: 400px; height: 80px;" %>
@@ -20,7 +20,11 @@
     <%= f.label :profile_id %> -- the ID profile who will be credited with creating these posts<br />
     <%= f.text_field :profile_id %>
   </div>
-	<div class="buttons">
-		<%= f.submit "Save", :html => {:class =>  "large button", :name => "commit"} %>
-	</div>
+  <div>
+    <%= f.label "Promo Image" %>  recommended size is 175x175<br />
+    <%= file_field_tag :"asset[uploaded_data]" %>
+  </div>
+  <div class="buttons">
+    <%= f.submit "Save", :html => {:class =>  "large button", :name => "commit"} %>
+  </div>
 <% end -%>

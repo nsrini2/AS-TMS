@@ -1,6 +1,8 @@
 class RssFeed < ActiveRecord::Base
   belongs_to :blog
   belongs_to :profile
+  # has_one :rss_feed_photo, :as => :owner, :dependent => :destroy
+  belongs_to :primary_photo, :class_name => 'RssFeedPhoto', :foreign_key => :primary_photo_id
   
   scope :available, where("active <= '1' ")
   scope :active, where("active = '1'")
@@ -9,6 +11,11 @@ class RssFeed < ActiveRecord::Base
   validates :feed_url, :presence => true
   validates :blog_id, :presence => true
   validates :profile_id, :presence => true
+  
+
+  def primary_photo_path(which=:thumb)
+    primary_photo.public_filename(which) if !primary_photo.nil?
+  end
   
   class Feedzirra::Parser::RSSEntry
     element :source, :as => :source
@@ -19,7 +26,8 @@ class RssFeed < ActiveRecord::Base
     feed.entries.each do |entry|
       unless BlogPost.exists? :guid => entry.id
         BlogPost.create(
-          :profile_id   => self.profile_id,
+          :creator_id   => self.id,
+          :creator_type => self.class.to_s,
           :blog_id      => self.blog_id,
           :tagline      => self.tagline,
           :guid         => entry.id,

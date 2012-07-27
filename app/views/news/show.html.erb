@@ -7,7 +7,7 @@ preview = false unless defined?(preview)
 <h2 class="page_title">News Post</h2>
 <div id="<%= "list" %>">
   <div class="list_item blog_post_item">
-    <%= link_to_avatar_for(@post.profile) -%>
+    <%= link_to_avatar_for(@post.creator) -%>
     <div class="details">
       <h3><%= @post.title %></h3>
       <p class="meta">Posted on <%= pretty_datetime(@post.created_at || Time.new) %><%= " in #{link_to("News", news_path)}" %> by&nbsp;<%#= link_to_author blog_post %></p>

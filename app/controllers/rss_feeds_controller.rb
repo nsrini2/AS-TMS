@@ -14,6 +14,9 @@ class RssFeedsController < ApplicationController
   
   def create
     @rss_feed = RssFeed.new(params[:rss_feed])
+    if params[:asset]
+      @rss_feed.primary_photo = RssFeedPhoto.new(params[:asset])
+    end
     if @rss_feed.save
       flash[:notice] = "RSS Feed Created"
       redirect_to rss_feeds_admin_path
@@ -29,8 +32,12 @@ class RssFeedsController < ApplicationController
   
   def update
     @rss_feed = RssFeed.find_by_id(params[:id])
-
     @rss_feed.update_attributes(params[:rss_feed])
+    debugger
+    if params[:asset]
+      @rss_feed.primary_photo = RssFeedPhoto.new(params[:asset])
+    end
+    
     if @rss_feed.save
       flash[:notice] = "RSS Feed has been updated!"
       redirect_to rss_feeds_admin_path

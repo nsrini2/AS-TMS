@@ -22,7 +22,7 @@ class Profile < ActiveRecord::Base
   has_many :answers, :dependent => :destroy
 
   has_one :blog, :as => :owner
-  has_many :blog_posts
+  has_many :blog_posts, :as => :creator
 
   has_many :bookmarks
     has_many :watched_questions, :through => :bookmarks,  :source => :question

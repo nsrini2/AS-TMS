@@ -4,37 +4,39 @@
 <p class="help">You can have an unlimited number of RSS Feeds. They each need to be tied to a blog AND a profile.  Active RSS Feeds will be updated daily.  Remember the servers will need firewall access to each RSS feed host.</p>
 <p><%= link_to("new RSS feed", new_rss_feed_path ) %></p>
 <table id="rss_feed">
-	<tbody>
-		<tr>
-			<th></th>
-			<th>Description</th>
-			<th>Source URL</th>
-			<th>Blog</th>
-			<th>Profile ID</th>
-			<th></th>
-			<th></th>
-		</tr>
-		<% @rss_feeds.each_with_index do |rss_feed, index| -%>
-		<tr id="rss_feed_<%= rss_feed.id %>" class="<%= cycle('odd','even') %>">
-			<td><%= link_to_toggle_rss_feed_activation(rss_feed) %></td>
-			<td>
-				<%= truncate(rss_feed.description,{ :length => 100, :omission => "..." }) %>
-			</td>
-			<td>
-				<%= truncate(rss_feed.feed_url, { :length => 100, :omission => "..." }) %>
-			</td>	
-			<td>
-				<% blog = rss_feed.blog %>
-				<%= "#{blog.owner_type} #{blog.owner_id} / Blog id: #{blog.id}"%>
-			</td>	
-			<td>
-				<% blog_profile = rss_feed.profile %>
-				<%= "#{blog_profile.screen_name} / Profile id: #{blog_profile.id}"%>
-			</td>	
-			<td>
-				<%= link_to "edit", edit_rss_feed_path(rss_feed), :class => "button" -%>
-			</td>
-		</tr>
-		<% end -%>
-	</tbody>
+  <tbody>
+    <tr>
+      <th>Active</th>
+      <th>Image</th>
+      <th>Description</th>
+      <th>Source URL</th>
+      <th>Blog</th>
+      <th>Profile ID</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @rss_feeds.each_with_index do |rss_feed, index| -%>
+    <tr id="rss_feed_<%= rss_feed.id %>" class="<%= cycle('odd','even') %>">
+      <td><%= link_to_toggle_rss_feed_activation(rss_feed) %></td>
+      <td><%= primary_photo_for(rss_feed, :thumb => :thumb_80, :hide_status_indicator => false, :hide_sponsor_sash => false) %></td>
+      <td>
+        <%= truncate(rss_feed.description,{ :length => 100, :omission => "..." }) %>
+      </td>
+      <td>
+        <%= truncate(rss_feed.feed_url, { :length => 100, :omission => "..." }) %>
+      </td>  
+      <td>
+        <% blog = rss_feed.blog %>
+        <%= "#{blog.owner_type} #{blog.owner_id} / Blog id: #{blog.id}"%>
+      </td>  
+      <td>
+        <% blog_profile = rss_feed.profile %>
+        <%= "#{blog_profile.screen_name} / Profile id: #{blog_profile.id}"%>
+      </td>  
+      <td>
+        <%= link_to "edit", edit_rss_feed_path(rss_feed), :class => "button" -%>
+      </td>
+    </tr>
+    <% end -%>
+  </tbody>
 </table>

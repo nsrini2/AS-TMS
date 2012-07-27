@@ -1,0 +1,15 @@
+<%
+# content_for(:blog_tab, 'selected')
+content_for(:page_title, "Editing: #{@post.title}")
+-%>
+<div id="list">
+  <div id="blog">
+    <div id="blog_posts">
+      <% if @preview_blog_post -%>
+        <%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => @preview_blog_post, :full_post => true, :classname => 'odd', :preview => true } -%>
+      <% end -%>
+      <%= render :partial => 'form', :locals => {:post => @post} -%>
+    </div>
+    <%#= render :partial => 'blogs/side_bar', :locals => { :show_create => false } -%>
+  </div>
+</div>

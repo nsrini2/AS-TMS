@@ -5,18 +5,17 @@ class BlogPost < ActiveRecord::Base
   after_save :update_indexes
   
   acts_as_taggable
-  acts_as_auditable :audit_unless_owner_attribute => :profile_id
+  acts_as_auditable :audit_unless_owner_attribute => :creator_id
   acts_as_rated :rater_class => "Profile", :rating_range => 1..5
   validates_length_of :title, :within => 1..250, :too_short => "can't be blank"
   validates_length_of :text, :within => 1..65000 , :too_short => "^Post can't be blank", :too_long => "^Your Post has exceed the limit. Try multiple posts."
   validates_presence_of :tag_list, :message => "^Tags are required"
   validates_presence_of :blog
-  validates_presence_of :profile
+  validates_presence_of :creator
 
   xss_terminate  :except => [:text] 
  
   belongs_to :blog, :counter_cache => true
-  belongs_to :profile
   belongs_to :creator, :polymorphic => true
 
   has_one :abuse, :as => :abuseable, :conditions => 'remover_id is null'
@@ -30,12 +29,35 @@ class BlogPost < ActiveRecord::Base
   default_scope order("blog_posts.created_at DESC")
   self.per_page = 5
   
+  #SSJ 7/12 Needed profile interface stuff for old code to work with new polymorphic creator
+  def profile_id
+    case creator_type
+    when "Profile"
+      creator_id
+    when "RssFeed"
+      creator.profile.id
+    end    
+  end
+  
+  def profile
+    case creator_type
+    when "Profile"
+      creator
+    when "RssFeed"
+      creator.profile
+    end  
+  end
+  
   def group?
     self.blog.owner.class == Group
   end
 
   def company?
     self.blog.owner.class == Company
+  end
+  
+  def rss?
+    creator_type == "RssFeed"
   end
   
   def news?
@@ -71,7 +93,7 @@ class BlogPost < ActiveRecord::Base
     current_profile = AuthenticatedSystem.current_profile
     ModelUtil.add_joins!(args,"left join ratings on rated_type='BlogPost' and rated_id=blog_posts.id and rater_id=#{current_profile.id}") if current_profile
     ModelUtil.add_selects!(args,"ratings.rating as user_rating") if current_profile
-    with_scope(:find => {:include => [:profile, :abuse, :blog ]}) do #!H to get around nested URL's doing nested lookups #!O cannot load owner, nested finds exceed limits (fails on group hub widget)
+    with_scope(:find => {:include => [:abuse, :blog ]}) do #!H to get around nested URL's doing nested lookups #!O cannot load owner, nested finds exceed limits (fails on group hub widget)
       super(*args)
     end
   end

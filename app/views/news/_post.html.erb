@@ -1,15 +1,14 @@
 <%
 full_post = false unless defined?(full_post)
 classname = '' unless defined?(classname)
-blog_explore = true
 preview = false unless defined?(preview)
 -%>
 
   <div class="list_item blog_post_item <%= classname %>">
-    <%= link_to_avatar_for(blog_post.profile) if blog_explore || blog_post.root_parent.is_a?(Group) -%>
+    <%= link_to_avatar_for(blog_post.creator) -%>
     <div class="details">
       <h3><%= link_to(blog_post.title, news_post_path(blog_post)) %></h3>
-      <p class="meta">Posted on <%= pretty_datetime(blog_post.created_at || Time.new) %><%= blog_post.root_parent.is_a?(Group) && blog_explore ? " in #{link_to(blog_post.root_parent.name, group_blog_url(blog_post.root_parent))}" : "" %> by&nbsp;<%= link_to_author blog_post %></p>
+      <p class="meta">Posted on <%= pretty_datetime(blog_post.created_at || Time.new) %><%= blog_post.root_parent.is_a?(Group) && blog_explore ? " in #{link_to(blog_post.root_parent.name, group_blog_url(blog_post.root_parent))}" : "" %> by&nbsp;<%#= link_to_author blog_post %></p>
 
         <div class="summary">
           <div class="blog_post_p">
@@ -26,7 +25,7 @@ preview = false unless defined?(preview)
           render_abuse(blog_post),
           (link_to("edit", edit_news_post_path(blog_post)) if blog_post.editable_by? current_profile ),
           (link_to('delete', delete_news_post_path(blog_post), :class => 'modal delete') if blog_post.deletable_by?(current_profile)),
-          (content_tag(:span, "Tags: " + (blog_explore ? link_to_blog_tags(blog_post.blog.owner, blog_post.tag_list) : link_to_tags(blog_post.blog.owner, blog_post.tag_list)), :class => 'tags') unless blog_post.tag_list.blank?)
+          (content_tag(:span, "Tags: " + ( link_to_blog_tags(blog_post.blog.owner, blog_post.tag_list) ), :class => 'tags') unless blog_post.tag_list.blank?)
         ]) -%>
 
     </div>
