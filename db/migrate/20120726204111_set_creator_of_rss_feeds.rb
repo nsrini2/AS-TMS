@@ -3,7 +3,7 @@ class SetCreatorOfRssFeeds < ActiveRecord::Migration
     creator_id = 1
     sql = <<-EOS
       UPDATE blog_posts 
-      SET creator_id = #{creator_id}, creator = "RssFeed"
+      SET creator_id = #{creator_id}, creator_type = "RssFeed"
       WHERE guid IS NOT NULL
     EOS
     ActiveRecord::Base.connection.execute(sql)
