@@ -15,7 +15,7 @@ class ActivityStreamMessagesController < ApplicationController
   def create
     @activity_stream_message = ActivityStreamMessage.new(params[:activity_stream_message])
     if params[:asset]
-      @activity_stream_message.activity_stream_message_photo = ActivityStreamMessagePhoto.new(params[:asset])
+      @activity_stream_message.primary_photo = ActivityStreamMessagePhoto.new(params[:asset])
     end  
     if @activity_stream_message.save
       flash[:notice] = "Activity Stream Message Created"
@@ -33,7 +33,7 @@ class ActivityStreamMessagesController < ApplicationController
   def update
     @activity_stream_message = ActivityStreamMessage.find_by_id(params[:id])
     if params[:asset]
-      @activity_stream_message.activity_stream_message_photo = ActivityStreamMessagePhoto.new(params[:asset])
+      @activity_stream_message.primary_photo = ActivityStreamMessagePhoto.new(params[:asset])
     end  
     @activity_stream_message.update_attributes(params[:activity_stream_message])
     if @activity_stream_message.save
