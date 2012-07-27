@@ -1,15 +1,16 @@
 class ActivityStreamMessage < ActiveRecord::Base
-  has_one :activity_stream_message_photo, :as => :owner, :dependent => :destroy
+  # has_one :activity_stream_message_photo, :as => :owner, :dependent => :destroy
+  belongs_to :primary_photo, :class_name => 'ActivityStreamMessagePhoto', :foreign_key => :primary_photo_id
   scope :active, where(:active => 1)
   scope :available, :order => :created_at #should return an ActiveRecord::Relation object
   
-  def primary_photo_path(which=:thumb)
-    if !activity_stream_message_photo.nil?
-      activity_stream_message_photo.public_filename(which) 
-    else
-      "/images/gen_avatar_large.png"
-    end
-  end
+  # def primary_photo_path(which=:thumb)
+  #   if !activity_stream_message_photo.nil?
+  #     activity_stream_message_photo.public_filename(which) 
+  #   else
+  #     "/images/gen_avatar_large.png"
+  #   end
+  # end
   
   def owner_path
     owner_link
