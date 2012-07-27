@@ -3,7 +3,20 @@ require 'singleton'
 class News
   include Singleton
   # should act as though it has_one blog
-  NEWS_BLOG_ID = 10
+  # check to see if we are on agentstream.com or not
+  # Using the Facebook APP_ID to determine this
+  NEWS_BLOG_ID =  case FB_APP_ID 
+                    when '191254297585014'
+                      #production
+                      37812
+                    when '214583051896993'
+                      #staging  
+                      29373
+                    else
+                      #dev
+                      10   
+                  end
+   
   NEWS_ID = 1
   
   def id
