@@ -1,1 +1,1 @@
-config.gem "rack", :version => "1.2.5"
+gem "rack", :version => "1.2.5"
