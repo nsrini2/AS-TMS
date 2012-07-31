@@ -16,11 +16,11 @@ class NewsController < ApplicationController
   def update_post
     if @post.editable_by? current_profile
       if params[:preview].present?
-        @preview_blog_post = News.blog_posts.new(params[:blog_post])
-        @preview_blog_post.profile_id = current_profile.id
+        update_post_attributes(params[:blog_post])
+        @preview_blog_post = true
         render :edit_post
       elsif params[:commit].present?
-        @post.update_attributes(params[:blog_post])
+        update_post_attributes(params[:blog_post])
         if @post.save
           flash[:notice] = "#{@post.title} has been updated."
           render :show
@@ -28,7 +28,7 @@ class NewsController < ApplicationController
           flash[:notice] = "Unabel to save post: #{@post.errors.full_messages}"
           render :edit_post
         end
-      else
+      else # user canceled changes
         render :show   
       end
     else
@@ -61,5 +61,12 @@ private
 
   def set_post
     @post = BlogPost.find(params[:id])
+  end
+  
+  def update_post_attributes(attributes = [])
+    @post.title = attributes[:title]
+    @post.text = attributes[:text]
+    @post.tagline = attributes[:tagline]
+    @post.tag_list = attributes[:tag_list]
   end
 end

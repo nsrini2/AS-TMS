@@ -89,7 +89,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module AgentstreamDe
+module AgentStream
   class Application < Rails::Application
     require 'cubeless_engine_integration'
     

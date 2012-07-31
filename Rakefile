@@ -46,7 +46,7 @@ namespace :spec do
   end
 end
 
-AgentstreamDe::Application.load_tasks
+AgentStream::Application.load_tasks
 
 
 task :default => "spec:all"

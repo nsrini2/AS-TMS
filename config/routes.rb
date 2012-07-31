@@ -1,4 +1,4 @@
-AgentstreamDe::Application.routes.draw do
+AgentStream::Application.routes.draw do
 
   devise_for :supplier_users
 

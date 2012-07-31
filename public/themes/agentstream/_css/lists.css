@@ -552,3 +552,30 @@ table#companies_list .even, table#company_members_list .even {
 table#companies_list .odd, table#company_members_list .odd {
   background: #90B4BC;
 }
+
+/* line 324, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_results .primary {
+  margin-left: 10px;
+  width: 720px;
+  border: 1px solid #C4D7DC;
+}
+
+/* line 331, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_post_item {
+  margin-left: 10px;
+  padding: 10px;
+  width: 720px;
+  background-color: #EFF8FA;
+  border: 1px solid #C4D7DC;
+}
+/* line 337, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_post_item .rate {
+  float: right;
+}
+
+/* line 342, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.aside-small {
+  width: 195px;
+  margin: 0 0 10px 0;
+  float: right;
+}

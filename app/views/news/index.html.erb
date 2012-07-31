@@ -1,12 +1,13 @@
 <h2 class="page_title">News</h2>
 
-<div class="blog_results">
-  <div id="list">
+<div class="news_results">
+  <div id="list" class="primary">
     <% @news.each do |blog_post| -%>
       <%= render :partial => 'post', :locals => { :blog_post => blog_post, :classname => cycle('odd', 'even') } %>
       <div style="clear: both;"></div>
     <% end -%>
   </div>
+  <div class="aside-small"><h2>aside suff</h2></div>
 </div>
 
 <div class="see_all" style="margin-left: 10px;">
