@@ -17,7 +17,7 @@ class KarmaHistory < ActiveRecord::Base
       previous_month = d.prev_month.month
       previous_year = d.prev_month.year
       sql = <<-EOS
-        SELECT profiles.screen_name, (t1.value - t2.value) as karma_earned
+        SELECT profiles.screen_name, profiles.profile_1 as agency_name, profiles.profile_8 as agency_type, (t1.value - t2.value) as karma_earned
         FROM 
         (SELECT * from karma_histories WHERE month = #{month} AND year = #{year} ) as t1,
         (SELECT * from karma_histories WHERE month = #{previous_month} AND year = #{previous_year}) as t2,

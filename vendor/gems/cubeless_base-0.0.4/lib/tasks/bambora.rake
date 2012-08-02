@@ -100,6 +100,7 @@ namespace :bam do
     SemanticMatcher.default.generate_top_terms
     
     KarmaHistory.capture_points
+    SiteStatHistory.capture_daily_stats
   end
 
   desc 'Weekly Maintenance'

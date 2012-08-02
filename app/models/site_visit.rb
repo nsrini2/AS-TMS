@@ -14,21 +14,6 @@ class SiteVisit < ActiveRecord::Base
       SiteVisit.select("DISTINCT profile_id").where("created_at between ? AND ? ", start_date, end_date).count 
     end
     
-    # def visitors(opts = {})
-    #   today_jd = Date.today.jd
-    #   opts = {:days_ago => 1}.merge!(opts)
-    #   SiteVisit.where(:julian_date => (today_jd - opts[:days_ago]) ).count
-    # end
-    # 
-    # def weekly_visitors(opts = {})
-    #   today_jd = Date.today.jd
-    #   (1..7).map do |day|
-    #     date = Date.jd(today_jd - day).strftime("%Y-%m-%d")
-    #     daily_visits = visitors(:days_ago => day)
-    #     "#{date}, #{daily_visits}"
-    #   end
-    # end
-    # 
     def visitors_by_country(start_date, end_date)
       sql = <<-EOS
       SELECT profile_registration_fields.`value` as country, count(site_registration_field_id) as profile_count

@@ -1,3 +1,11 @@
+class Numeric
+  def percent_of(n)
+    (self.to_f / n.to_f * 100.0).round(2).to_i.to_s + "%"
+    rescue FloatDomainError
+      "0%"
+  end
+end
+
 class StatusReport
   @header = ["User Id", "User Email", "User Created At", "User Updated At", 
             "Profile Screen Name", "Profile Status",  
@@ -8,52 +16,6 @@ class StatusReport
   
   
 class << self
-  # def mail_weekly_report
-  #   recipient = ["AgentStreamData@sharepointemail.sabre.com"]
-  #   recipient << "scott.johnson@sabre.com"
-  #   Notifier.weekly_status_report(recipient).deliver
-  # end  
-  # 
-  # def weekly_dump
-  #   data = "Number of Deals, #{Offer.approved.deals.count}\n" 
-  #   data << "Number of Extras, #{Offer.approved.extras.count}\n\n"  
-  #   
-  #   admin_reporter = AdminController.new  
-  #   karma_values = admin_reporter.send(:karma_summary_result).data
-  #   question_values = admin_reporter.send(:questions_summary_result).data
-  #   karma_values.each do |karma_value|
-  #     data << "karma level #{karma_value.join(',')}\n"
-  #   end  
-  #   data << "\n"
-  #   
-  #   question_values.each do |question_value|
-  #     data << "#{question_value.join(',')}\n"
-  #   end
-  #   data << "\n"
-  #   
-  #   weekly_visitor_count = SiteVisit.weekly_visitors
-  #   weekly_visitor_count.each do |day_count|
-  #     data << "Number of unique visitors on, #{day_count}\n"
-  #   end
-  #   data << "\n"
-  #   
-  #   weekly_visitor_count_by_countries = SiteVisit.weekly_visitors_by_country  
-  #   weekly_visitor_count_by_countries.each do |visitor_count_by_countries|
-  #     visitor_count_by_countries.each do |visitor_count_by_country|
-  #       visitor_count_by_country.gsub!(/[\n\r]/, '')
-  #       data << "Number of unique visitors on, #{visitor_count_by_country}\n"
-  #     end
-  #   end
-  #   data << "\n"
-  #   
-  #   profile_count_by_countries = SiteVisit.active_profiles_by_country
-  #   profile_count_by_countries.each do |profile_count_by_country|
-  #     data << "Number of active profiles from, #{profile_count_by_country.country.gsub(/[\n\r]/, '')}, #{profile_count_by_country.profile_count}\n"
-  #   end
-  #   
-  #   data
-  # end
-  
   def mail_monthly_activity_report
     recipient = ["AgentStreamData@sharepointemail.sabre.com"]
     recipient << "scott.johnson@sabre.com"
@@ -80,7 +42,7 @@ class << self
     # Top 10 Karma earners this month
     top_monthly_contributors = KarmaHistory.top_ten_karma_earners_for_month(first_day_of_month)
     top_monthly_contributors.each do |c|
-      data << "#{c.screen_name},#{c.karma_earned}\n"
+      data << "#{c.screen_name},#{c.agency_name},#{c.agency_type},#{c.karma_earned}\n"
     end  
     data << "\n"
     
@@ -95,10 +57,10 @@ class << self
     data << "Total Answers,#{Answer.count}\n\n"
     
     # Number of unique visitors by week
-  
+    data << "Week of:,Unique logins, Total Community Size\n"
     (1..52).each do |week|
       start_date = (today - week.weeks).beginning_of_week
-      data << "Number of unique visitors week of #{start_date}, #{SiteVisit.visitors_by_week(start_date)}\n"
+      data << "#{start_date}, #{SiteVisit.visitors_by_week(start_date)}, #{SiteStatHistory.stat_by_week('active_members', start_date)}\n"
     end  
     data << "\n"
     
@@ -108,7 +70,24 @@ class << self
       data << "Number of unique visitors from, #{visit.country.chomp}, #{visit.profile_count}\n"
     end
     
+    #agency booking type
+    data << "\n"
+    booking_types = percent_agency_booking_type
+    ["Leisure", "Corporate", "Generalist", "Other"].each do |type|
+      data << "#{type}, #{percent_agency_booking_type[type]}\n"
+    end  
+    data << "\n"
+    
     data
+  end
+  
+  def percent_agency_booking_type
+    total = Profile.where("profiles.profile_8 IS NOT NULL").count.to_f
+    leisure = Profile.where("profile_8 LIKE ? ", "%leisure%").where("profile_8 NOT LIKE ? ", "%corporate%").count
+    corporate = Profile.where("profile_8 LIKE ? ", "%corporate%").where("profile_8 NOT LIKE ? ", "%leisure%").count
+    generalist = Profile.where("profile_8 LIKE ? ", "%generalist%").count
+    other = total - leisure - corporate - generalist
+    {"Leisure" => leisure.percent_of(total), "Corporate" => corporate.percent_of(total), "Generalist" => generalist.percent_of(total), "Other" => other.percent_of(total) }
   end
   
   def mail_users_by_country_report
