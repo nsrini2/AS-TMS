@@ -53,7 +53,7 @@ module ModelUtil
     column_names.each do |col|
       model[col] = nil
     end
-    model.save_with_validation(false)
+    model.save(:validate => false)
   end
 
   private
