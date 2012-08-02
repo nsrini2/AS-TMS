@@ -16,7 +16,7 @@
 
   <div id="chat_attendees" class="post-panel">
     <div class="header">
-      <%= link_to("Get chat attendance report", report_chat_path(@chat), { :class => "right" }) if current_profile.has_role?(Role::CubelessAdmin) %>
+      <%= link_to("Get chat attendance report", report_chat_path(@chat), { :class => "right" }) if current_profile.has_role?(Role::ReportAdmin) %>
       <h3>Attendees:</h3>
     </div>
     <div class="content">
