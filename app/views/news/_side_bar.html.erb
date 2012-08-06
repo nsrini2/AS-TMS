@@ -1,0 +1,34 @@
+<div id="blog_meta">
+  <%#= content_tag(:h4, link_to('Create News Post', new_companies_blog_blog_post_path )) -%>
+    
+    <% unless News.blog.archived_posts.size.zero? -%>
+      <h4>Archives</h4>
+      <ul class="archives">
+        <li><%= link_to("All", news_path)%>
+        <% if posts && posts.size > 1 %>  
+          <li><%=link_to("Most Recent", news_post_path(posts.first)) -%></li>
+        <% end %>
+        <% News.blog.archived_posts.each do |archive| -%>
+          <% if selected_date == archive.created_at_year_month.to_s %>
+            <li><%= archive.created_at.strftime("%B %Y") -%></li>
+          <% else -%>
+            <li><%= link_to(archive.created_at.strftime("%B %Y"), "#{news_path}?date=#{archive.created_at_year_month}") -%></li>
+          <% end -%>  
+        <% end -%>
+      </ul>
+    <% end -%>
+
+    <% unless News.blog.tags.size.zero? -%>
+      <h4>Tags</h4>
+      <ul class="tags">
+        <% News.blog.tags.each do |tag| -%>
+          <% if selected_tags.include? tag.name %>
+            <li><%= "#{tag} (#{tag.total})" -%></li>
+          <% else -%>
+            <li><%= link_to("#{tag} (#{tag.total})", "#{news_path}?tag=#{tag}") -%></li>
+          <% end -%>  
+        <% end -%>
+      </ul>
+    <% end -%>
+
+</div>

@@ -1,66 +1,60 @@
 <div id="login-main">
-	<%= link_to(image_tag("/images/AgentStream_Logo_FINAL_111210_H90.jpg", :alt => "AgentStream Logo"), home_path )%>
-	<div id="public-focus">
-		<div id="login-header" class="header">
-			<h1>login to agentstream</h1>
-		</div>
-	
-		<div id="agentstream-login">
-				<% @user = User.new %>
-				<% form_for @user, :url => login_account_path, 
-													 :html => { :id => "login_form", :class => "html5", "accept-charset" => "utf-8" } do %>
-					  <input type="text" name="login" placeholder="Username" id="one" /><br/>
-					  <input type="password" name="password" placeholder="Password" id="two"/><br/>
-						<!-- <input type="checkbox" name="remember_me" value="true" />Remember Me<br /> -->
-				   	<button class="submit" type="submit" name="Login"></button>
-				   	<br/>
-				<% end %>
-				<!-- <div style="clear:both;"></div> -->
-				<a href="/retrievals/new">Forgot username or password?</a>
-		</div>
-	
-		<div id="facebook-login">
-			<p>or connect with your<br /> Facebook account:</p>
-			<fb:login-button on-login="window.location = '/account/register'" size="medium">Sign in with Facebook</fb:login-button>
-			<div id="fb-root"></div>
-		</div>
+  <%= link_to(image_tag("/images/AgentStream_Logo_FINAL_111210_H90.jpg", :alt => "AgentStream Logo"), home_path )%>
+  <div id="public-focus">
+    <div id="login-header" class="header">
+      <h1>login to agentstream</h1>
+    </div>
+  
+    <div id="agentstream-login">
+        <% @user = User.new %>
+        <% form_for @user, :url => login_account_path, 
+                           :html => { :id => "login_form", :class => "html5", "accept-charset" => "utf-8" } do %>
+            <input type="text" name="login" placeholder="Username" id="one" /><br/>
+            <input type="password" name="password" placeholder="Password" id="two"/><br/>
+            <!-- <input type="checkbox" name="remember_me" value="true" />Remember Me<br /> -->
+             <button class="submit" type="submit" name="Login"></button>
+             <br/>
+        <% end %>
+        <!-- <div style="clear:both;"></div> -->
+        <a href="/retrievals/new">Forgot username or password?</a>
+    </div>
+  
+    <div id="facebook-login">
+      <p>or connect with your<br /> Facebook account:</p>
+      <fb:login-button on-login="window.location = '/account/register'" size="medium">Sign in with Facebook</fb:login-button>
+      <div id="fb-root"></div>
+    </div>
 
-	</div>
-	<div style="clear: both;">
-		<p id="login-request">
-			Need an account?<%= link_to (" register &rsaquo;", signup_account_path )%>
-		</p>
-	</div>
-	<div class="disclaimer">
-	  <p><%= Config[:disclaimer] -%></p>
-	</div>
-</div>	
+  </div>
+  <div style="clear: both;">
+    <p id="login-request">
+      Need an account?<%= link_to(" register &rsaquo;", signup_account_path )%>
+    </p>
+  </div>
+  <div class="disclaimer">
+    <p><%= Config[:disclaimer] -%></p>
+  </div>
+</div>  
 
 <script>
-	// these have to be in page AFTER <div id="fb-root"></div> 
-	// Initialize facebook elements	 
-	FB.init({
-	   appId  : <%=FB_APP_ID%>,
-	   status : true, // check login status
-	   cookie : true, // enable cookies to allow the server to access the session
-	   xfbml  : true  // parse XFBML
-	 });
-	
-	// logout of facebook
-	<% if @facebook_logout %>
-		FB.getLoginStatus(function(response) {
-		  if (response.session) {
-				// User logged into FB
-		    FB.logout(function(response){
-					// cb : window.location = "/account/login?logout=true";
-				});
-		  }
-		});
-	<% end %>	
+  // these have to be in page AFTER <div id="fb-root"></div> 
+  // Initialize facebook elements   
+  FB.init({
+     appId  : <%=FB_APP_ID%>,
+     status : true, // check login status
+     cookie : true, // enable cookies to allow the server to access the session
+     xfbml  : true  // parse XFBML
+   });
+  
+  // logout of facebook
+  <% if @facebook_logout %>
+    FB.getLoginStatus(function(response) {
+      if (response.session) {
+        // User logged into FB
+        FB.logout(function(response){
+          // cb : window.location = "/account/login?logout=true";
+        });
+      }
+    });
+  <% end %>  
 </script>
-
-
-
-
-
-

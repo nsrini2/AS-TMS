@@ -1,11 +1,15 @@
 class NewsController < ApplicationController
   before_filter :set_post, :except => [:index]
+  before_filter :set_news, :only => [:index, :show]
   
   def index
-    set_news
+    @selected_tags = [params[:tag]] || []
+    @selected_date = params[:date] || "" 
   end
   
   def post
+    @selected_tags = @post.tags.map {|t| t.name}
+    @selected_date = @post.created_at_year_month.to_s
     render :show
   end
   
@@ -56,6 +60,12 @@ private
       @news = current_profile.blog_posts.where(:blog_id => News.id).paginate(:page => params[:page])
     else
       @news = News.blog_posts.paginate(:page => params[:page])
+    end
+    if params[:tag]
+      @news = @news.where("cached_tag_list LIKE ?", "%#{params[:tag]}%")
+    end
+    if params[:date]
+      @news = @news.where("created_at_year_month = ?", "#{params[:date]}")
     end    
   end
 

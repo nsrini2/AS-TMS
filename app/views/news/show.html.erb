@@ -5,7 +5,10 @@ blog_explore = false unless defined?(blog_explore)
 preview = false unless defined?(preview)
 -%>
 <h2 class="page_title">News Post</h2>
-<div class="aside-small"><h2>aside suff</h2></div>
+<div class="aside-small">
+  <%= render :partial => '/news/side_bar', 
+      :locals => { :posts => @news, :selected_date => @selected_date, :selected_tags => @selected_tags } -%>
+</div>
 <div class="list_item news_post_item">
   <div class="rate">
     <%= render :partial => 'blog_posts/rating', :locals => { :blog_post => @post } -%>

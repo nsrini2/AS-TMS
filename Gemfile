@@ -1,4 +1,8 @@
 source 'http://rubygems.org'
+# SSJ 2012-8-2 I modified the Gemfile.lock directly to use the most current version of 
+# rack, 1.4.1.  This is so the production server can run both rails 3.0.16 and 3.2.7 applications
+# so if you update teh Gemfile.lock, please keep this in mind
+# test in developmnet in a rack based server, like Thin to ensure this is not broken
 
 gem 'rails', '3.0.16'
 
@@ -86,7 +90,9 @@ group :development, :test do
   gem 'seed_me'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'rcov'  
+  gem 'rcov'
+  # from app folder $> thin start
+  gem 'thin'  
   # gem 'ruby-prof'
 end
 

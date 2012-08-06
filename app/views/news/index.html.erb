@@ -7,7 +7,10 @@
       <div style="clear: both;"></div>
     <% end -%>
   </div>
-  <div class="aside-small"><h2>aside suff</h2></div>
+  <div class="aside-small">
+    <%= render :partial => '/news/side_bar', 
+        :locals => { :posts => @news, :selected_date => @selected_date, :selected_tags => @selected_tags } -%>
+  </div>
 </div>
 
 <div class="see_all" style="margin-left: 10px;">
