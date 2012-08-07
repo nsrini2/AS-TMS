@@ -117,6 +117,11 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def pcc
+    field = profile_registration_fields.find_by_site_registration_field_id(1)
+    read_attribute(:pcc) || (field ? field.value : '')
+  end
+
   def current_bookings
     getthere_bookings.find :all, :conditions => 'end_time > now()', :order => 'start_time asc'
   end
