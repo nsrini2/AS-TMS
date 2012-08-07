@@ -128,7 +128,8 @@ class Chat < ActiveRecord::Base
       data = self.participants.map { |attendee| 
         "#{attendee.screen_name},#{attendee.pcc},#{attendee.status}\n" 
       }
-    end  
+    end
+    data
   end
   
   def attending?
