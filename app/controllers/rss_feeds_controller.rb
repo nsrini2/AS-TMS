@@ -33,7 +33,6 @@ class RssFeedsController < ApplicationController
   def update
     @rss_feed = RssFeed.find_by_id(params[:id])
     @rss_feed.update_attributes(params[:rss_feed])
-    debugger
     if params[:asset]
       @rss_feed.primary_photo = RssFeedPhoto.new(params[:asset])
     end

@@ -48,6 +48,10 @@ class BlogPost < ActiveRecord::Base
     end  
   end
   
+  def profile=(profile)
+    self.creator = profile
+  end
+  
   def group?
     self.blog.owner.class == Group
   end

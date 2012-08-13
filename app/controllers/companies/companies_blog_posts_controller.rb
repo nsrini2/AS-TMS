@@ -23,7 +23,8 @@ class Companies::BlogPostsController < ApplicationController
   
   def new
     @blog = current_company.blog
-    @blog_post =  @blog.blog_posts.new({:profile_id => current_profile.id})
+    @blog_post =  @blog.blog_posts.new()
+    @blog_post.creator = current_profile
   end
   
   def create
