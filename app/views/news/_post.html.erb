@@ -32,12 +32,7 @@ preview = false unless defined?(preview)
 
 
     <div class="rate">
-      <ul>
-        <% (1..5).each do |i| %>
-          <li class="rate rating<%=i%> <%= "rated" if blog_post.rating_avg.round >= i %>"><%=i%></li>
-        <% end %>
-      </ul>
-      <p class="rating_total"><%= blog_post.rating_count.zero? ? "No ratings yet" : "#{blog_post.rating_avg} rating from #{pluralize(blog_post.rating_count, 'user')}" -%></p>
+      <%= render :partial => 'votes/show', :locals => { :owner => blog_post } %>
     </div>
 
 

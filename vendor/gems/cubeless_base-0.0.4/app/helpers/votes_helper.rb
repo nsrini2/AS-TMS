@@ -1,34 +1,35 @@
 module VotesHelper
   # helpful voting
-  def votes_current_state_for(model)
-    partial = model.current_user_has_voted? ? 'stats' : 'vote'
-    render :partial => "votes/#{partial}", :locals => {:model => model}
+  # def votes_current_state_for(owner)
+  #   partial = Vote.current_user_has_voted?(owner) ? 'stats' : 'vote'
+  #   render :partial => "votes/#{partial}", :locals => {:model => model}
+  # end
+  # 
+  # def voting_eligibility_for(owner)
+  #   if owner.authored_by?(current_profile) || !logged_in?
+  #     render :partial => 'votes/stats', :locals => {:owner => owner}
+  #   else
+  #     votes_current_state_for owner
+  #   end
+  # end
+
+  def link_to_vote_helpful(owner)
+    link_to(image_tag("/images/de/thumbs_up_small.png", :alt => "Helpful", :title => "Helpful"), 
+            { :controller => :votes, :action => :helpful, :owner_id => owner.id, :owner_type => owner.class}, 
+            { :class => 'vote helpful', :method => :post })
   end
 
-  def voting_eligibility_for(model)
-    if model.authored_by?(current_profile) || !logged_in?
-      render :partial => 'votes/stats', :locals => {:model => model}
-    else
-      votes_current_state_for model
-    end
+  def link_to_vote_not_helpful(owner)
+    # url = not_helpful_question_answer_vote_path(@question_summary || model.question, model)
+    # link_to(image_tag("/images/de/thumbs_down_small.png", :alt => "Not Helpful", :title => "Not Helpful"), url, :class => 'vote not_helpful')
+    link_to(image_tag("/images/de/thumbs_down_small.png", :alt => "Helpful", :title => "Helpful"), 
+            { :controller => :votes, :action => :not_helpful, :owner_id => owner.id, :owner_type => owner.class}, 
+            { :class => 'vote helpful', :method => :post })
   end
 
-  def link_to_vote_helpful(model)
-    url = helpful_question_answer_vote_path(@question_summary || model.question, model)
-    # link_to(image_tag("/images/helpfulYes.png", :alt => "Helpful", :size => '48x20', :title => "Helpful"), url, :class => 'vote helpful')
-    link_to(image_tag("/images/de/thumbs_up_small.png", :alt => "Helpful", :title => "Helpful"), url, :class => 'vote helpful')
-  end
-
-  def link_to_vote_not_helpful(model)
-    url = not_helpful_question_answer_vote_path(@question_summary || model.question, model)
-    #link_to(image_tag("/images/helpfulNo.png", :alt => "Not Helpful", :size => '48x20', :title => "Not Helpful"), url, :class => 'vote not_helpful')
-    link_to(image_tag("/images/de/thumbs_down_small.png", :alt => "Not Helpful", :title => "Not Helpful"), url, :class => 'vote not_helpful')
-  end
-
-  def render_voting_mechanism_for(model)
-    @model = model
-    render :partial => 'votes/show'
-  end
+  # def render_voting_mechanism_for(owner)
+  #   render :partial => 'votes/show', :locals => {:owner => owner}
+  # end
 
   # best answer voting
   def is_best_and_closed(answer, question)

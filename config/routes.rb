@@ -11,21 +11,19 @@ AgentStream::Application.routes.draw do
   match '/referafriend' => 'public_content#refer_a_friend'
   match '/channels' => 'display#channels'
   
-  # puts DealsAndExtras
-  # puts "-----"
-  # puts DealsAndExtras::Engine.routes
-  # puts "-----"
-  
-  # scope "/de" do 
-  #     
-  #   end
-  
+
+  # NEWS
   match '/news' => 'news#index', :as => :news, :via => :get
   match '/news/post/:id' => 'news#post', :as => :news_post, :via => :get
   match '/news/post/:id/edit' => 'news#edit_post', :as => :edit_news_post, :via => :get
   match '/news/post/:id/update' => 'news#update_post', :via => [:post, :put], :as => :update_news_post
   match '/news/post/:id/delete' => 'news#destroy', :as => :delete_news_post, :via => :delete
   
+  #VOTES
+  match '/votes/helpful' => 'votes#helpful', :via => :post
+  match '/votes/not_helpful' => 'votes#not_helpful', :via => :post
+  match 'companies/votes/helpful' => 'votes#helpful', :via => :post
+  match 'companies/votes/not_helpful' => 'votes#not_helpful', :via => :post
   
   
   # MM2: I have no idea why this won't work in the de routes file...but it won't... :(
@@ -50,12 +48,6 @@ AgentStream::Application.routes.draw do
       resources :questions do  
         match 'update' => 'questions#update', :via => :post
         resources :answers do
-          resource :vote do
-            collection do
-              post :not_helpful
-              post :helpful
-            end
-          end
         end
       end
       
@@ -304,7 +296,7 @@ AgentStream::Application.routes.draw do
   end
 
   resources :blog_posts do 
-    resources :comments 
+    resources :comments    
     resources :abuse, :controller => "abuses" do
       collection do
         get :abuse_popup
@@ -587,11 +579,7 @@ AgentStream::Application.routes.draw do
     end
     
     resources :answers do
-        get :vote_best_answer
-      resource :vote do
-        post :helpful
-        post :not_helpful
-      end
+      get :vote_best_answer
     end
   end
 

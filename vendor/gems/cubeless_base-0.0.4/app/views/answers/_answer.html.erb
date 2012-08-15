@@ -14,7 +14,7 @@
     ])%>
   </div>
   <div class="action_buttons">
-    <%=render_voting_mechanism_for answer %>
+    <%= render :partial => 'votes/show', :locals => { :owner => answer } %>
     <%= voting_is_allowed(answer, question) do %>
       <div class="bestAnswer">
         <div><%= best_label_display(answer, question, "Best?") %></div> 

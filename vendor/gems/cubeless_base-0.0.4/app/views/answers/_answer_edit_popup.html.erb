@@ -1,12 +1,12 @@
 <% content_for(:title, object_edit_popup_title(@answer)) -%>
 <% form_for @answer, :html => { :id => 'edit_answer' } do |f| -%>
-	<p><%= object_edit_popup_message(@answer, "Go for it!  Zap those pesky typos. You can change your answer anytime it strikes your fancy.") -%></p>
-	<dl>
-		<dt><label for="answer_answer">Update Answer</label></dt>
-		<dd><%= f.text_area :answer, :rows => 6, :cols => 40, :value => @answer.answer -%></dd>
-	</dl>
-	<div class="buttons">
-		<input type="submit" name="commit" value="Submit" class="button medium">
-		<input type="button" name="cancel" value="Cancel" class="button medium light close">
-	</div>
+  <p><%= object_edit_popup_message(@answer, "Go for it!  Zap those pesky typos. You can change your answer anytime it strikes your fancy.") -%></p>
+  <dl>
+    <dt><label for="answer_answer">Update Answer</label></dt>
+    <dd><%= f.text_area :answer, :rows => 6, :cols => 40, :value => @answer.answer -%></dd>
+  </dl>
+  <div class="buttons">
+    <input type="submit" name="commit" value="Submit" class="button medium">
+    <input type="button" name="cancel" value="Cancel" class="button medium light close">
+  </div>
 <% end -%>

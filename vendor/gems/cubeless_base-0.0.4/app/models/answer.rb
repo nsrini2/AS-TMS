@@ -48,22 +48,21 @@ class Answer < ActiveRecord::Base
     ModelUtil.add_selects!(args,"answers.*, (select count(1) from votes where votes.owner_id=answers.id and votes.profile_id=#{current_profile.id} and votes.owner_type='Answer' and votes.vote_value=true) as current_user_voted_positive, (select count(1) from votes where votes.owner_id=answers.id and votes.profile_id=#{current_profile.id} and votes.owner_type='Answer' and votes.vote_value=false) as current_user_voted_negative") if current_profile
     find(*args)
   end
-
-  def current_user_voted_positive
-    current_profile = AuthenticatedSystem.current_profile
-    # attributes['current_user_voted_positive'].to_i > 0
-    self.votes.where(:profile_id => current_profile.id).where(:vote_value => true).count > 0
-  end
-
-  def current_user_voted_negative
-    current_profile = AuthenticatedSystem.current_profile
-    # attributes['current_user_voted_negative'].to_i > 0
-     self.votes.where(:profile_id => current_profile.id).where(:vote_value => false).count > 0
-  end
-
-  def current_user_has_voted?
-    current_user_voted_positive || current_user_voted_negative
-  end
+  
+  # SSJ 2012-08-15 moved to Vote.rb to allow other things to be votable
+  # def current_user_voted_positive
+  #   current_profile = AuthenticatedSystem.current_profile
+  #   self.votes.where(:profile_id => current_profile.id).where(:vote_value => true).count > 0
+  # end
+  # 
+  # def current_user_voted_negative
+  #   current_profile = AuthenticatedSystem.current_profile
+  #   self.votes.where(:profile_id => current_profile.id).where(:vote_value => false).count > 0
+  # end
+  # 
+  # def current_user_has_voted?
+  #   current_user_voted_positive || current_user_voted_negative
+  # end
     
   ### Utility Methods
   def mark_best_answer

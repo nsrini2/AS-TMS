@@ -21,6 +21,7 @@ class BlogPost < ActiveRecord::Base
   has_one :abuse, :as => :abuseable, :conditions => 'remover_id is null'
 
   has_many :comments, :as => :owner, :order => "comments.created_at", :dependent => :destroy
+  has_many :votes, :as => :owner, :dependent => :delete_all
   
   named_scope :recent, { :limit => 10 }
   

@@ -1,12 +1,12 @@
 <% content_for(:title, object_edit_popup_title(@reply)) -%>
 <% form_for [@answer, @reply] do |f| -%>
-	<p><%= object_edit_popup_message(@answer, "Edit, refine and tweak your reply to your hearts content. A well crafted sentence is a beautiful thing... or so I hear.")%></p>
-	<dl>
-		<dt><label for="replay_text">Reply</label></dt>
-		<dd><%= f.text_area :text, :rows => 6, :cols => 40, :value => @reply.text -%></dd>
-	</dl>
-	<div class="buttons">
-		<input type="submit" name="commit" value="Submit" class="button medium">
-		<input type="button" name="cancel" value="Cancel" class="button medium light close">
-	</div>
+  <p><%= object_edit_popup_message(@answer, "Edit, refine and tweak your reply to your hearts content. A well crafted sentence is a beautiful thing... or so I hear.")%></p>
+  <dl>
+    <dt><label for="replay_text">Reply</label></dt>
+    <dd><%= f.text_area :text, :rows => 6, :cols => 40, :value => @reply.text -%></dd>
+  </dl>
+  <div class="buttons">
+    <input type="submit" name="commit" value="Submit" class="button medium">
+    <input type="button" name="cancel" value="Cancel" class="button medium light close">
+  </div>
 <% end -%>
