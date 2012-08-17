@@ -40,4 +40,6 @@ unless Rails.env.production?
     end
   end
   task :default => "spec:all"
+  rescue
+    puts "Unable to load/run rspec.  For details look in file:  #{__FILE__}"
 end  
