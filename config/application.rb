@@ -89,6 +89,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+puts "Loading AgentStream ..."
+
 module AgentStream
   class Application < Rails::Application
     require 'cubeless_engine_integration'
@@ -105,7 +107,7 @@ module AgentStream
       engine_lib_path = File.expand_path(e.root.to_s + "/lib")
       engine_components_path = File.expand_path(e.root.to_s + "/components")
       engine_plugins_path = File.expand_path(e.root.to_s + "/vendor/plugins")
-      puts engine_plugins_path
+      puts "Loading engine: " + engine_plugins_path
 
       config.paths.vendor.plugins.push engine_plugins_path
       
@@ -176,7 +178,7 @@ module AgentStream
       ActionView::Base.sanitized_allowed_tags << 'u'
     end
 
-    config.logger = Logger.new(File.dirname(__FILE__) + "/../log/#{RAILS_ENV}.log") 
+    config.logger = Logger.new(File.dirname(__FILE__) + "/../log/#{Rails.env}.log") 
     config.logger.formatter = Logger::Formatter.new
   end
 end

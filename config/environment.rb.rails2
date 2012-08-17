@@ -253,6 +253,6 @@ ActionMailer::Base.smtp_settings = Config[:smtp_settings]
 # Include your application configuration below
 require 'table_for'
 require 'getthere_integration'
-
+puts __FILE__
 require 'RMagick'  
 require 'spawn'

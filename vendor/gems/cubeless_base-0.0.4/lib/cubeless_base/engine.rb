@@ -3,7 +3,7 @@ require "rails"
 
 module CubelessBase
   class Engine < Rails::Engine
-    puts "CubelessBase Engine"
+    puts "Loading CubelessBase Engine ..."
 
     # paths.vendor               "vendor", :load_path => true
     # paths.vendor.plugins      "vendor/plugins"
@@ -12,7 +12,7 @@ module CubelessBase
 
     paths.lib << "lib/assist/profile"
 
-    engine_name :cubeless_base
+    # engine_name :cubeless_base
     
     initializer :pre_initializers, :before => :load_config_initializers do |app|
       # app.config.paths.vendor.plugins.push File.expand_path(File.dirname(__FILE__) + "/../../vendor/plugins")
@@ -36,12 +36,12 @@ module CubelessBase
       # puts "p2222222222pppppppp"
 
       
-      app.config.paths.vendor.plugins.each do |path|
-        puts path
-        10.times{ puts "" }
-        puts "---------------------------------------------"
-                10.times{ puts "" }
-      end
+      # app.config.paths.vendor.plugins.each do |path|
+      #   puts path
+      #   10.times{ puts "" }
+      #   puts "---------------------------------------------"
+      #           10.times{ puts "" }
+      # end
       
       # app.config.paths.vendor.plugins.to_a.sort.each do |plugin|
       #   load(plugin)

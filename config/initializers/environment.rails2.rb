@@ -98,7 +98,7 @@ end
 
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register "application/x-mobile", :mobile
-Mime::Type.register "application/pdf", :pdf
+Mime::Type.register "application/pdf", :pdf unless Mime.constants.include?("PDF")
 
 # Support for cloning the activerecord connection
 module ActiveRecord
@@ -180,6 +180,6 @@ ActionMailer::Base.smtp_settings = Config[:smtp_settings]
 # Include your application configuration below
 require 'table_for'
 require 'getthere_integration'
-
-require 'RMagick'  
-require 'spawn'
+# puts __FILE__
+# require 'RMagick'  
+# require 'spawn'
