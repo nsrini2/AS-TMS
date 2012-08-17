@@ -1,7 +1,6 @@
-<div id="blog_meta">
-  <%#= content_tag(:h4, link_to('Create News Post', new_companies_blog_blog_post_path )) -%>
-    
+<div id="blog_meta">    
     <% unless News.blog.archived_posts.size.zero? -%>
+      <h4><%= link_to("Post News Link", "/")%></h4>
       <h4>Archives</h4>
       <ul class="archives">
         <li><%= link_to("All", news_path)%>
