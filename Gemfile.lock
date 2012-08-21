@@ -243,6 +243,7 @@ DEPENDENCIES
   microreviewr!
   mysql (= 2.8.1)
   newrelic_rpm (~> 3.3.4.1)
+  nokogiri
   panda (= 0.2.1)
   prawn
   rails (= 3.0.16)

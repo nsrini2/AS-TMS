@@ -1,0 +1,20 @@
+<h2>Trending News</h2>
+<% news_posts.each do |post| %>
+  <div class="note">
+    <%= image_tag(post.image) %>  
+    <p class="title"><%= link_to post.title, news_post_path(post) %></p>
+    <p class="when">posted on <%= short_date post.created_at %> by <%= post.profile.full_name %></p>
+    <div class="text">
+      <%= textilize truncate(post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), { :length => 140, :omission => "..." }) %>
+    
+      <p class="actions">
+        <%= link_to "Read", news_post_path(post), :class => "button little" %>
+        <%= link_to "Comment", news_post_path(post, :anchor => "comments"), :class => "button little light" %>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<div class="see_all">
+  <a href=<%= news_path %>>See All News Articles</a>
+</div>

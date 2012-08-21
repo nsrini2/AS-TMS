@@ -1,6 +1,7 @@
 class BlogPost < ActiveRecord::Base
   include GroupOwned
   include Notifications::BlogPost
+  include ActionView::Context
   stream_to :company
   after_save :update_indexes
   
@@ -23,12 +24,24 @@ class BlogPost < ActiveRecord::Base
   has_many :comments, :as => :owner, :order => "comments.created_at", :dependent => :destroy
   has_many :votes, :as => :owner, :dependent => :delete_all
   
-  named_scope :recent, { :limit => 10 }
+  scope :recent, { :limit => 10 }
   
   # named_scope :exclude_groups, lambda { |profile| { :conditions => ["groups.owner_id != ?", profile.id] } }
   # SSJ -- REFACTOR THIS MAY BE EVIL, it can create invalid results if you are not unscoping this when requesting a different order
-  default_scope order("blog_posts.created_at DESC")
+  # default_scope order("blog_posts.created_at DESC")
   self.per_page = 5
+  
+  def image
+    img = ::Nokogiri::HTML(text).at_css("img").first
+    # %{<img src="#{img[1]}" />}
+    img[1]
+  rescue NoMethodError => e
+    if news?
+      creator.primary_photo_path(:thumb_large)
+    else
+      ""
+    end      
+  end
   
   #SSJ 7/12 Needed profile interface stuff for old code to work with new polymorphic creator
   def profile_id
@@ -92,6 +105,11 @@ class BlogPost < ActiveRecord::Base
     # BatchMailer.mail(blog_post, recipients) unless recipients.blank?
     tmail = Notifier.create_company_blog_post(blog_post)
     self.send_batch_email(tmail, recipients)
+  end
+  
+  def self.by_rank
+    # SSJ 2012-08-21 just create a custom order to bring most relavant data to the top
+    reorder("((net_helpful *3) + (comments_count) + (views * 0.1)) - ((TO_DAYS(CURDATE()) - TO_DAYS(created_at)) * 0.5 ) DESC")
   end
   
   def self.find(*args)

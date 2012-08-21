@@ -48,6 +48,8 @@ class ProfilesController
     ModelUtil.add_conditions!(blog_options,"pg.id is null")
     ModelUtil.add_conditions!(blog_options,"blogs.owner_type <> 'Company'")
     @blog_posts = BlogPost.find(:all, blog_options, :limit => 2)
+    # @news_posts = News.top_posts(3)
+    @news_posts = News.blog_posts.where("text LIKE ?", "%img%").limit(3)
     
     
     # @blog_posts = BlogPost.joins(:blog).where(["blogs.owner_type <> ?", "Company"]).order("rand()").limit(2)

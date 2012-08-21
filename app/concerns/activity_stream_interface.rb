@@ -23,20 +23,25 @@ module ActivityStreamInterface
   end
 
   def event_path
-   # SSJ want to try setting @event to the event.klass then calling path on it?
-   if group_id && !profile_id
-     url_for(group_path(:id => group_id))
-   else
-     case klass
-       when "Answer": "/questions/#{Answer.find_by_id(klass_id).question_id}"
-       when "Question": "/questions/#{klass_id}"
-       when "GroupMembership": url_for(group_path(:id => group_id))
-       when "BlogPost": "/blog_posts/#{klass_id}"
-       when "Comment": "/comments/#{klass_id}"
-       else
+    # SSJ want to try setting @event to the event.klass then calling path on it?
+    if group_id && !profile_id
+      url_for(group_path(:id => group_id))
+    else
+      case klass
+      when "Answer": "/questions/#{Answer.find_by_id(klass_id).question_id}"
+      when "Question": "/questions/#{klass_id}"
+      when "GroupMembership": url_for(group_path(:id => group_id))
+      when "BlogPost": "/blog_posts/#{klass_id}"
+      when "Comment": "/comments/#{klass_id}"
+      #   if event_object.owner.respond_to?(:news?) && event_object.owner.news? #Exception for news post
+      #     news_post_path(event_object.owner) + "#comments"
+      #   else    
+      #     polymorphic_path(event_object.owner) + "#comments"
+      #   end 
+      else
          self.profile ? url_for(profile_path(self.profile)) : ""
-     end
-   end  
+       end
+    end  
   end
 
   def icon_path

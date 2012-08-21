@@ -11,7 +11,7 @@ gem "sass"
 
 gem "RedCloth", '4.2.3'
 gem 'rmagick', '2.5.2', :require => false # this is getting required by attachment_fu/processors/rmagick_processor
-
+gem 'nokogiri'
 gem "json", '1.2.4'
 
 # require native mysql driver, not the ruby version

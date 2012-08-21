@@ -68,7 +68,7 @@ class ActivityStreamEvent < ActiveRecord::Base
   end
 
   def event_object
-    return event_note if event_note
+    # return event_note if event_note
     Kernel.const_get(klass).find(klass_id)
   end
 

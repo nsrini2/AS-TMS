@@ -40,6 +40,10 @@ class News
     blog.blog_posts
   end
   
+  def top_posts(n =10)
+    blog_posts.by_rank.limit(n)
+  end
+  
   def private?
     false
   end

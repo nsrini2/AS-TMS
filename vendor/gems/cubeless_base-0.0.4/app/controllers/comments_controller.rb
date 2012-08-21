@@ -11,15 +11,17 @@ class CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     if comment.company?
       # SSJ 10/4/2011 -- all compnay comments are on blog posts
-      redirect_to "/companies/blog/blog_posts/#{comment.owner.id}#comment#{comment.id}"
-    else
-      owner = comment.owner  
+      redirect_to "/companies/blog/blog_posts/#{comment.owner.id}#comment_#{comment.id}"
+    elsif comment.owner.respond_to?(:news?) && comment.owner.news?
+      redirect_to news_post_path(comment.owner) + "#comment_#{comment.id}"
+    else  
+      owner = comment.owner
       options = []
       options << owner.root_parent if owner.respond_to?(:root_parent)
       options << owner.group if owner.is_a?(GalleryPhoto)
       options << :blog if owner.respond_to?(:blog)
       options << owner
-      redirect_to polymorphic_path(options)
+      redirect_to polymorphic_path(options) + "#comment_#{comment.id}"
     end  
   end
 

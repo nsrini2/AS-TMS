@@ -5,70 +5,73 @@
 <% end %>
 
 <% if @terms_and_conditions %>
-	<%= stylesheet_link_tag "facebox" %>
-	<%= render :partial => "terms_and_conditions", 
-						 :locals => {:terms_and_conditions => @terms_and_conditions } %>
-<% end %>	
+  <%= stylesheet_link_tag "facebox" %>
+  <%= render :partial => "terms_and_conditions", 
+             :locals => {:terms_and_conditions => @terms_and_conditions } %>
+<% end %>  
 
 <div id="hub" class="primary">
   <div id="feeds">
-		<div class="tabs"> 
-			<ul class="tabs-nav">
-				<li class="active"><a href="#news_feed">Activity Stream</a></li>
-				<%# NO MORE FOLLOWING FOR NOW %>
-				<% if false %>
-				  <li class=""><a href="#following">Following</a></li> 
-				<% end %>
-				<li class=""><a href="#inbox">Inbox</a></li> 
-			</ul>
-		
-			<div id="news_feed" class="tabs-panel" onclick="_gaq.push(['_trackEvent', 'hub_stream_tab', 'clicked'])">
-			  <%= render :partial => "/hub/news_feed_panel", :locals => { :events => @events } %>
-			</div> 
+    <div class="tabs"> 
+      <ul class="tabs-nav">
+        <li class="active"><a href="#news_feed">Activity Stream</a></li>
+        <%# NO MORE FOLLOWING FOR NOW %>
+        <% if false %>
+          <li class=""><a href="#following">Following</a></li> 
+        <% end %>
+        <li class=""><a href="#inbox">Inbox</a></li> 
+      </ul>
+    
+      <div id="news_feed" class="tabs-panel" onclick="_gaq.push(['_trackEvent', 'hub_stream_tab', 'clicked'])">
+        <%= render :partial => "/hub/news_feed_panel", :locals => { :events => @events } %>
+      </div> 
       <%# NO MORE FOLLOWING FOR NOW%>
-			<% if false %>
-  			<div id="following" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_following_tab', 'clicked'])"> 
-  			  <%= render :partial => "/hub/following_panel", :locals => { :followings => @followings } %>
-  			</div> 
-			<% end %>
-			<div id="inbox" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_inbox_tab', 'clicked'])"> 
-			  <%= render :partial => "/hub/messages_panel", :locals => { :messages => @messages } %>
-			</div>
-		</div>
-	</div>
+      <% if false %>
+        <div id="following" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_following_tab', 'clicked'])"> 
+          <%= render :partial => "/hub/following_panel", :locals => { :followings => @followings } %>
+        </div> 
+      <% end %>
+      <div id="inbox" class="tabs-panel" style="display: none;" onclick="_gaq.push(['_trackEvent', 'hub_inbox_tab', 'clicked'])"> 
+        <%= render :partial => "/hub/messages_panel", :locals => { :messages => @messages } %>
+      </div>
+    </div>
+  </div>
 
 
 </div>
 
 <div class="aside">
-	<div id="promotions" class="module">
-		<p class="promo_image">
-		  <%= marketing_image_tag(@random_marketing_message) -%>
-		</p>
-	</div>
-	<div id="referred_questions" class="module">
-		<h2>Latest Question</h2>
-		<%= render :partial => "/questions/hub", :locals => { :question => @latest_question } %>
-	</div>
-	<div id="groups" class="module">
+  <div id="promotions" class="module">
+    <p class="promo_image">
+      <%= marketing_image_tag(@random_marketing_message) -%>
+    </p>
+  </div>
+  <div id="referred_questions" class="module">
+    <h2>Latest Question</h2>
+    <%= render :partial => "/questions/hub", :locals => { :question => @latest_question } %>
+  </div>
+  <div id="news_posts" class="module">
+    <%= render :partial=> "/hub/news_posts", :locals => { :news_posts => @news_posts }%>
+  </div>
+  <div id="groups" class="module">
     <%= render :partial => "/hub/groups", :locals => { :groups => @groups } %>
-	</div>
-	<div id="deals" class="module">
+  </div>
+  <div id="deals" class="module">
     <%= render :partial => "/hub/deals", :locals => { :deals => @deals } %>
-	</div>
-	<div id="blog_posts" class="module">
-		<%= render :partial=> "/hub/blog_posts", :locals => { :blog_posts => @blog_posts }%>
-	</div>
-	<div id="statistics" class="module">
-		<%= render :partial => "/hub/stats", :locals => { :profile_stats => @profile_stats }%>
-	</div>
-	<div id="widget" class="widget">
-		<div class="module last">
-		  <% if false %>
+  </div>
+  <div id="blog_posts" class="module">
+    <%= render :partial=> "/hub/blog_posts", :locals => { :blog_posts => @blog_posts }%>
+  </div>
+  <div id="statistics" class="module">
+    <%= render :partial => "/hub/stats", :locals => { :profile_stats => @profile_stats }%>
+  </div>
+  <div id="widget" class="widget">
+    <div class="module last">
+      <% if false %>
         <% (1..@widgets.keys.size).to_a.reverse.each do |idx| %>      
           <%= render_widget @widgets[idx.to_s] -%>
         <% end %>
       <% end %>
-		</div>
-	</div>
+    </div>
+  </div>
 </div>
