@@ -1,6 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BlogPost do
+  fixtures :blog_posts, :blogs, :groups
+  
+  
   before(:each) do
     @blog_post = BlogPost.new
     @profile = mock_model(Profile)
@@ -43,10 +46,11 @@ describe BlogPost do
     @blog_post.should have(1).error_on(:blog)
   end
   
-  it "should belong to a Profile" do
-    @blog_post.attributes = @valid_attributes.except(:profile)
-    @blog_post.should have(1).error_on(:profile)
-  end
+  # it "should belong to a Profile" do
+  #   # SSJ 2012-08-28 this is no longer true as they can belong to a profile or RSSFeed
+  #   @blog_post.attributes = @valid_attributes.except(:profile)
+  #   @blog_post.should have(1).error_on(:profile)
+  # end
   
   it "should only be authored by the creator" do
     @blog_post.attributes = @valid_attributes
@@ -54,12 +58,40 @@ describe BlogPost do
     @blog_post.should_not be_authored_by( mock_model(Profile) )
   end
   
+  describe "publicized" do
+    before(:each) do
+      @posts = BlogPost.publicized
+    end
+      
+    it  "should return posts" do    
+      assert @posts.size > 0, "Publicized did not find any posts"
+    end
+    
+    it  "should not find company blog posts" do
+      assert !@posts.include?(blog_posts(:company)), "publicized returned a company blog post, which it should not"
+    end
+    
+    it "should not find blog posts from private groups" do  
+      assert !@posts.include?(blog_posts(:private_group)), "publicized returned a private group blog post, which it should not"
+    end
+    
+    it "should find most recent blog posts from non-private groups" do
+      assert_same @posts.first.id, blog_posts(:public_group_newest).id
+      assert_same @posts[1].id, blog_posts(:public_group_middle).id
+      assert_same @posts.last.id, blog_posts(:public_group_oldest).id
+    end 
+    
+    it "should find public profile blog posts" do
+      pending "Showing personal blog posts in publicized has not been implemented."
+    end   
+  end  
+  
   describe "deletion" do
     it "should always allow Shady Admins to delete" do
       @profile.stub!(:has_role? => true)
       @blog_post.should be_deletable_by(@profile)
     end
-
+  
     it "should always allow the blog post author to delete" do
       @blog_post.stub!(:profile => @profile)
       @blog_post.should be_deletable_by(@profile)
@@ -68,7 +100,7 @@ describe BlogPost do
     it "should not allow a non admin or non author to delete" do
       @blog_post.should_not be_deletable_by(@profile)
     end
-
+  
     describe "on a Group blog post" do
       before(:each) do
         @group = mock_model(Group)
@@ -103,12 +135,12 @@ describe BlogPost do
         @blog_post.stub!(:profile => @profile)
         @blog_post.should be_deletable_by(@profile)
       end
-
+  
       it "should not allow non shady admin or non owner to delete" do
         @blog_post.should_not be_deletable_by(@profile)
       end
     end
-
+  
   end
   
   describe "send group blog post" do

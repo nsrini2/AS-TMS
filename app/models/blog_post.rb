@@ -31,6 +31,14 @@ class BlogPost < ActiveRecord::Base
   # default_scope order("blog_posts.created_at DESC")
   self.per_page = 5
   
+  def self.publicized
+    BlogPost.joins(:blog).
+      joins("INNER JOIN groups ON blogs.owner_id = groups.id").
+      where("blogs.owner_type = 'Group'").
+      where("groups.group_type <> 2").
+      order("created_at DESC")
+  end
+  
   def image
     img = ::Nokogiri::HTML(text).at_css("img").first
     # %{<img src="#{img[1]}" />}
