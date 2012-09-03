@@ -25,7 +25,7 @@ class << self
   def monthly_activity_report
     # This report should be run on the first day of the month and capture the previous months stats
     today = Date.today
-    first_day_of_month = (today - 2).at_beginning_of_month
+    first_day_of_month = today.advance(:months => -1).at_beginning_of_month
     last_day_of_month = first_day_of_month.at_end_of_month
     
     data = "Number of Deals, #{Offer.approved.deals.count}\n" 

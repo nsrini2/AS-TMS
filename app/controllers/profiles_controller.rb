@@ -40,15 +40,6 @@ class ProfilesController
     # ids = @deals.map { |d| d.id }
     # fail ids.inspect
 
-    # TODO: Clean this up...scraped from ExplorationsController.
-    # Special options needed to ensure only personal posts or group posts that I can access show up
-    # blog_options = {} #blog_filters
-    # 
-    # ModelUtil.add_joins!(blog_options,"left join groups pg on pg.id = blogs.owner_id and blogs.owner_type = 'Group' and pg.group_type = 2")
-    # ModelUtil.add_conditions!(blog_options,"pg.id is null")
-    # ModelUtil.add_conditions!(blog_options,"blogs.owner_type <> 'Company'")
-    # @blog_posts = BlogPost.find(:all, blog_options, :limit => 2)
-    
     @blog_posts = BlogPost.publicized.limit(2)
     # @news_posts = News.top_posts(3)
     @news_posts = News.blog_posts.where("text LIKE ?", "%img%").limit(3)
