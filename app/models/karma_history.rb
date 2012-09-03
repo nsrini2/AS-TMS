@@ -24,7 +24,7 @@ class KarmaHistory < ActiveRecord::Base
         `profiles`
         WHERE t1.profile_id = t2.profile_id
         AND profiles.id = t2.profile_id
-        AND profiles.sataus = 1
+        AND profiles.status = 1
         ORDER BY karma_earned DESC
         LIMIT 10
       EOS
