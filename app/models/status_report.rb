@@ -17,10 +17,8 @@ class StatusReport
   
 class << self
   def mail_monthly_activity_report
-    recipient = ["AgentStreamData@sharepointemail.sabre.com"]
-    recipient << "scott.johnson@sabre.com"
-    data = "some pre-calculated piece of data"
-    Notifier.monthly_activity_report(recipient, data).deliver
+    data = monthly_activity_report
+    Notifier.monthly_activity_report(data)
   end
   
   def monthly_activity_report
@@ -92,9 +90,8 @@ class << self
   end
   
   def mail_users_by_country_report
-    recipient = ["AgentStreamData@sharepointemail.sabre.com"]
-    recipient << "scott.johnson@sabre.com"
-    Notifier.users_by_country_report(recipient).deliver
+    data = StatusReport.users_by_country
+    Notifier.users_by_country_report(data).deliver
   end
   
   def users_by_country

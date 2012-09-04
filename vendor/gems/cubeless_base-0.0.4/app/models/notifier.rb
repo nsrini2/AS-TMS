@@ -23,27 +23,33 @@ class Notifier < ActionMailer::Base
   #   mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report", :template_name => 'attachment')  
   # end
 
-  def monthly_activity_report(recipient, data)
-    # data = StatusReport.monthly_activity_report
-    
+  def monthly_activity_report(data)
     filename = "AgentStream-monthly-activity-#{(Date.today.advance(:months => -1)).strftime("%Y-%m")}.csv"
-    STDERR.puts filename
-    STDERR.puts data
-    mail.attachments[filename.to_s] = {
-      :mime_type => "text/csv", 
-      :content => data
-    }
-    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Monthly ActivityReport", :template_name => 'attachment')
+    subject = "AgentStream Monthly ActivityReport"    
+    report_with_attachments(data, subject, filename)
   end
   
-  def users_by_country_report(recipient)
-    data = StatusReport.users_by_country
-    filename = "AgentStream-users-by-country.csv"
+  def report_with_attachments(data, subject, filename)
+    recipients = ["AgentStreamData@sharepointemail.sabre.com", "scott.johnson@sabre.com"]
+    mail_obj =  build_attachment_mail(data, subject, filename)
+    recipients.each do |recipient|
+      mail_obj.to = recipient
+      mail_obj.deliver
+    end
+  end
+  
+  def build_attachment_mail(data, subject, filename)
     mail.attachments[filename.to_s] = {
       :mime_type => "text/csv", 
       :content => data
     }
-    mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Users By Country Report", :template_name => 'attachment')
+    mail( :from => Config[:email_from_address], :subject => subject, :template_name => 'attachment')
+  end
+  
+  def users_by_country_report(data)
+    filename = "AgentStream-users-by-country.csv"
+    subject = "AgentStream Users by Country Report"    
+    report_with_attachments(data, subject, filename)
   end
 
   def api_key_for(requester)
