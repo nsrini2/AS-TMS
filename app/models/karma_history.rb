@@ -16,18 +16,31 @@ class KarmaHistory < ActiveRecord::Base
       month = d.month
       previous_month = d.prev_month.month
       previous_year = d.prev_month.year
+      
+      # SSJ 2012-09-04 rewrote query and got this down to 10.39 seconds
       sql = <<-EOS
-        SELECT profiles.screen_name, profiles.profile_1 as agency_name, profiles.profile_8 as agency_type, (t1.value - t2.value) as karma_earned
+        SELECT profiles.screen_name, profiles.profile_1 as agency_name, profiles.profile_8 as agency_type, karma_earned
+        FROM profiles, 
+        (SELECT t1.profile_id, (t1.value - t2.value) as karma_earned 
         FROM 
-        (SELECT * from karma_histories WHERE month = #{month} AND year = #{year} ) as t1,
-        (SELECT * from karma_histories WHERE month = #{previous_month} AND year = #{previous_year}) as t2,
-        `profiles`
+        (SELECT karma_histories.profile_id, karma_histories.value
+        FROM karma_histories, `profiles`
+        WHERE karma_histories.profile_id = `profiles`.id
+        AND profiles.`status` = 1	 
+        AND month = #{month} AND year = #{year} ) as t1,
+
+        (SELECT karma_histories.profile_id, karma_histories.value
+        FROM karma_histories, `profiles`
+        WHERE karma_histories.profile_id = `profiles`.id
+        AND profiles.`status` = 1	 
+        AND month = #{previous_month} AND year = #{previous_year} ) as t2
+        
         WHERE t1.profile_id = t2.profile_id
-        AND profiles.id = t2.profile_id
-        AND profiles.status = 1
         ORDER BY karma_earned DESC
-        LIMIT 10
+        LIMIT 10) as t3
+        WHERE t3.profile_id = profiles.id
       EOS
+      
       find_by_sql(sql)
     end
   end  

@@ -18,10 +18,14 @@ class StatusReport
 class << self
   def mail_monthly_activity_report
     data = monthly_activity_report
-    path = "#{Rails.root}/tmp/activityreport.csv"
-    File.open(path, 'w') {|f| f.write(data) } 
-    new_data = File.open(path, 'r') { |f| f.read }
-    Notifier.monthly_activity_report(new_data)
+    # SSJ 2012-09-04 speed up query, so this should no longer be necessary
+    # ***  SSJ, this is odd, but made it so the email would be sent but
+    # it is possible something else made this work (less site traffic etc.) 
+    # path = "#{Rails.root}/tmp/activityreport.csv"
+    # File.open(path, 'w') {|f| f.write(data) } 
+    # new_data = File.open(path, 'r') { |f| f.read }
+    # ***
+    Notifier.monthly_activity_report(data)
   end
   
   def monthly_activity_report
