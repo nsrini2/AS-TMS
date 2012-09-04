@@ -25,7 +25,7 @@ namespace :reports do
   
   
   desc "email the monthly_activity_report"
-  task :send_monthly_activity_report => [:update_monthly_karma_tracking] do
+  task :send_monthly_activity_report => [:capture_karma_points] do
     puts "Sending Monthly Activity Report"
     begin        
       StatusReport.mail_monthly_activity_report
@@ -46,9 +46,9 @@ namespace :reports do
     end
   end
   
-  desc "update karma earned in the last month"
-  task :update_monthly_karma_tracking => :environment do
-    puts "Updating Karma Earned During month"
+  desc "update karma earned"
+  task :capture_karma_points => :environment do
+    puts "Capturing karma points"
     begin        
       KarmaHistory.capture_points
     rescue
