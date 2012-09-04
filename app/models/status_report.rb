@@ -17,7 +17,9 @@ class StatusReport
   
 class << self
   def mail_monthly_activity_report
-    data = monthly_activity_report
+    # data = monthly_activity_report
+    path = "#{Rails.root}/app/concerns/report.csv"
+    data = File.open(path, 'r') { |f| f.read }
     Notifier.monthly_activity_report(data)
   end
   
