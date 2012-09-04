@@ -23,11 +23,8 @@ class Notifier < ActionMailer::Base
   #   mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report", :template_name => 'attachment')  
   # end
 
-  def monthly_activity_report(recipient)
+  def monthly_activity_report(recipient, data)
     # data = StatusReport.monthly_activity_report
-    data = "some small amt of txt"
-    
-    sleep (5 * 60) # test waiting 3 mins
     
     filename = "AgentStream-monthly-activity-#{(Date.today.advance(:months => -1)).strftime("%Y-%m")}.csv"
     STDERR.puts filename

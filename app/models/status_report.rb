@@ -19,7 +19,8 @@ class << self
   def mail_monthly_activity_report
     recipient = ["AgentStreamData@sharepointemail.sabre.com"]
     recipient << "scott.johnson@sabre.com"
-    Notifier.monthly_activity_report(recipient).deliver
+    data = "some pre-calculated piece of data"
+    Notifier.monthly_activity_report(recipient, data).deliver
   end
   
   def monthly_activity_report
