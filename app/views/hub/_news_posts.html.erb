@@ -1,20 +1,35 @@
 <h2>Trending News</h2>
-<% news_posts.each do |post| %>
-  <div class="note">
-    <%= image_tag(post.image) %>  
-    <p class="title"><%= link_to post.title, news_post_path(post) %></p>
-    <p class="when">posted on <%= short_date post.created_at %> by <%= post.profile.full_name %></p>
-    <div class="text">
-      <%= textilize truncate(post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), { :length => 140, :omission => "..." }) %>
-    
-      <p class="actions">
-        <%= link_to "Read", news_post_path(post), :class => "button little" %>
-        <%= link_to "Comment", news_post_path(post, :anchor => "comments"), :class => "button little light" %>
-      </p>
-    </div>
-  </div>
-<% end %>
 
+<div class="marquee_container auto_play">
+  <div class="marquee_content"></div>
+  <div class="marquee_nav">
+    <div class="marquee_nav_buttons"></div>
+    <a id="news_current_nav_link" href="/" class="button little">READ</a>
+  </div>
+</div>
 <div class="see_all">
   <a href=<%= news_path %>>See All News Articles</a>
 </div>
+
+<div class="marquee_panels">
+  <% news_posts.each do |post| %>
+  <!-- Panel -->
+    <div class="marquee_panel">
+      <div class="marquee_panel_content note">
+        <%= image_tag(post.image, :class => "marquee_panel_photo") %> 
+        <div class="marquee_panel_details">
+          <p class="title"><%= link_to post.title, news_post_path(post) %></p>
+          <p class="when">posted on <%= short_date post.created_at %> by <%= post.profile.full_name %></p>
+          <div class="text">
+            <%= textilize truncate(post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), { :length => 140, :omission => "..." }) %>
+          </div>
+        </div>
+      <%= link_to "Read", news_post_path(post), :class => "data" %>  
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+

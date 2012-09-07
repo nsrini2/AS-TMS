@@ -104,7 +104,7 @@
 .question .question_actions li { margin: 0 15px 0 0; }
 .question .question_actions a { color: #676767; }
 
-.note { clear: both; }
+/*.note { clear: both; }*/
 
 .note:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .note .text, .note .text a { margin: 0 10px 3px 0; font-size: 14px; color: #4a6970; }
@@ -126,8 +126,8 @@
   color: #fff;
 }
 /*.note .text a { width: 100%; display: block; }*/
-.note .title { clear: both; margin: 0; color: #4a6970; font-size: 1.2em;}
-.note .when { clear: both; margin: 0 0 0 0; font-size:11px; }
+.note .title { margin: 0; color: #4a6970; font-size: 1.2em;}
+.note .when { margin: 0 0 0 0; font-size:11px; }
 .note object { width: 315px ! important; }
 
 #widget:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
