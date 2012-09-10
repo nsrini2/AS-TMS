@@ -50,7 +50,7 @@
     <h2>Latest Question</h2>
     <%= render :partial => "/questions/hub", :locals => { :question => @latest_question } %>
   </div>
-  <% if Rails.env[/development/i]%>
+  <% unless FB_APP_ID == '191254297585014' %>
   <div id="news_posts" class="module">
     <%= render :partial=> "/hub/news_posts", :locals => { :news_posts => @news_posts }%>
   </div>

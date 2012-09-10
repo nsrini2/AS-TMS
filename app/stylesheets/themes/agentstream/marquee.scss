@@ -37,7 +37,7 @@ body { padding: 35px;background-color: #fff; font-family: Arial; color: #555; fo
 .marquee_nav_buttons a:hover { background-position: -25px 0px; }
 .marquee_nav_buttons a.selected { background-position: -50px 0px; }
 
-.marquee_container.auto_play .marquee_nav a {
+.marquee_container.auto_play .marquee_nav a.marquee_nav_item {
   opacity: 0.4;
   filter: alpha(opacity = 40);
 }

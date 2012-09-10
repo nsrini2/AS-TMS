@@ -41,8 +41,8 @@ class ProfilesController
     # fail ids.inspect
 
     @blog_posts = BlogPost.publicized.limit(2)
-    # @news_posts = News.top_posts(3)
-    @news_posts = News.blog_posts.where("text LIKE ?", "%img%").limit(3)
+    @news_posts = News.top_posts(3)
+    # @news_posts = News.blog_posts.where("text LIKE ?", "%img%").limit(3)
     
     
     # @blog_posts = BlogPost.joins(:blog).where(["blogs.owner_type <> ?", "Company"]).order("rand()").limit(2)

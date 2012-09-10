@@ -1764,7 +1764,7 @@ div.action_buttons a.button {
 /* line 106, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav .line2 {
   display: block;
-  margin-top: -10px;
+  margin-top: -5px;
   text-align: left;
 }
 
@@ -6508,7 +6508,7 @@ body {
 }
 
 /* line 40, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
-.marquee_container.auto_play .marquee_nav a {
+.marquee_container.auto_play .marquee_nav a.marquee_nav_item {
   opacity: 0.4;
   filter: alpha(opacity=40);
 }

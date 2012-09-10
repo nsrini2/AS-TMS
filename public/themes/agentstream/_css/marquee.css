@@ -97,7 +97,7 @@ body {
 }
 
 /* line 40, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
-.marquee_container.auto_play .marquee_nav a {
+.marquee_container.auto_play .marquee_nav a.marquee_nav_item {
   opacity: 0.4;
   filter: alpha(opacity=40);
 }
