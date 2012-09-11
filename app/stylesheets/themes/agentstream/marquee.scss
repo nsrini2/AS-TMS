@@ -47,3 +47,12 @@ body { padding: 35px;background-color: #fff; font-family: Arial; color: #555; fo
   filter: alpha(opacity = 100);
 }
 
+/* HEADER CHANGES */
+.header .marquee_container { width: 695px; }
+.header .marquee_panel_content {
+  width: 695px;
+}
+.header .marquee_nav {  width: 695px; background: #EFF8FA; }
+.header .note .text { width: 540px; margin-left: 110px; }
+
+

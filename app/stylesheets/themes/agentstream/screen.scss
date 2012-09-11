@@ -17,7 +17,7 @@
 	h1, h2, h3, h4, h5, h6 {  }
 	h2 { text-shadow: #fff 0 1px 0; font-size: 18px; color: #6f563b; text-transform: uppercase; margin-bottom: 10px;}
 	h2 a {  color: #6f563b !important; }
-	h3, h3 a { color: #4a6970; font-weight: normal; font-size: 16px; }
+	h3, h3 a { color: #4a6970; font-size: 16px; }
 	.aside { }
 	.aside p { color: #666;}
 	div.meta { color: #666; font-size: 11px;}
@@ -126,7 +126,7 @@
   color: #fff;
 }
 /*.note .text a { width: 100%; display: block; }*/
-.note .title { margin: 0; color: #4a6970; font-size: 1.2em;}
+.note .title { margin: 0; color: #4a6970; font-size: 1.3em; font-weight: bold;}
 .note .when { margin: 0 0 0 0; font-size:11px; }
 .note object { width: 315px ! important; }
 

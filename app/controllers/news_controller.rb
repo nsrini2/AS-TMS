@@ -4,7 +4,10 @@ class NewsController < ApplicationController
   
   def index
     @selected_tags = [params[:tag]] || []
-    @selected_date = params[:date] || "" 
+    @selected_date = params[:date] || ""
+    
+    @top_posts = News.top_posts(5)
+    # @top_posts = News.blog_posts.where("text LIKE ?", "%img%").limit(5) 
   end
   
   def post

@@ -107,3 +107,26 @@ body {
   opacity: 1;
   filter: alpha(opacity=100);
 }
+
+/* HEADER CHANGES */
+/* line 51, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .marquee_container {
+  width: 695px;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .marquee_panel_content {
+  width: 695px;
+}
+
+/* line 55, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .marquee_nav {
+  width: 695px;
+  background: #EFF8FA;
+}
+
+/* line 56, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .note .text {
+  width: 540px;
+  margin-left: 110px;
+}

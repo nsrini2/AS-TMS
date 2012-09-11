@@ -2,6 +2,9 @@
 
 <div class="news_results">
   <div id="list" class="primary">
+    
+    <%= render :partial => 'header', :locals => { :top_posts => @top_posts } %>
+    
     <% @news.each do |blog_post| -%>
       <%= render :partial => 'post', :locals => { :blog_post => blog_post, :classname => cycle('odd', 'even') } %>
       <div style="clear: both;"></div>

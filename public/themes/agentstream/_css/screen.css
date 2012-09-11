@@ -31,7 +31,6 @@ h2 a {
 /* line 20, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 h3, h3 a {
   color: #4a6970;
-  font-weight: normal;
   font-size: 16px;
 }
 
@@ -493,7 +492,8 @@ img.photo {
 .note .title {
   margin: 0;
   color: #4a6970;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  font-weight: bold;
 }
 
 /* line 130, ../../../../app/stylesheets/themes/agentstream/screen.scss */
