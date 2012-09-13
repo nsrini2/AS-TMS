@@ -108,7 +108,7 @@
 
 .note:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .note .text, .note .text a { margin: 0 10px 3px 0; font-size: 14px; color: #4a6970; }
-.note .text { background: url('/images/bg_notes_quote.png') no-repeat; padding: 0 0 0 25px;}
+.note .text { background: url('/images/bg_notes_quote.png') no-repeat; padding: 0 0 0 25px; background-position: 0px 3px; }
 .note .text { width: 330px; display: block; }
 .agency .note .text { width: 180px; display: block; }
 .note .text p {

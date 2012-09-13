@@ -40,15 +40,42 @@ class BlogPost < ActiveRecord::Base
   end
   
   def image
-    img = ::Nokogiri::HTML(text).at_css("img").first
-    # %{<img src="#{img[1]}" />}
-    img[1]
+    # debugger
+    if link
+      doc = Nokogiri::HTML(open(link))
+      images = doc.css('img')
+      # images = images.map { |image| image[:src] }
+      best_image(images)  
+    else
+      doc = Nokogiri::HTML(text)
+      images = doc.css('img')
+      images[0][:src]
+    end
+    
+
+    
   rescue NoMethodError => e
     if news?
       creator.primary_photo_path(:thumb_large)
     else
       ""
     end      
+  end
+  
+  def best_image(images)
+    # SSJ for now, the best image is image[1]
+    # this may not be the case in the future
+    image = images[1][:src]
+    image_source(image)
+  end
+  
+  def image_source(image)
+    if image[/^\//]
+      link[/(http:\/\/.+?)[\/]/]
+      "#{$1}#{image}"
+    else
+      image
+    end
   end
   
   #SSJ 7/12 Needed profile interface stuff for old code to work with new polymorphic creator

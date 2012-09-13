@@ -127,6 +127,13 @@ body {
 
 /* line 56, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 .header .note .text {
-  width: 540px;
+  width: 500px;
   margin-left: 110px;
+  padding: 0 0 0 80px;
+  background-position: 60px 0px;
+}
+
+/* line 57, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .marquee_panel_photo {
+  width: 160px;
 }

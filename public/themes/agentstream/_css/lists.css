@@ -306,7 +306,7 @@ div.bestAnswer img {
 }
 
 /* line 171, ../../../../app/stylesheets/themes/agentstream/lists.scss */
-#list div.vote_wrap a {
+div.vote_wrap a {
   display: inline;
   padding-left: 18px;
 }

@@ -451,6 +451,7 @@ img.photo {
 .note .text {
   background: url("/images/bg_notes_quote.png") no-repeat;
   padding: 0 0 0 25px;
+  background-position: 0px 3px;
 }
 
 /* line 112, ../../../../app/stylesheets/themes/agentstream/screen.scss */
