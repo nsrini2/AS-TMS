@@ -40,7 +40,7 @@ class BlogPost < ActiveRecord::Base
   end
   
   def image
-    # debugger
+    debugger
     if link
       doc = Nokogiri::HTML(open(link))
       images = doc.css('img')
