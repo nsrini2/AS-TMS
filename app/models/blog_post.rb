@@ -40,20 +40,20 @@ class BlogPost < ActiveRecord::Base
   end
   
   def image
-    debugger
     if link
-      doc = Nokogiri::HTML(open(link))
+      # SSJ 2012-9-12 the following code did not work in production
+      # doc = Nokogiri::HTML(open(link))
+      # so I got doc this way
+      uri = URI.parse(link)
+      response = Net::HTTP.get_response(uri)
+      doc = Nokogiri::HTML(response.body)
       images = doc.css('img')
-      # images = images.map { |image| image[:src] }
       best_image(images)  
     else
       doc = Nokogiri::HTML(text)
       images = doc.css('img')
       images[0][:src]
-    end
-    
-
-    
+    end    
   rescue NoMethodError => e
     if news?
       creator.primary_photo_path(:thumb_large)
