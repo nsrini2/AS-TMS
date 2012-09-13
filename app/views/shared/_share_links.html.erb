@@ -1,35 +1,4 @@
 <div class="share-links">
-      <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=191254297585014";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-      </script>
-    
-  <div class="fb-like" 
-    data-href=<%= link.html_safe %>
-    data-send="false" data-width="50" 
-    data-show-faces="false" 
-    data-action="recommend" 
-    data-font="tahoma">
-  </div>
-      
-  <div id="tweet">
-        <a href="https://twitter.com/share" class="twitter-share-button" 
-        data-url=<%= link.html_safe %> 
-        data-text='I found this great article: <%= truncate(@post.title, :length => 50, :omission => '...') %>'
-        data-via='agentstream' 
-        data-size="large" data-count="none">Tweet</a>
-        <script>!function(d,s,id){
-            var js,fjs=d.getElementsByTagName(s)[0];
-            if(!d.getElementById(id)){js=d.createElement(s);
-              js.id=id;
-              js.src="//platform.twitter.com/widgets.js";
-            fjs.parentNode.insertBefore(js,fjs);}
-          }(document,"script","twitter-wjs");
-        </script>
-  </div>
-</div> 
+  <span class='st_fbrec_hcount' displayText='Facebook Recommend' st_url='<%= link.html_safe %>'></span>
+  <span class='st_twitter_hcount' displayText='Tweet' st_url='<%= link.html_safe %>' st_via="agentstream" st_title='<%= tweet_text %>'></span>
+</div>

@@ -13,7 +13,9 @@ preview = false unless defined?(preview)
   <div class="list_item news_post_item">
     <div class="rate">
       <%= render :partial => 'votes/show', :locals => { :owner => @post } %>
+      <%= render 'shared/share_buttons', :link => @post.link, :tweet_text => @tweet_text %>
     </div>
+
     <%= link_to_avatar_for(@post.creator) -%>
     <div class="details">
       <h3><%= @post.title %></h3>
@@ -24,7 +26,7 @@ preview = false unless defined?(preview)
         <p><%= link_to(@post.tagline, @post.link) if @post.tagline %></p>
       </div>  
     </div>
-    <%= render "/shared/share_links", :link => @post.link %>
+    <%= render "/shared/share_links", :link => @post.link, :tweet_text => @tweet_text %>
     
     <div id="comments">
     <%# if false %>

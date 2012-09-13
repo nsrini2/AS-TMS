@@ -1,4 +1,6 @@
 class NewsController < ApplicationController
+  include ActionView::Helpers::TextHelper # for tuncate
+  
   before_filter :set_post, :except => [:index]
   before_filter :set_news, :only => [:index, :show]
   
@@ -13,6 +15,7 @@ class NewsController < ApplicationController
   def post
     @selected_tags = @post.tags.map {|t| t.name}
     @selected_date = @post.created_at_year_month.to_s
+    @tweet_text = "I found this great article: #{truncate(@post.title, :length => 50, :omission => '...')} "
     render :show
   end
   

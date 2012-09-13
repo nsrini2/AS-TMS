@@ -6542,6 +6542,13 @@ body {
   margin-left: 110px;
 }
 
+/* line 1, ../../../../app/stylesheets/themes/agentstream/share.scss */
+.share_buttons {
+  clear: both;
+  float: right;
+  padding-top: 15px;
+}
+
 /* Search does need to be last. It overwrites a lot of other settings for uniformity of results */
 /* line 1, ../../../../app/stylesheets/themes/agentstream/search.scss */
 div#search_results {
