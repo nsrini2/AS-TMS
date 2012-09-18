@@ -41,43 +41,23 @@ class BlogPost < ActiveRecord::Base
   
   def image
     if link
-      # SSJ 2012-9-12 the following code did not work in production
-      # doc = Nokogiri::HTML(open(link))
-      # so I got doc this way
-      uri = URI.parse(link)
-      response = Net::HTTP.get_response(uri)
-      doc = Nokogiri::HTML(response.body)
-      images = doc.css('img')
-      best_image(images)  
+      self.best_image ||= calculate_image
+      save! unless self.best_image_was == self.best_image
+      self.best_image
     else
       doc = Nokogiri::HTML(text)
       images = doc.css('img')
       images[0][:src]
     end    
   rescue NoMethodError => e
+    # if we are unabe to find an external image, then just show the generic RSS feed image
     if news?
       creator.primary_photo_path(:thumb_large)
     else
       ""
-    end      
-  end
-  
-  def best_image(images)
-    # SSJ for now, the best image is image[1]
-    # this may not be the case in the future
-    image = images[1][:src]
-    image_source(image)
-  end
-  
-  def image_source(image)
-    if image[/^\//]
-      link[/(http:\/\/.+?)[\/]/]
-      "#{$1}#{image}"
-    else
-      image
     end
   end
-  
+
   #SSJ 7/12 Needed profile interface stuff for old code to work with new polymorphic creator
   def profile_id
     case creator_type
@@ -218,5 +198,35 @@ protected
   def update_indexes
     SemanticMatcher.default.blog_post_updated(self)
   end
+  
+  # These should may work better in another module
+  # uses local attribute: 'link' if it is moved
+    def calculate_image
+      # SSJ 2012-9-12 the following code did not work in production
+      # doc = Nokogiri::HTML(open(link))
+      # so I got doc this way
+      uri = URI.parse(link)
+      response = Net::HTTP.get_response(uri)
+      doc = Nokogiri::HTML(response.body)
+      images = doc.css('img')
+      calculate_best_image(images)  
+    end
+
+    def calculate_best_image(images)
+      # SSJ for now, the best image is image[1]
+      # this may not be the case in the future
+      image = images[1][:src]
+      image_source(image)
+    end
+
+    def image_source(image)
+      if image[/^\//]
+        link[/(http:\/\/.+?)[\/]/]
+        "#{$1}#{image}"
+      else
+        image
+      end
+    end
+  # end of image methods
 
 end
