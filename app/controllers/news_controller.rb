@@ -61,7 +61,6 @@ class NewsController < ApplicationController
   end
 
   def follow
-    # debugger
     if NewsFollower.following?(current_profile)
       NewsFollower.find_by_profile_id(current_profile.id).destroy
     else

@@ -142,18 +142,6 @@ $.fn.extend({
       
       return false;
     });
-    
-    // return this.live('click', function(event) {
-    //   $this = $(this);
-    //   $.ajax( { url:$this.attr('href'), dataType:'html', type:'POST',
-    //             data: 'authenticity_token=' + encodeURIComponent( AUTH_TOKEN ),
-    //             success:function(data) {
-    //               $this.replaceWith(data);
-    //             }
-    //           });
-    // });
-    
-    
   },
   
   setup_html5_form: function() {
