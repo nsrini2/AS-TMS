@@ -122,6 +122,13 @@ class BlogPost < ActiveRecord::Base
     self.send_batch_email(tmail, recipients)
   end
   
+  def self.send_news_blog_post(id)
+    blog_post = BlogPost.find(id)
+    recipients = NewsFollower.profiles.map { |follower| follower.email }
+    tmail = Notifier.create_group_blog_post(blog_post)
+    self.send_batch_email(tmail, recipients)
+  end
+  
   def self.by_rank
     # SSJ 2012-08-21 just create a custom order to bring most relavant data to the top
     reorder("((net_helpful *3) + (comments_count) + (views * 0.1)) - ((TO_DAYS(CURDATE()) - TO_DAYS(created_at)) * 0.5 ) DESC")

@@ -18,6 +18,7 @@ AgentStream::Application.routes.draw do
   match '/news/post/:id/edit' => 'news#edit_post', :as => :edit_news_post, :via => :get
   match '/news/post/:id/update' => 'news#update_post', :via => [:post, :put], :as => :update_news_post
   match '/news/post/:id/delete' => 'news#destroy', :as => :delete_news_post, :via => :delete
+  match '/news/follow/' => 'news#follow', :as => :news_follow, :via => :post
   
   #VOTES
   match '/votes/helpful' => 'votes#helpful', :via => :post

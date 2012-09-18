@@ -11,6 +11,7 @@
     <% end -%>
   </div>
   <div class="aside-small">
+    <%=  link_to_follow_news %>
     <%= render :partial => '/news/side_bar', 
         :locals => { :posts => @news, :selected_date => @selected_date, :selected_tags => @selected_tags } -%>
   </div>

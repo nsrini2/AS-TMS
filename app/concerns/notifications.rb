@@ -121,7 +121,9 @@ module Notifications
         if self.company?
           self.class.delay.send_company_blog_post(self.id)
         elsif self.group?
-          self.class.delay.send_group_blog_post(self.id)  
+          self.class.delay.send_group_blog_post(self.id)
+        elsif self.news?
+          self.class.delay.send_news_blog_post(self.id)
         else
           # don't send emails for profile blogs :)
         end      

@@ -1,10 +1,11 @@
 class NewsController < ApplicationController
   include ActionView::Helpers::TextHelper # for tuncate
   
-  before_filter :set_post, :except => [:index]
+  before_filter :set_post, :except => [:index, :follow]
   before_filter :set_news, :only => [:index, :show]
   
   def index
+    NewsFollower.visit(current_user)
     @selected_tags = [params[:tag]] || []
     @selected_date = params[:date] || ""
     
@@ -57,6 +58,17 @@ class NewsController < ApplicationController
     end     
     set_news
     render :action => "index"
+  end
+
+  def follow
+    # debugger
+    if NewsFollower.following?(current_profile)
+      NewsFollower.find_by_profile_id(current_profile.id).destroy
+    else
+      follower = NewsFollower.create(:profile_id => current_profile.id)
+    end
+    link = view_context.link_to_follow_news
+    render :text => link
   end
 
 private  

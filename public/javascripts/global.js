@@ -16,6 +16,7 @@ $(document).ready(function() {
     .find('#hub_widgets').sortable_hub_widgets().end();
   $('#primary')
     // Ajaxified links
+    .find('a.follow_news_link').follow_news_room().end()
     .find('.watch').setup_watch_links().end()
     .find('.follow').setup_follow_links().end()
     .find('div.rate ul').setup_rating().end()
@@ -129,7 +130,32 @@ $(document).ready(function() {
 var stream_interval;
 
 $.fn.extend({
-
+  follow_news_room: function() {
+    return this.live('click', function(event){
+      $this = $(this);
+      $.ajax( { url:$this.attr('href'), dataType:'html', type:'POST',
+              data: 'authenticity_token=' + encodeURIComponent( AUTH_TOKEN ),
+              success:function(data) {
+                $this.replaceWith(data);
+              }
+      });
+      
+      return false;
+    });
+    
+    // return this.live('click', function(event) {
+    //   $this = $(this);
+    //   $.ajax( { url:$this.attr('href'), dataType:'html', type:'POST',
+    //             data: 'authenticity_token=' + encodeURIComponent( AUTH_TOKEN ),
+    //             success:function(data) {
+    //               $this.replaceWith(data);
+    //             }
+    //           });
+    // });
+    
+    
+  },
+  
   setup_html5_form: function() {
     return this.each(function() {
       var $this = $(this);
@@ -752,6 +778,7 @@ $.fn.extend({
       return false;
     });
   },
+  
 
   confirm_join: function() {
     return this.live('click', function() {

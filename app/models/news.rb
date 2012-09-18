@@ -2,6 +2,8 @@ require 'singleton'
 
 class News
   include Singleton
+  include Notifications::BatchMailer
+  
   # should act as though it has_one blog
   # check to see if we are on agentstream.com or not
   # Using the Facebook APP_ID to determine this
@@ -40,12 +42,16 @@ class News
     blog.blog_posts
   end
   
-  def top_posts(n =10)
+  def top_posts(n=10)
     blog_posts.by_rank.limit(n)
   end
   
   def private?
     false
+  end
+  
+  def followers
+    NewsFollower.profiles
   end
   
   class << self    

@@ -27,6 +27,7 @@ preview = false unless defined?(preview)
       </div>  
     </div>
     <%= render "/shared/share_links", :link => @post.link, :tweet_text => @tweet_text %>
+    <%= render "/shared/share_this_scripts" %>
     
     <div id="comments">
     <%# if false %>
