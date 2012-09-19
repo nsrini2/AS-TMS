@@ -31,7 +31,7 @@ class AnswersController < ApplicationController
   end
 
   def for_new
-    @question_summary = Question.find_by_question_id(params[:question_id])
+    @question_summary = Question.find_by_id(params[:question_id])
     @answer_summaries = @question_summary.answers.order(answer_filters[:order]).paginate(:page => params[:page]) if @question_summary
     rescue ActiveRecord::RecordNotFound
       false
