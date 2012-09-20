@@ -124,7 +124,7 @@ class Chat < ActiveRecord::Base
   end
   
   def attendance_report(current_profile)
-    if current_profile.has_role?(Role::CubelessAdmin)
+    if current_profile.has_role?(Role::ReportAdmin)
       data = self.participants.map { |attendee| 
         "#{attendee.screen_name.gsub(/,/, '-')},#{attendee.pcc},#{attendee.status}\n" 
       }
