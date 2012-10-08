@@ -18,7 +18,8 @@ preview = false unless defined?(preview)
   	</div>
 
   	<div class="rate">
-  		<%= render :partial => 'blog_posts/rating', :locals => { :blog_post => blog_post } -%>
+  		<%#= render :partial => 'blog_posts/rating', :locals => { :blog_post => blog_post } -%>
+  		<%= render :partial => 'votes/show', :locals => { :owner => blog_post } %>
   	</div>
 
   	<div id="comments">

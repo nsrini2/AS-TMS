@@ -5,36 +5,31 @@ preview = false unless defined?(preview)
 -%>
 <div id="<%= "list" unless blog_explore %>">
   <div class="list_item blog_post_item <%= classname %>">
-  	<div class="details">
-  		<h3><%= link_to(blog_post.title, companies_blog_blog_post_path(blog_post)) %></h3>
-  		<p class="meta">Posted on <%= pretty_datetime(blog_post.created_at || Time.new) %> by&nbsp;<%= link_to_author blog_post %></p>
-  		
-  			<div class="summary">
-					<div class="blog_post_p">
-	  			  <%= textilize truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), { :length => 114, :omission => "&hellip;&nbsp;&nbsp;" }) -%>
-					</div>
-					<p>
-						<%= link_to("read", companies_blog_blog_post_path(blog_post), :class => "button little") -%>
-						<%= link_to("comment", "#{companies_blog_blog_post_path(blog_post)}#comments", :class => "button little light") -%>
-					</p>
-  			</div>
-  			<%= action_list_for([
-  				(content_tag(:span, "No comments yet") if blog_post.comments.count.zero?),
-  				(link_to(pluralize(blog_post.comments.count, 'comment'), "#{companies_blog_blog_post_path(blog_post)}#comments") unless blog_post.comments.count.zero?),
-  				render_abuse(blog_post),
-  				(link_to_edit_blog_post(blog_post.blog.owner, blog_post) if editable_content_for(blog_post)),
-  				link_to_delete_blog_post(blog_post),
-  				(content_tag(:span, "Tags: " + link_to_tags(blog_post.blog.owner, blog_post.tag_list), :class => 'tags') unless blog_post.tag_list.blank?)
-  			]) -%>
-  	</div>
+    <div class="details">
+      <h3><%= link_to(blog_post.title, companies_blog_blog_post_path(blog_post)) %></h3>
+      <p class="meta">Posted on <%= pretty_datetime(blog_post.created_at || Time.new) %> by&nbsp;<%= link_to_author blog_post %></p>
+      
+        <div class="summary">
+          <div class="blog_post_p">
+            <%= textilize truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), { :length => 114, :omission => "&hellip;&nbsp;&nbsp;" }) -%>
+          </div>
+          <p>
+            <%= link_to("read", companies_blog_blog_post_path(blog_post), :class => "button little") -%>
+            <%= link_to("comment", "#{companies_blog_blog_post_path(blog_post)}#comments", :class => "button little light") -%>
+          </p>
+        </div>
+        <%= action_list_for([
+          (content_tag(:span, "No comments yet") if blog_post.comments.count.zero?),
+          (link_to(pluralize(blog_post.comments.count, 'comment'), "#{companies_blog_blog_post_path(blog_post)}#comments") unless blog_post.comments.count.zero?),
+          render_abuse(blog_post),
+          (link_to_edit_blog_post(blog_post.blog.owner, blog_post) if editable_content_for(blog_post)),
+          link_to_delete_blog_post(blog_post),
+          (content_tag(:span, "Tags: " + link_to_tags(blog_post.blog.owner, blog_post.tag_list), :class => 'tags') unless blog_post.tag_list.blank?)
+        ]) -%>
+    </div>
 
-  	<div class="rate">
-  		<ul>
-  			<% (1..5).each do |i| %>
-  				<li class="rate rating<%=i%> <%= "rated" if blog_post.rating_avg.round >= i %>"><%=i%></li>
-  			<% end %>
-  		</ul>
-  		<p class="rating_total"><%= blog_post.rating_count.zero? ? "No ratings yet" : "#{blog_post.rating_avg} rating from #{pluralize(blog_post.rating_count, 'user')}" -%></p>
-  	</div>
+    <div class="rate">
+      <%= render :partial => 'votes/show', :locals => { :owner => blog_post } %>
+    </div>
   </div>
 </div>
