@@ -124,12 +124,12 @@
 
 /* line 75, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #news_nav {
-  background: url("/images/icons/as/nav/off/announcement.png") no-repeat 50% top;
+  background: url("/images/icons/as/nav/off/news_new.png") no-repeat 50% top;
 }
 
 /* line 78, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #news_nav.active, #header .nav #news_nav:hover {
-  background: url("/images/icons/as/nav/on/announcement.png") no-repeat 50% top;
+  background: url("/images/icons/as/nav/on/news_new.png") no-repeat 50% top;
 }
 
 /* line 82, ../../../../app/stylesheets/themes/agentstream/header.scss */

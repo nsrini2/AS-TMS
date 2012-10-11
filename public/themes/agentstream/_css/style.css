@@ -229,13 +229,13 @@ div#deals-header h2, div#deals-header p {
 
 /* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 #logo {
-  width: 180px;
+  width: 160px;
   margin-left: 0;
 }
 
 /* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .global_nav {
-  width: 420px;
+  width: 460px;
 }
 
 /* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
@@ -1724,12 +1724,12 @@ div.action_buttons a.button {
 
 /* line 75, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #news_nav {
-  background: url("/images/icons/as/nav/off/announcement.png") no-repeat 50% top;
+  background: url("/images/icons/as/nav/off/news_new.png") no-repeat 50% top;
 }
 
 /* line 78, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #news_nav.active, #header .nav #news_nav:hover {
-  background: url("/images/icons/as/nav/on/announcement.png") no-repeat 50% top;
+  background: url("/images/icons/as/nav/on/news_new.png") no-repeat 50% top;
 }
 
 /* line 82, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -3528,13 +3528,13 @@ div#deals-header h2, div#deals-header p {
 
 /* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 #logo {
-  width: 180px;
+  width: 160px;
   margin-left: 0;
 }
 
 /* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .global_nav {
-  width: 420px;
+  width: 460px;
 }
 
 /* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
@@ -5233,13 +5233,13 @@ div#deals-header h2, div#deals-header p {
 
 /* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 #logo {
-  width: 180px;
+  width: 160px;
   margin-left: 0;
 }
 
 /* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .global_nav {
-  width: 420px;
+  width: 460px;
 }
 
 /* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
@@ -5813,13 +5813,13 @@ div#deals-header h2, div#deals-header p {
 
 /* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 #logo {
-  width: 180px;
+  width: 160px;
   margin-left: 0;
 }
 
 /* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .global_nav {
-  width: 420px;
+  width: 460px;
 }
 
 /* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */

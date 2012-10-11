@@ -15,8 +15,8 @@ $ninesixty-grid-width: 960px;
 	
 	#header, #main, .alert, #footer { @include grid-width(16); }
 	
-		#logo { @include grid-width(3); @include alpha;}
-		.global_nav { @include grid-width(7); }
+		#logo { width: 160px; @include alpha;}
+		.global_nav { width: 460px }
 		.utility { width: 320px;}
 		
 		.stats { 

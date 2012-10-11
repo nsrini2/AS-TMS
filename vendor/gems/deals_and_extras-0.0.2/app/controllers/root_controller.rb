@@ -1,5 +1,4 @@
-class RootController < ApplicationController
-  
+class RootController < ApplicationController  
   layout 'main'
   
   def index
@@ -10,5 +9,4 @@ class RootController < ApplicationController
     @offer_types = OfferType.all
     @cities = Location.active_cities
   end
-  
 end
