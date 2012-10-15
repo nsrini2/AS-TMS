@@ -8,9 +8,13 @@ class NewsController < ApplicationController
     NewsFollower.visit(current_user)
     @selected_tags = [params[:tag]] || []
     @selected_date = params[:date] || ""
-    
+    @posts_header = "Recent Stories"
+    @posts_header = @selected_tags if @selected_tags[0]
+    unless @selected_date.blank?
+      @selected_date.extend AgentStreamExtensions::String
+      @posts_header = @selected_date.to_month_year 
+    end
     @top_posts = News.top_posts(5)
-    # @top_posts = News.blog_posts.where("text LIKE ?", "%img%").limit(5) 
   end
   
   def post
@@ -96,4 +100,6 @@ private
     @post.tagline = attributes[:tagline]
     @post.tag_list = attributes[:tag_list]
   end
+  
+
 end

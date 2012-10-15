@@ -6523,23 +6523,23 @@ body {
 /* HEADER CHANGES */
 /* line 51, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 .header .marquee_container {
-  width: 695px;
+  width: 795px;
 }
 
 /* line 52, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 .header .marquee_panel_content {
-  width: 695px;
+  width: 795px;
 }
 
 /* line 55, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 .header .marquee_nav {
-  width: 695px;
+  width: 795px;
   background: #EFF8FA;
 }
 
 /* line 56, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 .header .note .text {
-  width: 500px;
+  width: 600px;
   margin-left: 110px;
   padding: 0 0 0 80px;
   background-position: 60px 0px;

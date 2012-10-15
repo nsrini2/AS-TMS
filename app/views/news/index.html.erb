@@ -1,10 +1,9 @@
 <h2 class="page_title">The News Room</h2>
 
 <div class="news_results">
+  <%= render :partial => 'header', :locals => { :top_posts => @top_posts } %>
   <div id="list" class="primary">
-    
-    <%= render :partial => 'header', :locals => { :top_posts => @top_posts } %>
-    
+    <h3><%= @posts_header %></h3>
     <% @news.each do |blog_post| -%>
       <%= render :partial => 'post', :locals => { :blog_post => blog_post, :classname => cycle('odd', 'even') } %>
       <div style="clear: both;"></div>
