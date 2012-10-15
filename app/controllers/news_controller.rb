@@ -8,7 +8,7 @@ class NewsController < ApplicationController
     NewsFollower.visit(current_user)
     @selected_tags = [params[:tag]] || []
     @selected_date = params[:date] || ""
-    @posts_header = "Recent Stories"
+    @posts_header = "Recent News"
     @posts_header = @selected_tags if @selected_tags[0]
     unless @selected_date.blank?
       @selected_date.extend AgentStreamExtensions::String

@@ -1,3 +1,5 @@
+require 'image_size'
+
 class BlogPost < ActiveRecord::Base
   include GroupOwned
   include Notifications::BlogPost
@@ -206,7 +208,7 @@ protected
     SemanticMatcher.default.blog_post_updated(self)
   end
   
-  # These should may work better in another module
+  # These may work better in another module
   # uses local attribute: 'link' if it is moved
     def calculate_image
       # SSJ 2012-9-12 the following code did not work in production
@@ -219,11 +221,25 @@ protected
       calculate_best_image(images)  
     end
 
-    def calculate_best_image(images)
-      # SSJ for now, the best image is image[1]
-      # this may not be the case in the future
-      image = images[1][:src]
-      image_source(image)
+    LinkedImage = Struct.new(:url, :witdh, :height, :size)
+
+    def calculate_best_image(image_links)
+      # SSJ 10-15-2012 best images is the largest on page
+      images = image_links.map do |image|
+        src = image_source(image[:src])
+        size = remote_image_file_size(src)
+        LinkedImage.new(src, size[0], size[1],size[0]*size[1])
+      end
+      images.sort! {|a,b| b.size <=> a.size }
+      images[0].url
+    end
+    
+    def remote_image_file_size(src)
+      open(URI.encode(src), 'rb') do |fh|
+        ImageSize.new(fh).size
+      end
+      rescue Exception => e
+        [0,0]
     end
 
     def image_source(image)
