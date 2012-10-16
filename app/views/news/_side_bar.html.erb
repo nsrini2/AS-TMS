@@ -14,6 +14,19 @@
       </ul>
     <% end -%>
 
+    <% if false -%>
+    <h4>Sources</h4>
+    <ul class="tags">
+      <% News.blog.tags.each do |tag| -%>
+        <% if selected_tags.include? tag.name %>
+          <li><%= "#{tag} (#{tag.total})" -%></li>
+        <% else -%>
+          <li><%= link_to("#{tag} (#{tag.total})", "#{news_path}?tag=#{tag}") -%></li>
+        <% end -%>  
+      <% end -%>
+    </ul>
+    <% end -%>
+
     <% unless News.blog.archived_posts.size.zero? -%>
       <h4>Articles By Date</h4>
       <ul class="archives">

@@ -31,12 +31,12 @@ class RssFeed < ActiveRecord::Base
           :blog_id      => self.blog_id,
           :tagline      => self.tagline,
           :guid         => entry.id,
-          :title        => entry.title,
-          :text         => entry.summary,
-          :created_at   => entry.published,
-          :source       => entry.source,
-          :link         => entry.url,
-          :tag_list     => entry.categories
+          :title        => get_entry_value(entry,:title),
+          :text         => get_entry_value(entry,:summary),
+          :created_at   => get_entry_value(entry,:published),
+          :source       => get_entry_value(entry,:source, :author),
+          :link         => get_entry_value(entry,:url),
+          :tag_list     => get_entry_value(entry,:categories)
         )
       end
     end
@@ -46,6 +46,18 @@ class RssFeed < ActiveRecord::Base
   def toggle_activation
      toggle!(:active)
   end
+  
+  private
+    def get_entry_value(entry, *keys)
+      value = ""
+      keys.each do |key|
+        if entry.respond_to?(key)
+          value = entry.send key
+          break
+        end
+      end
+      value 
+    end
   
   class << self
     def pull_to_blogs

@@ -23,7 +23,7 @@ preview = false unless defined?(preview)
 
       <div class="blog_post_p">
         <%= @post.text -%>
-        <p><%= link_to(@post.tagline, @post.link) if @post.tagline %></p>
+        <p><%= link_to(@post.tagline, @post.link, :target => "_blank") if @post.tagline %></p>
       </div>  
     </div>
     <%= render "/shared/share_links", :link => @post.link, :tweet_text => @tweet_text %>
