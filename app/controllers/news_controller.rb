@@ -6,20 +6,23 @@ class NewsController < ApplicationController
   
   def index
     NewsFollower.visit(current_user)
-    @selected_tags = [params[:tag]] || []
-    @selected_date = params[:date] || ""
-    @posts_header = "Recent News"
-    @posts_header = @selected_tags if @selected_tags[0]
-    unless @selected_date.blank?
-      @selected_date.extend AgentStreamExtensions::String
-      @posts_header = @selected_date.to_month_year 
-    end
+    # @selected_tags = [params[:tag]] || []
+    # @selected_date = params[:date] || ""
+    # @selected_source = params[:source] || ""
+    # @posts_header = "Recent News"
+    # @posts_header = @selected_tags if @selected_tags[0]
+    # unless @selected_date.blank?
+    #   @selected_date.extend AgentStreamExtensions::String
+    #   @posts_header = @selected_date.to_month_year 
+    # end
     @top_posts = News.top_posts(5)
   end
   
   def post
     @selected_tags = @post.tags.map {|t| t.name}
     @selected_date = @post.created_at_year_month.to_s
+    @post.creator.extend AgentStreamExtensions::Sample
+    @selected_source = @post.creator.sample(:description)
     @tweet_text = "I found this great article: #{truncate(@post.title, :length => 50, :omission => '...')} "
     render :show
   end
@@ -76,6 +79,8 @@ class NewsController < ApplicationController
 
 private  
   def set_news
+    @selected_tags, @selected_date, @selected_source = ""
+    @posts_header = "Recent News"
     if current_profile.sponsor?
       # scope to the sponsor's posts
       @news = current_profile.blog_posts.where(:blog_id => News.id).paginate(:page => params[:page])
@@ -83,11 +88,28 @@ private
       @news = News.blog_posts.paginate(:page => params[:page])
     end
     if params[:tag]
-      @news = @news.where("cached_tag_list LIKE ?", "%#{params[:tag]}%")
+      @selected_tags = params[:tag]
+      @posts_header = @selected_tags
+      @news = @news.where("cached_tag_list LIKE ?", "%#{@selected_tags}%")
     end
     if params[:date]
-      @news = @news.where("created_at_year_month = ?", "#{params[:date]}")
-    end    
+      @selected_date = params[:date]
+      @news = @news.where("created_at_year_month = ?", @selected_date)
+      @selected_date.extend AgentStreamExtensions::String
+      @posts_header = @selected_date.to_month_year
+    end
+    if params[:source]
+      begin
+        @selected_source = params[:source].to_i
+        source_rss = RssFeed.active.find_by_id(@selected_source)
+        source_rss.extend AgentStreamExtensions::Sample
+        @posts_header = source_rss.sample :description
+      rescue
+        @selected_source = 0
+      ensure
+        @news = @news.where(:creator_type => "RssFeed", :creator_id => @selected_source )
+      end
+    end
   end
 
   def set_post

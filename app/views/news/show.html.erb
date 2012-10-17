@@ -7,7 +7,9 @@ preview = false unless defined?(preview)
 <h2 class="page_title"><%=link_to("The News Room", news_path) %></h2>
 <div class="aside-small">
   <%= render :partial => '/news/side_bar', 
-      :locals => { :posts => @news, :selected_date => @selected_date, :selected_tags => @selected_tags } -%>
+      :locals => { :posts => @news, :selected_date => @selected_date, 
+                   :selected_source => @selected_source, 
+                   :selected_tags => @selected_tags } -%>
 </div>
 
   <div class="list_item news_post_item">

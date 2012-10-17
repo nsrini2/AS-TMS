@@ -7,4 +7,20 @@ module AgentStreamExtensions
        "#{month} #{year}"
      end
   end
+  
+  module Sample
+    # SSJ 10-17-2012 this is a lot like try, but try was not working for me
+    # also it will try a collection of methods
+    # but does not take a block or additional parameters to pass to the method
+    def sample(*keys)
+      value = ""
+      keys.each do |key|
+        if self.respond_to?(key)
+          value = self.send key
+          break
+        end
+      end
+      value
+    end
+  end
 end

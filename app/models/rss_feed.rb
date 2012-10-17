@@ -4,6 +4,8 @@ class RssFeed < ActiveRecord::Base
   # has_one :rss_feed_photo, :as => :owner, :dependent => :destroy
   belongs_to :primary_photo, :class_name => 'RssFeedPhoto', :foreign_key => :primary_photo_id
   
+  has_many :blog_posts, :as => :creator
+  
   scope :available, where("active <= '1' ")
   scope :active, where("active = '1'")
   
@@ -25,18 +27,19 @@ class RssFeed < ActiveRecord::Base
     feed = Feedzirra::Feed.fetch_and_parse(self.feed_url)
     feed.entries.each do |entry|
       unless BlogPost.exists? :guid => entry.id
+        entry.extend AgentStreamExtensions::Sample
         BlogPost.create(
           :creator_id   => self.id,
           :creator_type => self.class.to_s,
           :blog_id      => self.blog_id,
           :tagline      => self.tagline,
           :guid         => entry.id,
-          :title        => get_entry_value(entry,:title),
-          :text         => get_entry_value(entry,:summary),
-          :created_at   => get_entry_value(entry,:published),
-          :source       => get_entry_value(entry,:source, :author),
-          :link         => get_entry_value(entry,:url),
-          :tag_list     => get_entry_value(entry,:categories)
+          :title        => entry.sample(:title),
+          :text         => entry.sample(:summary),
+          :created_at   => entry.sample(:published),
+          :source       => entry.sample(:source, :author),
+          :link         => entry.sample(:url),
+          :tag_list     => entry.sample(:categories)
         )
       end
     end
@@ -46,18 +49,6 @@ class RssFeed < ActiveRecord::Base
   def toggle_activation
      toggle!(:active)
   end
-  
-  private
-    def get_entry_value(entry, *keys)
-      value = ""
-      keys.each do |key|
-        if entry.respond_to?(key)
-          value = entry.send key
-          break
-        end
-      end
-      value 
-    end
   
   class << self
     def pull_to_blogs
