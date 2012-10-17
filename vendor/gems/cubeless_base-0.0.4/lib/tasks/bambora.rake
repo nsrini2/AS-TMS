@@ -73,7 +73,7 @@ namespace :bam do
   end
   
   desc 'query getthere for new/updated bookings'
-  task(:query_getthere_bookings, :forced_user_login => :environment) do |t, args|
+  task(:query_getthere_bookings, [:forced_user_login] => [:environment]) do |t, args|
     DirectDataQuery.query_getthere_bookings args[:forced_user_login]
   end
   
