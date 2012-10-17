@@ -3,7 +3,7 @@ module Synthesis
 
     # class variables
     @@asset_packages_yml = $asset_packages_yml ||
-      (File.exists?("#{Rails.root}/config/asset_packages.yml") ? YAML.load_file("#{RAILS_ROOT}/config/asset_packages.yml") : nil) ||
+      (File.exists?("#{Rails.root}/config/asset_packages.yml") ? YAML.load_file("#{Rails.root}/config/asset_packages.yml") : nil) ||
       (File.exists?("#{CubelessBase::Engine.root.to_s}/config/asset_packages.yml") ? YAML.load_file("#{CubelessBase::Engine.root.to_s}/config/asset_packages.yml") : nil) #Fix for engine based cubeless
 
     # singleton methods
