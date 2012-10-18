@@ -127,7 +127,7 @@ class BlogPost < ActiveRecord::Base
   def self.send_news_blog_post(id)
     blog_post = BlogPost.find(id)
     recipients = NewsFollower.profiles.map { |follower| follower.email }
-    tmail = Notifier.create_group_blog_post(blog_post)
+    tmail = Notifier.create_news_blog_post(blog_post)
     self.send_batch_email(tmail, recipients)
   end
   

@@ -18,6 +18,11 @@ class Notifier
     self.body = {:blog_post => blog_post, :group => blog_post.blog.owner}
   end
   
+  def news_blog_post(blog_post)
+    @subject = self.truncate("New News Post: #{blog_post.title}", :length => 40, :omission => '...')
+    self.body = {:blog_post => blog_post }
+  end
+  
   def group_invitation(invite)
     @recipients  = invite.receiver.email
     @subject = "You've been invited to join a group"
