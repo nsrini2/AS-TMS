@@ -6,19 +6,11 @@ class NewsController < ApplicationController
   
   def index
     NewsFollower.visit(current_user)
-    # @selected_tags = [params[:tag]] || []
-    # @selected_date = params[:date] || ""
-    # @selected_source = params[:source] || ""
-    # @posts_header = "Recent News"
-    # @posts_header = @selected_tags if @selected_tags[0]
-    # unless @selected_date.blank?
-    #   @selected_date.extend AgentStreamExtensions::String
-    #   @posts_header = @selected_date.to_month_year 
-    # end
     @top_posts = News.top_posts(5)
   end
   
   def post
+    @post.increment_post_views!
     @selected_tags = @post.tags.map {|t| t.name}
     @selected_date = @post.created_at_year_month.to_s
     @post.creator.extend AgentStreamExtensions::Sample

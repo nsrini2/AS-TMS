@@ -374,7 +374,7 @@ AgentStream::Application.routes.draw do
   resources :groups do
     member do 
       post :resend_all
-      puts :update
+      put :update
       post :remove_member
       get :stats_summary
       match :mass_mail
