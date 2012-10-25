@@ -26,7 +26,7 @@ AgentStream::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
   
   config.action_mailer.default_url_options = {
-    :host => 'www.agentstream.com',
+    :host => 'www.agentstream.com'
   }
 end
 

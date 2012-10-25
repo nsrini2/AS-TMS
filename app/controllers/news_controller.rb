@@ -105,7 +105,7 @@ private
   end
 
   def set_post
-    @post = BlogPost.find(params[:id])
+    @post = News.blog_posts.find(params[:id])
   end
   
   def update_post_attributes(attributes = [])

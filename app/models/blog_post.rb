@@ -3,6 +3,7 @@ require 'image_size'
 class BlogPost < ActiveRecord::Base
   include GroupOwned
   include Notifications::BlogPost
+  include Rails.application.routes.url_helpers
   include ActionView::Context
   stream_to :company
   after_save :update_indexes
@@ -41,8 +42,20 @@ class BlogPost < ActiveRecord::Base
       order("created_at DESC")
   end
   
+  def link?
+    read_attribute :link
+  end
+  
+  def link
+    if link?
+      read_attribute :link
+    else
+      Rails.application.routes.url_helpers.blog_post_path(self)
+    end
+  end
+  
   def image
-    if link
+    if link?
       self.best_image ||= calculate_image
       save! unless self.best_image_was == self.best_image
       self.best_image
@@ -100,7 +113,7 @@ class BlogPost < ActiveRecord::Base
   end
   
   def tagline
-    return nil unless link
+    return nil unless link?
     read_attribute(:tagline).present? ? read_attribute(:tagline) : "View original content here."
   end
 

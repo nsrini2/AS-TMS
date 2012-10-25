@@ -111,7 +111,7 @@ module Notifications
     extend ActiveSupport::Concern
     
     included do
-      self.after_save :fire_notifications
+      self.after_create :fire_notifications
       self.send :include, Notifications::BatchMailer
     end
    
