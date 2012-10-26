@@ -13,15 +13,11 @@ class Notifier < ActionMailer::Base
     super(method_name, *parameters)
   end
 
-  # def weekly_status_report(recipient)
-  #   data = StatusReport.weekly_dump
-  #   filename = "AgentStream-weekly-#{Date.today.strftime("%Y-%m-%d")}.csv"
-  #   mail.attachments[filename.to_s] = {
-  #     :mime_type => "text/csv", 
-  #     :content => data
-  #   }
-  #   mail(:from => Config[:email_from_address], :to => recipient, :subject => "AgentStream Weekly Report", :template_name => 'attachment')  
-  # end
+  def news_post_views(data)
+    filename = "AgentStream-news-post-views.csv"
+    subject = "AgentStream News Post Views"    
+    report_with_attachments(data, subject, filename)
+  end
 
   def monthly_activity_report(data)
     filename = "AgentStream-monthly-activity-#{(Date.today.advance(:months => -1)).strftime("%Y-%m")}.csv"

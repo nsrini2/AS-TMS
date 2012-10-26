@@ -57,8 +57,19 @@ namespace :reports do
     end
   end
   
+  desc "email the news post views report"
+  task :send_news_post_views => :environment do
+    puts "Sending News Post Views Report"
+    begin        
+      StatusReport.mail_news_post_views
+    rescue
+      puts "Problem with running news_post_views: #{$!}"
+      Rails.logger.warn "Problem with running news_post_views: #{$!}"
+    end
+  end
+  
   desc "email ALL monthly reports"
-  task :send_monthly_reports => [:send_monthly_activity_report, :send_active_users_by_country_report] do
+  task :send_monthly_reports => [:send_monthly_activity_report, :send_active_users_by_country_report, :send_news_post_views] do
     puts "Sending all monthly reports"
   end
   

@@ -1,4 +1,5 @@
 require 'singleton'
+require 'faster_csv'
 
 class News
   include Singleton
@@ -46,6 +47,16 @@ class News
     blog_posts.by_rank.limit(n)
   end
   
+  def post_views
+    last_month = Date.today.advance(:months => -1)
+    posts = blog_posts.where(:created_at_year_month => last_month.strftime("%Y%m") )
+    csv_string = FasterCSV.generate do |csv|
+      posts.each do |post|
+        csv << [post.views, post.tagline, post.title, post.source, post.link]
+      end
+    end
+  end
+  
   def private?
     false
   end
@@ -54,7 +65,7 @@ class News
     NewsFollower.profiles
   end
   
-  class << self    
+  class << self
     def find(*args)
       instance
     end
@@ -75,5 +86,6 @@ class News
         super
       end
     end
+    
   end
 end  
