@@ -232,6 +232,8 @@ protected
       doc = Nokogiri::HTML(response.body)
       images = doc.css('img')
       calculate_best_image(images)
+    rescue
+      throw
     end
 
     LinkedImage = Struct.new(:url, :witdh, :height, :size)
