@@ -227,14 +227,20 @@ protected
       # SSJ 2012-9-12 the following code did not work in production
       # doc = Nokogiri::HTML(open(link))
       # so I got doc this way
-      fail
-      uri = URI.parse(link)
-      response = Net::HTTP.get_response(uri)
-      doc = Nokogiri::HTML(response.body)
-      images = doc.css('img')
-      calculate_best_image(images)
-    rescue
-      throw
+      begin
+        uri = URI.parse(link)
+        response = Net::HTTP.get_response(uri)
+        doc = Nokogiri::HTML(response.body)
+        images = doc.css('img')
+        calculate_best_image(images)
+      rescue
+        # if we are unabe to find an external image, then just show the generic RSS feed image
+        if news?
+          creator.primary_photo_path(:thumb_large)
+        else
+          ""
+        end
+      end
     end
 
     LinkedImage = Struct.new(:url, :witdh, :height, :size)
