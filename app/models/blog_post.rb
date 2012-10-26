@@ -233,7 +233,7 @@ protected
         doc = Nokogiri::HTML(response.body)
         images = doc.css('img')
         calculate_best_image(images)
-      rescue
+      rescue Timeout::Error
         # if we are unabe to find an external image, then just show the generic RSS feed image
         if news?
           creator.primary_photo_path(:thumb_large)
