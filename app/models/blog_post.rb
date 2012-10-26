@@ -64,7 +64,7 @@ class BlogPost < ActiveRecord::Base
       images = doc.css('img')
       images[0][:src]
     end    
-  rescue NoMethodError => e
+  rescue # NoMethodError => e
     # if we are unabe to find an external image, then just show the generic RSS feed image
     if news?
       creator.primary_photo_path(:thumb_large)
@@ -231,7 +231,7 @@ protected
       response = Net::HTTP.get_response(uri)
       doc = Nokogiri::HTML(response.body)
       images = doc.css('img')
-      calculate_best_image(images)  
+      calculate_best_image(images)
     end
 
     LinkedImage = Struct.new(:url, :witdh, :height, :size)
