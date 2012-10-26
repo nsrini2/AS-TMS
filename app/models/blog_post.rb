@@ -227,6 +227,7 @@ protected
       # SSJ 2012-9-12 the following code did not work in production
       # doc = Nokogiri::HTML(open(link))
       # so I got doc this way
+      fail
       uri = URI.parse(link)
       response = Net::HTTP.get_response(uri)
       doc = Nokogiri::HTML(response.body)
