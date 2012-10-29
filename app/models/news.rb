@@ -52,7 +52,7 @@ class News
     posts = blog_posts.where(:created_at_year_month => last_month.strftime("%Y%m") )
     csv_string = FasterCSV.generate do |csv|
       posts.each do |post|
-        csv << [post.views, post.tagline, post.title, post.source, post.link]
+        csv << [post.views, post.creator.description, post.title, post.source, post.link]
       end
     end
   end
