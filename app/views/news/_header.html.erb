@@ -23,7 +23,7 @@
           <%= image_tag(post.image, :class => "marquee_panel_photo") %> 
           <div class="marquee_panel_details">
             <p class="title"><%= link_to post.title, news_post_path(post) %></p>
-            <p class="when">posted on <%= short_date post.created_at %> by <%= post.profile.full_name %></p>
+            <p class="when">posted on <%= short_date post.created_at %> by <%= posted_by post %></p>
             <div class="text">
               <%# fail truncate(post.text.gsub!(/<(.*?)>/, ""), { :length => 300, :omission => "..." }) %>
               <p>

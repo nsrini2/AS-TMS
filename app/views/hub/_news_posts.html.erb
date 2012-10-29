@@ -19,7 +19,7 @@
         <%= image_tag(post.image, :class => "marquee_panel_photo") %> 
         <div class="marquee_panel_details">
           <p class="title"><%= link_to post.title, news_post_path(post) %></p>
-          <p class="when">posted on <%= short_date post.created_at %> by <%= post.profile.full_name %></p>
+          <p class="when">posted on <%= short_date post.created_at %> by <%= posted_by post %></p>
           <div class="text">
             <%= textilize truncate(post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), { :length => 140, :omission => "..." }) %>
           </div>
