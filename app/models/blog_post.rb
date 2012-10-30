@@ -56,18 +56,15 @@ class BlogPost < ActiveRecord::Base
   
   def image
     if link?
-      self.best_image ||= calculate_image
+      self.best_image ||= calculate_best_image
       save! unless self.best_image_was == self.best_image
-      self.best_image
-    else
-      doc = Nokogiri::HTML(text)
-      images = doc.css('img')
-      images[0][:src]
-    end    
-  rescue # NoMethodError => e
-    # if we are unabe to find an external image, then just show the generic RSS feed image
-    if news?
-      creator.primary_photo_path(:thumb_large)
+      if self.best_image
+        self.best_image
+      elsif news?
+        creator.primary_photo_path(:thumb_large)
+      else
+        ""
+      end
     else
       ""
     end
@@ -221,57 +218,9 @@ protected
     SemanticMatcher.default.blog_post_updated(self)
   end
   
-  # These may work better in another module
-  # uses local attribute: 'link' if it is moved
-    def calculate_image
-      # SSJ 2012-9-12 the following code did not work in production
-      # doc = Nokogiri::HTML(open(link))
-      # so I got doc this way
-      begin
-        uri = URI.parse(link)
-        response = Net::HTTP.get_response(uri)
-        doc = Nokogiri::HTML(response.body)
-        images = doc.css('img')
-        calculate_best_image(images)
-      rescue Timeout::Error
-        # if we are unabe to find an external image, then just show the generic RSS feed image
-        if news?
-          creator.primary_photo_path(:thumb_large)
-        else
-          ""
-        end
-      end
-    end
-
-    LinkedImage = Struct.new(:url, :witdh, :height, :size)
-
-    def calculate_best_image(image_links)
-      # SSJ 10-15-2012 best images is the largest on page
-      images = image_links.map do |image|
-        src = image_source(image[:src])
-        size = remote_image_file_size(src)
-        LinkedImage.new(src, size[0], size[1],size[0]*size[1])
-      end
-      images.sort! {|a,b| b.size <=> a.size }
-      images[0].url
-    end
-    
-    def remote_image_file_size(src)
-      open(URI.encode(src), 'rb') do |fh|
-        ImageSize.new(fh).size
-      end
-      rescue Exception => e
-        [0,0]
-    end
-
-    def image_source(image)
-      if image[/^\//]
-        link[/(http:\/\/.+?)[\/]/]
-        "#{$1}#{image}"
-      else
-        image
-      end
-    end
-  # end of image methods
-
+  def calculate_best_image
+    image_selector = BestImage::ImageSelector.new(link)
+    Rails.logger.info("Error getting best image -- #{image_selector.errors}") unless image_selector.errors.empty?
+    image_selector.best_image
+  end
 end
