@@ -82,6 +82,12 @@ class Notifier < ActionMailer::Base
     @subject = "You've been invited to join a group!"
     self.body = {:group => invite.group, :sender => invite.sender, :receiver => invite.receiver}
   end
+  
+  def group_invitation_request(request)
+    @recipients  =request.group.owner.email
+    @subject = "Someone wants to join your group!"
+    self.body = {:group => request.group, :sender => request.sender }
+  end
 
   def group_moderator(group_membership)
     @recipients = group_membership.member.email

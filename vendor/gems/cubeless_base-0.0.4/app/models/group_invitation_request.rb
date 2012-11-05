@@ -1,6 +1,7 @@
 # This class is created when a member requests a group invitation from a group owner
 class GroupInvitationRequest < GroupInvitationBase
-
+  include Notifications::GroupInvitationRequest
+  
   belongs_to :group
   belongs_to :sender, :class_name => 'Profile', :foreign_key => 'sender_id'
 

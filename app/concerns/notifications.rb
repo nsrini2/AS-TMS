@@ -244,6 +244,21 @@ module Notifications
     end  
   end
   
+  module GroupInvitationRequest
+    extend ActiveSupport::Concern
+    
+    included do
+      self.after_create :fire_notifications
+    end
+    
+    module InstanceMethods
+      def fire_notifications
+        Notifier.deliver_group_invitation_request(self)
+      end
+      
+    end  
+  end
+  
   module GroupPost
     extend ActiveSupport::Concern
     
