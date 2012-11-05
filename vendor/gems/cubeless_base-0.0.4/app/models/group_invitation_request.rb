@@ -1,3 +1,4 @@
+# This class is created when a member requests a group invitation from a group owner
 class GroupInvitationRequest < GroupInvitationBase
 
   belongs_to :group

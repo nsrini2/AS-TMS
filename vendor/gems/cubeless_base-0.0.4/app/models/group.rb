@@ -154,6 +154,10 @@ class Group < ActiveRecord::Base
     owner == profile
   end
 
+  def is_group_admin?(profile)
+    is_owner?(profile) || is_moderator?(profile)
+  end
+
   def editable_by?(profile)
     (self.moderators.count > 0 ? self.is_moderator?(profile) : self.is_member?(profile) ) || profile.has_role?(Role::ShadyAdmin) || self.is_owner?(profile)
   end

@@ -17,7 +17,6 @@ content_for(:page_title, "Members of #{@group.name}")
 	<div class="group_members">
 		<%= render :partial => 'groups/member_card', :locals => { :member => @members.first } -%>
 		<%= render :partial => 'groups/member_table' -%>
-
 		<dl class="group_owner">
 			<dt>Group Owner:</dt>
 			<dd><%= link_to_profile(@group.owner, false) -%></dd>
@@ -30,7 +29,7 @@ content_for(:page_title, "Members of #{@group.name}")
 		<dd><%= @group.moderators.collect{ |mod| link_to_profile(mod, false) }.join(", ") -%></dd>
 	</dl>
 	<% end %>
-	<% unless current_profile.sponsor? %>
+	<% if @group.is_group_admin?(current_profile) %>
 		<%= render :partial => 'groups/invitations_pending' %>
 		<%= render :partial => 'groups/invitation_requests' %>
 	<% end %>	

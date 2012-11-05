@@ -31,14 +31,15 @@ div.action_buttons a.button {
 .button.little, a.button.little {
   font-size: 0.8em;
   padding: 1px 4px;
+  width: 60px;
 }
 
-/* line 31, ../../../../app/stylesheets/themes/agentstream/button.scss */
+/* line 33, ../../../../app/stylesheets/themes/agentstream/button.scss */
 .button.light, a.button.light {
   background: #90b4bc;
 }
 
-/* line 34, ../../../../app/stylesheets/themes/agentstream/button.scss */
+/* line 36, ../../../../app/stylesheets/themes/agentstream/button.scss */
 .button.xlarge, a.button.xlarge {
   font-size: 1.8em;
 }

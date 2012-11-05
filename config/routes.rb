@@ -606,11 +606,11 @@ AgentStream::Application.routes.draw do
       post :validate_invitation_profiles
     end
     member do
-      post :invitation_request
-      post :decline_invitation_request
-      post :accept_invitation_request
-      post :resend
-      post :rescind
+      match :invitation_request, :via => [:get, :post]
+      match :decline_invitation_request, :via => [:get, :post]
+      match :accept_invitation_request, :via => [:get, :post]
+      match :resend, :via => [:get, :post]
+      match :rescind, :via => [:get, :post]
     end
   end
 

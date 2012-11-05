@@ -1,3 +1,7 @@
+# After a group owner accepts a group invitation request
+# the Agetn is sent a group invitation
+# after an agent accepts goins the group, the invitation is deleted
+
 class GroupInvitation < GroupInvitationBase
   include Notifications::GroupInvitation
 
