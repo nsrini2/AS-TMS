@@ -15,9 +15,9 @@ module AgentStreamExtensions
     def sample(*keys)
       value = ""
       keys.each do |key|
-        if self.respond_to?(key)
+        if self.respond_to?(key) 
           value = self.send key
-          break
+          break if value
         end
       end
       value

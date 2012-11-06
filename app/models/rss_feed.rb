@@ -35,7 +35,7 @@ class RssFeed < ActiveRecord::Base
           :tagline      => self.tagline,
           :guid         => entry.id,
           :title        => entry.sample(:title),
-          :text         => entry.sample(:summary),
+          :text         => entry.sample(:content, :summary),
           :created_at   => entry.sample(:published),
           :source       => entry.sample(:source, :author),
           :link         => entry.sample(:url),
