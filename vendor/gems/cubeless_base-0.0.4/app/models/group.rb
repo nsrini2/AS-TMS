@@ -46,6 +46,9 @@ class Group < ActiveRecord::Base
   validates_length_of :tags, :within => 1..256, :allow_blank => true
 
   named_scope :exclude_groups, lambda { |profile| { :conditions => ["groups.owner_id != ?", profile.id] } }
+  
+  scope :active, :conditions => ["id > 0"]
+  scope :inactive, :conditions => ["id <= 0"]
 
   def audit_snapshot!
     audit = super
@@ -133,6 +136,10 @@ class Group < ActiveRecord::Base
   def is_sponsored?
     !!sponsor_account
   end
+  
+  alias_method :private?, :is_private?
+  alias_method :public?, :is_public?
+  alias_method :sponsored?, :is_sponsored?
 
   def increment_group_views!
     ActiveRecord::Base.connection.update("update groups set views=views+1 where id=#{self.id}")

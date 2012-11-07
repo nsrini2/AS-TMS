@@ -3,6 +3,7 @@ class Chat < ActiveRecord::Base
   
   belongs_to :profile, :foreign_key => :host_id
   has_many :topics
+  has_many :posts, :through => :topics
   has_many :participants, :order => 'presenter DESC' 
   has_many :presenters, :class_name => "Participant", :conditions => "presenter=1"
   
@@ -12,6 +13,8 @@ class Chat < ActiveRecord::Base
   
   scope :starting_soon, lambda { { :conditions => ["start_at BETWEEN ? AND ?", Time.now.advance(:minutes => -20), Time.now.advance(:minutes => 20)]} }
   scope :not_notified,  :conditions => ['notifications_sent = 0']
+  scope :active, :conditions => ["id > 0"]
+  scope :inactive, :conditions => ["id <= 0"]
   
   validates_presence_of :start_at, :duration, :title, :host_id
   validates_numericality_of :duration, :host_id

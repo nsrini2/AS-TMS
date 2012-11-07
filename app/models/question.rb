@@ -21,6 +21,14 @@ class Question
   end
   
   class << self
+    def all_active
+      unscoped.where("id > 0")
+    end
+    
+    def all_inactive
+      unscoped.where("id <= 0")
+    end
+    
     ### Summary Methods ###
 
     def find_summary(*args)

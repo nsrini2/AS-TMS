@@ -29,6 +29,9 @@ class BlogPost < ActiveRecord::Base
   
   scope :recent, { :limit => 10 }
   
+  scope :active, :conditions => ["id > 0"]
+  scope :inactive, :conditions => ["id <= 0"]
+  
   # named_scope :exclude_groups, lambda { |profile| { :conditions => ["groups.owner_id != ?", profile.id] } }
   # SSJ -- REFACTOR THIS MAY BE EVIL, it can create invalid results if you are not unscoping this when requesting a different order
   # default_scope order("blog_posts.created_at DESC")

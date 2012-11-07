@@ -99,6 +99,7 @@ class Profile < ActiveRecord::Base
 
   scope :visible, where(:visible => 1)
   scope :active, where(:status => 1)  
+  scope :inactive, where("status < 1")  
   scope :status, lambda { |status| 
     case status.to_s
       when "visible": visible

@@ -5,7 +5,7 @@ class ApisController < ApplicationController
   include BackgroundProcessing
   
   before_filter :require_api_key
-  skip_before_filter :require_api_key, :only => :index
+  skip_before_filter :require_api_key, :only => [:index]
   skip_before_filter :require_auth
 
   # MM2: For some reason the protect_from_forgery was catching these xml post requests
@@ -23,6 +23,52 @@ class ApisController < ApplicationController
 
   def index
     render :template => '/notifier/api_key_for'
+  end
+  
+  def search_index
+    months_ago = params[:months_ago].to_i if params[:months_ago].present?
+    @new_profiles, @new_groups, @new_blog_posts, @new_questions, @new_chats = [[], [], [], [], []]
+    @update_profiles, @update_groups, @update_blog_posts, @update_questions, @update_chats = [[], [], [], [], []]
+    @delete_profiles, @delete_groups, @delete_blog_posts, @delete_questions, @delete_chats = [[], [], [], [], []]
+    if months_ago
+      # get backlog of stuff to requested month
+      target_date = Date.today.advance(:months => (-1 * months_ago) )
+      date_filter = "MONTH(created_at) = #{target_date.month} AND YEAR(created_at) = #{target_date.year}"
+      @new_profiles = Profile.active.includes(:company, :profile_registration_fields, :group_memberships).where(date_filter)
+      @new_groups = Group.active.includes(:group_memberships).where(date_filter)
+      @new_blog_posts = BlogPost.active.includes(:blog, :comments).where(date_filter)
+      @new_questions = Question.all_active.includes(:answers, :profile).where(date_filter)
+      @new_chats = Chat.active.includes(:topics).where(date_filter)
+      # @new_deals
+    else
+      # get update pull
+      target_date = Date.today.advance(:days=> -1 )
+      # NEW ITEMS
+      date_filter = "created_at >= '#{target_date.strftime}'"
+      @new_profiles = Profile.active.includes(:company, :profile_registration_fields, :group_memberships).where(date_filter)
+      @new_groups = Group.active.includes(:group_memberships).where(date_filter)
+      @new_blog_posts = BlogPost.active.includes(:blog, :comments).where(date_filter)
+      @new_questions = Question.all_active.includes(:answers, :profile).where(date_filter)
+      @new_chats = Chat.active.includes(:topics).where(date_filter)
+      # UPDATED ITEMS
+      date_filter = "created_at < '#{target_date.strftime}' AND updated_at >= '#{target_date.strftime}'"
+      @update_profiles = Profile.active.includes(:company, :profile_registration_fields, :group_memberships).where(date_filter)
+      @update_groups = Group.active.includes(:group_memberships).where(date_filter)
+      @update_blog_posts = BlogPost.active.includes(:blog, :comments).where(date_filter)
+      @update_questions = Question.all_active.includes(:answers, :profile).where(date_filter)
+      @update_chats = Chat.active.includes(:topics).where(date_filter)
+      # DELETED ITEMS
+      date_filter = "updated_at >= '#{target_date.strftime}'"
+      @delete_profiles = Profile.includes(:company, :profile_registration_fields, :group_memberships).where(date_filter).inactive
+      @delete_groups = Group.includes(:group_memberships).where(date_filter).inactive
+      @delete_blog_posts = BlogPost.includes(:blog, :comments).where(date_filter).inactive
+      @delete_questions = Question.includes(:answers, :profile).where(date_filter).all_inactive
+      @delete_chats = Chat.includes(:topics).where(date_filter).inactive
+    end
+
+    respond_to do |format|
+      format.xml
+    end
   end
 
   def whoami

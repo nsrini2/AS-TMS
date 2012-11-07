@@ -271,6 +271,7 @@ AgentStream::Application.routes.draw do
 
   resources :api, :controller => "apis" do
     collection do
+      get :search_index
       get :photos
       get :groups
       get :profiles
