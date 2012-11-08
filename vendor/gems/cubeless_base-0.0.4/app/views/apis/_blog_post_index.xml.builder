@@ -12,6 +12,7 @@ xml.document do
   end
   xml.poster(profile)
   xml.tags(blog_post.cached_tag_list)
+  xml.url(blog_post_url(blog_post))
   xml.lineback(blog_post.link)
   xml.comments do
     blog_post.comments.each do |comment|

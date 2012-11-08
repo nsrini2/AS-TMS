@@ -1,8 +1,10 @@
 xml.document do
   xml.type('userprofile')
+  xml.id("userprofile_#{profile.id}")
   xml.description('description')
   xml.fullname(profile.screen_name)
   xml.company(profile.company ? profile.company.name : "")
+  xml.url(profile_url(profile))
   xml.specialties do
     (1..12).each do |i|
       value = profile.send "profile_#{i}"

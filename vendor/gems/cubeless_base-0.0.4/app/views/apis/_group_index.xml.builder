@@ -3,6 +3,7 @@ xml.document do
   xml.id("group_#{group.id}")
   xml.description(group.description)
   xml.sponsorgroupinformation(group.tags)
+  xml.url(group_url(group))
   xml.members do
     group.group_memberships.each do |membership|
       xml.member("profile_#{membership.profile_id}")

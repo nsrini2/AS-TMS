@@ -50,7 +50,7 @@ GEM
     addressable (2.2.8)
     arel (2.0.10)
     bcrypt-ruby (2.1.4)
-    best_image (0.0.2)
+    best_image (0.0.3)
       image_size (>= 1.1.1)
       nokogiri (>= 1.5.2)
     builder (2.1.2)
@@ -229,7 +229,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth (= 4.2.3)
   acts_as_reportable
-  best_image (~> 0.0.2)
+  best_image (~> 0.0.3)
   capistrano (= 2.5.18)
   compass (= 0.10.6)
   compass-960-plugin (= 0.10.0)

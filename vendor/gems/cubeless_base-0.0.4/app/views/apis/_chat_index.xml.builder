@@ -2,6 +2,7 @@ xml.document do
   xml.type('chat')
   xml.id("chat_#{chat.id}")
   xml.title(chat.title)
+  xml.url(chat_url(chat))
   xml.topics do 
     chat.topics.each do |topic|
       xml.topic do 

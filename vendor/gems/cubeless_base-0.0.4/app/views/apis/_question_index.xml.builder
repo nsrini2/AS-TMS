@@ -3,7 +3,7 @@ xml.document do
   xml.id("faq_#{question.id}")
   xml.question(question.question)
   xml.author(question.profile.screen_name)
-
+  xml.url(question_url(question))
 
   xml.answers do 
     question.answers.each do |answer|
