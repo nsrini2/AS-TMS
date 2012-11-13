@@ -15,12 +15,14 @@ class Topic < ActiveRecord::Base
   named_scope :open, :conditions => 'status = "open" ', :order => 'updated_at DESC'
   named_scope :active, :conditions => 'status = "active" ', :order => 'start_at DESC'
   
-  
   before_validation :default_values
   
-  def after_save
+  after_save :update_indexes
+  
+  def update_indexes
     #if the chat is inactive, Topic won't find it
-    if self.chat  
+    if self.chat
+      chat.touch!
       # process the indexing in dalay job
       ChatTopicIndex.update_indices(self) unless self.chat.on_air?
     else

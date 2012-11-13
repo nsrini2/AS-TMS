@@ -42,6 +42,12 @@ class GroupMembership < ActiveRecord::Base
   end
 
   validate :group_membership_visibility_and_availability
+  
+  after_save :touch_group
+  
+  def touch_group
+    group.touch!
+  end
 
   def group_membership_visibility_and_availability
     local_group = if self.group.is_a?(ActiveRecord::Relation)

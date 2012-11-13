@@ -5,7 +5,13 @@ class Comment
   # named_scope :exclude_groups, lambda { |profile| { :conditions => ["groups.owner_id != ?", profile.id] } }
   # default_scope :conditions => ["blogs.owner_type <> 'company' "], :include => :blog
   stream_to :company, :activity
+  after_save  :touch_owner
   
+  def touch_owner
+    owner.touch!
+    rescue Exception
+      
+  end
   
   def destroy
     self.active = 0

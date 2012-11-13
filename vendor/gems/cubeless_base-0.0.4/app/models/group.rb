@@ -1,4 +1,6 @@
-class Group < ActiveRecord::Base  
+class Group < ActiveRecord::Base
+  include SoftDelete
+    
   acts_as_auditable :enabled => false # abuse will take snapshots only
 
   has_one :abuse, :as => :abuseable, :conditions => 'remover_id is null'
@@ -47,8 +49,7 @@ class Group < ActiveRecord::Base
 
   named_scope :exclude_groups, lambda { |profile| { :conditions => ["groups.owner_id != ?", profile.id] } }
   
-  scope :active, :conditions => ["id > 0"]
-  scope :inactive, :conditions => ["id <= 0"]
+  default_scope :conditions => "#{table_name}.active > 0"
 
   def audit_snapshot!
     audit = super

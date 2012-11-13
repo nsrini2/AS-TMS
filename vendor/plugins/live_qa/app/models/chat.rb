@@ -1,6 +1,7 @@
 class Chat < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
-  
+  include SoftDelete
+    
   belongs_to :profile, :foreign_key => :host_id
   has_many :topics
   has_many :posts, :through => :topics
@@ -9,12 +10,12 @@ class Chat < ActiveRecord::Base
   
   has_one :chat_photo, :as => :owner, :dependent => :destroy
   
-  default_scope :conditions => ['active > 0']
+  
   
   scope :starting_soon, lambda { { :conditions => ["start_at BETWEEN ? AND ?", Time.now.advance(:minutes => -20), Time.now.advance(:minutes => 20)]} }
   scope :not_notified,  :conditions => ['notifications_sent = 0']
-  scope :active, :conditions => ["id > 0"]
-  scope :inactive, :conditions => ["id <= 0"]
+  
+  default_scope :conditions => "#{table_name}.active > 0"
   
   validates_presence_of :start_at, :duration, :title, :host_id
   validates_numericality_of :duration, :host_id
@@ -115,16 +116,6 @@ class Chat < ActiveRecord::Base
     end    
   end
   
-  def destroy
-    self.active = 0
-    if self.save
-      return true
-    else
-      self.errors << "Unable to delete chat!"
-      return false 
-    end 
-    
-  end
   
   def attendance_report(current_profile)
     if current_profile.has_role?(Role::ReportAdmin)
@@ -219,9 +210,9 @@ class Chat < ActiveRecord::Base
       Chat.find(:all, :conditions => ["ended_at IS NOT null AND active > 0"], :order => 'start_at DESC')
     end
     
-    def inactive
-      Chat.with_exclusive_scope { Chat.find(:all, :conditions => ["active < 1"]) }
-    end
+    # def inactive
+    #   Chat.with_exclusive_scope { Chat.find(:all, :conditions => ["active < 1"]) }
+    # end
     
     def send_chat_update_emails(id)
       chat = Chat.find(id)

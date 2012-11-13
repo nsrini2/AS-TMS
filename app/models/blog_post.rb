@@ -1,6 +1,7 @@
 require 'image_size'
 
 class BlogPost < ActiveRecord::Base
+  include SoftDelete
   include GroupOwned
   include Notifications::BlogPost
   include Rails.application.routes.url_helpers
@@ -28,9 +29,7 @@ class BlogPost < ActiveRecord::Base
   has_many :votes, :as => :owner, :dependent => :delete_all
   
   scope :recent, { :limit => 10 }
-  
-  scope :active, :conditions => ["id > 0"]
-  scope :inactive, :conditions => ["id <= 0"]
+  default_scope :conditions => "#{table_name}.active > 0"
   
   # named_scope :exclude_groups, lambda { |profile| { :conditions => ["groups.owner_id != ?", profile.id] } }
   # SSJ -- REFACTOR THIS MAY BE EVIL, it can create invalid results if you are not unscoping this when requesting a different order

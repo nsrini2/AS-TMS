@@ -11,6 +11,11 @@ class Post < ActiveRecord::Base
   #   Profile.current
   # end
   
+  after_save :touch_chat
+  
+  def touch_chat
+    topic.chat.touch!
+  end
   
   def display_name
     profile.first_name + " " + profile.last_name.first + "."

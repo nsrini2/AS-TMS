@@ -2,9 +2,10 @@ require_cubeless_engine_file :model, :question
 
 class Question
   include Notifications::Question
+  include SoftDelete
   
   # SSJ -- it would be cool to do this with a lamda for curent_profile.company_id, but I could not get it to work in 2.3.9
-  default_scope :conditions => ["questions.company_id = 0"]
+  default_scope :conditions => ["questions.company_id = 0 AND questions.active = 1"]
   belongs_to :company
   stream_to :company, :activity
   
@@ -22,12 +23,9 @@ class Question
   
   class << self
     def all_active
-      unscoped.where("id > 0")
+      unscoped.active
     end
     
-    def all_inactive
-      unscoped.where("id <= 0")
-    end
     
     ### Summary Methods ###
 
@@ -65,7 +63,7 @@ class Question
     end
   
     def community_and_company_questions(company_id)
-      self.find(:all, :conditions => ["questions.company_id = 0 OR questions.company_id = ?", company_id])
+      self.unscoped.find(:all, :conditions => ["questions.company_id = 0 OR questions.company_id = ?", company_id])
     end
   end  
 end

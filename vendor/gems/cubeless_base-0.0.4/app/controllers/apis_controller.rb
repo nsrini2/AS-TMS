@@ -62,7 +62,7 @@ class ApisController < ApplicationController
       @delete_profiles = Profile.includes(:company, :profile_registration_fields, :group_memberships).where(date_filter).inactive
       @delete_groups = Group.includes(:group_memberships).where(date_filter).inactive
       @delete_blog_posts = BlogPost.includes(:blog, :comments).where(date_filter).inactive
-      @delete_questions = Question.includes(:answers, :profile).where(date_filter).all_inactive
+      @delete_questions = Question.includes(:answers, :profile).where(date_filter).inactive
       @delete_chats = Chat.includes(:topics).where(date_filter).inactive
     end
 
