@@ -82,7 +82,7 @@ class Answer < ActiveRecord::Base
   protected
 
   def after_save
-    question.touch!
+    question.touch
     SemanticMatcher.default.answer_updated(self) if attribute_modified?(:answer)
   end
 
@@ -91,7 +91,7 @@ class Answer < ActiveRecord::Base
   end
 
   def after_destroy
-    question.touch!
+    question.touch
     SemanticMatcher.default.answer_deleted(self)
   end
 

@@ -22,7 +22,7 @@ class Topic < ActiveRecord::Base
   def update_indexes
     #if the chat is inactive, Topic won't find it
     if self.chat
-      chat.touch!
+      chat.touch
       # process the indexing in dalay job
       ChatTopicIndex.update_indices(self) unless self.chat.on_air?
     else

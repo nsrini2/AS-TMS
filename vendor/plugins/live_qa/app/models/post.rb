@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   after_save :touch_chat
   
   def touch_chat
-    topic.chat.touch!
+    topic.chat.touch
   end
   
   def display_name

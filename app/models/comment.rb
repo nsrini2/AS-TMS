@@ -8,7 +8,7 @@ class Comment
   after_save  :touch_owner
   
   def touch_owner
-    owner.touch!
+    owner.touch
     rescue Exception
       
   end

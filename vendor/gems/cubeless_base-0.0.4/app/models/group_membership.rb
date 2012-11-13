@@ -46,7 +46,7 @@ class GroupMembership < ActiveRecord::Base
   after_save :touch_group
   
   def touch_group
-    group.touch!
+    group.touch
   end
 
   def group_membership_visibility_and_availability
