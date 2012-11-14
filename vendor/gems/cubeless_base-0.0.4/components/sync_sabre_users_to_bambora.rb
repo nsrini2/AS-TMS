@@ -85,10 +85,10 @@ class SyncSabreUsersToBambora
       sync_users("#{treebase}",filter,inactive_subtract_set)
 
     if purge
-      ps = @conn.prepare('update profiles set status=-1, visible=0, updated_at=now() where user_id=(select id from users u where u.sso_id=?)')
       inactive_subtract_set.each { |eid|
         puts "deactivated account #{eid}"
-        ps.execute(eid)
+        sql = "update profiles set status=-1, visible=0, updated_at=now() where user_id=(select id from users u where u.sso_id=#{eid})"
+        ActiveRecord::Base.connection.execute(sql)
       }
       ps.close
     else 

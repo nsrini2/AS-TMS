@@ -245,10 +245,9 @@ class AdminController < ApplicationController
           "order by created_at desc limit 150"
 
     @results = []
-    term = "%#{params[:query]}%"
-    ps = ActiveRecord::Base.connection.raw_connection.prepare(sql)
-    ps.execute(term, term, term, term, term, term, term)
-
+    term = "'%#{params[:query]}%'"
+    sql.gsub!('?', term)
+    ps =  ActiveRecord::Base.connection.execute(sql)
     ps.each do |rs|
       hash = {:name => rs[0],
               :item_id => rs[1],
@@ -256,7 +255,6 @@ class AdminController < ApplicationController
               :created_at => rs[3]}
       @results << OpenStruct.new(hash)
     end
-    ps.close
   end
     
     render :layout => 'report_stats_sub_menu'

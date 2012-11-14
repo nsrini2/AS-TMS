@@ -408,30 +408,15 @@ class Profile < ActiveRecord::Base
     Profile.find(:all, options)
   end
 
-  @@stats_query = 'select '+
-  ' (select count(1) from question_referrals where referer_id=?) as questions_referred'+
-  ', (select count(1) from answers where profile_id=?) as answers'+
-  ', (select count(1) from answers a where a.best_answer=1 and a.profile_id=?) as best_answers'+
-  ', (select profile_views from profiles where id=?) as profile_views'+
-  ', (select count(1) from questions where profile_id=?) as questions'+
-  ', (select count(1) from notes where receiver_id = ?)' + 
-  ', (select count(1) from statuses where profile_id=?) as statuses'+    
-  ' from dual'
-
   def stats
-    #!H semantic matcher logic is copied here for matched_questions count. Have sm return sql logic at worst.
     obj = Hash.new(0)
-    ps = ActiveRecord::Base.connection.raw_connection.prepare(@@stats_query)
-    ps.execute(self.id, self.id, self.id,self.id,self.id,self.id,self.id)
-    rs = ps.fetch
-    obj[:questions_referred] = rs[0]
-    obj[:answers] = rs[1]
-    obj[:best_answers] = rs[2]
-    obj[:profile_views] = rs[3]
-    obj[:questions] = rs[4]
-    obj[:notes] = rs[5]
-    obj[:statuses] = rs[6]
-    ps.close
+    obj[:questions_referred] = questions_referred.count
+    obj[:answers] = answers.count
+    obj[:best_answers] = answers.where("best_answer = 1").count
+    obj[:profile_views] = profile_views
+    obj[:questions] = questions.count
+    obj[:notes] = Note.where("receiver_id = #{self.id}").count
+    obj[:statuses] = statuses.count
     obj
   end
 

@@ -69,7 +69,7 @@ class SemanticMatcher
     1
   end
 
-  def SemanticMatcher.load_data_set(filename,set=Set.new)
+  def self.load_data_set(filename,set=Set.new)
     path = File.exists?("#{Rails.root}/data/#{filename}") ? "#{Rails.root}/data/#{filename}" : "#{CubelessBase::Engine.root}/data/#{filename}"
     File.new(path,'r').each_line do |word| set << word.strip end
     set
@@ -77,13 +77,13 @@ class SemanticMatcher
 
   protected
 
-  def db_prepare(sql)
-    ActiveRecord::Base.connection.raw_connection.prepare(sql)
-  end
+  # def db_prepare(sql)
+  #   ActiveRecord::Base.connection.raw_connection.prepare(sql)
+  # end
 
-  def db_raw
-    ActiveRecord::Base.connection.raw_connection
-  end
+  # def db_raw
+  #   ActiveRecord::Base.connection.raw_connection
+  # end
 
   def remove_punctuation_proper!(text,exclude_dblquote=false)
     #text.tr!(@@regex_possesive_suffix,'')
@@ -138,7 +138,7 @@ class SemanticMatcher
   # misleading name, now used for periodic sweeps
   def rematch_questions
     #!O :all expensive
-    db_prepare('delete qpm from question_profile_matches qpm join questions q on q.id=qpm.question_id where q.open_until <= current_date() and q.directed_question=0').execute
+    ActiveRecord::Base.connection.execute('delete qpm from question_profile_matches qpm join questions q on q.id=qpm.question_id where q.open_until <= current_date() and q.directed_question=0')
     Question.open_questions.each do |q|
       puts "rematching question #{q.id}"
       match_question_to_profiles(q)

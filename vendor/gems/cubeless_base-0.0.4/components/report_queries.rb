@@ -89,7 +89,7 @@ class ReportQueries
     sums = Karma.karma_level_ranges.collect { |range,level|
       "sum(if(karma_points>=#{range.begin} and karma_points<=#{range.end},1,0))"
     }.join(', ')
-    rs = ActiveRecord::Base.connection.raw_connection.query("select #{sums} from profiles where #{@@active}").fetch_row
+    rs = ActiveRecord::Base.connection.execute("select #{sums} from profiles where #{@@active}").first
     data = []
     max_level = Karma.karma_level_ranges.size - 1
     Karma.karma_level_ranges.each_with_index do |range,level|

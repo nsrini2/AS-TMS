@@ -16,7 +16,7 @@ class Visitation < ActiveRecord::Base
     db = ActiveRecord::Base.connection.raw_connection
     db.query("select owner_id from visitations where owner_type='#{type}' group by owner_id having count(1)>#{max}").each do |rs|
       owner_id = rs[0]
-      min_updated = db.query("select min(updated_at) from (select updated_at from visitations where owner_type='#{type}' and owner_id=#{owner_id} order by updated_at desc limit #{max}) as x").fetch_row[0]
+      min_updated = db.query("select min(updated_at) from (select updated_at from visitations where owner_type='#{type}' and owner_id=#{owner_id} order by updated_at desc limit #{max}) as x").first[0]
       db.query("delete from visitations where updated_at<'#{min_updated}' and owner_type='#{type}' and owner_id=#{owner_id}")
     end
   end

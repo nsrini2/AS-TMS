@@ -79,47 +79,46 @@ class MysqlSemanticMatcher < SemanticMatcher
     return if !question.is_open?  #!I this should throw an exception
 
     query_text = prep_text_for_match_query(question.matchable_text)
-    mysql_match_term = 'match (pti.profile_text,pti.answers_text) against (?)'
+    mysql_match_term = "match (pti.profile_text,pti.answers_text) against ('#{query_text}')"
     
     QuestionProfileMatch.transaction do
-      
-      #QuestionProfileMatch.delete_all(['question_id=?',question.id])
-
       # calculate the average rank above the base_rank (>=1)
-      ps = db_prepare("select avg(#{mysql_match_term}) as avg_rank from profile_text_indices pti"+
-      " join profiles p on p.id=pti.profile_id"+
-      " left join answers a on a.question_id=? and a.profile_id=pti.profile_id"+
-      " where p.status=1 and a.id is null"+
-      " and p.roles NOT REGEXP '^(6|8)'"+ # Do not recommend to sponsor members
-      " and pti.profile_id!=?"+
-      " and (#{mysql_match_term})>=1"+
-      " limit ? ")
-      ps.execute(query_text,question.id,question.profile_id,query_text,@@question_match_max_prefetch)
-
-      min_rank = ps.fetch[0]
+      query = <<-EOS
+              select avg(#{mysql_match_term}) as avg_rank from profile_text_indices pti
+              join profiles p on p.id=pti.profile_id
+              left join answers a on a.question_id=#{question.id} and a.profile_id=pti.profile_id
+              where p.status=1 and a.id is null
+              and p.roles NOT REGEXP '^(6|8)'
+              and pti.profile_id!=#{question.profile_id}
+              and (#{mysql_match_term})>=1
+              limit #{@@question_match_max_prefetch} 
+      EOS
+      ps = ActiveRecord::Base.connection.execute(query).first
+      min_rank = ps[0]
       
-      ps.close
       return if min_rank.nil?
       min_rank = 1 if min_rank<1
 
       # mysql text results are naturally in a descending rank order
-      ps = db_prepare("select pti.profile_id, (#{mysql_match_term}) as rank from profile_text_indices pti"+
-      " join profiles p on p.id=pti.profile_id"+
-      " left join question_profile_exclude_matches qpim on qpim.profile_id=pti.profile_id and qpim.question_id=?"+
-      " left join answers a on a.question_id=? and a.profile_id=pti.profile_id"+
-      " where p.status=1 and qpim.id is null and a.id is null"+
-      " and pti.profile_id!=?"+
-      " and #{mysql_match_term}"+
-      " having rank>=? limit ? ")
-      ps.execute(query_text,question.id,question.id,question.profile_id,query_text,min_rank,@@question_match_max_prefetch)
-
+      query = <<-EOS
+              select pti.profile_id, (#{mysql_match_term}) as rank from profile_text_indices pti
+              join profiles p on p.id=pti.profile_id
+              left join question_profile_exclude_matches qpim on qpim.profile_id=pti.profile_id and qpim.question_id=#{question.id}
+              left join answers a on a.question_id=#{question.id} and a.profile_id=pti.profile_id
+              where p.status=1 and qpim.id is null and a.id is null
+              and pti.profile_id!=#{question.profile_id}
+              and #{mysql_match_term}
+              having rank>=#{min_rank} limit #{@@question_match_max_prefetch}
+      EOS
+      matched_profiles = ActiveRecord::Base.connection.execute(query)
+      
       insert = 'insert into question_profile_matches (question_id,profile_id,rank,`order`) values '
       rownum = 1
-      while rs = ps.fetch
-        QuestionProfileMatch.find_or_create_by_question_id_and_profile_id(:question_id => question.id,:profile_id => rs[0],:rank => rs[1], :order => rownum)
+      
+      matched_profiles.each do |match|
+        QuestionProfileMatch.find_or_create_by_question_id_and_profile_id(:question_id => question.id,:profile_id => match[0],:rank => match[1], :order => rownum)
         rownum += 1
       end
-      ps.close
 
     end
 
@@ -298,10 +297,8 @@ class MysqlSemanticMatcher < SemanticMatcher
   def question_profile_match_deleted(question_profile_match)
 
       # if count() of question matches drops below threshold, rematch
-      ps = db_prepare("select count(1) from question_profile_matches where question_id=?")
-      ps.execute(question_profile_match.question_id)
+      ps = ActiveRecord::Base.connection.execute("select count(1) from question_profile_matches where question_id=#{question_profile_match.question_id}").first
       count = ps.fetch[0]
-      ps.close
 
       #!O eventually mark there were <max_queued found - i.e. never search again
       if count<@@question_match_max_assigned
@@ -309,9 +306,7 @@ class MysqlSemanticMatcher < SemanticMatcher
         #match_question_to_profiles(Question.find(question_profile_match.question_id))
       else
         # shift order #'s of remaining matches
-        ps = db_prepare("update question_profile_matches qpm set qpm.order=qpm.order-1 where qpm.question_id=? and qpm.order>?")
-        ps.execute(question_profile_match.question_id,question_profile_match.order)
-        ps.close
+        ActiveRecord::Base.connection.execute("update question_profile_matches qpm set qpm.order=qpm.order-1 where qpm.question_id=#{question_profile_match.question_id} and qpm.order>#{question_profile_match.order}")
       end
 
   end
@@ -455,11 +450,17 @@ class MysqlSemanticMatcher < SemanticMatcher
     result.downcase! # downcase for stop_words removal
     result.gsub!("'s",'')
     remove_punctuation_proper!(result,exclude_dblquote)
-    result.gsub!(/([^\s]+)/) { |word|
-      weak_term?(word) ? '' : word
-    } if remove_weak_terms
-    result
-    #!? check terms as adverbs?
+    # result.gsub!(/([^\s]+)/) { |word|
+    #   weak_term?(word) ? '' : word
+    # } if remove_weak_terms
+    # result
+    # #!? check terms as adverbs?
+    words = result.split(/\W/)
+    if remove_weak_terms
+      words = words.select {|w| !weak_term?(w) }
+    end
+    words.compact!
+    words.join(" ")
   end
 
   def text_index_text_prep(text,exclude_terms_set=nil)
@@ -710,15 +711,18 @@ class MysqlSemanticMatcher < SemanticMatcher
   end
 
   def get_expertise
+    # SSJ 11-14-2012, this looks like a good strategy of getting the content out of questions that have been referred to a profile
+    # and using that content to determine to match other questions.  But it looks like this is only outputting to STDOUT and not using
+    # returning nil -- I wonder if this broke in rails 3.0.x upgrade
 
     pk = {}
-    ps = db_prepare("select qr.profile_id, q.question, count(1) from question_referrals qr join questions q on qr.question_id=q.id group by qr.profile_id, q.id")
-    ps.execute
-    while rs = ps.fetch
+    query = "select qr.owner_id, q.question, count(1) from question_referrals qr join questions q on qr.question_id=q.id  WHERE owner_type = 'Profile' group by qr.owner_id, q.id"
+    referred_questions =ActiveRecord::Base.connection.execute(query)
+    referred_questions.each do |referral|
 
-      pid = rs[0].to_i
-      question = rs[1]
-      times_referred = rs[2].to_i
+      pid = referral[0].to_i
+      question = referral[1]
+      times_referred = referral[2].to_i
 
       knowledge = pk[pid]||={}
       get_terms_set(question).each do |term|
@@ -726,7 +730,7 @@ class MysqlSemanticMatcher < SemanticMatcher
       end
 
     end
-    ps.close
+
 
     pk.each_pair do |pid,tc|
       #wca = []
