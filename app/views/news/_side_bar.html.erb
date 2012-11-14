@@ -4,7 +4,7 @@
     <% unless News.blog.tags.size.zero? -%>
       <h4>Topics</h4>
       <ul class="tags">
-        <% News.blog.tags.each do |tag| -%>
+        <% News.blog.tags(10).each do |tag| -%>
           <% if selected_tags.include? tag.name %>
             <li><%= "#{tag} (#{tag.total})" -%></li>
           <% else -%>

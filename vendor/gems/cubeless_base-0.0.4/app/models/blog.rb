@@ -8,8 +8,19 @@ class Blog < ActiveRecord::Base
 
   belongs_to :owner, :polymorphic => true
 
-  def tags
-    Tag.find_by_sql(["select tags.name, count(0) as total from taggings left join tags on tags.id = taggings.tag_id left join blog_posts on blog_posts.id = taggings.taggable_id and taggings.taggable_type = 'BlogPost' left join blogs on blogs.id = blog_posts.blog_id where blogs.id = '?' group by tags.name", self.id])
+  def tags(limit=false)
+    sql = <<-EOS
+            SELECT tags.name, count(0) as total 
+            FROM taggings LEFT JOIN tags on tags.id = taggings.tag_id 
+            LEFT JOIN blog_posts ON blog_posts.id = taggings.taggable_id 
+            AND taggings.taggable_type = 'BlogPost' 
+            LEFT JOIN blogs ON blogs.id = blog_posts.blog_id 
+            WHERE blogs.id = '#{self.id}' 
+            GROUP BY tags.name
+            ORDER BY total DESC
+         EOS
+    sql << " LIMIT #{limit} " if limit     
+    Tag.find_by_sql(sql)
   end
 
 end
