@@ -72,7 +72,7 @@ class Profile < ActiveRecord::Base
 
   has_many :referred_questions, :class_name => 'QuestionReferral', :as => :owner
     has_many :questions_referred_to_me, :through => :referred_questions, :source => :question,
-      :conditions => ['active = 1 and questions.open_until > ?', Date.today], :group => "questions.id"
+      :conditions => ['questions.active = 1 and questions.open_until > ?', Date.today], :group => "questions.id"
 
   has_many :received_invitations, :class_name => 'GroupInvitation', :foreign_key => 'receiver_id'
 
