@@ -17,9 +17,12 @@ class Blog < ActiveRecord::Base
             LEFT JOIN blogs ON blogs.id = blog_posts.blog_id 
             WHERE blogs.id = '#{self.id}' 
             GROUP BY tags.name
-            ORDER BY total DESC
          EOS
-    sql << " LIMIT #{limit} " if limit     
+    if limit      
+      sql << " ORDER BY total DESC LIMIT #{limit} "  
+    else
+      sql << " ORDER BY tags.name"
+    end 
     Tag.find_by_sql(sql)
   end
 
