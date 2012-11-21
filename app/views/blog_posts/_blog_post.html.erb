@@ -33,7 +33,7 @@ preview = false unless defined?(preview)
             <%= link_to("comment", "#{blog_post_path(blog_post)}#comments", :class => "button little light") -%>
           </p>
         </div>
-        <%= action_list_for([
+        <%#= action_list_for([
           (content_tag(:span, "No comments yet") if blog_post.comments.count.zero?),
           (link_to(pluralize(blog_post.comments.count, 'comment'), "#{blog_post_path(blog_post)}#comments") unless blog_post.comments.count.zero?),
           render_abuse(blog_post),
@@ -63,7 +63,7 @@ preview = false unless defined?(preview)
               <h5><%= link_to_author(comment) -%> says:</h5>
               <p class="meta">on <%= pretty_datetime(comment.created_at) %></p>
               <p id="comment_<%= comment.id.to_s%>_text" class="text"><%= comment_text(comment) %></p>
-              <%#= action_list_for([
+              <%= action_list_for([
                 render_abuse(comment),
                 (link_to_edit_comment(comments_poly_path(blog_post, comment, :action => :edit)) if author_or_shady_admin_content_for(comment)),
                 ( link_to('delete', comment, :class => 'delete') if author_or_shady_admin_content_for(comment)),
