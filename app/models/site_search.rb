@@ -33,7 +33,8 @@ private
           :default_operator => "AND", 
           :fields => [:screen_name, :search_content, :description, :title, :tags, :comments, :question, :answers, :topics, :posts]
         end
-      end  
+      end
+      # SSJ Use filters for requirments that don't affect the relevance score
       filter :bool, :must_not => { :term => {:private, true}}
       filter :bool, :must_not => { :term => {:company, true}}
       from (current_page-1) * (SiteSearch::get_per_page)
