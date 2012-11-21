@@ -3,6 +3,9 @@ require_cubeless_engine_file :model, :question
 class Question
   include Notifications::Question
   include SoftDelete
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  include Indexed::Question
   
   # SSJ -- it would be cool to do this with a lamda for curent_profile.company_id, but I could not get it to work in 2.3.9
   default_scope :conditions => ["questions.company_id = 0 AND questions.active = 1"]
@@ -19,6 +22,10 @@ class Question
   
   def private?
     false
+  end
+  
+  def answers_text
+    answers.map {|answer| answer.answer }
   end
   
   class << self

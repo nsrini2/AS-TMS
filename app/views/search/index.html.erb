@@ -7,6 +7,8 @@
       No Results Found
     <% else %>
         <% @results.each do |result| %>
+          <%# SSJ this is to the get ActiveModel object from Tire search %>
+          <% result = result.to_model.class.find(result.id) %>
           <% html = "" %>
           <% icon = "" %>
           <% case result.class.to_s
@@ -25,9 +27,9 @@
               when "Status"
                 icon = icon_image(:path => status_icon_path)
                 html = render :partial => "/statuses/status", :locals => { :status => result }
-							when "Topic"	
+              when "Chat"	
                 icon = icon_image(:path => chat_icon_path)
-                html = render :partial => "/chats/topic", :locals => { :topic => result }								
+                html = render :partial => 'chats/chat_details', :locals => { :chat => result, :show_questions => false, :show_closed_questions => false }
             end %>
     
           <% unless html.blank? %>

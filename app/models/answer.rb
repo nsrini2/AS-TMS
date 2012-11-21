@@ -2,6 +2,7 @@ require_cubeless_engine_file :model, :answer
 
 class Answer < ActiveRecord::Base
   include Notifications::Answer
+  
   stream_to :company, :activity
   
   self.per_page = 7

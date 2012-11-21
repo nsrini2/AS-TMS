@@ -12,7 +12,7 @@ gem "sass"
 gem "RedCloth", '4.2.3'
 gem 'rmagick', '2.5.2', :require => false # this is getting required by attachment_fu/processors/rmagick_processor
 gem 'nokogiri', '1.5.2'
-gem "json", '1.2.4'
+gem "json", '~>1.4.6'
 
 # require native mysql driver, not the ruby version
 gem 'fastercsv', '1.5.4' # admin user import/export
@@ -44,6 +44,7 @@ gem 'compass', '0.10.6'
 gem 'compass-960-plugin', '0.10.0'
 
 gem 'will_paginate', "~> 3.0.pre2"
+gem 'tire', '~>0.5.1'
 
 # TNSS Engines
 gem 'cubeless_base', '0.0.4', :path => 'vendor/gems/cubeless_base-0.0.4'

@@ -6,6 +6,10 @@ class BlogPost < ActiveRecord::Base
   include Notifications::BlogPost
   include Rails.application.routes.url_helpers
   include ActionView::Context
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  include Indexed::BlogPost
+  
   stream_to :company
   after_save :update_indexes
   
@@ -35,6 +39,14 @@ class BlogPost < ActiveRecord::Base
   # SSJ -- REFACTOR THIS MAY BE EVIL, it can create invalid results if you are not unscoping this when requesting a different order
   # default_scope order("blog_posts.created_at DESC")
   self.per_page = 5
+  
+  def comments_text
+    comments.map { |comment| comment.text }
+  end
+  
+  def tags_text
+    tags.map {|tag| tag.name }
+  end
   
   def self.publicized
     BlogPost.joins(:blog).
@@ -97,6 +109,13 @@ class BlogPost < ActiveRecord::Base
   
   def group?
     self.blog.owner.class == Group
+  end
+  
+  def private?
+    company? || ( group? && self.blog.owner.private? )
+    rescue Exception => e
+      puts e.inspect
+      true
   end
 
   def company?

@@ -2,6 +2,9 @@ div#search_results {
   /*margin-left: 240px;*/
   float: right;
   width: 720px;
+  div.list_item.chat_item {
+    clear: none;
+  }
 }
 div#search_results .result:after{ content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 

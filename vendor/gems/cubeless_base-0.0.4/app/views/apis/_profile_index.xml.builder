@@ -6,14 +6,14 @@ xml.document do
   xml.company(profile.company ? profile.company.name : "")
   xml.url(profile_url(profile))
   xml.specialties do
-    (1..12).each do |i|
-      value = profile.send "profile_#{i}"
+    Profile.searchable_fields.each do |field|
+      value = profile.send field
       xml.specialty(value) if value && !value.blank?
     end
   end
   xml.profileinformation do
-    (1..12).each do |i|
-      value = profile.send "question_#{i}"
+    Profile.about_me_fields.each do |field|
+      value = profile.send field
       xml.profileinfoblock(value) if value && !value.blank?
     end
   end

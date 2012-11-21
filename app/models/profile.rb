@@ -3,11 +3,27 @@ require_cubeless_engine_file :model, :profile
 class Profile
   belongs_to :company
   include Notifications::Profile
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  include Indexed::Profile
   after_save :update_site_visits
   
   scope :with_karma_points_greater_than, lambda { |points|
     where(Profile.arel_table[:karma_points].gt(points))
   }
+  
+  def search_content
+    content = ""
+    Profile.searchable_fields.each do |field|
+      value = self.send field
+      content << " #{value}" if value
+    end
+    Profile.about_me_fields.each do |field|
+      value = self.send field
+      content << " #{value}" if value
+    end
+    content
+  end
   
   def registration_field(site_registration_field_id)
     profile_registration_field = ProfileRegistrationField.where(:profile_id => self.id).where(:site_registration_field_id => site_registration_field_id)

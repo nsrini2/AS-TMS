@@ -1,6 +1,9 @@
 class Chat < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   include SoftDelete
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+  include Indexed::Chat
     
   belongs_to :profile, :foreign_key => :host_id
   has_many :topics
@@ -26,6 +29,14 @@ class Chat < ActiveRecord::Base
     unless Chat.allowed_to_create?(self.host)
       errors.add_to_base "#{self.host.screen_name} does not have permission to create a Live Chat Event."
     end 
+  end
+  
+  def topics_text
+    topics.map {|topic| topic.title }
+  end
+  
+  def posts_text
+    posts.map {|post| post.body }
   end
   
   # call back to insure all topics are closed then this is closed -- not sure how to identify closed

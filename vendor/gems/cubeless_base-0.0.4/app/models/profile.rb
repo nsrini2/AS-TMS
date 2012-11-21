@@ -478,9 +478,17 @@ class Profile < ActiveRecord::Base
   # Using these class causes big problems in iConfig.
   # We are trying to get rid of them
   @@profile_complete_fields = Profile.profile_complete_fields
-  
+
   @@matchable_fields = self.get_question_list_containing_attr_value(get_questions_from_config, 'matchable', true)
   @@about_me_fields = self.get_questions_from_config.keys
+  
+  def self.searchable_fields
+    @@matchable_fields
+  end
+  
+  def self.about_me_fields
+    @@about_me_fields
+  end
 
   def question_field_required?(field_name)  # jes 
     Profile.profile_complete_fields.include? field_name.to_s  
