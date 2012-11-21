@@ -66,10 +66,6 @@ class News
   end
   
   class << self
-    def model_name
-      "News"
-    end
-    
     def find(*args)
       instance
     end
