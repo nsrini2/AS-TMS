@@ -1,8 +1,9 @@
 .rvmrc
 .DS_Store
 .rspec
-log/*.*
-tmp/*.*
+/log/*
+/tmp/*
+/spec/tmp/*
 config/database.yml
 config/panda.yml
 config/facebook.yml
