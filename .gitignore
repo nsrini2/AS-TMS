@@ -3,6 +3,7 @@
 .rspec
 log/*.*
 tmp/*.*
+config/database.yml
 config/panda.yml
 config/facebook.yml
 public/attachments
