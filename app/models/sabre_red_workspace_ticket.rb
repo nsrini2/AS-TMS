@@ -111,7 +111,7 @@ class SabreRedWorkspaceTicket
     end 
     agent_stream_user
     rescue Exception => e
-      Rails.logger.error "An error occured creating a user from SRW"
+      Rails.logger.error "An error occurred creating a user from SRW"
       Rails.logger.error self.inspect
       Rails.logger.error e.message
       Rails.logger.error e.backtrace.inspect
