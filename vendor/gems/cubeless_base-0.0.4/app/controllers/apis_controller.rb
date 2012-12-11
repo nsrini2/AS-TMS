@@ -25,6 +25,24 @@ class ApisController < ApplicationController
     render :template => '/notifier/api_key_for'
   end
   
+  def user_tokens
+    if params[:userid].present?
+      userid = params[:userid] 
+      user = User.find_by_srw_agent_id(userid)
+      @groups = Group.where(:group_type => 0).map {|g| g.id }
+      if user
+        profile = user.profile
+        group_memberships = profile.group_memberships.includes(:group).where("groups.group_type <> 0").map {|g| g.group_id }
+        @groups << group_memberships
+        @groups.flatten!
+        @company = profile.company_id
+      end  
+      respond_to do |format|
+        format.xml
+      end
+    end
+  end
+  
   def search_index
     months_ago = params[:months_ago].to_i if params[:months_ago].present?
     @new_profiles, @new_groups, @new_blog_posts, @new_questions, @new_chats = [[], [], [], [], []]
@@ -65,7 +83,6 @@ class ApisController < ApplicationController
       @delete_questions = Question.includes(:answers, :profile).where(date_filter).inactive
       @delete_chats = Chat.includes(:topics).where(date_filter).inactive
     end
-
     respond_to do |format|
       format.xml
     end
