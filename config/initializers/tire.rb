@@ -10,7 +10,7 @@ Tire.configure do
     staging_config = YAML.load(File.read("#{Rails.root}/config/facebook.yml"))
     # staging/as2
     if staging_config['fb_app_id'] == '214583051896993'
-      url "10.20.212.71:9200"
+      url "10.20.212.71:9201"
     else
       url "10.20.212.71:9200"
     end
