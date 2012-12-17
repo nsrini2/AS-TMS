@@ -14,3 +14,7 @@ Set up:
     - tmp
 
 4 - rails c    
+
+5 - Install and run Elasticsearch
+
+6 - Update indexes
