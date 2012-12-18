@@ -16,6 +16,6 @@ Set up:
 
 4 - rails c    
 
-5 - Install and run Elasticsearch
+5 - Install and run Elasticsearch or turn off feature
 
 6 - Update indexes
