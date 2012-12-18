@@ -1,6 +1,15 @@
 # to update index:
 # rake environment tire:import CLASS=Article FORCE=true
 module Indexed
+  module Add
+    def self.included(base)
+      return unless FEATURE_ELASTIC_SEARCH
+      base.send :include, Tire::Model::Search
+      base.send :include, Tire::Model::Callbacks
+      base.send :include, "Indexed::#{base.name}".constantize
+    end
+  end
+  
   module Profile
     def self.included(base)
       base.mapping do

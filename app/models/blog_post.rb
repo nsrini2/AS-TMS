@@ -6,9 +6,7 @@ class BlogPost < ActiveRecord::Base
   include Notifications::BlogPost
   include Rails.application.routes.url_helpers
   include ActionView::Context
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
-  include Indexed::BlogPost
+  include Indexed::Add
   
   stream_to :company
   after_save :update_indexes

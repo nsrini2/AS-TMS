@@ -3,9 +3,7 @@ require_cubeless_engine_file :model, :profile
 class Profile
   belongs_to :company
   include Notifications::Profile
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
-  include Indexed::Profile
+  include Indexed::Add
   after_save :update_site_visits
   
   scope :with_karma_points_greater_than, lambda { |points|
