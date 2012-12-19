@@ -14,11 +14,23 @@ Set up:
     - log
     - tmp
 
-4 - rake db:create   
-  a - delete 'db/seeds.rb' if it exists
+4 - install ImageMagick
 
-5 - rake db:setup
+5 - install gems
+    bundle install
+    (fix any errors)
 
-6 - rails c    
+6 - setup database
+    # rake db:drop if you want to redo this section
+    rake db:create
+    rake db:setup
+
+6 - rails c
+    (address any errors)
 
 7 - rails s
+    (see it run)
+
+8 - login to website  
+    u: cubeless_admin  p: abc123
+    u: agent_a         p: abc123
