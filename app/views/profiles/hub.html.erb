@@ -48,7 +48,9 @@
   </div>
   <div id="referred_questions" class="module">
     <h2>Latest Question</h2>
-    <%= render :partial => "/questions/hub", :locals => { :question => @latest_question } %>
+    <% if @latest_question %>
+      <%= render :partial => "/questions/hub", :locals => { :question => @latest_question } %>
+    <% end %>
   </div>
   <div id="news_posts" class="module">
     <%= render :partial=> "/hub/news_posts", :locals => { :news_posts => @news_posts }%>
