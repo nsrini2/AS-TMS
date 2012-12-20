@@ -28,8 +28,8 @@ class ConvertTripsToPlans < ActiveRecord::Migration
 
     execute "update attachments set owner_type='PlanElement' where owner_type='TripElement'"
 
-    execute "update poly_text_indices set owner_type='PlanElement' where owner_type='TripElement'"
-    execute "update poly_text_indices set owner_type='Plan' where owner_type='Trip'"
+    # execute "update poly_text_indices set owner_type='PlanElement' where owner_type='TripElement'"
+    # execute "update poly_text_indices set owner_type='Plan' where owner_type='Trip'"
 
     execute "update comments set owner_type='PlanElement' where owner_type='TripElement'"
     execute "update comments set owner_type='Plan' where owner_type='Trip'"

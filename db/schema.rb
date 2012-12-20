@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "removed_at"
   end
 
-  #  add_index "abuses", ["abuseable_type", "abuseable_id"], :name => "index_abuses_on_abuseable_type_and_abuseable_id"
+  add_index "abuses", ["abuseable_type", "abuseable_id"], :name => "index_abuses_on_abuseable_type_and_abuseable_id"
 
   create_table "activity_stream_events", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "group_id"
   end
 
-  #  add_index "activity_stream_events", ["created_at"], :name => "index_activity_stream_events_on_created_at"
+  add_index "activity_stream_events", ["created_at"], :name => "index_activity_stream_events_on_created_at"
 
   create_table "activity_stream_messages", :force => true do |t|
     t.boolean  "active",           :default => true
@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "list_pois_count",    :default => 0,     :null => false
   end
 
-  #  add_index "answers", ["created_at"], :name => "index_answers_on_created_at"
-  #  add_index "answers", ["net_helpful"], :name => "index_answers_on_net_helpful"
-  #  add_index "answers", ["profile_id"], :name => "index_answers_on_profile_id"
-  #  add_index "answers", ["question_id", "best_answer"], :name => "index_answers_on_question_id_and_best_answer"
+  add_index "answers", ["created_at"], :name => "index_answers_on_created_at"
+  add_index "answers", ["net_helpful"], :name => "index_answers_on_net_helpful"
+  add_index "answers", ["profile_id"], :name => "index_answers_on_profile_id"
+  add_index "answers", ["question_id", "best_answer"], :name => "index_answers_on_question_id_and_best_answer"
 
   create_table "attachments", :force => true do |t|
     t.integer "parent_id"
@@ -82,9 +82,9 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string  "owner_type"
   end
 
-  #  add_index "attachments", ["owner_type", "owner_id"], :name => "index_attachments_on_owner_type_and_owner_id"
-  #  add_index "attachments", ["parent_id", "thumbnail"], :name => "index_attachments_on_parent_id_and_thumbnail", :unique => true
-  #  add_index "attachments", ["type"], :name => "index_attachments_on_type"
+  add_index "attachments", ["owner_type", "owner_id"], :name => "index_attachments_on_owner_type_and_owner_id"
+  add_index "attachments", ["parent_id", "thumbnail"], :name => "index_attachments_on_parent_id_and_thumbnail", :unique => true
+  add_index "attachments", ["type"], :name => "index_attachments_on_type"
 
   create_table "attributes", :force => true do |t|
     t.datetime "created_at"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.text    "value"
   end
 
-  #  add_index "audit_values", ["attribute_name"], :name => "index_audit_values_on_attribute"
-  #  add_index "audit_values", ["audit_id"], :name => "index_audit_values_on_audit_id"
+  add_index "audit_values", ["attribute_name"], :name => "index_audit_values_on_attribute"
+  add_index "audit_values", ["audit_id"], :name => "index_audit_values_on_audit_id"
 
   create_table "audits", :force => true do |t|
     t.datetime "created_at",     :null => false
@@ -120,10 +120,10 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "who_id"
   end
 
-  #  add_index "audits", ["action"], :name => "index_audits_on_action"
-  #  add_index "audits", ["auditable_type", "auditable_id"], :name => "index_audits_on_auditable_type_and_auditable_id"
-  #  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
-  #  add_index "audits", ["who_id"], :name => "index_audits_on_who_id"
+  add_index "audits", ["action"], :name => "index_audits_on_action"
+  add_index "audits", ["auditable_type", "auditable_id"], :name => "index_audits_on_auditable_type_and_auditable_id"
+  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
+  add_index "audits", ["who_id"], :name => "index_audits_on_who_id"
 
   create_table "awards", :force => true do |t|
     t.text     "title"
@@ -132,8 +132,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at",                   :null => false
   end
 
-  #  add_index "awards", ["created_at"], :name => "index_awards_on_created_at"
-  #  add_index "awards", ["visible"], :name => "index_awards_on_visible"
+  add_index "awards", ["created_at"], :name => "index_awards_on_created_at"
+  add_index "awards", ["visible"], :name => "index_awards_on_visible"
 
   create_table "blog_post_text_indices", :force => true do |t|
     t.integer "blog_post_id",         :null => false
@@ -143,8 +143,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.text    "author"
   end
 
-  #  add_index "blog_post_text_indices", ["blog_post_id"], :name => "index_blog_post_text_indices_on_blog_post_id", :unique => true
-  #  add_index "blog_post_text_indices", ["title_text", "text_text", "cached_tag_list_text", "author"], :name => "fulltext_blog_post"
+  add_index "blog_post_text_indices", ["blog_post_id"], :name => "index_blog_post_text_indices_on_blog_post_id", :unique => true
+  add_index "blog_post_text_indices", ["title_text", "text_text", "cached_tag_list_text", "author"], :name => "fulltext_blog_post"
 
   create_table "blog_posts", :force => true do |t|
     t.datetime "created_at",                                                            :null => false
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "rating_count",                                         :default => 0,   :null => false
     t.integer  "rating_total",                                         :default => 0,   :null => false
     t.decimal  "rating_avg",            :precision => 10, :scale => 2, :default => 0.0, :null => false
+    t.integer  "old_news_post_id"
     t.integer  "views",                                                :default => 0
     t.string   "source"
     t.string   "link"
@@ -172,12 +173,12 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "active",                                               :default => 1
   end
 
-  #  add_index "blog_posts", ["blog_id"], :name => "index_blog_posts_on_blog_id"
-  #  add_index "blog_posts", ["cached_tag_list"], :name => "index_blog_posts_on_cached_tag_list"
-  #  add_index "blog_posts", ["created_at"], :name => "index_blog_posts_on_created_at"
-  #  add_index "blog_posts", ["created_at_year_month"], :name => "index_blog_posts_on_created_at_year_month"
-  #  add_index "blog_posts", ["creator_id"], :name => "index_blog_posts_on_profile_id"
-  #  add_index "blog_posts", ["net_helpful"], :name => "index_blog_posts_on_net_helpful"
+  add_index "blog_posts", ["blog_id"], :name => "index_blog_posts_on_blog_id"
+  add_index "blog_posts", ["cached_tag_list"], :name => "index_blog_posts_on_cached_tag_list"
+  add_index "blog_posts", ["created_at"], :name => "index_blog_posts_on_created_at"
+  add_index "blog_posts", ["created_at_year_month"], :name => "index_blog_posts_on_created_at_year_month"
+  add_index "blog_posts", ["creator_id"], :name => "index_blog_posts_on_profile_id"
+  add_index "blog_posts", ["net_helpful"], :name => "index_blog_posts_on_net_helpful"
 
   create_table "blogs", :force => true do |t|
     t.datetime "created_at",                      :null => false
@@ -187,7 +188,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "blog_posts_count", :default => 0, :null => false
   end
 
-  #  add_index "blogs", ["owner_type", "owner_id"], :name => "index_blogs_on_owner_type_and_owner_id", :unique => true
+  add_index "blogs", ["owner_type", "owner_id"], :name => "index_blogs_on_owner_type_and_owner_id", :unique => true
 
   create_table "bookmarks", :force => true do |t|
     t.datetime "created_at"
@@ -195,7 +196,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "profile_id"
   end
 
-  #  add_index "bookmarks", ["profile_id"], :name => "index_bookmarks_on_profile_id"
+  add_index "bookmarks", ["profile_id"], :name => "index_bookmarks_on_profile_id"
 
   create_table "chat_topic_indices", :force => true do |t|
     t.integer  "topic_id",        :null => false
@@ -206,10 +207,10 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at"
   end
 
-  #  add_index "chat_topic_indices", ["chat_title_text", "topic_text", "posts_text"], :name => "fulltext_topic"
-  #  add_index "chat_topic_indices", ["posts_text"], :name => "fulltext_topic_posts"
-  #  add_index "chat_topic_indices", ["topic_id"], :name => "index_chat_topic_indices_on_topic_id", :unique => true
-  #  add_index "chat_topic_indices", ["topic_text"], :name => "fulltext_post_topics"
+  add_index "chat_topic_indices", ["chat_title_text", "topic_text", "posts_text"], :name => "fulltext_topic"
+  add_index "chat_topic_indices", ["posts_text"], :name => "fulltext_topic_posts"
+  add_index "chat_topic_indices", ["topic_id"], :name => "index_chat_topic_indices_on_topic_id", :unique => true
+  add_index "chat_topic_indices", ["topic_text"], :name => "fulltext_post_topics"
 
   create_table "chats", :force => true do |t|
     t.integer  "host_id"
@@ -236,9 +237,9 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.boolean  "active",                     :default => true
   end
 
-  #  add_index "comments", ["created_at"], :name => "index_comments_on_created_at"
-  #  add_index "comments", ["owner_type", "owner_id"], :name => "index_comments_on_owner_type_and_owner_id"
-  #  add_index "comments", ["profile_id"], :name => "index_comments_on_profile_id"
+  add_index "comments", ["created_at"], :name => "index_comments_on_created_at"
+  add_index "comments", ["owner_type", "owner_id"], :name => "index_comments_on_owner_type_and_owner_id"
+  add_index "comments", ["profile_id"], :name => "index_comments_on_profile_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -261,8 +262,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at"
   end
 
-  #  add_index "company_stream_events", ["company_id"], :name => "index_company_stream_events_on_company_id"
-  #  add_index "company_stream_events", ["created_at"], :name => "index_company_stream_events_on_created_at"
+  add_index "company_stream_events", ["company_id"], :name => "index_company_stream_events_on_company_id"
+  add_index "company_stream_events", ["created_at"], :name => "index_company_stream_events_on_created_at"
 
   create_table "confirmed_email_pccs", :force => true do |t|
     t.string   "email"
@@ -311,7 +312,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at"
   end
 
-  #  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "favorites", :force => true do |t|
     t.string   "custom_title"
@@ -335,7 +336,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "comments_count",                                 :default => 0
   end
 
-  #  add_index "gallery_photos", ["cached_tag_list"], :name => "index_gallery_photos_on_cached_tag_list"
+  add_index "gallery_photos", ["cached_tag_list"], :name => "index_gallery_photos_on_cached_tag_list"
 
   create_table "getthere_booking_text_indices", :force => true do |t|
     t.integer  "getthere_booking_id",            :null => false
@@ -347,10 +348,10 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at"
   end
 
-  #  add_index "getthere_booking_text_indices", ["getthere_booking_id"], :name => "index_getthere_booking_text_indices_on_getthere_booking_id", :unique => true
-  #  add_index "getthere_booking_text_indices", ["locations_text", "destination_airport_codes_text"], :name => "fulltext_getthere_booking_arrivals"
-  #  add_index "getthere_booking_text_indices", ["start_location_text", "locations_text", "start_airport_code_text", "destination_airport_codes_text"], :name => "fulltext_getthere_booking"
-  #  add_index "getthere_booking_text_indices", ["start_location_text", "start_airport_code_text"], :name => "fulltext_getthere_booking_departures"
+  add_index "getthere_booking_text_indices", ["getthere_booking_id"], :name => "index_getthere_booking_text_indices_on_getthere_booking_id", :unique => true
+  add_index "getthere_booking_text_indices", ["locations_text", "destination_airport_codes_text"], :name => "fulltext_getthere_booking_arrivals"
+  add_index "getthere_booking_text_indices", ["start_location_text", "locations_text", "start_airport_code_text", "destination_airport_codes_text"], :name => "fulltext_getthere_booking"
+  add_index "getthere_booking_text_indices", ["start_location_text", "start_airport_code_text"], :name => "fulltext_getthere_booking_departures"
 
   create_table "getthere_bookings", :force => true do |t|
     t.datetime "created_at"
@@ -368,15 +369,15 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string   "destination_airport_codes"
   end
 
-  #  add_index "getthere_bookings", ["destination_airport_codes"], :name => "index_getthere_bookings_on_destination_airport_codes"
-  #  add_index "getthere_bookings", ["end_time"], :name => "index_bookings_on_end_time"
-  #  add_index "getthere_bookings", ["locations"], :name => "index_getthere_bookings_on_locations"
-  #  add_index "getthere_bookings", ["ord_key"], :name => "index_bookings_on_ord_key"
-  #  add_index "getthere_bookings", ["profile_id"], :name => "index_bookings_on_profile_id"
-  #  add_index "getthere_bookings", ["public"], :name => "index_getthere_bookings_on_public"
-  #  add_index "getthere_bookings", ["start_airport_code"], :name => "index_getthere_bookings_on_start_airport_code"
-  #  add_index "getthere_bookings", ["start_location"], :name => "index_getthere_bookings_on_start_location"
-  #  add_index "getthere_bookings", ["start_time"], :name => "index_bookings_on_start_time"
+  add_index "getthere_bookings", ["destination_airport_codes"], :name => "index_getthere_bookings_on_destination_airport_codes"
+  add_index "getthere_bookings", ["end_time"], :name => "index_bookings_on_end_time"
+  add_index "getthere_bookings", ["locations"], :name => "index_getthere_bookings_on_locations"
+  add_index "getthere_bookings", ["ord_key"], :name => "index_bookings_on_ord_key"
+  add_index "getthere_bookings", ["profile_id"], :name => "index_bookings_on_profile_id"
+  add_index "getthere_bookings", ["public"], :name => "index_getthere_bookings_on_public"
+  add_index "getthere_bookings", ["start_airport_code"], :name => "index_getthere_bookings_on_start_airport_code"
+  add_index "getthere_bookings", ["start_location"], :name => "index_getthere_bookings_on_start_location"
+  add_index "getthere_bookings", ["start_time"], :name => "index_bookings_on_start_time"
 
   create_table "getthere_next_queries", :force => true do |t|
     t.datetime "created_at"
@@ -385,7 +386,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string   "start_id"
   end
 
-  #  add_index "getthere_next_queries", ["request_type"], :name => "index_next_queries_on_request_type"
+  add_index "getthere_next_queries", ["request_type"], :name => "index_next_queries_on_request_type"
 
   create_table "group_announcements", :force => true do |t|
     t.text     "content"
@@ -394,7 +395,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "end_date"
   end
 
-  #  add_index "group_announcements", ["group_id"], :name => "index_group_announcements_on_group_id", :unique => true
+  add_index "group_announcements", ["group_id"], :name => "index_group_announcements_on_group_id", :unique => true
 
   create_table "group_invitations", :force => true do |t|
     t.integer  "group_id"
@@ -404,11 +405,11 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string   "type",        :null => false
   end
 
-  #  add_index "group_invitations", ["created_at"], :name => "index_group_invitations_on_created_at"
-  #  add_index "group_invitations", ["group_id"], :name => "index_group_invitations_on_group_id"
-  #  add_index "group_invitations", ["receiver_id"], :name => "index_group_invitations_on_receiver_id"
-  #  add_index "group_invitations", ["sender_id"], :name => "index_group_invitations_on_sender_id"
-  #  add_index "group_invitations", ["type"], :name => "index_group_invitations_on_type"
+  add_index "group_invitations", ["created_at"], :name => "index_group_invitations_on_created_at"
+  add_index "group_invitations", ["group_id"], :name => "index_group_invitations_on_group_id"
+  add_index "group_invitations", ["receiver_id"], :name => "index_group_invitations_on_receiver_id"
+  add_index "group_invitations", ["sender_id"], :name => "index_group_invitations_on_sender_id"
+  add_index "group_invitations", ["type"], :name => "index_group_invitations_on_type"
 
   create_table "group_memberships", :force => true do |t|
     t.integer  "profile_id",                                :null => false
@@ -419,10 +420,10 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.text     "email_preferences_yaml"
   end
 
-  #  add_index "group_memberships", ["created_at"], :name => "index_group_memberships_on_created_at"
-  #  add_index "group_memberships", ["group_id", "profile_id"], :name => "index_group_memberships_on_group_id_and_profile_id", :unique => true
-  #  add_index "group_memberships", ["moderator"], :name => "index_group_memberships_on_moderator"
-  #  add_index "group_memberships", ["profile_id"], :name => "index_group_memberships_on_profile_id"
+  add_index "group_memberships", ["created_at"], :name => "index_group_memberships_on_created_at"
+  add_index "group_memberships", ["group_id", "profile_id"], :name => "index_group_memberships_on_group_id_and_profile_id", :unique => true
+  add_index "group_memberships", ["moderator"], :name => "index_group_memberships_on_moderator"
+  add_index "group_memberships", ["profile_id"], :name => "index_group_memberships_on_profile_id"
 
   create_table "group_posts", :force => true do |t|
     t.text     "post",                          :null => false
@@ -433,9 +434,9 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "comments_count", :default => 0, :null => false
   end
 
-  #  add_index "group_posts", ["created_at"], :name => "index_group_posts_on_created_at"
-  #  add_index "group_posts", ["group_id"], :name => "index_group_posts_on_group_id"
-  #  add_index "group_posts", ["profile_id"], :name => "index_group_posts_on_profile_id"
+  add_index "group_posts", ["created_at"], :name => "index_group_posts_on_created_at"
+  add_index "group_posts", ["group_id"], :name => "index_group_posts_on_group_id"
+  add_index "group_posts", ["profile_id"], :name => "index_group_posts_on_profile_id"
 
   create_table "group_text_indices", :force => true do |t|
     t.integer "group_id",         :null => false
@@ -444,8 +445,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.text    "tags_text"
   end
 
-  #  add_index "group_text_indices", ["group_id"], :name => "index_group_text_indices_on_group_id", :unique => true
-  #  add_index "group_text_indices", ["name_text", "description_text", "tags_text"], :name => "fulltext_group"
+  add_index "group_text_indices", ["group_id"], :name => "index_group_text_indices_on_group_id", :unique => true
+  add_index "group_text_indices", ["name_text", "description_text", "tags_text"], :name => "fulltext_group"
 
   create_table "groups", :force => true do |t|
     t.string   "name",                    :limit => 100,                :null => false
@@ -468,13 +469,13 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "active",                                 :default => 1
   end
 
-  #  add_index "groups", ["activity_points"], :name => "index_groups_on_activity_points"
-  #  add_index "groups", ["activity_status"], :name => "index_groups_on_activity_status"
-  #  add_index "groups", ["created_at"], :name => "index_groups_on_created_at"
-  #  add_index "groups", ["group_memberships_count"], :name => "index_groups_on_group_memberships_count"
-  #  add_index "groups", ["group_type"], :name => "index_groups_on_group_type"
-  #  add_index "groups", ["name"], :name => "index_groups_on_name", :unique => true
-  #  add_index "groups", ["no_memberships_on"], :name => "index_groups_on_no_memberships_on"
+  add_index "groups", ["activity_points"], :name => "index_groups_on_activity_points"
+  add_index "groups", ["activity_status"], :name => "index_groups_on_activity_status"
+  add_index "groups", ["created_at"], :name => "index_groups_on_created_at"
+  add_index "groups", ["group_memberships_count"], :name => "index_groups_on_group_memberships_count"
+  add_index "groups", ["group_type"], :name => "index_groups_on_group_type"
+  add_index "groups", ["name"], :name => "index_groups_on_name", :unique => true
+  add_index "groups", ["no_memberships_on"], :name => "index_groups_on_no_memberships_on"
 
   create_table "karma_histories", :force => true do |t|
     t.integer "profile_id"
@@ -483,7 +484,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer "value"
   end
 
-  #  add_index "karma_histories", ["profile_id", "month", "year"], :name => "karma_month_index", :unique => true
+  add_index "karma_histories", ["profile_id", "month", "year"], :name => "karma_month_index", :unique => true
 
   create_table "list_pois", :force => true do |t|
     t.string  "owner_type", :null => false
@@ -492,9 +493,9 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer "position"
   end
 
-  #  add_index "list_pois", ["owner_type", "owner_id"], :name => "index_list_pois_on_owner_type_and_owner_id"
-  #  add_index "list_pois", ["poi_id"], :name => "index_list_pois_on_poi_id"
-  #  add_index "list_pois", ["position"], :name => "index_list_pois_on_position"
+  add_index "list_pois", ["owner_type", "owner_id"], :name => "index_list_pois_on_owner_type_and_owner_id"
+  add_index "list_pois", ["poi_id"], :name => "index_list_pois_on_poi_id"
+  add_index "list_pois", ["position"], :name => "index_list_pois_on_position"
 
   create_table "location_types", :force => true do |t|
     t.datetime "created_at"
@@ -529,8 +530,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string  "image_path"
   end
 
-  #  add_index "marketing_messages", ["active"], :name => "index_marketing_messages_on_active"
-  #  add_index "marketing_messages", ["is_default"], :name => "index_marketing_messages_on_is_default"
+  add_index "marketing_messages", ["active"], :name => "index_marketing_messages_on_active"
+  add_index "marketing_messages", ["is_default"], :name => "index_marketing_messages_on_is_default"
 
   create_table "news_followers", :force => true do |t|
     t.integer  "profile_id"
@@ -548,10 +549,10 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string   "receiver_type",                    :null => false
   end
 
-  #  add_index "notes", ["created_at"], :name => "index_notes_on_created_at"
-  #  add_index "notes", ["private"], :name => "index_notes_on_private"
-  #  add_index "notes", ["receiver_type", "receiver_id"], :name => "index_notes_on_receiver_type_and_receiver_id"
-  #  add_index "notes", ["sender_id"], :name => "index_notes_on_sender_id"
+  add_index "notes", ["created_at"], :name => "index_notes_on_created_at"
+  add_index "notes", ["private"], :name => "index_notes_on_private"
+  add_index "notes", ["receiver_type", "receiver_id"], :name => "index_notes_on_receiver_type_and_receiver_id"
+  add_index "notes", ["sender_id"], :name => "index_notes_on_sender_id"
 
   create_table "offer_attributes", :force => true do |t|
     t.datetime "created_at"
@@ -620,11 +621,11 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.boolean  "imported",        :default => false
   end
 
-  #  add_index "poi_lists", ["created_at"], :name => "index_poi_lists_on_created_at"
-  #  add_index "poi_lists", ["imported"], :name => "index_poi_lists_on_imported"
-  #  add_index "poi_lists", ["name"], :name => "index_poi_lists_on_name"
-  #  add_index "poi_lists", ["owner_id"], :name => "index_poi_lists_on_owner_id"
-  #  add_index "poi_lists", ["private"], :name => "index_poi_lists_on_private"
+  add_index "poi_lists", ["created_at"], :name => "index_poi_lists_on_created_at"
+  add_index "poi_lists", ["imported"], :name => "index_poi_lists_on_imported"
+  add_index "poi_lists", ["name"], :name => "index_poi_lists_on_name"
+  add_index "poi_lists", ["owner_id"], :name => "index_poi_lists_on_owner_id"
+  add_index "poi_lists", ["private"], :name => "index_poi_lists_on_private"
 
   create_table "pois", :force => true do |t|
     t.datetime "created_at",                                                         :null => false
@@ -655,23 +656,14 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.text     "description"
   end
 
-  #  add_index "pois", ["created_by"], :name => "index_trip_elements_on_created_by"
-  #  add_index "pois", ["external_id"], :name => "index_trip_elements_on_external_id"
-  #  add_index "pois", ["imported"], :name => "index_trip_elements_on_imported"
-  #  add_index "pois", ["loc_lat", "loc_lng"], :name => "index_trip_elements_on_loc_lat_and_loc_lng"
-  #  add_index "pois", ["name"], :name => "index_trip_elements_on_name"
-  #  add_index "pois", ["poi_type"], :name => "index_trip_elements_on_element_type"
-  #  add_index "pois", ["popularity"], :name => "index_plan_elements_on_popularity"
-  #  add_index "pois", ["rating_avg"], :name => "index_trip_elements_on_rating_avg"
-
-  create_table "poly_text_indices", :force => true do |t|
-    t.string  "owner_type", :null => false
-    t.integer "owner_id",   :null => false
-    t.string  "domain"
-    t.text    "text"
-  end
-
-  #  add_index "poly_text_indices", ["owner_type", "owner_id"], :name => "index_poly_text_indices_on_owner_type_and_owner_id"
+  add_index "pois", ["created_by"], :name => "index_trip_elements_on_created_by"
+  add_index "pois", ["external_id"], :name => "index_trip_elements_on_external_id"
+  add_index "pois", ["imported"], :name => "index_trip_elements_on_imported"
+  add_index "pois", ["loc_lat", "loc_lng"], :name => "index_trip_elements_on_loc_lat_and_loc_lng"
+  add_index "pois", ["name"], :name => "index_trip_elements_on_name"
+  add_index "pois", ["poi_type"], :name => "index_trip_elements_on_element_type"
+  add_index "pois", ["popularity"], :name => "index_plan_elements_on_popularity"
+  add_index "pois", ["rating_avg"], :name => "index_trip_elements_on_rating_avg"
 
   create_table "posts", :force => true do |t|
     t.integer  "topic_id"
@@ -691,11 +683,11 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at",                    :null => false
   end
 
-  #  add_index "profile_awards", ["award_id"], :name => "index_profile_awards_on_award_id"
-  #  add_index "profile_awards", ["created_at"], :name => "index_profile_awards_on_created_at"
-  #  add_index "profile_awards", ["is_default"], :name => "index_profile_awards_on_is_default"
-  #  add_index "profile_awards", ["profile_id", "award_id"], :name => "index_profile_awards_on_profile_id_and_award_id"
-  #  add_index "profile_awards", ["visible"], :name => "index_profile_awards_on_visible"
+  add_index "profile_awards", ["award_id"], :name => "index_profile_awards_on_award_id"
+  add_index "profile_awards", ["created_at"], :name => "index_profile_awards_on_created_at"
+  add_index "profile_awards", ["is_default"], :name => "index_profile_awards_on_is_default"
+  add_index "profile_awards", ["profile_id", "award_id"], :name => "index_profile_awards_on_profile_id_and_award_id"
+  add_index "profile_awards", ["visible"], :name => "index_profile_awards_on_visible"
 
   create_table "profile_registration_fields", :force => true do |t|
     t.integer  "profile_id"
@@ -706,13 +698,13 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
   end
 
   create_table "profile_text_indices", :force => true do |t|
-    t.integer "profile_id",                         :null => false
+    t.integer "profile_id",                       :null => false
     t.text    "profile_text"
-    t.text    "answers_text", :limit => 2147483647
+    t.text    "answers_text", :limit => 16777215
   end
 
-  #  add_index "profile_text_indices", ["profile_id"], :name => "index_profile_text_indices_on_profile_id", :unique => true
-  #  add_index "profile_text_indices", ["profile_text", "answers_text"], :name => "fulltext_profile"
+  add_index "profile_text_indices", ["profile_id"], :name => "index_profile_text_indices_on_profile_id", :unique => true
+  add_index "profile_text_indices", ["profile_text", "answers_text"], :name => "fulltext_profile"
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id",                                                                    :null => false
@@ -790,27 +782,27 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "created_at"
   end
 
-  #  add_index "profiles", ["alt_first_name"], :name => "index_profiles_on_alt_first_name"
-  #  add_index "profiles", ["alt_last_name"], :name => "index_profiles_on_alt_last_name"
-  #  add_index "profiles", ["api_key"], :name => "index_profiles_on_api_key"
-  #  add_index "profiles", ["first_name"], :name => "index_profiles_on_first_name"
-  #  add_index "profiles", ["karma_points"], :name => "index_profiles_on_karma_points"
-  #  add_index "profiles", ["last_accessed"], :name => "index_profiles_on_last_accessed"
-  #  add_index "profiles", ["last_name"], :name => "index_profiles_on_last_name"
-  #  add_index "profiles", ["primary_photo_id"], :name => "index_profiles_on_primary_photo_id"
-  #  add_index "profiles", ["profile_views"], :name => "index_profiles_on_profile_views"
-  #  add_index "profiles", ["roles"], :name => "index_profiles_on_roles"
-  #  add_index "profiles", ["screen_name"], :name => "index_profiles_on_screen_name"
-  #  add_index "profiles", ["status"], :name => "index_profiles_on_status"
-  #  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
-  #  add_index "profiles", ["visible"], :name => "index_profiles_on_visible"
+  add_index "profiles", ["alt_first_name"], :name => "index_profiles_on_alt_first_name"
+  add_index "profiles", ["alt_last_name"], :name => "index_profiles_on_alt_last_name"
+  add_index "profiles", ["api_key"], :name => "index_profiles_on_api_key"
+  add_index "profiles", ["first_name"], :name => "index_profiles_on_first_name"
+  add_index "profiles", ["karma_points"], :name => "index_profiles_on_karma_points"
+  add_index "profiles", ["last_accessed"], :name => "index_profiles_on_last_accessed"
+  add_index "profiles", ["last_name"], :name => "index_profiles_on_last_name"
+  add_index "profiles", ["primary_photo_id"], :name => "index_profiles_on_primary_photo_id"
+  add_index "profiles", ["profile_views"], :name => "index_profiles_on_profile_views"
+  add_index "profiles", ["roles"], :name => "index_profiles_on_roles"
+  add_index "profiles", ["screen_name"], :name => "index_profiles_on_screen_name"
+  add_index "profiles", ["status"], :name => "index_profiles_on_status"
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
+  add_index "profiles", ["visible"], :name => "index_profiles_on_visible"
 
   create_table "question_profile_exclude_matches", :force => true do |t|
     t.integer "question_id", :null => false
     t.integer "profile_id",  :null => false
   end
 
-  #  add_index "question_profile_exclude_matches", ["question_id", "profile_id"], :name => "qpim_unique_pair", :unique => true
+  add_index "question_profile_exclude_matches", ["question_id", "profile_id"], :name => "qpim_unique_pair", :unique => true
 
   create_table "question_profile_matches", :force => true do |t|
     t.integer "question_id",                    :null => false
@@ -820,10 +812,10 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.boolean "notified",    :default => false
   end
 
-  #  add_index "question_profile_matches", ["order"], :name => "index_question_profile_matches_on_order"
-  #  add_index "question_profile_matches", ["profile_id"], :name => "index_question_profile_matches_on_profile_id"
-  #  add_index "question_profile_matches", ["question_id", "profile_id"], :name => "index_question_profile_matches_on_question_id_and_profile_id", :unique => true
-  #  add_index "question_profile_matches", ["rank"], :name => "index_question_profile_matches_on_rank"
+  add_index "question_profile_matches", ["order"], :name => "index_question_profile_matches_on_order"
+  add_index "question_profile_matches", ["profile_id"], :name => "index_question_profile_matches_on_profile_id"
+  add_index "question_profile_matches", ["question_id", "profile_id"], :name => "index_question_profile_matches_on_question_id_and_profile_id", :unique => true
+  add_index "question_profile_matches", ["rank"], :name => "index_question_profile_matches_on_rank"
 
   create_table "question_referrals", :force => true do |t|
     t.integer  "question_id"
@@ -834,25 +826,25 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string   "owner_type",                    :null => false
   end
 
-  #  add_index "question_referrals", ["active"], :name => "index_question_referrals_on_active"
-  #  add_index "question_referrals", ["created_at"], :name => "index_question_referrals_on_created_at"
-  #  add_index "question_referrals", ["owner_type", "owner_id"], :name => "index_question_referrals_on_owner_type_and_owner_id"
-  #  add_index "question_referrals", ["question_id"], :name => "index_question_referrals_on_question_id"
-  #  add_index "question_referrals", ["referer_id"], :name => "index_question_referrals_on_referer_id"
+  add_index "question_referrals", ["active"], :name => "index_question_referrals_on_active"
+  add_index "question_referrals", ["created_at"], :name => "index_question_referrals_on_created_at"
+  add_index "question_referrals", ["owner_type", "owner_id"], :name => "index_question_referrals_on_owner_type_and_owner_id"
+  add_index "question_referrals", ["question_id"], :name => "index_question_referrals_on_question_id"
+  add_index "question_referrals", ["referer_id"], :name => "index_question_referrals_on_referer_id"
 
   create_table "question_text_indices", :force => true do |t|
     t.integer "question_id",   :null => false
     t.text    "question_text"
   end
 
-  #  add_index "question_text_indices", ["question_id"], :name => "index_question_text_indices_on_question_id", :unique => true
-  #  add_index "question_text_indices", ["question_text"], :name => "fulltext_question"
+  add_index "question_text_indices", ["question_id"], :name => "index_question_text_indices_on_question_id", :unique => true
+  add_index "question_text_indices", ["question_text"], :name => "fulltext_question"
 
   create_table "questions", :force => true do |t|
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
     t.date     "open_until",                                               :null => false
-    t.integer  "profile_id",                            :default => 0,     :null => false
+    t.integer  "profile_id",                                               :null => false
     t.text     "question",                                                 :null => false
     t.boolean  "per_answer_notification",               :default => false
     t.datetime "author_viewed_at"
@@ -865,10 +857,11 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "active",                                :default => 1
   end
 
-  #  add_index "questions", ["answers_count"], :name => "index_questions_on_answers_count"
-  #  add_index "questions", ["category"], :name => "index_questions_on_category"
-  #  add_index "questions", ["created_at"], :name => "index_questions_on_created_at"
-  #  add_index "questions", ["open_until"], :name => "index_questions_on_open_until"
+  add_index "questions", ["answers_count"], :name => "index_questions_on_answers_count"
+  add_index "questions", ["category"], :name => "index_questions_on_category"
+  add_index "questions", ["created_at"], :name => "index_questions_on_created_at"
+  add_index "questions", ["open_until"], :name => "index_questions_on_open_until"
+  add_index "questions", ["profile_id"], :name => "index_questions_on_profile_id"
 
   create_table "rating_categories", :force => true do |t|
     t.string   "rating_category", :null => false
@@ -883,8 +876,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer "rating",     :default => 0, :null => false
   end
 
-  #  add_index "ratings", ["rated_type", "rated_id", "rater_id"], :name => "index_ratings_on_rated_type_and_rated_id_and_rater_id", :unique => true
-  #  add_index "ratings", ["rater_id"], :name => "index_ratings_on_rater_id"
+  add_index "ratings", ["rated_type", "rated_id", "rater_id"], :name => "index_ratings_on_rated_type_and_rated_id_and_rater_id", :unique => true
+  add_index "ratings", ["rater_id"], :name => "index_ratings_on_rater_id"
 
   create_table "replies", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -894,7 +887,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.text     "text",       :null => false
   end
 
-  #  add_index "replies", ["answer_id"], :name => "index_replies_on_answer_id", :unique => true
+  add_index "replies", ["answer_id"], :name => "index_replies_on_answer_id", :unique => true
 
   create_table "review_type", :force => true do |t|
     t.datetime "created_at"
@@ -962,12 +955,12 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string   "monitor_email_address"
     t.boolean  "frozen_emails",             :default => false
     t.boolean  "ssl_enabled",               :default => false
-    t.string   "welcome_promo_title_1"
-    t.string   "welcome_promo_1"
-    t.string   "welcome_promo_title_2"
-    t.string   "welcome_promo_2"
-    t.string   "welcome_promo_title_3"
-    t.string   "welcome_promo_3"
+    t.string   "welcome_promo_title_1",     :default => ""
+    t.string   "welcome_promo_1",           :default => ""
+    t.string   "welcome_promo_title_2",     :default => ""
+    t.string   "welcome_promo_2",           :default => ""
+    t.string   "welcome_promo_title_3",     :default => ""
+    t.string   "welcome_promo_3",           :default => ""
   end
 
   create_table "site_profile_cards", :force => true do |t|
@@ -1032,7 +1025,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at"
   end
 
-  #  add_index "site_stat_histories", ["julian_date", "name"], :name => "index_site_stat_histories_on_julian_date_and_name", :unique => true
+  add_index "site_stat_histories", ["julian_date", "name"], :name => "index_site_stat_histories_on_julian_date_and_name", :unique => true
 
   create_table "site_visits", :force => true do |t|
     t.integer  "profile_id"
@@ -1064,10 +1057,10 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at"
   end
 
-  #  add_index "status_text_indices", ["author_text"], :name => "fulltext_status_author"
-  #  add_index "status_text_indices", ["body_text", "author_text"], :name => "fulltext_status"
-  #  add_index "status_text_indices", ["body_text"], :name => "fulltext_status_body"
-  #  add_index "status_text_indices", ["status_id"], :name => "index_status_text_indices_on_status_id", :unique => true
+  add_index "status_text_indices", ["author_text"], :name => "fulltext_status_author"
+  add_index "status_text_indices", ["body_text", "author_text"], :name => "fulltext_status"
+  add_index "status_text_indices", ["body_text"], :name => "fulltext_status_body"
+  add_index "status_text_indices", ["status_id"], :name => "index_status_text_indices_on_status_id", :unique => true
 
   create_table "statuses", :force => true do |t|
     t.string   "body"
@@ -1075,7 +1068,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "created_at"
   end
 
-  #  add_index "statuses", ["profile_id"], :name => "index_statuses_on_profile_id"
+  add_index "statuses", ["profile_id"], :name => "index_statuses_on_profile_id"
 
   create_table "supplier_attributes", :force => true do |t|
     t.datetime "created_at"
@@ -1115,8 +1108,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "updated_at"
   end
 
-  #  add_index "supplier_users", ["email"], :name => "index_supplier_users_on_email", :unique => true
-  #  add_index "supplier_users", ["reset_password_token"], :name => "index_supplier_users_on_reset_password_token", :unique => true
+  add_index "supplier_users", ["email"], :name => "index_supplier_users_on_email", :unique => true
+  add_index "supplier_users", ["reset_password_token"], :name => "index_supplier_users_on_reset_password_token", :unique => true
 
   create_table "suppliers", :force => true do |t|
     t.datetime "created_at"
@@ -1148,14 +1141,14 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.datetime "created_at"
   end
 
-  #  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  #  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", :force => true do |t|
     t.string "name"
   end
 
-  #  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
+  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "temp_users", :force => true do |t|
     t.string   "email"
@@ -1182,9 +1175,9 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string  "domain", :null => false
   end
 
-  #  add_index "top_terms", ["domain", "rank"], :name => "index_top_terms_on_domain_and_rank"
-  #  add_index "top_terms", ["domain", "term"], :name => "index_top_terms_on_domain_and_term", :unique => true
-  #  add_index "top_terms", ["rank"], :name => "index_top_terms_on_rank"
+  add_index "top_terms", ["domain", "rank"], :name => "index_top_terms_on_domain_and_rank"
+  add_index "top_terms", ["domain", "term"], :name => "index_top_terms_on_domain_and_term", :unique => true
+  add_index "top_terms", ["rank"], :name => "index_top_terms_on_rank"
 
   create_table "topics", :force => true do |t|
     t.integer  "chat_id"
@@ -1209,7 +1202,6 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "facebook_id",                      :limit => 8
     t.string   "login"
     t.string   "email"
     t.string   "crypted_password",                 :limit => 40
@@ -1230,13 +1222,14 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.text     "crypted_password_history"
     t.integer  "tfce_req_nonce"
     t.integer  "tfce_res_nonce"
+    t.integer  "facebook_id",                      :limit => 8
     t.text     "facebook_graph"
     t.string   "srw_agent_id"
     t.text     "srw_ticket"
   end
 
-  #  add_index "users", ["login"], :name => "index_users_on_login"
-  #  add_index "users", ["sso_id"], :name => "index_users_on_external_id"
+  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["sso_id"], :name => "index_users_on_external_id"
 
   create_table "videos", :force => true do |t|
     t.string   "title"
@@ -1259,7 +1252,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string   "owner_type", :null => false
   end
 
-  #  add_index "visitations", ["owner_type", "owner_id", "updated_at"], :name => "index_visitations_on_owner_type_and_owner_id_and_updated_at"
+  add_index "visitations", ["owner_type", "owner_id", "updated_at"], :name => "index_visitations_on_owner_type_and_owner_id_and_updated_at"
 
   create_table "votes", :force => true do |t|
     t.integer "owner_id"
@@ -1268,8 +1261,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.string  "owner_type", :null => false
   end
 
-  #  add_index "votes", ["owner_type", "owner_id", "profile_id"], :name => "index_votes_on_owner_type_and_owner_id_and_profile_id", :unique => true
-  #  add_index "votes", ["vote_value"], :name => "index_votes_on_vote_value"
+  add_index "votes", ["owner_type", "owner_id", "profile_id"], :name => "index_votes_on_owner_type_and_owner_id_and_profile_id", :unique => true
+  add_index "votes", ["vote_value"], :name => "index_votes_on_vote_value"
 
   create_table "watch_events", :force => true do |t|
     t.datetime "created_at",                          :null => false
@@ -1282,7 +1275,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "profile_id"
   end
 
-  #  add_index "watch_events", ["watchable_type", "watchable_id", "private"], :name => "index_watch_events_on_watchable_and_private"
+  add_index "watch_events", ["watchable_type", "watchable_id", "private"], :name => "index_watch_events_on_watchable_and_private"
 
   create_table "watches", :force => true do |t|
     t.datetime "created_at",     :null => false
@@ -1291,8 +1284,8 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "watchable_id",   :null => false
   end
 
-  #  add_index "watches", ["watchable_type", "watchable_id"], :name => "index_watches_on_watchable_type_and_watchable_id"
-  #  add_index "watches", ["watcher_id", "watchable_type", "watchable_id"], :name => "index_watches_on_watcher_id_and_watchable_type_and_watchable_id", :unique => true
+  add_index "watches", ["watchable_type", "watchable_id"], :name => "index_watches_on_watchable_type_and_watchable_id"
+  add_index "watches", ["watcher_id", "watchable_type", "watchable_id"], :name => "index_watches_on_watcher_id_and_watchable_type_and_watchable_id", :unique => true
 
   create_table "welcome_emails", :force => true do |t|
     t.text   "content"
