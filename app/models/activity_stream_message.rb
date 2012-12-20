@@ -1,6 +1,6 @@
 class ActivityStreamMessage < ActiveRecord::Base
   belongs_to :primary_photo, :class_name => 'ActivityStreamMessagePhoto', :foreign_key => :primary_photo_id
-  scope :active, where(:active => 1)
+  scope :active, where("#{table_name}.active > 0")
   scope :available, :order => :created_at #should return an ActiveRecord::Relation object
     
   def primary_photo_path(which=:thumb)
