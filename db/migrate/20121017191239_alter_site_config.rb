@@ -4,7 +4,7 @@ class AlterSiteConfig < ActiveRecord::Migration
       t.change :disclaimer, :text
     end
     c = SiteConfig.first || SiteConfig.new
-    c.disclaimer += "<br />\n*The information on this site is the intellectual property of the individual publishers or the opinions of community members.  The views expressed in these articles do not necessarily represent the views of Sabre Holdings, it's businesses, and its partners."
+    c.disclaimer = "<br />\n*The information on this site is the intellectual property of the individual publishers or the opinions of community members.  The views expressed in these articles do not necessarily represent the views of Sabre Holdings, it's businesses, and its partners."
     c.save!        
   end
 
