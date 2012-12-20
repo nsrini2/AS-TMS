@@ -26,12 +26,18 @@ Set up:
     rake db:migrate
     rake db:seed
 
-6 - rails c
+7 - rails c
     (address any errors)
 
-7 - rails s
+8 - While in the console Fix News Room Blog ID
+      b = Blog.last
+      b.id = 10
+      b.save!
+      exit
+
+9 - rails s
     (see it run)
 
-8 - login to website  
+10 - login to website  
     u: cubeless_admin  p: abc123
     u: agent_a         p: abc123
