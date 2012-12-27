@@ -17,21 +17,26 @@ Set up:
 4 - install ImageMagick
 
 5 - install gems
-    bundle install
-    (fix any errors)
+
+    - bundle install
+    - (fix any errors)
 
 6 - setup database
-    rake db:drop  # if you have already create the database
-    rake db:create
-    rake db:migrate
-    rake db:seed
+
+    - rake db:drop  # if you have already create the database
+    - rake db:create
+    - rake db:migrate
+    - rake db:seed
 
 7 - rails c
+    
     (address any errors)
 
 8 - rails s
+    
     (see it run)
 
 9 - login to website  
-    u: cubeless_admin  p: abc123
-    u: agent_a         p: abc123
+
+    - u: cubeless_admin  p: abc123
+    - u: agent_a         p: abc123
