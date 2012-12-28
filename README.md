@@ -1,8 +1,8 @@
 Set up:
 
-1 - git clone   
+1 - git clone  to create local copy of repo 
 
-2 - create local files
+2 - create local files and dir structure
 
     - config/panda.yml
     - config/facebook.yml
