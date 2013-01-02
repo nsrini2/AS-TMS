@@ -15,6 +15,7 @@ Set up:
     - tmp
 
 4 - rake db:create   
+  a - delete 'db/seeds.rb' if it exists
 
 5 - rake db:setup
 
