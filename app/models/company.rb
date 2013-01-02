@@ -6,7 +6,7 @@ class Company < ActiveRecord::Base
   belongs_to :primary_photo, :class_name => 'CompanyPhoto', :foreign_key => :primary_photo_id
   has_many :groups, :conditions => 'groups.company_id = #{self.id}'
   
-  default_scope :conditions => ["active = 1"]
+  default_scope :conditions => ["#{table_name}.active = 1"]
   
   validates_presence_of :name, :description
   
