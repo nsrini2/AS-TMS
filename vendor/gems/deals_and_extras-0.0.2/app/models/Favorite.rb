@@ -1,3 +1,4 @@
+# renamed with lowercase -- this comment to for git to reload!
 class Favorite < ActiveRecord::Base  
   belongs_to :user
   belongs_to :offer
