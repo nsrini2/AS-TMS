@@ -7,6 +7,7 @@ Set up:
     - config/panda.yml
     - config/facebook.yml
     - config/database.yml
+    - config/feature_sets.yml
 3 - create local folders       
 
     - public/attachments
