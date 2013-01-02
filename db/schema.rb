@@ -159,7 +159,6 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer  "rating_count",                                         :default => 0,   :null => false
     t.integer  "rating_total",                                         :default => 0,   :null => false
     t.decimal  "rating_avg",            :precision => 10, :scale => 2, :default => 0.0, :null => false
-    t.integer  "old_news_post_id"
     t.integer  "views",                                                :default => 0
     t.string   "source"
     t.string   "link"
@@ -1147,8 +1146,6 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
-
-  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "temp_users", :force => true do |t|
     t.string   "email"
