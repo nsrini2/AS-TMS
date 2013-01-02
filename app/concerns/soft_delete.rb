@@ -6,7 +6,7 @@
 
 module SoftDelete
   def self.included(base)
-    unless ( File.basename($0) == "rake" && ARGV.include?("db:migrate")  ) || ( File.basename($0) == "rake" && ARGV.include?("db:setup")  ) || (ARGV.include?("migration") )
+    unless (File.basename($0) == "rake" )  || (ARGV.include?("migration") ) #(File.basename($0) == "rake" && ARGV.include?("db:migrate")  ) ||
       raise ArgumentError, "Table '#{base.table_name}' must have an integer column named 'active' to use SoftDelete!" unless base.column_names.include? 'active'
     end
     base.send :alias_method, :destroy!, :destroy
