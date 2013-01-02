@@ -1,12 +1,9 @@
-# # This file should contain all the record creation needed to seed the database with its default values.
-# # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-# #
-# # Examples:
-# #
-# #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-# #   Mayor.create(:name => 'Daley', :city => cities.first)
-# 
-# # process the example xml
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+
+# ===========  Deals and Extras ===========================================
+
+# process the example xml
 # Supplier.new_from_xml(open('./db/example.xml').read, DataSource.find_by_data_source("Sabre Enterprise Data Warehouse"))
 # Offer.new_from_xml(open('./db/example.xml').read)
 # 
