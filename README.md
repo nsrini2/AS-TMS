@@ -21,9 +21,10 @@ Set up:
     (fix any errors)
 
 6 - setup database
-    # rake db:drop if you want to redo this section
+    rake db:drop  # if you have already create the database
     rake db:create
-    rake db:setup
+    rake db:migrate
+    rake db:seed
 
 6 - rails c
     (address any errors)
