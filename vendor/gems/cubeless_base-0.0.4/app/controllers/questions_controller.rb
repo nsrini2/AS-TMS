@@ -52,6 +52,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    debugger
     @question = Question.new(params[:question])
     if @question.save
       Bookmark.create(:profile => current_profile, :question_id => @question.id)
