@@ -32,7 +32,6 @@ class Question < ActiveRecord::Base
     end
   end
   
-  
   validates_presence_of :question
   validates_presence_of :open_until
 

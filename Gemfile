@@ -18,6 +18,7 @@ gem "json", '~>1.4.6'
 gem 'fastercsv', '1.5.4' # admin user import/export
 # gem 'mysql', '2.8.1'
 gem 'mysql2', '~>0.2.19b5'
+# gem 'mysql2', '~>0.2.18'
 
 # MM2
 # The s3 and right_aws gems must come before the rest-client/microreviewr gems
