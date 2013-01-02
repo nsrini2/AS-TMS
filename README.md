@@ -14,8 +14,10 @@ Set up:
     - log
     - tmp
 
-4 - rails c    
+4 - rake db:create   
 
-5 - Install and run Elasticsearch or turn off feature
+5 - rake db:migrate
 
-6 - Update indexes
+6 - rails c    
+
+7 - rails s
