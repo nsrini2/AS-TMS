@@ -22,8 +22,8 @@ class AddIndices2 < ActiveRecord::Migration
 
     add_index :notes, :created_at
 
-    add_index :posts, :group_id
-    add_index :posts, :profile_id
+    # add_index :posts, :group_id
+    # add_index :posts, :profile_id
 
     add_index :profiles, :is_admin
     add_index :profiles, :screen_name

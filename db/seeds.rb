@@ -178,8 +178,9 @@ SiteRegistrationField.create!(:label => 'Agency Type',                          
 SystemAnnouncement.create!(:content => "<p>Go check out <a href='http://www.twitter.com/#!/search/%23hop'>#HOP</a> at twitter</p>")
 
 b = Blog.new(:owner_id => 2, :owner_type => 'News')
-# b.attributes[:id] = 10
-# b.save!
+b.save!
+b.id = 10
+b.save!
 # d = Date.today
 # p.questions.build(:category => "Marketing", :question => "default seed question?", :open_until => d.advance(:months => 2) )
 
