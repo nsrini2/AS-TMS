@@ -16,7 +16,7 @@ Set up:
 
 4 - rake db:create   
 
-5 - rake db:migrate
+5 - rake db:setup
 
 6 - rails c    
 
