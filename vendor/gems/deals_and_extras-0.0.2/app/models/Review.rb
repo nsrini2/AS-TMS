@@ -1,3 +1,4 @@
+# renamed with lowercase -- this comment to for git to reload!
 class Review < ActiveRecord::Base
 
   belongs_to :rating_category
