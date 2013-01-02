@@ -22,7 +22,7 @@
   <% end %>
 </div>
 
-<% if ACTIVITY_STREAM_ADS && @activity_stream_message %>
+<% if FEATURE_ACTIVITY_STREAM_ADS && @activity_stream_message %>
 	<%= render :partial => 'shared/event_stream_item', :locals => { :event => @activity_stream_message, :index => 0 } -%>
 <% end -%>
 
