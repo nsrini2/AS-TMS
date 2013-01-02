@@ -20,7 +20,6 @@ class QuestionsController
     if params["status"] 
       return create_from_hub 
     end
-    
     @question = Question.new(params[:question])
     if @question.save
       Bookmark.create(:profile => current_profile, :question_id => @question.id)
@@ -71,7 +70,7 @@ class QuestionsController
   
   private
     def create_from_hub
-      begin   
+      begin
         @question = Question.new
         @question.profile = current_profile
         @question.question = params["status"]["body"]
