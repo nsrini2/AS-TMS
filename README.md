@@ -29,15 +29,9 @@ Set up:
 7 - rails c
     (address any errors)
 
-8 - While in the console Fix News Room Blog ID
-      b = Blog.last
-      b.id = 10
-      b.save!
-      exit
-
-9 - rails s
+8 - rails s
     (see it run)
 
-10 - login to website  
+9 - login to website  
     u: cubeless_admin  p: abc123
     u: agent_a         p: abc123

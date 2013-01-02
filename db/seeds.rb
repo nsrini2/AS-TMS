@@ -179,8 +179,8 @@ SystemAnnouncement.create!(:content => "<p>Go check out <a href='http://www.twit
 
 b = Blog.new(:owner_id => 2, :owner_type => 'News')
 b.save!
-b.id = 10
-b.save!
+sql = "update blogs set id=10 where id=3"
+ActiveRecord::Base.connection.execute(sql)
 # d = Date.today
 # p.questions.build(:category => "Marketing", :question => "default seed question?", :open_until => d.advance(:months => 2) )
 
