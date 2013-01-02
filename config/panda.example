@@ -1,0 +1,13 @@
+production:
+  access_key:
+  secret_key:
+  cloud_id:
+development:
+  access_key:
+  secret_key:
+  cloud_id:
+  api_token:
+test:
+  access_key:
+  secret_key:
+  cloud_id:
