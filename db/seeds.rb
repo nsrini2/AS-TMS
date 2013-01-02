@@ -17,7 +17,7 @@ p = Profile.find_or_create_by_user_id(u.id)
 p.user_id = u.id
 p.first_name = 'Cubeless'
 p.last_name = 'Admin'
-p.roles = '1,7,2,8,3,4,0'
+p.attributes[:roles] = "1,7,2,8,3,4,0"
 p.screen_name = 'cubeless_admin'
 p.visible = 0
 p.status = 1
@@ -42,7 +42,7 @@ end
 p = Profile.find_or_create_by_user_id(u.id)
 p.first_name = 'Agent'
 p.last_name = 'A'
-p.roles = '5'
+p.attributes[:roles] = "5"
 p.screen_name = 'agent_a'
 p.visible = 0
 p.status = 1
@@ -174,3 +174,12 @@ SiteRegistrationField.create!(:label => 'GDS Affiliation',                      
 SiteRegistrationField.create!(:label => 'Travel Specialization',                :position => 10, :required => 1, :options => "Leisure\nCorporate\nGeneralist (Both Leisure & Corporate)\nOther",                        :site_profile_field_id => 9)
 SiteRegistrationField.create!(:label => 'State or Province or Not Applicable',  :position => 6,  :required => 1, :options => "",                                                                                        :site_profile_field_id => nil)
 SiteRegistrationField.create!(:label => 'Agency Type',                          :position => 2,  :required => 1, :options => "Home-Based Agency\nRetail Agency",                                                        :site_profile_field_id => nil)
+
+SystemAnnouncement.create!(:content => "<p>Go check out <a href='http://www.twitter.com/#!/search/%23hop'>#HOP</a> at twitter</p>")
+
+b = Blog.new(:owner_id => 2, :owner_type => 'News')
+b.attributes[:id] = 10
+b.save!
+d = Date.today
+# p.questions.build(:category => "Marketing", :question => "default seed question?", :open_until => d.advance(:months => 2) )
+
