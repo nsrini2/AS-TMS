@@ -2,9 +2,7 @@ require_cubeless_engine_file :model, :group
 
 class Group < ActiveRecord::Base
   include Notifications::Group
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
-  include Indexed::Group
+  include Indexed::Add
     
   belongs_to :company
   

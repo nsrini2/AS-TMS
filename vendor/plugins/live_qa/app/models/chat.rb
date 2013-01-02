@@ -1,9 +1,7 @@
 class Chat < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
   include SoftDelete
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
-  include Indexed::Chat
+  include Indexed::Add
     
   belongs_to :profile, :foreign_key => :host_id
   has_many :topics
