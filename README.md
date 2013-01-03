@@ -1,4 +1,4 @@
-Set up:
+#Set up:
 
 1 - git clone   
 
@@ -41,7 +41,9 @@ Set up:
     - u: cubeless_admin  p: abc123
     - u: agent_a         p: abc123
     
-=== Cached Objects
+
+#Cached Objects
+
 Because some classes get overridden in development mode, you must set caching to true to work use these files.  Some notable areas include:
 
        My Agency -- Companies::HubController
