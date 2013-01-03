@@ -8,16 +8,20 @@ class SearchController < ApplicationController
     params[:query] ||= params[:q]
     @query = params[:query] = RailsSanitize.white_list_sanitizer.sanitize(params[:query]) if params.member?(:query)
   end
-  
-  def index
-    @results = SiteSearch.search(params)     
-    @filters = {  "all" => "All",
-                  "blog_posts" => "Blog Posts",
-                  "groups" => "Groups",
-                  "profiles" => "People",
-                  "questions" => "Questions",
-                  "chats" => "Chats"
-                }
+  if FEATURE_ELASTIC_SEARCH 
+    def index
+      @results = SiteSearch.search(params)     
+      @filters = {  "all" => "All",
+                    "blog_posts" => "Blog Posts",
+                    "groups" => "Groups",
+                    "profiles" => "People",
+                    "questions" => "Questions",
+                    "chats" => "Chats"
+                  }
+    end
+  else  
+    def index
+    
+    end
   end
-  
 end
