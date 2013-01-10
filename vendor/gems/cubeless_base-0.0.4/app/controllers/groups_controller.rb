@@ -194,9 +194,8 @@ class GroupsController < ApplicationController
   end
 
   def non_mods
-    opts = { :conditions => "moderator=0", :order => "screen_name", :page => default_paging }
-    p = params[:q] || {}
-    p.empty? ? @group.members.find(:all,opts) : @group.members.find_by_full_name(p,opts)
+    p = params[:q] || ""
+    @group.non_moderators.where("CONCAT(first_name, ' ', last_name) LIKE ?", "%#{p}%")
   end
 
   def filter_mods
