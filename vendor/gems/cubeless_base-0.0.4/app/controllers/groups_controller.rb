@@ -167,10 +167,11 @@ class GroupsController < ApplicationController
     GroupMembership.find_by_group_id_and_profile_id(@group, params[:profile_id]).toggle!(:moderator)
     @non_moderators = non_mods
     @moderators = @group.moderators
-    render :update do |page|
-      page[:moderator_list].replace_html :partial => 'groups/member', :collection => @moderators.reject{|x| x.id==@group.owner_id }, :locals => {:is_moderator => true}
-      page[:member_list].replace_html :partial => 'groups/member', :collection => @non_moderators, :locals => {:is_moderator => false}
-    end
+    moderator_list_html = view_context.escape_javascript render_to_string :partial => 'groups/member', :collection => @moderators.reject{|x| x.id==@group.owner_id }, :locals => {:is_moderator => true}
+    member_list_html = view_context.escape_javascript render_to_string :partial => 'groups/member', :collection => @non_moderators, :locals => {:is_moderator => false}
+    javascript_updates = "$('#moderator_list').html('#{moderator_list_html}');"
+    javascript_updates << "$('#member_list').html('#{member_list_html}');"
+    render :js => javascript_updates
   end
 
   def ownership
