@@ -190,7 +190,9 @@ class GroupsController < ApplicationController
     profile = @group.members.find_by_id(params[:profile_id])
     if profile
       @group.transfer_ownership_to!(profile)
+      flash[:notice] = "#{profile.screen_name} is now the owner of this group!"
     end
+    redirect_to @group
   end
 
   def non_mods
