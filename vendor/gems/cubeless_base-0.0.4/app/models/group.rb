@@ -10,7 +10,8 @@ class Group < ActiveRecord::Base
   has_many :group_memberships, :dependent => :destroy
   has_many :members, :through => :group_memberships
   has_many :moderators, :through => :group_memberships, :source => :member, :conditions => "moderator=1", :order => "screen_name"
-
+  has_many :non_moderators, :through => :group_memberships, :source => :member, :conditions => "moderator=0", :order => "screen_name"
+  
   has_many :referred_questions, :class_name => 'QuestionReferral', :as => :owner, :dependent => :destroy
 
   has_many :questions_referred_to_me, :through => :referred_questions, :source => :question,
