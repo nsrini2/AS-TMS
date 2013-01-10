@@ -52,8 +52,8 @@ $(document).ready(function() {
     .find('#mass_mailer').confirm_send_to_all().end()
     .find('#ownership_transfer .assign_link a').confirm_post("Are you sure you want to assign this person as the owner of the group?").end()
     .find('#moderator_settings .assign_link')
-      .find('a.assign').confirm_post("Are you sure you want to assign this person as a moderator of the group?").end()
-      .find('a.unassign').confirm_post("Are you sure you want to unassign this person as a moderator of the group?").end()
+      .find('a.assign').confirm_post_with_update("Are you sure you want to assign this person as a moderator of the group?").end()
+      .find('a.unassign').confirm_post_with_update("Are you sure you want to unassign this person as a moderator of the group?").end()
     .end() 
     .find('.progress').setup_progressbar().end()
     .find('form.disable_buttons_on_submit').disable_on_submit().end()
@@ -800,6 +800,25 @@ $.fn.extend({
         yes: function() {
           $.ajax({ url: $this.attr('href'), type: 'post',
             success: function(data) { window.location.reload(); }
+          });
+        }
+      });
+      return false;
+    });
+  },
+  
+  confirm_post_with_update: function(title) {
+    return this.live('click', function() {
+      var $this = $(this);
+      $.confirmation_dialog({
+        title: title,
+        yes: function() {
+          $.ajax({ url: $this.attr('href'), type: 'post',
+            success: function(data) { 
+              // data is JavaScript the Rails Generates
+              // and executes before the popup window gets removed
+              $('.popup.confirmation').dialog('destroy').remove();
+              }
           });
         }
       });
@@ -1567,7 +1586,7 @@ $.confirmation_dialog = function(options) {
     yes: function() {  },
     no: function() {  }
   }, options);
-  var $dialog = $('<div><h3>' + options.title + '</h3>' + options.body + '<div class="buttons"><input type="button" class="button medium yes" value="Yes"><input type="button" class="button medium light close no" value="No"></div>')
+  var $dialog = $('<div id="dialog-box"><h3>' + options.title + '</h3>' + options.body + '<div class="buttons"><input type="button" class="button medium yes" value="Yes"><input type="button" class="button medium light close no" value="No"></div>')
     .dialog({
       dialogClass: 'popup confirmation', modal: true, bgiframe: true, draggable: false, width: null, height: 'auto', minHeight: 0
     })
