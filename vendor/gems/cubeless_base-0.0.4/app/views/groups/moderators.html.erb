@@ -1,9 +1,10 @@
 <% content_for(:page_title, "Moderators of #{@group.name}") -%>
-<% owner_content(@group.owner) do %>
-<div id="moderators">
-	<h3>Who can modify (edit) content in this group?</h3>
-	<div id="moderator_settings">
-		<%= render :partial => "groups/moderator_options" %>
-	</div>
-</div>
+
+<% if current_profile == @group.owner %>
+  <div id="moderators">
+    <h3>Who can modify (edit) content in this group?</h3>
+    <div id="moderator_settings">
+      <%= render :partial => "groups/moderator_options" %>
+    </div>
+  </div>
 <% end %>
