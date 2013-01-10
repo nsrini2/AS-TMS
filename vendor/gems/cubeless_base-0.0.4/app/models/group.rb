@@ -244,7 +244,7 @@ class Group < ActiveRecord::Base
     stats[:average_number_of_comments] = number_of_comments > 0 ? stats[:total_blog_posts] / number_of_comments : 0
     stats[:most_commented_on_blog_post] = BlogPost.find(:all, :include => :blog, :conditions => ["blogs.owner_id = ?", self.id], :limit => 1, :order => "blog_posts.comments_count DESC").first
     stats[:highest_rated_blog_post] = BlogPost.find(:all, :include => :blog, :conditions => ["blogs.owner_id = ?", self.id], :limit => 1, :order => "blog_posts.rating_avg DESC").first
-    stats[:biggest_blogger] = Profile.find_by_sql(["select * from blog_posts bp, blogs b, profiles p where b.owner_id = ? and b.owner_type = 'Group' and bp.blog_id = b.id and bp.profile_id = p.id group by bp.profile_id order by count(1) DESC limit 1", self.id]).first || nil
+    stats[:biggest_blogger] = Profile.find_by_sql(["select * from blog_posts bp, blogs b, profiles p where b.owner_id = ? and b.owner_type = 'Group' and bp.blog_id = b.id and bp.creator_id = p.id group by bp.creator_id order by count(1) DESC limit 1", self.id]).first || nil
     
     stats
   end
