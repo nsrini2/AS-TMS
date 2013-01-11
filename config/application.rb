@@ -177,8 +177,5 @@ module AgentStream
     config.after_initialize do
       ActionView::Base.sanitized_allowed_tags << 'u'
     end
-
-    config.logger = Logger.new(File.dirname(__FILE__) + "/../log/#{Rails.env}.log") 
-    config.logger.formatter = Logger::Formatter.new
   end
 end
