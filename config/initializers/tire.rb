@@ -22,11 +22,22 @@ Tire.configure do
   # configure Tire to work with Log4r
   mylog  = Rails.logger
   mylog.instance_eval do
-    alias :write :info
+    # alias :write :warn
     # alias :<< :info
     def << (*args)
-      nil
+      buffer = args.to_s
     end
+    
+    def write(*args)
+      if args.to_s[/err/i]
+        warn(args)
+      else
+        info(args)
+      end
+      rescue
+        warn("unable to trap error in #{__FILE__}")
+    end
+    
   end
   
   logger mylog
