@@ -23,7 +23,10 @@ Tire.configure do
   mylog  = Rails.logger
   mylog.instance_eval do
     alias :write :info
-    alias :<< :info
+    # alias :<< :info
+    def << (*args)
+      nil
+    end
   end
   
   logger mylog
