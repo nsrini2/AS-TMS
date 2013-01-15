@@ -16,5 +16,15 @@ Tire.configure do
     end
   end
   # rake environment tire:import CLASS=Comment FORCE=true
-  logger STDERR
+  # logger STDERR
+  # logger
+  
+  # configure Tire to work with Log4r
+  mylog  = Rails.logger
+  mylog.instance_eval do
+    alias :write :info
+    alias :<< :info
+  end
+  
+  logger mylog
 end
