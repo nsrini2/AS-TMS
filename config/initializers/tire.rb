@@ -16,29 +16,29 @@ Tire.configure do
     end
   end
   # rake environment tire:import CLASS=Comment FORCE=true
-  # logger STDERR
-  # logger
+  logger STDERR
+  logger
   
   # configure Tire to work with Log4r
-  mylog  = Rails.logger
-  mylog.instance_eval do
-    # alias :write :warn
-    # alias :<< :info
-    def << (*args)
-      buffer = args.to_s
-    end
-    
-    def write(*args)
-      if args.to_s[/err/i]
-        warn(args)
-      else
-        info(args)
-      end
-      rescue
-        warn("unable to trap error in #{__FILE__}")
-    end
-    
-  end
-  
-  logger mylog
+  # mylog  = Rails.logger
+  # mylog.instance_eval do
+  #   # alias :write :warn
+  #   # alias :<< :info
+  #   def << (*args)
+  #     buffer = args.to_s
+  #   end
+  #   
+  #   def write(*args)
+  #     if args.to_s[/err/i]
+  #       warn(args)
+  #     else
+  #       info(args)
+  #     end
+  #     rescue
+  #       warn("unable to trap error in #{__FILE__}")
+  #   end
+  #   
+  # end
+  # 
+  # logger mylog
 end

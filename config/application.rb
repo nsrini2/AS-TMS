@@ -2,10 +2,10 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require 'log4r'
-require 'log4r/yamlconfigurator'
-require 'log4r/outputter/datefileoutputter'
-include Log4r
+# require 'log4r'
+# require 'log4r/yamlconfigurator'
+# require 'log4r/outputter/datefileoutputter'
+# include Log4r
 
 # Hack to look in engines first
 # require 'active_support/dependencies'
@@ -187,11 +187,12 @@ module AgentStream
     # config.logger.formatter = Logger::Formatter.new
     
     # BUFFERED LOGGER
-    # config.logger = ActiveSupport::BufferedLogger.new(File.dirname(__FILE__) + "/../log/#{Rails.env}.log")
+    config.logger = ActiveSupport::BufferedLogger.new(File.dirname(__FILE__) + "/../log/#{Rails.env}.log")
     
     # log4r
-    log4r_config= YAML.load_file(File.join(File.dirname(__FILE__),"log4r.yml"))
-    YamlConfigurator.decode_yaml( log4r_config['log4r_config'] )
-    Rails.logger = Log4r::Logger[Rails.env]
+    # SSF 1-16-2013 for some reason this does not log anything in production unlese started from the console
+    # log4r_config= YAML.load_file(File.join(File.dirname(__FILE__),"log4r.yml"))
+    # YamlConfigurator.decode_yaml( log4r_config['log4r_config'] )
+    # Rails.logger = Log4r::Logger[Rails.env]
   end
 end
