@@ -187,7 +187,7 @@ module AgentStream
     # config.logger.formatter = Logger::Formatter.new
     
     # BUFFERED LOGGER
-    config.logger = ActiveSupport::BufferedLogger.new(File.dirname(__FILE__) + "/../log/#{Rails.env}.log")
+    Rails.logger = ActiveSupport::BufferedLogger.new(File.dirname(__FILE__) + "/../log/#{Rails.env}.log")
     
     # log4r
     # SSF 1-16-2013 for some reason this does not log anything in production unlese started from the console

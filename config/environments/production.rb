@@ -18,8 +18,8 @@ AgentStream::Application.configure do
   # If you have no front-end server that supports something like X-Sendfile,
   # just comment this out and Rails will serve the files
 
-  # LOG -- Using log4r -- settings are made in /config/log4r.yml
-  
+  # LOG -- Using BufferdLogger
+  Rails.logger.level = 2
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
