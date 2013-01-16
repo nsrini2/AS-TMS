@@ -13,7 +13,7 @@ gem "RedCloth", '4.2.3'
 gem 'rmagick', '2.5.2', :require => false # this is getting required by attachment_fu/processors/rmagick_processor
 gem 'nokogiri', '1.5.2'
 gem "json", '~>1.4.6'
-gem 'log4r', '1.1.9'
+# gem 'log4r', '1.1.9'
 
 # require native mysql driver, not the ruby version
 gem 'fastercsv', '1.5.4' # admin user import/export
