@@ -75,7 +75,7 @@ class << self
     data << "\n"
     
     # Top ten countries with most visitors by week for the given month
-    top_visitor_countries = SiteVisit.visitors_by_country(first_day_of_month, last_day_of_month)
+    top_visitor_countries = SiteVisit.visitors_by_country(first_day_of_month, last_day_of_month + 1)
     top_visitor_countries.each do | visit |
       data << "Number of unique visitors from, #{visit.country.chomp}, #{visit.profile_count}\n"
     end
