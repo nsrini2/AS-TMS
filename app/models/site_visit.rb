@@ -10,8 +10,17 @@ class SiteVisit < ActiveRecord::Base
     
     def visitors_by_week(day = Date.today)
       start_date = day.at_beginning_of_week
-      end_date = start_date + 7
-      SiteVisit.select("DISTINCT profile_id").where("created_at between ? AND ? ", start_date, end_date).count 
+      visitors_by_range(start_date, start_date + 7)
+    end
+    
+    def visitors_by_month(day = Date.today)
+      start_date = day.at_beginning_of_month
+      end_date = day.at_end_of_month
+      visitors_by_range(start_date, end_date)
+    end
+    
+    def visitors_by_range(start_date, end_date)
+      SiteVisit.select("DISTINCT profile_id").where("created_at between ? AND ? ", start_date, end_date+1).count 
     end
     
     def visitors_by_country(start_date, end_date)
