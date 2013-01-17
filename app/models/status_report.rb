@@ -62,7 +62,7 @@ class << self
     
     
     # Number of unique visitors by month
-    data << "Month of:,Unique logins"
+    data << "Month of:,Unique logins\n"
     start_date = today.advance(:months => -1)
     data << "#{start_date.strftime('%B')}, #{SiteVisit.visitors_by_month(start_date)}\n\n"  
     
