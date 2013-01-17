@@ -60,6 +60,12 @@ class << self
     # Answers
     data << "Total Answers,#{Answer.count}\n\n"
     
+    
+    # Number of unique visitors by month
+    data << "Month of:,Unique logins"
+    start_date = today.advance(:months => -1)
+    data << "#{start_date.strftime('%B')}, #{SiteVisit.visitors_by_month(start_date)}\n\n"  
+    
     # Number of unique visitors by week
     data << "Week of:,Unique logins, Total Community Size\n"
     (1..52).each do |week|
