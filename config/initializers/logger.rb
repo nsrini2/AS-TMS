@@ -1,4 +1,6 @@
+# SSJ 1-16-2013
 # Monkeypatching the add method to change the format of the messages
+# Also added << and write methods because Tire expects to have them
 module ActiveSupport
   
   class BufferedLogger
