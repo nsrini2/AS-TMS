@@ -46,7 +46,7 @@ p.last_name = 'A'
 # p.attributes[:roles] = "5"
 p.roles = [Role::DirectMember]
 p.screen_name = 'agent_a'
-p.visible = 0
+p.visible = 1
 p.status = 1
 begin
   p.save!
@@ -72,7 +72,7 @@ p.last_name = 'B'
 # p.attributes[:roles] = "5"
 p.roles = [Role::DirectMember]
 p.screen_name = 'agent_b'
-p.visible = 0
+p.visible = 1
 p.status = 1
 begin
   p.save!
