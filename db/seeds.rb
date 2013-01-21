@@ -17,7 +17,8 @@ p = Profile.find_or_create_by_user_id(u.id)
 p.user_id = u.id
 p.first_name = 'Cubeless'
 p.last_name = 'Admin'
-p.attributes[:roles] = "1,7,2,8,3,4,0"
+# p.attributes[:roles] = "1,7,2,8,3,4,0"
+p.roles = Role::CubelessAdmin, Role::ReportAdmin, Role::ContentAdmin, Role::ShadyAdmin, Role::UserAdmin, Role::AwardsAdmin, Role::SponsorAdmin
 p.screen_name = 'cubeless_admin'
 p.visible = 0
 p.status = 1
@@ -42,8 +43,61 @@ end
 p = Profile.find_or_create_by_user_id(u.id)
 p.first_name = 'Agent'
 p.last_name = 'A'
-p.attributes[:roles] = "5"
+# p.attributes[:roles] = "5"
+p.roles = [Role::DirectMember]
 p.screen_name = 'agent_a'
+p.visible = 0
+p.status = 1
+begin
+  p.save!
+rescue e
+  puts e
+end
+
+u = User.new( :email => 'agent_b.email@sabre.com')
+u.login = 'agent_b'
+u.password = 'abc123'
+u.password_confirmation = 'abc123'
+u.terms_accepted = 1
+u.sync_exclude = 1
+begin
+  u.save!
+rescue
+  u = User.find_by_email('agent_b.email@sabre.com')
+end
+
+p = Profile.find_or_create_by_user_id(u.id)
+p.first_name = 'Agent'
+p.last_name = 'B'
+# p.attributes[:roles] = "5"
+p.roles = [Role::DirectMember]
+p.screen_name = 'agent_b'
+p.visible = 0
+p.status = 1
+begin
+  p.save!
+rescue e
+  puts e
+end
+
+u = User.new( :email => 'sponsor_a.email@sabre.com')
+u.login = 'sponsor_a'
+u.password = 'abc123'
+u.password_confirmation = 'abc123'
+u.terms_accepted = 1
+u.sync_exclude = 1
+begin
+  u.save!
+rescue
+  u = User.find_by_email('agent_b.email@sabre.com')
+end
+
+p = Profile.find_or_create_by_user_id(u.id)
+p.first_name = 'Sponsor'
+p.last_name = 'A'
+# p.attributes[:roles] = "6"
+p.roles = [Role::SponsorMember]
+p.screen_name = 'Sponsor'
 p.visible = 0
 p.status = 1
 begin
@@ -181,6 +235,17 @@ b = Blog.new(:owner_id => 2, :owner_type => 'News')
 b.save!
 sql = "update blogs set id=10 where id=3"
 ActiveRecord::Base.connection.execute(sql)
-# d = Date.today
+d = Date.today
 # p.questions.build(:category => "Marketing", :question => "default seed question?", :open_until => d.advance(:months => 2) )
+
+### GROUPS SEED DATA ###
+agent_b = Profile.find_by_screen_name('agent_b')
+public_group = Group.create(  :name => "Seed Public Group",       :description => "This is a default public group created by the seeds.rb file",      :tags => "seed, public",  :group_type => 0, :owner_id => agent_b.id)
+invite_group = Group.create(  :name => "Seed Invite Only Group",  :description => "This is a default invite only group created by the seeds.rb file", :tags => "seed, invite",  :group_type => 1, :owner_id => agent_b.id)
+private_group = Group.create( :name => "Seed Private Group",      :description => "This is a default private group created by the seeds.rb file",     :tags => "seed, private", :group_type => 2, :owner_id => agent_b.id)
+
+sponsor_a = Profile.find_by_screen_name('sponsor_a')
+agent_a = Profile.find_by_screen_name('agent_a')
+sponsor_group = Group.create(:name => "Seed Public Sponsor Group", :description => "This is a default public sponsor group created by the seeds.rb file", :tags => "seed, public, sponsor", :group_type => 0, :owner_id => agent_b.id, :sponsor_account => sponsor_a)
+GroupMembership.create({:profile_id => agent_a.id, :group_id => sponsor_group.id})
 
