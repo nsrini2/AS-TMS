@@ -116,6 +116,7 @@ GEM
       multi_json (~> 1.0)
     linecache (0.46)
       rbx-require-relative (> 0.0.4)
+    log4r (1.1.9)
     loofah (1.2.1)
       nokogiri (>= 1.4.4)
     mail (2.2.19)
@@ -255,6 +256,7 @@ DEPENDENCIES
   inherits_from (~> 0.0.2)
   json (~> 1.4.6)
   koala (= 1.2.1)
+  log4r (= 1.1.9)
   microreviewr!
   mysql2 (~> 0.2.19b5)
   newrelic_rpm (~> 3.3.4.1)
