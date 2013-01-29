@@ -1,0 +1,82 @@
+<style>
+	#main { 
+		min-height: 523px;
+	  background: #FFF url('/images/ASHomepage_NewMar11_Version2_32311.jpg') no-repeat; 
+	}
+</style>
+
+<div class="intro-text">
+	<h5>the largest</h5>
+	<h1>travel agent community</h1>
+	<h5>in the world</h5>
+	<p>Welcome to AgentStream, a free community where you can connect, collaborate and share knowledge with thousands of your travel agent peers from around the globe.</p>
+	<ul>
+		<li>Ask & Answer Questions</li>
+		<li>Create & Join Groups</li>
+		<li>Create & Comment on Blogs</li>
+		<li>Access Daily Travel News</li>
+	</ul>
+</div>
+
+<%# unless @facebook_user %>
+	<div class="login-border">
+		<div id="login-main">
+			<div id="login-header">
+				Log in<%=link_to ' or Register Now &rsaquo;', {:controller => 'account', :action => 'signup'} %>
+			</div>
+			<div id="facebook-login">
+				<h4>Facebook user?</h4>
+				<p>Connect with your Facebook account:</p>
+				<fb:login-button on-login="window.location = '/account/register'" size="medium">Sign in with Facebook</fb:login-button>
+				<div id="fb-root"></div>
+			</div>
+
+			<div id="login-middle">
+				<div id="login-top-bar"></div>
+				<div id="login-or">
+					<p>or</p>
+				</div>
+				<div id="login-bottom-bar"></div>
+			</div>
+
+			<div id="agentstream-login">
+					<% @user = User.new %>
+					<% form_for @user, :url => login_account_path, :html => { :id => "login_form", :class => "html5", "accept-charset" => "utf-8" } do %>
+						  <input type="text" name="login" placeholder="Login" id="one" /><br/>
+							<a href="/retrievals/new?forgot=login"`c>Forgot login?</a><br/>
+						  <input type="password" name="password" placeholder="Password" id="two"/><br/>
+							<a href="/retrievals/new?forgot=password">Forgot password?</a><br/>
+					   	<button type="submit" class="button">Login</button>
+					   	<br/>
+					<% end %>
+			</div>
+			
+
+			<div style="clear:both;"></div>
+		</div>			
+	</div>	
+<%# end %>
+
+
+<script>
+	// these have to be in page AFTER <div id="fb-root"></div> 
+	// Initialize facebook elements	 
+	FB.init({
+	   appId  : <%=FB_APP_ID%>,
+	   status : true, // check login status
+	   cookie : true, // enable cookies to allow the server to access the session
+	   xfbml  : true  // parse XFBML
+	 });
+	
+	// logout of facebook
+	<% if @facebook_logout %>
+		FB.getLoginStatus(function(response) {
+		  if (response.session) {
+				// User logged into FB
+		    FB.logout(function(response){
+					// cb : window.location = "/account/login?logout=true";
+				});
+		  }
+		});
+	<% end %>	
+</script>

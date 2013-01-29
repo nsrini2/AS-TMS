@@ -1,0 +1,7 @@
+<%= render "notifier/partials/headline", {:headline => "A new comment has been added to your group talk thread."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="2">
+	<p><%= @comment.profile.screen_name %> added a comment to your talk thread for group <strong><%= @comment.owner.group.name %></strong>.</p>
+	<p>&#8220;<%= @comment.text %>&#8221;</p>
+	<p><%= link_from_email('Click here', group_group_posts_url(@comment.owner.group) + "#group_post_#{@comment.owner.id}" ) %> to view it.</p>
+</font></p>	

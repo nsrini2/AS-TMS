@@ -1,0 +1,13 @@
+<div id="book_by_url_dialog" title="Book It!">
+     <div align="center">
+          <p>
+          	To book, click on the url listed below:
+          </p>
+          <p class="highlight">
+            <%= link_to @offer.url, @offer.url, :target => "_blank", :class => "external" %>
+          </p>
+          <p class="last">
+               Thanks and happy booking!
+          </p>
+     </div>
+</div>

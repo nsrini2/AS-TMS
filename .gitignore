@@ -1,0 +1,14 @@
+.rvmrc
+.DS_Store
+.rspec
+/log/*
+/tmp/*
+/spec/tmp/*
+config/database.yml
+config/panda.yml
+config/facebook.yml
+config/feature_sets.yml
+public/attachments
+public/javascripts/admin_packaged.js
+public/javascripts/base_packaged.js
+public/stylesheets/base_packaged.css

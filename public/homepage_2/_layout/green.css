@@ -1,0 +1,18 @@
+/* 
+	skin - green
+*/
+ 
+a{ color:#4B9007; }
+
+#wrap{ border-color:#5B8B23; }
+
+#slideshow ul li .slidetext{ background-color:#5B8B23; }
+	.slidetext h2, .slidetext h3{ color:#ffffff; }
+	.slidetext h2 a, .slidetext h3 a{ color:#ffffff; }
+	.slidetext p{ color:#ffffff; }	
+
+.inner-page-title{ background-color:#5B8B23; }
+	.inner-page-title h2{}
+	.inner-page-title p{ color:#ffffff; }
+	
+ul#dropdown-menu li.current > a{ color:#4B9007; }	

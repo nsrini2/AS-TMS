@@ -1,0 +1,6 @@
+a.button, input.button { background: <%= @theme_colors['primary_button_color'] %>; border-color: <%= @theme_colors['primary_button_highlight'] %>; border-bottom-color: <%= @theme_colors['primary_button_shadow'] %>; border-right-color: <%= @theme_colors['primary_button_shadow'] %>; border-width: 2px; border-style: solid; color: #fff; text-align: center; cursor: pointer; font-weight: bold; text-decoration: none; }
+a.large, input.large { padding: 0 10px; height: 26px; font-size: 12px; }
+a.large { display: block; padding-top: 4px; width: auto; height: 18px; }
+a.medium, input.medium { display: block; padding: 0px; width: 56px; height: 20px; font-size: 11px; }
+a.little, input.little { display: block; margin: 3px 0 0 auto; border-width: 1px; width: 56px; height: 12px; font-size: 11px; }
+a.light, input.light { background: <%= @theme_colors['secondary_button_color'] %>; border-color: <%= @theme_colors['secondary_button_highlight'] %>; border-bottom-color: <%= @theme_colors['secondary_button_shadow'] %>; border-right-color: <%= @theme_colors['secondary_button_shadow'] %>; }

@@ -1,0 +1,7 @@
+<%= render "notifier/partials/headline", {:headline => "A member you're following added a new blog post."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	Someone you're following, <%= link_from_email(@author.screen_name.titleize, profile_url(@author)) %>, has written a new blog post,
+	<strong><%= @blog_post.title.titleize %></strong>.
+	<p><%= link_from_email('Click here', profile_blog_url(@author)) %> to view it.</p>
+</font></p>	

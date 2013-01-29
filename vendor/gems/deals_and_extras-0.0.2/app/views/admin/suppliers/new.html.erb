@@ -1,0 +1,62 @@
+<%- unless @supplier.id %>
+<% if false %>
+        <%= form_tag '/admin/suppliers/', :multipart => true do %>
+            <label for="file">File to Upload</label> <%= file_field_tag "file" %>
+            <%= submit_tag 'upload' %>
+        <% end %>
+
+        <h4>OR</h4>
+<% end %>
+        <%- end %>
+
+        <%= form_for [:admin, @supplier] do |f| %>
+            <table>
+                <tr>
+                    <td><%= f.label :supplier_external_reference_id %></td>
+                    <td><%= f.text_field :supplier_external_reference_id, {:class => 'text long'} %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :data_source_id %></td>
+                    <td><%= f.select :data_source_id, DataSource.OPTIONIZE, {:class => 'drop', :include_blank => true} %> </td>
+                </tr>
+                <tr>
+                    <td><%= f.label :supplier_type_id %></td>
+                    <td><%= f.select :supplier_type_id, SupplierType.OPTIONIZE, {:class => 'drop', :include_blank => true} %> </td>
+                </tr>
+                <tr>
+                    <td><%= f.label :supplier_name %></td>
+                    <td><%= f.text_field :supplier_name, {:class => 'text long'} %> </td>
+                </tr>
+                <tr>
+                    <td><%= f.label :address_1 %></td>
+                    <td><%= f.text_field :address_1, {:class => 'text long'} %> </td>
+                </tr>
+                <tr>
+                    <td><%= f.label :address_2 %></td>
+                    <td><%= f.text_field :address_2, {:class => 'text long'} %> </td>
+                </tr>
+                <tr>
+                    <td><%= f.label :address_3 %></td>
+                    <td><%= f.text_field :address_3, {:class => 'text long'} %> </td>
+                </tr>
+                <tr>
+                    <td><%= f.label :city %></td>
+                    <td><%= f.text_field :city, {:class => 'text long'} %></td>
+                </tr>
+                
+                <tr>
+                    <td><%= f.label :state_province_id %></td>
+                    <td><%= f.select :state_province_id, StateProvince.OPTIONIZE, {:class => 'text long', :include_blank => true} %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :postal_code %></td>
+                    <td><%= f.text_field :postal_code, {:class => 'text long'} %></td>
+                </tr>
+                <tr>
+                    <td><%= f.label :country_id %></td>
+                    <td><%= f.text_field :country_id, {:class => 'text long'} %></td>
+                </tr>
+
+            </table>
+            <%= submit_tag @supplier.id ? 'update' : 'add', {:class => 'button'} %>
+        <% end %>

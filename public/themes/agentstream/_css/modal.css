@@ -1,0 +1,94 @@
+/* line 1, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.ui-widget-overlay {
+  background-color: #333;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+  zoom: 1;
+}
+
+/* line 8, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup {
+  background-color: #fff;
+  border: 3px solid #C4D7DC;
+  padding: 10px;
+  width: 425px;
+  margin: 0 auto;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup .ui-dialog-titlebar {
+  display: none;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup .ui-dialog-content {
+  position: relative;
+  padding: 16px;
+}
+
+/* line 24, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup .ui-dialog-content h3 {
+  margin-top: -5px;
+  margin-bottom: 18px;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup .ui-dialog-content a.close {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  font-weight: bold;
+}
+
+/* notice and error dialogs */
+/* line 34, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+#flash_notice {
+  display: none;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.notice_dialog #flash_notice {
+  display: block;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.notice_dialog .ui-dialog-titlebar {
+  display: none;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+#flash_notice ul.notice_messages {
+  margin-bottom: 0;
+  list-style: none;
+}
+
+/* line 44, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+#flash_notice ul.notice_messages li {
+  margin: 5px 0;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+#flash_error {
+  border: 3px solid #990000;
+  display: none;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.error_dialog #flash_error {
+  display: block;
+}
+
+/* line 53, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.error_dialog #flash_error h2 {
+  margin-top: 16px;
+}
+
+/* line 56, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.error_dialog .ui-dialog-titlebar {
+  display: block;
+  position: relative;
+  top: 32px;
+  text-align: right;
+  margin: 40px 5px 10px;
+  width: 405px;
+}

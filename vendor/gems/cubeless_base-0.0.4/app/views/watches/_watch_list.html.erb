@@ -1,0 +1,24 @@
+<dl id="watch_list">
+	<dt>Following List</dt>
+	<dd<%= render_selected_if_is?('index') %>>
+		<%= link_to_unless_current_ignore_params "All Activity", profile_watches_path(@profile) %>
+	</dd>
+	<% if @profile_watches.size > 0 %>
+	<dt>People</dt>
+	<dd<%= render_selected_if_is?('profiles') %>>
+		<%= link_to_unless_current_ignore_params "Show All", profiles_profile_watches_path(@profile) %>
+	</dd>
+	<% @profile_watches.each do |w| %>
+	<%= render :partial => 'watch_list_item', :locals => {:id => w.id, :name => w.watchable.screen_name} %>
+	<% end -%>
+	<% end -%>
+	<% if @group_watches.size > 0 %>
+	<dt>Groups</dt>
+	<dd<%= render_selected_if_is?('groups') %>>
+		<%= link_to_unless_current_ignore_params "Show All", groups_profile_watches_path(@profile) %>
+	</dd>
+	<% @group_watches.each do |w| %>
+	<%= render :partial => 'watch_list_item', :locals => {:id => w.id, :name => w.watchable.name} %>
+	<% end -%>
+	<% end -%>
+</dl>

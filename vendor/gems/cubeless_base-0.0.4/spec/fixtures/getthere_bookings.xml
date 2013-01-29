@@ -1,0 +1,1480 @@
+<GTXML VERSION="1.0" TIME_STAMP="2009-12-21T18:03:22 GMT" TRANSACTION_ID="2009-12-21T18:03:15 GMT.6211">
+  <HEADER>
+     <SENDER>
+       <SENDER_NAME>gtpartner</SENDER_NAME>
+     </SENDER>
+     <RECEIVER>
+       <RECEIVER_NAME>Studios</RECEIVER_NAME>
+     </RECEIVER>
+  </HEADER>
+  <BODY>
+    <RESPONSE TYPE="query">
+      <STATUS_CODE>1000</STATUS_CODE>
+      <STATUS_TEXT>REQUEST_OK</STATUS_TEXT>
+      <QUERY_RESPONSE>
+        <RECORDS_RETURNED>10</RECORDS_RETURNED>
+        <NEXT_QUERY_START_ID>4625546147</NEXT_QUERY_START_ID>
+        <QUERY_RESULTS>
+          <BOOKINGS_HEADER DOC_VERSION="2.0">
+            <AGENCY>
+              <AGENCY_NAME></AGENCY_NAME>
+              <AGENCY_CITY>Dallas</AGENCY_CITY>
+              <AGENCY_COUNTRY>USA</AGENCY_COUNTRY>
+              <CRS_SYSTEM>SABRE</CRS_SYSTEM>
+              <CRS_CODE>a8hd</CRS_CODE>
+              <CRS_QUEUE></CRS_QUEUE>
+              <ARC_NUM></ARC_NUM>
+              <IATA_NUM></IATA_NUM>
+              <DK_NUM></DK_NUM>
+            </AGENCY>
+          </BOOKINGS_HEADER>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1252957146.99999" TIME_STAMP="2009-12-17T22:10:51 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>DRINFT</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-14T19:59:28 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Juliana Cristina Soares</FIRST_NAME>
+            <LAST_NAME>Ferreira</LAST_NAME>
+            <USER_LOGIN>88899698</USER_LOGIN>
+            <DAY_PHONE>+55 11 85284222</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST></ARRANGER_FIRST>
+            <ARRANGER_LAST></ARRANGER_LAST>
+            <ARRANGER_LOGIN></ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>juliana.ferreira@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Juliana Cristina Soares</FIRST_NAME>
+              <LAST_NAME>Ferreira</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT>Days prior to travel date less than the minimum allowed</AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT>I understand I am continuing with an out of policy booking and fu</AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>01</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>01</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>33204</LOWEST_AIR_FARE>
+              <TRIP_TYPE>round-trip</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>27100</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-14T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>28500</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>DRINFT</AIR_LOC>
+              <AIRLINE_LOC>LUQPSG</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4AT71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-16T10:00:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-16T09:00:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3912</FLIGHT_NO>
+              <FROM_APT_CODE>CGH</FROM_APT_CODE>
+              <FROM_APT_NAME>Cgh/Congonhas                      '</FROM_APT_NAME>
+              <FROM_CITY_NAME>Sao Paulo</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Sao Paulo</FROM_STATE_NAME>
+              <RES_SEAT>5B</RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>SDU</TO_APT_CODE>
+              <TO_APT_NAME>Sdu/Santos Dumont                 ''</TO_APT_NAME>
+              <TO_CITY_NAME>Rio De Janeiro          /Rio Janeiro</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Rio De Janeiro</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>DRINFT</AIR_LOC>
+              <AIRLINE_LOC>LUQPSG</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4AT71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-16T16:09:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-16T15:15:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3937</FLIGHT_NO>
+              <FROM_APT_CODE>SDU</FROM_APT_CODE>
+              <FROM_APT_NAME>Sdu/Santos Dumont                 ''</FROM_APT_NAME>
+              <FROM_CITY_NAME>Rio De Janeiro          /Rio Janeiro</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Rio De Janeiro</FROM_STATE_NAME>
+              <RES_SEAT>5E</RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CGH</TO_APT_CODE>
+              <TO_APT_NAME>Cgh/Congonhas                      '</TO_APT_NAME>
+              <TO_CITY_NAME>Sao Paulo</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Sao Paulo</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1252050547.90053" TIME_STAMP="2009-12-17T22:10:58 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>CTKHYP</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-04T08:23:13 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Priscila Schiavenato</FIRST_NAME>
+            <LAST_NAME>Rosa</LAST_NAME>
+            <USER_LOGIN>88728071</USER_LOGIN>
+            <DAY_PHONE>551151893119</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST></ARRANGER_FIRST>
+            <ARRANGER_LAST></ARRANGER_LAST>
+            <ARRANGER_LOGIN></ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>priscila.rosa@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Priscila Schiavenato</FIRST_NAME>
+              <LAST_NAME>Rosa</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT></AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT></AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>02</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>02</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>0</LOWEST_AIR_FARE>
+              <TRIP_TYPE>multi-city</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>36800</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-04T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE, </PENALTY>
+              <TOTAL_FARE>39000</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>CTKHYP</AIR_LOC>
+              <AIRLINE_LOC>PDPETS</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>X</BOOKING_CLASS_CODE>
+              <FARE_BASIS>X5JJORA</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-14T11:10:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-14T10:00:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3212</FLIGHT_NO>
+              <FROM_APT_CODE>CGH</FROM_APT_CODE>
+              <FROM_APT_NAME>Cgh/Congonhas                      '</FROM_APT_NAME>
+              <FROM_CITY_NAME>Sao Paulo</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Sao Paulo</FROM_STATE_NAME>
+              <RES_SEAT> 6F</RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CNF</TO_APT_CODE>
+              <TO_APT_NAME>Cnf/Tancredo Neves                ''</TO_APT_NAME>
+              <TO_CITY_NAME>Belo Horizonte         /Belo Horizon</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Minas Gerais</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>CTKHYP</AIR_LOC>
+              <AIRLINE_LOC>PDPETS</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4RE1FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-15T11:30:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-15T10:30:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3382</FLIGHT_NO>
+              <FROM_APT_CODE>CNF</FROM_APT_CODE>
+              <FROM_APT_NAME>Cnf/Tancredo Neves                ''</FROM_APT_NAME>
+              <FROM_CITY_NAME>Belo Horizonte         /Belo Horizon</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Minas Gerais</FROM_STATE_NAME>
+              <RES_SEAT> 9C</RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>GIG</TO_APT_CODE>
+              <TO_APT_NAME>GIG/Internacional                 '</TO_APT_NAME>
+              <TO_CITY_NAME>Rio De Janeiro          /Rio Janeiro</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Rio De Janeiro</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>CTKHYP</AIR_LOC>
+              <AIRLINE_LOC>PDPETS</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4AT71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-16T16:42:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-16T15:45:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3939</FLIGHT_NO>
+              <FROM_APT_CODE>SDU</FROM_APT_CODE>
+              <FROM_APT_NAME>Sdu/Santos Dumont                 ''</FROM_APT_NAME>
+              <FROM_CITY_NAME>Rio De Janeiro          /Rio Janeiro</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Rio De Janeiro</FROM_STATE_NAME>
+              <RES_SEAT> 4F</RES_SEAT>
+              <SEGMENT>L2F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CGH</TO_APT_CODE>
+              <TO_APT_NAME>Cgh/Congonhas                      '</TO_APT_NAME>
+              <TO_CITY_NAME>Sao Paulo</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Sao Paulo</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          <HOTEL>
+            <HOTEL_HEADER>
+              <HOTEL_ITIN_POLICY_ERR_TEXT></HOTEL_ITIN_POLICY_ERR_TEXT>
+              <HOTEL_ITIN_REASON_TEXT>Hotel selected for customer meeting or conference.</HOTEL_ITIN_REASON_TEXT>
+              <HOTEL_LEGS_VERSION>01</HOTEL_LEGS_VERSION>
+            </HOTEL_HEADER>
+            <HOTEL_LEG>
+              <HOT_LOC>CTKHYP</HOT_LOC>
+              <HOT_PROP_ID>60164</HOT_PROP_ID>
+              <HOT_CONF>3575JID520</HOT_CONF>
+              <CHECKIN_DATE_TIME>2009-09-14T12:00:00</CHECKIN_DATE_TIME>
+              <CHECKOUT_DATE_TIME>2009-09-15T12:00:00</CHECKOUT_DATE_TIME>
+              <CURRENCY>BRL</CURRENCY>
+              <HOTEL_CHAIN_CODE>RT</HOTEL_CHAIN_CODE>
+              <HOTEL_CHAIN_NAME>Accor</HOTEL_CHAIN_NAME>
+              <HOTEL_CITY_NAME>Belo Horizonte</HOTEL_CITY_NAME>
+              <HOTEL_COUNTRY_CODE>BR</HOTEL_COUNTRY_CODE>
+              <HOTEL_COUNTRY_NAME>BRAZIL</HOTEL_COUNTRY_NAME>
+              <HOTEL_LEG_POLICY_ERR_TEXT></HOTEL_LEG_POLICY_ERR_TEXT>
+              <HOTEL_LOCATION_CODE>PLU</HOTEL_LOCATION_CODE>
+              <HOTEL_NAME>Mercure Belo Horizonte 3</HOTEL_NAME>
+              <HOTEL_PERDIEM>0</HOTEL_PERDIEM>
+              <HOTEL_ADDRESS_1>Av Do Contorno 7315</HOTEL_ADDRESS_1>
+              <HOTEL_ADDRESS_2></HOTEL_ADDRESS_2>
+              <HOTEL_ADDRESS_3></HOTEL_ADDRESS_3>
+              <HOTEL_ADDRESS_4></HOTEL_ADDRESS_4>
+              <HOTEL_PHONE_NBR>55-31-32984100</HOTEL_PHONE_NBR>
+              <HOTEL_POSTAL_CODE>30110-110</HOTEL_POSTAL_CODE>
+              <HOTEL_STATE_CODE></HOTEL_STATE_CODE>
+              <HOTEL_STATE_NAME></HOTEL_STATE_NAME>
+              <LEGS></LEGS>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <LOWEST_HOTEL_PRICE></LOWEST_HOTEL_PRICE>
+              <PRICE>24400</PRICE>
+              <PREFERRED>N</PREFERRED>
+              <RATE_DESC>BEST UNRESTRICTED RATE, THE HOTEL DO NOT ACCEPT CHECK., STANDARD ROOM</RATE_DESC>
+            </HOTEL_LEG>
+            <HOTEL_LEG>
+              <HOT_LOC>CTKHYP</HOT_LOC>
+              <HOT_PROP_ID>55581</HOT_PROP_ID>
+              <HOT_CONF>82167702</HOT_CONF>
+              <CHECKIN_DATE_TIME>2009-09-14T15:00:00</CHECKIN_DATE_TIME>
+              <CHECKOUT_DATE_TIME>2009-09-15T12:00:00</CHECKOUT_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <HOTEL_CHAIN_CODE>MC</HOTEL_CHAIN_CODE>
+              <HOTEL_CHAIN_NAME>Marriott Hotels</HOTEL_CHAIN_NAME>
+              <HOTEL_CITY_NAME>Rio De Janeiro</HOTEL_CITY_NAME>
+              <HOTEL_COUNTRY_CODE>BR</HOTEL_COUNTRY_CODE>
+              <HOTEL_COUNTRY_NAME>BRAZIL</HOTEL_COUNTRY_NAME>
+              <HOTEL_LEG_POLICY_ERR_TEXT></HOTEL_LEG_POLICY_ERR_TEXT>
+              <HOTEL_LOCATION_CODE>GIG</HOTEL_LOCATION_CODE>
+              <HOTEL_NAME>JW MARRIOTT RIO DE JANEIRO</HOTEL_NAME>
+              <HOTEL_PERDIEM>0</HOTEL_PERDIEM>
+              <HOTEL_ADDRESS_1>Avenida Atlantica 2600</HOTEL_ADDRESS_1>
+              <HOTEL_ADDRESS_2></HOTEL_ADDRESS_2>
+              <HOTEL_ADDRESS_3></HOTEL_ADDRESS_3>
+              <HOTEL_ADDRESS_4></HOTEL_ADDRESS_4>
+              <HOTEL_PHONE_NBR>55-21-2545-6500</HOTEL_PHONE_NBR>
+              <HOTEL_POSTAL_CODE></HOTEL_POSTAL_CODE>
+              <HOTEL_STATE_CODE></HOTEL_STATE_CODE>
+              <HOTEL_STATE_NAME></HOTEL_STATE_NAME>
+              <LEGS></LEGS>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <LOWEST_HOTEL_PRICE></LOWEST_HOTEL_PRICE>
+              <PRICE>18900</PRICE>
+              <PREFERRED>Y</PREFERRED>
+              <RATE_DESC>ORACLE CORPORATION, ORACLE, INCLUDES BREAKFAST DELUXE ATRIUM VIEW, GUEST ROOM, 1, KING OR 2 TWIN/SINGLE, NO VIEW</RATE_DESC>
+            </HOTEL_LEG>
+          </HOTEL>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1252868080.91527" TIME_STAMP="2009-12-17T22:10:58 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>BTBPAH</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-13T19:08:13 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Carmen Lucia Rosas</FIRST_NAME>
+            <LAST_NAME>Guimaraes</LAST_NAME>
+            <USER_LOGIN>88947969</USER_LOGIN>
+            <DAY_PHONE>55-2135346000</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST></ARRANGER_FIRST>
+            <ARRANGER_LAST></ARRANGER_LAST>
+            <ARRANGER_LOGIN></ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>carmen.guimaraes@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Carmen Lucia Rosas</FIRST_NAME>
+              <LAST_NAME>Guimaraes</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT>Days prior to travel date less than the minimum allowed</AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT>I understand I am continuing with an out of policy booking and fu</AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>01</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>01</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>34964</LOWEST_AIR_FARE>
+              <TRIP_TYPE>round-trip</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>27100</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-13T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>28500</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>BTBPAH</AIR_LOC>
+              <AIRLINE_LOC>EPVXKX</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4AT71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-16T15:13:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-16T14:16:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3933</FLIGHT_NO>
+              <FROM_APT_CODE>SDU</FROM_APT_CODE>
+              <FROM_APT_NAME>Sdu/Santos Dumont                 ''</FROM_APT_NAME>
+              <FROM_CITY_NAME>Rio De Janeiro          /Rio Janeiro</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Rio De Janeiro</FROM_STATE_NAME>
+              <RES_SEAT>7D</RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CGH</TO_APT_CODE>
+              <TO_APT_NAME>Cgh/Congonhas                      '</TO_APT_NAME>
+              <TO_CITY_NAME>Sao Paulo</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Sao Paulo</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>BTBPAH</AIR_LOC>
+              <AIRLINE_LOC>EPVXKX</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4AT71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-17T17:28:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-17T16:30:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3942</FLIGHT_NO>
+              <FROM_APT_CODE>CGH</FROM_APT_CODE>
+              <FROM_APT_NAME>Cgh/Congonhas                      '</FROM_APT_NAME>
+              <FROM_CITY_NAME>Sao Paulo</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Sao Paulo</FROM_STATE_NAME>
+              <RES_SEAT></RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>SDU</TO_APT_CODE>
+              <TO_APT_NAME>Sdu/Santos Dumont                 ''</TO_APT_NAME>
+              <TO_CITY_NAME>Rio De Janeiro          /Rio Janeiro</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Rio De Janeiro</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          <HOTEL>
+            <HOTEL_HEADER>
+              <HOTEL_ITIN_POLICY_ERR_TEXT></HOTEL_ITIN_POLICY_ERR_TEXT>
+              <HOTEL_ITIN_REASON_TEXT></HOTEL_ITIN_REASON_TEXT>
+              <HOTEL_LEGS_VERSION>01</HOTEL_LEGS_VERSION>
+            </HOTEL_HEADER>
+            <HOTEL_LEG>
+              <HOT_LOC>BTBPAH</HOT_LOC>
+              <HOT_PROP_ID>54891</HOT_PROP_ID>
+              <HOT_CONF>3135JIF504</HOT_CONF>
+              <CHECKIN_DATE_TIME>2009-09-16T12:00:00</CHECKIN_DATE_TIME>
+              <CHECKOUT_DATE_TIME>2009-09-17T12:00:00</CHECKOUT_DATE_TIME>
+              <CURRENCY>BRL</CURRENCY>
+              <HOTEL_CHAIN_CODE>RT</HOTEL_CHAIN_CODE>
+              <HOTEL_CHAIN_NAME>Accor</HOTEL_CHAIN_NAME>
+              <HOTEL_CITY_NAME>Sao Paulo</HOTEL_CITY_NAME>
+              <HOTEL_COUNTRY_CODE>BR</HOTEL_COUNTRY_CODE>
+              <HOTEL_COUNTRY_NAME>BRAZIL</HOTEL_COUNTRY_NAME>
+              <HOTEL_LEG_POLICY_ERR_TEXT></HOTEL_LEG_POLICY_ERR_TEXT>
+              <HOTEL_LOCATION_CODE>CGH</HOTEL_LOCATION_CODE>
+              <HOTEL_NAME>MERCURE APARTMENTS NACOES UNIDAS</HOTEL_NAME>
+              <HOTEL_PERDIEM>0</HOTEL_PERDIEM>
+              <HOTEL_ADDRESS_1>Rua Manoelito De Ornellas 104</HOTEL_ADDRESS_1>
+              <HOTEL_ADDRESS_2></HOTEL_ADDRESS_2>
+              <HOTEL_ADDRESS_3></HOTEL_ADDRESS_3>
+              <HOTEL_ADDRESS_4></HOTEL_ADDRESS_4>
+              <HOTEL_PHONE_NBR>55-11-51883855</HOTEL_PHONE_NBR>
+              <HOTEL_POSTAL_CODE>04719-040</HOTEL_POSTAL_CODE>
+              <HOTEL_STATE_CODE></HOTEL_STATE_CODE>
+              <HOTEL_STATE_NAME></HOTEL_STATE_NAME>
+              <LEGS></LEGS>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <LOWEST_HOTEL_PRICE></LOWEST_HOTEL_PRICE>
+              <PRICE>13100</PRICE>
+              <PREFERRED>Y</PREFERRED>
+              <RATE_DESC>ORACLE, THE HOTEL DO NOT ACCEPT CHECK., STANDARD ROOM WITH 1 DOUBLE BED</RATE_DESC>
+            </HOTEL_LEG>
+          </HOTEL>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1252655535.96960" TIME_STAMP="2009-12-17T22:10:59 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>FIYWBH</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-11T08:39:58 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Fabricio Silva</FIRST_NAME>
+            <LAST_NAME>Cardoso</LAST_NAME>
+            <USER_LOGIN>88748489</USER_LOGIN>
+            <DAY_PHONE>551151891216</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST>Daiana</ARRANGER_FIRST>
+            <ARRANGER_LAST>Silva</ARRANGER_LAST>
+            <ARRANGER_LOGIN>888485783</ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>fabricio.cardoso@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Fabricio Silva</FIRST_NAME>
+              <LAST_NAME>Cardoso</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT>Days prior to travel date less than the minimum allowed</AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT>I understand I am continuing with an out of policy booking and fu</AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>01</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>01</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>26400</LOWEST_AIR_FARE>
+              <TRIP_TYPE>round-trip</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>24800</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-17T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>26400</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>FIYWBH</AIR_LOC>
+              <AIRLINE_LOC>KNECAM</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4JJORA</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-17T09:41:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-17T08:46:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3003</FLIGHT_NO>
+              <FROM_APT_CODE>CGH</FROM_APT_CODE>
+              <FROM_APT_NAME>Cgh/Congonhas                      '</FROM_APT_NAME>
+              <FROM_CITY_NAME>Sao Paulo</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Sao Paulo</FROM_STATE_NAME>
+              <RES_SEAT>14C</RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CWB</TO_APT_CODE>
+              <TO_APT_NAME>Cwb/Afonso Pena                    '</TO_APT_NAME>
+              <TO_CITY_NAME>Curitiba</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Parana</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>FIYWBH</AIR_LOC>
+              <AIRLINE_LOC>KNECAM</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4JJORA</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-17T21:00:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-17T19:50:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3332</FLIGHT_NO>
+              <FROM_APT_CODE>CWB</FROM_APT_CODE>
+              <FROM_APT_NAME>Cwb/Afonso Pena                    '</FROM_APT_NAME>
+              <FROM_CITY_NAME>Curitiba</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Parana</FROM_STATE_NAME>
+              <RES_SEAT>14D</RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>GRU</TO_APT_CODE>
+              <TO_APT_NAME>GRU/Guarulhos International</TO_APT_NAME>
+              <TO_CITY_NAME>Sao Paulo</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Sao Paulo</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1252989579.95226" TIME_STAMP="2009-12-17T22:10:59 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>DDCAZR</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-15T08:22:48 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Denise Echevengua</FIRST_NAME>
+            <LAST_NAME>Teixeira</LAST_NAME>
+            <USER_LOGIN>88901026</USER_LOGIN>
+            <DAY_PHONE>5511 51848147</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST>Maristela</ARRANGER_FIRST>
+            <ARRANGER_LAST>Nogueira</ARRANGER_LAST>
+            <ARRANGER_LOGIN>888668851</ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>denise.teixeira@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Denise Echevengua</FIRST_NAME>
+              <LAST_NAME>Teixeira</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT></AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT></AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>03</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>03</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>0</LOWEST_AIR_FARE>
+              <TRIP_TYPE>multi-city</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>35600</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-18T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>36400</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>DDCAZR</AIR_LOC>
+              <AIRLINE_LOC>JZNVWL</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>H</BOOKING_CLASS_CODE>
+              <FARE_BASIS>H3JJ71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-18T11:30:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-18T08:00:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3325</FLIGHT_NO>
+              <FROM_APT_CODE>FOR</FROM_APT_CODE>
+              <FROM_APT_NAME>Pinto Martins</FROM_APT_NAME>
+              <FROM_CITY_NAME>Fortaleza</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Ceara</FROM_STATE_NAME>
+              <RES_SEAT></RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>GRU</TO_APT_CODE>
+              <TO_APT_NAME>GRU/Guarulhos International</TO_APT_NAME>
+              <TO_CITY_NAME>Sao Paulo</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Sao Paulo</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1253103922.99840" TIME_STAMP="2009-12-17T22:11:06 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>PILCWT</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-16T12:29:34 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Thiago Leoncio</FIRST_NAME>
+            <LAST_NAME>Guimaraes</LAST_NAME>
+            <USER_LOGIN>88884754</USER_LOGIN>
+            <DAY_PHONE>11-86970752</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST></ARRANGER_FIRST>
+            <ARRANGER_LAST></ARRANGER_LAST>
+            <ARRANGER_LOGIN></ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>thiago.leoncio@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Thiago Leoncio</FIRST_NAME>
+              <LAST_NAME>Guimaraes</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT>Days prior to travel date less than the minimum allowed</AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT>I understand I am continuing with an out of policy booking and fu</AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>01</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>01</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>15000</LOWEST_AIR_FARE>
+              <TRIP_TYPE>multi-city</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>14400</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-16T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>15000</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>PILCWT</AIR_LOC>
+              <AIRLINE_LOC>PWVABS</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4JJ71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-18T14:10:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-18T13:15:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3149</FLIGHT_NO>
+              <FROM_APT_CODE>VIX</FROM_APT_CODE>
+              <FROM_APT_NAME>Eurico Sales</FROM_APT_NAME>
+              <FROM_CITY_NAME>Vitoria</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Espirito Santo</FROM_STATE_NAME>
+              <RES_SEAT>24F</RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CNF</TO_APT_CODE>
+              <TO_APT_NAME>Cnf/Tancredo Neves                ''</TO_APT_NAME>
+              <TO_CITY_NAME>Belo Horizonte         /Belo Horizon</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Minas Gerais</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1253026019.97217" TIME_STAMP="2009-12-17T22:11:06 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>KOGOJF</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-15T14:55:00 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>CYRO SOUZA FILHO</FIRST_NAME>
+            <LAST_NAME>DIEHL</LAST_NAME>
+            <USER_LOGIN>437467</USER_LOGIN>
+            <DAY_PHONE>55-11-51891182</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST></ARRANGER_FIRST>
+            <ARRANGER_LAST></ARRANGER_LAST>
+            <ARRANGER_LOGIN></ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>cyro.diehl@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>CYRO SOUZA FILHO</FIRST_NAME>
+              <LAST_NAME>DIEHL</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+              <FF_INFO>
+                <FF_CARR>JJ</FF_CARR>
+                <FF_NUM>0068218560</FF_NUM>
+              </FF_INFO>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT></AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT></AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>01</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>01</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>33204</LOWEST_AIR_FARE>
+              <TRIP_TYPE>round-trip</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>27100</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-15T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>28500</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>KOGOJF</AIR_LOC>
+              <AIRLINE_LOC>KMTGNA</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4AT71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-18T10:00:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-18T09:00:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3912</FLIGHT_NO>
+              <FROM_APT_CODE>CGH</FROM_APT_CODE>
+              <FROM_APT_NAME>Cgh/Congonhas                      '</FROM_APT_NAME>
+              <FROM_CITY_NAME>Sao Paulo</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Sao Paulo</FROM_STATE_NAME>
+              <RES_SEAT>6B</RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>SDU</TO_APT_CODE>
+              <TO_APT_NAME>Sdu/Santos Dumont                 ''</TO_APT_NAME>
+              <TO_CITY_NAME>Rio De Janeiro          /Rio Janeiro</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Rio De Janeiro</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>KOGOJF</AIR_LOC>
+              <AIRLINE_LOC>KMTGNA</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4AT71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-18T14:38:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-18T13:45:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3931</FLIGHT_NO>
+              <FROM_APT_CODE>SDU</FROM_APT_CODE>
+              <FROM_APT_NAME>Sdu/Santos Dumont                 ''</FROM_APT_NAME>
+              <FROM_CITY_NAME>Rio De Janeiro          /Rio Janeiro</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Rio De Janeiro</FROM_STATE_NAME>
+              <RES_SEAT>4D</RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CGH</TO_APT_CODE>
+              <TO_APT_NAME>Cgh/Congonhas                      '</TO_APT_NAME>
+              <TO_CITY_NAME>Sao Paulo</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Sao Paulo</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1253017001.93779" TIME_STAMP="2009-12-17T22:11:07 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>KCVJRU</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-15T12:44:43 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Marconi</FIRST_NAME>
+            <LAST_NAME>Torchia</LAST_NAME>
+            <USER_LOGIN>437580</USER_LOGIN>
+            <DAY_PHONE>55-11-51891224</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST>Mariana</ARRANGER_FIRST>
+            <ARRANGER_LAST>Sa</ARRANGER_LAST>
+            <ARRANGER_LOGIN>889521997</ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>marconi.torchia@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Marconi</FIRST_NAME>
+              <LAST_NAME>Torchia</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT>Days prior to travel date less than the minimum allowed</AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT>I acknowledge I have selected a non-stop flight at a higher cost </AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>01</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>01</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>35200</LOWEST_AIR_FARE>
+              <TRIP_TYPE>round-trip</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>33600</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-17T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>35200</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>KCVJRU</AIR_LOC>
+              <AIRLINE_LOC>LXYVXH</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>X</BOOKING_CLASS_CODE>
+              <FARE_BASIS>X5JJORA</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-17T21:01:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-17T19:16:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3712</FLIGHT_NO>
+              <FROM_APT_CODE>CGH</FROM_APT_CODE>
+              <FROM_APT_NAME>Cgh/Congonhas                      '</FROM_APT_NAME>
+              <FROM_CITY_NAME>Sao Paulo</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Sao Paulo</FROM_STATE_NAME>
+              <RES_SEAT>16B</RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>BSB</TO_APT_CODE>
+              <TO_APT_NAME>International</TO_APT_NAME>
+              <TO_CITY_NAME>Brasilia</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Distrito Federal</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>KCVJRU</AIR_LOC>
+              <AIRLINE_LOC>LXYVXH</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>H</BOOKING_CLASS_CODE>
+              <FARE_BASIS>H3AT71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-18T21:08:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-18T19:40:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3715</FLIGHT_NO>
+              <FROM_APT_CODE>BSB</FROM_APT_CODE>
+              <FROM_APT_NAME>International</FROM_APT_NAME>
+              <FROM_CITY_NAME>Brasilia</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Distrito Federal</FROM_STATE_NAME>
+              <RES_SEAT>19B</RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CGH</TO_APT_CODE>
+              <TO_APT_NAME>Cgh/Congonhas                      '</TO_APT_NAME>
+              <TO_CITY_NAME>Sao Paulo</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Sao Paulo</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          <HOTEL>
+            <HOTEL_HEADER>
+              <HOTEL_ITIN_POLICY_ERR_TEXT></HOTEL_ITIN_POLICY_ERR_TEXT>
+              <HOTEL_ITIN_REASON_TEXT></HOTEL_ITIN_REASON_TEXT>
+              <HOTEL_LEGS_VERSION>01</HOTEL_LEGS_VERSION>
+            </HOTEL_HEADER>
+            <HOTEL_LEG>
+              <HOT_LOC>KCVJRU</HOT_LOC>
+              <HOT_PROP_ID>62862</HOT_PROP_ID>
+              <HOT_CONF>3627JIG512</HOT_CONF>
+              <CHECKIN_DATE_TIME>2009-09-17T12:00:00</CHECKIN_DATE_TIME>
+              <CHECKOUT_DATE_TIME>2009-09-18T12:00:00</CHECKOUT_DATE_TIME>
+              <CURRENCY>BRL</CURRENCY>
+              <HOTEL_CHAIN_CODE>RT</HOTEL_CHAIN_CODE>
+              <HOTEL_CHAIN_NAME>Accor</HOTEL_CHAIN_NAME>
+              <HOTEL_CITY_NAME>Brasilia</HOTEL_CITY_NAME>
+              <HOTEL_COUNTRY_CODE>BR</HOTEL_COUNTRY_CODE>
+              <HOTEL_COUNTRY_NAME>BRAZIL</HOTEL_COUNTRY_NAME>
+              <HOTEL_LEG_POLICY_ERR_TEXT></HOTEL_LEG_POLICY_ERR_TEXT>
+              <HOTEL_LOCATION_CODE>BSB</HOTEL_LOCATION_CODE>
+              <HOTEL_NAME>MERCURE APARTMENTS BRASILIA LIDER</HOTEL_NAME>
+              <HOTEL_PERDIEM>0</HOTEL_PERDIEM>
+              <HOTEL_ADDRESS_1>Shn  Qd 5  Projecao I</HOTEL_ADDRESS_1>
+              <HOTEL_ADDRESS_2>Asa Norte</HOTEL_ADDRESS_2>
+              <HOTEL_ADDRESS_3>Brasilia  Br 70710300</HOTEL_ADDRESS_3>
+              <HOTEL_ADDRESS_4></HOTEL_ADDRESS_4>
+              <HOTEL_PHONE_NBR>55-61-34264000</HOTEL_PHONE_NBR>
+              <HOTEL_POSTAL_CODE>70710-300</HOTEL_POSTAL_CODE>
+              <HOTEL_STATE_CODE></HOTEL_STATE_CODE>
+              <HOTEL_STATE_NAME></HOTEL_STATE_NAME>
+              <LEGS></LEGS>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <LOWEST_HOTEL_PRICE></LOWEST_HOTEL_PRICE>
+              <PRICE>18000</PRICE>
+              <PREFERRED>Y</PREFERRED>
+              <RATE_DESC>ORACLE-BB/BED.BRKFAST, STANDARD ROOM WITH 1 DOUBLE BED</RATE_DESC>
+            </HOTEL_LEG>
+          </HOTEL>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1253513056.90834" TIME_STAMP="2009-12-17T22:11:07 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>HKFNAE</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-21T06:23:21 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Luiz Carlos Junior</FIRST_NAME>
+            <LAST_NAME>Menegocci</LAST_NAME>
+            <USER_LOGIN>88914921</USER_LOGIN>
+            <DAY_PHONE>551185284969</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST></ARRANGER_FIRST>
+            <ARRANGER_LAST></ARRANGER_LAST>
+            <ARRANGER_LOGIN></ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>luiz.menegocci@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Luiz Carlos Junior</FIRST_NAME>
+              <LAST_NAME>Menegocci</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT>Days prior to travel date less than the minimum allowed</AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT>I acknowledge I have selected a non-stop flight at a higher cost </AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>01</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>01</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>35844</LOWEST_AIR_FARE>
+              <TRIP_TYPE>round-trip</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>29200</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-22T06:23:21 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>30600</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>HKFNAE</AIR_LOC>
+              <AIRLINE_LOC>LXSGPB</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4JJORA</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-22T08:00:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-22T07:00:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3904</FLIGHT_NO>
+              <FROM_APT_CODE>CGH</FROM_APT_CODE>
+              <FROM_APT_NAME>Cgh/Congonhas                      '</FROM_APT_NAME>
+              <FROM_CITY_NAME>Sao Paulo</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Sao Paulo</FROM_STATE_NAME>
+              <RES_SEAT></RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>SDU</TO_APT_CODE>
+              <TO_APT_NAME>Sdu/Santos Dumont                 ''</TO_APT_NAME>
+              <TO_CITY_NAME>Rio De Janeiro          /Rio Janeiro</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Rio De Janeiro</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>HKFNAE</AIR_LOC>
+              <AIRLINE_LOC>LXSGPB</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>Z</BOOKING_CLASS_CODE>
+              <FARE_BASIS>Z4JJORA</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-22T15:39:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-22T14:45:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3935</FLIGHT_NO>
+              <FROM_APT_CODE>SDU</FROM_APT_CODE>
+              <FROM_APT_NAME>Sdu/Santos Dumont                 ''</FROM_APT_NAME>
+              <FROM_CITY_NAME>Rio De Janeiro          /Rio Janeiro</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Rio De Janeiro</FROM_STATE_NAME>
+              <RES_SEAT>4F</RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>CGH</TO_APT_CODE>
+              <TO_APT_NAME>Cgh/Congonhas                      '</TO_APT_NAME>
+              <TO_CITY_NAME>Sao Paulo</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Sao Paulo</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          </BOOKING>
+
+          <BOOKING DOC_VERSION="2.0" ORD_KEY="1253256350.99215" TIME_STAMP="2009-12-17T22:11:07 GMT" EVENT_TYPE="ubr_event">
+          <HEADER>
+            <CRS_LOCATOR>HLMLOB</CRS_LOCATOR>
+            <SITE_NAME>itn/corp/sabreinc</SITE_NAME>
+            <SUB_SITE_NAME></SUB_SITE_NAME>
+            <ITIN_STATE>1</ITIN_STATE>
+            <BOOKING_SOURCE>online</BOOKING_SOURCE>
+            <BOOK_DATE_TIME>2009-09-18T07:03:08 PST</BOOK_DATE_TIME>
+            <NO_OF_PARTY>1</NO_OF_PARTY>
+            <FIRST_NAME>Mozael Aurelio</FIRST_NAME>
+            <LAST_NAME>Strack</LAST_NAME>
+            <USER_LOGIN>437219</USER_LOGIN>
+            <DAY_PHONE>55-51-35353044</DAY_PHONE>
+            <COMPANY></COMPANY>
+            <DIVISION></DIVISION>
+            <DEPT_NUM></DEPT_NUM>
+            <COST_CTR></COST_CTR>
+            <EMP_NO></EMP_NO>
+            <BUDGET_CTR></BUDGET_CTR>
+            <ARRANGER_FIRST></ARRANGER_FIRST>
+            <ARRANGER_LAST></ARRANGER_LAST>
+            <ARRANGER_LOGIN></ARRANGER_LOGIN>
+            <SPECIAL_INSTRUCTIONS></SPECIAL_INSTRUCTIONS>
+            <EMAIL_ADDR>mozael.strack@oracle.com</EMAIL_ADDR>
+            <DISCOUNT_TYPE></DISCOUNT_TYPE>
+            <DISCOUNT_ID></DISCOUNT_ID>
+            <DISCOUNT_CODE></DISCOUNT_CODE>
+            <INFOVAL1></INFOVAL1>
+            <INFOVAL2></INFOVAL2>
+            <INFOVAL3></INFOVAL3>
+            <INFOVAL4></INFOVAL4>
+            <PROMO_CODE></PROMO_CODE>
+          </HEADER>
+          <PASSENGERS>
+            <PASSENGER_HEADER>
+              <PASSENGER_VERSION>01</PASSENGER_VERSION>
+            </PASSENGER_HEADER>
+            <PASSENGER>
+              <FIRST_NAME>Mozael Aurelio</FIRST_NAME>
+              <LAST_NAME>Strack</LAST_NAME>
+              <PASSENGER_NUM>1</PASSENGER_NUM>
+              <FF_INFO>
+                <FF_CARR>JJ</FF_CARR>
+                <FF_NUM>03839901</FF_NUM>
+              </FF_INFO>
+            </PASSENGER>
+         </PASSENGERS>
+          <AIR>
+            <AIR_HEADER>
+              <AIR_ITIN_POLICY_ERR_TEXT>Days prior to travel date less than the minimum allowed</AIR_ITIN_POLICY_ERR_TEXT>
+              <AIR_ITIN_REASON_TEXT>I understand I am continuing with an out of policy booking and fu</AIR_ITIN_REASON_TEXT>
+              <AIR_LEGS_VERSION>01</AIR_LEGS_VERSION>
+              <AIR_PAYMENT_VERSION>01</AIR_PAYMENT_VERSION>
+              <LOWEST_AIR_FARE>32200</LOWEST_AIR_FARE>
+              <TRIP_TYPE>round-trip</TRIP_TYPE>
+            </AIR_HEADER>
+            <AIR_PAYMENT>
+              <BASE_FARE>30600</BASE_FARE>
+              <BUY_DATE_TIME>2009-09-21T00:00:00 PST</BUY_DATE_TIME>
+              <CURRENCY>USD</CURRENCY>
+              <FBASE_FARE></FBASE_FARE>
+              <FCURRENCY></FCURRENCY>
+              <PENALTY>NON ENDORSABLE</PENALTY>
+              <TOTAL_FARE>32200</TOTAL_FARE>
+            </AIR_PAYMENT>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>HLMLOB</AIR_LOC>
+              <AIRLINE_LOC>DJGPBG</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>H</BOOKING_CLASS_CODE>
+              <FARE_BASIS>H3JJ71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-22T08:40:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-22T07:47:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3416</FLIGHT_NO>
+              <FROM_APT_CODE>POA</FROM_APT_CODE>
+              <FROM_APT_NAME>Salgado Filho</FROM_APT_NAME>
+              <FROM_CITY_NAME>Porto Alegre</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Rio Grande Do Sul</FROM_STATE_NAME>
+              <RES_SEAT>6F</RES_SEAT>
+              <SEGMENT>L0F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>FLN</TO_APT_CODE>
+              <TO_APT_NAME>Hercilio Luz</TO_APT_NAME>
+              <TO_CITY_NAME>Florianopolis</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Santa Catarina</TO_STATE_NAME>
+            </AIR_LEG>
+            <AIR_LEG>
+              <AIR_LEG_POLICY_ERR_TEXT></AIR_LEG_POLICY_ERR_TEXT>
+              <AIRLINE_CODE>JJ</AIRLINE_CODE>
+              <AIR_LOC>HLMLOB</AIR_LOC>
+              <AIRLINE_LOC>DJGPBG</AIRLINE_LOC>
+              <BOOKING_CLASS_CODE>H</BOOKING_CLASS_CODE>
+              <FARE_BASIS>H3JJ71FB</FARE_BASIS>
+              <AIRLINE_NAME>Tam Linhas Aereas</AIRLINE_NAME>
+              <ARRIVAL_DATE_TIME>2009-09-22T21:15:00</ARRIVAL_DATE_TIME>
+              <BOOKING_CLASS>Coach</BOOKING_CLASS>
+              <DEPARTING_DATE_TIME>2009-09-22T20:15:00</DEPARTING_DATE_TIME>
+              <FLIGHT_NO>3417</FLIGHT_NO>
+              <FROM_APT_CODE>FLN</FROM_APT_CODE>
+              <FROM_APT_NAME>Hercilio Luz</FROM_APT_NAME>
+              <FROM_CITY_NAME>Florianopolis</FROM_CITY_NAME>
+              <FROM_COUNTRY_CODE>BR</FROM_COUNTRY_CODE>
+              <FROM_COUNTRY_NAME>BRAZIL</FROM_COUNTRY_NAME>
+              <FROM_STATE_CODE></FROM_STATE_CODE>
+              <FROM_STATE_NAME>Santa Catarina</FROM_STATE_NAME>
+              <RES_SEAT>9F</RES_SEAT>
+              <SEGMENT>L1F0</SEGMENT>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <WEBCONNECT_SUPPLIER></WEBCONNECT_SUPPLIER>
+              <STOPS>0</STOPS>
+              <TO_APT_CODE>POA</TO_APT_CODE>
+              <TO_APT_NAME>Salgado Filho</TO_APT_NAME>
+              <TO_CITY_NAME>Porto Alegre</TO_CITY_NAME>
+              <TO_COUNTRY_CODE>BR</TO_COUNTRY_CODE>
+              <TO_COUNTRY_NAME>BRAZIL</TO_COUNTRY_NAME>
+              <TO_STATE_CODE></TO_STATE_CODE>
+              <TO_STATE_NAME>Rio Grande Do Sul</TO_STATE_NAME>
+            </AIR_LEG>
+          </AIR>
+          <CAR>
+            <CAR_HEADER>
+              <CAR_ITIN_POLICY_ERR_TEXT></CAR_ITIN_POLICY_ERR_TEXT>
+              <CAR_ITIN_REASON_TEXT></CAR_ITIN_REASON_TEXT>
+              <CAR_LEGS_VERSION>01</CAR_LEGS_VERSION>
+            </CAR_HEADER>
+            <CAR_LEG>
+              <CAR_LEG_POLICY_ERR_TEXT></CAR_LEG_POLICY_ERR_TEXT>
+              <CAR_LOC>HLMLOB</CAR_LOC>
+              <CAR_CONF>E50616607E3</CAR_CONF>
+              <CAR_TYPE>CDMR</CAR_TYPE>
+              <CURRENCY>USD</CURRENCY>
+              <DISCOUNT_RATE></DISCOUNT_RATE>
+              <DROPOFF_CHARGE></DROPOFF_CHARGE>
+              <DROPOFF_CITY_NAME>Florianopolis</DROPOFF_CITY_NAME>
+              <DROPOFF_COUNTRY_CODE>BR</DROPOFF_COUNTRY_CODE>
+              <DROPOFF_COUNTRY_NAME>BRAZIL</DROPOFF_COUNTRY_NAME>
+              <DROPOFF_DATE_TIME>2009-09-22T20:00:00</DROPOFF_DATE_TIME>
+              <DROPOFF_LOCATION_CODE>FLN</DROPOFF_LOCATION_CODE>
+              <DROPOFF_STATE_CODE></DROPOFF_STATE_CODE>
+              <DROPOFF_STATE_NAME>Santa Catarina</DROPOFF_STATE_NAME>
+              <EXTRA_DAY>0</EXTRA_DAY>
+              <EXTRA_HOUR>1506</EXTRA_HOUR>
+              <EXTRA_MILEAGE>0</EXTRA_MILEAGE>
+              <FREE_MILEAGE></FREE_MILEAGE>
+              <LEGS></LEGS>
+              <SEGMENT_SOURCE>2</SEGMENT_SOURCE>
+              <LOWEST_CAR_RATE></LOWEST_CAR_RATE>
+              <APPROX_TOTAL_PRICE>6024</APPROX_TOTAL_PRICE>
+              <MAKE_MODEL></MAKE_MODEL>
+              <PICKUP_CITY_NAME>Florianopolis</PICKUP_CITY_NAME>
+              <PICKUP_COUNTRY_CODE>BR</PICKUP_COUNTRY_CODE>
+              <PICKUP_COUNTRY_NAME>BRAZIL</PICKUP_COUNTRY_NAME>
+              <PICKUP_DATE_TIME>2009-09-22T09:00:00</PICKUP_DATE_TIME>
+              <PICKUP_LOCATION_CODE>FLN</PICKUP_LOCATION_CODE>
+              <PICKUP_STATE_CODE></PICKUP_STATE_CODE>
+              <PICKUP_STATE_NAME>Santa Catarina</PICKUP_STATE_NAME>
+              <RATE>6024</RATE>
+              <RATE_TYPE>100</RATE_TYPE>
+              <VENDOR_CODE>ZE</VENDOR_CODE>
+              <VENDOR_NAME>Hertz</VENDOR_NAME>
+            </CAR_LEG>
+          </CAR>
+          </BOOKING>
+
+        </QUERY_RESULTS>
+      </QUERY_RESPONSE>
+    </RESPONSE>
+  </BODY>
+</GTXML>

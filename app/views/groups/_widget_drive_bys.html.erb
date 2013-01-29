@@ -1,0 +1,10 @@
+<div class="widget" id="group_drive_bys">
+	<div class="header">
+		<h3>Recent Visitors</h3>
+	</div>
+	<div class="content">
+		<% @group.visitors.find(:all, :limit => @group.is_member?(current_profile) ? 28 : 14).each do |visitor| %>
+			<%= link_to_avatar_for(visitor, :size => '37x37') %>
+		<% end %>
+	</div>
+</div>

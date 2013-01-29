@@ -1,0 +1,135 @@
+
+theme: 'theme_6'
+
+logo_file: "absorb_logo.jpg"
+
+favicon: "cubeless_favicon.ico"
+
+site_name: "cubeless"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: ["Coursework", "Personal Goals", "Support", "Community", "Travel"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Location"
+    completes_profile: false
+    matchable: true
+  - question: profile_4
+    label: "Phone Number"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Cell phone (optional)"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Languages Spoken"
+    completes_profile: true
+    matchable: true
+  - question: profile_7
+    label: "Computer Program Expertise"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'email',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_4',
+    'email'
+  ]
+
+
+profile_complex_questions:
+  - title: "Background"
+    questions:
+      - question: question_1
+        label: "Where were you born and where have you lived?"
+        example: "Include where you grew up, the city you lived in while attending college."
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Where do you live now?"
+        example: "The community doesn’t want to come to your house, but it is nice to know a city and state."
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What schools have you attended and what degrees do you hold?"
+        example: "Give us a brain dump of your educational background.  Inquiring minds want to know."
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "Where have you traveled and where would you like to go?"
+        example: "Include places you have visited either for business or pleasure and those that you hope to visit."
+        completes_profile: true
+        matchable: true
+
+  - title: "Work Information"
+    questions:
+      - question: question_5
+        label: "What other companies do you have connections with or an “in” with?"
+        example: "Not only where you’ve worked in the past, but also where you have business connections, perhaps your uncle is the CEO."
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What do you really do for a living?"
+        example: "Everyone has a job title but in our business you wear a lot of different hats, so let us know yours."
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What skills and expertise do you possess?"
+        example: "Even if you aren’t using them in your current position let the community know about what you can do, including proficiency in specific computer programs."
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What about your job do you find really satisfying?"
+        example: "Inquiring minds want to know!"
+        completes_profile: true
+        matchable: true
+
+  - title: "Just for fun"
+    questions:
+      - question: question_9
+        label: "What is your favorite type of music?"
+        example: "The songs and groups that you have on continuous repeat?"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "Who is most important in your life?"
+        example: "Family, friends, pets, role models?"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What hobbies and activities do you have?"
+        example: "That slim slice of your life that you're not working, what occupies your time?"
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "What charities and other organization are you active in or do you support?"
+        completes_profile: true
+        matchable: true

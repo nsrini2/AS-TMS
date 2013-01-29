@@ -1,0 +1,76 @@
+<div class="list_item chat_item <%= cycle("even", "odd") %>">
+  <%=link_to_avatar_for(chat, {:thumb => :thumb_80})%>
+
+          
+  <div class="details">
+    <div class="item_text">
+      <%= link_to h(chat.title),  chat_path(chat.id) %>
+    </div>
+    <p>
+      <% chat.presenters.each do |presenter| %>
+        <strong>Presented by: <%= h("#{presenter.profile.screen_name}, #{presenter.profile.profile_1}") %></strong><br />
+      <% end -%>
+      <% if chat.presenters.empty? -%>  
+        <strong>Hosted by: <%= h("#{chat.host.screen_name}, #{chat.host.profile_1}") %></strong><br />
+      <% end -%>
+      Start Time: <%= pretty_datetime(chat.start_at) + " Central Time (US & Canada)" -%>
+    </p>  
+
+    <% if show_questions %>
+      <% if chat.description%>
+        <p>Description: <%= h chat.description %></p>  
+      <% end %>
+      <%= render :partial => 'question_bin_pre', :locals => { :chat => chat }%>
+    <% else %>
+      <% if chat.description%>
+        <% if chat.closed? %>
+          <p>Description: <%= h chat.description %></p>  
+        <% else %>
+          <p>Description: <%= h truncate(chat.description, { :length => 200, :omission => "..." }) %></p>  
+        <% end %>  
+      <% end %>
+    <% end %>
+    
+    <% if show_closed_questions  %>
+      <hr />
+      <h4>Addressed Questions:</h4>
+      <div id="past_discussions" class="accordion">      
+        <% @chat.topics.closed.each do |q| %>
+            <%= render :partial => "past_discussion", :locals => { :question => q } %>
+        <% end %>    
+      </div>
+      
+      <hr />
+      <h4>Unaddressed Questions:</h4>
+      <div id="past_discussions" class="accordion">      
+        <% @chat.topics.open.each do |q| %>
+            <%= render :partial => "past_discussion", :locals => { :question => q } %>
+        <% end %>    
+      </div>
+    <% end %>
+
+  </div>
+
+
+  <div class="action_buttons">  
+    <% unless chat.closed? %>
+      <%= link_to_rsvp(chat) %>
+      <% if chat.host?(current_profile) and chat.on_air? -%>
+        <%= link_to('Close', close_chat_path(chat), :class=> 'button large light', :method => :get)  %>                            
+      <% end -%>
+    <% end -%>
+    <% if chat.host?(current_profile) -%>
+      <% unless chat.closed? or chat.on_air? -%>      
+        <%= link_to('Edit', edit_chat_path(chat), :class=> 'button large light', :method => :get)  %>
+        <% # SSJ FIX -- the confirm with button to is not working %>
+        <%= button_to('Delete', chat_path(chat), :method => :delete, 
+                      :confirm => 'Are you sure you want to delete this event?',
+                      :class=> 'button large light' ) %>  
+      <% end -%>              
+    <% end -%>
+  </div>
+</div>
+
+
+  
+

@@ -1,0 +1,20 @@
+<h2>Editing Question Category Ordering</h2>
+
+<% form_for(:site_question_category, @site_question_category, 
+						:url => reorder_site_admin_site_question_categories_path,
+						:html => {:class => "admin_form", :method => :post}, 
+						:builder => AdminFormBuilder) do |f| %>
+
+	<dl class="admin_details">
+		<% @site_question_categories.each do |sqc| %>
+			<%= f.label sqc.name %>
+			<%= f.text_field :position, :value => sqc.position, :name => "categories[#{sqc.id}]" %>
+		<% end %>
+	</dl>
+  
+	<div class="buttons">
+    <%= f.submit "Save", :class => "button" %>
+		<input type="submit" name="reset" value="Cancel" class="button light">
+  </div>
+<% end %>
+

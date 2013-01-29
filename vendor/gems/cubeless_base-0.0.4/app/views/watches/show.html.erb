@@ -1,0 +1,12 @@
+<% content_for(:favorites_tab, 'selected') -%>
+<% content_for(:page_title, 'Following') -%>
+<%= render :partial => 'watches/watch_list' %>
+<div id="favorites">
+	<%= category_filter_sort_controls(@filter_set || 'Watch') %>
+	<div id="events">
+		<%= render :partial => 'watches/events_list' %>
+	</div>
+	<div id="paging">
+		<%= render_pagination @events %>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+/*  
+  Using methods from the following sources: 
+    http://www.alistapart.com/articles/settingtypeontheweb/
+    http://24ways.org/2006/compose-to-a-vertical-rhythm
+*/
+
+/* All those use a 12px font base...but I want a bigger one....so I'll use 16px */
+$font-size: 16px;
+$line-height: 24px;
+
+body {
+	font-size: 100%; 
+}
+
+html>body {
+	font-size: $font-size; 
+}
+
+p {
+	line-height: $line-height; /* 1.5 em; */
+	margin-bottom: $line-height;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+}
+
+h1 { 
+  font-size: $font-size*2; 
+  line-height: $line-height*2;
+  margin-top: $line-height/2;
+  margin-bottom: $line-height/2; 
+}
+h2 { 
+  font-size: $font-size*1.5; 
+  line-height: $line-height; 
+  margin-bottom: $line-height;
+}
+h3 { 
+  font-size: $font-size*1.25; 
+  line-height: $line-height; 
+}
+
+ul, ol { 
+  margin-bottom: $line-height; 
+}
+
+li { 
+  margin-bottom: $line-height; 
+}

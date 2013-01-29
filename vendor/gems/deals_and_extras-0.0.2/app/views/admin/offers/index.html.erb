@@ -1,0 +1,18 @@
+<%= link_to 'NEW', new_admin_offer_path %>
+<br />
+<br />
+<div class="filters">
+    <h1>Filters</h1>
+    <form method="get">
+        <%= label_tag 'supplier' %>
+        <%= select_tag 'supplier', options_from_collection_for_select(Supplier.all, 'id', 'supplier_name', @supplier_id), {:include_blank => true} %>
+        <br />
+        <label for="query" >Search </label>
+        <input type="text" name="query" size=30 value="<%= @query %>" />
+        <%= submit_tag 'Filter' %>
+    </form>
+</div>
+<br />
+<div id="all_offer">
+    <%= render :partial => 'offers', :locals => {:offers => @all_offers} %>
+</div>

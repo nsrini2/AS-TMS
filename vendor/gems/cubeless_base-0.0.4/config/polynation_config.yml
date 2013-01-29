@@ -1,0 +1,128 @@
+theme: 'theme_11'
+
+logo_file: "polynation.png"
+
+favicon: "polynation.ico"
+
+site_name: "PolyNation"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: [
+  "Admin",
+  "CAD",
+  "Customization(Java/scripting)",
+  "Industry Applications",
+  "IT",
+  "Meshing",
+  "Physics",
+  "Sales/Marketing",
+  "Software Development",
+  "Visualization",
+  "Life, Play, Not @ Work"
+]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Location"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Department"
+    completes_profile: true
+    matchable: true
+  - question: profile_5
+    label: "Work Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Cell Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_7
+    label: "Internal Instant Messenger ID"
+    completes_profile: false
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7',
+    'email'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'email'
+  ]
+
+profile_complex_questions:
+  - title: "Personal"
+    questions:
+      - question: question_1
+        label: "In what languages do you consider yourself fluent?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Where is your hometown? In what places have you lived?"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What are your outside hobbies and interests?"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What job did you want to do when you were a kid?"
+        completes_profile: true
+        matchable: true
+  - title: "Professional"
+    questions:
+      - question: question_5
+        label: "Which universities did you attend, degrees held, and what did you study? Are you a member of any Professional Societies (ex ASME)?"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "List employment history - Who, Where, When. Please include your start date with CD-adapco."
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "Which industries are you most familiar with and how were you associated with them?"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "Which software applications and/or programming languages do you consider yourself familiar with, and for how long?"
+        completes_profile: true
+        matchable: true
+      - question: question_9
+        label: "What are your areas of expertise and experience in the CAE process?"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "What projects have you participated in during your time at CD-adapco?"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What do you actually do at CD-adapco?"
+        completes_profile: true
+        matchable: true

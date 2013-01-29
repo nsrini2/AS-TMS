@@ -1,0 +1,5 @@
+<%= render "notifier/partials/headline", {:headline => "Someone has requested to join your group."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<p><%= @sender.screen_name %> has requested and invite to join the group <strong><%= @group.name %></strong>, which you own.</p>
+	<p>To accept this invitation, <%= link_from_email("visit the group members page", @site_base_url + members_group_path(@group) )%> find the request and click 'Invite'.</strong></p>

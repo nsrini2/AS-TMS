@@ -1,0 +1,25 @@
+<% @status = Status.new %>
+<% @statuses = Status.most_recent %>
+
+<% form_for :status, :url => statuses_path, :html => {:id => "widget_status"} do |f| -%>
+	<fieldset>
+		<dl>
+			<dt class="body"><%= f.label(:body, "Have something to share?") -%></dt>
+			<dd class="body"><%= f.text_area :body, :maxlength => '140' -%></dd>
+		</dl>
+		<div class="buttons">
+			<input type="submit" name="commit" value="Update" class="button">
+		</div>
+	</fieldset>
+<% end -%>
+
+<h3>Recent <%= Config[:site_name] %> Updates</h3>
+
+<div id="widget_status_events">
+  <% @statuses.each do |status| %>
+    <%= render :partial => "/statuses/widget_status", :locals => { :status => status } %>
+  <% end %>
+
+  <br/>
+  <%= link_to "More", statuses_explorations_path %>
+</div>

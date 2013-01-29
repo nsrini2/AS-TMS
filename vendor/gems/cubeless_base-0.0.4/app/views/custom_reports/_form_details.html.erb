@@ -1,0 +1,92 @@
+<div id="form_details_container">
+
+  <% if klass %>
+
+    <!-- <h1><%# = klass_name %></h1> -->
+
+    <div id="report_options">
+
+      <%= form_tag("/custom_reports/create_preview", :id => "reports_form")%>
+
+        <div id="draggables_container" class="accordion">
+
+          <h3><a id="attributes_link" class="toggle" href="#attributes_link"><%= klass_name %> Attributes</a></h3>
+          <div id="attributes_container" class="accordion_draggable_container">
+            <% klass.column_names.each do |name| %>
+              <%# = check_box_tag "attributes[#{name}]", "1", @table.column_names.include?(name) %>
+              <span id="attributes_<%= name %>" class="report_draggable"><%= name.to_s.titlecase %></span><br/>
+            <% end %>
+          </div>
+
+          <!-- <br/> -->
+          <!-- <h3>Associations</h3> -->
+
+          <% klass.reflections.each_pair do |name, assoc| %>
+            <% Rails.logger.warn assoc.class_name %>
+            <% begin %>
+              <% if assoc.class_name.to_s.split("::").first == "Reports" && (!assoc.options[:through] || assoc.through_reflection.class_name.to_s.split("::").first == "Reports") && assoc.class_name.constantize %>
+                <!-- <h4><a id="<%= name.to_s %>_link" class="toggle" href="#<%= name.to_s %>_link"><%= name.to_s.titlecase %></a></h4> -->
+                <h3>
+                  <a id="<%= name.to_s %>_link" href="#"><%= name.to_s.titlecase %></a>
+                </h3>
+
+                <div id="<%= name.to_s %>_container" class="accordion_draggable_container">
+                  <% assoc.class_name.constantize.new.attributes.keys.sort.each do |attr| %>
+                    <%#= check_box_tag "associations[#{name.to_s}][#{attr.to_s}]", "1", @table.column_names.any?{ |n| n.match(/#{name.to_s}\.#{attr.to_s}/) } %>
+                    <span id="associations[<%= name.to_s %>][<%= attr.to_s %>]" class="report_draggable"><%= attr.to_s.titlecase %></span><br/>
+                  <% end %>
+                </div>
+              <% end %>
+            <% rescue %>
+
+            <% end %>
+
+          <% end %>
+  
+        </div>
+
+        <h3 class="reporting">Currently Reporting on:</h3>
+        <div class="report_droppable">
+          <small>Drag and drop attributes from the left column to add them to the report. Use the 'x' to remove items.</small>
+          <ul id="active_fields">
+        
+          </ul>
+        </div>
+
+        <%= hidden_field_tag "klass", klass_name %>
+    
+
+        <script type="text/javascript">
+          var current_attributes = <%= params[:attributes] ? "[\"#{params[:attributes].keys.join("\",\"")}\"]" : "[]" %>;
+          var current_associations = <%= params[:associations] ? "[#{params[:associations].keys.collect{ |a| "[\"#{a}\",[\"#{params[:associations][a].keys.join("\",\"")}\"]]" }}]" : "[]" %>;
+        </script>
+
+        <div class="buttons">
+            <%= link_to "Save Report", (@custom_report ? custom_report_path(@custom_report) : custom_reports_path), :id => "report_save", :class => "button" %>
+            <%= link_to 'Cancel', custom_reports_path, :class => "button" %>     
+        <% if false %>
+           <%= select_tag "format", options_for_select(["html", "csv", "pdf"]) %>
+           <input type="submit" name="details_commit" value="Export" class="button" />
+        <% end %>
+        </div>
+      </form>
+
+    </div>
+
+
+    <hr class="reports_divider" color="#adadad"/>
+
+
+    <h2>Preview Results (limited to 10)</h2>
+
+    <div id="report_preview">
+      <% if table %>
+        <%= table.to_html %>
+      <% else %>
+        <table><tr><td>No Data</td></tr></table>
+      <% end %>
+    </div>
+
+  <% end %>
+
+</div>

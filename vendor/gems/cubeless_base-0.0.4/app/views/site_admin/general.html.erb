@@ -1,0 +1,120 @@
+<h2>Basics</h2>
+
+<%# MM2: Nice thought but updating the config changes things like the page title, theme, etc which need a reload to view %>
+<%#= render_inline_editor_for(@config,	:site_name, publish_general_site_admin_path, 
+															:editable => true,
+															:class => 'title', 
+															:tag => :span, 
+															:width => 'none', 
+															:height => 'none', 
+															:maxlength => '255', 
+															:tooltip => "Click to edit the Site Name.", 
+															:placeholder => "Click here to add a Site Name") -%>
+
+<% form_for :site_config, @config, 
+						:url => publish_general_site_admin_index_path, 
+						:html => {:method => :post, :class => "admin_form"}, 
+						:builder => AdminFormBuilder do |f| %>
+
+	<fieldset>
+		<dl class="admin_details">
+			<%= f.label "Site Name" %>
+			<%= f.text_field :site_name %>
+
+			<%= f.label "Site Base Url" %>
+			<%= f.text_field :site_base_url %>
+
+			<%= f.label "Theme" %>
+			<%= f.select :theme, @theme_options, {}, :style => "width: 250px;" %>
+
+			<%= f.label "Feedback Email" %>
+			<%= f.text_field :feedback_email %>
+
+			<%= f.label "Email 'From' Address" %>
+			<%= f.text_field :email_from_address %>
+			
+			<%= f.label "Welcome Promo 1 title" %>
+			<%= f.text_field :welcome_promo_title_1 %>
+			
+			<%= f.label "Welcome Promo 1" %>
+			<%= f.text_area :welcome_promo_1, :maxlength => 255, :rows => 2, :cols => 100 %>
+			
+			<%= f.label "Welcome Promo 2 title" %>
+			<%= f.text_field :welcome_promo_title_2 %>
+			
+			<%= f.label "Welcome Promo 2" %>
+			<%= f.text_area :welcome_promo_2, :maxlength => 255, :rows => 2, :cols => 100 %>
+			
+			<%= f.label "Welcome Promo 3 title" %>
+			<%= f.text_field :welcome_promo_title_3 %>
+			
+			<%= f.label "Welcome Promo 3" %>
+			<%= f.text_area :welcome_promo_3, :maxlength => 255, :rows => 2, :cols => 100 %>
+
+			<%= f.label "Disclaimer" %>
+			<%= f.text_area :disclaimer, :maxlength => 1000, :rows => 2, :cols => 100 %>
+
+			<%= f.label "Max Users" %>
+			<%= f.text_field :user_max %>
+			<dd class="details">(0 indicates No Limit)</dd>
+
+			<%= f.check_box_label "Terms Acceptance Required" %>
+			<%= f.check_box :terms_acceptance_required %>
+
+			<%= f.check_box_label "Open Registration" %>
+			<%= f.check_box :open_registration %>
+
+			<%= f.check_box_label "Registration Queue" %>
+			<%= f.check_box :registration_queue %>
+			
+			<%= f.check_box_label "Viewable Karma" %>
+			<%= f.check_box :viewable_karma %>
+			
+			<%= f.check_box_label "API Enabled" %>
+			<%= f.check_box :api_enabled %>
+
+			<%= f.check_box_label "Rank Enabled" %>
+			<%= f.check_box :rank_enabled %>
+			
+			<%= f.check_box_label "Frozen Emails" %>
+			<%= f.check_box :frozen_emails %>
+			
+			<%= f.check_box_label "SSL Enabled" %>
+			<%= f.check_box :ssl_enabled %>
+			<dd class="details">This will ensure that all communication is encrypted, but will slow down performance a small bit.</dd>
+
+			<%= f.label "Monitor Email Address" %>
+			<%= f.text_field :monitor_email_address %>
+
+			<%= f.label "Google Analytics Tracking Code" %>
+			<%= f.text_field :analytics_tracker_code %>
+		</dl>
+	</fieldset>
+
+	<div class="buttons">
+		<%= f.submit "Update", :class => "button" %>
+	</div>
+
+<% end %>
+
+
+<h2>Images</h2>
+
+<div class="admin_form">
+	<dl class="admin_details">
+		<dt><label>Logo</label></dt>
+		<dd>
+			<%= image_tag(site_logo, :alt => "", :class => 'avatar') %>		
+			<p id="site_logo">
+				<%= link_to("change", edit_logo_site_admin_index_path, :class => "modal change_photo") -%>
+			</p>
+		</dd>
+		<dt><label>Favicon</label></dt>
+		<dd>
+			<%= image_tag(favicon, :alt => "", :class => 'avatar') %>		
+			<p id="site_favicon">
+				<%= link_to("change", edit_favicon_site_admin_index_path, :class => "modal change_photo") -%>
+			</p>
+		</dd>
+	</dl>
+</div>

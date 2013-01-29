@@ -1,0 +1,18 @@
+<div id="award_<%=award.id%>" class="award list_item <%=award.id%> <%= cycle('odd','even') %>">
+	<div class="award_thumbnail">
+		<%= award_image_for(award, :thumb, :height => 35, :width => 35) %>
+	</div> 
+	<div class="details">
+		<%= render_inline_editor_for(award, :title, award_path(award, :method => :put), :tag => 'h3', :tooltip => "Click to edit the award's title", :placeholder => "Click here to add an award title", :max_length => 256) -%>
+		<%= action_list_for([
+			(content_tag(:span, link_to_view_recipients(award), :class => "recipients_link")),
+			link_to("edit", edit_award_path(award)),
+			link_to("present award", assign_award_award_path(award), :class => "assign modal"),
+			link_to("copy award", copy_award_path(award), :class => "copy"),
+			link_to_toggle_award_visibility(award)
+		])%>
+		<ul class="recipients" style="display:none">
+			<%= render :partial => 'awards/recipients', :locals => {:recipients => award.recipients, :award => award}%>
+		</ul>
+	</div>
+</div>

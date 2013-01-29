@@ -1,0 +1,20 @@
+<h2>Blog Posts</h2>
+<% blog_posts.each do |blog_post| %>
+	<div class="note">
+	  <p class="title"><%= link_to blog_post.title, blog_post_path(blog_post) %></p>
+		<p class="when">posted on <%= short_date blog_post.created_at %> by <%= blog_post.profile.full_name %></p>
+		<div class="text">
+		  <%#= link_to truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), 140, "&hellip;&nbsp;"), blog_post_path(blog_post) %>
+		  <%= textilize truncate(blog_post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), { :length => 140, :omission => "..." }) %>
+		
+		  <p class="actions">
+		    <%= link_to "Read", blog_post_path(blog_post), :class => "button little" %>
+  		  <%= link_to "Comment", blog_post_path(blog_post, :hub_comment => true), :class => "button little light" %>
+  		</p>
+		</div>
+	</div>
+<% end %>
+
+<div class="see_all">
+	<a href=<%= blogs_explorations_path %>>See All Blog Posts</a>
+</div>

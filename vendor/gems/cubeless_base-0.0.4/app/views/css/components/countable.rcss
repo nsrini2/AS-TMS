@@ -1,0 +1,2 @@
+span.counter { display: block; float: right; margin: 0; font-size: 11px; }
+span.maxed { font-size: 12px; font-weight: bold; color: red; }

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  label: MyString
+  question: MyString
+  completes_profile: false
+  matchable: false
+
+two:
+  label: MyString
+  question: MyString
+  completes_profile: false
+  matchable: false

@@ -1,0 +1,19 @@
+<% @cs = ["Leisure Travel", "Corporate Travel", "Marketing", "Technology", "Suppliers"] %>
+
+<h1>Question Categories</h1>
+
+<%= link_to "Add a Category", "#"%>
+<%= link_to "Reorder Categories", "" %>
+
+<table>
+	<tbody>
+		<% @cs.each_with_index do |c, idx| %>
+			<tr>
+				<td><%= idx + 1%></td>
+				<td><%= c %></td>
+				<td><%= link_to "Edit", "" %></td>
+				<td><%= link_to "Delete", "" %></td>				
+			</tr>
+		<% end %>
+	</tbody>
+</table>

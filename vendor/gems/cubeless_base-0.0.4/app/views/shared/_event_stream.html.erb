@@ -1,0 +1,8 @@
+<h5><%= site_name -%> Stream</h5>
+<% ActivityStreamEvent.find_summary(:all,:limit => 20).each do |event| -%>
+	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event, :index => 1 } -%>
+<% end -%>
+
+<br/>
+
+<%= link_to "More", stream_events_path(:page => 2) %>

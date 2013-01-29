@@ -1,0 +1,70 @@
+<style>
+
+table {
+	border-collapse: collapse;
+	font-size: 1.1em;
+	width: 100%;
+}
+table thead th {
+	text-align: left;
+}
+
+</style>
+
+<% @qs = ["Email", "Location", "Certifications", "Work Phone"] %>
+
+<h1>Basic Profile Fields</h1>
+
+
+<h3>Fields</h3>
+
+<%= link_to "Add a Field", "#"%>
+
+<table>
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Completes Profile?</th>
+			<th>Matchable?</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @qs.each do |q| %>
+			<tr>
+				<td><%= q %></td>
+				<td>True</td>
+				<td>True</td>
+				<td><%= link_to "Edit", "" %></td>
+				<td><%= link_to "Delete", "" %></td>				
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<h3>Info Order</h3>
+
+<div>
+	<b>Profile Page</b><br/>
+	<%= link_to "Add", "" %>
+	<%= link_to "Reorder", "" %>
+	<ol>
+		<% @qs.each do |q| %>
+			<li>
+				<%= q %> <%= link_to "Remove", "" %>
+			</li>
+		<% end %>
+	</ol>
+</div>
+
+<div>
+	<b>Biz Card</b><br/>
+	<%= link_to "Add", "" %>
+	<%= link_to "Reorder", "" %>
+	<ol>
+		<% [@qs[1], @qs[2], @qs[0]].each do |q| %>
+			<li>
+				<%= q %>  <%= link_to "Remove", "" %>
+			</li>
+		<% end %>
+	</ol>
+</div>

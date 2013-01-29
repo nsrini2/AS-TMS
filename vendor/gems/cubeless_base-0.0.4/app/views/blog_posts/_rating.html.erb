@@ -1,0 +1,10 @@
+<ul class="<%='my_rating' if blog_post.user_has_rated %>">
+	<% (1..5).each do |i| %>
+		<li class="rate rating<%=i%> <%= "rated" if blog_post.rating_avg.round >= i %>" title="Rate: <%=i%> out of 5">
+			<%= blog_post.inspect %>
+			<%# SSJ FIX %>
+			<%#= rate_blog_post(blog_post, i)%>
+		</li>
+	<% end %>
+</ul>
+<p class="rating_total"><%= blog_post.rating_count.zero? ? "No ratings yet" : "#{blog_post.rating_avg} rating from #{pluralize(blog_post.rating_count, 'user')}" -%></p>

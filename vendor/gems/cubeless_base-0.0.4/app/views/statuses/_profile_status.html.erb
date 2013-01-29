@@ -1,0 +1,8 @@
+<div class="event">
+  <div class="body">
+    <span><%= status.body %></span>
+  </div>
+  <div class="extra">
+    <%= pretty_datetime status.created_at %> <%= link_to(  'delete', profile_status_path(@profile, status),   :class=>"modal delete") %>
+  </div>
+</div>

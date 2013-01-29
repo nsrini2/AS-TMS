@@ -1,0 +1,3 @@
+#policy { padding: 20px 40px; }
+	#policy form {  }
+		#policy form div.buttons { margin-top: 18px; text-align: center; }

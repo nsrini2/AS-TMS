@@ -1,0 +1,6 @@
+<p>You are a Rock Star! Congratulations on your &#8220;<%= @award.title%>&#8221; award.</p>
+<p>Check out your Trophy Case <%= link_to "here", @site_base_url + profile_path(@profile) %>.</p>
+
+<p>Regards,<br />
+<%=@site_name%><br />
+<a href="<%=@site_base_url%>"><%=@site_base_url%></a></p>

@@ -1,0 +1,8 @@
+<%= render "notifier/partials/headline", {:headline => "You've been invited to join a new group."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<p><%= @sender.screen_name %> has invited you to join the group <strong><%= @group.name %></strong>.</p>
+	<p>To accept this invitation, <%= link_from_email("visit the group page", @site_base_url + group_path(@group) )%> and click 'Join'.</strong></p>
+	<p>Interested in other groups? You can always <%= link_from_email("Explore&nbsp;groups", @site_base_url + groups_explorations_path)%>.</p>
+	<p>If you're not interested in joining this group, just go to your <%= link_from_email("My&nbsp;Groups&nbsp;tab", @site_base_url + groups_profile_path(@receiver)) %> to decline this invitation.</p>
+</font></p>	

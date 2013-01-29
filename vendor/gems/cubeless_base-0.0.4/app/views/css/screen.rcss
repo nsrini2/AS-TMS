@@ -1,0 +1,95 @@
+<%= render_css('css/base.rcss') %>
+<%= render_css('css/components/nav.rcss') %>
+/* components */
+<%= render_css('css/components/ui.rcss')            %>
+<%= render_css('css/components/action_list.rcss')   %>
+<%= render_css('css/components/answers.rcss')       %>
+<%= render_css('css/components/autocomplete.rcss')  %>
+<%= render_css('css/components/avatar.rcss')        %>
+<%= render_css('css/components/border_table.rcss')  %>
+<%= render_css('css/components/buttons.rcss')       %>
+<%= render_css('css/components/countable.rcss')     %>
+<%= render_css('css/components/comments.rcss')      %>
+<%= render_css('css/components/form.rcss')   %>
+<%= render_css('css/components/filter_form.rcss')   %>
+<%= render_css('css/components/inline_editor.rcss') %>
+<%= render_css('css/components/karma.rcss')         %>
+<%= render_css('css/components/list_item.rcss')     %>
+<%= render_css('css/components/paging.rcss')        %>
+<%= render_css('css/components/popup.rcss')         %>
+<%= render_css('css/components/question.rcss')      %>
+<%= render_css('css/components/rating.rcss')        %>
+<%= render_css('css/components/status.rcss')        %>
+<%= render_css('css/components/stream.rcss')        %>
+<%= render_css('css/components/tag_cloud.rcss')     %>
+<%= render_css('css/components/tooltip.rcss')       %>
+<%= render_css('css/components/widgets.rcss')       %>
+/* sections/pages */
+<%= render_css('css/sections/about_us.rcss')             %>
+<%= render_css('css/sections/admin.rcss')                %>
+<%= render_css('css/sections/video.rcss')                %>
+<%= render_css('css/sections/ads.rcss')                  %>
+<%= render_css('css/sections/ask_community.rcss')        %>
+<%= render_css('css/sections/blogs.rcss')                %>
+<%= render_css('css/sections/explorations.rcss')         %>
+<%= render_css('css/sections/feedback.rcss')             %>
+<%= render_css('css/sections/groups.rcss')               %>
+<%= render_css('css/sections/login.rcss')                %>
+<%= render_css('css/sections/profiles.rcss')             %>
+<%= render_css('css/sections/questions.rcss')            %>
+<%= render_css('css/sections/retrievals.rcss')           %>
+<%= render_css('css/sections/settings.rcss')             %>
+<%= render_css('css/sections/sign_up.rcss')              %>
+<%= render_css('css/sections/terms_and_conditions.rcss') %>
+<%= render_css('css/sections/travels.rcss') %>
+<%= render_css('css/sections/reports.rcss') %>
+body { background: <%= @theme_colors['site_background'] %>; }
+	#page { position: relative; margin: 0 auto; width: 868px; zoom: 1; }
+
+		#header { position: relative; z-index: 1; margin: 0 auto; padding: 5px; width: 100%; }
+			<%= clear_after('#header') %>
+			#header h1 { float: left; margin: 0; width: 500px; height: 65px; text-indent: -9999px; overflow: hidden; }
+				#header h1 a { display: block; margin: 5px 0 0 17px; width: 300px; height: 60px; background: url(<%= site_logo %>) 0 no-repeat; }
+
+				ul#utility_nav { float: right; margin-right: -10px; } /* inherits from ul.action_list */
+					ul#utility_nav li { color: <%= @theme_colors['top_right_text_color'] %>; border-color: <%= @theme_colors['top_right_text_color'] %>; }
+						ul#utility_nav li a { color: <%= @theme_colors['top_right_text_color'] %>; }
+						ul#utility_nav li a:hover { text-decoration: none; }
+			#header a.name { position: absolute; top: 32px; right: 86px; font-size: 14px; font-weight: bold; color: <%= @theme_colors['top_right_link_color'] %>; }
+			#header img.photo { float: right; margin: 10px 20px 0 10px; }
+
+		#body { position: relative; z-index: 3; margin: 0 auto; padding: 20px; width: 828px; background: #fff url(<%= image("content_bg.png") %>) repeat-y; }
+
+			#primary { margin: auto; }
+				<%= clear_after('#primary') %>
+
+				#primary #rotating { position: absolute; right: 25px; top: 10px; }
+
+				#primary h2 { margin-top: 0; }
+
+				#primary div.bambo { text-align: center; }
+
+				ul#tabs { position: relative; z-index: 7; margin: 30px -2px 0 10px; height: 29px; overflow: hidden; list-style: none; }
+					ul#tabs li { float: left; padding: 0 0 0 7px; height: 29px; background: url(<%= image("tabLT.png") %>) left top no-repeat; }
+						ul#tabs li a { display: block; float: left; padding: 7px 20px 0 4px; height: 22px; background: url(<%= image("tabRT.png") %>) top right no-repeat; color: <%= @theme_colors['menu_tab_text_color'] %>; font-weight: bold; text-decoration: none; font-size: 13px; }
+						ul#tabs li a:hover { color: <%= @theme_colors['menu_tab_hover_text_color'] %>; }
+					ul#tabs li.selected { background-image: url(<%= image("tabLTSel.png") %>); }
+						ul#tabs li.selected a { background-image: url(<%= image("tabRTSel.png") %>); color: <%= @theme_colors['menu_tab_selected_text_color'] %>; }
+
+				#tab_content { clear: both; position: relative; z-index: 1; margin-top: -2px; margin-bottom: 10px; border: 2px solid #888; padding: 15px; <%= border_radius('8px') %> width: 794px; }
+					<%= clear_after('#tab_content') %>
+
+				ul.sub_nav {  } /* inherits from ul.action_list */
+					ul.sub_nav li.selected { padding-left: 20px; background: url(<%= image("arrow_right.png") %>) 5px center no-repeat; font-weight: bold; }
+						ul.sub_nav li.selected a { color: #000; text-decoration: none; cursor: default; }
+
+			#frame { position: absolute; left: -9999px; border: 0; width: 1px; height: 1px; }
+
+		#footer { position: relative; z-index: 2; margin: 0 auto; width: 868px; }
+			#footer ul { margin: 0; padding-left: 17px; list-style: none; width: 851px; height: 37px; background: <%= @theme_colors['background_color'] %> url(<%= image("bottom_hatch.png") %>) no-repeat; }
+				#footer ul li { position: relative; float: left; line-height: 30px; }
+				#footer ul li.selected { background-color: #000; color: #FFF;  }
+				#footer ul li.selected a { background: #000; color: #fff;}
+					#footer ul li a { display: block; padding: 0 30px; color: <%= @theme_colors['menu_text_color'] %>; text-decoration: none; font-weight: bold; }
+					#footer ul li a:hover { text-decoration: underline; }
+			#footer p.copyright { clear: both; padding: 20px; font-size: 11px; color: <%= @theme_colors['footer_text_color'] %>; text-align: center; }

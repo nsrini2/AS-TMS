@@ -1,0 +1,23 @@
+<%= render "notifier/partials/headline", {:headline => "Reset Your Password"} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<% if @screen_names -%>
+	  <p>Greetings <%= @screen_names.join(' &amp; ') -%>,</p>
+			<% if @logins.size > 1 -%>
+			  <p>Whoa, you have a couple of logins from which to choose :
+			    <%= @logins.join(' &amp; ') %>
+			  </p>
+			<% else -%>
+			  <p>Your Login ID is: <%= @logins %></p>
+			<% end -%>
+				<p>You should now be able to <%= link_from_email("login to #{@site_base_url}", "#{@site_base_url}/account/login" )%> 
+					or, if you forgot your password, you can have us <%= link_from_email("reset your password", "#{@site_base_url}/retrievals/new?forgot=password" )%>.
+				</p>				
+	<% end -%>
+
+	<% if @password -%>
+		<p>Greetings <%=@screen_name%>,</p>
+		<p>You have requested to reset your password. You have 24 hours to follow the link below and change your password.</p>
+		<p><%= link_from_email("Click Here To Reset Your Password", @password_reset_link )%></p>
+	<% end -%>
+</font></p>	

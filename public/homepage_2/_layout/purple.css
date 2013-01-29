@@ -1,0 +1,18 @@
+/* 
+	skin - purple 
+*/
+
+a{ color:#662D91; }
+
+#wrap{ border-color:#8557A7; }
+
+#slideshow ul li .slidetext{ background-color:#662D91; }
+	.slidetext h2, .slidetext h3{ color:#ffffff; }
+	.slidetext h2 a, .slidetext h3 a{ color:#ffffff; }
+	.slidetext p{ color:#B396C8; }	
+
+.inner-page-title{ background-color:#662D91; }
+	.inner-page-title h2{}
+	.inner-page-title p{ color:#ffffff; }
+
+ul#dropdown-menu li.current > a{ color:#662D91; }

@@ -1,0 +1,25 @@
+<div class="list_action_button" >
+	<%# SSJ - Because we have a blog_post controller and blog controller with a post action the 
+	 built in new_bog_post_path links to the incorrect :controller/:action, so we get this %>
+	<% new_blog_post_path = url_for([current_profile, :blog, :posts]) + "/new" %>
+	<%= link_to('Create Blog Post', new_blog_post_path) %>
+</div>
+
+<h2 class="page_title">Blogs</h2>
+
+<div class="blog_results">
+	<div id="list">
+	  <div class="listform">
+	    <%= category_filter_sort_controls('BlogPost') -%>
+  	</div>
+	  
+  	<% @blogs.each do |blog_post| -%>
+  		<%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => blog_post, :blog_explore => true, :classname => cycle('odd', 'even') } %>
+  		<div style="clear: both;"></div>
+  	<% end -%>
+	</div>
+
+	<div class="see_all" style="margin-left: 10px;">
+		<%= will_paginate @blogs %>
+	</div>
+</div>

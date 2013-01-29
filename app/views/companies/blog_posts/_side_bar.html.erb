@@ -1,0 +1,26 @@
+<div id="blog_meta">
+  <%= content_tag(:h4, link_to('Create Blog Post', new_companies_blog_blog_post_path )) -%>
+    
+    <% unless @blog.archived_posts.size.zero? -%>
+      <h4>Archives</h4>
+      <ul class="archives">
+        <li><%= link_to("All", companies_blog_blog_posts_path)%>
+        <% if @blog_posts && @blog_posts.size > 1 %>  
+          <li><%=link_to("Most Recent", companies_blog_blog_post_path(@blog_posts.first)) -%></li>
+        <% end %>
+        <% @blog.archived_posts.each do |archive| -%>
+          <li><%= link_to_archive(@owner, archive) -%></li>
+        <% end -%>
+      </ul>
+    <% end -%>
+
+    <% unless @blog.tags.size.zero? -%>
+      <h4>Tags</h4>
+      <ul class="tags">
+        <% @blog.tags.each do |tag| -%>
+        <li><%= link_to_tag(@owner, tag, true) -%></li>
+        <% end -%>
+      </ul>
+    <% end -%>
+
+</div>

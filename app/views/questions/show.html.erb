@@ -1,0 +1,28 @@
+<% content_for(:page_title, truncate(@question_summary.question, { :length => 25, :omission => "..." })) -%>
+<% content_for(:body_class, "question_answers") -%>
+
+<h2 class="page_title">Question and Answers</h2>
+
+<div class="list">
+
+  <div class="description">
+    <div class="content">
+      <div id="qaQuestion<%=@question_summary.id%>" class="question <%=@question_summary.id%> question_details single_item list_item">
+          <%= render :partial =>'questions/question', :locals => {:question => @question_summary, :show => {:linked_question => false, :close => true}, :avatar_size => :thumb_80 }%>  
+          <%= render(:partial => 'answers/best_answer', :locals => {:answer => @best_answer}) %>          
+          <div style="clear: both;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div style="clear: both;"></div>
+
+  <div id="list">
+    <%= render( :partial => 'answers/answers', 
+                :locals =>{:answers => @answer_summaries, :question => @question_summary})%>
+  </div>
+  
+  <div class="see_all" style="margin-left: 10px;">
+    <%= will_paginate @answer_summaries %>
+  </div>
+</div>

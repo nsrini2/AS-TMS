@@ -1,0 +1,10 @@
+<div id="awards">
+	<h3>Awards (<%= @profile_awards.size %>)</h3>
+	<div class="award">
+		<div class="award_details">
+			<%= image_link_to_view_all_awards(@profile) %>
+			<%= award_caption(@profile) %>
+		</div>
+	</div>
+	<%= link_to_view_all_awards(@profile) %>
+</div>

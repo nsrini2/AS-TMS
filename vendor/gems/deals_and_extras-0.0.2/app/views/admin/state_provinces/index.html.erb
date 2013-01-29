@@ -1,0 +1,22 @@
+<%= will_paginate @states_provinces %>
+<%= page_entries_info @states_provinces %>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>State/Province</th>
+            <th>Abbreviation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @states_provinces.each do |s| -%>
+            <tr class="<%= cycle("odd", "even") %>">
+                <td><%= s.id %></td>
+                <td><%= s.state %></td>
+                <td><%= s.abbreviation %></td>
+            </tr>
+        <% end -%>
+    </tbody>
+</table>
+<%= will_paginate @states_provinces %>
+<%= page_entries_info @states_provinces %>

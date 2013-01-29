@@ -1,0 +1,32 @@
+<%= link_to 'NEW', new_admin_supplier_path %>
+<%= will_paginate @suppliers %>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>External Reference Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @suppliers.each do |supplier| %>
+            <tr class="<%= cycle('even', 'odd') %>">
+                <td>
+                    <%= supplier.id %>
+                </td>
+                <td>
+                    <%= supplier.supplier_external_reference_id %>
+                </td>
+                <td>
+                    <%= supplier.supplier_name %>
+                </td>
+                <td>
+                    <%= link_to 'edit', edit_admin_supplier_path(supplier) %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @suppliers %>
+<%= page_entries_info @suppliers %>

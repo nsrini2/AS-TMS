@@ -1,0 +1,47 @@
+<div id="terms_and_conditions_overlay" style="display:none;">
+  <div class="content2" style="width: 100%;">
+		<div style="margin: 0 auto; width: 400px;">
+	    <center>
+				<h1>Welcome to AgentStream</h1>
+				<h3 class="tagline">the world's largest agent community</h3> 
+			</center>
+			<% if sabre_red_workspace_user %>	
+			<center>
+				<div id="agentstream-srw-login">
+					<center><hr /><h3><strong>Already a member?</strong> Enter your login information below.</h3></center>
+					<% @user = User.new %>
+						<% form_for @user, :url => '/sso/link_account', 
+															 :html => { :id => "login_form", :class => "html5", "accept-charset" => "utf-8" } do %>
+							<label class="facebox_sign_in_label">Username:</label><br/>
+							<input type="text" name="login"  id="one" /><br/>
+							<label class="facebox_sign_in_label">Password:</label><br/>
+						  <input type="password" name="password" id="two"/><br/>
+					   	<input class="submit" type="image" src="/images/welcome/AS_LoginButton_blue_6811.gif" name="Login" width="61" height="25"/>
+							<br />
+							<a href="/retrievals/new">Forgot username or password?</a><br />
+					<% end %>	
+				</div>
+			</center>
+			<center><hr /></center>
+		
+			<center>								
+				<h3><strong>Not a member?</strong> Activate your account by accepting the terms and conditions below.</h3>
+			</center>
+			<% else %>
+				<center>								
+					<h3>Activate your account by accepting the terms and conditions below.</h3>
+				</center>
+			<% end %>
+			<center>		
+		  	<div id="terms_and_conditions">
+					<p><%= terms_and_conditions %></p>	
+				</div>
+				<div class="buttons">
+					<center>
+						<%= button_to("Accept", '/sso/accept_terms_and_conditions',  {:class => "button large" })%>
+					</center>	
+				</div>
+			</center>
+		</div>
+  </div>  
+</div>

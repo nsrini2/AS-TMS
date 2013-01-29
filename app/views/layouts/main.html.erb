@@ -1,0 +1,62 @@
+<%= render :file => 'layouts/_application' -%>
+
+<%= javascript_include_tag("jquery-1.4.4", "jquery-ui-1.8.7.custom.min", :cache => "deals_and_extras_jquery") %>
+
+<%# Apparently jquery.parsequery need jquery to already be loaded... %>
+<%= javascript_include_tag("jquery.parsequery", "facebox") %>
+
+<%# Apparently jquery.selectbox.js doesn't like to be cached %>
+<%= javascript_include_tag  "interactions", "filter", "navigationView", "jquery.selectBox.min.js" %>
+
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		$("SELECT").selectBox();
+		// Select options
+    // .focus( function() {
+    //  $("#console").append('Focus on ' + $(this).attr('name') + '<br />');
+    //  $("#console")[0].scrollTop = $("#console")[0].scrollHeight;
+    // })
+    // .blur( function() {
+    //  $("#console").append('Blur on ' + $(this).attr('name') + '<br />');
+    //  $("#console")[0].scrollTop = $("#console")[0].scrollHeight;
+    // })
+    // .change( function() {
+    //  $("#console").append('Change on ' + $(this).attr('name') + ': ' + $(this).val() + '<br />');
+    //  $("#console")[0].scrollTop = $("#console")[0].scrollHeight;
+    // });
+      
+    $('#sorts_filter').change(function(){
+        // go to the first page of the new search results
+        $(window).trigger('agentstream:filterSearch', 1);
+    });
+	});
+	
+	// TRACKING for DE
+	
+	// Tracking Outbound links
+  // Based loosely on http://www.google.com/support/analytics/bin/answer.py?answer=55527
+  function recordOutboundLink(link, category, action) {
+    _gat._getTrackerByName()._trackEvent(category, action);
+    // setTimeout('document.location = "' + link.href + '"', 100);
+  }
+	
+	// Tracking all ajax calls through GA
+  (function ($) {
+
+    // Log all jQuery AJAX requests to Google Analytics
+    $(document).ajaxSend(function(event, xhr, settings){ 
+      if (typeof _gaq !== "undefined" && _gaq !== null) {
+        _gaq.push(['_trackPageview', settings.url]);
+      }
+    });
+    
+    // And a bit from
+    // From http://snipplr.com/view/26660/google-analytics--jquery--track-all-outbound-link-clicks/
+    $('a.external').live('click', function() {
+     recordOutboundLink($(this).attr('href'), "OutboundLink", $(this).attr('href'));
+    });
+
+  })(jQuery);
+	
+</script>

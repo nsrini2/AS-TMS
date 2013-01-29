@@ -1,0 +1,44 @@
+# sample blog_posts
+
+public_group_newest:
+  blog_id: 1
+  title: Newest Public Group Blog Post
+  text: This blog post is the most recent blog post created by a public group
+  creator_type: Profile
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+
+public_group_middle:
+  blog_id: 1
+  title: Middle Public Group Blog Post
+  text: This blog post is the middle (by age) blog post created by a public group
+  creator_type: Profile
+  created_at:  <%= Time.now.utc.advance(:days => - 1, :hours => -1).strftime("%Y-%m-%d %H:%M:%S") %>
+
+public_group_oldest:
+  blog_id: 1
+  title: Oldest Public Group Blog Post
+  text: This blog post is the oldest blog post created by a public group
+  creator_type: Profile
+  created_at:  <%= Time.now.utc.advance(:days => - 10, :hours => -1).strftime("%Y-%m-%d %H:%M:%S") %>      
+  
+
+private_group:
+  blog_id: 2
+  title: Private Group Blog Post
+  text: This blog post was created by a private group
+  creator_type: Profile
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+
+profile:
+  blog_id: 3
+  title: Profile Blog Post
+  text: This blog post was created by a profile
+  creator_type: Profile
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+  
+company:
+  blog_id: 4
+  title: Company Blog Post
+  text: This blog post was created in a Company
+  creator_type: Company
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>

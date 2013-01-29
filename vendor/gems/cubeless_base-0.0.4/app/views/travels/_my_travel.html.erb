@@ -1,0 +1,28 @@
+<tr class="<%= classname %>">
+
+<% if false %>
+	<td class="photo"><%= primary_photo_for(travel.profile, :size => '20x20', :hide_status_indicator => true) %></td>
+	<td><%= link_to(travel.profile.screen_name, '/profile', :class => 'name') %></td>
+<% end %>
+
+	<td class="location"><%= travel.start_location %></td>
+	<td class="location"><%= travel.locations %></td>
+	<td class="date"><%= short_date travel.start_time %></td>
+	<td class="date"><%= short_date travel.end_time %></td>
+	<td class="itinerary">
+		<%= link_to "Itinerary", itinerary_profile_travel_path(current_profile, travel) %>
+	</td>
+	<td class="itinerary">
+		<% bxml = BookingXML.new(REXML::Document.new(travel.xml).root) %>
+		<% legs = [] %>
+		<% legs << "Air" if bxml.has_air_legs? %>
+		<% legs << "Hotel" if bxml.has_hotels? %>
+		<% legs << "Car" if bxml.has_cars? %>
+		<small>
+			<%= legs.join(", ") %>
+		</small>
+	</td>
+	<td>
+		<input type="checkbox" <%= "checked=\"checked\"" if travel.public %> value="<%= travel.id %>" class="booking_privacy" />
+	</td>			
+</tr>

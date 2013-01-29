@@ -1,0 +1,40 @@
+<% content_for(:heading, 'Explore') -%>
+<% content_for(:explore_selected, 'selected') -%>
+<% content_for :tabs do -%>
+		<% query_params = params[:query].blank? ? "" : "?query=#{params[:query]}"%>
+
+		<li<%= " class=\"selected\"" if @selected == 'question_tab' %>>
+			<%=link_to "Questions", questions_explorations_path + query_params %>
+		</li>
+		<li<%= " class=\"selected\"" if @selected == 'smarts_tab' %>>
+			<%=link_to "Smarts", smarts_explorations_path + query_params %>
+		</li>
+		<li<%= " class=\"selected\"" if @selected == 'people_tab' %>>
+			<%=link_to "People", people_explorations_path + query_params %>
+		</li>
+		<li<%= " class=\"selected\"" if @selected == 'groups_tab' %>>
+			<%=link_to "Groups", groups_explorations_path + query_params %>
+		</li>
+		<li<%= " class=\"selected\"" if @selected == 'blogs_tab' %>>
+			<%=link_to "Blogs", blogs_explorations_path + query_params %>
+		</li>
+		<% if Video.enabled? %>
+		<li<%= " class=\"selected\"" if @selected == 'videos_tab' %>>
+			<%=link_to "Videos", videos_explorations_path + query_params %>
+		</li>
+		<% end %>
+		<% if Getthere.Enabled? %>
+		<li<%= " class=\"selected\"" if @selected == 'travels_tab' %>>
+			<%=link_to "Travel", travels_explorations_path%>
+		</li>
+		<% end %>			
+		<li<%= " class=\"selected\"" if @selected == 'statuses_tab' %>>
+			<%=link_to "Updates", statuses_explorations_path + query_params %>
+		</li>			
+<% end -%>
+
+<% content_for :exploration_content do %>
+  <%= yield -%>
+<% end %>
+
+<%= render :file => 'layouts/_tab_structure' -%>

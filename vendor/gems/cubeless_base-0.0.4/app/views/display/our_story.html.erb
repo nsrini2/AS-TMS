@@ -1,0 +1,75 @@
+<% content_for :page_header do %>
+	<!-- //////// jQuery ////////  -->
+	<script src="/homepage_2/_layout/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+	<!-- //////// Cufon - font Replacement ////////  -->
+	<script src="/homepage_2/_layout/js/cufon/cufon.js" type="text/javascript"></script>
+	<script src="/homepage_2/_layout/js/cufon/Museo_Sans_500.font.js" type="text/javascript"></script>
+	<!-- //////// Custom Js ////////  -->
+	<script src="/homepage_2/_layout/js/plugins.js" type="text/javascript"></script>
+	
+	<style>
+			/*  */
+			.banner {
+				height: 100px;
+			}
+			
+			/* level 1 menu */
+			ul#dropdown-menu{  float:right; list-style:none; }		  
+			ul#dropdown-menu li{ float: left; }
+			ul#dropdown-menu li a{
+				display: block;
+				font-size:18px;
+				text-transform:uppercase;
+				color:#252525;
+				padding-top: 32px;
+				padding-right: 5px;
+				padding-bottom: 0px;
+				padding-left: 32px;
+				font-weight: bold;
+			}			   
+			ul#dropdown-menu li.hover, ul.dropdown-menu li:hover{ position: relative; }
+			ul#dropdown-menu li.hover a{ text-decoration:none; } /* styleing when hovering on menu item a */					 
+			ul#dropdown-menu li.current > a{ color:#346699; }							   
+			ul#dropdown-menu li .sub-menu li a{ color:#252525; }							   
+			ul#dropdown-menu li.last > a{ padding-right:11px; }
+
+			/* level 2 menu */
+			ul#dropdown-menu ul{ position:absolute; top:100%; left:0; width:180px; list-style:none; display:none; 
+								  border:1px solid #efefef; border-bottom:none; background-color:#ffffff; z-index:35; }				 
+			ul#dropdown-menu ul li{ width:180px; }				
+			ul#dropdown-menu ul li a{ width:160px; display: inline-block; border:none; padding:5px 10px; text-transform:none; 
+									  font-weight:normal; border-bottom:1px solid #efefef; color:#666666; } /* IE 6 and 7 Needs Inline Block */			  
+			ul#dropdown-menu ul li a:hover{ background-color:#f5f5f5; } 
+
+			/* level 3 menu */
+			ul#dropdown-menu ul ul{ left:100%; top:-1px; }
+			ul#dropdown-menu li:hover > ul{ visibility:visible; }
+
+			.arrow{ background:url(images/bg-sidenav.gif) no-repeat 165px 12px; }
+	</style>
+	
+	
+  <div class="row fixed banner">
+	
+		<div class="col-700 dropdown-container fixed">
+		
+			<a href="/" title="AgentStream" id="logo"><img src="/homepage_2/_layout/images/logo.png" width="150" height="77" alt="AgentStream Logo"/></a>
+
+		  <ul class="fixed" id="dropdown-menu">
+			  <li><a href="/account/login">LOGIN</a></li>
+        <li><a href="/account/signup">SIGN UP</a></li>
+        <li><a href="/deals_and_extras">DEALS + EXTRAS</a></li>
+		  </ul><!-- end #dropdown-menu -->
+		
+	  </div><!-- end .col-900 --><!-- end .col-220 -->
+		
+  </div>
+
+<% end %>
+<% content_for(:our_story_selected, 'selected') -%>
+<% content_for(:page_title, 'About Us') -%>
+<h2>About Us</h2>
+<div id="about_us" class="fck_styled">
+	<%=AboutUs.get.content%>
+</div>
+<script type="text/javascript"> Cufon.now(); </script> 

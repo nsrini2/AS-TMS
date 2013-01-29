@@ -1,0 +1,47 @@
+<% is_owner = (current_profile == @profile) -%>
+<% content_for(:my_stuff_selected, 'selected') if is_owner -%>
+
+<%= content_for :tabs do %>
+  <% is_owner = (current_profile == @profile) -%>
+  <% content_for(:my_stuff_selected, 'selected') if is_owner -%>
+  <%= content_tag('li', link_to("Profile", profile_path(@profile)), :class => yield(:profile_tab_selected)) -%>
+  
+  <%= owner_content do %>
+    <%= content_tag('li', link_to("Messages", notes_path), :class => yield(:notes_tab_selected)) -%>
+  <% end %>
+  
+  <% if current_profile.sponsor? -%>
+  	<%= content_tag('li', link_to("Q &amp; A", watched_questions_profile_path(@profile)), :class => yield(:questions_tab_selected)) -%>
+  <% else -%>
+  	<%= content_tag('li', link_to("Q &amp; A", is_owner ? matched_questions_profile_path(@profile) : questions_asked_profile_path(@profile)), :class => yield(:questions_tab_selected)) -%>
+  <% end -%>
+  <%= content_tag('li', link_to("Groups", groups_profile_path(@profile)), :class => yield(:groups_tab_selected)) -%>
+  <% unless current_profile.sponsor? -%>
+  	<%= content_tag('li', link_to("Blog",  profile_blog_path(@profile)), :class => yield(:blog_tab)) -%>
+  	<% if owner_content-%>
+  		<% if Getthere.Enabled? %>
+  			<%= content_tag('li', link_to("Travel", profile_travels_path(@profile)), :class => yield(:travel_tab)) -%>
+  		<% end -%>
+  	<% end -%>
+
+  	<%= content_tag('li', link_to("Updates", profile_statuses_path(@profile)), :class => yield(:status_tab_selected)) -%>
+  <% end -%>
+<% end %>
+
+<% content_for :tab_panel do %>
+  <div id="list">
+    <%= yield %>
+  </div>
+<% end %>
+
+<% content_for :aside do %>
+
+<% end %>
+
+
+<%= render :file => 'layouts/_tab_structure' -%>
+
+
+
+
+

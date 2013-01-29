@@ -1,0 +1,14 @@
+<h2>New Profile Field</h2>
+
+<% form_for(:site_profile_field, @site_profile_field,
+						:url => site_admin_site_profile_field_path(@site_profile_field),
+						:html => {:class => "admin_form", :method => :put}, 
+						:builder => AdminFormBuilder) do |f| %>
+
+	<%= render :partial => "form", :locals => {:f => f} %>
+
+	<div class="buttons">
+    <%= f.submit "Update", :class => "button" %>
+		<input type="submit" name="reset" value="Cancel" class="button light">
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<%= @content %>
+<% if @uses_password -%>
+<p>Your login is: <%=@login%>
+<% end -%>
+<% if @uses_password && !@has_password -%>
+<p><a href="<%=@password_set_link%>">Click Here To Set Your Password</a></p>
+<% else -%>
+<p>Click <a href="<%="#{URI.parse(Config[:site_base_url]).to_s}"%>">here</a> to get started
+updating your profile in <%="#{Config[:site_name]}"%> today</p>
+<% end -%>

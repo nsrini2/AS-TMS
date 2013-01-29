@@ -1,0 +1,5 @@
+<% content_for(:award, '') -%>
+<% content_for(:page_title, "Manage #{params[:action].gsub('_', ' ').titleize}") -%>
+<div id="admin_award_list">
+	<%= render :partial => 'awards/awards' %>
+</div>

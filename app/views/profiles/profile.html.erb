@@ -1,0 +1,50 @@
+<style>
+
+/*.profile .tabs .tabs-nav li { margin: 0 5px 1px 0;}
+.profile .tabs .tabs-nav li a, .tabs .tabs-nav li span { padding: .5em 2.5em; }*/
+#profile_tab div.avatar_large { float: left;}
+
+</style>
+
+<% content_for(:profile_tab_selected, 'selected') %>
+		
+<div id="profile_tab">
+  <% @hide_updates = true if current_profile.sponsor? %>
+  <%= render :partial => 'profiles/user_card' -%>
+</div> 
+
+<%# We're not going to do a tab based rendering at this point %>
+<% if false %>
+	<div id="following_tab" class="tabs-panel" style="display: none"> 
+		Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.
+	</div> 
+	<div id="messages_tab" class="tabs-panel" style="display: none"> 
+		Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.
+	</div>
+<% end %>
+
+
+
+
+<% content_for :post_panel do %>
+<% hide_when_viewing_sponsored_profile do -%>      		
+	<div id="profile_questions">
+	  
+		<% question_sections.each do |section| -%>
+			<div class="profile_questions_sec">
+				<h3><%= section['title'] -%></h3>
+				<% section['questions'].each do |question| -%>
+					<div class="question <%= cycle('odd', 'even', :name => 'question') -%>"> 
+				<h4 <%= @profile.question_field_required?(question['question']) ? 'class="title"> ' : 'class="title">' -%> <%= question['label'] %></h4>
+				<% if @profile.send(question['question']).blank? && @profile.editable_by?(current_profile) && question['example'] -%>
+							<p class="instr"><%= question['example'] %></p>
+						<% end -%>
+						<%= render_inline_editor_for(@profile, question['question'], update_profile_path( @profile ), :type => 'expandable', :tooltip => "Click to edit your answer", :maxlength => '4000', :placeholder => 'Click here to answer') -%>
+					</div>
+				<% end -%>
+				<% reset_cycle('question') %>
+			</div>
+		<% end -%>
+	</div>
+<% end -%>  
+<% end %>

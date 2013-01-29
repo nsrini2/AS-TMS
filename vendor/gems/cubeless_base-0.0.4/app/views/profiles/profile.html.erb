@@ -1,0 +1,69 @@
+<% 
+require 'enumerator'
+
+content_for(:profile_tab_selected, 'selected')
+content_for(:page_title, @profile == current_profile ? "My Profile" : "#{@profile.full_name}'s Profile")
+-%>
+
+<div id="profile">
+	<%= action_list_for([
+			(render_watch_link(@profile) unless @profile == current_profile),
+			(render_abuse(@profile) unless @profile == current_profile)
+	]) unless hide_for_sponsor -%>
+	<%= render :partial => 'profiles/user_card' -%>
+
+	<div id="profile_awards_and_notes">
+		<% @profile_awards = owner_content ? @profile.profile_awards : @profile.profile_awards.visible -%>
+		<% collection_content_for @profile_awards do -%>
+		<div id="awards">
+			<h3>Awards (<%= @profile_awards.size %>)</h3>
+			<div class="award">
+				<div class="award_details">
+					<%= image_link_to_view_all_awards(@profile) %>
+					<%= award_caption(@profile) %>
+				</div>
+			</div>
+			<%= link_to_view_all_awards(@profile) %>
+		</div>
+		<% end -%>
+
+		<div class="flash" id="notes">
+			<script type="application/json"><%=
+			{
+				:src => "/bin/NoteBoard.swf", 
+				:width => (@profile_awards.empty? ? 786 : 646),
+				:height => 193,
+				:params => { :bgcolor => '#869ca7', :quality => 'high' },
+				:flashvars => {
+					:authenticity_token => form_authenticity_token,
+					:note_url => formatted_notes_profile_path(@profile, :xml) + '%3Flimit=50',
+					:receiver_type => 'Profile',
+					:receiver_id => @profile.id,
+					:mine => @profile == current_profile,
+					:admin => current_profile.has_role?(Role::ShadyAdmin)
+				},
+				:attributes => { :align => 'middle' }
+			}.to_json
+		-%></script>
+		</div>
+	</div>
+	<% hide_when_viewing_sponsored_profile do -%>
+	<div id="profile_questions">
+		<% question_sections.each do |section| -%>
+			<div class="profile_questions_sec">
+				<h3><%= section['title'] -%></h3>
+				<% section['questions'].each do |question| -%>
+					<div class="question <%= cycle('odd', 'even', :name => 'question') -%>"> 
+				<h4 <%= @profile.question_field_required?(question['question']) ? 'class="title"> ' : 'class="title">' -%> <%= question['label'] %></h4>
+				<% if @profile.send(question['question']).blank? && @profile.editable_by?(current_profile) && question['example'] -%>
+							<p class="instr"><%= question['example'] %></p>
+						<% end -%>
+						<%= render_inline_editor_for(@profile, question['question'], update_profile_path( @profile ), :type => 'expandable', :tooltip => "Click to edit your answer", :maxlength => '4000', :placeholder => 'Click here to answer') -%>
+					</div>
+				<% end -%>
+				<% reset_cycle('question') %>
+			</div>
+		<% end -%>
+	</div>
+	<% end -%>
+</div>

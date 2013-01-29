@@ -1,0 +1,5 @@
+<% content_for(:page_title, h(@video.title)) -%>
+
+<h3><%= h(@video.title) %></h3>
+
+<%= render :partial => "video", :locals => {:video => @video} -%>

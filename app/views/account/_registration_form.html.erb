@@ -1,0 +1,53 @@
+<% @registration_fields = Config['registration_fields'] %>
+
+<div id="register-main">
+	<%= link_to(image_tag("/images/AgentStream_Logo_FINAL_111210_H90.jpg", :alt => "AgentStream Logo"), home_path )%>
+	<div id="public-focus">
+		<div id="login-header" class="header">
+			<h1>register for your free account</h1>
+		</div>
+		<% form_for :user, :url => signup_account_path, :html => { :class => "html5", :id => "registration_form", "accept-charset" => "utf-8"} do %>
+			<div id="errors" class="error" >
+				<!-- This is a place holder DIV where any error messages about this form will be placed -->
+			</div>
+				<%= hidden_field(:user, :facebook_id, :value => facebook_uid) if facebook_uid %>
+			<p>
+			  <%= text_field :profile, :first_name, :placeholder => "First Name", :value => @first_name %>
+			  <%= text_field :profile, :last_name, :placeholder => "Last Name", :value => @last_name %>
+			</p>
+		
+			<p>
+			  <%= text_field :user, :email, :placeholder => "Email Address" %>
+			  <%= text_field :user, :login, :placeholder => "Desired Username" %>
+			</p>
+		
+			<% unless Config[:registration_queue] %>
+			  <p>
+			    <input type="text" name="user[password]" style="width:235px" placeholder="Password" />
+			    <input type="text" name="user[password_confirmation]" style="width:235px" placeholder="Password (Again)" />
+			  </p>
+			<% end %>
+
+			<% @registration_fields.each_with_index do |hash,idx| %>
+			  <%= "<p>" if idx%2 == 0 %>
+				<% attr_name = hash['label'].to_s.downcase.gsub(" ", "_") %>
+	  	  <% if hash['options'].to_s.blank? %>
+	  	    <%= text_field :registration, attr_name, :placeholder => hash['label'] -%>
+	  	  <% else %>
+	  	    <%= select :registration, attr_name, hash['options'].split("\n"), {:prompt => "#{hash['label']}"}, :placeholder => hash['label'] -%>
+	  	  <% end %>
+	  	  <%= "</p>" if (idx%2 == 1) || idx == @registration_fields.size-1 %>
+	  	<% end %>
+				
+			<p id="submit"><input type="image" class="submit" src="/images/welcome/AS_Reg_RegisterButton_6811.gif" name="Register"/></p>
+	  <% end %>
+	</div>	
+	<div style="clear: both;">
+		<p id="login-request">
+			Have an account?<%= link_to (" login &rsaquo;", :action => 'login' )%>
+		</p>
+	</div>
+	<div class="disclaimer">
+	  <p><%= Config[:disclaimer] -%></p>
+	</div>	
+</div>

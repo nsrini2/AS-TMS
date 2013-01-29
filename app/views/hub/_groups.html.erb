@@ -1,0 +1,39 @@
+<h2>My Groups</h2>
+
+<% if false %>
+
+<ul class="nav">
+	<li><%= link_to "Explore Groups", groups_explorations_path %></li>
+	<li><%= link_to "Create a Group", new_group_path, :class => "modal create_group" %></li>
+</ul>
+
+<% end %>
+
+<% groups.each do |group| %>
+	<div id="group140" class="list_item group_item <%= cycle "even", "odd" %>">
+		<%= primary_photo_for(group, :thumb => :thumb, :linkable => true, :class => "photo", :alt => "#{group.name} avatar", :hide_group_icon => true ) %>
+
+		<div class="details">
+			<h3><%= link_to group.name, group_path(group) %></h3>
+			<p>
+			  <%= pluralize group.group_memberships_count, "member" %>
+			</p>
+			<% if false %>
+  			<p>
+  			  Founded on <%= short_date(group.created_at) %>
+  			</p>
+  			<p class="description">
+  			  <%= truncate(group.description, { :length => 200, :omission => "..." }) %>
+  			</p>
+			<% end %>
+
+		</div>
+	</div>
+<% end %>
+<%= "<br/><br/>" if groups.empty? %>
+
+<div class="see_all">
+  <%= link_to "See All My Groups", groups_profile_path(current_profile) %>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <%= link_to "Explore Groups", groups_explorations_path %>
+</div>

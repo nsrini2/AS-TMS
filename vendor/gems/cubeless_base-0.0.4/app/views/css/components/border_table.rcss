@@ -1,0 +1,7 @@
+table.border_table { margin-bottom: 18px; border: 1px solid #000; border-right: 0; }
+	table.border_table caption { margin: 0; padding: 4px 7px; background: #000; color: #fff; font-weight: bold; font-size: 12px; text-align: left; }
+	table.border_table tbody {  }
+		table.border_table tbody tr { background: #fff; }
+		table.border_table tbody tr.even { background: #e8e8e8; }
+			table.border_table tbody tr th { border-right: 1px solid #000; padding: 3px 7px; font-weight: bold; white-space: nowrap; text-align: left; }
+			table.border_table tbody tr td { border-right: 1px solid #000; padding: 3px 7px; vertical-align: middle; }

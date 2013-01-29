@@ -1,0 +1,16 @@
+#query_form { margin: 15px 0 10px 0; }
+#cloud_contents { background: #fff; font-weight: bold; }
+#cloud { text-align: center; margin: 40px; }
+	#cloud td { padding: 2px; }
+	#cloud a { margin: 0 3px; text-decoration: none; vertical-align: middle; }
+		#cloud a.no_background:hover{ background: none; }
+
+div.tag_cloud { font-weight: bold; text-align: center; }
+	div.tag_cloud a { margin: 0 3px; text-decoration: none; vertical-align: middle; }
+
+	div.tag_cloud a.tag0 { color: #b8b8b8; font-size: 1.0em; font-weight: normal; }
+	div.tag_cloud a.tag1 { color: #c2c2c2; font-size: 1.3em; }
+	div.tag_cloud a.tag2 { color: #acacac; font-size: 1.6em; }
+	div.tag_cloud a.tag3 { color: #a1a1a1; font-size: 1.9em; }
+	div.tag_cloud a.tag4 { color: #949494; font-size: 2.2em; }
+	div.tag_cloud a.tag5 { color: #7e7e7e; font-size: 2.5em; }

@@ -1,0 +1,26 @@
+<% content_for(:activity_stream_message, 'selected') -%>
+<% content_for(:page_title, 'Manage Activity Stream Messages') -%>
+<h3>Activity Stream Messages</h3>
+<p class="help">You can have an unlimited number of rotating messages. Be creative and have fun with them.</p>
+<p><%= link_to("new activity stream message", new_activity_stream_message_path ) %></p>
+<table id="admin_stream_marketing">
+  <tbody>
+    <tr>
+      <th>Active</th>
+      <th>Preview</th>
+      <th>Link</th>
+    </tr>
+    <% @activity_stream_messages.each_with_index do |activity_stream_message, index| -%>
+    <tr id="activity_stream_message_<%= activity_stream_message.id %>">
+      <td><%= link_to_toggle_activity_stream_message_activation(activity_stream_message) %></td>
+      <td id="stream_message_preview">
+        <%= render :partial => 'shared/event_stream_item', :locals => { :event => activity_stream_message, :index => index + 1 } -%>
+        <div style="clear: both;"></div>
+      </td>  
+      <td>
+        <%= link_to "edit", edit_activity_stream_message_path(activity_stream_message), :class => "button" -%>
+      </td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>

@@ -1,0 +1,8 @@
+<p><strong>Wow! You really do rule and you've proved it!  <%= @question.profile.screen_name %> just listed your answer as "Best Answer" to the following question:</strong><br /><br />
+	&#8220;<%= @question.question %>&#8221;</p>
+<p><strong>Want to check out the competition all contending for this coveted award?
+	View all the answers <%= link_to "here", @site_base_url + question_path(@question) %>.
+	Do you want to rule the town? Answer more questions <%= link_to "here", @site_base_url + questions_explorations_path(:filter_scope => 'unanswered') %>.</strong></p>
+<p><br />Congratulations,<br /><br /><%=@site_name%><br /></p>
+<p style="padding:20px 0 0 30px;font-size:12px;">You control the communications you get from us. You can change your
+	<%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.<br /></p>

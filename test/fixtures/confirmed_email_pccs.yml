@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  email: MyString
+  pcc: MyString
+
+two:
+  email: MyString
+  pcc: MyString

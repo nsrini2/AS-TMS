@@ -1,0 +1,15 @@
+<%num_empty_slots = current_profile.num_group_slots_remaining%>
+
+<h3>You Have <%= num_empty_slots -%> More <%= num_empty_slots == 1 ? " Group" : " Groups" -%> Available <hr size:'75%'>
+	
+<%empty_slots_content(num_empty_slots) do%>
+	<%=render_empty_slots_content_for(current_profile, num_empty_slots)%>
+<%end%>
+<%available_slots_content(num_empty_slots) do%>
+	<% hide_for_sponsor do %>
+		<%=link_to 'Explore groups', groups_explorations_path%> or
+	<% end %>
+	<%= link_to("Create a new group", new_group_path, :class => "modal create_group") %>
+<%end%>
+
+

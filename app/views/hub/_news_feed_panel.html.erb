@@ -1,0 +1,34 @@
+<div id="ask" class="">				  
+  <% form_for :status, :url => questions_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "html5"} do |f| -%>
+	  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_large, :size=> "80x80", :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
+		<%= f.text_area :body, :maxlength => '4000', :placeholder => "Ask a Question", :class => "ask_text_placeholder", :required => "" %>
+		
+		<div class="actions">
+		  <input class="button" type="submit" value="Ask">
+      <% if false %>
+  		  <input type="checkbox" id="status_question" />
+  		  <span>Post as a question</span>
+		  <% end %>
+		  <div class="category_prompt">
+  		  <%# MM2: There's some railsness to make this cleaner somewhere %>
+        <select name="status[question_category]" id="status_question_category">
+          <option value="-1">Select a Category</option>
+          <% Question.categories.each do |category| %>
+            <option><%= category %></option>
+          <% end %>
+        </select>
+      </div>
+		</div>				  
+  <% end %>
+</div>
+
+<% if FEATURE_ACTIVITY_STREAM_ADS && @activity_stream_message %>
+	<%= render :partial => 'shared/event_stream_item', :locals => { :event => @activity_stream_message, :index => 0 } -%>
+<% end -%>
+
+<% events.each_with_index do |event, index| -%>
+	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event.reference, :index => (index + 1) } -%>
+<% end -%>
+<div class="see_all" style="margin-left: 10px;">
+	<%= will_paginate @events %>
+</div>

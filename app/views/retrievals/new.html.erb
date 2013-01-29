@@ -1,0 +1,27 @@
+<% forgot_text = params[:forgot].to_s == 'login' ? 'username' : 'password' %>
+
+
+<% content_for(:page_title, "Help I forgot my #{forgot_text}") -%>
+<% form_for :retrieval, :url => retrievals_path, :html => { :class => "retrieval" } do |f| -%>
+	<h2>Help I forgot my <%= forgot_text -%></h2>
+	<% if forgot_text == 'username' -%>
+	<fieldset>
+		<%= hidden_field :retrieval, :item, :value => 'login' -%>
+		<p>Forgot your username? Enter your email address in the field below and we will email you your username.</p>
+		<dl>
+			<dt><label for="retrieval_email">What is your email address?</label></dt>
+			<dd><%= text_field :retrieval, :email, :size => 45 -%></dd>
+		</dl>
+	</fieldset>
+	<% else -%>
+	<fieldset>
+		<%= hidden_field :retrieval, :item, :value => 'password' -%>
+		<p>Forgot your password? Simply enter your username into the field below and we will send instructions on how to reset your password to your account's email address.</p>
+		<dl>
+			<dt><label for="retrieval_login">What is your username?</label> <span class="forgot"><a href="/retrievals/new?forgot=login">Forgot username?</a></span></dt>
+			<dd><%= text_field :retrieval, :login, :size => 45 -%></dd>
+		</dl>
+	</fieldset>
+	<% end -%>
+	<div class="buttons"><input type="submit" name="commit" value="Submit" class="button large"></div>
+<% end -%>

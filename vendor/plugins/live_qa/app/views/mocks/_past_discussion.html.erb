@@ -1,0 +1,8 @@
+<h3 class="past" style="display: none;">
+  <a href="#question_<%= question.id %>_link" id="question_<%= question.id %>_link">
+    <%= question.question %> <small>(expand)</small>
+  </a>
+</h3>
+<div id="question_<%= question.id %>_container" style="display: none;" class="past_container">
+  <%= render :partial => "discussion", :locals => { :question => question } %>
+</div>

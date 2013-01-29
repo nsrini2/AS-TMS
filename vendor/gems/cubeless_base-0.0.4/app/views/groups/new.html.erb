@@ -1,0 +1,29 @@
+<% content_for(:page_title, "New Group") -%>
+<% form_for @group, :html => { :multipart => true } do |f| -%>
+<fieldset>
+	<h3>Group Details</h3>
+	<dl class="group_details">
+		<dt class="name"><label for="group_name">Name</label></dt>
+		<dd class="name"><%= f.text_field :name, :size => nil, :tabindex => 1, :maxlength => '100' -%></dd>
+		<dt class="description"><label for="group_description">Description</label></dt>
+		<dd class="description"><%= f.text_area :description, :rows => nil, :cols => nil, :tabindex => 3, :maxlength => '500' -%></dd>
+		<dt class="tags">
+			<label for="group_tags">Tags</label>
+		</dt>
+		<dd class="tags">
+			<%= f.text_field :tags, :size => nil, :tabindex => 4, :maxlength => '300' -%>
+			<span class="help">Add tags to describe your group's specialization and to help target questions the group can help answer. Use commas to separate tags.</span>
+		</dd>
+		<dt class="group_type"><label>Group Type</label></dt>
+		<dd class="group_type">
+			<%= radio_button("group", "group_type", 0, :id => 'public_group_type', :tabindex => 5) %><label for="public_group_type">Public</label>
+			<%= radio_button("group", "group_type", 1, :id => 'invite_group_type', :tabindex => 6) %><label for="invite_group_type">Invite Only</label>
+			<%= radio_button("group", "group_type", 2, :id => 'private_group_type', :tabindex => 7) %><label for="private_group_type">Private</label>
+		</dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Create Group" class="button large" tabindex="8">
+		<input type="reset" name="cancel" value="Cancel" class="button large light close" tabindex="9">
+	</div>
+</fieldset>
+<% end -%>

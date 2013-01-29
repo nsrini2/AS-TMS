@@ -1,0 +1,124 @@
+<style>
+  h2 label {
+    font-size: 1.2em;
+  }
+  h2 select {
+    font-size: 0.8em;
+    margin-top: 2px;
+    vertical-align: top;
+  }
+</style>
+
+<%= form_tag("/reports", :method => :get, :id => "klass_form") %>
+  <h2>
+    <label>Build Reports for </label>
+    <%= select_tag "klass", options_for_select([""] + @klasses.collect{ |k| [k.underscore.humanize.titlecase.pluralize, k] }, @klass_name), :onchange => "this.form.submit();" %>
+  </h2>
+  <!-- <input type="submit" name="klass_commit" value="Change Base Class" /> -->
+</form>
+
+
+
+<br/>
+
+<% if @klass %>
+  <!-- <h1><%# = @klass_name %></h1> -->
+
+  <div id="report_options">
+
+    <%= form_tag("/custom_reports/create_preview", :id => "reports_form")%>
+
+      <div style="float: right;">
+
+        <h3><a id="attributes_link" class="toggle" href="#attributes_link">Attributes</a></h3>
+        <div id="attributes_container" style="display: none;">
+          <% @klass.column_names.each do |name| %>
+            <%# = check_box_tag "attributes[#{name}]", "1", @table.column_names.include?(name) %>
+            <span id="attributes_<%= name %>" class="report_draggable"><%= name.to_s.titlecase %></span><br/>
+          <% end %>
+        </div>
+
+        <br/>
+
+        <h3>Associations</h3>
+
+        <% @klass.reflections.each_pair do |name, assoc| %>
+          <% Rails.logger.warn assoc.class_name %>
+          <% begin %>
+            <% if assoc.class_name.to_s.split("::").first == "Reports" && (!assoc.options[:through] || assoc.through_reflection.class_name.to_s.split("::").first == "Reports") && assoc.class_name.constantize %>
+              <h4><a id="<%= name.to_s %>_link" class="toggle" href="#<%= name.to_s %>_link"><%= name.to_s.titlecase %></a></h4>
+
+              <div id="<%= name.to_s %>_container" style="display: none;">
+                <% assoc.class_name.constantize.new.attributes.keys.sort.each do |attr| %>
+                  <%#= check_box_tag "associations[#{name.to_s}][#{attr.to_s}]", "1", @table.column_names.any?{ |n| n.match(/#{name.to_s}\.#{attr.to_s}/) } %>
+                  <span id="associations[<%= name.to_s %>][<%= attr.to_s %>]" class="report_draggable"><%= attr.to_s.titlecase %></span><br/>
+                <% end %>
+              </div>
+            <% end %>
+          <% rescue %>
+  
+          <% end %>
+
+        <% end %>
+    
+      </div>
+
+
+      <style>
+        .report_droppable {
+          background: yellow;
+          margin-bottom: 10px;
+          padding: 10px 10px 10px 10px; 
+          width: 570px; 
+        }
+        .report_droppable_over {
+          background: green;
+        }
+      </style>
+
+      <div class="report_droppable">
+        <h3>Included in Report</h3>
+        <ul id="active_fields">
+          
+        </ul>
+      </div>
+
+
+     
+  
+      <%= hidden_field_tag "klass", @klass_name %>
+      
+
+      <script type="text/javascript">
+        var current_attributes = <%= params[:attributes] ? "[\"#{params[:attributes].keys.join("\",\"")}\"]" : "[]" %>;
+        var current_associations = <%= params[:associations] ? "[#{params[:associations].keys.collect{ |a| "[\"#{a}\",[\"#{params[:associations][a].keys.join("\",\"")}\"]]" }}]" : "[]" %>;
+      </script>
+  
+      <div class="buttons">
+         <%= select_tag "format", options_for_select(["html", "csv", "pdf"]) %> <input type="submit" name="details_commit" value="Export" />
+      </div>
+    </form>
+    
+    <%= link_to "Save Report", "#", :id => "report_link" %>
+  
+  </div>
+
+<% end %>
+
+<br/><br/>
+
+
+
+<% if @table %>
+  <style>
+    #report_preview table {
+      width: 570px;
+    }
+  </style>
+
+  <h2>Preview Results (limited to 10)</h2>
+
+  <div id="report_preview">
+    <%= @table.to_html %>
+  </div>
+<% end %>

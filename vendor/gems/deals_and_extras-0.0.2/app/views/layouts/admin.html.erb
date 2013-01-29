@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Agenstream Dashboard</title>
+        <%= stylesheet_link_tag "admin/reset", "admin/960", "admin/style", "admin/navigation", "admin/form", "admin/table", "admin/enhancement", "facebox" %>
+        <%= javascript_include_tag "jquery-1.4.4", "jquery.idTabs", "admin" %>
+    </head>
+    <body>
+
+    <%= render :partial => 'layouts/admin/header'%>
+
+    <%= render :partial => @nav || 'layouts/admin/nav' %>
+
+    <div id="main" class="container_12">
+        <div id="title" class="grid_12 round">
+            <h1><%= @page_title || 'Dashboard' %></h1>
+        </div>
+
+        <div id="content" class="<%= @aside.nil? ? 'grid_12' : 'grid_9' %>">
+            <div id="content-container" class="box round">
+
+                <% flash.each do |type, message| -%>
+                    <div class="<%= type.to_s %> round"><%= message %></div>
+                <% end -%>
+
+                <%= yield %>
+
+            </div>
+        </div>
+
+        <%= render :partial => @aside unless @aside.nil? %>
+
+    </div> <!-- close #main -->
+    
+    <div id="footer">
+        <div class="container_12">
+            <p>Sabre</a></p>
+        </div>
+    </div> <!-- close #footer -->
+    <%= javascript_include_tag "facebox" %>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+<% content_for(:page_title, @profile == current_profile ? "Questions I am Watching" : "Questions #{@profile.full_name} is Watching") -%>
+<div id="myQuestions">
+	<%= empty_watch_list_content_for @questions %>
+	<div id="questions">
+		<%= render :partial => 'questions/questions', :locals => { :questions => @questions, :show => {:remove_watch => (@profile == current_profile)}, :model => 'bookmarks', :questions_for => @profile} -%>
+	</div>
+	<div id="paging">
+		<%= will_paginate @questions %>
+	</div>
+</div>

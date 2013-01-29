@@ -1,0 +1,46 @@
+<style>
+	th {
+		text-align: left;
+	}
+	
+	.admin_form {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+</style>
+
+<h2>Registration Fields</h2>
+
+<div class="admin_form">
+
+	<%= link_to 'Add', new_site_admin_site_registration_field_path %>
+	&nbsp;|&nbsp;
+	<%= link_to 'Reorder', edit_order_site_admin_site_registration_fields_path %>
+<br/><br/>
+<table>
+  <tr>
+    <th>Position</th>
+    <th>Label</th>
+		<th>Required</th>
+		<th>Options</th>
+		<th>Tied to Profile Field</th>
+  </tr>
+
+<% for site_registration_field in @site_registration_fields %>
+  <tr>
+	  <td style="width: 70px;"><%=h site_registration_field.position %></td>
+    <td style="width: 150px;"><%=h site_registration_field.label %></td>
+    <td style="width: 70px;"><%= site_registration_field.required %></td>
+    <td style="width: 70px;"><%= site_registration_field.has_options? %></td>    
+    <td style="width: 150px;"><%=h site_registration_field.site_profile_field ? site_registration_field.site_profile_field.label : "None" %></td>
+    <td><%= link_to 'Edit', edit_site_admin_site_registration_field_path(site_registration_field) %></td>
+    <td><%= link_to 'Delete', site_admin_site_registration_field_path(site_registration_field), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+</div>
+
+<br />
+
+

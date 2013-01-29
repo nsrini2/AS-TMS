@@ -1,0 +1,62 @@
+<h2 class="page_title">Search</h2>
+
+<div id="search_results">
+  <div id="list">
+    <h2>Search Results (<%= @results.total_entries %>): <%= h @query %></h2>
+    <% if @results.empty? %>
+      No Results Found
+    <% else %>
+        <% @results.each do |result| %>
+          <%# SSJ this is to the get ActiveModel object from Tire search %>
+          <% result = result.to_model.class.find(result.id) %>
+          <% html = "" %>
+          <% icon = "" %>
+          <% case result.class.to_s
+              when "BlogPost"
+                icon = icon_image(:path => blog_icon_path)
+                html = render :partial => '/blog_posts/blog_post', :locals => { :blog_post => result, :blog_explore => true }
+              when "Group"
+                icon = icon_image(:path => group_icon_path)
+                html = render :partial => '/groups/group', :locals => { :group => result }
+              when "Profile"
+                icon = icon_image(:path => profile_icon_path)
+                html = render :partial => "/profiles/search", :locals => { :profile => result }
+              when "Question"
+                icon = icon_image(:path => qa_icon_path)          
+                html = render :partial =>'/questions/question', :locals => {:questions_for => nil, :domain => '', :questions_counter => 1, :question => result, :show => nil, :model => ''}
+              when "Status"
+                icon = icon_image(:path => status_icon_path)
+                html = render :partial => "/statuses/status", :locals => { :status => result }
+              when "Chat"	
+                icon = icon_image(:path => chat_icon_path)
+                html = render :partial => 'chats/chat_details', :locals => { :chat => result, :show_questions => false, :show_closed_questions => false }
+            end %>
+    
+          <% unless html.blank? %>
+            <div class="result_container">
+              <div class="icon_wrapper">
+                <%= icon %>
+              </div>
+              <div class="result">
+                <%= html %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        
+        <br/>
+        <%= will_paginate @results %>
+        <%#= render_pagination @results, :page_var => :search_page %>
+    <% end %>
+    <div style="clear:both;"></div>
+  </div>
+
+</div>
+
+<div id="search_filter">
+  <% @filters.keys.sort.each do |key| %>
+    <div class="accordionButton <%= "active" if key == params[:scope] || (key == "all" && params[:scope].blank?) %>">
+      <%= link_to @filters[key], { :scope => key, :q => @query } %>
+    </div>
+  <% end %>
+</div>

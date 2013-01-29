@@ -1,0 +1,123 @@
+
+theme: 'theme_4'
+
+logo_file: "rotovantage_logo.png"
+
+favicon: "cubeless_favicon.ico"
+
+site_name: "RotoConnect"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: ["Marketing/Leads", "Pricing", "Duct Cleaning Equipment Use", "Duct Cleaning Jobs", "Insulation Blower Use", "Insulation", "Radiant Barrier", "Duct Sealing", "Filters"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Company Name"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Job Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "City, State"
+    completes_profile: true
+    matchable: true
+  - question: profile_5
+    label: "Phone Number"
+    completes_profile: true
+    matchable: false
+  - question: profile_6
+    label: "How long have you been in business"
+    completes_profile: true
+    matchable: false
+  - question: profile_7
+    label: "Web Address"
+    completes_profile: false
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7',
+    'email'
+  ]
+  business_card: [
+    'profile_1',
+    'profile_2',
+    'profile_4',
+    'profile_7',
+    'email'
+  ]
+
+
+profile_complex_questions:
+  - title: "About You"
+    questions:
+      - question: question_1
+        label: "What is your primary line of business?"
+        example: "e.g. duct cleaning, HVAC, carpet cleaning, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "How many employees work in your company?"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What services do you offer?"
+        example: "e.g. duct cleaning, HVAC service and install, carpet cleaning, power washing, insulation, radiant barrier, duct sealing"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "Is your business primarily residential or commercial?"
+        completes_profile: true
+        matchable: true
+      - question: question_5
+        label: "What, in your job, are you best at and able to offer advice to others?"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "Which pieces of Rotobrush equipment do you own?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What industry associations or local groups do you belong to?"
+        example: "e.g. Chamber of Commerce, NADCA, ACCA, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What one piece of advice would you give to someone just starting a service business?"
+        matchable: true
+      - question: question_9
+        label: "What type of training or certifications do you have?"
+        example: "e.g. ASCS, NATE, Rotobrush training, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "What would you like to learn more about in your business?"
+        completes_profile: true
+        matchable: false
+      - question: question_11
+        label: "What are your hobbies?"
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "Favorite places you traveled to?"
+        completes_profile: true
+        matchable: true

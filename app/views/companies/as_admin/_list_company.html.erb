@@ -1,0 +1,9 @@
+<tr class="company <%= cycle("even", "odd") -%>">
+	<td class="image"><%= primary_photo_for(company, :thumb => :thumb) %></td>
+	<td class="id"><%= company.id %></td>
+	<td class="name"><%= link_to(company.name, show_company_admin_path(:id => company)) %></td>
+	<td class="desctiption"><%= h truncate(company.description, { :length => 50, :omission => "..." }) %></td>
+	<td class="members"><%= company.members.count %></td>
+	<td class="groups"><%= company.groups.count %></td>
+	<td class="edit"><%= link_to("Edit", show_company_admin_path(:id => company), {:class=>"button"}) %></td>
+</tr>	

@@ -1,0 +1,93 @@
+div.list_item { position: relative; margin: 0 0 18px; padding: 8px; zoom: 1;<%= border_radius('5px') %> }
+	<%= clear_after('div.list_item') %>
+div.list_item.even { background: <%= @theme_colors['even_list_item_background'] %>; }
+div.list_item.odd { background: #f9f9f9; }
+
+	div.list_item h4 { margin: 0 0 5px; font-size: 11px; }
+
+	div.list_item div.referred { margin-bottom: 5px; }
+		div.list_item div.referred img { margin-right: 3px; margin-bottom: -2px; }
+
+	div.list_item div.photo_wrapper { float: left; position: relative; }
+		div.list_item div.photo_wrapper img { display: block; }
+	div.list_item span.letter { float: left; display: block; padding: 0 5px; font-size: 14px; font-weight: bold; color: #f00; }
+
+	div.list_item div.details { float: left; width: 72%; overflow: hidden; }
+		div.list_item div.details div.item_text { padding-bottom: 5px; font-size: 14px; font-weight: bold; }
+			div.list_item div.details div.item_text a { color: #000; text-decoration: none; }
+			div.list_item div.details div.item_text a:hover { text-decoration: underline; }
+			div.list_item div.details div.item_description { margin-top: 5px; margin-bottom: 15px; font-size: 12px; line-height:1.2em; }
+			div.list_item div.details p.meta { margin-bottom: 1.2em; font-size: 11px; color: #555; }
+			div.list_item div.details p.summary { margin-bottom: 3px; color: #333; font-size: 12px; line-height: 1.4em; text-align: justify; }			
+		div.list_item div.details form.update_close_form { display: inline; }
+			div.list_item div.details form.update_close_form div { display: none; }
+
+		div.list_item div.action_buttons { float: right; width: 15%; }
+			div.list_item div.action_buttons a.button { margin: 3px auto; }
+			div.list_item div.action_buttons div.closed { text-align: center; font-weight: bold; }
+			div.list_item div.action_buttons div.bestAnswer { font-weight: bold; width: 40px; text-align: center; float: left; color: #666; }
+
+		div.list_item div.action_links { padding-top: 10px; }
+
+
+/* single items */
+div.single_item, form.single_item { margin: 0 auto 30px; border: 1px solid <%= @theme_colors['ask_answer_border'] %>; <%= border_radius('5px') %> padding: 8px; background: <%= @theme_colors['contrast_color'] %>; line-height: 1.3em;text-align: left; }
+
+
+/* group */
+	div.group_item div.photo_wrapper { margin: 3px 18px 3px 4px; }
+	div.group_item div.details { width: 555px; }
+		div.group_item div.details h3 { margin: 3px 0 3px; }
+			div.group_item div.details h3 a { color: #111; text-decoration: none; }
+			div.group_item div.details h3 a:hover { color: #111; text-decoration: underline; }
+		div.group_item div.details p.founded_on { margin-bottom: 1.2em; font-size: 11px; color: #555; }
+		div.group_item div.details p.description { margin-bottom: 3px; color: #333; font-size: 12px; line-height: 1.4em; text-align: justify; }
+
+
+/* group post */
+	div.group_post_item div.photo_wrapper { margin: 3px 5px 3px 4px; }
+	div.group_post_item div.details {  }
+		div.group_post_item div.details h5 { margin: 0 0 3px; }
+		div.group_post_item div.details p.meta { margin-bottom: 1.2em; font-size: 11px; color: #555; }
+		div.group_post_item div.details p {  }
+
+
+/* blog post */
+	div.blog_post_item div.photo_wrapper { margin: 3px 9px 3px 3px; }
+	div.blog_post_item div.details { margin-left: 6px; width: 698px; }
+		div.blog_post_item div.details h3 { margin: 3px 75px 3px 0; }
+			div.blog_post_item div.details h3 a { color: #111; text-decoration: none; }
+			div.blog_post_item div.details h3 a:hover { color: #111; text-decoration: underline; }
+		div.blog_post_item div.details p.meta { margin-bottom: 1.2em; font-size: 11px; color: #555; }
+		div.blog_post_item div.details p.summary { margin-bottom: 3px; color: #333; font-size: 12px; line-height: 1.4em; text-align: justify; }
+	div.blog_post_item div.rate { position: absolute; top: 13px; right: 17px; width: 125px; text-align: right; color: #555; }
+	div.blog_post_item ul.action_list { margin: 16px 0 3px; }
+		div.blog_post_item ul.action_list li { color: #555; border-color: #888; }
+
+
+/* answer */
+.askForm { margin: 10px auto; width: 640px; }
+	.askForm textarea { width: 640px; height: 50px; margin-bottom: 20px; }
+
+.answer_text,
+	.reply { width: 100%; font-size: 12px; overflow: hidden; line-height: 1.5em; }
+
+.voteRating { font-weight: bold; width: 75px; text-align: center; float: right; }
+	.voteRating img { vertical-align: middle; }
+
+.vote_wrap { text-align: left; padding-left: 7px; color: #000; }
+	.vote_wrap span { display: block; float: left; width: 2.5em; padding-left: 12px; color: #6c8702; }
+	.vote_wrap .no { color: #9d2d08; }
+	.vote_wrap .selected { background: url(<%= global_image("helpfulArrow.png") %>) left center no-repeat; }
+	.even .vote_wrap { background: <%= @theme_colors['even_list_item_background'] %>; }
+	.odd .vote_wrap { background: #f9f9f9; }
+
+#best_answer_top { padding-top: 10px; background-position: 705px 0; background-repeat: no-repeat; background-image: url(<%= image("best_large.png") %>); clear: both; }
+	#best_answer_top h4 { margin: 0 0 5px; color: <%= @theme_colors['primary_color'] %>; font-size: 12px; }
+<%= clear_after('#best_answer_top') %>
+<%= clear_after('#best_answer_top .details') %>
+
+
+/*vide List Item*/
+li.video_list_item { padding-right: 16px; background: url(/images/video-list-icon.png) left center no-repeat; }
+

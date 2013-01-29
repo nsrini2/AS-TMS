@@ -1,0 +1,29 @@
+# sample blogs
+
+public_group:
+  id: 1
+  owner_id: 1
+  owner_type: Group
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+  blog_posts_count: 0
+
+private_group:
+  id: 2
+  owner_id: 2
+  owner_type: Group
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+  blog_posts_count: 0
+
+profile:
+  id: 3
+  owner_id: 1
+  owner_type: Profile
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+  blog_posts_count: 0
+  
+company:
+  id: 4
+  owner_id: 1
+  owner_type: Compnay
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+  blog_posts_count: 0

@@ -1,0 +1,16 @@
+xml.notes do
+  @notes.each do |note|
+    xml.note do
+      xml.id(note.id)
+      xml.message(note.message)
+      xml.private(note.private)
+      xml.created_at(short_date(note.created_at))
+      xml.shady(!note.abuse.nil?)
+      xml.sender do
+        xml.photo_url(primary_photo_path_for(note.sender, :thumb_80))
+        xml.sender_url(profile_url(:id => note.sender_id))
+        xml.screen_name(note.sender.screen_name)
+      end
+    end
+  end
+end

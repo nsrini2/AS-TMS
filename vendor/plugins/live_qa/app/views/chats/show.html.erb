@@ -1,0 +1,36 @@
+<div class="list">
+  <div class="list_action_button" >
+    <%= link_to "Show all", chats_path %>
+  </div>
+  
+  <h2 class="page_title">Live Chat Event: <%= @chat.title %></h2>
+  <div id="list">
+    <div class="list_item">
+      <div id="live_qa" class="">
+        <%= render :partial => 'chat_details', :locals => 
+            { :chat => @chat, :show_questions => true, :show_closed_questions => false }%>
+      </div>
+    </div>
+  </div>    
+
+  <div id="chat_attendees" class="post-panel">
+    <div class="header">
+      <h3>Attendees:</h3>
+    </div>
+    <div class="content">
+      <% @rsvps.each do |attendee| -%>
+        <%= link_to_avatar_for(attendee, :size => '37x37') %>
+      <% end -%>  
+    </div>  
+  </div>  
+</div>
+
+<% if @chat.start_at < Time.now.advance(:minutes => 5) %>
+  <script type="text/javascript">
+    setTimeout(function(){ window.location = window.location; }, 60000*1)
+  </script>
+<% elsif @chat.start_at < Time.now.advance(:minutes => 20) %>
+  <script type="text/javascript">
+    setTimeout(function(){ window.location = window.location; }, 60000*3)
+  </script>
+<% end %>

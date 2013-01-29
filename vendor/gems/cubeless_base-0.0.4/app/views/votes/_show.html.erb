@@ -1,0 +1,11 @@
+<div class="voteRating" id="showVote<%=owner.id%>"> Helpful? <br />
+    <% if owner.authored_by?(current_profile) -%>
+      <%= render :partial => 'votes/stats', :locals => {:owner => owner} %>
+    <% else -%>
+      <% if Vote.current_user_has_voted?(owner) -%>
+        <%= render :partial => "votes/stats", :locals => {:owner => owner} %>
+      <% else -%>
+        <%= render :partial => "votes/vote", :locals => {:owner => owner} %>
+      <% end -%>
+    <% end -%>
+</div>

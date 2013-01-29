@@ -1,0 +1,19 @@
+<% content_for(:questions_tab_selected, 'selected') -%>
+
+<% content_for :q_and_a_sub_menu_content do %>
+  <% is_owner = (current_profile == @profile) -%>
+  <% tab_prefix = is_owner ? "I" : @profile.screen_name -%>
+  <% prefix = is_owner ? "My" : "#{show_posession_for(@profile.screen_name)}" -%>
+  <%=
+  sub_menu_for([
+  	(sub_menu_li_for(matched_questions_profile_path(@profile), :text => "Questions #{tab_prefix} Can Answer") if is_owner && !@profile.is_sponsored?),
+  	(sub_menu_li_for(questions_asked_profile_path(@profile), :text => "Questions #{tab_prefix} Asked") unless @profile.is_sponsored?),
+  	sub_menu_li_for(questions_answered_profile_path(@profile), :text => "Questions #{tab_prefix} #{is_owner ? 'have' : 'has'} Answered"),
+  	sub_menu_li_for(watched_questions_profile_path(@profile), :text => "Questions #{tab_prefix} #{is_owner ? 'am' : 'is'} Watching")
+  ])
+  -%>
+  <%= yield -%>
+<% end %>
+
+
+<%= render :file => 'layouts/_my_stuff' -%>

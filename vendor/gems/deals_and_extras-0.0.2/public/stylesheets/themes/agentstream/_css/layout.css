@@ -1,0 +1,27 @@
+#page { margin-left: auto; margin-right: auto; width: 960px; }
+
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility { display: inline; float: left; margin-left: 0; margin-right: 0; }
+
+#header, #main, .alert, #footer { width: 960px; }
+
+#logo { width: 240px; margin-left: 0; }
+
+.global_nav { width: 360px; }
+
+.utility { width: 300px; margin-right: 0; }
+
+.primary { width: 560px; margin-left: 0; }
+
+.aside { margin-top: 30px; width: 400px; margin-right: 0; }
+
+.aside .module { margin: 0 10px 0; }
+
+.list .primary { width: 720px; }
+
+.list .aside { width: 240px; }
+
+.profile .primary { width: 720px; clear: both; margin-left: 0; }
+
+.profile .aside { width: 240px; margin-right: 0; }
+
+.profile .full_length { width: 960px; clear: both; }

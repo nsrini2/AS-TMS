@@ -1,0 +1,28 @@
+<%
+require 'enumerator'
+-%>
+<% if @invitation_requests.size > 0 && @group.invitation_can_be_accepted_by?(current_profile) -%>
+<div id="invitation_requests">
+  <h3>Look who wants to be in your group</h3>
+  <p>The following people have asked to join this group. You can <%= "view their profile," unless current_profile.sponsor? -%> reject them or invite them.</p>
+  <div class="profile_results">
+    <% @invitation_requests.each do |invitation_request| -%>
+    <% profile = invitation_request.sender -%>
+    <div class="profile <%= cycle('odd','even') -%>">
+      <%= link_to_avatar_for(profile, :thumb => :thumb_80) -%>
+      <dl class="profile_info">
+        <dt class="name"><%= profile.screen_name.blank? ?  "No Name Provided" : link_to(profile.screen_name, profile) -%></dt>
+        <dd class="title"><%= profile.profile_1.blank? ? "No #{profile_question_label_for :profile_1} Provided" : replace_newline_with_br(auto_link(profile.profile_1)) -%></dd>
+        <dd class="tagline"><%= profile.profile_2.blank? ? "No #{profile_question_label_for :profile_2} Provided" : replace_newline_with_br(auto_link(profile.profile_2)) -%></dd>
+        <dd class="invite_requested_on">Invitation request was sent on <%= pretty_datetime(invitation_request.created_at) -%></dd>
+      </dl>
+      <div class="action_buttons">
+        <%= primary_small_button('Invite', accept_invitation_request_group_invitation_path(invitation_request, :authenticity_token => form_authenticity_token), :method => :post) -%>
+        <%= secondary_small_button('Decline', decline_invitation_request_group_invitation_path(invitation_request, :authenticity_token => form_authenticity_token), :method => :post) -%>
+      </div>
+    </div>
+    <% end -%>
+  </div>
+  <%#= put pagination stuff here -%>
+</div>
+<% end -%>

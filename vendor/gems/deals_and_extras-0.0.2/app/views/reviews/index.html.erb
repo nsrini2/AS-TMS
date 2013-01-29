@@ -1,0 +1,24 @@
+<!-- View Reviews -->
+<div class="header">
+	<h1>View Reviews</h1>
+</div>
+
+
+<div id="review_view_dialog" title="View Reviews">
+    <h2><%= @offer.suppliers.first.supplier_name %></h2>
+    <h3><%= @offer.short_description_html %></h3>
+    
+    <p><%= @offer.description_html %></p>
+
+    <div id="review_view_reviews">
+
+        <%= render :partial => 'review', :collection => @reviews %>
+        <hr/>
+    </div>
+
+    <%= will_paginate @reviews %>
+    <%= page_entries_info @reviews %>
+
+</div>
+
+<%= javascript_include_tag "readReviews" %>

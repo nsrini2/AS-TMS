@@ -1,0 +1,35 @@
+teaser = [
+  'expertise includes wild PowerPoint presos and sweet nunchaku skills!',
+  'favorite lunch spot is anywhere with a bag of popcorn and a Monster sports drink!',
+  'loves the bands Steelheart and White Lion.  Hair bands rule!',
+  'plays ping pong and badminton with wild abandon!',
+  'digs classic Sonny and Cher tunes. I got you babe!',
+  'plays a mean version of "La Vie en Rose" on the accordion!',
+  'secretly wishes to pursue a career as a professional game show contestant!',
+  'has collected souvenir spoons from each of the 50 states!',
+  'has four fish named after the Spice Girls!',
+  'pretends to be a hip-hop dancer when no one\'s looking!',
+  'once spent 51 consecutive hours in a chat room!',
+  'blames an allergy to fish for never trying sushi!',
+  'believes Sanjaya was robbed of his rightful American Idol prize!'
+].rand
+
+@xml = xml
+xml.profile do
+  xml.screen_name(@profile.screen_name)
+  xml.id(@profile.id)
+  xml.url @profile.id ? site_base_url + profile_path(@profile) : ''
+  xml.external_id(@profile.user.sso_id)
+  xml.sso_id(@profile.user.sso_id)
+  xml.tag_line(@profile.profile_2)
+  xml.title(@profile.profile_1)
+  xml.photo(site_base_url + primary_photo_path_for(@profile,:thumb_large))
+  xml.teaser(teaser)
+  xml.answers do
+    question_sections.each do |section|
+      section['questions'].each do |question|
+        xml.answer(@profile.send(question['question']), :question => question['label'],:name => question['question'])
+      end
+    end
+  end
+end

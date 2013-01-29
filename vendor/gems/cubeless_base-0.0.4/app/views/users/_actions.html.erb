@@ -1,0 +1,33 @@
+<select class="user_actions">
+  <option value=""></option>
+  <% if Config[:open_registration] && params[:action].to_s != "registration_details" %>
+    <option value="registration_details">Registration Details</option>
+  <% end %>
+  <option value="edit">Edit</option>
+  <option value="delete">Delete</option>
+  <% if(!Config[:tfce_sso_url]) %>
+    <option value="reset_password">Reset Password</option>
+  <% end %>
+  <% if profile.user.locked? -%>
+  <option value="clear_lock">Clear Lock</option>
+  <% end -%>
+  <% if profile.status == -3 -%>
+  <option value="activate_user">Activate User</option>
+  <option value="activate_on_login_user">Activate On Login</option>
+  <% end -%>
+  <% if profile.last_login_date == nil -%>
+  <option value="resend_welcome">Resend Welcome</option>
+  <% end %>
+</select>
+<script type="application/json"><%=
+  {
+    :registration_details_url => registration_details_user_url(profile.user),
+    :edit_url => edit_user_url(profile.user),
+    :delete_url => user_url(profile.user),
+    :reset_password_url => admin_reset_retrievals_path(:login => profile.user.login),
+    :clear_lock_url => clear_lock_user_url(profile.user),
+    :activate_user_url => activate_user_url(profile.user),
+    :activate_on_login_user_url => activate_on_login_user_url(profile.user),
+    :resend_welcome_url => resend_welcome_user_url(profile.user)
+  }.to_json
+-%></script>

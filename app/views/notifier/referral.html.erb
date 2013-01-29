@@ -1,0 +1,9 @@
+<%= render "notifier/partials/headline", {:headline => "A new question has been referred to you by #{@referred_by.full_name}."} %>
+	
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<br /><br />
+&#8220;<%= @question.question %>&#8221;
+	<br />
+	<p><strong>Answer it <%= link_from_email("here", "#{@site_base_url}/questions/#{@question.id}/answers/new" ) %>.</strong>
+	</p>
+</font></p>	

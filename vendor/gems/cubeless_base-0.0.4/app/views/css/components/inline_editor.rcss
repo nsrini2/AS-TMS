@@ -1,0 +1,2 @@
+form.inline_edit {  }
+	form.inline_edit input.button { display: inline; margin: 3px 3px 3px 0; }

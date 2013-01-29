@@ -1,0 +1,18 @@
+<p style="line-height: 24px;"><font color="#004f5a" face="linotype universe, helvetica, arial" size="4">
+	<strong><%= "The AgentStream live chat, #{@chat.title} has been updated." %></strong></font>
+</p>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<% if @chat.topics.size > 0 -%>
+		<p>Topics
+			<ul>
+				<% @chat.topics.each do |topic| -%>
+					<li><%= topic.title %></li>
+				<% end -%>	
+			</ul>
+		</p>
+	<% end -%>	
+	<p>Hosted By: <%= @chat.host.first_name + " " + @chat.host.last_name %>
+	<p>When: <%= pretty_datetime @chat.start_at %></p>	
+	<p>Where: <%= link_from_email("AgentStream", chat_url(@chat) )%></p>
+</font></p>

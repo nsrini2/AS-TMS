@@ -1,0 +1,34 @@
+/* Navigation */
+
+#nav li { 
+	display: block; 
+	list-style: none;
+	float: left; 
+	line-height: 30px;
+	background: url('/images/admin/navigation-line.gif') right no-repeat;
+}
+
+#nav a { 
+	display: block; 
+	padding: 0 15px; 
+}
+
+#nav ul { 
+	margin-bottom: 30px;
+	background: url('/images/admin/navigation-line.gif') left no-repeat;
+}
+
+
+/* Colors and Fonts */
+
+#nav a { 
+	font-size: 12px;
+	font-weight: bold; 
+	color: #000;
+	text-decoration: none; 
+}
+
+#nav a:hover { 
+	background-color: #000; 
+	color: #fff; 
+}

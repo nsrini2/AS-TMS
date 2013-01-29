@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application creationComplete="{initApp()}" layout="horizontal"	backgroundImage="/images/empty_slots.gif" width="60" height="39"
+	paddingTop="0" paddingBottom="0" paddingLeft="0" paddingRight="0" verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Style>
+		@font-face { src: url("MightyZeoCBold.ttf"); fontFamily: MightyZeo; }
+		Application { fontFamily: MightyZeo; letterSpacing: 1; }
+	</mx:Style>
+	<mx:Script>
+		<![CDATA[
+			public function initApp():void {
+				num_empty_slots.setStyle("color", parameters.color);
+				var num_slots = parameters.num_empty_slots;
+				var strings = ["ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN"];
+				if (num_slots == 3 || num_slots == 7 || num_slots == 8) {
+					num_empty_slots.setStyle("fontSize", 12);
+					num_empty_slots.setStyle("paddingTop", 11);
+				}
+				else if (num_slots > 10) {
+					num_empty_slots.setStyle("fontSize", 20);
+					num_empty_slots.setStyle("paddingTop", 4);
+				}
+				else {
+					num_empty_slots.setStyle("fontSize", 14);
+					num_empty_slots.setStyle("paddingTop", 12);
+				}
+				num_empty_slots.text = int(num_slots) <= 10 ? strings[num_slots] : num_slots;
+			}
+		]]>
+	</mx:Script>
+	<mx:Text id="num_empty_slots" />
+</mx:Application>

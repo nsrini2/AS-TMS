@@ -1,0 +1,7 @@
+<h1 class="reporting"><%=h @custom_report.name %></h1>
+
+<!-- <a>Change Name</a> -->
+
+<br/><br/>
+
+<%= render :partial => "form", :locals => {:klasses => @klasses, :klass_name => @klass_name, :klass => @klass, :table => @table } %>

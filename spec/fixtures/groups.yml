@@ -1,0 +1,25 @@
+# sample groups
+
+public:
+  id: 1
+  name: Public Group Fixture
+  description: This group is open to the public and used to test public access
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+  group_type: 0
+  company_id: 0
+
+private:
+  id: 2
+  name: Private Group Fixture
+  description: This group is private and used to test private access
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+  group_type: 2
+  company_id: 0
+
+company:
+  id: 3
+  name: Compnay Group Fixture
+  description: This group is a company group and used to test compnay access
+  created_at:  <%= Time.now.utc.strftime("%Y-%m-%d %H:%M:%S") %>
+  group_type: 0
+  company_id: 1

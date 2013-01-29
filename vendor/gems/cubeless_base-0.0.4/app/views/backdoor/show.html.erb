@@ -1,0 +1,18 @@
+<% content_for(:page_title, 'Backdoor') -%>
+<form action="/backdoor" method="post">
+	<h2>Login as a user...</h2><br />
+	<table border="0">
+		<tr><td align="right">by login:</td><td><input name="login" /></td></tr>
+		<tr><td align="right">by SSO ID:</td><td><input name="sso_id" /></td></tr>
+		<tr><td align="right">by profile id:</td><td><input name="profile_id" /></td></tr>
+		<tr><td></td><td><input type="submit"/></td></tr>
+	</table>	
+	<br />
+	<h2><a href="/account/logout">Logout</a></h2>
+	<br />
+	<% if logged_in?
+		params = {:login => current_user.login, :sso_id => current_user.sso_id}.delete_if { |k,v| v.blank? }
+		params.delete(:sso_id) if params.member?(:login) %>
+		Here is the <%=link_to('backdoor link',backdoor_path(params))%> to your current profile to share with people to jump to this profile.
+	<% end %>
+</form>

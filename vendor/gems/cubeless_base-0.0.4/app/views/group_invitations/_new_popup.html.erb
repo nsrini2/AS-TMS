@@ -1,0 +1,14 @@
+<% content_for(:title, "Invite someone to join") -%>
+<% form_for :invitation, :url => group_invitations_path do |f| -%>
+	<%= f.hidden_field :suggestion_id, :class => 'suggestion_id' -%>
+	<%= f.hidden_field :group_id, :value => group_id -%>
+	<p>Want to invite someone to come join in the fun? No problem, just type in their name below to send an invitation. Zip, zap, zoom, and before you know it you'll have a new group member!</p>
+	<dl>
+		<dt><label for="invitation_profile_name">Name</label></dt>
+		<dd><%= f.text_field :profile_name %></dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Invite" class="button medium">
+		<input type="button" name="reset" value="Cancel" class="button light medium close">
+	</div>
+<% end -%>

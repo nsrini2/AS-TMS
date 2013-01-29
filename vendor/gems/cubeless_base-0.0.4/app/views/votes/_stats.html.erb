@@ -1,0 +1,4 @@
+<div class="vote_wrap">
+  <span<%= ' class="selected"' if Vote.current_user_voted_positive(owner) %>>Yes</span> <%= owner.num_positive_votes ? owner.num_positive_votes : 0 %><br />
+  <span class="no <%= "selected" if Vote.current_user_voted_negative(owner) %>">No</span> <%= owner.num_negative_votes ? owner.num_negative_votes : 0 %>
+</div>

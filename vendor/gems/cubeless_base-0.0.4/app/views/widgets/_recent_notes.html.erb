@@ -1,0 +1,24 @@
+<% if @profile.notes.size.zero? -%>
+	<%= link_to(image_tag("/images/noNotes.gif", :width => "290", :height => "124", :alt => "You have no notes"),profile_path(@profile)) -%>
+<% else -%>
+	<div class="flash" id="recent_notes">
+		<script type="application/json"><%=
+			{
+				:src => "/bin/NoteBoard.swf", 
+				:width => 290,
+				:height => 110,
+				:params => { :bgcolor => '#869ca7', :quality => 'high' },
+				:flashvars => {
+					:mode => 'preview',
+					:redirect_path => profile_path(@profile),
+					:note_url => notes_profile_path(@profile, :format => :xml) + '%3Flimit=2',
+					:receiver_type => 'Profile',
+					:receiver_id => @profile.id,
+					:mine => @profile == current_profile,
+					:admin => current_profile.has_role?(Role::ShadyAdmin)
+				},
+				:attributes => { :align => 'middle' }
+			}.to_json
+		-%></script>
+	</div>
+<% end -%>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="imagetoolbar" content="no">
+		<link rel="shortcut icon" href="<%= favicon %>" type="image/x-icon">
+		<% if RAILS_ENV == 'production' -%>
+			<%= stylesheet_link_merged( :base ) -%>
+		<% else -%>
+			<link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen" charset="utf-8">
+		<% end -%>
+		<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+
+		<title><%= "#{@content_for_page_title} - " if @content_for_page_title %><%= site_name %></title>
+	</head>
+	<body<%= " class='#{@content_for_body_class}'" if @content_for_body_class %>>
+		<div id="page">
+			<div id="header">
+				<h1><a href="/"><%= site_name %></a></h1>
+				<%= link_to_avatar_for(current_profile, { :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true, :link_options => { :id => "primary_photo_for_main_display" } }) -%>
+				<%= link_to(current_profile.screen_name, '/profile', :class => 'name') if logged_in? -%>
+				<% 
+					links = []
+					links << link_to('h@x!',backdoor_path) if BackdoorController.enabled?
+					if logged_in?
+						links << link_to('login', login_account_path) if current_profile.has_role?(Role::ContentAdmin)
+						links << link_to('logout', logout_account_path) if current_user.uses_login_pass? || sso_logout_url
+						links << link_to(sso_portal_url_text, sso_portal_url) if sso_portal_url && sso_portal_url_text
+						links << link_to("settings", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => @content_for_settings_selected)
+					else
+						links << link_to('login', login_account_path)
+					end
+				-%>
+				<%= content_tag('ul', links.map { |link| "<li>#{link}</li>" }, :id => 'utility_nav', :class => 'action_list') -%>
+			</div>
+			<div id="nav">
+				<ul>
+					<% logged_in_content do -%>
+						<% hide_for_sponsor do -%>
+							<%= content_tag('li', link_to('Hub', hub_profiles_path), :class => @content_for_home_tab_selected) -%>
+							<%= content_tag('li', link_to('Ask Community', new_question_path), :class => @content_for_ask_selected) -%>
+							<%= content_tag('li', link_to('Explore', new_exploration_path), :class => @content_for_explore_selected) -%>
+						<% end -%>
+						<%= content_tag('li', link_to('My Stuff', profile_path(current_profile.id)), :class => @content_for_my_stuff_selected) -%>
+						<% 
+							admin_roles = [Role::ReportAdmin, Role::ContentAdmin, Role::ShadyAdmin, Role::UserAdmin, Role::AwardsAdmin, Role::SponsorAdmin]
+							admin_paths = {
+								Role::ReportAdmin => stats_summary_admin_path,
+								Role::ContentAdmin => marketing_messages_admin_path,
+								Role::ShadyAdmin => shady_admin_admin_path,
+								Role::UserAdmin => users_path,
+								Role::AwardsAdmin => current_awards_admin_path,
+								Role::SponsorAdmin => sponsor_accounts_path
+							}
+							admin_path = admin_roles.map { |role| admin_paths[role] if current_profile.has_role?(role) }
+						-%>
+						<%= content_tag('li', link_to('Administration', admin_path.compact[0]), :class => @content_for_admin_selected) unless admin_path.compact.blank? -%>
+					<% end -%>
+				</ul>
+			</div>
+			<div id="body">
+				<div id="primary">
+					<%#= yield :layout -%>
+					<%= @content_for_content ? yield(:content) : yield %>
+				</div>
+			</div>
+			<div id="footer">
+				<ul>
+					<%= content_tag('li', link_to('About Us', '/our_story'), :class => @content_for_our_story_selected) -%>
+					<%= content_tag('li', link_to('Terms and Conditions', '/terms_and_conditions'), :class => @content_for_terms_selected) -%>
+					<%= content_tag('li', link_to('Feedback', '/feedback'), :class => @content_for_feedback_selected) -%>
+				</ul>
+ 
+            <%= link_to(image_tag( Config[:poweredby_logo], :width => Config[:logo_height], :height => Config[:logo_height]),  Config[:poweredby_url], :alt => Config[:poweredby_image_alt]) -%>  
+ 
+				<p class="copyright"><%= Config[:disclaimer] -%></p>
+			</div>
+		</div>
+
+		<div id="flash_error" class="error">
+			<h2>There were problems with the following:</h2>
+			<ul class="error_messages"><% unless flash[:errors].blank? -%>
+				<%= render :partial => 'application/flash_error' -%>
+			<% end -%></ul>
+		</div>
+
+		<div id="flash_notice" class="notice">
+			<h2>Check it out</h2>
+			<ul class="notice_messages"><% unless flash[:notice].blank? -%>
+				<%= render :partial => 'application/flash_notice' -%>
+			<% end -%></ul>
+		</div>
+		<%= javascript_include_merged( :base ) -%>
+		<%= javascript_include_merged( :admin ) if @content_for_admin_js -%>
+		
+		<% # There were issues with including ckeditor in the asset packager %>
+		<%= javascript_include_tag "ckeditor/ckeditor" %>
+		
+		
+		<% if analytics_tracker_code %>
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("<%= analytics_tracker_code %>");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+		<% end %>
+	</body>
+</html>

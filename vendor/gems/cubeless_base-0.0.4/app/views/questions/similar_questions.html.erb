@@ -1,0 +1,15 @@
+<% content_for(:page_title, "Similar Questions to: #{truncate(@question.question, :length => 25)}") -%>
+<div id="qaQuestion" class="question <%=@question.id%> single_item">
+    <%= render :partial =>'questions/question', :locals => {:question => @question}%>
+</div>
+<h3>Similar Questions</h3>
+We found <%= pluralize(@sim_question_summaries.size, "question", "questions") %> that may be close to what you are asking.
+<%
+show = nil unless defined?(show) #!H?
+domain = '' unless defined?(domain)
+@sim_question_summaries.each_with_index do |question, index|%>
+	<div id="qaQuestion<%=question.id%>" class="question <%=question.id%> list_item <%=cycle("odd", "even") %>">
+		<%= render :partial =>'questions/question', :locals => {:domain => domain, :questions_counter => index, :question => question, :show => show}%>
+	</div>
+<%end%>
+<%=render_pagination @sim_question_summaries %>

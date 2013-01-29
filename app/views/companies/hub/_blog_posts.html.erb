@@ -1,0 +1,19 @@
+<h2>My Agency Blog</h2>
+<% blog_posts.each do |blog_post| %>
+	<div class="note">
+	  <p class="title"><%= link_to(blog_post.title, companies_blog_blog_post_path(blog_post)) %></p>
+		<p class="when">posted on <%= short_date blog_post.created_at %> by <%= blog_post.profile.full_name %></p>
+		<div class="text">
+		  <%= textilize truncate(blog_post.text.gsub(/<br\/?>/,"---linebreak---").gsub(/<\/?[^>]*>/, "").gsub("---linebreak---","<br/>"), { :length => 140, :omission => "..." }) %>
+		
+		  <p class="actions">
+				<%= link_to("read", companies_blog_blog_post_path(blog_post), :class => "button little") -%>
+				<%= link_to("comment", "#{companies_blog_blog_post_path(blog_post)}#comments", :class => "button little light") -%>
+  		</p>
+		</div>
+	</div>
+<% end %>
+
+<div class="see_all">
+	<%= link_to("All Blogs", companies_blog_blog_posts_path) %>
+</div>

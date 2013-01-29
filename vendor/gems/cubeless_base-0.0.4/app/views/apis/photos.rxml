@@ -1,0 +1,10 @@
+xml.photos :type => "array" do
+  @photos.each do |photo|
+    xml.photo do
+      xml.index photo.id
+      xml.src site_base_url + image_path(photo.filename)
+      xml.width photo.width
+      xml.height photo.height
+    end
+  end
+end

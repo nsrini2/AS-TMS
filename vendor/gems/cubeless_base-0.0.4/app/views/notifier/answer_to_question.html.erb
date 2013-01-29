@@ -1,0 +1,11 @@
+<p><strong>Guess what, <%= "#{@question.profile.first_name}" %>? &nbsp;Remember when you asked:</strong><br /><br />
+&#8220;<%= @question.question %>&#8221;</p>
+<p><strong><%= link_to("#{@answer.profile.screen_name}", @profile_url) %> has an answer for you!</strong></p>
+<p>&#8220;<%= truncate @answer.answer, :length => 75 %>&#8221;</p>
+<p><%= link_to("Click here", @question_url )%> to read it.
+<br /><br />
+Regards,<br />
+<%=@site_name%><br /><br /><br /></p>
+
+Now that you're "in the know", how about sharing with others? Take a
+stab at our <a href="<%=@site_base_url%>/explorations/questions?filter_scope=unanswered">unanswered questions</a>.

@@ -1,0 +1,3 @@
+<% topics.each do |topic| %>
+  <%= render(:partial => "/chats/queue_question", :locals => { :question => topic, :ratable => true }) %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= render "notifier/partials/headline", {:headline => "You're the new owner of a group"} %>
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<p>Hello, <%= "#{@group.owner.first_name}" %>.</p>
+
+	<p>You are now the owner of the group &#8220;<strong><%=@group.name%></strong>&#8221;</p>
+	<p>As the new owner of the group, you can assign moderators and even transfer ownership to someone else.</p>
+	<%= link_from_email("Click here", @group_url )%> to view this group.
+</font></p>	

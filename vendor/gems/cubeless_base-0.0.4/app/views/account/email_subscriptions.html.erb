@@ -1,0 +1,91 @@
+<%
+content_for(:email_subscriptions_tab, 'selected')
+content_for(:page_title, 'Communication Settings')
+-%>
+<% form_for :profile, @profile, :html => {:id => "email_settings_form"} do |f| %>
+
+	<% hide_for_sponsor do %>
+	<h3 class="first">Activity Summary Email</h3>
+	<p>I want to receive email updates about my <%= site_name %> activities:</p>
+	<%= f.radio_button(:summary_email_status, 1) %><label for="profile_summary_email_status_1">Weekly</label>
+			<%= f.radio_button(:summary_email_status, 2) %><label for="profile_summary_email_status_2">Daily</label>
+			<%= f.radio_button(:summary_email_status, 0) %><label for="profile_summary_email_status_0">Disabled</label>
+	<% end -%>
+	
+	<h3>General Settings</h3>
+	<p>Send me an email when:</p>
+	<dl>
+		<% hide_for_sponsor do %>
+		<dt>Questions</dt>
+		<dd><%= f.check_box :referral_email_status %><label for="profile_referral_email_status">A question is referred to me</label></dd>
+		<dd><%= f.check_box :watched_question_answer_email_status %><label for="profile_watched_question_answer_email_status">A question I am watching is answered</label></dd>
+		<dd><%= f.check_box :closing_email_status %><label for="profile_closing_email_status">A question I have asked is about to close</label></dd>
+		
+		<dt>Groups</dt>
+		<dd><%= f.check_box :group_invitation_email_status %><label for="profile_group_invitation_email_status">I have been invited to join a group</label></dd>
+		<% end -%>
+
+		<dt>Notes</dt>
+		<dd><%= f.check_box :note_email_status %><label for="profile_note_email_status">Someone sends me a note</label></dd>
+		
+		<dt>Answers</dt>
+		<dd><%= f.check_box :best_answer_email_status %><label for="profile_best_answer_email_status">A question I have answered is marked as best answer</label></dd>
+		<dd><%= f.check_box :new_reply_on_answer_notification %><label for="profile_new_reply_on_answer_notification">Someone has replied to one of my answers</label></dd>
+		
+		<dt>Blogs</dt>
+		<dd><%= f.check_box :following_profile_blog_notification %><label for="profile_following_profile_blog_notification">Someone I am following has written a blog post</label></dd>
+		<dd><%= f.check_box :new_comment_on_blog_notification %><label for="profile_new_comment_on_blog_notification">Someone has commented on one of my blog posts</label></dd>
+		<% if @profile.company? %>
+		  <dd><%= f.check_box :company_blog_notification %><label for="profile_company_blog_notification">My Agency has written a blog post</label></dd>
+		<% end %>
+		
+		<% if Getthere.Enabled? %>
+			<dt>Travel</dt>
+			<dd><%= f.check_box :travel_email_status %><label for="profile_travel_email_status">One of my GetThere bookings is imported</label></dd>
+		<% end %>		
+		
+	</dl>
+
+	<div id="group_preferences">
+		<h3>Group Settings</h3>
+		<div id="all_groups_preferences">
+			<h4 id="all"<%= @profile.has_global_group_email_preferences? ? 'class = "selected"' : "" %>>Set preferences for all my groups</h4>
+			<p class="instr">These settings will apply to all of your groups. Any individual group settings you have set will no longer apply.</p>
+		</div>
+		<div class="email_options">
+			<dl>
+				<dd><%= f.check_box :group_referral_email_status %><label for="profile_group_referral_email_status">A question is referred to one of my groups</label></dd>
+				<dd><%= f.check_box :group_note_email_status %><label for="profile_group_note_email_status">Someone sends one of my groups a note</label></dd>
+				<dd><%= f.check_box :group_blog_post_email_status %><label for="profile_group_blog_post_email_status">One of my groups has a new blog post</label></dd>
+				<dd><%= f.check_box :group_post_email_status %><label for="profile_group_post_email_status">One of my groups has a new group talk post</label></dd>
+			</dl>
+			<div class="buttons">
+				<input type="submit" class="large button" value="Save and Use Global Settings" name="commit" />
+			</div>
+		</div>
+		<div id="individual_group_preferences">
+			<h4 id="individual"<%= @profile.has_global_group_email_preferences? ? "" : 'class = "selected"' %>>Set preferences for individual groups</h4>
+			<p class="instr">You may set per-group notification options here. Individual Group settings will overwrite previous settings applied to All Groups. Any groups that you join in the future will have notifications on by default. Just customize them here if you need to! </p>
+		</div>
+		<div class="email_options">
+			<% for @group_membership in @profile.group_memberships %>
+			<div id="<%= @group_membership.group.name.gsub(" ","_").gsub("'","").downcase %>" class="group_preferences">
+				<dl>
+					<dt><%= "#{@group_membership.group.name}" %></dt>
+					<% fields_for "group_membership[#{@group_membership.id}]", @group_membership.email_preferences do |prefs| %>
+						<dd><%= prefs.check_box :note %><%= prefs.label :note, "Group Note" %></dd>
+						<dd><%= prefs.check_box :blog_post %><%= prefs.label :blog_post, "Blog Post" %></dd>
+						<dd><%= prefs.check_box :group_talk_post %><%= prefs.label :group_talk_post, "Group Talk Post" %></dd>
+						<dd><%= prefs.check_box :referred_question %><%= prefs.label :referred_question, "Referred Question" %></dd>
+					<% end -%>
+				</dl>
+			</div>
+			<% end -%>
+			<div class="buttons">
+				<input type="submit" class="large button" value="Save and Use Individual Settings" name="commit" />
+			</div>
+		</div>
+	</div>
+	<input type="hidden" value="<%= "#{@profile.has_global_group_email_preferences?}" %>" name="using_global" id="using_global" />
+	<input type="hidden" value="" name="use_global_email_preferences" id="use_global_email_preferences" />
+<% end -%>

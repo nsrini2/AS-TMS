@@ -1,0 +1,1214 @@
+/* line 1, ../../../../../app/stylesheets/themes/agentstream/karma.scss */
+.karma_level_1, a.karma_level_1 {
+  padding-right: 16px;
+  background: url(/images/karma_small_level_1.png) right center no-repeat;
+}
+
+/* line 2, ../../../../../app/stylesheets/themes/agentstream/karma.scss */
+.karma_level_2, a.karma_level_2 {
+  padding-right: 26px;
+  background: url(/images/karma_small_level_2.png) right center no-repeat;
+}
+
+/* line 3, ../../../../../app/stylesheets/themes/agentstream/karma.scss */
+.karma_level_3, a.karma_level_3 {
+  padding-right: 36px;
+  background: url(/images/karma_small_level_3.png) right center no-repeat;
+}
+
+/* line 4, ../../../../../app/stylesheets/themes/agentstream/karma.scss */
+.karma_level_4, a.karma_level_4 {
+  padding-right: 46px;
+  background: url(/images/karma_small_level_4.png) right center no-repeat;
+}
+
+/* rendered profiles.rcss, find/replace #profile_tab -> #profile_tab */
+/* line 4, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .add_pad_top {
+  padding-left: 4px;
+}
+
+/* line 6, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .add_pad_bottom {
+  padding-bottom: 4px;
+}
+
+/* line 8, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .add_pad_left {
+  padding-left: 4px;
+}
+
+/* line 10, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .add_pad_right {
+  padding-right: 4px;
+}
+
+/* line 12, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab ul.action_list {
+  float: right;
+  margin: 0 0 8px;
+}
+
+/* #profile_tab .user_card { clear: both; position: relative; margin: 0 auto; border: 1px solid #000; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-bottom-left-radius: 0px; -moz-border-radius-bottomleft: 0px; -webkit-border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; -moz-border-radius-bottomright: 0px; -webkit-border-bottom-right-radius: 0px; padding: 15px 15px 5px 15px; width: 754px; background: url(/images/userCardBG.png); } */
+/* line 15, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .user {
+  border: 0;
+}
+
+/* line 17, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .user_card:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 18, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .user_card {
+  background: #EFF8FA;
+  border: none;
+  width: auto;
+}
+
+/* line 20, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile .tabs-panel #list {
+  background: #EFF8FA !important;
+}
+
+/* line 22, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .user_card {
+  zoom: 1;
+}
+
+/* line 24, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos {
+  float: left;
+}
+
+/* line 26, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .sponsor_ribbon {
+  width: 235px;
+  height: 30px;
+  background: url(/images/sponsor_ribbon_large.png) bottom right no-repeat;
+}
+
+/* line 28, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .no_alt_photos {
+  width: 172px;
+}
+
+/* line 30, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .alternate_photos {
+  float: left;
+}
+
+/* line 32, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .alternate_photos img {
+  display: block;
+  margin: 0 10px 4px 0;
+}
+
+/* line 34, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .disabledPhotoHover {
+  display: none;
+  position: absolute;
+  z-index: 40;
+  width: 150px;
+  background: #ff9;
+  border: 3px solid #2392C9;
+}
+
+/* line 36, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .disabledPhotoHover .pad {
+  border: 1px solid #000;
+  padding: 10px;
+  padding: 10px;
+}
+
+/* line 38, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .disabledPhotoHover .disabledPointer {
+  background: url(/themes/theme_5/images/pointerDown.png);
+  width: 34px;
+  height: 19px;
+  position: absolute;
+  left: 60px;
+  top: 49px;
+}
+
+/* line 40, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info {
+  float: left;
+  margin: 0;
+  width: 250px;
+  padding-right: 10px;
+  padding-left: 10px;
+  min-height: 210px;
+}
+
+/* line 42, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dt {
+  margin: 0;
+  font-weight: bold;
+}
+
+/* line 44, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dt.required {
+  color: #2392C9;
+}
+
+/* line 46, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab a.spacer {
+  line-height: 18px;
+}
+
+/* line 48, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd {
+  margin: 0;
+}
+
+/* line 50, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.contact_info h3 {
+  margin: 12px 0 0;
+  font-size: 12px;
+}
+
+/* line 52, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.contact_info dl {
+  margin: 0;
+}
+
+/* line 54, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.contact_info dl dt {
+  clear: left;
+  float: left;
+  margin: 0 5px 1px 0;
+}
+
+/* line 56, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.contact_info dl dd {
+  float: left;
+  margin-bottom: 1px;
+}
+
+/* line 58, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dt.name {
+  margin-bottom: 3px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 60, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dt.title {
+  float: left;
+  margin-right: 5px;
+}
+
+/* line 62, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.tagline {
+  clear: left;
+  padding-top: 5px;
+  color: #1E678A;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 64, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.inline_editable form input {
+  width: 100%;
+}
+
+/* line 66, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.inline_editable form input.button {
+  width: auto;
+  font-size: 0.8em;
+}
+
+/* line 68, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.inline_editable form span.counter, #profile_tab div.question p.inline_editable form span.counter {
+  color: #111;
+  font-weight: normal;
+  font-style: normal;
+  float: right;
+}
+
+/* line 70, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.tagline form input {
+  margin-top: -5px;
+  color: #1E678A;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 72, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.tagline form input.button {
+  margin-top: 2px;
+  color: #000;
+  font-size: 11px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* line 74, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats {
+  float: left;
+  margin-left: 10px;
+  width: 200px;
+  font-weight: bold;
+}
+
+/* line 76, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #1E678A;
+}
+
+/* line 78, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr td {
+  font-weight: bold;
+}
+
+/* line 80, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr td.left {
+  width: 90px;
+}
+
+/* line 82, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr td.middle {
+  width: 35px;
+  text-align: right;
+}
+
+/* line 84, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr td.right {
+  width: 55px;
+  text-align: right;
+}
+
+/* line 86, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr.karma td {
+  font-size: 13px;
+}
+
+/* line 88, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr.completion td {
+  font-size: 13px;
+}
+
+/* line 90, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_awards_and_notes {
+  margin-left: 4px;
+}
+
+/* line 92, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_awards_and_notes:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 94, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_awards_and_notes {
+  zoom: 1;
+}
+
+/* line 96, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards {
+  float: left;
+  padding-top: 8px;
+  width: 140px;
+  height: 185px;
+  background: #68401C;
+  text-align: center;
+  display: inline;
+}
+
+/* line 98, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: #111 4px 4px 3px;
+}
+
+/* line 100, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards .award {
+  margin: 15px auto 10px;
+  border: 4px solid #fff;
+  padding: 1px;
+  width: 90px;
+  background: #f00;
+}
+
+/* line 102, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards .award .award_details {
+  background: #fff;
+}
+
+/* line 104, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards .award .award_details img {
+  margin: 5px 5px 7px;
+}
+
+/* line 106, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards .award .award_details span.award_caption {
+  display: block;
+  padding: 0 3px 3px;
+}
+
+/* line 108, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards a {
+  color: #fff;
+}
+
+/* line 110, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#notes {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 112, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions {
+  clear: both;
+  position: relative;
+  margin: 0 11px 0 10px;
+  padding-top: 15px;
+}
+
+/* line 114, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions h3 {
+  clear: both;
+  margin: 0 0 15px;
+  border-bottom: 1px solid #C4D7DC;
+  color: #1E678A;
+  font-weight: bold;
+}
+
+/* line 116, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .profile_questions_sec {
+  margin-bottom: 20px;
+}
+
+/* line 118, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .profile_questions_sec:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 120, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .profile_questions_sec {
+  zoom: 1;
+}
+
+/* line 122, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .question {
+  float: left;
+  margin: 0 0 20px 0;
+  width: 420px;
+  background: inherit;
+}
+
+/* line 124, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .question p {
+  width: 350px;
+  margin: 0;
+}
+
+/* line 126, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .odd {
+  clear: left;
+  _display: inline;
+  margin-right: 20px;
+}
+
+/* line 128, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .question h4.title {
+  margin: 0 0 8px;
+  color: #676767;
+}
+
+/* line 130, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .question p.instr {
+  margin-top: -5px;
+  color: #555;
+}
+
+/* line 132, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions h4.required {
+  color: #2392C9;
+}
+
+/* line 134, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile_popup {
+  text-align: justify;
+}
+
+/* explore */
+/* line 137, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results h2.result_header {
+  float: left;
+  margin: 0 0 10px;
+  font-weight: normal;
+}
+
+/* line 139, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results #filter_form {
+  margin: 0 0 10px;
+}
+
+/* line 141, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#filter_form:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 143, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#filter_form {
+  zoom: 1;
+}
+
+/* line 145, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 147, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results {
+  zoom: 1;
+}
+
+/* line 149, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#explore_results {
+  clear: both;
+}
+
+/* line 151, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results div.profile {
+  float: left;
+  margin: 0 0 15px;
+  border: 1px solid #666;
+  padding: 0 0 13px;
+  width: 387px;
+  background: transparent url(/images/userCardBG.png) repeat scroll 0 0;
+  zoom: 1;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+/* line 153, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results div.odd {
+  clear: left;
+  margin: 0 15px 15px 0;
+}
+
+/* line 155, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results div.photo_wrapper {
+  float: left;
+  margin: 13px;
+  padding: 0;
+  width: 80px;
+  display: inline;
+}
+
+/* line 157, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results div.photo_wrapper img.photo {
+  display: block;
+}
+
+/* line 159, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info {
+  float: left;
+  margin: 10px 0 0;
+  width: 230px;
+  display: block;
+}
+
+/* line 161, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 163, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info {
+  zoom: 1;
+}
+
+/* line 165, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dt {
+  font-weight: bold;
+}
+
+/* line 167, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dt.name {
+  font-size: 16px;
+}
+
+/* line 169, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dt.name a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 171, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dt.name a:hover {
+  color: #1802AD;
+  text-decoration: underline;
+}
+
+/* line 173, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd {
+  margin: 0;
+}
+
+/* line 175, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.title {
+  margin-top: 3px;
+  color: #111;
+}
+
+/* line 177, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.tagline {
+  margin: 8px 0;
+  color: #1E678A;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 179, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.contact_info h3 {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* line 181, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.contact_info dl {
+  margin: 0;
+}
+
+/* line 183, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.contact_info dl dt {
+  clear: left;
+  float: left;
+  margin-right: 5px;
+}
+
+/* line 185, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.contact_info dl dd {
+  float: left;
+}
+
+/* hub */
+/*#hub { float: left; width: 595px; }
+
+#hub:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
+
+#hub { zoom: 1; }*/
+/* line 194, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#marketing_message {
+  float: left;
+  margin-bottom: 18px;
+  width: 595px;
+}
+
+/* line 196, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#marketing_message img {
+  display: block;
+}
+
+/* line 198, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#system_announcement {
+  float: left;
+  margin-bottom: 18px;
+  width: 595px;
+}
+
+/* line 200, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#system_announcement div.header {
+  padding: 4px 7px 4px 0;
+  background: #1e678a url(/themes/theme_5/images/widget_bar.png) repeat-x;
+  color: #fff;
+}
+
+/* line 202, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#system_announcement div.header h3 {
+  margin: 0;
+  padding-left: 5px;
+  font-size: 11px;
+}
+
+/* line 204, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#system_announcement div.content {
+  padding: 7px;
+}
+
+/* line 206, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets {
+  float: left;
+  margin-bottom: 18px;
+  padding: 2px;
+  width: 595px;
+}
+
+/* line 208, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 210, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets {
+  zoom: 1;
+}
+
+/* line 212, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets div.hub_widgets_col_1 {
+  float: left;
+  width: 290px;
+}
+
+/* line 214, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets div.hub_widgets_col_2 {
+  float: left;
+  margin-left: 15px;
+  _margin-left: 12px;
+  width: 290px;
+}
+
+/* following */
+/* line 217, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#group_action_links, #profile_action_links {
+  float: right;
+  padding: 0 4px 10px;
+}
+
+/* line 219, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list {
+  float: left;
+  margin: 1px 15px 8px 0;
+  padding: 8px 8px 15px;
+  width: 180px;
+  font-size: 1.2em;
+  background: #fff;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+/* line 221, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dt, dl#watch_list dd {
+  padding: 2px 0;
+}
+
+/* line 223, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#watch_list dt:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 225, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#watch_list dt {
+  zoom: 1;
+}
+
+/* line 227, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#watch_list dd:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 229, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#watch_list dd {
+  zoom: 1;
+}
+
+/* line 231, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dt {
+  font-weight: bold;
+  margin: 0 0 0 5px;
+  padding-top: 5px;
+}
+
+/* line 233, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dd.selected {
+  margin: 0 -17px 0 -8px;
+  padding-left: 20px;
+  background: white url(/images/watch_selected_bg.png) right center no-repeat;
+}
+
+/* line 235, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dd a, #watch_list dd span {
+  float: left;
+}
+
+/* line 237, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dd a.item_remove {
+  float: right;
+  margin: 0 0 0 8px;
+  padding: 2px 2px 2px 3px;
+  font-size: 11px;
+  line-height: 1em;
+  text-decoration: none;
+  color: #00f;
+  background: #fff;
+}
+
+/* line 239, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dd.selected a.item_remove {
+  margin-right: 17px;
+}
+
+/* line 241, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites {
+  float: left;
+  width: 582px;
+  padding-bottom: 10px;
+}
+
+/* line 243, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 245, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites {
+  zoom: 1;
+}
+
+/* line 247, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form {
+  margin-bottom: 10px;
+}
+
+/* line 249, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form dl#filter_options {
+  text-align: left;
+}
+
+/* line 253, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form dl#filter_options dt, #favorites #filter_form dl#filter_options dd {
+  display: inline;
+  padding: 0 10px;
+}
+
+/* line 258, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form dl#filter_options dd {
+  border-right: 1px solid #676767;
+}
+
+/* line 261, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form dl#filter_options dd:last-child {
+  border-right: 0;
+}
+
+/* line 265, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 267, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events {
+  margin-bottom: 10px;
+  zoom: 1;
+}
+
+/* line 269, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .favorite_item {
+  position: relative;
+  margin: 15px 0 0;
+  padding: 10px;
+  width: 264px;
+  height: 136px;
+  background: #ddd;
+  font-size: 1.2em;
+  overflow: hidden;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+/* line 271, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .odd {
+  float: left;
+}
+
+/* line 273, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .even {
+  float: right;
+}
+
+/* line 275, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .watch_title {
+  font-weight: bold;
+}
+
+/* line 277, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .watch_title .watch_letter {
+  font-weight: bold;
+  color: #4a6970;
+}
+
+/* line 279, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .watch_title a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 281, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .watch_title a:hover {
+  color: #1802ad;
+  text-decoration: underline;
+}
+
+/* line 283, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events p {
+  font-size: 13px;
+  margin: 0.8em 0;
+}
+
+/* line 285, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .author {
+  width: 258px;
+  font-size: 11px;
+}
+
+/* line 287, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .author .photo_wrapper {
+  float: left;
+  margin: 0;
+}
+
+/* line 289, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .author img.photo {
+  margin: 2px 8px 0 0;
+}
+
+/* awards pop-up */
+/* line 292, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards {
+  width: 460px;
+}
+
+/* line 294, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .title {
+  margin: -10px 0 5px;
+  padding-bottom: 5px;
+}
+
+/* line 296, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .award {
+  padding-bottom: 15px;
+  clear: both;
+}
+
+/* line 298, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .award_image {
+  width: 100px;
+  float: left;
+}
+
+/* line 300, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .details {
+  padding-left: 15px;
+  width: 285px;
+  float: left;
+  color: #333;
+}
+
+/* line 302, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.details:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 304, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.details {
+  zoom: 1;
+}
+
+/* line 306, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.award:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 308, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.award {
+  zoom: 1;
+}
+
+/* line 310, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .details h3 {
+  padding: 0;
+  margin: 0;
+  color: #000;
+}
+
+/* line 312, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .details p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Notification - Informational */
+/* line 315, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_notification {
+  color: #2392C9;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 317, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_notification.informational {
+  color: green;
+}
+
+/* line 319, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_notification.alert {
+  color: yellow;
+}
+
+/* line 321, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_notification.urgent {
+  color: red;
+}
+
+/* line 323, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+span.profile_notification {
+  color: #2392C9;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 1px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 325, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+span.profile_notification.informational {
+  color: green;
+}
+
+/* line 327, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+span.profile_notification.alert {
+  color: yellow;
+}
+
+/* line 329, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+span.profile_notification.urgent {
+  color: red;
+}
+
+/* stats */
+/* line 332, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats_container {
+  border: 1px solid #C4D7DC;
+  border-left: 0;
+  border-right: 0;
+  margin-top: 10px;
+}
+
+/* line 339, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats h4 {
+  color: #78756e;
+  margin: 5px 0 5px 0;
+}
+
+/* line 341, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats h4:first-child {
+  display: none;
+}
+
+/* line 345, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table {
+  margin-bottom: 0;
+}
+
+/* line 347, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td {
+  border-right: 1px solid #C4D7DC;
+  padding: 0 15px 0 15px;
+  text-align: left;
+}
+
+/* line 349, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td.first {
+  padding-left: 0;
+}
+
+/* line 351, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td.last {
+  border-right: 0;
+}
+
+/* line 353, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td h5 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+/* line 355, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td span.count {
+  color: #1E678A;
+  font-size: 2.0em;
+  letter-spacing: -0.1em;
+  line-height: 1em;
+  margin-right: 0.2em;
+}
+
+/* line 357, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td span.extra a {
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* avatar */
+/* line 361, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.photo_wrapper {
+  position: relative;
+}
+
+/* line 362, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.photo_wrapper img.online_now_indicator {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+}
+
+/* line 363, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.photo_wrapper img.sponsor_indicator {
+  position: absolute;
+  bottom: -2px;
+  left: -4px;
+}
+
+/* line 364, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.photo_wrapper img.group_icon {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+}
+
+/* lists */
+/* line 367, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile #list {
+  background-color: inherit;
+  border-top: 0;
+  padding: 0;
+}
+
+/* status */
+/* line 371, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status {
+  margin-left: 566px;
+  width: 340px;
+}
+
+/* line 376, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status span.counter {
+  float: left;
+}
+
+/* line 379, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status textarea {
+  width: 100%;
+}
+
+/* line 382, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status div.buttons {
+  text-align: right;
+  width: 353px;
+}
+
+/* line 386, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status div.event {
+  margin-top: 10px;
+}
+
+/* line 390, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile h4 {
+  font-size: 1.3em;
+}
+
+/* line 394, ../../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.avatar_large {
+  background: #fff;
+  float: left;
+  width: 195px;
+  height: 198px;
+  padding: 7px 0;
+  margin: 0 10px;
+  text-align: center;
+  display: inline;
+}

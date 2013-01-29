@@ -1,0 +1,12 @@
+<div id="chat_queue">    
+  <div id="question_bin">      
+    <ul>
+      <% topics.each do |q| %>
+        <%= render :partial => "/chats/queue_question", :locals => { :question => q, :ratable => !rated_topics.include?(q) } %>
+      <% end %>
+    </ul>
+  
+    <%= link_to "Refresh Bin", poll_chat_topics_path(chat, :since_id => newest_topic_id), :id => "topic_polling_link", :style => "display: none;" %>
+    <%= link_to "Refresh Current Discussion", poll_chat_topics_path(chat, :active_id => (@active_id ? @active_id : chat.topics.active.last ? chat.topics.active.last.id : "")), :id => "active_topic_polling_link", :style => "display: none;" %>
+  </div>    
+</div>

@@ -1,0 +1,55 @@
+/* ** Reset some styles (based on Eric Meyer's CSS Reset) ** */
+/* removed table, thead, tr, th, td */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, 
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, 
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,dl, dt, dd, ol, ul, 
+li, fieldset, form, label, legend, caption, tbody, tfoot  { 
+	margin: 0; 
+	padding: 0; 
+	border: 0; 
+	outline: 0; 
+	font-size: 100%;
+	vertical-align: baseline;
+}
+*:focus { outline: 0; } /* remember to define focus styles! */
+ol, ul { list-style: none; }
+/*table { border-collapse: separate; border-spacing: 0; }*/ /* tables still need 'cellspacing="0"' in the markup */
+caption, th, td { text-align: left;font-weight: normal; }
+blockquote, q { quotes: none; }
+
+
+/* ** Set some base styles (based on YUI base.css) ** */
+/*body { font: 12px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif; color: #000; background: #fff; }*/
+body { font-size: 11px; font-family: Arial, Helvetica, sans-serif; color: #000; background: #fff; }
+
+h1 { font-size: 18px; }
+h2 { font-size: 16px; }
+h3 { font-size: 15px; }
+h4 { font-size: 14px; }
+h5 { font-size: 13px; }
+h6 { font-size: 12px; }
+
+h1, h2, h3, h4, h5, h6 { margin: 12px 0; }
+h1, h2, h3, h4, h5, h6, strong { font-weight: bold; }
+
+input, select, textarea { font-size: 11px; font-family: Arial, Helvetica, sans-serif; }
+input, textarea { border-width: 1px; padding: 2px; }
+
+html\:abbr, abbr, acronym { border-bottom: 1px dotted #000; cursor: help; }
+em { font-style: italic; }
+blockquote, ul, ol, dl { margin: 12px; }
+
+ol, ul, dl { margin-left: 24px; }
+ol { list-style: decimal outside; }
+ul { list-style: square outside; }
+dl dd { margin-left: 12px; }
+/*th, td { border: 1px solid #000; padding: 6px; }*/
+th { font-weight: bold; text-align: center; }
+caption { margin-bottom: 6px; text-align: center; }
+p, fieldset, table { margin-bottom: 0.8em; }
+sup { font-size: 75%; vertical-align: text-top; }
+
+a, a:hover { color: <%= @theme_colors['link_color'] %>; }
+a:focus { outline: #666 dotted 1px; }
+
+p { margin-bottom: 1.8em; font-size: 12px; line-height: 1.5em; }

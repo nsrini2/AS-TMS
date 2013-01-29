@@ -1,0 +1,80 @@
+.search_deal_line {
+  font-size: 1.0em;
+  font-weight: normal;
+  margin: 0 0 0 70px;
+}
+
+.search_deal_sub {
+	color: #577079;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	text-decoration: none;
+}
+
+button.show_more_style {
+	margin-left: 20px;
+	clear: both;
+	float: left;
+}
+
+.deal_title {
+  color: #6D573B;
+	font-size: 1.6em;
+	line-height: 1em;
+	text-decoration: none;
+}
+
+
+
+
+.search_deal {
+	
+}
+
+.add_to_folder {
+	
+}
+
+.booking_info {
+	
+}
+
+div.details_style {
+	width: 97%;
+	margin-left: 20px;
+	margin-top: 50px;
+	/*margin-bottom: 20px;*/
+	clear: both
+}
+
+.details_style .small_map {
+  float: right;
+  margin: 0 20px 0 10px;
+}
+
+div.search_deal_book_by_share {
+	/*float: left*/
+}
+
+div#pageNavigation {
+  margin: 20px 10px;
+}
+
+ul#search_deals {
+  margin-bottom: 0px;
+}
+
+.stButton .stLarge {
+  height: 32px !important;
+  width: 32px !important;
+  background-repeat: no-repeat !important;
+}
+
+.st_facebook_large .stButton .stLarge {
+  background-image: url('/images/de/share_fb_small.gif') !important;
+}
+
+.st_twitter_large .stButton .stLarge {
+  background-image: url('/images/de/share_twitter_small.gif') !important;
+}

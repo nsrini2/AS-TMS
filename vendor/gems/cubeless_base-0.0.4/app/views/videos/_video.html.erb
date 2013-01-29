@@ -1,0 +1,29 @@
+<div class="meta" style="margin-bottom: 10px;">
+	Posted on <%= short_date(video.created_at) %> by <%= link_to_author video %> 
+</div>
+
+<div style="float: right; width: 275px;">
+	<p>
+		<b>Description</b><br/>
+		<%=h video.description %>		
+	</p>
+	
+	<p>
+		<b>Tags:</b><br/> 
+		<%= link_to_video_tags video.tag_list %>
+	</p>
+	
+	<p>
+		<b>Embed Code</b><br/>
+		<input type="text" readonly="" value="<%=h embed(video).gsub("\n","").strip %>" style="width: 220px;" onclick="this.focus();this.select();" />
+	</p>
+	
+	
+</div>
+
+<div>
+	<%= display_video(video) %>
+</div>
+
+
+<%= action_list_for(video_actions(video)) %>

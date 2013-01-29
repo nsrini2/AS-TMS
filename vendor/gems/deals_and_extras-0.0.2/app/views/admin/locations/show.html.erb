@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>description</th>
+            <th>latitude</th>
+            <th>longitude</th>
+            <th>state/province</th>
+            <th>country</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @location.id %></td>
+            <td><%= @location.description %></td>
+            <td><%= @location.latitude %></td>
+            <td><%= @location.longitude %></td>
+            <td><%= @location.state_province.state rescue nil %></td>
+            <td><%= @location.country.country rescue nil %></td>
+            <td><%= link_to "U", update_latlon_admin_location_path(@location) %></td>
+        </tr>
+    </tbody>
+</table>

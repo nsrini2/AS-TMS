@@ -1,0 +1,32 @@
+<style>
+	div#upload_progress {
+		background: transparent url(/images/ajax-loader.gif) no-repeat 0 0;
+		float: right; 
+		height: 45px;
+		margin: 0 200px 0 10px;
+		padding-left: 42px; 
+		text-align: left;
+		width: 330px; 
+	}
+</style>
+
+<h1>New video</h1>
+
+<% form_for(@video, :builder => CubelessFormBuilder, :html => {:class => "cubeless_form"}) do |f| %>
+
+<fieldset>
+	<%= render :partial => "form", :locals => { :f => f } -%>
+</fieldset>
+
+	<div class="buttons">
+	  <div id="upload_progress" style="display: none;">
+	  </div>
+	
+    <input type="submit" value="Upload video" id="submit_button" class="button" />
+		<div class="button">
+			<%= link_to 'Cancel', videos_path %>
+		</div>
+	</div>
+<% end %>
+
+

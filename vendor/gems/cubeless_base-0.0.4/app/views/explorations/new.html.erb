@@ -1,0 +1,22 @@
+<% explore = @blogs && "Blogs" || @question_summaries && "Questions" || @groups && "Groups" || @cloud_terms && "People by Smarts" || @profile_results && "#{params[:action].capitalize}" || "People" %>
+<% content_for(:page_title, 'Explore') -%>
+<% content_for(:body_class, "#{explore.gsub(" ","_").downcase}") %>
+<div id="explore">
+	<%=form_tag "/explorations/#{@form_action || params[:action]}", :id => "query_form", :method => :get -%>
+		<label for="query_input"><%= @explore_text %></label>
+		<input type="text" name="query" id="query_input" value="<%= params[:query] %>" />
+		<input type="submit" name="commit" value="Search" class="button" />
+	</form>
+	<div class="explore_results<%= " wide_skyscraper" if @wide_skyscraper %>">
+		<%= render :partial => 'explorations/profile_results' if @profile_results %>
+		<%= render :partial => 'explorations/question_results' if @question_summaries %>
+		<%= collection_content_for(@profiles){ render :partial => 'cloud_avatars' } %>
+		<%= collection_content_for(@cloud_terms){ render :partial => 'cloud_terms' } %>
+		<%= render :partial => 'explorations/group_results' if @groups %>
+		<%= render :partial => 'explorations/blog_results' if @blogs %>
+		<%= render :partial => 'explorations/video_results' if @videos %>
+		<%= render :partial => 'explorations/travel_results' if @travels %>
+		<%= render :partial => 'explorations/status_results' if @statuses %>			
+	</div>
+	<%= render :partial => 'ads/wide_skyscraper' if @wide_skyscraper %>
+</div>

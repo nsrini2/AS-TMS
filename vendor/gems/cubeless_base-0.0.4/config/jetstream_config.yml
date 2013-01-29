@@ -1,0 +1,107 @@
+site_name: "Jetstream"
+
+site_base_url: "http://jetstream.cubeless.com"
+
+theme: 'theme_6'
+
+logo_file: "jetstream_logo.png"
+
+favicon: "jetstream_favicon.ico"
+
+terms_acceptance_required: true
+
+feedback_email: "FEweb@flightexplorer.com"
+
+email_from_address: 'Jetstream <no-reply@cubeless.com>'
+
+viewable_karma: true
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+question_categories: ["Planes", "Airports", "Travel", "Air Traffic"]
+
+profile_biz_card_questions:
+  - question: profile_2
+    label: "Tag Line"
+    completes_profile: true
+    matchable: true
+  - question: profile_1
+    label: "Title/Position"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Company"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Twitter URL"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Facebook URL"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "LinkedIn URL"
+    completes_profile: true
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'email',
+    'profile_4',
+    'profile_5',
+    'profile_6'
+  ]
+  business_card: [
+    'email',
+    'profile_1' 
+  ]
+
+profile_complex_questions:
+  - title: "About Me"
+    questions:
+      - question: question_1
+        label: "Hometown?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Favorite Places to fly into?"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "Travel advice for other members?"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "Places I’d like to go?"
+        completes_profile: true
+        matchable: true
+      - question: question_5
+        label: "Licenses / certifications?"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "Organizations I’ve joined?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "Which aircraft best describes your personality and style?"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "Most unique or most unusual airport experience?"
+        completes_profile: true
+        matchable: true
+      - question: question_9
+        label: "How long have you been interested in aviation?"
+        completes_profile: true
+        matchable: true 
+        
+        completes_profile: true
+        matchable: true

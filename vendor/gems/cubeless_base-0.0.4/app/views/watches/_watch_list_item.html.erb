@@ -1,0 +1,4 @@
+<dd<%= render_selected_if_is?(id) %>>
+	<%= link_to_unless_current_ignore_params name, profile_watch_path(@profile,id) %>
+	<%= link_to("X", profile_watch_path(@profile,id), :class => "item_remove delete_watch", :title => "Remove #{name}") if @profile == current_profile %>
+</dd>

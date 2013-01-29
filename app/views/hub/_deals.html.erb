@@ -1,0 +1,20 @@
+<h2>Deals</h2>
+
+
+<% deals.each do |deal| %>
+	<div id="hub_deals" class="list_item deal_item <%= cycle "even", "odd" %>">
+		<div class="deal_image" >
+        <%= de_image(deal) %>
+  	</div>
+
+		<div class="details">
+			<h3><%= link_to(deal.suppliers.first.supplier_name, "deals_and_extras?deal=#{deal.id}") %></h3>
+			<p><%= deal.title_location %></p>
+		</div>
+	</div>
+<% end %>
+<%= "<br/><br/>" if deals.empty? %>
+
+<div class="see_all">
+  <%= link_to "View All Deals", "/deals_and_extras" %>
+</div>

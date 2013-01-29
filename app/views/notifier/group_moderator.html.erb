@@ -1,0 +1,7 @@
+<%= render "notifier/partials/headline", {:headline => "You've been chosen to be a new group moderator."} %>
+
+<p style="line-height: 18px;"><font color="#333333" face="linotype universe, helvetica, arial" size="3">
+	<p>Hello, <%= "#{@member.first_name}" %>.</p>
+	<p><%= @group.owner.screen_name %> has selected you as a moderator for the group <strong><%=@group.name%></strong>. &nbsp;
+	<%= link_from_email("Click here", @group_url )%> to view this group.
+</font></p>

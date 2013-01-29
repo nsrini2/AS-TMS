@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# to use call 
+# ruby script/delayed_job_daemon start
+# ruby script/delayed_job_daemon stop
+
+require 'rubygems'       
+require 'daemons'
+
+Daemons.run('script/job_runner')

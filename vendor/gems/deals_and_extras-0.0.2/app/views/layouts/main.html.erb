@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+
+        <title>
+            Agent Stream Deals
+        </title>
+
+        <%= stylesheet_link_tag "style", "deals",  "filter", "sort", "reviewDialogs", "searchDeal", "myFolder", "facebox" %>
+				<!-- This is a stylesheet, but it is stored in the JavaScript folder so I put it here  -->
+				<%= javascript_include_tag "/jquery-ui-1.8.14.custom/css/smoothness/jquery-ui-1.8.7.custom.css" %>
+
+        <% if Setting.map_mode == 'google '%>
+            <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA-hcfuLXrlFI3ZZCLicmVkRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxShDd-KbJIElNfwQ4kp0fbVjkDTUg" type="text/javascript"></script>
+        <% elsif Setting.map_mode == 'map_quest' %>
+            <script src="http://mapquestapi.com/sdk/js/v6.0.0/mqa.toolkit.js?key=<%= Setting.map_quest_api_key %>"></script>
+        <% end %>
+
+    </head>
+    <body>
+
+        <%= yield %>
+
+        <%= javascript_include_tag "jquery-1.4.4", "jquery-ui-1.8.7.custom.min", "interactions", "jquery.parsequery", "facebox" %>
+
+    </body>
+
+</html>

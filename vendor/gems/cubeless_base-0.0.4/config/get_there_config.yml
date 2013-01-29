@@ -1,0 +1,133 @@
+
+theme: 'theme_4'
+
+logo_file: "get_there_logo.jpg"
+
+favicon: "get_there_favicon.ico"
+
+site_name: "GetThere Customer Community"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+question_categories: ["Best Practices", "Events and Conferences", "Networking", "Products and features", "Industry Trends"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Company Name"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Job Title"
+    completes_profile: true
+    matchable: false
+  - question: profile_4
+    label: "Work Phone"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Mobile Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Location"
+    completes_profile: true
+    matchable: true
+  - question: profile_7
+    label: "Industry"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_7',
+    'profile_6',
+    'profile_4',
+    'profile_5',
+    'email'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_4',
+    'email',
+    'profile_7'
+  ]
+
+profile_complex_questions:
+  - title: "About Me"
+    questions:
+      - question: question_1
+        label: "Places you dream about going:"
+        example: "e.g. Europe, Texas, Mumbai, La Paz... you name it."
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Places you traveled:"
+        example: "e.g. China, Tuscany, Paris, Grand Canyon, Central Park, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "Industry associations:"
+        example: "e.g. BTTB, ITM, BATM, NBTA, ACTE, AEGVE..."
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What is your home town?"
+        completes_profile: true
+        matchable: true
+      - question: question_5
+        label: "What do you do for fun?"
+        example: "e.g. read, golf, rugby, scrap book, kite surfing, etc."
+        completes_profile: true
+        matchable: true
+
+  - title: "On the Job"
+    questions:
+      - question: question_6
+        label: "What are your skills, expertise or things you rule in?"
+        example: "e.g. Design whiz, SAP, Java, AirCrews, presentation god, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "Previous gigs and companies you worked for or with?"
+        example: "e.g. Companies I have an 'in' with like Dunder-Mifflin."
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "Countries where you launched an online travel program?"
+        example: "e.g. Australia, Brazil, United States, India, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_9
+        label: "Describe your travel program."
+        example: "e.g. global, adoption rate, mandates, ARC spend, online vs. offline, etc."
+        completes_profile: true
+        matchable: true
+
+  - title: "Tools and Tricks"
+    questions:
+      - question: question_10
+        label: "Tools without which you cannot live?"
+        example: "e.g. smart phone, email, booking tool, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "Features/functionality that helped you to reduce your travel spend?"
+        example: "e.g. OTE, rail, LCC, negotiated suppliers, Contracts, pre approvals..."
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "Tips to improve your online adoption?"
+        example: "e.g. executive sponsorship, mandates, travel policy, etc."
+        completes_profile: true
+        matchable: false

@@ -1,0 +1,26 @@
+<style>
+	div.video .photo_wrapper{
+		margin-right: 15px;
+	}
+</style>
+
+<% videos.each_with_index do |video, i| -%> 
+	<div class="video list_item <%= cycle("even", "odd") -%>" >
+		<div class="photo_wrapper">
+			<%= link_to image_tag(remote_image_video_url(video), :style => "width: 100px;"), video_path(video) -%>
+		</div>
+		
+		<div class="details">
+			<div class="item_text"><%= link_to h(video.title), video_path(video) %></div>
+			<p class="meta">
+				Posted on <%= short_date(video.created_at) %> by <%= link_to_author video %> 
+			</p>
+		
+			<p class="summary">
+				<%= video.description %>
+			</p>
+			
+			<%= action_list_for(video_actions(video, :tags => true)) %>
+		</div><!-- div.details -->
+	</div>
+<% end %>

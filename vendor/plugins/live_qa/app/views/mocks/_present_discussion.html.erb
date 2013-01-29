@@ -1,0 +1,16 @@
+<div id="present_container">
+
+  <div id="present_discussion_container">
+    <h3><strong>Current Discussion:</strong> <%= question.question %></h3>
+    <div class="ui-accordion-content">
+      <% @table_id = "present_discussion" %>
+      <%= render :partial => "discussion", :locals => { :question => question } %>
+    </div>
+  </div>
+  
+  <div id="post_container">
+    <textarea id="present_discussion_text"></textarea>
+    
+    <input id="present_discussion_post" type="submit" value="Post" />
+  </div>
+</div>

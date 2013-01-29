@@ -1,0 +1,6 @@
+<% content_for(:page_title, params[:action].gsub('_', ' ').titleize) -%>
+<div class="content">
+	<% @reports.each do |rs| %>
+		<%= render_reports_table rs %>
+	<% end %>
+</div>

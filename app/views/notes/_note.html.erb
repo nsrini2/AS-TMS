@@ -1,0 +1,18 @@
+<% person_of_interest = display_message_person_of_interest(message) %>
+<div class="list_item news_item">
+  <%= person_of_interest[:img] %>
+  <div class="details">
+
+    <p class="reply" style="float: right; margin-top: 3px;">
+      <%= link_to "Reply", new_note_path(:reply_to => message.id), :class => "new_message button little" %>
+    </p>
+
+    <h3 class="who">
+      <%= person_of_interest[:lead] %>
+    </h3>
+    <p class="when">
+      <%= pretty_datetime message.created_at %>
+    </p>
+    <div class="what"><%= message.message %></div>
+  </div>
+</div>

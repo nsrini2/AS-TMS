@@ -1,0 +1,48 @@
+<h1>Custom Reports</h1>
+
+<br/>
+
+<div class="buttons">
+  <%= link_to 'New Custom Report', new_custom_report_path, :class => "button" %>
+</div>
+
+<br/><br/>
+
+<% if Config[:open_registration] -%>
+  <div id="agent_stream_usage_report">
+    <%= link_to 'Download Weekly Report', :controller => 'custom_reports', :action => 'weekly_report' %><br />
+    <%= link_to 'Download Registration and Content CSV', :controller => 'custom_reports', :action => 'usage' %><br />
+    <%= link_to 'Download Data Dump', :controller => 'custom_reports', :action => 'data_dump' %>
+  </div>  
+<% end -%>
+
+<% unless @custom_reports.empty? %>
+  <div id="report_preview">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Date Created</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>        
+      </tr>
+
+    <% for custom_report in @custom_reports %>
+      <tr>
+        <td><%=h custom_report.name %></td>
+        <td><%= pretty_date custom_report.created_at %></td>
+        <td><%= link_to 'Preview HTML', custom_report %></td>
+        <td><%= link_to 'Full CSV', custom_report_path(custom_report) + ".csv?all=true" %></td>
+        <td><%= link_to 'Full PDF', custom_report_path(custom_report) + ".pdf?all=true" %></td>
+        <td><%= link_to 'Edit', edit_custom_report_path(custom_report) %></td>
+        <td><%= link_to 'Destroy', custom_report, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+<% end %>
+
+
+

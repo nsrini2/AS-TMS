@@ -1,0 +1,119 @@
+
+theme: 'theme_6'
+
+logo_file: "tech_nest_logo.gif"
+
+favicon: "cubeless_favicon.ico"
+
+site_name: "TECH Nest"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+question_categories: ["People", "Knowledge", "Life"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Company Name"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "User Rank"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Office Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_5
+    label: "TFW Relationship / Program"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Company Website"
+    completes_profile: false
+    matchable: false
+  - question: profile_7
+    label: "Job Title"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'email',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7'
+  ]
+  business_card: [
+    'profile_5',
+    'email',
+    'profile_7'
+  ]
+
+profile_complex_questions:
+  - title: "About You"
+    questions:
+      - question: question_1
+        label: "What do you consider yourself an expert in?"
+        example: "Examples: Microsoft Excel, graphic design, quantum physics…"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "What’s your hidden talent?"
+        example: "Examples: singing, dancing, telepathy…"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "When your “egg” hatches what kind of animal will it be?"
+        example: "What kind of creature are you?"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What did you do before this?"
+        example: "Previous work experience, past jobs, etc"
+        completes_profile: true
+        matchable: true
+
+  - title: "Community"
+    questions:
+      - question: question_5
+        label: "What is your favorite restaurant in Fort Worth?"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What is your favorite charity or cause?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What is your favorite way to unwind?"
+        completes_profile: true
+        matchable: true
+
+  - title: "Connections"
+    questions:
+      - question: question_9
+        label: "Who would you most like to meet?"
+        example: "Examples: Potential customers, celebrities, mentors, etc."
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "Where do you like to network?"
+        example: "Examples: Chamber, Rotary, local pub…"
+        completes_profile: true
+        matchable: false
+      - question: question_11
+        label: "What famous people have you met?"
+        example: "Celebrities, business executives, media, etc."
+        completes_profile: true
+        matchable: true

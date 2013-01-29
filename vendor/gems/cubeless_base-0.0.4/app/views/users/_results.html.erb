@@ -1,0 +1,32 @@
+<table class="border_table" cellspacing="0" width="100%">
+  <caption>Users</caption>
+  <tr>
+    <th><%= sort_link_helper "First Name", "first_name" -%></th>
+    <th><%= sort_link_helper "Last Name", "last_name" -%></th>
+    <th><%= sort_link_helper "Screen Name", "screen_name" -%></th>
+    <th>Login / SSO ID</th>
+    <th><%= sort_link_helper "Email", "email" -%></th>
+    <th><%= sort_link_helper "Status", "status" -%></th>
+    <th><%= sort_link_helper "Visible", "visible" -%></th>
+    <th><%= sort_link_helper "Sync", "sync_exclude" -%></th>
+    <th>Action</th>
+  </tr>
+  <% @profiles.each do |profile| -%>
+    <tr class="<%= cycle("even", "odd") -%>">
+      <td><%= profile.first_name -%></td>
+      <td><%= profile.last_name -%></td>
+      <td><%= link_to profile.screen_name, profile_path(profile) -%></td>
+      <% fail profile.inspect unless profile.user %>
+      <td><span title="<%= profile.user.uses_login_pass? && profile.user.login || profile.user.sso_id -%>" class="tooltip"><%= truncate(profile.user.uses_login_pass? && profile.user.login || profile.user.sso_id, :length => 30) -%></span></td>
+      <td><%= mail_to profile.user.email, 
+              truncate(profile.user.email, :length => 19) -%></td>
+      <td><%= profile.status_name -%></td>
+      <td><%= profile.visible ? "Yes" : "No" -%></td>
+      <td><%= profile.user.sync_exclude ? "No" : "Yes" -%></td>
+      <td>
+        <%= render :partial => "actions", :locals => {:profile => profile} %>
+      </td>
+    </tr>
+  <% end -%>
+</table>
+<%= will_paginate @profiles %>

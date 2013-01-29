@@ -1,0 +1,6654 @@
+@charset "UTF-8";
+/* 
+html5doctor.com Reset Stylesheet
+v1.6
+Last Updated: 2010-08-18
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+/* line 20, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+nav ul {
+  list-style: none;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 53, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+a, a:visited {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+  color: #4A6970;
+}
+
+/* change colours to suit your needs */
+/* line 64, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+/* line 71, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* line 78, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* line 82, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted inherit;
+  cursor: help;
+}
+
+/* line 87, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+/* line 93, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 102, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+input, select {
+  vertical-align: middle;
+}
+
+/* Lighter Blue */
+/*$tertiary: #EFF8FA;*/
+/*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
+/*$font-size: 12px;
+$line-height: 18px;*/
+/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
+body {
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #676767;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/text.scss */
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h1 {
+  font-size: 25px;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h2 {
+  font-size: 23px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h3 {
+  font-size: 21px;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h4 {
+  font-size: 19px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h5 {
+  font-size: 17px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h6 {
+  font-size: 15px;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ul {
+  list-style: square;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
+li {
+  margin-left: 30px;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px;
+}
+
+/* line 58, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header {
+  padding: 0px 5px;
+}
+/* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header h2, div#deals-header p {
+  margin-bottom: 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page #welcome-page {
+  width: 840px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer {
+  width: 960px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#logo {
+  width: 160px;
+  margin-left: 0;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.global_nav {
+  width: 460px;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.utility {
+  width: 320px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats {
+  width: 720px;
+  margin-right: 0;
+}
+/* line 24, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats h4 {
+  float: right;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-main {
+  width: 480px;
+  padding-left: 240px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#register-main {
+  width: 720px;
+  padding-left: 120px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-agentstream-facebook-main {
+  width: 360px;
+  padding-left: 300px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.primary {
+  width: 560px;
+  margin-left: 0;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside {
+  margin-top: 30px;
+  width: 400px;
+  margin-right: 0;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside .module {
+  margin-right: 0px;
+  margin-left: 5px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .primary {
+  width: 720px;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .aside {
+  width: 240px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .primary {
+  width: 720px;
+  clear: both;
+  margin-left: 0;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .aside {
+  width: 240px;
+  margin-right: 0;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .full_length {
+  width: 960px;
+  clear: both;
+}
+
+/*
+	#6f563b header (chocolate) 
+	#4a6970 subnav, subhead, questions (teal) 
+	#676767 body copy (gray)
+	
+	#e5f1f4 right column bg (light blue)
+	
+	#c4d7dc grid lines
+	
+	#90b4bc light blue links
+	
+	
+	#987d72 light brown
+	
+	
+*/
+/* line 18, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+h2 {
+  text-shadow: #fff 0 1px 0;
+  font-size: 18px;
+  color: #6f563b;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+h2 a {
+  color: #6f563b !important;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+h3, h3 a {
+  color: #4a6970;
+  font-size: 16px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.aside p {
+  color: #666;
+}
+
+/* line 23, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+div.meta {
+  color: #666;
+  font-size: 11px;
+}
+
+/* line 24, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+p.asked, p.open_until {
+  display: inline;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+p.category, p.answers {
+  display: inline;
+}
+
+/* line 26, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question_actions {
+  color: #666;
+  font-size: 11px;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question_actions li {
+  display: inline;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+img.photo {
+  border: 1px solid #C4D7DC;
+}
+
+/* line 32, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.alert {
+  border: 1px solid #c4d7dc;
+  border-width: 0 1px 0;
+  border-width: 0 !important;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.alert .content {
+  margin: 0 0 20px;
+  padding: 10px 10px 1px;
+  border-radius: 3px;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.alert .content p {
+  margin: 0 0 10px;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.notice .content {
+  background: #E5F1F4;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.success .content {
+  background: #dcedbc;
+}
+
+/* line 37, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.error .content {
+  background: #fee;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.warning .content {
+  background: #fff5cc;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.primary .alert {
+  float: none;
+  border: none;
+}
+
+/*	news feed */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content {
+  background: #fff;
+  margin: 0 0 10px;
+}
+
+/* line 46, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content .tabs-panel {
+  padding: 10px 0;
+}
+
+/* line 47, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#news_feed .news_item {
+  clear: both;
+  margin: 20px 0 0;
+  color: #4a6970;
+  padding: 10px;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#news_feed .question {
+  background: #e1ecee;
+}
+
+/* line 49, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#news_feed .news_item:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 50, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#news_feed .news_item .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#news_feed .news_item .details {
+  display: block;
+  float: left;
+  width: 420px;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#news_feed .news_item .details h3 {
+  margin: 0 10px 0 0;
+  display: inline;
+  font-weight: bold;
+}
+
+/* line 53, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#news_feed .news_item .details p {
+  display: inline;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#news_feed .news_item h3 a {
+  color: #4a6970;
+}
+
+/*	chats feed */
+/* line 57, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content {
+  background: #fff;
+  margin: 0 0 10px;
+}
+
+/* line 58, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content .tabs-panel {
+  padding: 10px 0;
+}
+
+/* line 60, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#list .chat_item .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0px 15px 0 0;
+}
+/* line 61, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#list .chat_item .details {
+  margin-top: 0;
+}
+/* line 62, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#list .chat_item .action_buttons {
+  margin-top: 0;
+}
+
+/* line 65, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content #ask {
+  clear: both;
+  margin: 15px 0 0;
+  color: #4a6970;
+  padding: 0 10px;
+}
+
+/* line 66, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content #ask .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0;
+}
+
+/* line 67, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content #ask:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 68, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content #ask textarea {
+  height: 60px;
+  width: 415px;
+  padding: 10px;
+  border: 1px solid #90b4bc;
+  border-width: 1px 1px 1px 0;
+  font-size: 12px;
+  color: #4a6970;
+}
+
+/* line 69, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content #ask img {
+  border: 1px solid #90b4bc;
+  border-width: 1px 0 1px 1px;
+}
+
+/* line 70, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.content #ask .button {
+  float: right;
+  margin: 0;
+  background: #90b4bc;
+  border: 0;
+  padding: 5px 25px;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/*groups*/
+/* line 74, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#groups {
+  position: relative;
+  background-color: #eff8fa;
+}
+
+/* line 75, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.group_item {
+  clear: both;
+}
+
+/* line 76, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.group_item:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 77, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#hub #groups .group_item .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+/* line 78, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#hub #groups .details {
+  display: block;
+  float: left;
+  width: 425px;
+}
+
+/* line 79, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#hub #groups .group_item .details h3 {
+  margin-bottom: 0px;
+}
+
+/* line 80, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#hub #groups h3 a {
+  color: #6f563b;
+}
+
+/* line 81, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#groups h3 .info {
+  color: #987d72;
+}
+
+/* line 83, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#groups .nav {
+  display: block;
+  float: right;
+  margin: 0 0;
+  font-size: 16px;
+  text-transform: lowercase;
+}
+
+/* line 84, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#groups .nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 85, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#groups .nav li {
+  display: block;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 0 10px 0 0;
+  background: url("/images/bg_nav_glyph_right_blue.png") 100% 50% no-repeat;
+}
+
+/* line 86, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#groups .nav li.active {
+  border-bottom: 1px solid #4a6970;
+}
+
+/* line 87, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#groups .nav a {
+  color: #4a6970;
+  font-weight: normal;
+}
+
+/* line 89, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#statistics table {
+  width: 100%;
+}
+
+/* line 90, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#statistics table, #statistics table a {
+  color: #4a6970;
+}
+
+/* line 91, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#header, #main {
+  border: 1px solid #c4d7dc;
+  border-width: 0 1px 0;
+}
+
+/* line 92, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#main {
+  border-width: 0 1px 1px;
+}
+
+/* line 93, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#footer {
+  clear: both;
+}
+
+/* line 94, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.aside .module, .primary .module {
+  margin: 0;
+  padding: 10px 20px 10px;
+  border: 1px solid #c4d7dc;
+  border-width: 1px 0 0 0;
+  background: #e5f1f4;
+}
+
+/* line 95, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.aside .module {
+  border-width: 1px 0 0 1px;
+}
+
+/* line 96, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.aside .last {
+  border-bottom: 1px solid #c4d7dc;
+}
+
+/* line 99, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question {
+  margin: 0 0 10px;
+}
+
+/* line 100, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question .text {
+  margin: 0 0 10px;
+}
+
+/* line 101, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question .meta a {
+  color: #90b4bc;
+}
+
+/* line 102, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question .meta p {
+  margin: 0;
+}
+
+/* line 103, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question .question_actions {
+  margin: 5px 0 0 0;
+}
+
+/* line 104, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question .question_actions li {
+  margin: 0 15px 0 0;
+}
+
+/* line 105, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.question .question_actions a {
+  color: #676767;
+}
+
+/*.note { clear: both; }*/
+/* line 109, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 110, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .text, .note .text a {
+  margin: 0 10px 3px 0;
+  font-size: 14px;
+  color: #4a6970;
+}
+
+/* line 111, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .text {
+  background: url("/images/bg_notes_quote.png") no-repeat;
+  padding: 0 0 0 25px;
+  background-position: 0px 3px;
+}
+
+/* line 112, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .text {
+  width: 330px;
+  display: block;
+}
+
+/* line 113, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.agency .note .text {
+  width: 180px;
+  display: block;
+}
+
+/* line 114, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .text p {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+/* line 118, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .text p:first-child {
+  margin-top: 10px;
+}
+
+/* line 121, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .text p.actions {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* line 125, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .text a.button {
+  color: #fff;
+}
+
+/*.note .text a { width: 100%; display: block; }*/
+/* line 129, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .title {
+  margin: 0;
+  color: #4a6970;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+/* line 130, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note .when {
+  margin: 0 0 0 0;
+  font-size: 11px;
+}
+
+/* line 131, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.note object {
+  width: 315px !important;
+}
+
+/* line 133, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#widget:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 134, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#widget h3 {
+  margin: 10px 0 5px 0;
+}
+
+/* line 137, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#widget div.content {
+  border-bottom: 1px solid #C4D7DC;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+
+/* line 142, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#widget .widget:last-child div.content {
+  border-bottom: 0;
+}
+
+/* line 146, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#promotions {
+  padding: 0;
+  height: 150px;
+  position: relative;
+}
+
+/* line 147, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#promotions h2 {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  z-index: 2;
+  color: #fff;
+  text-shadow: #999999 0 -1px 0;
+}
+
+/* line 148, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.promo_image {
+  position: absolute;
+}
+
+/* LANDING PAGE */
+/* line 150, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#main .primary .content .intro-text {
+  /* SSJ: 3/11/11 Push all this off the page, txt is now on image, but keep for crawlers etc. */
+  text-indent: -5000px;
+  clear: both;
+  float: left;
+  width: 350px;
+  margin: 30px 20px 20px 30px;
+  background: transparent;
+}
+/* line 161, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#main .primary .content .intro-text h5 {
+  font-size: 32px;
+  line-height: 32px;
+  margin: 0;
+  font-weight: normal;
+  color: #6f563b;
+}
+/* line 167, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#main .primary .content .intro-text h1 {
+  font-size: 48px;
+  line-height: 40px;
+  margin: 0;
+  color: #4a6970;
+}
+/* line 173, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#main .primary .content .intro-text p {
+  font-size: 12px;
+  line-height: 14pt;
+  margin: 12px 0;
+}
+/* line 178, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+#main .primary .content .intro-text li {
+  list-style: none;
+  color: #4a6970;
+  font-weight: bold;
+}
+
+/* inherits from ul.action_list */
+/* line 185, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+ul.sub_nav {
+  list-style: none;
+}
+/* line 187, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+ul.sub_nav li {
+  float: left;
+}
+/* line 188, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+ul.sub_nav li.selected {
+  padding-left: 20px;
+  background: url(/themes/theme_1/images/arrow_right.png) 5px center no-repeat;
+  font-weight: bold;
+}
+/* line 192, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+ul.sub_nav li.selected a {
+  color: #000;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/form.scss */
+textarea {
+  font: inherit !important;
+  padding: 3px 5px;
+}
+
+/* line 6, ../../../../app/stylesheets/themes/agentstream/form.scss */
+textarea.fckeditor {
+  height: 300px;
+}
+
+/* registration form Error formatting */
+/* line 12, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#registration_form div#errors li {
+  color: #990000;
+}
+
+/* line 15, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#registration_form .fieldWithErrors {
+  border: 1px dashed #990000;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#registration_form div#errors {
+  display: none;
+}
+
+/* line 21, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#registration_form div.error h2 {
+  color: #990000;
+}
+
+/* New Live QA */
+/* line 26, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#new_live_chat_from input#chat_title {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+/* line 31, ../../../../app/stylesheets/themes/agentstream/form.scss */
+div.datepicker_wrapper {
+  float: left;
+  margin: 0 20px 30px 0;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#new_live_chat_from input#chat_description {
+  font-size: 1.2em;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/form.scss */
+div#new_live_qa div.details label {
+  line-height: 40px;
+  font-size: 17px;
+  margin: 0 10px 0 0;
+}
+
+/* Live QA Topic Form */
+/* line 47, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#create_topic div.error {
+  color: #990000;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#create_topic input#topic_title {
+  font-size: 1.8em;
+  margin-bottom: 2px;
+}
+
+/* line 56, ../../../../app/stylesheets/themes/agentstream/form.scss */
+form#create_topic input.button {
+  margin-bottom: 50px;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.ui-widget-overlay {
+  background-color: #333;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+  zoom: 1;
+}
+
+/* line 8, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup {
+  background-color: #fff;
+  border: 3px solid #C4D7DC;
+  padding: 10px;
+  width: 425px;
+  margin: 0 auto;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup .ui-dialog-titlebar {
+  display: none;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup .ui-dialog-content {
+  position: relative;
+  padding: 16px;
+}
+
+/* line 24, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup .ui-dialog-content h3 {
+  margin-top: -5px;
+  margin-bottom: 18px;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.popup .ui-dialog-content a.close {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  font-weight: bold;
+}
+
+/* notice and error dialogs */
+/* line 34, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+#flash_notice {
+  display: none;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.notice_dialog #flash_notice {
+  display: block;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.notice_dialog .ui-dialog-titlebar {
+  display: none;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+#flash_notice ul.notice_messages {
+  margin-bottom: 0;
+  list-style: none;
+}
+
+/* line 44, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+#flash_notice ul.notice_messages li {
+  margin: 5px 0;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+#flash_error {
+  border: 3px solid #990000;
+  display: none;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.error_dialog #flash_error {
+  display: block;
+}
+
+/* line 53, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.error_dialog #flash_error h2 {
+  margin-top: 16px;
+}
+
+/* line 56, ../../../../app/stylesheets/themes/agentstream/modal.scss */
+.error_dialog .ui-dialog-titlebar {
+  display: block;
+  position: relative;
+  top: 32px;
+  text-align: right;
+  margin: 40px 5px 10px;
+  width: 405px;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results {
+  /*resets*/
+  margin: 0;
+  padding: 0;
+  border: 1px solid #C4D7DC;
+  outline: 0;
+  line-height: 1.3;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 1.1em;
+  z-index: 9999;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results ul, .ui-autocomplete-results li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 12, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results ul {
+  position: relative;
+  background: #ffffff;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results li {
+  position: relative;
+  color: #222222;
+  padding: .2em .5em;
+  font-size: 11px;
+  font-weight: normal;
+  margin: 1px 0;
+}
+
+/* line 26, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results li .type {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results li.ui-hover-state, .ui-autocomplete-results li.ui-active-state {
+  margin: 0;
+}
+
+/* line 31, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results li.ui-autocomplete-over {
+  background: #90B4BC;
+  color: #fff !important;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results li.ui-autocomplete-active {
+  background: #90B4BC;
+  color: #fff !important;
+  outline: none;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results li:first-child, .ui-autocomplete-results li.first {
+  margin-top: 0;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
+.ui-autocomplete-results li:last-child, .ui-autocomplete-results li.last {
+  margin-bottom: 0;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+#ui-datepicker-div {
+  background-color: #fff;
+}
+
+/* Datepicker
+----------------------------------*/
+/* line 7, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker {
+  width: 17em;
+  padding: .2em .2em 0;
+}
+
+/* line 8, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-header {
+  position: relative;
+  padding: .2em 0;
+}
+
+/* line 9, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+  position: absolute;
+  top: 2px;
+  width: 1.8em;
+  height: 1.8em;
+}
+
+/* line 10, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover {
+  top: 1px;
+}
+
+/* line 11, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-prev {
+  left: 2px;
+}
+
+/* line 12, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-next {
+  right: 2px;
+}
+
+/* line 13, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-prev-hover {
+  left: 1px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-next-hover {
+  right: 1px;
+}
+
+/* line 15, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -8px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-title {
+  margin: 0 2.3em;
+  line-height: 1.8em;
+  text-align: center;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-title select {
+  float: left;
+  font-size: 1em;
+  margin: 1px 0;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker select.ui-datepicker-month-year {
+  width: 100%;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+  width: 49%;
+}
+
+/* line 21, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-title select.ui-datepicker-year {
+  float: right;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker table {
+  width: 100%;
+  font-size: .9em;
+  border-collapse: collapse;
+  margin: 0 0 .4em;
+}
+
+/* line 23, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker th {
+  padding: .7em .3em;
+  text-align: center;
+  font-weight: bold;
+  border: 0;
+}
+
+/* line 24, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker td {
+  border: 0;
+  padding: 1px;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker td span, .ui-datepicker td a {
+  display: block;
+  padding: .2em;
+  text-align: right;
+  text-decoration: none;
+}
+
+/* line 26, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-buttonpane {
+  background-image: none;
+  margin: .7em 0 0 0;
+  padding: 0 .2em;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-buttonpane button {
+  float: right;
+  margin: .5em .2em .4em;
+  cursor: pointer;
+  padding: .2em .6em .3em .6em;
+  width: auto;
+  overflow: visible;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+  float: left;
+}
+
+/* with multiple calendars */
+/* line 31, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker.ui-datepicker-multi {
+  width: auto;
+}
+
+/* line 32, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-multi .ui-datepicker-group {
+  float: left;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-multi .ui-datepicker-group table {
+  width: 95%;
+  margin: 0 auto .4em;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-multi-2 .ui-datepicker-group {
+  width: 50%;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-multi-3 .ui-datepicker-group {
+  width: 33.3%;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-multi-4 .ui-datepicker-group {
+  width: 25%;
+}
+
+/* line 37, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header {
+  border-left-width: 0;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+  border-left-width: 0;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-multi .ui-datepicker-buttonpane {
+  clear: left;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-row-break {
+  clear: both;
+  width: 100%;
+}
+
+/* RTL support */
+/* line 43, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl {
+  direction: rtl;
+}
+
+/* line 44, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-prev {
+  right: 2px;
+  left: auto;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-next {
+  left: 2px;
+  right: auto;
+}
+
+/* line 46, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-prev:hover {
+  right: 1px;
+  left: auto;
+}
+
+/* line 47, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-next:hover {
+  left: 1px;
+  right: auto;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-buttonpane {
+  clear: right;
+}
+
+/* line 49, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-buttonpane button {
+  float: left;
+}
+
+/* line 50, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current {
+  float: right;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-group {
+  float: right;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header {
+  border-right-width: 0;
+  border-left-width: 1px;
+}
+
+/* line 53, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+  border-right-width: 0;
+  border-left-width: 1px;
+}
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+/* line 56, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.ui-datepicker-cover {
+  display: none;
+  /*sorry for IE5*/
+  display/**/: block;
+  /*sorry for IE5*/
+  position: absolute;
+  /*must have*/
+  z-index: -1;
+  /*must have*/
+  filter: mask();
+  /*must have*/
+  top: -4px;
+  /*must have*/
+  left: -4px;
+  /*must have*/
+  width: 200px;
+  /*must have*/
+  height: 200px;
+  /*must have*/
+}
+
+/* line 68, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
+.late {
+  color: red;
+  font-weight: bold;
+}
+
+/*.tooltip { cursor: text; }*/
+/* line 2, ../../../../app/stylesheets/themes/agentstream/tooltip.scss */
+#tooltip {
+  position: absolute;
+  z-index: 3000;
+  border: 1px solid #111;
+  padding: 5px;
+  background: #ff9;
+}
+
+/* line 3, ../../../../app/stylesheets/themes/agentstream/tooltip.scss */
+#tooltip h3 {
+  font-size: 11px;
+  font-weight: normal;
+}
+
+/* line 4, ../../../../app/stylesheets/themes/agentstream/tooltip.scss */
+#tooltip h3, #tooltip div {
+  margin: 0;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/paging.scss */
+div.pagination {
+  background-color: inherit;
+  margin: 0px 0 0px;
+  padding: 0;
+  font-size: 16px;
+  text-align: center;
+  position: relative;
+  clear: both;
+}
+
+/* line 2, ../../../../app/stylesheets/themes/agentstream/paging.scss */
+div.pagination a, div.pagination span {
+  display: inline;
+  list-style-type: none;
+  background-color: #fff;
+}
+
+/* line 4, ../../../../app/stylesheets/themes/agentstream/paging.scss */
+div.pagination a,
+div.pagination a:visited {
+  border: 1px solid #888;
+  padding: 2px 5px 0;
+  color: #888;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* line 6, ../../../../app/stylesheets/themes/agentstream/paging.scss */
+div.pagination a:hover,
+div.pagination a:active {
+  border: 1px solid #000;
+  background-color: #EFF8FA;
+  color: #888;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/paging.scss */
+div.pagination span {
+  background-color: inherit;
+}
+
+/* line 8, ../../../../app/stylesheets/themes/agentstream/paging.scss */
+div.pagination span.currentpage {
+  font-weight: bold;
+  border: 1px solid #000;
+  padding: 2px 5px 0;
+  background-color: #EFF8FA;
+  color: #888;
+}
+
+/* line 9, ../../../../app/stylesheets/themes/agentstream/paging.scss */
+div.pagination span.disablepage {
+  display: none;
+}
+
+/* line 10, ../../../../app/stylesheets/themes/agentstream/paging.scss */
+div.pagination span.nextpage {
+  font-weight: bold;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/button.scss */
+div.action_buttons {
+  float: right;
+  margin-top: 20px;
+  width: 15%;
+}
+/* line 6, ../../../../app/stylesheets/themes/agentstream/button.scss */
+div.action_buttons .button {
+  display: block;
+  width: 100px;
+}
+/* line 10, ../../../../app/stylesheets/themes/agentstream/button.scss */
+div.action_buttons a.button {
+  padding: 0px;
+}
+
+/* line 15, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button, a.button {
+  margin: 0 2px 5px 0;
+  background: #4A6970;
+  border: 0;
+  color: #fff;
+  font-size: 1em;
+  padding: 3px 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.little, a.button.little {
+  font-size: 0.8em;
+  padding: 1px 4px;
+  width: 60px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.light, a.button.light {
+  background: #90b4bc;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.xlarge, a.button.xlarge {
+  font-size: 1.8em;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header {
+  height: 110px;
+}
+
+/* line 3, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header h1 {
+  float: left;
+  height: 110px;
+  margin: 0;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+
+/* line 9, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header h1 a {
+  background: url("http://placehold.it/140x80/eeeeee/&text=logo") no-repeat 0 0;
+  display: block;
+  height: 100px;
+  margin: 5px 0px 0px 10px;
+  width: 200px;
+}
+
+/* line 15, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav {
+  display: block;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav li {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav a {
+  color: #4a6970;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .global_nav {
+  font-size: 16px;
+  margin: 30px 0 0;
+  text-transform: lowercase;
+  text-align: right;
+}
+
+/* line 32, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .global_nav li:first-child {
+  margin-left: 40px;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .global_nav li.active {
+  border-bottom: 1px solid #4a6970;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .global_nav li a {
+  display: block;
+  padding: 30px 0 0 0;
+  min-width: 30px;
+}
+
+/* line 44, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #hub_nav {
+  background: url("/images/icons/as/nav/off/home.png") no-repeat 50% top;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #hub_nav.active, #header .nav #hub_nav:hover {
+  background: url("/images/icons/as/nav/on/home.png") no-repeat 50% top;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #company_nav {
+  background: url("/images/icons/as/nav/off/agency.png") no-repeat 50% top;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #company_nav.active, #header .nav #company_nav:hover {
+  background: url("/images/icons/as/nav/on/agency.png") no-repeat 50% top;
+}
+
+/* line 57, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #qa_nav {
+  background: url("/images/icons/as/nav/off/help.png") no-repeat 50% top;
+}
+
+/* line 60, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #qa_nav.active, #header .nav #qa_nav:hover {
+  background: url("/images/icons/as/nav/on/help.png") no-repeat 50% top;
+}
+
+/* line 63, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #group_nav {
+  background: url("/images/icons/as/nav/off/user-group.png") no-repeat 50% top;
+}
+
+/* line 66, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #group_nav.active, #header .nav #group_nav:hover {
+  background: url("/images/icons/as/nav/on/user-group.png") no-repeat 50% top;
+}
+
+/* line 69, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #blog_nav {
+  background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
+}
+
+/* line 72, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #blog_nav.active, #header .nav #blog_nav:hover {
+  background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top;
+}
+
+/* line 75, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #news_nav {
+  background: url("/images/icons/as/nav/off/news_new.png") no-repeat 50% top;
+}
+
+/* line 78, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #news_nav.active, #header .nav #news_nav:hover {
+  background: url("/images/icons/as/nav/on/news_new.png") no-repeat 50% top;
+}
+
+/* line 82, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #chats_nav {
+  background: url("/images/icons/as/nav/off/chat.png") no-repeat 50% top;
+}
+
+/* line 86, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #chats_nav.active, #header .nav #chats_nav:hover {
+  background: url("/images/icons/as/nav/on/chat.png") no-repeat 50% top;
+}
+
+/* line 90, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #new_nav {
+  background: url("/images/icons/as/nav/off/new.png") no-repeat 50% top;
+}
+
+/* line 94, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #new_nav.active, #header .nav #new_nav:hover {
+  background: url("/images/icons/as/nav/on/new.png") no-repeat 50% top;
+}
+
+/* line 98, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #de_nav {
+  background: url("/images/icons/as/nav/off/de.gif") no-repeat 50% top;
+}
+
+/* line 102, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #de_nav.active, #header .nav #de_nav:hover {
+  background: url("/images/icons/as/nav/on/de.gif") no-repeat 50% top;
+}
+
+/* line 106, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav .line2 {
+  display: block;
+  margin-top: -5px;
+  text-align: left;
+}
+
+/* line 112, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .stats {
+  margin: 20px 0 0 50px;
+  font-size: 14px;
+}
+/* line 115, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .stats h4 {
+  font-size: 19px;
+  font-weight: normal;
+  margin-bottom: 0px;
+  margin-top: 50px;
+}
+
+/* line 124, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .utility {
+  margin: 20px 10px 0 0;
+  font-size: 14px;
+  float: right;
+}
+
+/* line 125, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .utility .nav {
+  float: right;
+}
+
+/* line 126, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .utility .nav li {
+  font-size: 0.9em;
+  margin-right: 8px;
+}
+
+/* line 132, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .utility .search {
+  float: right;
+  margin: 0 5px 0 0;
+}
+
+/* line 136, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .utility .search input[type=text], #header .utility .search #global_search_input {
+  margin-top: 0;
+  height: 20px;
+  width: 210px;
+}
+
+/* line 141, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .utility .search .button {
+  font-size: 12px;
+  margin: 0 3px 0 0;
+  padding-bottom: 4px;
+  padding-top: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  height: 22px;
+  width: 70px;
+}
+
+/*#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('/images/bg_nav_online_now.png') 0 50% no-repeat; }*/
+/* line 153, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .utility .nav .online_now {
+  padding: 7px 0 5px 20px;
+  background: url("/images/icons/as/online-now.png") 0 50% no-repeat;
+}
+
+/* line 154, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.nav .drop_down {
+  padding: 0 15px 0 0;
+  background: url("/images/bg_nav_dropdown.png") 100% 50% no-repeat;
+}
+
+/* line 156, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header, #main {
+  border: 1px solid #c4d7dc;
+  border-width: 0 1px 0;
+}
+
+/* line 157, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#main {
+  border-width: 0 1px 1px;
+}
+
+/* line 158, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#footer {
+  clear: both;
+}
+
+/* line 159, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.aside .module, .primary .module {
+  margin: 0;
+  padding: 10px 20px 10px;
+  border: 1px solid #c4d7dc;
+  border-width: 1px 0 0 0;
+  background: #fff;
+}
+
+/* line 160, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.aside .module {
+  border-width: 1px 0 0 1px;
+}
+
+/* line 161, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.aside .last {
+  border-bottom: 1px solid #c4d7dc;
+}
+
+/* line 5, ../../../../app/stylesheets/themes/agentstream/icons.scss */
+div.news_item div.details div.icon {
+  float: right;
+  text-align: center;
+  width: 22px;
+}
+
+/* line 11, ../../../../app/stylesheets/themes/agentstream/icons.scss */
+div.news_item div.details div.icon img.icon {
+  height: 22px;
+  /*opacity: 0.7;*/
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs {
+  position: relative;
+  margin: 0 10px;
+  padding: 0;
+  zoom: 1;
+}
+
+/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+/* line 2, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 3, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li {
+  list-style: none;
+  float: left;
+  position: relative;
+  top: 1px;
+  margin: 0 10px 0 0;
+  /*border-bottom: 0 !important; */
+  padding: 0;
+  white-space: nowrap;
+  border: 1px solid #C4D7DC;
+  font-weight: bold;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li a, .tabs .tabs-nav li span {
+  float: left;
+  padding: .5em 1em;
+  text-decoration: none;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.tabs-selected {
+  margin-bottom: 0;
+  padding-bottom: 1px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.tabs-selected a, .tabs .tabs-nav li.state-disabled a, .tabs .tabs-nav li.state-processing a {
+  cursor: text;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li a, .tabs.tabs-collapsible .tabs-nav li.tabs-selected a {
+  cursor: pointer;
+}
+
+/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+/* line 20, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-panel {
+  display: block;
+  clear: left;
+  padding: 10px;
+  background: none;
+  border: 1px solid #C4D7DC;
+  position: relative;
+  top: -1px;
+  margin-top: -1px;
+  margin-bottom: 10px;
+}
+
+/* line 32, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-hide {
+  display: none !important;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav {
+  background: #fff;
+}
+
+/* required comment for clearfix to work in Opera \*/
+/* line 36, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+* html .tabs .tabs-nav {
+  height: 1%;
+}
+
+/* line 37, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav {
+  margin: 0;
+  display: block;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li {
+  white-space: nowrap;
+  background: #fff;
+  color: #92b5bd;
+  text-shadow: #fff 0 1px 0;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.active, .tabs .tabs-nav li.selected {
+  margin: 0 10px 1px 0;
+  background: #eff8fa;
+  border-bottom: 1px solid #eff8fa;
+  color: #4a6970;
+  z-index: 1;
+}
+
+/* line 47, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .st-tabs-nav li.active a:hover, .tabs .st-tabs-nav li.selected a:hover {
+  color: #333;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.disabled a {
+  color: #b4b4b4;
+  background-image: none;
+  cursor: default !important;
+}
+
+/* line 49, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.disabled a:hover {
+  color: #b4b4b4;
+}
+
+/* line 50, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li a:hover, .tabs .tabs-nav li.active a {
+  color: #888;
+  text-decoration: none;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li.active a, .tabs .tabs-nav li.selected a, .tabs .tabs-nav li.disabled a {
+  cursor: text;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li a, .tabs.ui-tabs-collapsible .tabs-nav li.ui-tabs-selected a {
+  cursor: pointer;
+  color: #92b5bd;
+}
+
+/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+/* line 53, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-panel {
+  display: block;
+  border-width: 0;
+  background: #eff8fa;
+  border: 1px solid #C4D7DC;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .hide {
+  display: none !important;
+}
+
+/* line 57, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-nav li span#matchedq {
+  float: none;
+  padding: 0;
+}
+
+/* line 62, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
+.tabs .tabs-panel h3.lead {
+  margin-left: 10px;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/karma.scss */
+.karma_level_1, a.karma_level_1 {
+  padding-right: 16px;
+  background: url(/images/karma_small_level_1.png) right center no-repeat;
+}
+
+/* line 2, ../../../../app/stylesheets/themes/agentstream/karma.scss */
+.karma_level_2, a.karma_level_2 {
+  padding-right: 26px;
+  background: url(/images/karma_small_level_2.png) right center no-repeat;
+}
+
+/* line 3, ../../../../app/stylesheets/themes/agentstream/karma.scss */
+.karma_level_3, a.karma_level_3 {
+  padding-right: 36px;
+  background: url(/images/karma_small_level_3.png) right center no-repeat;
+}
+
+/* line 4, ../../../../app/stylesheets/themes/agentstream/karma.scss */
+.karma_level_4, a.karma_level_4 {
+  padding-right: 46px;
+  background: url(/images/karma_small_level_4.png) right center no-repeat;
+}
+
+/* rendered profiles.rcss, find/replace #profile_tab -> #profile_tab */
+/* line 4, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .add_pad_top {
+  padding-left: 4px;
+}
+
+/* line 6, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .add_pad_bottom {
+  padding-bottom: 4px;
+}
+
+/* line 8, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .add_pad_left {
+  padding-left: 4px;
+}
+
+/* line 10, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .add_pad_right {
+  padding-right: 4px;
+}
+
+/* line 12, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab ul.action_list {
+  float: right;
+  margin: 0 0 8px;
+}
+
+/* #profile_tab .user_card { clear: both; position: relative; margin: 0 auto; border: 1px solid #000; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-bottom-left-radius: 0px; -moz-border-radius-bottomleft: 0px; -webkit-border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; -moz-border-radius-bottomright: 0px; -webkit-border-bottom-right-radius: 0px; padding: 15px 15px 5px 15px; width: 754px; background: url(/images/userCardBG.png); } */
+/* line 15, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .user {
+  border: 0;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .user_card:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .user_card {
+  background: #EFF8FA;
+  border: none;
+  width: auto;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile .tabs-panel #list {
+  background: #EFF8FA !important;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab .user_card {
+  zoom: 1;
+}
+
+/* line 24, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos {
+  float: left;
+}
+
+/* line 26, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .sponsor_ribbon {
+  width: 235px;
+  height: 30px;
+  background: url(/images/sponsor_ribbon_large.png) bottom right no-repeat;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .no_alt_photos {
+  width: 172px;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .alternate_photos {
+  float: left;
+  width: 60px;
+}
+
+/* line 32, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .alternate_photos img {
+  display: block;
+  margin: 0 10px 4px 0;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .disabledPhotoHover {
+  display: none;
+  position: absolute;
+  z-index: 40;
+  width: 150px;
+  background: #ff9;
+  border: 3px solid #2392C9;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .disabledPhotoHover .pad {
+  border: 1px solid #000;
+  padding: 10px;
+  padding: 10px;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#photos .disabledPhotoHover .disabledPointer {
+  background: url(/themes/theme_5/images/pointerDown.png);
+  width: 34px;
+  height: 19px;
+  position: absolute;
+  left: 60px;
+  top: 49px;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info {
+  float: left;
+  margin: 0;
+  width: 250px;
+  padding-right: 10px;
+  padding-left: 10px;
+  min-height: 380px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dt {
+  margin: 0;
+  font-weight: bold;
+}
+
+/* line 44, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dt.required {
+  color: #2392C9;
+}
+
+/* line 46, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab a.spacer {
+  line-height: 18px;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd {
+  margin: 0;
+}
+
+/* line 50, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.contact_info h3 {
+  margin: 12px 0 0;
+  font-size: 12px;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.contact_info dl {
+  margin: 0;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.contact_info dl dt {
+  clear: left;
+  float: left;
+  margin: 0 5px 1px 0;
+}
+
+/* line 56, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.contact_info dl dd {
+  float: left;
+  margin-bottom: 1px;
+}
+
+/* line 58, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dt.name {
+  margin-bottom: 3px;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* line 60, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dt.title {
+  float: left;
+  margin-right: 5px;
+}
+
+/* line 62, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.tagline {
+  clear: left;
+  padding-top: 5px;
+  color: #1E678A;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 64, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.inline_editable form input {
+  width: 100%;
+}
+
+/* line 66, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.inline_editable form input.button {
+  width: auto;
+  font-size: 0.8em;
+}
+
+/* line 68, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.inline_editable form span.counter, #profile_tab div.question p.inline_editable form span.counter {
+  color: #111;
+  font-weight: normal;
+  font-style: normal;
+  float: right;
+}
+
+/* line 70, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.tagline form input {
+  margin-top: -5px;
+  color: #1E678A;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 72, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_tab dl.profile_info dd.tagline form input.button {
+  margin-top: 2px;
+  color: #000;
+  font-size: 11px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* PROFILE KARMA */
+/* line 77, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_karma {
+  background: white;
+  margin: 230px 10px 0 70px;
+  padding: 5px;
+}
+
+/* line 83, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_karma span.count {
+  color: #1E678A;
+  font-size: 3.0em;
+  font-weight: bold;
+  line-height: 1em;
+  margin-right: 0.2em;
+}
+
+/* line 90, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_karma span.extra {
+  font-size: 1.2em;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+/* line 95, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_karma span.extra .karma_info img {
+  height: 18px;
+  width: 18px;
+}
+
+/* line 101, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats {
+  float: left;
+  margin-left: 10px;
+  width: 200px;
+  font-weight: bold;
+}
+
+/* line 103, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #1E678A;
+}
+
+/* line 105, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr td {
+  font-weight: bold;
+}
+
+/* line 107, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr td.left {
+  width: 90px;
+}
+
+/* line 109, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr td.middle {
+  width: 35px;
+  text-align: right;
+}
+
+/* line 111, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr td.right {
+  width: 55px;
+  text-align: right;
+}
+
+/* line 113, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr.karma td {
+  font-size: 13px;
+}
+
+/* line 115, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table tbody tr.completion td {
+  font-size: 13px;
+}
+
+/* line 117, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_awards_and_notes {
+  margin-left: 4px;
+}
+
+/* line 119, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_awards_and_notes:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 121, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_awards_and_notes {
+  zoom: 1;
+}
+
+/* line 123, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards {
+  float: left;
+  padding-top: 8px;
+  width: 140px;
+  height: 185px;
+  background: #68401C;
+  text-align: center;
+  display: inline;
+}
+
+/* line 125, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: #111 4px 4px 3px;
+}
+
+/* line 127, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards .award {
+  margin: 15px auto 10px;
+  border: 4px solid #fff;
+  padding: 1px;
+  width: 90px;
+  background: #f00;
+}
+
+/* line 129, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards .award .award_details {
+  background: #fff;
+}
+
+/* line 131, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards .award .award_details img {
+  margin: 5px 5px 7px;
+}
+
+/* line 133, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards .award .award_details span.award_caption {
+  display: block;
+  padding: 0 3px 3px;
+}
+
+/* line 135, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#awards a {
+  color: #fff;
+}
+
+/* line 137, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#notes {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 139, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions {
+  clear: both;
+  position: relative;
+  margin: 0 11px 0 10px;
+  padding-top: 15px;
+}
+
+/* line 141, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions h3 {
+  clear: both;
+  margin: 0 0 15px;
+  border-bottom: 1px solid #C4D7DC;
+  color: #1E678A;
+  font-weight: bold;
+}
+
+/* line 143, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .profile_questions_sec {
+  margin-bottom: 20px;
+}
+
+/* line 145, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .profile_questions_sec:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 147, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .profile_questions_sec {
+  zoom: 1;
+}
+
+/* line 149, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .question {
+  float: left;
+  margin: 0 0 20px 0;
+  width: 420px;
+  background: inherit;
+}
+
+/* line 151, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .question p {
+  width: 350px;
+  margin: 0;
+}
+
+/* line 153, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .odd {
+  clear: left;
+  _display: inline;
+  margin-right: 20px;
+}
+
+/* line 155, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .question h4.title {
+  margin: 0 0 8px;
+  color: #676767;
+}
+
+/* line 157, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions .question p.instr {
+  margin-top: -5px;
+  color: #555;
+}
+
+/* line 159, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_questions h4.required {
+  color: #2392C9;
+}
+
+/* line 161, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile_popup {
+  text-align: justify;
+}
+
+/* explore */
+/* line 164, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results h2.result_header {
+  float: left;
+  margin: 0 0 10px;
+  font-weight: normal;
+}
+
+/* line 166, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results #filter_form {
+  margin: 0 0 10px;
+}
+
+/* line 168, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#filter_form:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 170, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#filter_form {
+  zoom: 1;
+}
+
+/* line 172, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 174, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results {
+  zoom: 1;
+}
+
+/* line 176, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#explore_results {
+  clear: both;
+}
+
+/* line 178, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results div.profile {
+  float: left;
+  margin: 0 0 15px;
+  border: 1px solid #666;
+  padding: 0 0 13px;
+  width: 387px;
+  background: transparent url(/images/userCardBG.png) repeat scroll 0 0;
+  zoom: 1;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+/* line 180, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results div.odd {
+  clear: left;
+  margin: 0 15px 15px 0;
+}
+
+/* line 182, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results div.photo_wrapper {
+  float: left;
+  margin: 13px;
+  padding: 0;
+  width: 80px;
+  display: inline;
+}
+
+/* line 184, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results div.photo_wrapper img.photo {
+  display: block;
+}
+
+/* line 186, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info {
+  float: left;
+  margin: 10px 0 0;
+  width: 230px;
+  display: block;
+}
+
+/* line 188, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 190, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info {
+  zoom: 1;
+}
+
+/* line 192, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dt {
+  font-weight: bold;
+}
+
+/* line 194, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dt.name {
+  font-size: 16px;
+}
+
+/* line 196, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dt.name a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 198, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dt.name a:hover {
+  color: #1802AD;
+  text-decoration: underline;
+}
+
+/* line 200, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd {
+  margin: 0;
+}
+
+/* line 202, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.title {
+  margin-top: 3px;
+  color: #111;
+}
+
+/* line 204, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.tagline {
+  margin: 8px 0;
+  color: #1E678A;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 206, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.contact_info h3 {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* line 208, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.contact_info dl {
+  margin: 0;
+}
+
+/* line 210, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.contact_info dl dt {
+  clear: left;
+  float: left;
+  margin-right: 5px;
+}
+
+/* line 212, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_results dl.profile_info dd.contact_info dl dd {
+  float: left;
+}
+
+/* hub */
+/*#hub { float: left; width: 595px; }
+
+#hub:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
+
+#hub { zoom: 1; }*/
+/* line 221, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#marketing_message {
+  float: left;
+  margin-bottom: 18px;
+  width: 595px;
+}
+
+/* line 223, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#marketing_message img {
+  display: block;
+}
+
+/* line 225, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#system_announcement {
+  float: left;
+  margin-bottom: 18px;
+  width: 595px;
+}
+
+/* line 227, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#system_announcement div.header {
+  padding: 4px 7px 4px 0;
+  background: #1e678a url(/themes/theme_5/images/widget_bar.png) repeat-x;
+  color: #fff;
+}
+
+/* line 229, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#system_announcement div.header h3 {
+  margin: 0;
+  padding-left: 5px;
+  font-size: 11px;
+}
+
+/* line 231, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#system_announcement div.content {
+  padding: 7px;
+}
+
+/* line 233, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets {
+  float: left;
+  margin-bottom: 18px;
+  padding: 2px;
+  width: 595px;
+}
+
+/* line 235, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 237, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets {
+  zoom: 1;
+}
+
+/* line 239, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets div.hub_widgets_col_1 {
+  float: left;
+  width: 290px;
+}
+
+/* line 241, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#hub_widgets div.hub_widgets_col_2 {
+  float: left;
+  margin-left: 15px;
+  _margin-left: 12px;
+  width: 290px;
+}
+
+/* following */
+/* line 244, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#group_action_links, #profile_action_links {
+  float: right;
+  padding: 0 4px 10px;
+}
+
+/* line 246, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list {
+  float: left;
+  margin: 1px 15px 8px 0;
+  padding: 8px 8px 15px;
+  width: 180px;
+  font-size: 1.2em;
+  background: #fff;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+/* line 248, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dt, dl#watch_list dd {
+  padding: 2px 0;
+}
+
+/* line 250, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#watch_list dt:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 252, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#watch_list dt {
+  zoom: 1;
+}
+
+/* line 254, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#watch_list dd:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 256, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#watch_list dd {
+  zoom: 1;
+}
+
+/* line 258, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dt {
+  font-weight: bold;
+  margin: 0 0 0 5px;
+  padding-top: 5px;
+}
+
+/* line 260, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dd.selected {
+  margin: 0 -17px 0 -8px;
+  padding-left: 20px;
+  background: white url(/images/watch_selected_bg.png) right center no-repeat;
+}
+
+/* line 262, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dd a, #watch_list dd span {
+  float: left;
+}
+
+/* line 264, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dd a.item_remove {
+  float: right;
+  margin: 0 0 0 8px;
+  padding: 2px 2px 2px 3px;
+  font-size: 11px;
+  line-height: 1em;
+  text-decoration: none;
+  color: #00f;
+  background: #fff;
+}
+
+/* line 266, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+dl#watch_list dd.selected a.item_remove {
+  margin-right: 17px;
+}
+
+/* line 268, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites {
+  float: left;
+  width: 582px;
+  padding-bottom: 10px;
+}
+
+/* line 270, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 272, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites {
+  zoom: 1;
+}
+
+/* line 274, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form {
+  margin-bottom: 10px;
+}
+
+/* line 276, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form dl#filter_options {
+  text-align: left;
+}
+
+/* line 280, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form dl#filter_options dt, #favorites #filter_form dl#filter_options dd {
+  display: inline;
+  padding: 0 10px;
+}
+
+/* line 285, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form dl#filter_options dd {
+  border-right: 1px solid #676767;
+}
+
+/* line 288, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #filter_form dl#filter_options dd:last-child {
+  border-right: 0;
+}
+
+/* line 292, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 294, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events {
+  margin-bottom: 10px;
+  zoom: 1;
+}
+
+/* line 296, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .favorite_item {
+  position: relative;
+  margin: 15px 0 0;
+  padding: 10px;
+  width: 264px;
+  height: 136px;
+  background: #ddd;
+  font-size: 1.2em;
+  overflow: hidden;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+
+/* line 298, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .odd {
+  float: left;
+}
+
+/* line 300, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .even {
+  float: right;
+}
+
+/* line 302, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .watch_title {
+  font-weight: bold;
+}
+
+/* line 304, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .watch_title .watch_letter {
+  font-weight: bold;
+  color: #4a6970;
+}
+
+/* line 306, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .watch_title a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 308, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .watch_title a:hover {
+  color: #1802ad;
+  text-decoration: underline;
+}
+
+/* line 310, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events p {
+  font-size: 13px;
+  margin: 0.8em 0;
+}
+
+/* line 312, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .author {
+  width: 258px;
+  font-size: 11px;
+}
+
+/* line 314, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .author .photo_wrapper {
+  float: left;
+  margin: 0;
+}
+
+/* line 316, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#favorites #events .author img.photo {
+  margin: 2px 8px 0 0;
+}
+
+/* awards pop-up */
+/* line 319, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards {
+  width: 460px;
+}
+
+/* line 321, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .title {
+  margin: -10px 0 5px;
+  padding-bottom: 5px;
+}
+
+/* line 323, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .award {
+  padding-bottom: 15px;
+  clear: both;
+}
+
+/* line 325, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .award_image {
+  width: 100px;
+  float: left;
+}
+
+/* line 327, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .details {
+  padding-left: 15px;
+  width: 285px;
+  float: left;
+  color: #333;
+}
+
+/* line 329, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.details:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 331, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.details {
+  zoom: 1;
+}
+
+/* line 333, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.award:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 335, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.award {
+  zoom: 1;
+}
+
+/* line 337, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .details h3 {
+  padding: 0;
+  margin: 0;
+  color: #000;
+}
+
+/* line 339, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.awards .details p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Notification - Informational */
+/* line 342, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_notification {
+  color: #2392C9;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 344, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_notification.informational {
+  color: green;
+}
+
+/* line 346, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_notification.alert {
+  color: yellow;
+}
+
+/* line 348, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.profile_notification.urgent {
+  color: red;
+}
+
+/* line 350, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+span.profile_notification {
+  color: #2392C9;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 1px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 352, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+span.profile_notification.informational {
+  color: green;
+}
+
+/* line 354, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+span.profile_notification.alert {
+  color: yellow;
+}
+
+/* line 356, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+span.profile_notification.urgent {
+  color: red;
+}
+
+/* stats */
+/* line 359, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats_container {
+  border: 1px solid #C4D7DC;
+  border-left: 0;
+  border-right: 0;
+  margin-top: 10px;
+}
+
+/* line 366, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats h4 {
+  color: #78756e;
+  margin: 5px 0 5px 0;
+}
+
+/* line 368, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats h4:first-child {
+  display: none;
+}
+
+/* line 372, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table {
+  margin-bottom: 0;
+}
+
+/* line 374, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td {
+  border-right: 1px solid #C4D7DC;
+  padding: 0 15px 0 15px;
+  text-align: left;
+}
+
+/* line 376, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td.first {
+  padding-left: 0;
+}
+
+/* line 378, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td.last {
+  border-right: 0;
+}
+
+/* line 380, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td h5 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+/* line 382, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td span.count {
+  color: #1E678A;
+  font-size: 2.0em;
+  letter-spacing: -0.1em;
+  line-height: 1em;
+  margin-right: 0.2em;
+}
+
+/* line 384, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td span.count small {
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
+/* line 389, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#stats table td span.extra, #stats table td span.extra a {
+  color: #4A6970;
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* avatar */
+/* line 393, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.photo_wrapper {
+  position: relative;
+}
+
+/* line 394, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.photo_wrapper img.online_now_indicator {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+}
+
+/* line 395, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.photo_wrapper img.sponsor_indicator {
+  position: absolute;
+  bottom: -2px;
+  left: -4px;
+}
+
+/* line 396, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.photo_wrapper img.group_icon {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+}
+
+/* lists */
+/* line 399, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile #list {
+  background-color: inherit;
+  border-top: 0;
+  padding: 0;
+}
+
+/* status */
+/* line 403, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_status_events {
+  padding: 5px;
+}
+/* line 406, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_status_events .more {
+  font-size: 0.9em;
+  text-decoration: underline;
+}
+/* line 411, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+#profile_status_events .more:hover {
+  text-decoration: none;
+}
+
+/* line 416, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status {
+  margin-left: 566px;
+  margin-bottom: 10px;
+  width: 340px;
+}
+/* line 421, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status h5 {
+  margin-bottom: 2px;
+  color: #6F563B;
+}
+
+/* line 427, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status span.counter {
+  float: left;
+}
+
+/* line 430, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status textarea {
+  width: 100%;
+}
+
+/* line 433, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status div.buttons {
+  text-align: right;
+  width: 353px;
+}
+
+/* line 437, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status div.event {
+  margin-top: 10px;
+}
+
+/* line 440, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_status div.event .extra, #first_status_extra {
+  font-size: 0.8em;
+}
+
+/* line 444, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_badges {
+  margin-left: 566px;
+  width: 340px;
+}
+/* line 448, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_badges h5 {
+  margin-bottom: 2px;
+  color: #6F563B;
+}
+/* line 453, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile div#profile_badges div {
+  background: white;
+  padding: 5px;
+}
+
+/* line 459, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile h4 {
+  font-size: 1.3em;
+}
+
+/* line 463, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div.avatar_large {
+  background: #fff;
+  float: left;
+  width: 195px;
+  height: 198px;
+  padding: 7px 0;
+  margin: 0 10px;
+  text-align: center;
+  display: inline;
+}
+
+/* terms and conditions */
+/* line 466, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div#terms_and_conditions {
+  height: 175px;
+  overflow: auto;
+  border: 2px solid #ccc;
+}
+/* line 469, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div#terms_and_conditions p {
+  margin: 10px;
+}
+
+/* line 474, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div#agentstream-srw-login {
+  margin: 10px 0px;
+}
+/* line 476, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div#agentstream-srw-login form {
+  width: 273px;
+}
+/* line 478, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div#agentstream-srw-login form input[type="text"], div#agentstream-srw-login form input[type="password"] {
+  width: 265px;
+  font-size: 1.2em;
+}
+/* line 482, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div#agentstream-srw-login form input[type="image"] {
+  float: right;
+}
+/* line 485, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+div#agentstream-srw-login form a {
+  font-size: 0.9em;
+  float: left;
+}
+
+/* line 492, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+.profile_container {
+  background: white;
+  border: 2px solid #eaeaeb;
+}
+
+/* line 498, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+table.badges {
+  margin: 3px 0;
+  min-height: 200px;
+}
+/* line 502, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+table.badges td {
+  margin-top: 3px;
+  text-align: center;
+  font-size: 0.8em;
+  width: 25%;
+}
+/* line 508, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+table.badges td img {
+  width: 75px;
+}
+/* line 512, ../../../../app/stylesheets/themes/agentstream/profile.scss */
+table.badges td p {
+  margin: -3px 0 0 0;
+  line-height: 1em;
+}
+
+/* Lighter Blue */
+/*$tertiary: #EFF8FA;*/
+/*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
+/*$font-size: 12px;
+$line-height: 18px;*/
+/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
+body {
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #676767;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/text.scss */
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h1 {
+  font-size: 25px;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h2 {
+  font-size: 23px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h3 {
+  font-size: 21px;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h4 {
+  font-size: 19px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h5 {
+  font-size: 17px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h6 {
+  font-size: 15px;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ul {
+  list-style: square;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
+li {
+  margin-left: 30px;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px;
+}
+
+/* line 58, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header {
+  padding: 0px 5px;
+}
+/* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header h2, div#deals-header p {
+  margin-bottom: 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page #welcome-page {
+  width: 840px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer {
+  width: 960px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#logo {
+  width: 160px;
+  margin-left: 0;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.global_nav {
+  width: 460px;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.utility {
+  width: 320px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats {
+  width: 720px;
+  margin-right: 0;
+}
+/* line 24, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats h4 {
+  float: right;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-main {
+  width: 480px;
+  padding-left: 240px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#register-main {
+  width: 720px;
+  padding-left: 120px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-agentstream-facebook-main {
+  width: 360px;
+  padding-left: 300px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.primary {
+  width: 560px;
+  margin-left: 0;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside {
+  margin-top: 30px;
+  width: 400px;
+  margin-right: 0;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside .module {
+  margin-right: 0px;
+  margin-left: 5px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .primary {
+  width: 720px;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .aside {
+  width: 240px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .primary {
+  width: 720px;
+  clear: both;
+  margin-left: 0;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .aside {
+  width: 240px;
+  margin-right: 0;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .full_length {
+  width: 960px;
+  clear: both;
+}
+
+/* Group Actions */
+/* line 6, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.group_actions {
+  text-align: left;
+}
+
+/* line 9, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.group_actions li {
+  display: inline;
+  margin: 0 20px 0 0px;
+}
+
+/* line 13, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.group_actions li a {
+  text-decoration: underline;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.group_actions li a.button {
+  border: 1px solid #fff;
+  display: block;
+  text-decoration: none;
+  width: 100px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.group_actions li a.button:hover {
+  border: 1px solid #ccc;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_action_list.group_actions {
+  float: right;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.group_actions.full_screen {
+  float: right;
+}
+
+/* Group Hub */
+/* line 33, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_hub #notes {
+  display: none;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_hub .group_card .photo_wrapper {
+  float: left;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_hub .group_card .details {
+  margin-left: 190px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_hub .group_card .details h3 {
+  margin-bottom: 0;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_hub .group_card .details h4 {
+  font-size: 1.0em;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 40px;
+}
+
+/* Group Widgets */
+/* line 53, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_widgets, #chat_attendees {
+  margin: 10px 20px;
+}
+/* line 55, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_widgets a.right, #chat_attendees a.right {
+  float: right;
+}
+
+/* line 59, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_widgets h3, #chat_attendees h3 {
+  margin-bottom: 2px;
+}
+
+/* line 62, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_widgets #group_drive_bys .content .photo_wrapper, #chat_attendees div.photo_wrapper {
+  float: left;
+  margin: 0 3px 3px 0;
+}
+
+/* Group Stream */
+/* line 68, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#stream.group h5 {
+  margin-bottom: 0;
+}
+
+/* line 71, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#stream.group .events .evemt {
+  clear: both;
+  margin-top: 10px 0 40px 0;
+}
+
+/* line 75, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#stream.group .events .event .photo_wrapper {
+  float: left;
+  margin: 0 3px;
+}
+
+/* line 79, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#stream.group .events .event .detail {
+  margin: 10px 0 20px 30px;
+}
+
+/* line 82, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#stream.group .events .event .detail .did, #stream.group .events .event .detail .what, #stream.group .events .event .detail .detail {
+  display: block;
+  margin: 0;
+}
+
+/* Group Members */
+/* line 88, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.group_members:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 90, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card {
+  position: relative;
+  clear: right;
+  float: left;
+  display: block;
+  margin-right: 18px;
+  margin-bottom: 18px;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 10px;
+  width: 370px;
+  _height: 190px;
+  min-height: 190px;
+  zoom: 1;
+  overflow: hidden;
+}
+
+/* line 91, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card ul.group_member_card_actions {
+  float: right;
+  _display: inline;
+  margin: 0 4px;
+  list-style: none;
+}
+
+/* line 92, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card div.member_photo_and_meta {
+  clear: right;
+  float: left;
+  margin-right: 15px;
+  width: 100px;
+}
+
+/* line 93, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card div.photo_wrapper {
+  margin-bottom: 5px;
+  zoom: 1;
+}
+
+/* line 94, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card div.photo_wrapper img.photo {
+  display: block;
+}
+
+/* line 95, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.meta {
+  margin: 0;
+  text-align: center;
+}
+
+/* line 96, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl dt {
+  font-weight: bold;
+}
+
+/* line 97, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl dd {
+  margin: 0 0 5px 0;
+}
+
+/* line 98, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl dd.owner {
+  margin-top: 5px;
+  padding-top: 35px;
+  background: url(/images/icon_group_owner.png) no-repeat center top;
+  font-weight: bold;
+  color: #d2931f;
+  text-transform: uppercase;
+}
+
+/* line 99, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl dd.moderator {
+  margin-top: 5px;
+  padding-top: 50px;
+  background: url(/images/icon_group_moderator.png) no-repeat center top;
+  font-weight: bold;
+  color: #d2931f;
+  text-transform: uppercase;
+}
+
+/* line 100, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info {
+  float: left;
+  margin: 0;
+  width: 255px;
+}
+
+/* line 101, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info dt {
+  font-weight: bold;
+}
+
+/* line 102, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info dt.name {
+  font-size: 16px;
+}
+
+/* line 103, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info dd {
+  margin: 0;
+}
+
+/* line 104, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info dd.title {
+  margin-top: 3px;
+  color: #111;
+}
+
+/* line 105, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info dd.tagline {
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 106, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info dd.contact_info dl {
+  margin: 0;
+  zoom: 1;
+}
+
+/* line 107, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info dd.contact_info dl dt {
+  clear: left;
+  float: left;
+  margin: 0;
+  margin-right: 5px;
+}
+
+/* line 108, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_card dl.member_info dd.contact_info dl dd {
+  float: left;
+  margin: 0;
+}
+
+/* line 111, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#members_images_wrapper {
+  float: left;
+  width: 484px;
+}
+
+/* line 115, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#members_images {
+  position: relative;
+  margin: 0;
+  width: 484px;
+  overflow: hidden;
+}
+
+/* line 116, ../../../../app/stylesheets/themes/agentstream/group.scss */
+table#members {
+  font-size: 0;
+}
+
+/* line 120, ../../../../app/stylesheets/themes/agentstream/group.scss */
+table#members tbody tr td div.photo_wrapper {
+  margin: 0 3px 3px 0;
+}
+
+/* line 121, ../../../../app/stylesheets/themes/agentstream/group.scss */
+table#members tbody tr td.last div.photo_wrapper {
+  margin-right: 0;
+}
+
+/* line 122, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#member_scrollers {
+  width: 384px;
+}
+
+/* line 123, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#left_scroll {
+  float: left;
+}
+
+/* line 124, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#right_scroll {
+  float: right;
+}
+
+/* line 126, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.group_owner {
+  clear: both;
+  float: left;
+  margin: 0;
+  width: 350px;
+}
+
+/* line 127, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.group_owner dt {
+  float: left;
+  padding: 4px 0 0 32px;
+  background: url(/images/icon_group_owner_sm.png) no-repeat left center;
+  font-weight: bold;
+  color: #d2931f;
+  text-transform: uppercase;
+}
+
+/* line 128, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.group_owner dd {
+  float: left;
+  margin: 0 0 0 5px;
+  padding: 4px 0 0;
+}
+
+/* line 129, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.moderators {
+  clear: left;
+  float: left;
+  margin: 8px 0 0;
+  width: 350px;
+}
+
+/* line 130, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.moderators dt {
+  float: left;
+  padding: 5px 0 5px 32px;
+  background: url(/images/icon_group_moderator_sm.png) no-repeat left center;
+  font-weight: bold;
+  color: #d2931f;
+  text-transform: uppercase;
+}
+
+/* line 131, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.moderators dd {
+  float: left;
+  margin: 0 0 0 5px;
+  padding: 4px 0 0;
+}
+
+/* line 133, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#invitation_requests {
+  clear: left;
+  padding-top: 25px;
+}
+
+/* line 135, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#invitation_requests div.profile_results dl.profile_info {
+  width: 200px;
+}
+
+/* line 136, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#invitation_requests div.profile_results dd.invite_requested_on {
+  margin-top: 13px;
+  color: #444;
+  font-weight: bold;
+}
+
+/* line 137, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#invitation_requests div.action_buttons {
+  margin: 13px 13px 0 0;
+}
+
+/* Photo Gallery */
+/* line 140, ../../../../app/stylesheets/themes/agentstream/group.scss */
+h3.gallery a.title_action_link {
+  display: block;
+  float: right;
+  font-size: 0.9em;
+}
+
+/* line 145, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.thumbnails {
+  list-style: none;
+  margin: 5px 0;
+}
+
+/* line 149, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.thumbnails li {
+  float: left;
+  margin: 2px;
+}
+
+/* line 153, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.thumbnails li a img {
+  border: 1px solid #C4D7DC;
+}
+
+/* line 156, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul.thumbnails:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 158, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul li.no_bullet {
+  list-style: none;
+}
+
+/* line 161, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul#topic_list {
+  list-style: none;
+}
+
+/* line 165, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul#topic_list li.topic {
+  position: relative;
+  width: 360px;
+}
+/* line 169, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul#topic_list li.topic span.h5 {
+  width: 180px;
+  margin-left: 0;
+}
+/* line 173, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul#topic_list li.topic span.topic_buttons {
+  display: block;
+  padding-left: 420px;
+  width: 120px;
+  margin-right: 0;
+}
+
+/* line 179, ../../../../app/stylesheets/themes/agentstream/group.scss */
+ul#topic_buttons {
+  /*  margin-bottom: 5px;*/
+}
+
+/* line 183, ../../../../app/stylesheets/themes/agentstream/group.scss */
+span.topic_buttons {
+  position: absolute;
+  top: 6%;
+}
+/* line 184, ../../../../app/stylesheets/themes/agentstream/group.scss */
+span.topic_buttons a {
+  margin-left: 20px;
+  padding: 1px 5px;
+}
+
+/* line 192, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.photo_details {
+  float: left;
+  width: 500px;
+}
+
+/* line 196, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.photo_details .gallery_photo_full {
+  background: #fff;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  padding: 10px 10px 5px;
+  text-align: center;
+}
+
+/* line 203, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.photo_details p {
+  margin-bottom: 0;
+}
+
+/* line 207, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.photo_details .gallery_photo_rate {
+  float: right;
+  margin-top: -20px;
+  margin-right: 10px;
+}
+
+/* line 212, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.photo_details dl {
+  margin-top: 10px;
+}
+
+/* line 215, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.photo_details dl dt {
+  float: left;
+  margin-right: 5px;
+}
+
+/* line 219, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.photo_details ul.action_list {
+  list-style: none;
+}
+
+/* line 222, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.photo_details ul.action_list li {
+  display: inline;
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+/* line 228, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .current {
+  border: 1px solid #990000;
+}
+
+/* line 229, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .thumbnail_link {
+  float: left;
+}
+
+/* line 230, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details img {
+  margin-right: 8px;
+  border: 1px solid #bbb;
+}
+
+/* line 231, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .at_last_photo {
+  display: block;
+  margin-top: 40px;
+  margin-left: 9px;
+  float: left;
+  width: 90px;
+  text-align: center;
+  color: #666;
+}
+
+/* line 232, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .at_first_photo {
+  display: block;
+  margin-top: 40px;
+  margin-right: 9px;
+  float: left;
+  width: 90px;
+  text-align: center;
+  color: #666;
+}
+
+/* line 234, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details {
+  margin-left: 510px;
+  width: 300px;
+  overflow: hidden;
+}
+
+/* line 235, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .comments {
+  clear: both;
+  padding-top: 4px;
+}
+
+/* line 236, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .comments img {
+  border: 0;
+}
+
+/* line 237, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details textarea#comment_text {
+  width: 290px;
+  height: 60px;
+}
+
+/* line 238, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details div.buttons {
+  clear: both;
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* line 241, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .comments div.comment_item div.details {
+  margin-left: 0;
+  width: 225px;
+}
+
+/* line 242, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .comments div.comment_item div.details h5 {
+  margin: 3px 0 3px;
+}
+
+/* line 243, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .comments div.comment_item div.details p.meta {
+  margin-bottom: 1.2em;
+  font-size: 11px;
+  color: #555;
+}
+
+/* line 244, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.secondary_photo_details .comments div.comment_item div.details p.text {
+  margin-bottom: 3px;
+  color: #333;
+  font-size: 12px;
+  line-height: 1.4em;
+  text-align: justify;
+}
+
+/* group talk */
+/* line 247, ../../../../app/stylesheets/themes/agentstream/group.scss */
+form#new_group_post {
+  position: relative;
+  float: left;
+  margin: 0 15px 0 0;
+  border: 1px solid;
+  padding: 12px 16px 0;
+  width: 227px;
+}
+
+/* line 248, ../../../../app/stylesheets/themes/agentstream/group.scss */
+form#new_group_post h2 {
+  font-size: 1.5em;
+  line-height: 1.2em;
+}
+
+/* line 249, ../../../../app/stylesheets/themes/agentstream/group.scss */
+form#new_group_post textarea {
+  width: 223px;
+  height: 100px;
+}
+
+/* line 250, ../../../../app/stylesheets/themes/agentstream/group.scss */
+form#new_group_post div.buttons {
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* line 251, ../../../../app/stylesheets/themes/agentstream/group.scss */
+form#new_group_post p.meta {
+  text-align: center;
+  color: #333;
+  font-size: 11px;
+}
+
+/* line 253, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts {
+  width: 500px;
+  margin-left: 140px;
+  float: left;
+}
+
+/* line 254, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 255, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item {
+  padding-bottom: 2px;
+}
+
+/* line 256, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.photo_wrapper {
+  float: left;
+}
+
+/* line 257, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.details {
+  margin-left: 65px;
+  width: 400px;
+}
+
+/* line 258, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.details h5 {
+  margin-bottom: 0;
+}
+
+/* line 260, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.details div.item_text {
+  margin-top: -3px;
+}
+
+/* line 261, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.details div.asked_by {
+  margin-top: 3px;
+  color: #333;
+}
+
+/* line 262, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.details ul.action_list {
+  margin: 4px 0 5px -2px;
+  color: #333;
+  list-style: none;
+}
+
+/* line 263, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.details ul.action_list li {
+  display: inline;
+  margin: 0 10px 0 0px;
+}
+
+/* line 265, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies {
+  clear: both;
+  margin-left: 65px;
+  padding-top: 18px;
+  width: 400px;
+}
+
+/* line 266, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies div.comment_item {
+  margin-bottom: 10px;
+}
+
+/*#group_posts div.group_post_item div.replies div.odd { background: #f0f0f0; }*/
+/* line 268, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies div.even {
+  border-top: 1px solid #4A6970;
+  padding-top: 14px;
+}
+
+/* line 269, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies h4 {
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+/* line 270, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies div.comment_item div.details {
+  width: 300px;
+}
+
+/* line 271, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies form {
+  margin-bottom: 18px;
+  padding: 0px;
+}
+
+/* line 272, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies form h5 {
+  margin: 0 0 8px;
+  font-size: 12px;
+}
+
+/* line 273, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies form p.error {
+  font-weight: bold;
+  color: #f00;
+}
+
+/* line 274, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies form fieldset {
+  margin-bottom: 0;
+}
+
+/* line 275, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies form fieldset label {
+  display: block;
+  font-weight: bold;
+}
+
+/* line 276, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies form fieldset textarea {
+  width: 355px;
+  height: 100px;
+}
+
+/* line 278, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_posts div.group_post_item div.replies form div.buttons input.button {
+  display: inline;
+  margin-right: 10px;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+h2.page_title {
+  margin: 10px 0 0 10px;
+}
+
+/* line 5, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+h3.page_subtitle {
+  margin: 0 0 0 10px;
+}
+
+/* line 9, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+span.h5 {
+  font-size: 17px;
+  margin: 5px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+span.h6 {
+  font-size: 15px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list_action_button {
+  float: right;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 20px;
+  /*  a {
+      text-decoration: underline;
+    } */
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .content {
+  margin: 0 10px 10px;
+  padding: 10px 10px 1px;
+  background: #eff8fa;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .photo_wrapper {
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+/* line 31, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.list .description .close2 {
+  position: relative;
+  float: right;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform p, .listform a, .listform dt, .listform dd {
+  display: inline;
+  padding: 0 10px;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dl {
+  float: right;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dd {
+  border-right: 1px solid #676767;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform dl dd:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div.categories {
+  display: inline;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div {
+  margin: 10px 0;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.listform div strong {
+  float: left;
+  width: 80px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.tabs-header {
+  margin: 0;
+  padding: 10px 10px 1px;
+  background: #d5eae6;
+}
+
+/* Lists */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list {
+  position: relative;
+  background-color: #eff8fa;
+  border-top: 1px solid #c4d7dc;
+  padding: 10px 10px;
+}
+
+/* line 47, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.blog_post_p a, div.blog_post_p a:visited, a.answer_link, a.answer_link:visited, div.alert div.content a {
+  color: #900;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question div.item_text {
+  margin-bottom: 20px;
+}
+/* line 56, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question div.item_text span, div.question div.item_text a {
+  font-size: 1.3em !important;
+}
+/* line 60, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question ul.action_list {
+  margin-top: 10px;
+}
+/* line 63, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question p {
+  margin: 0 !important;
+}
+/* line 66, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.question p a {
+  color: #900;
+  text-decoration: underline;
+}
+
+/* line 72, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.blog_post_p a:hover {
+  /*    color: #900 ;*/
+  text-decoration: underline;
+}
+
+/* line 76, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .photo_wrapper {
+  float: left;
+  margin: 0px 20px 20px 0;
+}
+
+/* line 77, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details {
+  position: relative;
+  display: block;
+  float: left;
+  width: 575px;
+  margin-top: 0px;
+}
+
+/* line 78, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details p {
+  margin-bottom: 1em;
+}
+
+/* line 79, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details p.meta {
+  margin-bottom: 0.8em;
+  font-size: 11px;
+  color: #555;
+}
+
+/* line 80, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .action_buttons {
+  position: relative;
+}
+
+/* Same as H3 */
+/* line 85, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details div.item_text, #list .details div.item_text a {
+  color: #4A6970;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* line 91, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.list_item:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Content */
+/* line 94, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content {
+  position: relative;
+  background-color: #eff8fa;
+  border-top: 1px solid #c4d7dc;
+}
+
+/* line 95, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content .photo_wrapper {
+  float: left;
+  margin: 20px;
+}
+
+/* line 96, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#content .details {
+  display: block;
+  float: left;
+  width: 575px;
+  margin-top: 20px;
+}
+
+/* Groups */
+/* line 99, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+.group_item h3 {
+  margin-bottom: 0;
+}
+
+/* Questions */
+/* line 102, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item .question_text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4A6970;
+}
+
+/* line 108, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top {
+  clear: both;
+}
+/* line 110, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top h4 {
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+/* line 114, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top #best_burst {
+  padding-left: 25px;
+}
+/* line 117, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item #best_answer_top div.bestAnswer img {
+  padding-left: 5px;
+  margin-top: -10px;
+}
+
+/* line 123, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item .details {
+  float: left;
+  width: 65%;
+}
+
+/* line 127, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item div.photo_wrapper img.photo {
+  width: 120px;
+  height: 120px;
+}
+
+/*div#best_answer_top div.photo_wrapper {
+  margin-right: 10px;
+}*/
+/* line 135, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#best_answer_top div.photo_wrapper img.photo {
+  width: 120px;
+  height: 120px;
+}
+
+/* line 140, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.single_item div.action_buttons {
+  float: right;
+  width: 15%;
+}
+
+/* line 144, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.answer div.action_buttons {
+  float: right;
+  margin-top: 0px;
+  width: 15%;
+}
+
+/* line 150, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details ul.action_list li, div.single_item .details ul.action_list li {
+  display: inline;
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+/* line 155, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .details ul.action_list li a, div.single_item .details ul.action_list li a {
+  color: #90b4bc;
+  text-decoration: underline;
+}
+
+/* line 159, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.action_buttons a, div.single_item div.action_buttons a {
+  display: block;
+}
+
+/* line 162, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.action_buttons a.best {
+  display: inline;
+  padding-left: 5px;
+}
+
+/* line 167, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.bestAnswer img {
+  padding-left: 5px;
+}
+
+/* line 171, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.vote_wrap a {
+  display: inline;
+  padding-left: 18px;
+}
+
+/* line 176, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating {
+  float: right;
+  font-weight: bold;
+}
+/* line 179, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating .vote_wrap {
+  font-weight: normal;
+  text-align: left;
+  padding-left: 0px;
+  color: #000;
+}
+/* line 182, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating .vote_wrap span {
+  display: block;
+  float: left;
+  width: 2.5em;
+  padding-left: 12px;
+  color: #6c8702;
+}
+/* line 183, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating .vote_wrap .no {
+  color: #9d2d08;
+}
+/* line 184, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.voteRating .vote_wrap .selected {
+  background: url(/images/helpfulArrow.png) left center no-repeat;
+}
+
+/* line 188, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.bestAnswer {
+  font-weight: bold;
+}
+
+/* line 192, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#answer_form fieldset {
+  position: relative;
+  clear: both;
+  margin-top: 10px;
+}
+
+/* line 197, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list #answers .answer {
+  clear: both;
+}
+
+/* line 202, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.answer:after, div.single_item:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Blog Posts */
+/* line 205, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details {
+  width: 470px;
+}
+
+/* line 208, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details h3, #list .blog_post_item .details h3 a {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+/* line 212, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details .summary {
+  margin-bottom: 10px;
+}
+
+/* line 215, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details ul.action_list {
+  margin-top: 5px;
+}
+
+/* line 218, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .blog_post_item .details ul.action_list li span.tags {
+  display: block;
+}
+
+/* line 221, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#blog_meta h4 {
+  margin-bottom: 0;
+}
+
+/* line 224, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#blog_meta h4:first-child {
+  margin-bottom: 1em;
+}
+
+/* line 227, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#blog_meta h4 a:hover {
+  text-decoration: underline;
+}
+
+/* Ratings */
+/* line 232, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div.rate {
+  position: relative;
+  float: right;
+  margin-top: 14px;
+}
+
+/* Comments */
+/* line 239, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div#comments {
+  clear: both;
+}
+
+/* line 242, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list div#comments:before {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Status */
+/* line 245, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .status_results .list_item {
+  clear: both;
+}
+
+/* line 249, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#filter_options .selected {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Admin  */
+/* line 256, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin_header #title {
+  float: left;
+}
+/* line 257, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin_header #action_buttons {
+  float: right;
+}
+
+/* line 259, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin {
+  clear: both;
+}
+/* line 261, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin form#company_form {
+  margin: 20px;
+  font-size: 1.2em;
+}
+/* line 264, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div#admin form#company_form input[type="text"], div#admin form#company_form textarea, div#admin form#company_form label {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+/* line 269, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview {
+  display: block;
+  width: 500px;
+  padding-right: 30px;
+}
+/* line 273, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview .photo_wrapper {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+/* line 274, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview h3 {
+  margin: 0 6px 0 0;
+  display: inline;
+  font-weight: bold;
+}
+/* line 275, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview h3 a {
+  color: #4a6970;
+}
+/* line 276, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p {
+  display: inline;
+}
+/* line 277, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p.what {
+  font-size: 14px;
+}
+/* line 278, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+td#stream_message_preview p.what span {
+  font-size: 12px;
+}
+
+/* line 281, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#rss_feed {
+  width: 800px;
+}
+/* line 283, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#rss_feed td {
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 287, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#rss_feed tr.odd {
+  background-color: #FEFFED;
+}
+
+/* line 292, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list, table#company_members_list {
+  border: 1px solid #4A6970;
+  margin: 20px;
+  width: 840px;
+}
+/* line 296, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list tr.header, table#company_members_list tr.header {
+  color: #FFF;
+  background: #4A6970;
+}
+/* line 300, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list th, table#company_members_list th {
+  padding-left: 5px;
+  text-align: left;
+}
+/* line 305, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list tr.company .button, table#companies_list tr.member .button, table#company_members_list tr.company .button, table#company_members_list tr.member .button {
+  float: right;
+  margin: 10px 10px 0 0;
+}
+/* line 310, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list tr.company td, table#companies_list tr.member td, table#company_members_list tr.company td, table#company_members_list tr.member td {
+  padding-left: 5px;
+  text-align: left;
+}
+/* line 315, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list .even, table#company_members_list .even {
+  background: #D8E9E6;
+}
+/* line 318, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+table#companies_list .odd, table#company_members_list .odd {
+  background: #90B4BC;
+}
+
+/* line 324, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_results .primary {
+  margin-left: 10px;
+  width: 720px;
+  border: 1px solid #C4D7DC;
+}
+
+/* line 331, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_post_item {
+  margin-left: 10px;
+  padding: 10px;
+  width: 720px;
+  background-color: #EFF8FA;
+  border: 1px solid #C4D7DC;
+}
+/* line 332, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_post_item .photo_wrapper {
+  float: left;
+}
+/* line 335, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_post_item .details {
+  margin-left: 70px;
+  width: 500px;
+}
+/* line 344, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_post_item .rate {
+  float: right;
+}
+/* line 347, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_post_item .fb-like {
+  float: left;
+  margin: 0px 20px 0px 70px;
+}
+/* line 351, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.news_post_item .share-links {
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* line 358, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+div.aside-small {
+  width: 195px;
+  margin: 0 0 10px 0;
+  float: right;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate {
+  padding: 2px;
+  width: 125px;
+  text-align: right;
+}
+
+/* line 2, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 3, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate {
+  zoom: 1;
+}
+
+/* line 4, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul {
+  float: right;
+  position: relative;
+  margin: 0;
+  width: 75px;
+  height: 15px;
+  background: url(/images/rate_dim.png) 0 0 repeat-x;
+  list-style: none;
+}
+
+/* line 5, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li {
+  float: left;
+  width: 15px;
+  height: 15px;
+  text-indent: 9999px;
+  overflow: hidden;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  text-indent: 9999px;
+  overflow: hidden;
+}
+
+/* line 12, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li a:hover,
+div.rate ul:hover li a.selected:hover,
+div.rate ul.rate_hover li a.selected:hover,
+div.rate ul.rate_hover_my_rating li a.selected:hover {
+  background: url(/images/rate.png) 0 0 repeat-x;
+}
+
+/* line 13, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li a.selected {
+  background: url(/images/rate_rated.png) 0 0 repeat-x;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li.rated {
+  background: url(/images/rate_rated.png) 0 0 repeat-x;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul.my_rating li a:hover,
+div.rate ul.my_rating li a.selected {
+  background: url(/images/rate.png) 0 0 repeat-x;
+}
+
+/* line 21, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul:hover li a.selected,
+div.rate ul.rate_hover li a.selected,
+div.rate ul.rate_hover_my_rating li a.selected {
+  background: none;
+}
+
+/* line 23, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li.rated {
+  margin: 0;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li.rating1 a {
+  width: 15px;
+  z-index: 15;
+}
+
+/* line 26, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li.rating2 a {
+  width: 30px;
+  z-index: 14;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li.rating3 a {
+  width: 45px;
+  z-index: 13;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li.rating4 a {
+  width: 60px;
+  z-index: 12;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate ul li.rating5 a {
+  width: 75px;
+  z-index: 11;
+}
+
+/* line 31, ../../../../app/stylesheets/themes/agentstream/rating.scss */
+div.rate p.rating_total {
+  clear: both;
+  margin-right: 1px;
+  padding-top: 2px;
+  font-size: 1em;
+  text-align: right;
+}
+
+/* Lighter Blue */
+/*$tertiary: #EFF8FA;*/
+/*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
+/*$font-size: 12px;
+$line-height: 18px;*/
+/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
+body {
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #676767;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/text.scss */
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h1 {
+  font-size: 25px;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h2 {
+  font-size: 23px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h3 {
+  font-size: 21px;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h4 {
+  font-size: 19px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h5 {
+  font-size: 17px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h6 {
+  font-size: 15px;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ul {
+  list-style: square;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
+li {
+  margin-left: 30px;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px;
+}
+
+/* line 58, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header {
+  padding: 0px 5px;
+}
+/* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header h2, div#deals-header p {
+  margin-bottom: 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page #welcome-page {
+  width: 840px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer {
+  width: 960px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#logo {
+  width: 160px;
+  margin-left: 0;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.global_nav {
+  width: 460px;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.utility {
+  width: 320px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats {
+  width: 720px;
+  margin-right: 0;
+}
+/* line 24, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats h4 {
+  float: right;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-main {
+  width: 480px;
+  padding-left: 240px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#register-main {
+  width: 720px;
+  padding-left: 120px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-agentstream-facebook-main {
+  width: 360px;
+  padding-left: 300px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.primary {
+  width: 560px;
+  margin-left: 0;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside {
+  margin-top: 30px;
+  width: 400px;
+  margin-right: 0;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside .module {
+  margin-right: 0px;
+  margin-left: 5px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .primary {
+  width: 720px;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .aside {
+  width: 240px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .primary {
+  width: 720px;
+  clear: both;
+  margin-left: 0;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .aside {
+  width: 240px;
+  margin-right: 0;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .full_length {
+  width: 960px;
+  clear: both;
+}
+
+/* line 6, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.chat_image_large {
+  background: white;
+  float: left;
+  width: 177px;
+  height: 177px;
+  padding: 0;
+  margin-right: 10px;
+  text-align: center;
+  display: inline;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+h2.chat_title {
+  margin-bottom: 0;
+}
+
+/* line 21, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+p.chat_start_message_pre {
+  margin: 30px;
+  text-align: center;
+  font-size: 36px;
+  color: #900;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.host {
+  position: relative;
+  background-color: #eff8fa;
+  border-top: 1px solid #c4d7dc;
+  border-bottom: 1px solid #c4d7dc;
+  padding: 0px 10px;
+}
+/* line 34, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.host h4 {
+  margin-bottom: 0px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.host .photo_wrapper {
+  float: left;
+  margin-right: 5px;
+}
+
+/* line 44, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_container h3.divider {
+  background: none;
+  border: 0;
+  color: #4A6970;
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+/* line 53, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue_container {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  width: 240px;
+  margin-left: 0;
+  padding-left: 15px;
+}
+
+/* line 59, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss_container {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  width: 660px;
+  margin-right: 0;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+/* line 65, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss_container span.counter {
+  color: #900;
+  font-size: 1.4em;
+}
+
+/* line 71, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.list_item.chat_item {
+  clear: both;
+  min-height: 80px;
+}
+
+/* line 76, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.list_item.chat_item div.photowrapper {
+  margin-top: 0;
+}
+
+/* line 98, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+.past_style, div#chat_queue li.past, div#chat_queue li.past div, div#chat_queue li.past div a, div#chat_discuss h3.past, div#chat_discuss h3.past a {
+  color: #aaa;
+}
+
+/* line 102, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue {
+  margin-bottom: 20px;
+}
+
+/* line 105, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue > div {
+  /*background: $tertiary;*/
+}
+
+/* line 111, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue #question_bin form#new_chat_question_form input {
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 0.9em;
+  float: right;
+  margin: 2px 10px;
+  padding: 2px 5px;
+  background: #90b4bc;
+}
+
+/* line 124, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue_container div.accordion_open a.ui-accordion-header {
+  /*background: $secondary;*/
+  display: block;
+  clear: both;
+  font-size: 0.9em;
+  font-family: inherit;
+  -moz-border-radius: 0px 0px 0px 0px;
+  border-bottom-left-radius: 0px 0px;
+  border-bottom-left-radius: 0px 0px;
+  border-bottom-right-radius: 0px 0px;
+  border-bottom-right-radius: 0px 0px;
+  border-top-left-radius: 0px 0px;
+  border-top-left-radius: 0px 0px;
+  border-top-right-radius: 0px 0px;
+  border-top-right-radius: 0px 0px;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+/* line 145, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue_container div.accordion_open a.ui-accordion-header span {
+  display: none;
+}
+/* line 150, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue_container div.accordion_open div#new_chat_question_container {
+  margin-bottom: 20px;
+}
+/* line 155, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue_container a#end_chat_link {
+  display: block;
+  padding: 2px 5px;
+  margin: 0 0 20px 0;
+  width: 70px;
+}
+
+/* line 164, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue ul {
+  /*background: $tertiary;*/
+  margin-bottom: 0;
+}
+
+/* line 168, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue li {
+  clear: both;
+  margin-left: 14px;
+}
+
+/* line 172, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue li div.text {
+  display: inline;
+}
+
+/* line 178, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue ul li.present, div#chat_queue ol li.present {
+  color: #4a6970;
+}
+
+/* VOTING */
+/*div#chat_queue div.voting {
+  float: right;
+}*/
+/* line 192, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue a.vote {
+  display: block;
+  float: left;
+  margin: 2px;
+  width: 15px;
+}
+
+/* line 198, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue a.vote_up:hover {
+  margin-top: 0px;
+  margin-bottom: 4px;
+}
+
+/* line 202, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue a.vote_down:hover {
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+
+/* line 207, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue img.vote {
+  height: 12px;
+  padding: 0 3px 3px 2px;
+  vertical-align: top;
+}
+
+/* line 215, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_queue img.vote_down {
+  margin-top: 1px;
+}
+
+/* line 219, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_participants div.photo_wrapper {
+  display: inline;
+}
+
+/* line 227, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss h3 {
+  background: #4a6970;
+  border: 1px solid #4a6970;
+}
+
+/* line 234, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss #present_discussion_container h3.present a {
+  color: #fff;
+  padding-left: 12px;
+}
+
+/* line 238, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss h3.past, div#chat_discuss h3.past a {
+  color: #fff;
+}
+
+/* line 242, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss h3 {
+  margin-top: 2px;
+}
+
+/* line 245, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss h3 a small {
+  font-size: 0.9em;
+  text-align: right;
+  float: right;
+}
+
+/* line 251, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss div.ui-accordion-content {
+  border: 1px solid #4a6970;
+  border-top: 0;
+  padding: 0 !important;
+}
+
+/* line 256, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss div.scrollable {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 16em;
+}
+
+/* line 261, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table {
+  width: 100%;
+}
+
+/* line 264, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr.host {
+  background: #eff8fa;
+}
+
+/* line 267, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr td {
+  padding: 2px 5px;
+}
+/* line 270, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr td p {
+  margin: 0;
+}
+
+/* line 275, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr:first-child {
+  font-style: italic;
+}
+
+/* line 279, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr td:first-child {
+  text-align: right;
+  /*margin-right: 10px;*/
+  width: 120px;
+  background: #EEE;
+  border-right: 1px solid #ccc;
+}
+
+/* line 288, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr td.name {
+  border-top: 1px solid #ccc;
+  font-weight: bold;
+}
+
+/* line 292, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tbody tr:first-child td.name {
+  border-top: 0;
+}
+
+/* line 295, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tbody tr:last-child td.name {
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 298, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr.host td {
+  background: #eff8fa;
+}
+
+/* line 301, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr td:last-child {
+  width: 540px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 307, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss table tr td:last-child p {
+  margin-bottom: 0;
+}
+
+/* line 312, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss div#present_container #post_container {
+  width: 720px;
+  overflow: hidden;
+  *zoom: 1;
+  margin-top: 1.6em;
+}
+
+/* line 318, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss div#present_container #post_container #post_text {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  width: 480px;
+}
+
+/* line 322, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss div#present_container #post_container #post_submit {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  width: 120px;
+  padding-left: 60px;
+  text-align: right;
+}
+
+/* line 330, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss div#present_container #post_container textarea {
+  height: 38px;
+  width: 105%;
+}
+
+/* line 335, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div#chat_discuss div#present_container #post_container input[type=submit] {
+  margin-right: 12px;
+  width: 90%;
+}
+
+/* line 341, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.attendees table#attendees tr.odd {
+  background: #C4D7DC;
+}
+/* line 342, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.attendees table#attendees th {
+  text-align: left;
+  width: 200px;
+}
+/* line 346, ../../../../app/stylesheets/themes/agentstream/chat.scss */
+div.attendees table#attendees td {
+  vertical-align: middle;
+}
+
+/* Lighter Blue */
+/*$tertiary: #EFF8FA;*/
+/*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
+/*$font-size: 12px;
+$line-height: 18px;*/
+/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
+body {
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: #676767;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/text.scss */
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h1 {
+  font-size: 25px;
+}
+
+/* line 30, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h2 {
+  font-size: 23px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h3 {
+  font-size: 21px;
+}
+
+/* line 36, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h4 {
+  font-size: 19px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h5 {
+  font-size: 17px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/text.scss */
+h6 {
+  font-size: 15px;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 48, ../../../../app/stylesheets/themes/agentstream/text.scss */
+ul {
+  list-style: square;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
+li {
+  margin-left: 30px;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
+  margin-bottom: 20px;
+}
+
+/* line 58, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header {
+  padding: 0px 5px;
+}
+/* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
+div#deals-header h2, div#deals-header p {
+  margin-bottom: 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#page #welcome-page {
+  width: 840px;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats {
+  display: inline;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 16, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#header, #main, .alert, #footer {
+  width: 960px;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#logo {
+  width: 160px;
+  margin-left: 0;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.global_nav {
+  width: 460px;
+}
+
+/* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.utility {
+  width: 320px;
+}
+
+/* line 22, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats {
+  width: 720px;
+  margin-right: 0;
+}
+/* line 24, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.stats h4 {
+  float: right;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-main {
+  width: 480px;
+  padding-left: 240px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#register-main {
+  width: 720px;
+  padding-left: 120px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+#login-agentstream-facebook-main {
+  width: 360px;
+  padding-left: 300px;
+}
+
+/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.primary {
+  width: 560px;
+  margin-left: 0;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside {
+  margin-top: 30px;
+  width: 400px;
+  margin-right: 0;
+}
+
+/* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.aside .module {
+  margin-right: 0px;
+  margin-left: 5px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .primary {
+  width: 720px;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.list .aside {
+  width: 240px;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .primary {
+  width: 720px;
+  clear: both;
+  margin-left: 0;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .aside {
+  width: 240px;
+  margin-right: 0;
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .full_length {
+  width: 960px;
+  clear: both;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_0 {
+  background-position: 1px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_1 {
+  background-position: -60.86px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_2 {
+  background-position: -122.72px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_3 {
+  background-position: -184.58px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_4 {
+  background-position: -246.44px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_5 {
+  background-position: -308.3px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_6 {
+  background-position: -370.16px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_7 {
+  background-position: -432.02px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_8 {
+  background-position: -493.88px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_9 {
+  background-position: -555.74px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_10 {
+  background-position: -617.6px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_11 {
+  background-position: -679.46px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_12 {
+  background-position: -741.32px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_13 {
+  background-position: -803.18px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_14 {
+  background-position: -865.04px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_15 {
+  background-position: -926.9px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_16 {
+  background-position: -988.76px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_17 {
+  background-position: -1050.62px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_18 {
+  background-position: -1112.48px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_19 {
+  background-position: -1174.34px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_20 {
+  background-position: -1236.2px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_21 {
+  background-position: -1298.06px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_22 {
+  background-position: -1359.92px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_23 {
+  background-position: -1421.78px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_24 {
+  background-position: -1483.64px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_25 {
+  background-position: -1545.5px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_26 {
+  background-position: -1607.36px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_27 {
+  background-position: -1669.22px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_28 {
+  background-position: -1731.08px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_29 {
+  background-position: -1792.94px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_30 {
+  background-position: -1854.8px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_31 {
+  background-position: -1916.66px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_32 {
+  background-position: -1978.52px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_33 {
+  background-position: -2040.38px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_34 {
+  background-position: -2102.24px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_35 {
+  background-position: -2164.1px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_36 {
+  background-position: -2225.96px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_37 {
+  background-position: -2287.82px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_38 {
+  background-position: -2349.68px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_39 {
+  background-position: -2411.54px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_40 {
+  background-position: -2473.4px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_41 {
+  background-position: -2535.26px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_42 {
+  background-position: -2597.12px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_43 {
+  background-position: -2658.98px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_44 {
+  background-position: -2720.84px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_45 {
+  background-position: -2782.7px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_46 {
+  background-position: -2844.56px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_47 {
+  background-position: -2906.42px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_48 {
+  background-position: -2968.28px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_49 {
+  background-position: -3030.14px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_50 {
+  background-position: -3092px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_51 {
+  background-position: -3153.86px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_52 {
+  background-position: -3215.72px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_53 {
+  background-position: -3277.58px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_54 {
+  background-position: -3339.44px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_55 {
+  background-position: -3401.3px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_56 {
+  background-position: -3463.16px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_57 {
+  background-position: -3525.02px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_58 {
+  background-position: -3586.88px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_59 {
+  background-position: -3648.74px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_60 {
+  background-position: -3710.6px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_61 {
+  background-position: -3772.46px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_62 {
+  background-position: -3834.32px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_63 {
+  background-position: -3896.18px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_64 {
+  background-position: -3958.04px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_65 {
+  background-position: -4019.9px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_66 {
+  background-position: -4081.76px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_67 {
+  background-position: -4143.62px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_68 {
+  background-position: -4205.48px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_69 {
+  background-position: -4267.34px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_70 {
+  background-position: -4329.2px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_71 {
+  background-position: -4391.06px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_72 {
+  background-position: -4452.92px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_73 {
+  background-position: -4514.78px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_74 {
+  background-position: -4576.64px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_75 {
+  background-position: -4638.5px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_76 {
+  background-position: -4700.36px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_77 {
+  background-position: -4762.22px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_78 {
+  background-position: -4824.08px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_79 {
+  background-position: -4885.94px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_80 {
+  background-position: -4947.8px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_81 {
+  background-position: -5009.66px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_82 {
+  background-position: -5071.52px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_83 {
+  background-position: -5133.38px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_84 {
+  background-position: -5195.24px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_85 {
+  background-position: -5257.1px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_86 {
+  background-position: -5318.96px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_87 {
+  background-position: -5380.82px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_88 {
+  background-position: -5442.68px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_89 {
+  background-position: -5504.54px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_90 {
+  background-position: -5566.4px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_91 {
+  background-position: -5628.26px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_92 {
+  background-position: -5690.12px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_93 {
+  background-position: -5751.98px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_94 {
+  background-position: -5813.84px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_95 {
+  background-position: -5875.7px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_96 {
+  background-position: -5937.56px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_97 {
+  background-position: -5999.42px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_98 {
+  background-position: -6061.28px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_99 {
+  background-position: -6123.14px 0px;
+}
+
+/* line 7, ../../../../app/stylesheets/themes/agentstream/seals.scss */
+.seal_100 {
+  background-position: -6185px 0px;
+}
+
+/*div.seal_100 {
+  background-position: -4997px 0px;
+}*/
+/* CSS Document                  */
+/* Written by Scott Johnson      */
+/* line 6, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+body {
+  padding: 35px;
+  background-color: #fff;
+  font-family: Arial;
+  color: #555;
+  font-size: .75em;
+}
+
+/* line 8, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_panels {
+  display: none;
+}
+
+/* line 9, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_container {
+  position: relative;
+  width: 355px;
+  height: 180px;
+  overflow: hidden;
+  margin: 0px 0px 30px 0px;
+  padding: 0px;
+}
+
+/* line 10, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /*display: none;*/
+}
+
+/* line 11, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_panel_content {
+  width: 355px;
+  height: 180px;
+  display: block;
+  float: left;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_panel_photo {
+  float: left;
+  margin-right: 10px;
+  border: 1px solid #C4D7DC;
+  width: 100px;
+}
+
+/* line 25, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_panel_content a.data {
+  display: none;
+}
+
+/* line 26, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_nav {
+  position: relative;
+  top: 150px;
+  padding-top: 5px;
+  width: 355px;
+  height: 25px;
+  background: #EFF8FA;
+}
+
+/* line 27, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_nav a {
+  float: left;
+  margin-left: 10px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_nav_buttons {
+  float: right;
+  margin-right: 30px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_nav_buttons a {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-left: 15px;
+  background: url(/images/icons/nav_buttons.png) no-repeat 0px 0px;
+  cursor: pointer;
+}
+
+/* line 37, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_nav_buttons a:hover {
+  background-position: -25px 0px;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_nav_buttons a.selected {
+  background-position: -50px 0px;
+}
+
+/* line 40, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_container.auto_play .marquee_nav a.marquee_nav_item {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+/* line 45, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.marquee_container.auto_play .marquee_nav a.selected {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+/* HEADER CHANGES */
+/* line 51, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .marquee_container {
+  width: 795px;
+}
+
+/* line 52, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .marquee_panel_content {
+  width: 795px;
+}
+
+/* line 55, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .marquee_nav {
+  width: 795px;
+  background: #EFF8FA;
+}
+
+/* line 56, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .note .text {
+  width: 600px;
+  margin-left: 110px;
+  padding: 0 0 0 80px;
+  background-position: 60px 0px;
+}
+
+/* line 57, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
+.header .marquee_panel_photo {
+  width: 160px;
+}
+
+/* line 1, ../../../../app/stylesheets/themes/agentstream/share.scss */
+.share_buttons {
+  clear: both;
+  float: right;
+  padding-top: 15px;
+}
+
+/* Search does need to be last. It overwrites a lot of other settings for uniformity of results */
+/* line 1, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results {
+  /*margin-left: 240px;*/
+  float: right;
+  width: 720px;
+}
+/* line 5, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results div.list_item.chat_item {
+  clear: none;
+}
+
+/* line 9, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 11, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results div.result_container {
+  clear: both;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .icon_wrapper {
+  float: right;
+  margin-top: 20px;
+  width: 50px;
+}
+
+/* line 19, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .icon_wrapper img {
+  height: 30px;
+  padding: 2px;
+}
+
+/* Normalize Search Results */
+/* line 25, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result .photo_wrapper {
+  margin-bottom: 0;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result .photo_wrapper img.photo {
+  height: 50px;
+  width: 50px;
+}
+
+/* line 34, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result .group_item {
+  clear: none;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result #list {
+  border-top: 0;
+  padding: 0;
+  position: static;
+}
+
+/* line 44, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_results .result .action_list, div#search_results .result .action_buttons, div#search_results .result .rate, div#search_results .result .referred {
+  display: none;
+}
+
+/* line 49, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_filter {
+  /*float: left;*/
+  width: 239px;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_filter .accordionButton {
+  background: #C4D7DC;
+  border-bottom: 1px solid #fff;
+  padding: 10px;
+}
+
+/* line 60, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_filter .accordionButton.active {
+  background: #4a6970;
+}
+
+/* line 64, ../../../../app/stylesheets/themes/agentstream/search.scss */
+div#search_filter .accordionButton a {
+  color: white;
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: lowercase;
+}

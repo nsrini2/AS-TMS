@@ -1,0 +1,10 @@
+#explore {  }
+	#query_form { margin: 15px 0 10px 15px; }
+		#query_form label { display: block; }
+		#query_input { width: 300px; }
+		#query_form input.button { margin-left: 5px; }
+	#explore div.tag_cloud,
+	#explore div.avatar_cloud { margin: 25px 40px; }
+		#explore div.avatar_cloud div.photo_wrapper {  }
+			#explore div.avatar_cloud div.photo_wrapper img { display: block; }
+.no_picks { margin: 0 120px; }

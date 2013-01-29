@@ -1,0 +1,651 @@
+#theme_1 = sabretown / red
+#theme_2 = nexion / green
+#theme_3 = amex / blue
+#theme_4 = get there / red
+#theme_5 = cubeless (legacy) / blue brown
+#theme_6 = agent stream / blue
+#theme_7 = white cubeless
+#theme_8 = navy (red accents)
+#theme_9 = bausch blue
+#theme_10 = lime green
+#theme_11 = light Blue & dark cyan
+#theme_12 = Purple (Secondary and Tertiary the same)
+#theme_13 = amex / blue / White background
+#theme_14 = Premera / blue / White background
+#theme_15 = EGG change of logo and background can't use 14 as blue is darker
+#theme_16 = Neeeley Colors/Background and supporting graphics
+#theme_17 = Theme 2/Updated Secondary Button to Red From Orange
+#theme_18 = Red (RGB 227-25-55) / tan (RGB 219-206-175) / ‘brown’ (RGB 170-156-143)
+#theme_19 = Theme 1/With WHITE BACKGROUND
+
+themes:
+  theme_1:
+    description: sabretown / red
+    primary_color: "#990000"
+    secondary_color: "#ff0000"
+    tertiary_color: "#cc0000"
+    site_background: "#cccccc"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#6c8702"
+    primary_button_highlight: "#a3cb02"
+    primary_button_shadow: "#475802"
+    secondary_button_color: "#a2e43f"
+    secondary_button_highlight: "#cefe84"
+    secondary_button_shadow: "#6baf04"
+    link_color: "#009"
+    contrast_color: "#c5e4f9"
+    ask_answer_border: "#6096bc"
+    ask_answer_header: "#1d2f5f"
+    highlight_color: "#6096bc"
+    top_right_text_color: "#000"
+    top_right_link_color: "#009"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#990000'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_2:
+    description: nexion / green
+    primary_color: "#376537"
+    secondary_color: "#55a152"
+    tertiary_color: "#3a8337"
+    site_background: "#e7ebe4"
+    even_list_item_background: "#dff0df"
+    primary_button_color: "#55a152"
+    primary_button_highlight: "#80b87e"
+    primary_button_shadow: "#396c37"
+    secondary_button_color: "#fea935"
+    secondary_button_highlight: "#ffd08f"
+    secondary_button_shadow: "#a5712b"
+    link_color: "#00f"
+    contrast_color: "#ffffb7"
+    ask_answer_border: "#e1cf8f"
+    ask_answer_header: "#376537"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "#00f"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#376537'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_3:
+    description: amex / blue
+    primary_color: "#025392"
+    secondary_color: "#0077D5"
+    tertiary_color: "#00A2E2"
+    site_background: "#C8C8C8"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#00A2E2"
+    primary_button_highlight: "#D9E4E8"
+    primary_button_shadow: "#000120"
+    secondary_button_color: "#0077D5"
+    secondary_button_highlight: "#BECBD1"
+    secondary_button_shadow: "#000120"
+    link_color: "#003464"
+    contrast_color: "#D9EAF4"
+    ask_answer_border: "#025392"
+    ask_answer_header: "#025392"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "003464"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#025392'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_4:
+    description: get there / red
+    primary_color: "#8C0000"
+    secondary_color: "#CE0000"
+    tertiary_color: "#00A2E2"
+    site_background: "#e7ebe4"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#2B62A3"
+    primary_button_highlight: "#ADBECE"
+    primary_button_shadow: "#010024"
+    secondary_button_color: "#00307C"
+    secondary_button_highlight: "#FEFE9A"
+    secondary_button_shadow: "#000024"
+    link_color: "#003464"
+    contrast_color: "#CCD2EA"
+    ask_answer_border: "#025392"
+    ask_answer_header: "#025392"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "#003464"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#8C0000'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_5:
+    description: cubeless (legacy) / blue brown    
+    primary_color: "#1E678A"
+    secondary_color: "#2392C9"
+    tertiary_color: "#2392C9"
+    site_background: "#4a3726"
+    even_list_item_background: "#E0F1F8"
+    primary_button_color: "#D96E04"
+    primary_button_highlight: "#F79E4A"
+    primary_button_shadow: "#9D5906"
+    secondary_button_color: "#2E6E8A"
+    secondary_button_highlight: "#228DC3"
+    secondary_button_shadow: "#2E4E5D"
+    link_color: "#1802AD"
+    contrast_color: "#E0F1F8"
+    ask_answer_border: "#6096bc"
+    ask_answer_header: "#025392"
+    highlight_color: "#1d2f5f"
+    top_right_text_color: "#fff"
+    top_right_link_color: "#fff"
+    footer_text_color: "#fff"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#1E678A'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_6:
+    description: agent stream / blue    
+    primary_color: "#2E497E"
+    secondary_color: "#047EAF"
+    tertiary_color: "#0095D9"
+    site_background: "#C8C8C8"
+    even_list_item_background: "#EAEAEA"
+    primary_button_color: "#97AC47"
+    primary_button_highlight: "#B9CC63"
+    primary_button_shadow: "#6A7731"
+    secondary_button_color: "#2D4979"
+    secondary_button_highlight: "#A5B1C7"
+    secondary_button_shadow: "#203256"
+    link_color: "#000099"
+    contrast_color: "#D1E8F0"
+    ask_answer_border: "#025392"
+    ask_answer_header: "#025392"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#fff"
+    top_right_link_color: "#000099"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#2E497E'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_7:
+    description: white cubeless
+    primary_color: "#1E678A"
+    secondary_color: "#2392C9"
+    tertiary_color: "#2392C9"
+    site_background: "#fff"
+    even_list_item_background: "#E0F1F8"
+    primary_button_color: "#D96E04"
+    primary_button_highlight: "#F79E4A"
+    primary_button_shadow: "#9D5906"
+    secondary_button_color: "#2E6E8A"
+    secondary_button_highlight: "#228DC3"
+    secondary_button_shadow: "#2E4E5D"
+    link_color: "#1802AD"
+    contrast_color: "#E0F1F8"
+    ask_answer_border: "#6096bc"
+    ask_answer_header: "#025392"
+    highlight_color: "#1d2f5f"
+    top_right_text_color: "#666"
+    top_right_link_color: "#333"
+    footer_text_color: "#666"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#1E678A'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_8:
+    description: navy (red accents)
+    primary_color: "#00295f"
+    secondary_color: "#002b60"
+    tertiary_color: "#002b60"
+    site_background: "#c8c8c8"
+    even_list_item_background: "#eaeaea"
+    primary_button_color: "#d30303"
+    primary_button_highlight: "#fe7879"
+    primary_button_shadow: "#7c0201"
+    secondary_button_color: "#30546e"
+    secondary_button_highlight: "#99c7e9"
+    secondary_button_shadow: "#14344b"
+    link_color: "#0805ce"
+    contrast_color: "#eaeaea"
+    ask_answer_border: "#5283a4"
+    ask_answer_header: "#01295d"
+    highlight_color: "#1d2f5f"
+    top_right_text_color: "#000"
+    top_right_link_color: "#0806cb"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#00295f'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_9:
+    description: bausch blue
+    primary_color: "#0ca1b5"
+    secondary_color: "#24B0BF"
+    tertiary_color: "#24B0BF"
+    site_background: "#fff"
+    even_list_item_background: "#E0F1F8"
+    primary_button_color: "#D96E04"
+    primary_button_highlight: "#F79E4A"
+    primary_button_shadow: "#9D5906"
+    secondary_button_color: "#2E6E8A"
+    secondary_button_highlight: "#228DC3"
+    secondary_button_shadow: "#2E4E5D"
+    link_color: "#1802AD"
+    contrast_color: "#d6ebf2"
+    ask_answer_border: "#6096bc"
+    ask_answer_header: "#025392"
+    highlight_color: "#1d2f5f"
+    top_right_text_color: "#666"
+    top_right_link_color: "#333"
+    footer_text_color: "#666"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#0ca1b5'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+    
+  theme_10:
+    description: lime green
+    primary_color: "#addb08"
+    secondary_color: "#addb08"
+    tertiary_color: "#addb08"
+    site_background: "#fff"
+    even_list_item_background: "#dff0df"
+    primary_button_color: "#AC362C"
+    primary_button_highlight: "#F84E40"
+    primary_button_shadow: "#6C221C"
+    secondary_button_color: "#fea935"
+    secondary_button_highlight: "#ffd08f"
+    secondary_button_shadow: "#a5712b"
+    link_color: "#00f"
+    contrast_color: "#ddd"
+    ask_answer_border: "#e1cf8f"
+    ask_answer_header: "#AC362C"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "#00f"
+    footer_text_color: "#000"
+    menu_text_color: "#000"
+    menu_tab_text_color: '#000'
+    menu_tab_selected_text_color: '#000'
+    menu_tab_hover_text_color: '#000'
+    widget_head_text_color: '#000'
+    widget_link_text_color: '#000'
+    widget_link_hover_text_color: '#005566'
+    system_announcement_text_color: '#000'
+    
+  theme_11:
+    description: light Blue / dark cyan
+    primary_color: "#003773"
+    secondary_color: "#2392C9"
+    tertiary_color: "#2392C9"
+    site_background: "#fff"
+    even_list_item_background: "#E0F1F8"
+    primary_button_color: "#D96E04"
+    primary_button_highlight: "#F79E4A"
+    primary_button_shadow: "#9D5906"
+    secondary_button_color: "#2E6E8A"
+    secondary_button_highlight: "#228DC3"
+    secondary_button_shadow: "#2E4E5D"
+    link_color: "#1802AD"
+    contrast_color: "#E0F1F8"
+    ask_answer_border: "#6096bc"
+    ask_answer_header: "#025392"
+    highlight_color: "#1d2f5f"
+    top_right_text_color: "#666"
+    top_right_link_color: "#333"
+    footer_text_color: "#666"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#003773'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_12:
+    description: Purple (Secondary and Tertiary the same)
+    primary_color: "#7c007c"
+    secondary_color: "#7c007c"
+    tertiary_color: "#7c007c"
+    site_background: "#fff"
+    even_list_item_background: "#E0F1F8"
+    primary_button_color: "#008080"
+    primary_button_highlight: "#00cccc"
+    primary_button_shadow: "#004040"
+    secondary_button_color: "#4b9696"
+    secondary_button_highlight: "#B5E2E2"
+    secondary_button_shadow: "#316363"
+    link_color: "#1802AD"
+    contrast_color: "#E0F1F8"
+    ask_answer_border: "#6096bc"
+    ask_answer_header: "#025392"
+    highlight_color: "#1d2f5f"
+    top_right_text_color: "#666"
+    top_right_link_color: "#333"
+    footer_text_color: "#666"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#7c007c'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+    
+  theme_13:
+    description: amex / blue / White background
+    primary_color: "#025392"
+    secondary_color: "#0077D5"
+    tertiary_color: "#00A2E2"
+    site_background: "#fff"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#00A2E2"
+    primary_button_highlight: "#D9E4E8"
+    primary_button_shadow: "#000120"
+    secondary_button_color: "#0077D5"
+    secondary_button_highlight: "#BECBD1"
+    secondary_button_shadow: "#000120"
+    link_color: "#003464"
+    contrast_color: "#D9EAF4"
+    ask_answer_border: "#025392"
+    ask_answer_header: "#025392"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "003464"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#025392'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_14:
+    description: Premera / blue / White background
+    primary_color: "#007DCB"
+    secondary_color: "#92ACED"
+    tertiary_color: "#1C9ABD"
+    site_background: "#fff"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#00A2E2"
+    primary_button_highlight: "#D9E4E8"
+    primary_button_shadow: "#000120"
+    secondary_button_color: "#0077D5"
+    secondary_button_highlight: "#BECBD1"
+    secondary_button_shadow: "#000120"
+    link_color: "#003464"
+    contrast_color: "#D9EAF4"
+    ask_answer_border: "#025392"
+    ask_answer_header: "#025392"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "003464"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#025392'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_15:
+    description: EGG change of logo and background can't use 14 as blue is darker
+    primary_color: "#025392"
+    secondary_color: "#0077D5"
+    tertiary_color: "#00A2E2"
+    site_background: "#fff"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#00A2E2"
+    primary_button_highlight: "#D9E4E8"
+    primary_button_shadow: "#000120"
+    secondary_button_color: "#0077D5"
+    secondary_button_highlight: "#BECBD1"
+    secondary_button_shadow: "#000120"
+    link_color: "#003464"
+    contrast_color: "#D9EAF4"
+    ask_answer_border: "#025392"
+    ask_answer_header: "#025392"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "003464"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#025392'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#000'
+
+  theme_16:
+    description: Neeeley Colors/Background and supporting graphics
+    primary_color: "#502d7f"
+    secondary_color: "#8e9090"
+    tertiary_color: "#000000"
+    site_background: "#fff"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#502d7f"
+    primary_button_highlight: "#8e9090"
+    primary_button_shadow: "#000000"
+    secondary_button_color: "#502d7f"
+    secondary_button_highlight: "#8e9090"
+    secondary_button_shadow: "#000000"
+    link_color: "#003464"
+    contrast_color: "#e8e1eb"
+    ask_answer_border: "#025392"
+    ask_answer_header: "#025392"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#8e9090"
+    top_right_link_color: "003464"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#502d7f'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_17:
+    description: Theme 2/Updated Secondary Button to Red From Orange
+    primary_color: "#376537"
+    secondary_color: "#55a152"
+    tertiary_color: "#3a8337"
+    site_background: "#e7ebe4"
+    even_list_item_background: "#dff0df"
+    primary_button_color: "#55a152"
+    primary_button_highlight: "#80b87e"
+    primary_button_shadow: "#396c37"
+    secondary_button_color: "#ff002a"
+    secondary_button_highlight: "#ffd08f"
+    secondary_button_shadow: "#fa0404"
+    link_color: "#00f"
+    contrast_color: "#ffffb7"
+    ask_answer_border: "#e1cf8f"
+    ask_answer_header: "#376537"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "#00f"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#376537'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_18:
+    description: Red (RGB 227-25-55) / tan (RGB 219-206-175) / ‘brown’ (RGB 170-156-143)
+    primary_color: "#e31937"
+    secondary_color: "#e31937"  
+    tertiary_color: "#aa9c8f"
+    site_background: "#ffffff"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#e31937"
+    primary_button_highlight: "#db5570"  
+    primary_button_shadow: "#aa9c8f"
+    secondary_button_color: "#7cafde"  
+    secondary_button_highlight: "#4296d7"  
+    secondary_button_shadow: "#dbceaf"
+    link_color: "#009"
+    contrast_color: "#b1ceee"  
+    ask_answer_border: "#6096bc"
+    ask_answer_header: "#1d2f5f"
+    highlight_color: "#6096bc"
+    top_right_text_color: "#000"
+    top_right_link_color: "#009"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#990000'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_19:
+    description: Theme 1/With WHITE BACKGROUND
+    primary_color: "#990000"
+    secondary_color: "#ff0000"
+    tertiary_color: "#cc0000"
+    site_background: "#fff"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#6c8702"
+    primary_button_highlight: "#a3cb02"
+    primary_button_shadow: "#475802"
+    secondary_button_color: "#a2e43f"
+    secondary_button_highlight: "#cefe84"
+    secondary_button_shadow: "#6baf04"
+    link_color: "#009"
+    contrast_color: "#c5e4f9"
+    ask_answer_border: "#6096bc"
+    ask_answer_header: "#1d2f5f"
+    highlight_color: "#6096bc"
+    top_right_text_color: "#000"
+    top_right_link_color: "#009"
+    footer_text_color: "#000"
+    menu_text_color: "#fff"
+    menu_tab_text_color: '#fff'
+    menu_tab_selected_text_color: '#990000'
+    menu_tab_hover_text_color: '#ccc'
+    widget_head_text_color: '#fff'
+    widget_link_text_color: '#fff'
+    widget_link_hover_text_color: '#fff'
+    system_announcement_text_color: '#fff'
+
+  theme_20:
+    description: Razorfish green
+    primary_color: "#c7c518"
+    secondary_color: "#c7c518"
+    tertiary_color: "#c7c518"
+    site_background: "#fff"
+    even_list_item_background: "#dff0df"
+    primary_button_color: "#AC362C"
+    primary_button_highlight: "#F84E40"
+    primary_button_shadow: "#6C221C"
+    secondary_button_color: "#fea935"
+    secondary_button_highlight: "#ffd08f"
+    secondary_button_shadow: "#a5712b"
+    link_color: "#00f"
+    contrast_color: "#ddd"
+    ask_answer_border: "#e1cf8f"
+    ask_answer_header: "#AC362C"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "#00f"
+    footer_text_color: "#000"
+    menu_text_color: "#000"
+    menu_tab_text_color: '#000'
+    menu_tab_selected_text_color: '#000'
+    menu_tab_hover_text_color: '#000'
+    widget_head_text_color: '#000'
+    widget_link_text_color: '#000'
+    widget_link_hover_text_color: '#005566'
+    system_announcement_text_color: '#000'
+    
+  theme_21:
+    description: get there communities / red w/white background
+    primary_color: "#8C0000"
+    secondary_color: "#CE0000"
+    tertiary_color: "#00A2E2"
+    site_background: "#FFFFFF" #"#e7ebe4"
+    even_list_item_background: "#e8e8e8"
+    primary_button_color: "#2B62A3"
+    primary_button_highlight: "#ADBECE"
+    primary_button_shadow: "#010024"
+    secondary_button_color: "#00307C"
+    secondary_button_highlight: "#FEFE9A"
+    secondary_button_shadow: "#000024"
+    link_color: "#003464"
+    contrast_color: "#CCD2EA"
+    ask_answer_border: "#025392"
+    ask_answer_header: "#025392"
+    highlight_color: "#e1cf8f"
+    top_right_text_color: "#009"
+    top_right_link_color: "#003464"
+    footer_text_color: "#000000"
+    menu_text_color: "#ffffff"
+    menu_tab_text_color: '#ffffff'
+    menu_tab_selected_text_color: '#8C0000'
+    menu_tab_hover_text_color: '#cccccc'
+    widget_head_text_color: '#ffffff'
+    widget_link_text_color: '#ffffff'
+    widget_link_hover_text_color: '#ffffff'
+    system_announcement_text_color: '#ffffff'    
+

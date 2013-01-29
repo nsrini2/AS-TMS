@@ -1,0 +1,20 @@
+body {
+  margin-top: 0;
+}
+
+div#page {
+  @include grid-container;
+  @include clearfix;
+  @include grid-width(16);
+}
+
+div#header {
+  
+}
+div#content {
+  @include grid-width(16);
+  @include clearfix;
+}
+div#footer {
+  border-top: 1px solid #3d3d3d;
+}

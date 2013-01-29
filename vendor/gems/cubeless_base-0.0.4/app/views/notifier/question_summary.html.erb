@@ -1,0 +1,10 @@
+<p><strong>Guess what, <%= "#{@question.profile.first_name}" %>? &nbsp;Remember when you asked:</strong><br /><br />
+&#8220;<%= @question.question %>&#8221;</p>
+<p><strong>You received <%= pluralize(@question.num_new_answers.to_i, 'new answer') %> yesterday.&nbsp;
+<%= link_to("Click here", @question_url )%> to read <%= @question.num_new_answers.to_i>1 ? 'them' : 'it' %>.</strong>
+<br /><br />
+Regards,<br />
+<%=@site_name%><br /><br /><br /></p>
+
+Now that you're "in the know", how about sharing with others? Take a
+stab at our <a href="<%=@site_base_url%>/explorations/questions?filter_scope=unanswered">unanswered questions</a>.

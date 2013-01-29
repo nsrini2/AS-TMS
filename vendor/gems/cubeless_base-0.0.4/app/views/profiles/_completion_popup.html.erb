@@ -1,0 +1,28 @@
+<% content_for(:title, "So what's up with the Profile Completion?") -%>
+<h5>Profile Completion is important......<h5 />
+<div class="profile_popup" >The greatest value in a community comes from the ability of members to connect with each other.  Whether connections are made as the result of a search or members are matched automatically by the community’s relevance engine, completed profiles are essential.
+</div><br />
+<div class="profile_popup" >In community after community, it’s a fact!  Both the amount and quality of engagement you have with others increases with every profile question you answer.  The number of words you use is important but so, too, are the actual words you use.  The more specific you are and the more details you provide, the greater the likelihood that your conversations with others in the community will focus on your areas of interest, experience, and expertise.
+</div><br />
+<div class="profile_popup" >Another member could be trying to locate someone with your knowledge or skills today!  Please take a moment to complete or update your profile.
+</div>
+<hr>
+ <div class="profile_notification informational" float: right;>The Following Profile Items Are Needed to Complete Your Profile: </div>
+	<h4> <%= @profile.first_name + " " + @profile.last_name -%> [<%= @profile.screen_name -%>]</h4>
+	<ul>
+	<li>Profile Picture (1)</li>
+	<li>Tagline</li>
+	<% contact_info_order(@profile)['profile'].each do |item| -%>
+	 		<%= ("<li>" + @profile.biz_card_labels(item) + "</li") if @profile.question_field_required?(item) -%>
+	<% end -%>
+	</ul>	
+	<% if !@profile.is_sponsored? -%>
+	  <% question_sections.each do |section| -%>
+  					<h5><%= section['title'] -%></h5>
+  					<ul>
+  					<% section['questions'].each do |question| -%>
+  					  <li><%= question['label'] %></li>
+  					<% end -%>
+  					</ul>
+  	<% end -%>
+  <% end -%>

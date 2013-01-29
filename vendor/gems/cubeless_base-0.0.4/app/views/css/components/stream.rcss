@@ -1,0 +1,54 @@
+#stream { float: right; }
+	#stream #online_now { margin: 2px auto 0; padding: 0 0 8px; text-align: center; font-size: 16px; font-weight: bold; }
+		#stream #online_now img { margin: 0 5px -1px 0; }
+	#stream div.events { <%= border_radius('3px', '3px', '3px', '3px') %> padding: 10px; width: 180px; background: <%= @theme_colors['contrast_color'] %>; }
+		#stream div.events h5 { text-align: center; margin: 0 0 10px; }
+		#stream div.events div.event { padding: 5px 0; }
+			<%= clear_after('#stream .events .event') %>
+			#stream div.events div.event div.photo_wrapper { float: left; padding: 2px 5px 0 0; width: 20px; }
+			#stream div.events div.event div.detail { float: left; width: 150px;  }
+				#stream div.events div.event div.detail span.who { display: block; }
+				#stream div.events div.event div.detail span.did { display: block; }
+				#stream div.events div.event div.detail div.what { padding-top: 3px; width: 150px; overflow: hidden; }
+					#stream div.events div.event div.detail div.what span.letter { display: block; float: left; padding: 1px 3px 0 0; color: #f00; font-weight: bold; }
+	
+div#stream_history {
+	border-top: 1px solid #cecece;
+  margin-top: 30px;
+}
+	div#stream_history div.event {
+		border-bottom: 1px solid #cecece;
+		clear: both;
+		margin: 10px 0;
+		min-height: 60px;
+	}
+		div#stream_history div.event div.photo_wrapper {
+			float: left;
+			margin: 0 10px 10px 0;
+		}
+			div#stream_history div.event div.photo_wrapper img {
+			  height: 50px;
+			  width: 50px;
+			}
+		div#stream_history div.event div.detail {
+			margin-left: 60px;
+		}
+			div#stream_history div.event div.detail span.who {
+			}
+			div#stream_history div.event div.detail span.who a {
+				font-size: 1.2em;
+				font-weight: bold;
+				text-decoration: none;
+			}
+		div#stream_history div.event div.detail span.did {
+			font-size: 1em;
+			padding: 0 0.5em;
+		}
+		div#stream_history div.event div.detail span.letter {
+			display: none;
+		}
+		div#stream_history div.event div.when {
+			display: block ! important;
+			float: right;
+			font-size: 1em;
+		}					

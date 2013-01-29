@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  chat_id: 1
+  owner_id: 1
+  title: MyString
+  status: open
+  start_at: 2011-01-19 13:16:42
+  end_at: 2011-01-19 13:16:42
+
+two:
+  chat_id: 1
+  owner_id: 1
+  title: MyString
+  status: open
+  start_at: 2011-01-19 13:16:42
+  end_at: 2011-01-19 13:16:42

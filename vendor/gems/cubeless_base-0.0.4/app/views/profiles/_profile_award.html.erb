@@ -1,0 +1,16 @@
+<div class="award">
+	<%= award_image_for(profile_award.award, :full, :class => "award_image", :height => 90, :width => 90) %>
+	<div class="details">
+		<h3><%= profile_award.title %></h3>
+		<p>Given by <%= profile_award.awarded_by %></p>
+		<p><strong>Date Given:</strong> <%= profile_award.awarded_on %></p>
+		<% owner_content do %>
+			<% if visible %>
+				<%= link_to_make_profile_award_default(profile_award) %>
+				&nbsp;|
+			<% end %>
+			<%= link_to_archive_profile_award(profile_award) %>
+		<% end %>
+	</div>
+	
+</div>

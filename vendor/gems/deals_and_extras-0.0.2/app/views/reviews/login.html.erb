@@ -1,0 +1,28 @@
+<!-- Login Dialog -->
+
+<div id="review_login_dialog" title="Login to AgentStream">
+	<form>
+		<button type="button" class="linkButton login_link" 
+				onclick="$('#review_login_dialog').dialog('close')">Create New Account</button>
+		
+		<label for="userName" class="login_label">User Name:</label> 
+		<input type="text" name="userName" class="login_text" /><br />
+		<button type="button" class="linkButton login_link" 
+				onclick="$('#review_login_dialog').dialog('close')">Forgot Login?</button>
+
+
+		<label for="password" class="login_label">Password:</label> 
+		<input type="text" name="password" class="login_text" /> <br />
+
+		<button  type="button" class="linkButton login_link" 
+				onclick="$('#review_login_dialog').dialog('close')">Forgot
+				Password?</button>
+		
+		<div id="login_buttons" align="right">
+			<button type="button" 
+				onclick="$('#review_login_dialog').dialog('close')">Cancel</button>
+			<button type="button"
+				onclick="$('#review_login_dialog').dialog('close')">Login</button>
+		</div>
+	</form>
+</div>

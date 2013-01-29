@@ -1,0 +1,19 @@
+div.question { padding: 12px; color: #555;}
+	<%= clear_after('div.question') %>
+	div.question p { font-size: 11px; }
+	div.question div.referred { margin-bottom: 5px; }
+		div.question div.referred img { margin-right: 3px; margin-bottom: -2px; }
+	div.question div.photo_wrapper { float: left; position: relative; margin-right: 15px; }
+	div.question .letter { float: left; font-size: 11px; display: block; font-weight: bold; width: auto; padding: 2px 5px 2px 0; color: #f00; }
+	div.question div.details { float: left; padding: 0; width: 565px; overflow: hidden; }
+		div.question div.details div.item_text { padding-bottom: 5px; font-size: 14px; font-weight: bold; color: #000; }
+			div.question div.details p { padding: 0px; margin-bottom: 0; }
+			div.question div.details div.item_text a { color: #000; text-decoration: none; }
+			div.question div.details div.item_text a:hover { text-decoration: underline; }
+		div.question div.details form.update_close_form { display: inline; }
+			div.question div.details form.update_close_form div { display: none; }
+		div.question div.action_buttons { float: right; width: 15%; }
+			div.question div.action_buttons a.button { margin: 3px auto; }
+			div.question div.action_buttons a:hover { color: #fff; }
+			div.question div.action_buttons div.closed { text-align: center; font-weight: bold; }
+		div.question div.action_links { padding-top: 10px; }

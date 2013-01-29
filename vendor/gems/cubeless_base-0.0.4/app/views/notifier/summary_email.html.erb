@@ -1,0 +1,80 @@
+<table cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td>
+			<table cellpadding="0" cellspacing="0" border="0" align="left" bgcolor="#eaeaea" style="margin-top:20px;">
+				<tr>
+					<td width="4" bgcolor="#ffffff">&nbsp;</td>
+					<td width="12" valign="top"><%= image_tag(@site_base_url+"/images/emailTL.gif", :height => 12, :width => 12) %></td>
+					<td height="12">&nbsp;</td>
+					<td width="12" valign="top"><%= image_tag(@site_base_url+"/images/emailTR.gif", :height => 12, :width => 12) %></td>
+				</tr>
+				<tr>
+					<td width="4" bgcolor="#ffffff">&nbsp;</td>
+					<td width="12">&nbsp;</td>
+					<td ><strong style="margin-left:10px;font-size:18px;"><%=@site_name%> Activity: <span style="color:#990000;"><%= @start_date.strftime("%B %d") + " - " if @start_date < Date.today-1 %><%= (Date.today-1).strftime("%B %d") %></span></strong></td>
+					<td width="12">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="4"><%= image_tag(@site_base_url+"/themes/"+Config[:theme]+"/images/bubble_arrow.gif") %></td>
+				</tr>
+				<tr>
+					<td width="4" bgcolor="#ffffff">&nbsp;</td>
+					<td width="12">&nbsp;</td>
+					<td width="700">
+						<table style="margin-left:60px;width:550px;" cellpadding="5" cellspacing="0" border="0">
+							<tr>
+								<td style="border-bottom:1px solid #666666;"><%= image_tag(@site_base_url+"/images/icon_activityAnswers.gif", {:style=>'vertical-align:middle;'}) %>
+									<strong><%=pluralize(@profile.num_new_answers, 'New Answer', 'New Answers')%></strong></td>
+								<td style="border-bottom:1px solid #666666;font-size:12px;font-weight:bold;"><%= @profile.num_new_answers.to_i > 0 ? link_to("view&nbsp;'em", @site_base_url + questions_asked_profile_path(@profile) ) : '&nbsp;' %></td>
+								<td width="10">&nbsp;</td>
+								<td style="border-bottom:1px solid #666666;"><%= image_tag(@site_base_url+"/images/icon_activityReferrals.gif", {:style=>'vertical-align:middle;'}) %>
+									<strong><%=pluralize(@profile.num_new_referrals, 'New Referral', 'New Referrals')%></strong></td>
+								<td style="border-bottom:1px solid #666666;font-size:12px;font-weight:bold;"><%= @profile.num_new_referrals.to_i > 0 ? link_to("view&nbsp;'em", @site_base_url + matched_questions_profile_path(@profile) ) : '&nbsp;' %></td>
+							</tr>
+							<tr>
+								<td style="border-bottom:1px solid #666666;"><%= image_tag(@site_base_url+"/images/icon_activityNotes.gif", {:style=>'vertical-align:middle;'}) %>
+									<strong><%=pluralize(@profile.num_new_notes, 'New Note', 'New Notes')%></strong></td>
+								<td style="border-bottom:1px solid #666666;font-size:12px;font-weight:bold;"><%= @profile.num_new_notes.to_i > 0 ? link_to("view&nbsp;'em", @profile_url) : '&nbsp;' %></td>
+								<td width="10">&nbsp;</td>
+								<td style="border-bottom:1px solid #666666;"><%= image_tag(@site_base_url+"/images/icon_activityMatches.gif", {:style=>'vertical-align:middle;'}) %>
+									<strong><%=pluralize(@profile.num_matches, 'Current Match', 'Current Matches')%></strong></td>
+								<td style="border-bottom:1px solid #666666;font-size:12px;font-weight:bold;"><%= @profile.num_matches.to_i > 0 ? link_to("view&nbsp;'em", @site_base_url + matched_questions_profile_path(@profile) ) : '&nbsp;' %></td>
+							</tr>
+						</table>
+						<table align="left" style="margin-left:50px;width:550px;" cellpadding="3" cellspacing="10" border="0">
+							<tr>
+								<td>
+									<%= image_tag(@site_base_url+"/images/icon_activityClosedQ.gif", {:style=>'vertical-align:middle;'}) %>
+									<strong><%=pluralize(@questions.size, 'Closed Question', 'Closed Questions')%></strong> - <span style="font-size:12px;font-weight:bold;color:#666666;">You have <%= pluralize(@questions.size, "question", "questions") %> you can award best answer for!</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<ul style="list-style-type:none;">
+										<% @questions.each do |question| %>
+											<li style="padding:3px 0;font-size:12px;font-weight:bold;"><span style="color:#ff0000">Q:</span> <%= question.question %> <%= link_to(pluralize(question.answers_count,"answer","answers"), @site_base_url + question_path(question), :style => "font-weight:normal;") %></li>
+										<% end %>
+									</ul>
+				                </td>
+							</tr>
+						</table>
+					</td>
+					<td width="12">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="4" bgcolor="#ffffff">&nbsp;</td>
+					<td width="12" valign="bottom"><%= image_tag(@site_base_url+"/images/emailBL.gif", :height => 12, :width => 12) %></td>
+					<td height="12">&nbsp;</td>
+					<td width="12" valign="bottom"><%= image_tag(@site_base_url+"/images/emailBR.gif", :height => 12, :width => 12) %></td>
+				</tr>
+			</table>
+		</td>
+		<td> </td>
+	</tr>
+	<tr>
+		<td style="padding-top:10px;font-size:12px;" bgcolor="#ffffff">
+			<p align="center">You control the communications you get from us. You can change your <%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.</p>
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>

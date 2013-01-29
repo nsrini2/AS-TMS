@@ -1,0 +1,23 @@
+<h2 class="page_title">The News Room</h2>
+
+<div class="news_results">
+  <%= render :partial => 'header', :locals => { :top_posts => @top_posts } %>
+  <div id="list" class="primary">
+    <h3><%= @posts_header %></h3>
+    <% @news.each do |blog_post| -%>
+      <%= render :partial => 'post', :locals => { :blog_post => blog_post, :classname => cycle('odd', 'even') } %>
+      <div style="clear: both;"></div>
+    <% end -%>
+  </div>
+  <div class="aside-small">
+    <%=  link_to_follow_news %>
+    <%= render :partial => '/news/side_bar', 
+        :locals => { :posts => @news, :selected_date => @selected_date, 
+                     :selected_source => @selected_source, 
+                     :selected_tags => @selected_tags } -%>
+  </div>
+</div>
+
+<div class="see_all" style="margin-left: 10px;">
+  <%= will_paginate @news %>
+</div>

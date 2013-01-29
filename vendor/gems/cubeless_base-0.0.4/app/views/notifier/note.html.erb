@@ -1,0 +1,8 @@
+<p><strong>Guess what, <%= @receiver.full_name %>? <%= link_to (@sender.full_name, profile_url(@sender)) %> has left you a note.</strong></p>
+<p>&#8220;<%= @note.message %>&#8221;</p>
+<p><%= link_to ('Click here', profile_url(@receiver)) %> to view it.</p>
+
+Regards,<br />
+<%=@site_name%><br /><br /><br /></p>
+
+<p align="center">You control the communications you get from us. You can change your <%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.</p>

@@ -1,0 +1,19 @@
+xml.notes :type => "array" do
+  @notes.each do |note|
+    xml.note do
+      xml.id note.id
+      xml.text note.message
+      xml.sent_by do
+        xml.id note.sender_id
+        xml.name note.sender.full_name
+        xml.url site_base_url + profile_path(note.sender)
+      end
+      xml.received_by do
+        xml.id note.receiver_id
+        xml.name note.receiver.full_name
+        xml.url site_base_url + profile_path(note.receiver)
+      end
+      xml.url site_base_url + profile_path(note.receiver)
+    end
+  end
+end

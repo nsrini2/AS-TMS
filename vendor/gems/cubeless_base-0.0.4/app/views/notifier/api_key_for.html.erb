@@ -1,0 +1,378 @@
+<div class="api">
+	<br />
+	<p><h2>API Documentation</h2></p>
+	<% logged_in_content do %>
+	<% if !current_profile.is_sponsored? %>
+	<% if current_profile.api_is_enabled? %>
+	  <p>
+	    Your API Key: 
+	    (<%= link_to "re-generate", api_key_path, :method => :post %> | <%= link_to "disable", api_key_path, :method => :delete %>)
+	  </p>
+	  <p>
+	    <strong><%= current_profile.api_key %></strong>
+	  </p>
+		<p>	
+	   Use this unique key to make calls to the API. e.g. <a href="/api/questions.xml?api_key=<%= current_profile.api_key %>">/api/questions.xml?api_key=<%= current_profile.api_key %></a>
+	  </p>
+	<% else %>
+	  <p>	
+	    You'll need a unique key to make calls to the API. e.g. /api/questions.xml?api_key=abc123
+	  </p>
+	  <p>
+	    <%= link_to("Get a key", api_key_path, :method => :post) %>
+	  </p>
+	<% end %>
+	<% end %>
+	<% end %>
+	
+	<p>Params are intended to filter results. Multiple params can be used for a single request.</p>
+
+	<ul>
+		<h3>Search Questions</h3>
+		A limit of 500 results will be returned.
+		<li>url: '/api/questions.xml</li>
+		<li>param: date
+			<ul>
+				<li>returns: questions created after date given</li>
+				<li>format: mm/dd/yyyy </li>
+				<li>example: /api/questions.xml?date='02/24/2008'</li>
+			</ul>
+		</li>
+		<li>param: open_until
+			<ul>
+				<li>returns: questions closing date given</li>
+				<li>format: mm/dd/yyyy </li>
+				<li>example: /api/questions.xml?open_until='02/24/2008'</li>
+			</ul>
+		</li>
+		<li>param: profile_id
+			<ul>
+				<li>returns: questions asked by given profile</li>
+				<li>format: integer </li>
+				<li>example: /api/questions.xml?profile_id=100</li>
+			</ul>
+		</li>
+		<li>param: num_answers
+			<ul>
+				<li>returns: questions containing at least given number</li>
+				<li>format: integer </li>
+				<li>example: /api/questions.xml?num_answers=3</li>
+			</ul>
+		</li>
+		<li>param: query
+			<ul>
+				<li>returns: questions matching query search</li>
+				<li>format: string </li>
+				<li>example: /api/questions.xml?query=superbowl</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul>
+		<h3>Search Profiles</h3>
+		A limit of 500 results will be returned.
+		<li>url: '/api/profiles.xml</li>
+		<li>param: name
+			<ul>
+				<li>returns: profiles matching name given</li>
+				<li>format: string </li>
+				<li>example: /api/profiles.xml?name=john+doe</li>
+			</ul>
+		</li>
+	</ul>
+
+  <ul>
+		<h3>Search Groups</h3>
+		A limit of 500 results will be returned.
+		<li>url: '/api/groups.xml</li>
+		<li>param: date
+			<ul>
+				<li>returns: groups created after date given</li>
+				<li>format: mm/dd/yyyy </li>
+				<li>example: /api/groups.xml?date='02/24/2008'</li>
+			</ul>
+		</li>
+		<li>param: members
+			<ul>
+				<li>returns: groups with at least given value</li>
+				<li>format: integer </li>
+				<li>example: /api/groups.xml?members=1</li>
+			</ul>
+		</li>
+		<li>param: status
+			<ul>
+				<li>returns: groups with given status</li>
+				<li>format: integer (0 = Low, 1 = Medium, 2 = High) </li>
+				<li>example: /api/groups.xml?status=1</li>
+			</ul>
+		</li>
+		<li>param: query
+			<ul>
+				<li>returns: groups matching query search</li>
+				<li>format: string </li>
+				<li>example: /api/groups.xml?query=travel+cruise</li>
+			</ul>
+		</li>
+	</ul>
+
+  <ul>
+		<h3>Search Answers</h3>
+		A limit of 500 results will be returned.
+		<li>url: '/api/answers.xml</li>
+		<li>param: date
+			<ul>
+				<li>returns: answers created after date given</li>
+				<li>format: mm/dd/yyyy </li>
+				<li>example: /api/answers.xml?date='02/24/2008'</li>
+			</ul>
+		</li>
+		<li>param: profile_id
+			<ul>
+				<li>returns: answers created by given profile id</li>
+				<li>format: integer </li>
+				<li>example: /api/answers.xml?profile_id=100</li>
+			</ul>
+		</li>
+		<li>param: question_id
+			<ul>
+				<li>returns: answers for given question_id</li>
+				<li>format: integer </li>
+				<li>example: /api/answers.xml?question_id=100</li>
+			</ul>
+		</li>
+		<li>param: best_answer
+			<ul>
+				<li>returns: answers marked as best answers</li>
+				<li>format: integer (0 = false, 1 = true) </li>
+				<li>example: /api/answers.xml?best_answer=1</li>
+			</ul>
+		</li>
+		<li>param: positive_votes
+			<ul>
+				<li>returns: answers with at least given number of positive votes</li>
+				<li>format: integer </li>
+				<li>example: /api/answers.xml?positive_votes=3</li>
+			</ul>
+		</li>
+		<li>param: negative_votes
+			<ul>
+				<li>returns: answers with at least given number of negative votes</li>
+				<li>format: integer </li>
+				<li>example: /api/answers.xml?negative_votes=3</li>
+			</ul>
+		</li>
+	</ul>
+
+  <ul>
+		<h3>Search Blog Posts</h3>
+		A limit of 500 results will be returned.
+		<li>url: '/api/blog_posts.xml</li>
+		<li>param: date
+			<ul>
+				<li>returns: blog posts created after date given</li>
+				<li>format: mm/dd/yyyy </li>
+				<li>example: /api/blog_posts.xml?date='02/24/2008'</li>
+			</ul>
+		</li>
+		<li>param: profile_id
+			<ul>
+				<li>returns: blog posts created by given profile id</li>
+				<li>format: integer </li>
+				<li>example: /api/blog_posts.xml?profile_id=100</li>
+			</ul>
+		</li>
+		<li>param: group_id
+			<ul>
+				<li>returns: blog_posts created for given group id</li>
+				<li>format: integer </li>
+				<li>example: /api/blog_posts.xml?group_id=100</li>
+			</ul>
+		</li>
+	</ul>
+
+  <ul>
+		<h3>Search Notes</h3>
+		A limit of 500 results will be returned.
+		<li>url: '/api/notes.xml</li>
+		<li>param: date
+			<ul>
+				<li>returns: notes created after date given</li>
+				<li>format: mm/dd/yyyy </li>
+				<li>example: /api/notes.xml?date='02/24/2008'</li>
+			</ul>
+		</li>
+		<li>param: sender_id
+			<ul>
+				<li>returns: notes created by given profile id</li>
+				<li>format: integer </li>
+				<li>example: /api/notes.xml?sender_id=100</li>
+			</ul>
+		</li>
+		<li>param: receiver_id
+			<ul>
+				<li>returns: notes created for given profile id</li>
+				<li>format: integer </li>
+				<li>example: /api/notes.xml?receiver=100</li>
+			</ul>
+		</li>
+	</ul>
+
+  <ul>
+		<h3>Search Photos</h3>
+		A limit of 500 results will be returned.
+		<li>url: '/api/photos.xml</li>
+		<li>param: size
+			<ul>
+				<li>returns: photos created with given size</li>
+				<li>format: integer (50,80,175) </li>
+				<li>example: /api/photos.xml?size=80</li>
+			</ul>
+		</li>
+		<li>param: index
+			<ul>
+				<li>returns: photos with index greater than given value</li>
+				<li>format: integer </li>
+				<li>example: /api/photos.xml?index=99</li>
+			</ul>
+		</li>
+	</ul>
+	
+	<ul>
+		<h3>Activity Stream</h3>
+		A limit of 20 results will be returned. xml or html format
+		<li>url: '/api/stream.xml</li>
+		<li>param: limit
+			<ul>
+				<li>returns: stream of events with the given limit</li>
+				<li>format: integer </li>
+				<li>example: /api/stream.xml?limit=10</li>
+			</ul>
+		</li>
+		<li>url: '/api/stream'</li>
+		<ul>
+			<li>returns: stream of 20 events in an html snippet form</li>
+		</ul>
+	</ul>
+
+	<% if logged_in? && current_profile.has_role?(Role::UserAdmin) %>
+		<br />
+		<hr />
+		<br />
+		<br />
+
+		<h2>User Admin Calls</h2>
+		<p>
+			These methods are only made available to users with the User Admin role. (As verified by the api_key.)
+		</p>
+
+	  <ul>
+			<h3>Sync Users</h3>
+			
+			<p>
+				Syncs the Cubeless user base to an uploaded CSV file.<br />
+				This method only confirms that the CSV was succesfully obtained. To ensure the sync runs smoothly, see Sync Users Status
+			</p>
+			
+			<li>url: '/api/sync_users.xml'</li>
+			<li>param: user_data <b>(REQUIRED)</b>
+				<ul>
+					<li>format: either a raw csv string or an attached file </li>
+					<li>example: /api/sync_users.xml?user_data=csv</li>
+				</ul>
+			</li>
+			<li>param: test_run <i>(optional)</i>
+				<ul>
+					<li>returns: If set to 'true' will process the csv but not sync it. Great for verifying your csv is valid.</li>
+					<li>format: 'true' </li>
+					<li>example: /api/sync_users.xml?user_data=csv&test_run=true</li>
+				</ul>
+			</li>
+			<li>param: do <i>(optional)</i>
+				<ul>
+					<li>returns: If set to 'reset' this will cancel any other sync jobs currently running before starting the requested job</li>
+					<li>format: string ('reset') </li>
+					<li>example: /api/sync_users.xml?user_data=csv&do=reset</li>
+				</ul>
+			</li>
+			<li>
+				response:
+				<ul>
+					<li>
+						Successful Upload:
+						<pre>
+							<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;status&gt;Success&lt;/status&gt;
+							</code>
+						</pre>
+					</li>
+					<li>
+						Failed Upload:
+						<pre>
+							<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;status&gt;Failure&lt;/status&gt;
+&lt;errors&gt;
+  &lt;error&gt;Make sure you have set the :user_data param to either a file to upload or a raw csv string.&lt;/error&gt;
+&lt;/errors&gt;
+							</code>
+						</pre>
+					</li>					
+				</ul>
+			</li>
+		</ul>
+		
+		<ul>
+			<h3>Sync Users Status</h3>
+			
+			<p>
+				Allows user to check in on the progress of a background sync job
+			</p>
+			
+			<li>url: '/api/sync_users_status.xml'</li>
+			<li>
+				response:
+				<ul>
+					<li>
+						key attriubutes:
+						<ul>
+							<li>response-message: either 'nil' (job has not completed) or 'success' or 'failure'</li>
+							<li>status: either 'nil' (job has either not run or has finished running) or 'queued' or 'running'</li>
+							<li>start-time: When the job started</li>
+							<li>end-time: When the job ended. If end-time is before start-time, the job has not completed yet.</li>
+							<li>log-output: The raw output of the background process. Usually includes the raw CSV. Sometimes will include other information, especially if sync_users was a test_run</li>
+						</ul>
+					</li>
+					<li>
+						sample:
+						<pre>
+							<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;user-sync-job&gt;
+  &lt;data nil="true"&gt;&lt;/data&gt;
+  &lt;end-time type="datetime"&gt;2010-03-29T15:32:39-05:00&lt;/end-time&gt;
+  &lt;id type="integer"&gt;3&lt;/id&gt;
+  &lt;log-output&gt;email,first_name,last_name,login,screen_name,sso_id,status
+mark.mcspadden@sabre.com,Regular,User,mark.mcspadden@sabre.com,Regular User,,active
+mark.mcspadden+shevawn@sabre.com,Shevawn,McSpadden,mark.mcspadden+shevawn@sabre.com,Shevawn McSpadden,,active
+mark.mcspadden+sso2@sabre.com,Mark,McSpaddenSSO,Mark McSpaddenSSO,,active
+&lt;/log-output&gt;
+  &lt;options&gt;actionexport_csv&lt;/options&gt;
+  &lt;response-hash&gt;exported_users3&lt;/response-hash&gt;
+  &lt;response-message&gt;success&lt;/response-message&gt;
+  &lt;start-time type="datetime"&gt;2010-03-29T15:32:25-05:00&lt;/start-time&gt;
+  &lt;status nil="true"&gt;&lt;/status&gt;
+&lt;/user-sync-job&gt;
+							</code>
+						</pre>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		
+	<% end %>
+
+</div>
+
+
+

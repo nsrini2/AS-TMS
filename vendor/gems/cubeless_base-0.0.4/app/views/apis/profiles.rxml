@@ -1,0 +1,27 @@
+xml.profiles :type => "array" do
+  @profiles.each do |profile|
+    xml.profile do
+      xml.screen_name(profile.screen_name)
+      xml.email(profile.email)
+      xml.work_phone(profile.profile_5)
+      xml.id(profile.id)
+      xml.url site_base_url + profile_path(profile)
+      xml.tag_line(profile.profile_2)
+      xml.title(profile.profile_1)
+      xml.photo(site_base_url + primary_photo_path_for(profile,:thumb_large))
+      xml.photo80(site_base_url + primary_photo_path_for(profile,:thumb_80))
+      xml.photo50(site_base_url + primary_photo_path_for(profile))
+      xml.profile_questions :type => "array" do
+        question_sections.each do |section|
+          section['questions'].each do |question|
+            xml.profile_question do
+              xml.label question['label']
+              xml.answer profile.send(question['question'])
+              xml.name question['question']
+            end
+          end
+        end
+      end if params['qa']
+    end
+  end
+end

@@ -1,0 +1,18 @@
+<div class="deal_info">
+    <div>
+        <p class="search_deal_line"><%= offer.suppliers.first.supplier_name %></p>
+        <p id="dealTitle" class="search_deal_line linkButton deal_title"><%= offer.short_description %></p>
+        <p class="search_deal_line"><%= offer.location.city %> <%= offer.location.country.country rescue "" %></p>
+    </div>
+
+</div>
+<!--Details-->
+<div id="details" class="details_style">
+    <div class="deal_details_description">
+        <p><%= offer.description %></p>
+        <div class="search_deal_book_by_share">
+            <p>Book by <%= offer.sell_discontinue_date.inspect %></p>
+        </div>
+    </div>
+    <%= image_tag offer.static_map %>
+</div>

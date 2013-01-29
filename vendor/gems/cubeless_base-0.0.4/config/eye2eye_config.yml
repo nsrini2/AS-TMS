@@ -1,0 +1,147 @@
+#site_base_url: 'http://eye2eye.cubeless.com'
+#session_key: 'eye2eye'
+#session_secret: 'dbbbaca17e6846c6feaa605110b281652b0e8e9856511faea65c3fe4e79fd5a9581b117e36b999e64114f7506fa1eb15be07ec46982b668397e8e0816ae0e5a1'
+
+#open_registration: false
+
+#tfce_sso_my_domain: 'cubeless'
+#tfce_sso_domain: 'cubeless'
+#tfce_sso_url: 'http://cubeless'
+#tfce_sso_logout_url: 'http://cubeless'
+#tfce_sso_secret: '2346d1f36b15be7a15a34a6f58db0a1eca93c1937040b3eed24e383035e8630d8bd5acb81b9c674ee3183d06225334809478e773028ed76aea12ec21aff330e0'
+
+feedback_email: 'Eye2Eye@bausch.com'
+email_from_address: 'Eye2Eye <no-reply@cubeless.com>'
+
+#analytics_tracker_code: ''
+
+theme: 'theme_9'
+
+logo_file: "Eye2Eye_V2.png"
+
+favicon: "cubeless_favicon.ico"
+
+site_name: "Eye2Eye"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: [
+  "Vision Care",
+  "Pharmaceuticals",
+  "Surgical",
+  "R&D",
+  "Operations & Engineering",
+  "Personal Development",
+  "Human Resources",
+  "Admin's Forum"
+]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Site Location"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Address"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Location/Suite/Floor"
+    completes_profile: true
+    matchable: true
+  - question: profile_5
+    label: "Work Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Mobile Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_7
+    label: "Business Unit &amp; Functional Area"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'email',
+    'profile_6',
+    'profile_7'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'email',
+    'profile_6',
+    'profile_7'
+  ]
+
+profile_complex_questions:
+  - title: "About Me (Personal)"
+    questions:
+      - question: question_1
+        label: "My Favorites (Books, Websites, Movie, Music, Food, Color, Sports, etc...)"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "My hometown, places I've lived and where I currently reside"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "Places I've visited (States, Countries, Points of Interest, etc...)"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "Hobbies/Interests"
+        completes_profile: true
+        matchable: true
+      - question: question_5
+        label: "Interesting Personal Facts. You may not know that I..."
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "Currently reading"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "Words to live by, favorite quote or phrase"
+        completes_profile: true
+        matchable: true
+  - title: "About Me (Professional)"
+    questions:
+      - question: question_8
+        label: "Job title, key responsibilities, current projects"
+        completes_profile: true
+        matchable: true
+      - question: question_9
+        label: "Number of years at B&L and previous job title(s)"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "Area of expertise"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "Previous employers"
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "Education. Schools I've attended, degrees I've earned, professional certifications"
+        completes_profile: true
+        matchable: true

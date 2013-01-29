@@ -1,0 +1,5 @@
+<h3 class="divider">Event Attendees</h3>
+<% attendees.each do |profile| %>
+  <%= link_to_avatar_for(profile, {:thumb => :thumb, :size => '20x20'}) %>
+<% end %>
+<%= link_to "Refresh Participants", participants_chat_path(@chat), :id => "participants_polling_link", :style => "display:none;" %>

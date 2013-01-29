@@ -1,0 +1,23 @@
+xml.answers :type => "array" do
+  @answers.each do |answer|
+    xml.answer do
+      xml.id answer.id
+      xml.created_at answer.created_at
+      xml.text answer.answer
+      xml.is_best_answer answer.best_answer
+      xml.answered_by do
+        xml.id answer.profile_id
+        xml.name answer.profile.full_name
+        xml.url site_base_url + profile_path(answer.profile)
+      end
+      xml.num_positive_votes answer.num_positive_votes
+      xml.num_negative_votes answer.num_negative_votes
+      xml.url site_base_url + answer_path(answer)
+      reply = answer.reply
+      xml.reply do
+        xml.created_at reply.created_at
+        xml.text reply.text
+      end if reply
+    end
+  end
+end

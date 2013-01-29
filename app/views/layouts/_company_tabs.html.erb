@@ -1,0 +1,53 @@
+<% content_for :tab_heading do %>
+  <link href="/themes/agentstream/_css/company_hub.css" rel="stylesheet">
+
+  <div id="agency_bar">
+		<%= image_tag(primary_photo_path_for(@company, :thumb_large), :size => "120x120", :alt => "Company Pic" )%>
+    <div class="details">
+      <div class="stats">
+        <table>
+          <tr>
+            <td>
+              <h5><%= h @company.members.count %></h5>
+              <div>Members</div>
+            </td>
+            <td>
+              <h5><%= h @company.groups.count %></h5>
+              <div>Groups</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h5><%= h @company.questions.count %></h5>
+              <div>Questions</div>
+            </td>
+            <td>
+              <h5><%= h @company.answers.count %></h5>
+              <div>Answers</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <h3><%= @company.to_s %></h3>
+      <div class="description">
+        <%= truncate(@company.description, :length => 250, :omissoin => "...") %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<% content_for :tabs do -%>
+	<%= content_tag('li', link_to("My Agency Stream", "/companies/hub"), :class => @company_hub_tab_selected) -%>
+	<%= content_tag('li', link_to("Q&A", companies_questions_path), :class => @company_question_tab_selected) -%>
+	<%#= content_tag('li', link_to("Groups", companies_groups_path), :class => @company_group_tab_selected) -%>
+	<%= content_tag('li', link_to("Blog", companies_blog_blog_posts_path), :class => @company_blog_tab_selected) -%>
+	<%= content_tag('li', link_to("Members", "/companies/members"), :class => @company_members_tab_selected) -%>
+<% end -%>
+
+<% content_for :tab_panel do %>
+  <%= yield %>
+<% end %>
+
+<%= render :file => 'layouts/_tab_structure' -%>

@@ -1,0 +1,17 @@
+<% content_for(:page_title, "Upload an award") -%>
+<% form_for @award, :html => { :multipart => true } do |f| -%>
+<fieldset>
+	<h3>Award Details</h3>
+	<dl class="award_details">
+		
+		<dt class="title"><label for="award_title">Title</label></dt>
+		<dd class="title"><%= f.text_field :title, :size => nil, :tabindex => 1, :maxlength => '256' -%></dd>
+		<dt class="photo"><label>Photo</label></dt>
+		<dd class="photo"><input type="file" name="asset[uploaded_data]" id="asset_uploaded_data" tabindex="2"></dd>
+		<dd><p>Award images should be less than 2MB and be a JPEG/JPG, GIF, or PNG. We prefer a 90x90 image, but any square image will do.</p></dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Upload Award" class="button large" tabindex="3">
+	</div>
+</fieldset>
+<% end -%>

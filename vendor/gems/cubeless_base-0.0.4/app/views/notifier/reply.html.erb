@@ -1,0 +1,8 @@
+<p><strong>Guess what, <%= "#{@answer.profile.first_name}" %>? &nbsp;Remember when you answered:</strong><br /><br />
+&#8220;<%= @question.question %>&#8221;</p>
+<p><strong><%= link_to("#{@question.profile.screen_name}", @profile_url) %> has replied to your answer!</strong></p>
+<p>&#8220;<%= truncate @reply.text, :length => 75 %>&#8221;</p>
+<p><%= link_to("Click here", @question_url )%> to read it.
+<br /><br />
+Regards,<br />
+<%=@site_name%><br /><br /><br /></p>

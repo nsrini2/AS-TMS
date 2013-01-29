@@ -1,0 +1,5 @@
+ul.action_list { margin: 5px 0 0; overflow: hidden; zoom: 1; }
+	ul.action_list li { display: inline; margin: 0 5px 0 -5px; border-left: 1px solid #666; padding: 0 6px; font-size: 9px; white-space: nowrap; }
+		ul.action_list li a,
+		ul.action_list li span { font-size: 11px; }
+		ul.action_list li span.clicked { color: #aa0919; font-weight: bold; }

@@ -1,0 +1,7 @@
+<p><strong>Hello, <%= "#{@member.first_name}" %>!</strong></p>
+
+<p><strong><%= @group.owner.screen_name %></strong> has selected you as a Moderator for the group <strong><%=@group.name%></strong>! &nbsp;
+<%= link_to("Click here", @group_url )%> to view this group.
+<br /><br />
+Regards,<br />
+<%=@site_name%><br /><br /><br /></p>

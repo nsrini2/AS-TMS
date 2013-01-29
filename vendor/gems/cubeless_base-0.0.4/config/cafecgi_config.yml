@@ -1,0 +1,132 @@
+site_name: "Member Cafe"
+
+site_base_url: "http://cafecgi.cubeless.com"
+
+theme: 'theme_18'
+
+logo_file: "member_cafe_logo.png"
+
+favicon: "member_cafe_favicon.ico"
+
+terms_acceptance_required: true
+
+feedback_email: "connect@cgi.com"
+
+email_from_address: 'Member Cafe <no-reply@cubeless.com>'
+
+viewable_karma: true 
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+question_categories: [
+  "Work",
+  "Play",
+  "Life",
+  "Other"]  
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Business Unit"
+    completes_profile: true
+    matchable: false
+  - question: profile_2
+    label: "Tag Line"
+    completes_profile: true
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+  - question: profile_3
+    label: "Organization"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Office Phone"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Mobile Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Fax"
+    completes_profile: true
+    matchable: false
+  - question: profile_7
+    label: "Location"
+    completes_profile: true
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'email',
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7'
+  ]
+  business_card: [
+    'profile_1',
+    'profile_2', 
+    'profile_3', 
+    'email'
+  ]
+
+
+profile_complex_questions:
+  - title: "On the job"
+    questions:
+      - question: question_12
+        label: "What is your current role at CGI?"
+        completes_profile: true
+        matchable: true
+      - question: question_1
+        label: "What are your skills or expertise?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "What is your #1 strength?"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What schools have you attended, and what degrees and professional certifications do you hold?"
+        completes_profile: true
+        matchable: true
+  - title: "On my own"
+    questions:
+      - question: question_5
+        label: "What’s your favorite thing to do away from the office?"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What are your hobbies?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What music do you listen to most?"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What is your favorite place to have lunch?"
+        completes_profile: true
+        matchable: true        
+  - title: "More about me"
+    questions:
+      - question: question_9
+        label: "Where did you grow up?"
+        completes_profile: true
+        matchable: true     
+      - question: question_10
+        label: "Share something interesting about yourself that few people know."
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "If you could do anything else as a job, what would it be?"
+        completes_profile: true
+        matchable: true     
+      - question: question_6
+        label: "If you could meet a famous person in history, who would it be and why?"
+        completes_profile: true
+        matchable: true

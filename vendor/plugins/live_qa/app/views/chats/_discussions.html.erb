@@ -1,0 +1,23 @@
+<div id="chat_discuss_container">
+  <% if chat.on_air? %>
+    <h3 class="divider">Live Chat</h3>
+  <% end %>
+
+  <div id="chat_discuss">
+    <% if chat.on_air? %>    
+      <%= render :partial => "present_discussion", :locals => { :chat => chat, :question => chat.topics.active.last, :newest_post_id => newest_post_id } %>
+    
+      <br/><br/>
+    <% end %>
+    
+    <h3 class="divider">Past Questions</h3>
+    
+    <div id="past_discussions" class="accordion">      
+      <% chat.topics.closed.reverse.each do |q| %>
+          <%= render :partial => "past_discussion", :locals => { :question => q } %>
+      <% end %>    
+    </div>
+    
+
+  </div>
+</div>

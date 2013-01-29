@@ -1,0 +1,16 @@
+<div class="list_action_button" >
+  <%= link_to "Schedule a Live Chat Session", "" %>
+</div>
+<h2 class="page_title">Current and Upcoming Chat Sessions</h2>
+
+<div>
+  <%= render :partial => "chats", :locals => { :chats => @chats }%>
+</div>
+
+
+<br/>
+<h2>Past Discussions</h2>
+
+<div>
+  <%= render :partial => "chats", :locals => { :chats => @past_chats }%>
+</div>

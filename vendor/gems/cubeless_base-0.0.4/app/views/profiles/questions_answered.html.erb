@@ -1,0 +1,11 @@
+<% content_for(:page_title, @profile == current_profile ? "Questions I Answered" : "Questions #{@profile.full_name} Answered") -%>
+<%= filter_sort_controls('Question') %>
+
+<% collection_content_for @question_summaries do%>
+	<div id="questions">
+			<%= render( :partial => 'questions/questions', :locals => {:questions => @question_summaries, :questions_for => @profile} )%>
+		</div>
+	<div id="paging">
+			<%= render_pagination @question_summaries %>
+	</div>
+<%end%>

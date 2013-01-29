@@ -1,0 +1,28 @@
+<h1>Cubeless Environment</h1> 
+	<table class="border_table" cellspacing="0" width="100%">
+	<% for header in @cubeless_params.select {|k,v| k.match("^[^HTTP].*")} %>
+	  <tr class="<%= cycle("even", "odd") -%>">
+	    <td class="details">
+	     <%=header[0]%>
+			</td>
+			<td>
+				<%= truncate(header[1].to_s, :length => 70) %>
+			</td>    
+	  </tr>
+	<% end %>
+	</table>
+	
+	<table class="border_table" cellspacing="0" width="100%">
+	<% for header in @cubeless_params.select {|k,v| k.match("^HTTP.*")} %>
+	  <tr class="<%= cycle("even", "odd") -%>">
+	    <td class="details">
+				<%=header[0]%>
+			</td>
+			<td>
+				<%= truncate(header[1].to_s, :length => 70) %>
+			</td>    
+	  </tr>
+	<% end %>
+	</table>
+
+<%= @cubeless_lbl -%> <span class='late'> <%=@cubeless_ver -%> </span>Delta Rev: <span class='late'><%= @cubeless_delta_ver-%></span>

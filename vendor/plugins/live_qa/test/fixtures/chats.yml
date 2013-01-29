@@ -1,0 +1,47 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+empty:
+  host_id: 
+  title: 
+  started_at: 
+  ended_at: 
+  duration: 
+  start_at:
+  active:    
+
+valid:
+  id: 1
+  host_id: 1
+  title: MyString
+  started_at: 2011-01-19 13:14:05
+  ended_at: 2011-01-19 13:14:05
+  duration: 60
+  start_at: 2011-01-19 13:14:05
+  active: 1
+
+active:
+  host_id: 1
+  title:  active chat
+  started_at: 2011-01-19 13:14:05
+  ended_at: 
+  duration: 60
+  start_at: 2011-01-19 13:14:05
+  active: 1
+  
+inactive:
+  host_id: 1
+  title:  closed chat
+  started_at: 2011-01-19 13:14:05
+  ended_at: 2011-01-19 13:14:06
+  duration: 60
+  start_at: 2011-01-19 13:14:05
+  active: 0  
+  
+closed:
+  host_id: 1
+  title:  closed chat
+  started_at: 2011-01-19 13:14:05
+  ended_at: 2011-01-19 13:14:06
+  duration: 60
+  start_at: 2011-01-19 13:14:05
+  active: 1  

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="/css/base.css" type="text/css" media="screen" charset="utf-8">
+<style>
+
+h1, h2, h3 { font-size: 15px; }
+h3 { font-size: 12px;}
+div#page { width: 250px; font-color: #333; }
+	div#page a { text-decoration: none; font-style: none; color: #333; }
+dl { clear: both; padding: 0; margin: 0; font-size: 12px; }
+	dd.photo { width: 80px; float: left; padding: 0; border: 1px solid #ccc; display: inline; }
+	dd.photo .photo_wrapper { margin: 0; padding: 0;}
+	dd.summary { width: 120px; float: left; clear: none; margin: 0; padding: 0; font-size: 12px; display: inline; }
+	dd.summary_item { display: block; margin: 0; padding: 0; }
+		dd.summary_item a { display: block; width: 100%; padding: 6px 0 6px 15px; border-width: 1px; border-color: #ffe #aaab9c #ccc #fff; border-style: solid; }
+			dd.summary_item a:hover { background: transparent; border-color: #aaab9c #fff #fff #ccc;}
+			
+dd.random_profiles {  }
+div.random_profile { float: left; width: 50px; margin: 0 8px 0 0; display: inline; }
+
+blockquote { background-image: url(/images/open_quote.gif); background-repeat: no-repeat;
+background-position: left 5px; font-style: italic; margin: 0; width: 220px;}
+blockquote span { background-image: url(/images/close_quote.gif); background-repeat: no-repeat; background-position: right bottom; display: block; }
+blockquote span a {  display: block; text-decoration: none; color: #666; padding: 10px 10px 10px 25px;}
+
+dl:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; } 
+dl { zoom: 1; }
+
+</style>
+<base target="_parent">
+</head>
+<body>
+<div id="page">
+<h1><%= @profile.screen_name %>'s <%= site_name %></h1>
+
+<dl>
+	<dd class="photo"><%= primary_photo_for(@profile, :thumb => :thumb_80, :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true) %></dd>
+	<dd class="summary">
+	<dl>
+		<dd class="summary_item"><a href="<%= site_base_url + matched_questions_profile_path(@profile) %>"><span class="number"><%= @new_questions %></span> New Questions</a></dd>
+		<dd class="summary_item"><a href="<%= site_base_url + groups_profile_path(@profile) %>"><span class="number"><%= @new_group_posts %></span> New Group Posts</a></dd>
+		<dd class="summary_item"><a href="<%= site_base_url + profile_watches_path(@profile) %>?filter_scope=blog_posts"><span class="number"><%= @new_blog_posts %></span> New Blog Posts</a></dd>
+	</dl>
+	</dd>
+</dl>
+
+<dl>
+	<dt><h3>Group Activity</h3></dt>
+	<% if @latest_group_post -%>
+	<dd class="group">
+		<h3><%= link_to(@latest_group_post.group.name, site_base_url + group_post_path(@latest_group_post)) %></h3>
+	</dd>
+	<dd class="group_post">
+		<blockquote>
+			<span><a href="<%= site_base_url + group_post_path(@latest_group_post) %>"><%= @latest_group_post.post %></a></span>
+		</blockquote>
+	</dd>
+	<% else -%>
+	<dd>No recent group activity</dd>
+	<% end -%>
+</dl>
+
+<dl>
+	<dt><h3>Watch List</h3></dt>
+	<% if @latest_answered_on_watch_list -%>
+	<dd>Q: <span class="question"><%= @latest_answered_on_watch_list.question %></span></dd>
+	<dd>A: <span class="answer"><%= @latest_answered_on_watch_list.answers.last.answer %></span></dd>
+	<% else -%>
+	<dd>No answers for any of your watch list questions</dd>
+	<% end -%>
+</dl>
+
+<dl>
+	<dt><h3>Explore Profiles</h3></dt>
+	<dd class="random_profiles">
+		<% @random_profiles.each do |profile| -%>
+			<div class="random_profile">
+				<a href="<%= site_base_url + profile_path(profile) %>">
+					<img class="photo tooltip"
+						height="50"
+						width="50"
+						title="<%= profile.screen_name %>"
+						src="<%= site_base_url + primary_photo_path_for(profile) %>"
+						alt="avatar">
+				</a>
+			</div>
+		<% end -%>
+	</dd>
+</dl>
+
+</div>
+
+<%= javascript_include_merged( :base ) -%>
+</body>
+</html>

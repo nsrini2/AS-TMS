@@ -1,0 +1,127 @@
+h2.chat_title {
+  margin-bottom: 0;
+}
+
+div#chat_queue_container {
+  @include grid-unit-base;
+  @include grid-width(5);
+  @include alpha;
+}
+div#chat_discuss_container {
+  @include grid-unit-base;
+  @include grid-width(11);
+  @include omega;
+}
+
+div#chat_queue_container h3, div#chat_discuss_container h3 {
+
+}
+div#chat_queue_container ul, div#chat_queue_container ol {
+
+}
+
+div#chat_queue_container > div {
+
+}
+div#chat_queue_container div {
+
+}
+
+div#chat_queue_container ul li {
+
+}
+
+.past_style {
+  color: #aaa;
+}
+
+div#chat_queue {
+  
+}
+div#chat_queue > div {
+  background: $tertiary;
+}
+div#chat_queue ul {
+
+}
+div#chat_queue li {
+
+}
+div#chat_queue li.past, div#chat_queue li.past div, div#chat_queue li.past div a {
+  @extend .past_style;
+}
+div#chat_queue ul li.present, div#chat_queue ol li.present {
+  @extend .medium;
+  
+  color: $primary;
+}
+div#chat_queue ul li.future, div#chat_queue ol li.future {
+
+}
+
+
+div#chat_discuss {
+
+}
+div#chat_discuss h3 {
+  background: $tertiary;
+  border: 1px solid $primary;
+}
+div#chat_dicuss h3:first-child {
+
+}
+div#chat_discuss h3.past, div#chat_discuss h3.past a {
+  @extend .past_style;
+}
+div#chat_discuss div.ui-accordion-content {
+  border: 1px solid $primary;
+  border-top: 0;
+}
+div#chat_discuss div.scrollable {
+  overflow: scroll;
+  height: $line-height*10;
+}
+div#chat_discuss table {
+
+}
+div#chat_discuss table tr.host {
+  background: $highlight;
+}
+div#chat_discuss table tr td:first-child {
+  text-align: right;
+  /*margin-right: 10px;*/
+  
+  @include grid-width(2);
+}
+div#chat_discuss table tr td:last-child {
+  @extend .padded;
+  
+  @include grid-width(9);
+}
+
+
+div#chat_discuss div#present_container #post_container {
+  @include grid-prefix(1);
+  @include grid-width(10);
+  @include clearfix;
+  
+  margin-top: $line-height;
+}
+div#chat_discuss div#present_container #post_container #post_text {
+  @include grid-unit-base;
+  @include grid-width(8);
+  @include alpha;
+}
+div#chat_discuss div#present_container #post_container #post_submit {
+  @include grid-unit-base;
+  @include grid-width(2);
+
+  @include omega;
+}
+
+div#chat_discuss div#present_container #post_container textarea {
+  width: 100%;
+}
+div#chat_discuss div#present_container #post_container input[type=submit] {
+  width: 100%;
+}

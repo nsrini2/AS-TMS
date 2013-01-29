@@ -1,0 +1,6 @@
+<% content_for(:activity_stream_message, 'selected') -%>
+<% content_for(:page_title, "Create Activity Stream Message") -%>
+<div class="content">
+	<h3>Create Activity Stream Message </h3>
+	<%= render :partial => "form", :locals => {:activity_stream_message => ActivityStreamMessage.new() }%>
+</div>

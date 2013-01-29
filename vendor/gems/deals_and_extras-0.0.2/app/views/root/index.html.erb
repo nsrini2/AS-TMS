@@ -1,0 +1,66 @@
+<%# DEALS AND EXTRAS %>
+<%= stylesheet_link_tag "deals", "filter", "sort", "reviewDialogs", "searchDeal", "myFolder", "facebox", :cache => "deals_and_extras" %>
+
+<% if @show_status %>
+<div id="as_status">
+    <%= @user.inspect %>
+    <p>Logged in: <%= logged_in?.to_s -%></p>
+</div>	
+<% end %>
+
+<div id="deals-header">
+	<h2>DEALS & EXTRAS</h2>
+	<p>Demonstrate travel expertise and deliver a unique customer experience with Deals & Extras. Easily access unique travel extras, like attractions and shows, city tours, and ground transportation, from all over the world, all in one place.  Interested in hotel deals?  Simply click the Deals check box to view hotel deals here, too.</p>
+</div>
+
+<div id="filter" class="filterShowing">
+  <%= render "/filters/filter" %>
+</div>
+
+<div id="rightContent" class="dealTablePartial">
+   
+  <div id="sortView">
+    <%= render "/sorts/sort" %>
+  </div>                     
+
+  <div id="navigationView">
+    <%= render "/navigations/navigation" %>
+  </div>
+
+  <div id="contentContainer">
+  </div>
+</div>
+
+
+<% if false %>
+
+  <div id="de_visitor_overlay" style="display:none;">
+  
+    <div class="content2" style="width: 100%;">
+      <center>
+        <div style="margin: 6px auto 0; width: 600px;">
+          <p class="deal_title">
+            <strong>
+            simple search. expert reviews. seamless sharing.
+            </strong>
+          </p>
+
+          <object style="margin: 0 auto;" id="vp1KYwj1" width="432" height="240" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param name="movie" value="http://static.animoto.com/swf/w.swf?w=swf/vp1&e=1314822339&f=KYwj1pw9BxCAySfugSfQhw&d=74&m=p&r=360p&volume=100&start_res=360p&i=m&ct=Play%20%26%20Win%20SneakAPeek%20Challenge!&cu=http://www.agentstream.com/deals_extras/game&options="></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed id="vp1KYwj1" src="http://static.animoto.com/swf/w.swf?w=swf/vp1&e=1314822339&f=KYwj1pw9BxCAySfugSfQhw&d=74&m=p&r=360p&volume=100&start_res=360p&i=m&ct=Play%20%26%20Win%20SneakAPeek%20Challenge!&cu=http://www.agentstream.com/deals_extras/game&options=" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="432" height="240"></embed></object>
+      
+          <p class="deal_title" style="font-weight: normal; margin-top: 10px;">
+            say hello to the all-new agentstream deals + extras.
+          </p>
+    
+          <p>
+            <b>Want a sneak peek?</b> <u><%= link_to "Login", "/account/login" %></u> or <u><%= link_to "create a new account", "/account/signup" %></u> to access the exclusive preview prior to the official public release at the end of September.
+          </p>
+          <p>
+            <b>Play to win the Sneak-A-Peek Challenge.</b> Win up to 5,000 <a href="http://www.sabrerewardsplus.com">Sabre Rewards Plus</a> points by earning one of the top three scores in the Sneak-A-Peek Challenge. <b><u><a href="/deals_extras/game" target="_blank">Play here.</a></u></b>
+          </p>
+        </div>
+      </center>
+    </div>  
+  
+  </div>
+
+<% end %>

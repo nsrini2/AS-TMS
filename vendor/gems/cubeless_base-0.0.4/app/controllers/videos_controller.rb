@@ -1,0 +1,140 @@
+class VideosController < ApplicationController
+  allow_access_for :index => [:content_admin]
+  allow_access_for :edit => [:content_admin]
+  allow_access_for :new => [:content_admin]
+  before_filter :clean_tags, :only => [:create, :update]
+
+  before_filter :verify_video_enabled
+  
+  # explore and show are globally accessible
+
+  # GET /videos
+  # GET /videos.xml
+  def index
+    @videos = Video.find(:all)
+
+    respond_to do |format|
+      format.html {
+        render :layout => 'home_admin_sub_menu'
+      }
+      format.xml  { render :xml => @videos }
+    end
+  end
+
+  # GET /videos/1/admin
+  # GET /videos/1/admin.xml
+  def admin
+    @video = Video.find(params[:id])
+
+    # Bump the video to check the encoding process
+    @video.encoding_status
+    
+    respond_to do |format|
+      format.html {
+        render :layout => 'home_admin_sub_menu'
+      }
+    end
+  end
+  
+  # GET /videos/1
+  # GET /videos/1.xml
+  def show
+    @video = Video.find(params[:id])
+    
+    # Bump the video to check the encoding process
+    @video.encoding_status
+    
+    @selected = 'videos_tab'
+    render :layout => 'exploration'
+  end
+  
+  def remote
+    @video = Video.find(params[:id])
+    
+    redirect_to @video.private_s3_url
+  end
+
+  def remote_image
+    @video = Video.find(params[:id])
+    
+    redirect_to @video.private_s3_image_url
+  end
+
+  # GET /videos/new
+  # GET /videos/new.xml
+  def new
+    @video = Video.new
+
+    respond_to do |format|
+      format.html {
+        render :layout => 'home_admin_sub_menu'
+      }
+      format.xml  { render :xml => @video }
+    end
+  end
+
+  # GET /videos/1/edit
+  def edit
+    @video = Video.find(params[:id])
+    
+    render :layout => 'home_admin_sub_menu'
+  end
+
+  # POST /videos
+  # POST /videos.xml
+  def create
+    @video = Video.new(params[:video])
+    @video.profile = current_profile
+
+    respond_to do |format|
+      if @video.save
+        flash[:notice] = 'Video was successfully created.'
+        format.html { redirect_to(admin_video_path(@video)) }
+        format.xml  { render :xml => @video, :status => :created, :location => @video }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @video.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /videos/1
+  # PUT /videos/1.xml
+  def update
+    @video = Video.find(params[:id])
+
+    respond_to do |format|
+      if @video.update_attributes(params[:video])
+        flash[:notice] = 'Video was successfully updated.'
+        format.html { redirect_to(@video) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @video.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /videos/1
+  # DELETE /videos/1.xml
+  def destroy
+    @video = Video.find(params[:id])
+    @video.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(videos_url) }
+      format.xml  { head :ok }
+    end
+  end
+  
+  def encoding_info
+    respond_to do |format|
+      format.html { render(:partial => 'videos/encoding_info', :layout => '/layouts/popup') }
+    end
+  end
+  
+  
+  def clean_tags
+    params[:video][:tag_list].tr!("'","")
+  end
+end

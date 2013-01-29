@@ -1,0 +1,6 @@
+<%= render(:file =>'css/components/ui/core.rcss')       %>
+<%= render(:file =>'css/components/ui/theme.rcss')      %>
+<%= render(:file =>'css/components/ui/accordion.rcss')  %>
+<%= render(:file =>'css/components/ui/datepicker.rcss') %>
+<%= render(:file =>'css/components/ui/dialog.rcss')     %>
+<%= render(:file =>'css/components/ui/mods.rcss')       %>

@@ -1,0 +1,15 @@
+<% form_for :question, :url => questions_path, :html => { :method => :post } do |f| -%>
+<%= f.hidden_field :open_until, :value => (Date.today + 30).strftime("%B %d, %Y") -%>
+	<fieldset>
+		<dl>
+			<dt class="category"><%= f.label(:category, "Category") -%></dt>
+			<dd class="category"><%= f.select(:category, Question.categories, { :prompt => 'Select a category' }) -%></dd>
+			<dt class="question"><%= f.label(:question, "Question")%></dt>
+			<dd class="question"><%= f.text_area :question, :maxlength => '4000' -%></dd>
+			<dt class="closing_date">This question will close to new answers automatically on <span id="question_close_date"><%= (Date.today + 30).strftime("%B %d, %Y") -%></span></dt>
+		</dl>
+		<div class="buttons">
+			<input type="submit" name="commit" value="Ask Question" class="button large">
+		</div>
+	</fieldset>
+<% end -%>

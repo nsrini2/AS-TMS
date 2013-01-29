@@ -1,0 +1,20 @@
+<h2>Editing Profile Question Section Ordering</h2>
+
+<% form_for(:site_profile_question_section, @site_profile_question_section, 
+						:url => reorder_site_admin_site_profile_question_sections_path,
+						:html => {:class => "admin_form", :method => :post}, 
+						:builder => AdminFormBuilder) do |f| %>
+
+	<dl class="admin_details">
+		<% @site_profile_question_sections.each do |spqs| %>
+			<%= f.label spqs.name %>
+			<%= f.text_field :position, :value => spqs.position, :name => "sections[#{spqs.id}]" %>
+		<% end %>
+	</dl>
+  
+	<div class="buttons">
+    <%= f.submit "Save", :class => "button" %>
+		<input type="submit" name="reset" value="Cancel" class="button light">
+  </div>
+<% end %>
+

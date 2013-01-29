@@ -1,0 +1,20 @@
+<% content_for(:title, "Present this award to someone!") -%>
+<% form_for :profile_award, :url => profile_awards_path, :class => "assign_award" do |f| -%>
+		<%= f.hidden_field :id, :class => 'suggestion_id' %>
+		<%= f.hidden_field :award_id, :value => award_id %>
+		<dl>
+			<dt><label for="profile_award_name">Recipient Name</label></dt>
+			<dd class="instr"> Begin typing a name and select the recipient from the list</dd>
+			<dd><%= f.text_field :name -%></dd>
+			<dt><label for="profile_karma_points">Add Additional Karma Points</label></dt>
+			<dd class="number"><%= f.text_field :karma_points, :maxlength => 5, :size => 5 %></dd>
+			<dt><label>Awarded By</label></dt>
+			<dd class="instr"> This can be any name (no search assist provided)</dd>
+			<dd><%= f.text_field :awarded_by %></dd>
+		</dl>
+			
+	<div class="buttons">
+		<input type="submit" name="commit" value="Present Award" class="button medium">
+		<input type="button" value="Cancel" class="button medium light close">
+	</div>
+<% end -%>

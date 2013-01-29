@@ -1,0 +1,4 @@
+<% content_for(:page_title, @profile == current_profile ? "Questions I Asked" : "Questions #{@profile.full_name} Asked") -%>
+<div id="myQuestions">
+	<%= render :partial => 'my_questions', :locals => {:questions => @question_summaries} %>
+</div>

@@ -1,0 +1,22 @@
+<%= will_paginate @countries %>
+<%= page_entries_info @countries %>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Country</th>
+            <th>Abbreviation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @countries.each do |c| -%>
+            <tr class="<%= cycle("odd", "even") %>">
+                <td><%= c.id %></td>
+                <td><%= c.name %></td>
+                <td><%= c.cctld %></td>
+            </tr>
+        <% end -%>
+    </tbody>
+</table>
+<%= will_paginate @countries %>
+<%= page_entries_info @countries %>

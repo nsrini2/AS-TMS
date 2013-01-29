@@ -1,0 +1,20 @@
+<%= will_paginate @supplier_types %>
+<%= page_entries_info @supplier_types %>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @supplier_types.each do |s| -%>
+            <tr>
+                <td><%= s.id %></td>
+                <td><%= s.supplier_type %></td>
+            </tr>
+        <% end -%>
+    </tbody>
+</table>
+<%= will_paginate @supplier_types %>
+<%= page_entries_info @supplier_types %>

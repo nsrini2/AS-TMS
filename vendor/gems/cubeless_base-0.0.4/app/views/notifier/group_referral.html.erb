@@ -1,0 +1,6 @@
+<p><strong>You are awesome!  Well, at least according to <%=@referred_by.full_name%> who has referred the following question to <%= link_to (@group.name, group_url(@group)) %>:</strong><br /><br />
+&#8220;<%= @question.question %>&#8221;</p>
+<p><strong>Prove them right by answering it <a href="<%=@site_base_url%>/questions/<%= @question.id %>/answers/new">here</a></strong></p>
+<p><br />Regards,<br /><br /><%=@site_name%><br /></p>
+<p style="padding:20px 0 0 30px;font-size:12px;">You control the communications you get from us. You can change your
+	<%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.<br /></p>

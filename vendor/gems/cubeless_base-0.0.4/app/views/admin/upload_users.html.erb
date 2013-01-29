@@ -1,0 +1,39 @@
+<% content_for(:page_title, 'Upload Users') -%>
+<% if @job.status.nil? %>
+	<div id="upload_users">
+		Choose an Action below (Sync, Add, Update or Delete) and then browse for your users file. If you'd like to do a test run to make sure your file is error free, choose the Test Run Only checkbox.
+		<% form_tag(upload_users_admin_path, :multipart => true, :method => :post, :id => "upload_users_form") do %>
+			<div class="form_section">
+				<label for="mode">Action</label>
+				<%=select_tag 'mode', options_for_select([['Select...','']]+['Sync','Add','Update','Delete'].map{|x|[x,x.downcase]})%>
+			</div>
+			<div class="form_section">
+				<label for="user_data">Users File</label>
+				<%=file_field_tag 'user_data', :size => 50 %>
+			</div>
+			<%=check_box_tag 'test_run', nil, true, :class => "checkbox"%> <label for="test_run" class="inline">Test Run Only</label>
+			<%=submit_button "Upload" %>
+		<% end %>
+	</div>
+	<div id="sidebar">
+		<% if @job.response_message %>
+			<h3>Last Job Status</h3>
+			<strong>Response:</strong> <%=@job.response_message%>
+			<label>Results</label> 
+				<ul>
+					<% @job.response_hash.each do |k,v| %>
+						<li><%=k.to_s.titleize%>: <%=v%></li>
+					<% end %>
+				</ul>
+				<p><%=link_to('Download',upload_users_admin_path(:do => 'user_upload_log'))%> the output for this job or <%=link_to('clear',upload_users_admin_path(:do => 'clear_status'))%> these results permanently.</p>
+		<% end %>
+		<h3>Export Users</h3>
+		<p>Click <%=link_to('here',upload_users_admin_path(:do => 'export_csv'))%> to export all users to a CSV file.</p>
+	</div>
+<% else %>
+	<h2>Job in progress... (<%=@job.status%>)</h2>
+	<img src="/images/ajax_loader_bar.gif" width="220" height="19" alt="upload in progress" /><br />
+	This page will automatically refresh to update the status.
+	<script>setTimeout("window.location.reload(true)",10000);</script>
+<% end %>
+

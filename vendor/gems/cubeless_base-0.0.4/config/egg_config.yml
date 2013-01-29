@@ -1,0 +1,134 @@
+theme: 'theme_15'
+
+logo_file: "egg_logo.jpg"
+
+favicon: "egg_favicon.ico"
+
+site_name: "Executive Girlfriend's Group"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: ["Innovation", "Leadership", "Growth", "Business Tactics – Sales/Mktg", "Business Tactics – Operations", "Business Tactics – Finance/HR", "International", "Entrepreneurs Unite", "Plan B – Career Insurance", "Jobs", "Wellness", "Life Balance/Family", "Financial Health", "Giving Back", "EGG Call Topics/Speakers"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Company Name"
+    completes_profile: true
+    matchable: false
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "EGG City"
+    completes_profile: false
+    matchable: true
+  - question: profile_4
+    label: "Business Phone"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Cell Phone"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_7
+    label: "Company or Blog URL"
+    completes_profile: true
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'email',
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7'
+  ]
+  business_card: [
+    'email',
+    'profile_3',
+    'profile_4',
+    'profile_5'
+  ]
+
+profile_complex_questions:
+  - title: "The Personal Side of Me"
+    questions:
+      - question: question_1
+        label: "Marital Status & Spouse/Partner Info"
+        example: "e.g. 1990, Michael, VP Admin"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Something surprising we may not know about you?"
+        example: "e.g. bungee jumping champion"
+        completes_profile: false
+        matchable: true
+      - question: question_3
+        label: "Kid/Pet Info"
+        example: "e.g. Kiera 10, Sergey 8 both at home, JoJo (sealpoint siamese)"
+        completes_profile: false
+        matchable: true
+      - question: question_4
+        label: "Where have you lived?"
+        example: "e.g. Elizabeth IN, Rushville IN, Greenfield IN, Milwaukee WI, Denver CO, Dallas TX, Atlanta GA, Tampa FL"
+        completes_profile: true
+        matchable: true
+
+  - title: "The Social Side of Me"
+    questions:
+      - question: question_5
+        label: "What Social Networks are you active in? (daily/weekly)"
+        example: "e.g. Facebook, LinkedIn, Plaxo and Twitter"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What are your passions?"
+        example: "e.g. Reading, Travel, Food and Wine"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What are your favorite places to travel? (including dreams)"
+        example: "e.g. Napa Valley, Cruising on small ships, Spa, Safari"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "How are you creating your legacy?"
+        example: "e.g. Solutionz Live network, EGG, building KidsforHumanity.org and mentoring"
+        completes_profile: false
+        matchable: true
+
+  - title: "The Business Side of Me"
+    questions:
+      - question: question_9
+        label: "What do you love/do well?"
+        example: "e.g. Strategy, Ideas to Income, Talk Show Host, Mentor"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "How many years in the travel industry?"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What companies have you worked for/with?"
+        example: "e.g. Bay Travel (MKE), Travelink (DEN), Sabre (DFW), Worldspan (ATL), SITA (ATL), Solutionz Group (TPA), LeisureLogix (TPA), Solutionz Media (TPA) "
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "What other industries have you served?"
+        example: "Financial Services, Membership, Mobile Technology, Investment Community"
+        completes_profile: true
+        matchable: true

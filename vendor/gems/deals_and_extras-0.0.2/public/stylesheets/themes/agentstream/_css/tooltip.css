@@ -1,0 +1,20 @@
+/*.tooltip { cursor: text; }*/
+/* line 2, ../../../../../app/stylesheets/themes/agentstream/tooltip.scss */
+#tooltip {
+  position: absolute;
+  z-index: 3000;
+  border: 1px solid #111;
+  padding: 5px;
+  background: #ff9;
+}
+
+/* line 3, ../../../../../app/stylesheets/themes/agentstream/tooltip.scss */
+#tooltip h3 {
+  font-size: 11px;
+  font-weight: normal;
+}
+
+/* line 4, ../../../../../app/stylesheets/themes/agentstream/tooltip.scss */
+#tooltip h3, #tooltip div {
+  margin: 0;
+}

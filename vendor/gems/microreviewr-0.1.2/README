@@ -1,0 +1,33 @@
+This is a Ruby wrapper for the Sabre Microreviews service.
+
+=== Dependencies
+
+  * rest-client (tested on 1.6.0)
+
+=== Usage
+
+Important: api_key must be included as a param to every request.
+
+== Items
+
+= Reading
+
+Microreview::Item.find(:api_key => "abc123")
+Microreview::Item.find_by_external_type_and_external_id('Hotel', 127, :api_key => "abc123")
+
+== Reviews
+
+= Reading
+
+Microreview::Review.find(:api_key => "abc123") #=> [<#Sabre::Microreview>, <#Sabre::Microreview>]
+
+= Creating
+
+Microreview::Review.create(:api_key => "abc123", :microreview => {:quote => "I love it", :state => true})
+
+# Even create associated item and author
+Microreview::Review.create(:api_key => "abc123", :item => {:name => "Dallas"}, :microreview => {:quote => "I love it", :state => true}, :author => {:first_name => "Mark"})
+
+=== RoadMap
+
+Move to a client type connection. Something like: Microreview::Client.connect(api_key) #=> session

@@ -1,0 +1,61 @@
+<%
+content_for(:home_tab, 'selected')
+content_for(:page_title, @group.name)
+-%>
+
+<%= action_list_for([
+	(render_watch_link(@group) unless hide_for_sponsor),
+	(link_for_group_action(@group) unless hide_for_sponsor),
+	render_abuse(@group),
+	(link_to_delete(@group) if shady_admin_content)
+], :class => 'group_actions') -%>
+
+<div id="group_hub" <%= 'class="with_stream"' if group_member_or_public_content(@group) %>>
+	<div class="group_card <%= 'sponsored' if @group.is_sponsored? -%>">
+		<%= primary_photo_for(@group, :thumb => :thumb_large, :hide_sponsor_sash => true, :hide_group_icon => true) -%>
+		<div class="details">
+			<h3><%= @group.name -%></h3>
+			<p class="founded_on">Founded on <%= short_date(@group.created_at) -%> &nbsp;&ndash;&nbsp; <%= pluralize(@group.group_memberships_count, "member", "members") -%> &nbsp;&ndash;&nbsp; <%= "#{@group.stat_text} Activity"%></p>
+			<%= render_inline_editor_for(@group, :description, update_group_path( @group ), :class => 'description', :type => 'expandable', :maxlength => '500', :tooltip => "Click to edit the Group's description") -%>
+			<h4>Things We Know About</h4>
+			<%= render_inline_editor_for(@group, :tags, update_group_path( @group ), :class => 'tags', :type => 'expandable', :maxlength => '300', :tooltip => "Click to edit the Group's knowledge", :placeholder => "Click to add to your Group's knowledge") -%>
+			<p class="last_edited">Last edited by <%= @group.last_updater.screen_name -%> <%= timeago(@group.updated_at) -%></p>
+		</div>
+	</div>
+
+	<div class="flash" id="notes"> 
+		<script type="application/json"><%=
+			{
+				:src => "/bin/NoteBoard.swf", 
+				:width => (group_member_or_public_content(@group) ? 585 : 794), 
+				:height => 193,
+				:params => { :bgcolor => '#869ca7', :quality => 'high' },
+				:flashvars => {
+					:authenticity_token => form_authenticity_token,
+					:note_url => formatted_notes_group_path(@group, :xml) + '%3Flimit=50',
+					:receiver_type => 'Group',
+					:receiver_id => @group.id,
+					:mine => @group.is_member?(current_profile),
+					:admin => current_profile.has_role?(Role::ShadyAdmin)
+				},
+				:attributes => { :align => 'middle' }
+			}.to_json
+		-%></script>
+	</div>
+	<div id="group_widgets">
+		<% group_member_or_public_content @group do -%>
+			<%= render :partial => 'groups/group_announcement', :locals => { :group_announcement => @group.group_announcement } -%>
+			<%= render :partial => 'widget_drive_bys' -%>
+		<% end -%>
+	</div>
+</div>
+
+<% group_member_or_public_content @group do -%>
+<div id="stream" class="group">
+	<script type="application/json">{ url: '/groups/<%= @group.id %>/stream' }</script>
+	<div id="online_now"><%= image_tag("/images/onlineNow.gif", :size => "18x14", :alt => "#{@active_users} Online Now") -%><%= "#{@group.active_users_count} Online Now" -%></div>
+	<div class="events">
+		<%= render :partial => 'event_stream' -%>
+	</div>
+</div>
+<% end -%>

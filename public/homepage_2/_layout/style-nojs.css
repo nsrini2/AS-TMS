@@ -1,0 +1,12 @@
+/*---------------------------------------------------------------------------------------------
+
+	Stylesheet used when Javascript is turned off
+
+---------------------------------------------------------------------------------------------*/
+
+.nojs-warning{ padding:10px 0; text-align:center; color:#ffffff; background-color:#ff0000; width:1000px; margin:0 auto; }
+.nojs-warning strong{ color:#ffffff; }
+
+#slideshow-nav{ display:none; }
+
+

@@ -1,0 +1,34 @@
+--- 
+javascripts:
+- base: 
+  - jquery
+  - jquery/bgiframe
+  - jquery/livequery
+  - jquery/metadata
+  - jquery/each_slice
+  - jquery/expandable
+  - jquery/countable
+  - jquery/cube_countable
+  - jquery/cleartypefix
+  - jquery/jeditable
+  - jquery/jeditable.extensions
+  - jquery/tooltip
+  - jquery/supportminheight
+  - jquery/ui/ui.core
+  - jquery/ui/ui.accordion
+  - jquery/ui/ui.autocomplete
+  - jquery/ui/ui.datepicker
+  - jquery/ui/ui.draggable
+  - jquery/ui/ui.droppable
+  - jquery/ui/ui.sortable
+  - jquery/ui/ui.dialog
+  - jquery/noconflict
+  - jquery/jquery.progressbar.min
+  - jquery/jquery.html5_form_custom
+  - swfobject
+  - global
+- admin:
+  - admin
+stylesheets:
+- base:
+  - screen

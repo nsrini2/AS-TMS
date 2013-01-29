@@ -1,0 +1,14 @@
+<div id="chat_discuss_container">
+  <h3>Discussions</h3>
+  <div id="chat_discuss">
+    <div class="accordion">
+      <% @past_questions.each do |q| %>
+          <%= render :partial => "past_discussion", :locals => { :question => q } %>
+      <% end %>    
+    </div>
+    
+    <% if @present_question %>
+      <%= render :partial => "present_discussion", :locals => { :question => @present_question } %>
+    <% end %>
+  </div>
+</div>

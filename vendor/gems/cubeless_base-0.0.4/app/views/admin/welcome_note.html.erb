@@ -1,0 +1,25 @@
+<%
+profile_id = @welcome_note.profile_id || ''
+screen_name = @welcome_note.profile ? @welcome_note.profile.screen_name : ''
+note_text = @welcome_note.text ? @welcome_note.text : ''
+-%>
+<% content_for(:page_title, "Manage #{params[:action].gsub('_', ' ').titleize}") -%>
+<div class="content">
+	<h3>Set a Welcome Note</h3>
+	<% form_for :welcome_note, @welcome_note, :html => {:id => 'welcome_form'} do |f| -%>
+		<p class="help">This text will be used for an automated note that is sent to new members when they join the community.</p>
+		<fieldset>
+			<dl>
+				<dt><label>Note Sender Name</label></dt>
+				<dd><input id="welcome_note_name" name="welcome_note[name]" size="50" type="text" value="<%= screen_name %>" /></dd>
+				<dt><label>Note Text</label></dt>
+				<dd><%= f.text_area :text, :maxlength => "100", :rows => nil, :cols => nil %></dd>
+			</dl>
+		</fieldset>
+		<input type="hidden" name="welcome_note[profile_id]" id="profile_id" class="suggestion_id" value="<%= profile_id %>" />
+		<div class="buttons">
+			<input type="submit" class="large button" value="Save" name="commit">
+			<input type="submit" class="large button light" value="Delete" name="commit">
+		</div>
+	<% end -%>
+</div>

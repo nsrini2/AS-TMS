@@ -1,0 +1,16 @@
+ <div class="listform">
+	<%= filter_sort_controls('Question') %>
+</div>	
+
+<div align="center">
+	 <%= empty_questions_image_for questions %>
+</div>
+
+<% unless questions.empty? -%>
+	<div id="questions">
+		<%= render( :partial => 'questions/questions', :locals => {:questions => questions, :questions_for => @profile, :show => {:avatar => false, :close => true, :referred_to => true, :referred_to_groups => false}} )%>
+	</div>
+	<div id="paging">
+		<%= will_paginate questions %>
+	</div>
+<% end -%>

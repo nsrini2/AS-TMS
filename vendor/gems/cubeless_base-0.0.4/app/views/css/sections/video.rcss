@@ -1,0 +1,38 @@
+/* video */
+#video { padding: 10px 0 0 0; }
+	<%= clear_after('#video') %>
+	#video h3 { color: <%= @theme_colors['primary_color'] %>; margin: 0 0 5px 0; }
+	#video p.help { font-size: 11px; margin-bottom: 5px; color: #555; }
+	#video span.highlight { background-color: #FFFED0 }
+	#video .content { }
+		<%= clear_after('#video .content') %>
+		#video .content .ta { margin: 10px 0; }
+		#video .content .ta textarea { width: 595px; }
+		#video label { display: block; font-weight: bold; margin-top: 5px; clear: left; }
+		#video label.inline { display: inline; }
+		#video table tr td.bottom_align { vertical-align: bottom; }
+		#video div.half_width { float: left; width: 47%; margin-right: 2%; }
+			#admin div.half_width textarea { width: 340px; height: 60px; }
+
+	#video .form_section { padding: 0 10px 0 0; float: left; }
+	#video .form_section_right { padding: 0 10px 0 0; float: right; }
+	#video #frame { position: absolute; left: -9999px; width: 1px; height: 1px; border: 0px; }
+	#video table td.count { text-align: center; }
+
+#video_content {  }
+	#video_content p { margin-bottom: 0; }
+
+	div.content_management textarea#object_content { width: 595px; height: 200px; }
+	textarea#welcome_email_content { width: 490px; height: 300px; }
+	div.title textarea#object_content textarea#object_content { width: 785px; height: 300px; }
+	
+.encoding-missing {
+	padding: 10px;
+	font-size: 2.0em;
+	text-align: center;
+}
+
+.encoding-missing a {
+	font-size: 0.6em;
+}
+

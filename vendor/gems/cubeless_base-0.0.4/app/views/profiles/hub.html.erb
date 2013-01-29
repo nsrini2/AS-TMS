@@ -1,0 +1,29 @@
+<% content_for(:home_tab_selected, 'selected') -%>
+<div id="hub">
+	<div id="marketing_message"><%= marketing_image_tag(@random_marketing_message) -%></div>
+
+	<%= render :partial => 'system_announcements/system_announcement' -%>
+
+	<div id="hub_widgets">
+		<div class="hub_widgets_col_1">
+			<% @group1.each do |id| -%>
+				<%= render_widget @widgets[id] if @widgets[id] -%>
+			<% end -%>
+		</div>
+		<% if @square_button_1 && @square_button_2 %><div class="dual_125_wrapper"><% end %>
+			<%= render :partial => 'ads/dual_square_button' if @square_button_1 && @square_button_2 %>
+			<div class="hub_widgets_col_2">
+				<% @group2.each do |id| -%>
+					<%= render_widget @widgets[id] if @widgets[id] -%>
+				<% end -%>
+			</div>
+		<% if @square_button_1 && @square_button_2 %></div><% end %>
+	</div>
+</div>
+<div id="stream">
+	<script type="application/json">{ url: '/stream' }</script>
+	<div id="online_now"><%= image_tag("/images/onlineNow.gif", :size => "21x17", :alt => "#{@active_users} Online Now") -%><%= "#{@active_users} Online Now" -%></div>
+	<div class="events">
+		<%= render :partial => 'shared/event_stream' -%>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<% content_for(:heading, 'Site Configuration') -%>
+<% content_for(:site_admin_selected, 'selected') -%>
+<% content_for :tabs do -%>	
+		<li<%= " class=\"selected\"" if @selected == 'index_tab' %>>
+			<%= link_to "Intro", {:controller => "/site_admin", :action => "index"} %>
+		</li>	
+		<li<%= " class=\"selected\"" if @selected == 'general_tab' %>>
+			<%= link_to "General Settings", general_site_admin_index_path %>
+		</li>
+		<li<%= " class=\"selected\"" if @selected == 'question_categories_tab' %>>
+			<%= link_to "Questions Categories", site_admin_site_question_categories_path %>
+		</li>
+		<li<%= " class=\"selected\"" if @selected == 'profile_basic_tab' %>>
+			<%= link_to "Profile Fields", site_admin_site_profile_fields_path %>
+		</li>
+		<li<%= " class=\"selected\"" if @selected == 'profile_advanced_tab' %>>
+			<%= link_to "Profile Questions", site_admin_site_profile_questions_path %>	
+		</li>
+		<% if Config[:open_registration] %>
+		<li<%= " class=\"selected\"" if @selected == 'registration_fields_tab' %>>
+			<%= link_to "Registration Fields", site_admin_site_registration_fields_path %>	
+		</li>
+		<% end %>
+		<% if false %>
+		<li<%= " class=\"selected\"" if @selected == 'publish_tab' %>>
+			<%= link_to "Publish", publish_site_admin_path %>
+		</li>
+		<% end %>
+<% end -%>
+
+
+
+<% content_for :site_admin_content do %>
+  <%= yield -%>
+<% end %>
+
+<%= render :file => 'layouts/_tab_structure' -%>
+
+

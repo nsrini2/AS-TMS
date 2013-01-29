@@ -1,0 +1,68 @@
+<%
+	link_to_questions_answered = link_to('view', questions_answered_profile_path(@profile)) if @profile_stats[:answers] > 0
+	link_to_my_questions = link_to('view', @profile_stats[:questions] == 1 ? question_path(@profile.questions[0]) : questions_asked_profile_path(:id => @profile.id, :all=>true)) if @profile_stats[:questions] > 0
+	link_to_questions_referred = link_to('view', questions_asked_profile_path(:id => @profile, :referred => true)) if @profile_stats[:questions_referred] > 0
+	link_to_questions_with_best_answers = link_to('view', questions_with_best_answers_profile_path(@profile)) if @profile_stats[:best_answers] > 0
+%>
+<div id="stats">
+	<h3>
+		<% name = @profile.first_name ? @profile.first_name.strip : "User" %>
+		<%= owner_content ? "My" : "#{name}'#{'s' if(name.last!='s')}" %> Stats
+		<% unless karma_viewable_content %><%= render_karma_icons_for_profile(@profile, :large) %> <% end %>
+	</h3>
+	<table cellpadding="0" cellspacing="0" border="0">
+		<% karma_viewable_content do %>
+			<tr class="karma">
+				<td class="left"><a href="/profiles/karma_popup" class="karma_info">Karma</a></td>
+				<td class="middle"><%=@profile.karma_points%></td>
+				<td class="right"><%=render_karma_icons_for_points(@profile.karma_points, :large)%></td>
+			</tr>
+		<% end %>	
+
+	 	<% unless @profile_stats[:best_answers].zero? %>
+			<tr>
+				<td class="left">Best Answers</td>
+				<td class="middle"><%=@profile_stats[:best_answers]%></td>
+				<td class="right"><%= hide_for_sponsor{link_to_questions_with_best_answers} %></td>
+			</tr>
+		<% end %>
+		<% unless @profile_stats[:answers].zero? %>
+			<tr>
+				<td class="left">Answers</td>
+				<td class="middle"><%=@profile_stats[:answers]%></td>
+				<td class="right"><%= hide_for_sponsor{link_to_questions_answered} %></td>
+			</tr>
+		<% end %>
+		<% unless @profile_stats[:questions].zero? %>
+			<tr>
+				<td class="left">Questions</td>
+				<td class="middle"><%=@profile_stats[:questions]%></td>
+				<td class="right"><%= hide_for_sponsor{link_to_my_questions} %></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td class="left">Profile Views</td>
+			<td class="middle"><%=@profile_stats[:profile_views]%></td>
+			<td class="right"></td>
+		</tr>
+		
+		<% profile_completion_viewable_content do %>
+			<tr>
+		    <td colspan="3" class="left"> &nbsp;</td>
+			</tr>
+			<tr class="completion">
+		  	<td colspan="3" class="profile add_pad_bottom">
+			  	<%= link_to "Profile Completion", completion_popup_profile_path(@profile),   :class => "completion_info" -%> 
+			  </td>
+			</tr>
+			<tr>
+		    <td colspan="3" class="left">
+			  	<div  class="progress">
+						<%= @profile.completion_percentage %>
+					</div>
+			  </td>
+			</tr>
+		<% end %>
+		
+	</table>
+</div>

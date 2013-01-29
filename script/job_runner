@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require File.dirname(__FILE__) + '/../config/environment'
+
+# Delayed::Worker.new.start
+
+begin        
+  Delayed::Worker.new.work_off
+rescue
+  Rails.logger.warn "Problem with working off DJs: #{$!}"
+end

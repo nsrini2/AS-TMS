@@ -1,0 +1,64 @@
+<%
+classname = '' unless defined?(classname)
+blog_explore = false unless defined?(blog_explore)
+preview = false unless defined?(preview)
+-%>
+<div id="<%= "list" unless blog_explore %>">
+  <div class="list_item blog_post_item <%= classname %>">
+  	<div class="details">
+  		<h3><%= blog_post.title %></h3>
+  		<p class="meta">Posted on <%= pretty_datetime(blog_post.created_at || Time.new) %> by&nbsp;<%= link_to_author blog_post %></p>
+			<div class="blog_post_p"><%= blog_post.text -%></div>
+			<%= action_list_for([
+				render_abuse(blog_post),
+				(link_to_edit_blog_post(blog_post.blog.owner, blog_post) if editable_content_for(blog_post)),
+				link_to_delete_blog_post(blog_post),
+				(content_tag(:span, "Tags: " + (blog_explore ? link_to_blog_tags(blog_post.blog.owner, blog_post.tag_list) : link_to_tags(blog_post.blog.owner, blog_post.tag_list)), :class => 'tags') unless blog_post.tag_list.blank?)
+			]) -%>
+  	</div>
+
+  	<div class="rate">
+  		<%#= render :partial => 'blog_posts/rating', :locals => { :blog_post => blog_post } -%>
+  		<%= render :partial => 'votes/show', :locals => { :owner => blog_post } %>
+  	</div>
+
+  	<div id="comments">
+  		<%# SSJ NEED TO convert to array to get size correct when some comments are not in default scope %>
+			<% comments = blog_post.comments.to_a %>
+  		<h4>Comments (<%= comments.size -%>)</h4>
+  		<% unless comments.size.zero? %>
+  			<% comments.each do |comment| -%>
+  				<div id="comment_<%=comment.id.to_s%>" class="list_item comment_item <%= cycle('odd', 'even') %>">
+  					<%= link_to_avatar_for(comment.profile) -%>
+  					<div class="details">
+  						<h5><%= link_to_author(comment) -%> says:</h5>
+  						<p class="meta">on <%= pretty_datetime(comment.created_at) %></p>
+  						<p id="comment_<%= comment.id.to_s%>_text" class="text"><%= comment_text(comment) %></p>
+							<%= action_list_for([
+  							render_abuse(comment),
+								(link_to("edit", edit_comment_path(comment), :class => 'modal edit_comment') if author_or_shady_admin_content_for(comment)),
+								( link_to('delete', comment, :class => 'delete') if author_or_shady_admin_content_for(comment)),
+  							link_to("permanent link", "#{companies_blog_blog_post_path(blog_post)}#comment_#{comment.id.to_s}")
+  						])%>
+  					</div>
+  				</div>
+  			<% end -%>
+  		<% end -%>
+  		
+			<% form_for :comment, :url => companies_blog_blog_post_comments_path(blog_post), :html => { :id => 'new_comment' } do |f| -%>
+  			<h5>Add your 2 cents to the conversation</h5>
+  			<p>Comments are a great way to show your support and add another perspective.</p>
+  			<%= content_tag(:p, flash[:error], :class => 'error') unless flash[:error].blank? -%>
+  			<fieldset>
+  				<label for="blog_post_comment_text">Your Comment</label><br/>
+  				<textarea name="comment[text]" id="blog_post_comment_text" maxlength="4000" style="width: 500px; height: 120px;"><%#= params[:comment] -%></textarea>
+  			</fieldset>
+  			<div class="buttons">
+  				<input type="submit" name="commit" value="Submit" class="button medium">
+  				<input type="reset" name="cancel" value="Cancel" class="button medium light">
+  			</div>
+  		<% end -%>
+  	</div>
+  </div>
+
+</div>

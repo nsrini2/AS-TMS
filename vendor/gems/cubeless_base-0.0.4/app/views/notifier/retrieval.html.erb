@@ -1,0 +1,29 @@
+<% if @screen_names -%>
+	<p>Greetings
+		<%= @screen_names.join(' &amp; ') -%>,</p>
+		<% if @logins.size > 1 -%>
+			<p>Whoa, you have a couple of logins from which to choose :
+				<%= @logins.join(' &amp; ') %>
+			 </p>
+	<% else -%>
+		<p>Your login is: <%= @logins %></p>
+		<% end -%>
+		<p></p>You should now be able to <a href="<%=@site_base_url%>/account/login">login
+			to <%=@site_base_url%></a> or, if you forgot your password, you can have us <a
+			href="<%=@site_base_url%>/retrievals/new?forgot=password">reset your
+			password</a>.
+			</p>
+<% end -%>
+
+<% if @password -%>
+	<p>Greetings <%=@screen_name%>,</p>
+		<p>
+		You have requested to reset your password. You have 24 hours to follow the link below and change your password.
+		<br /><br />
+		<a href="<%=@password_reset_link%>">Click Here To Reset Your Password</a>
+		<br />
+		</p>
+<% end -%>
+		Thanks,<br />
+		<%=@site_name%><br />
+		<a href="<%=@site_base_url%>"><%=@site_base_url%></a>

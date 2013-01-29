@@ -1,0 +1,44 @@
+<div class="header">
+	<h1>Write A Review</h1>
+</div>
+
+<div id="review_write_dialog" title="Write a Review">
+    <div class="form_errors">
+    </div>
+    <%= form_for [:offer, @review] do |f| %>
+        <h4 style="margin: 0px;"><%= @offer.short_description_html %></h4>
+
+        <h3>
+            <strong><%= @offer.suppliers[0].supplier_name %></strong><br />
+            <%= @offer.suppliers[0].city rescue nil %>, <%= @offer.suppliers[0].state.state rescue nil %> <%= @offer.country rescue nil %>
+        </h3>
+        
+        <h3 class="review_write_subheader">How would you rate this deal or extra?</h3>
+
+        <input id="review_write_thumbsup" type="radio" name="review[rating]" value="true" <%= @default == true ? 'checked="checked"' : "" %>/> 
+        <%= de_thumbs_up_img @offer %>
+        <input  id="review_write_thumbsdown"   type="radio" name="review[rating]" value="false" <%= @default == false ? 'checked="checked"' : "" %>/> 
+        <%= de_thumbs_down_img @offer %>
+
+        <h3 class="review_write_subheader">This rating is based on:</h3>
+        <%= f.select :rating_category_id, RatingCategory.OPTIONIZE %>
+
+        <h3 class="review_write_subheader comments">Write your comments below: (optional)</h3>
+        <%= f.text_area :review, {:rows => "10", :cols => "10", :id => "review_write_comments"}%>
+        
+        <%= hidden_field_tag :offer_id, @offer.id %>
+        
+        <button type="button" class="review_write_submit_button image"><%= image_tag "/images/de/submit.gif", :alt => "Submit" %></button>
+        <% if false %>
+          <button type="button" class="review_write_closing_button" onclick="$.facebox.close()">Cancel</button>
+        <% end %>
+    <% end %>
+	
+	<%= javascript_include_tag "writeReview.js" %>
+</div>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		$("SELECT").selectBox();
+	});
+</script>

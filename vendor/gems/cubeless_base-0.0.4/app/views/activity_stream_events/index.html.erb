@@ -1,0 +1,13 @@
+<h2><%= site_name -%> Stream History</h2>
+
+<div id="stream_history">
+
+  <% @events.each do |event| -%>
+  	<%= render :partial => 'shared/event_stream_item', :locals => { :event => event, :index => 1 } -%>
+  <% end -%>
+
+</div>
+
+<br/>
+
+<%= render_pagination @events %>

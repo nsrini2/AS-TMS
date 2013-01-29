@@ -1,0 +1,18 @@
+<%=form_tag "", :id => "query_form", :method => :get -%>
+	<label for="query_input">Search Community Content</label>
+	<input type="text" name="query" id="query_input" value="<%= params[:query] %>" />
+	<input type="submit" name="commit" value="Search" class="button" />
+</form>
+
+<% if @results %>
+<dl>
+<% @results.each do |result| %>
+	<dt><a href="/<%= result.name %>/<%= result.item_id %>"><%= URI.parse(Config[:site_base_url]) %>/<%= result.name %>/<%= result.item_id %></a> (<%= result.created_at %>)</dt>
+	<dd>
+		<p>
+		<%= truncate(result.text, :length => 200, :omission => "&hellip;&nbsp;") %>
+		</p>
+	</dd>
+<% end%>
+</dl>
+<% end %>

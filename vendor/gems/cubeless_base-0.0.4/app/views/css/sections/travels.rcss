@@ -1,0 +1,54 @@
+table.explore_table {
+	border-collapse: collapse;
+	font-size: 1.1em;
+	width: 100%;
+}
+table.explore_table thead th {
+	text-align: left;
+}
+table.explore_table tbody tr {
+
+}
+table.explore_table tbody tr.odd {
+	background-color: #e8e8e8;	
+}
+table.explore_table tbody tr.even {
+	background-color: #F9F9F9;
+}
+table.explore_table tbody tr.spacer {
+	height: 20px;
+}
+table.explore_table tbody td {
+	padding: 6px 2px;
+	vertical-align: top;
+}
+table.explore_table tbody td.photo {
+	padding: 5px 0;
+	width: 26px;
+}
+table.explore_table tbody td.photo div.photo_wrapper {
+	margin: 3px 5px 0 3px;
+}
+table.explore_table tbody td.details a.name {
+	color:#000000;
+	font-size: 14px;
+	font-weight:bold;
+	text-decoration: none;
+}
+table.explore_table tbody td.details a.name:hover {
+	text-decoration: underline;
+}
+
+table.explore_table tbody td.location {
+	width: 20%;
+}
+table.explore_table tbody td.date {
+
+}	
+table.explore_table tbody td.itinerary small {
+	font-size: 0.8em;
+}
+
+div.travel div.photo_wrapper {
+	margin-right: 15px;
+}

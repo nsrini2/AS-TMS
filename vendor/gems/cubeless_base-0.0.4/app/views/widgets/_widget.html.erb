@@ -1,0 +1,15 @@
+<div class="widget <%= 'collapsed' if @collapsed_widgets.include?(widget[:id].to_s) %> <%= 'draggable' if draggable %> <%= "app_external" unless widget[:internal] %> app_<%= widget[:title].to_s.downcase.gsub(" ", "_") %>" id="app_<%=widget [:id] %>">
+	<div class="header">
+		<h3><%= widget[:title] -%></h3>
+		<%= link_to("Toggle", "/profiles/toggle_widget?widget_id=#{widget[:id]}", :class => 'toggle') if collapsible -%>
+		<%= link_to("Refresh", eval(widget[:refresh_url]), :class => 'refresh') if widget[:refresh_url] -%>
+		<%= link_to("Settings", "#{widget[:url]}?mode=settings", :target => "iframe_app_#{widget[:id]}", :class=> "settings") unless widget[:internal] || widget[:hide_settings] -%>
+	</div>
+	<div class="content">
+		<% if widget[:internal] -%>
+			<%= eval(widget[:url]) -%>
+		<% else -%>
+			<iframe id="iframe_app_<%=widget[:id]%>" name="iframe_app_<%=widget[:id]%>" src="<%= widget[:url] %>" scrolling="no" frameborder="0"></iframe>
+		<% end -%>
+	</div>
+</div>

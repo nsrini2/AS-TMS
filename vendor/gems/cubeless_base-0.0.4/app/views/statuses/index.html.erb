@@ -1,0 +1,15 @@
+<% content_for(:status_tab_selected, 'selected') -%>
+
+<div class="status_results">
+	<h2 class="explore_header">
+		<%= @profile ? "#{@profile.screen_name} Status Updates" : "All Status Updates" %>
+	</h2>
+
+
+  <div class="explore_results">
+    <%= render :partial => "/statuses/list", :locals => { :statuses => @statuses.to_a } %>
+  </div>
+  
+  <%= render_pagination @statuses %>
+  
+</div>

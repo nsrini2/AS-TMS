@@ -1,0 +1,25 @@
+<% content_for(:page_title, "Help I forgot my #{params[:forgot] || '...'}") -%>
+<% form_for :retrieval, :url => retrievals_path, :html => { :class => "retrieval" } do |f| -%>
+	<h2>Help I forgot my <%= params[:forgot] || '...' -%></h2>
+	<% if params[:forgot] == 'login' || !params[:forgot] -%>
+	<fieldset>
+		<%= hidden_field :retrieval, :item, :value => 'login' -%>
+		<p>We all sign up for a lot of sites and sometimes we forget what we used to sign up. Was it HunkPappa? Or did I just use that one for Flickr&hellip;</p>
+		<dl>
+			<dt><label for="retrieval_email">What is your email address?</label></dt>
+			<dd><%= text_field :retrieval, :email, :size => 45 -%></dd>
+		</dl>
+	</fieldset>
+	<% end -%>
+	<% if params[:forgot] == 'password' || !params[:forgot] -%>
+	<fieldset>
+		<%= hidden_field :retrieval, :item, :value => 'password' -%>
+		<p>Can't remember your password? We don't know what it is either. However, we can help you out by sending you some instructions for resetting it. All you have to do is provide us with your screen name.</p>
+		<dl>
+			<dt><label for="retrieval_login">What is your login?</label> <span class="forgot"><a href="/retrievals/new?forgot=login">Forgot login?</a></span></dt>
+			<dd><%= text_field :retrieval, :login, :size => 45 -%></dd>
+		</dl>
+	</fieldset>
+	<% end -%>
+	<div class="buttons"><input type="submit" name="commit" value="Hook Me Up" class="button large"></div>
+<% end -%>

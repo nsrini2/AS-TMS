@@ -1,0 +1,22 @@
+<div class="header">
+  <h1>Customize your PDF</h1>
+</div>
+
+<form action="<%= @loc %>">
+    <input type="hidden" name="per_page" value="<%= @per_page %>" />
+    <input type="hidden" name="page" value="<%= @page %>" />
+    <input type="hidden" name="id" value="<%= @id %>" />
+    
+    <h3 class="review_write_subheader"><label for="title">Brochure Title</label></h3>
+    <input type="text" id="title"   name="title" /><br />
+    <h3 class="review_write_subheader"><label for="by">By</label></h3>
+    <input type="text" id="by"      name="by" /><br />
+    <h3 class="review_write_subheader"><label for="by">Agency</label></h3>
+    <input type="text" id="agency"      name="agency" /><br />
+    <h3 class="review_write_subheader"><label for="phone">Phone</label></h3>
+    <input type="text" id="phone"   name="phone" /><br />
+    <h3 class="review_write_subheader"><label for="website">Website</label></h3>
+    <input type="text" id="website" name="website" /><br /><br/>
+
+    <input type="image" value="Submit" src="/images/de/submit.gif" alt="Submit" id="pdf_submit">
+</form>

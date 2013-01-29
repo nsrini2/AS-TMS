@@ -1,0 +1,17 @@
+xml.questions :type => "array" do
+  @questions.each do |question|
+    xml.question do
+      xml.id question.id
+      xml.created_at question.created_at
+      xml.closes_on question.open_until
+      xml.text question.question
+      xml.asked_by do
+        xml.id question.profile_id
+        xml.name question.profile.full_name
+        xml.url site_base_url + profile_path(question.profile)
+      end
+      xml.num_answers question.num_answers
+      xml.url site_base_url + question_path(question)
+    end
+  end
+end

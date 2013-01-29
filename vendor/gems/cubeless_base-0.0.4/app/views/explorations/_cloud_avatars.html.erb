@@ -1,0 +1,15 @@
+<% online_now = params[:filter_order] == 'last_accessed' %>
+<dl id="avatar_filter">
+	<dt>View:</dt>
+	<% unless online_now %>
+	<dd id="first_avatar_filter" class="selected"><span>Random</span></dd>
+	<dd><a href="/explorations/people?filter_order=last_accessed">Online Now</a></dd>
+	<% else %>
+	<dd id="first_avatar_filter"><a href="/explorations/people">Random</a></dd>
+	<dd class="selected"><span>Online Now</span></dd>
+	<% end %>
+</dl>
+<div class="avatar_cloud" style="clear: both"><% @profiles.each do |p| -%>
+	<%= link_to_avatar_for(p) -%>
+<% end -%></div>
+<%= render_pagination @profiles if params[:filter_order] == "last_accessed" %>

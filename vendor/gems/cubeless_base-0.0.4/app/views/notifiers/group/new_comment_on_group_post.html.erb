@@ -1,0 +1,8 @@
+<p><strong>Guess what, a new reply was made to your group talk comment by <%= @comment.profile.screen_name %></strong></p>
+<p>&#8220;<%= @comment.text %>&#8221;</p>
+<p><%= link_to ('Click here', group_group_posts_url(@comment.owner.group) + "#group_post_#{@comment.owner.id}" ) %> to view it.</p>
+
+Regards,<br />
+<%=@site_name%><br /><br /><br /></p>
+
+<p align="center">You control the communications you get from us. You can change your <%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.</p>

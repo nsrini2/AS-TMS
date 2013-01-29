@@ -1,0 +1,136 @@
+
+theme: 'theme_2'
+
+logo_file: "ja_logo.gif"
+
+favicon: "ja_favicon.ico"
+
+site_name: "The Triangle"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: ["Work: General", "Work: Fundraising", "Work: Programs", "Work: Special Events", "Play", "Travel", "Life", "The Triangle"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Nickname"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Motto or Favorite Quote"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Job Title"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "JA Member Name"
+    completes_profile: true
+    matchable: true
+  - question: profile_5
+    label: "City, State & Country"
+    completes_profile: true
+    matchable: true
+  - question: profile_6
+    label: "Contact Phone Number"
+    completes_profile: false
+    matchable: false
+  - question: profile_7
+    label: "Languages Spoken"
+    completes_profile: false
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7',
+    'email'
+  ]
+  business_card: [
+    'profile_3',
+    'profile_5',
+    'profile_6',
+    'email'
+  ]
+
+profile_complex_questions:
+  - title: "On the Job"
+    questions:
+      - question: question_1
+        label: "What do you really do on a daily basis at work?"
+        example: "We see your official title up above, but also know we all wear many hats.  Tell us all the things you really do in your job."
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "What are your skills, experience or things you rule in?"
+        example: "When others are looking for someone to help solve a challenge or better understand something, what are the areas in which you can offer your expertise."
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What schools have you attended and what degrees or professional certifications do you hold?"
+        example: "Don’t be shy; tell us all about your educational background."
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What is your most memorable JA experience?"
+        example: "The good, the exceptional and the funny."
+        completes_profile: true
+        matchable: true
+
+  - title: "Out & About"
+    questions:
+      - question: question_5
+        label: "Where have you traveled?"
+        example: "The places you loved and places on which you can offer advice, both in business and leisure travel."
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What is your hometown? Name three places you have lived?"
+        example: "Perhaps your path has crossed with someone else and you never knew it…tell us places where you’ve called “home” so we can find out."
+        completes_profile: true
+        matchable: true
+
+  - title: "More About Me"
+    questions:
+      - question: question_9
+        label: "What are your hobbies or interests?"
+        example: "When you step away from JA, how do you occupy your free time (or you wish you could if you had free time)?"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "What is the one thing you can’t live without?"
+        example: "We all need food and oxygen, so those don’t count here. Cell phone, coffee, that Elvis cassette; what is it you can’t live without?"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What is the one thing that drives you crazy?"
+        example: "Pet peeve, grievance, bugbear, vexation; however you say it, what one thing drives you crazy?"
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "Who is the most influential person in your life (past or present)?"
+        example: "The person who has most shaped your thoughts and actions?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What three people (living, deceased, fictional) would you like to invite to dinner?"
+        example: "Don’t worry; You don’t have to plan out the menu, just the guest list."
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What actor or actress would play you in the movie of your life?"
+        example: "Is your life’s script more worthy of Brad Pitt or Jackie Chan?  Julia Roberts or Hallie Berry?"
+        completes_profile: true
+        matchable: true

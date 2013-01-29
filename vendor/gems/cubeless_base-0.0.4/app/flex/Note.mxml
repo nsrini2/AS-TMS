@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Box xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="*" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off" creationComplete="{init()}">
+	<mx:Script>
+		<![CDATA[
+			import mx.effects.Fade;
+			import mx.events.*;
+			import mx.core.*;
+			import mx.controls.Alert;
+
+			private var rotValues:Array = [-6,4,-2,2,-4,6];
+			private var backgrounds:Array = ["0xfff2c4","0xa5d5e1","0xcdbad6","0xdeeeac","0xf8cde0"];
+			private static var currentLargeNote:Note;
+
+			[Bindable]
+			public var noteData:Object;
+			[Bindable]
+			public var onReply:Function;
+			[Bindable]
+			public var onShady:Function;
+			[Bindable]
+			public var onDelete:Function;
+			[Bindable]
+			public var rotateNotes:Boolean = false;
+			[Bindable]
+			protected var _mine:Boolean;
+			[Bindable]
+			protected var _admin:Boolean;
+			[Bindable]
+			protected var bgColor:uint;
+			[Bindable]
+			public var largeNoteEnabled:Boolean = true;
+
+			private function debug(msg:*):void {
+				ExternalInterface.call("console.log", msg);
+			}
+
+			public function set mine(value:String):void {
+				_mine = (value == "true") ? true : false;
+			}
+
+			public function set admin(value:String):void{
+				_admin = (value == "true") ? true : false;
+			}
+
+			public function init():void {
+				bgColor = backgrounds[Math.floor(noteData.id % backgrounds.length)];
+				currentState = 'small';
+			}
+
+			public function initLarge():void {
+				if (noteData.shady.toString()=="true") {
+					shady.text = '- reported as inappropriate';
+					shady.toolTip = 'This note is marked as inappropriate';
+					shady.enabled = false;
+				} else {
+					shady.text = 'inappropriate';
+					shady.toolTip = 'Mark this note as inappropriate';
+					shady.enabled = true;
+				}
+			}
+
+		]]>
+	</mx:Script>
+	<mx:states>
+		<mx:State name="large">
+			<mx:AddChild>
+				<mx:VBox height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off" added="{initLarge()}">
+					<mx:HBox height="100%" id="noteboxLarge" width="100%">
+						<!-- start actual note -->
+						<mx:VBox rollOut="{ currentState = 'small'; }" backgroundColor="{bgColor}"
+							filters="{[new DropShadowFilter(5, 45,0,0.6)]}" rotation="0"
+							styleName="note" id="noteLarge" maxWidth="240" height="100%"
+							verticalScrollPolicy="off" horizontalScrollPolicy="off" paddingTop="8" paddingLeft="8"
+							paddingRight="8" paddingBottom="6" verticalGap="2">
+							<mx:HBox horizontalGap="5" width="100%" height="30" verticalScrollPolicy="off">
+								<mx:Image useHandCursor="true" buttonMode="true" click="navigateToURL(new URLRequest(noteData.sender.sender_url), '_self')" source="{noteData.sender.photo_url}" width="30" height="30"/>
+								<mx:TextArea text="{noteData.sender.screen_name}" id="senderLarge"
+									styleName="senderLarge" buttonMode="true" enabled="false" useHandCursor="true" click="navigateToURL(new URLRequest(noteData.sender.sender_url), '_self')" width="100%"
+									verticalScrollPolicy="off"/>
+								<local:Link id="inappropriate" visible="{onShady!=null}" click="onShady.call(null,this)"/>
+							</mx:HBox>
+							<mx:TextArea text="{noteData.message}" id="noteTextLarge" styleName="noteTextLarge" enabled="false" verticalScrollPolicy="off" width="100%" height="100%"/>
+							<mx:HBox width="100%" paddingBottom="0" paddingTop="0">
+								<mx:Text id="private_status" creationComplete="{if(noteData.private == true){private_status.text = '(private note)';}}" />
+								<mx:Spacer width="100%" />
+								<local:Link text="Reply" id="replyLarge" click="onReply.call(null, this)" visible="{_mine}"/>
+								<local:Link text="Delete" id="trashLarge" click="onDelete.call(null, this)" visible="{_mine || _admin}"/>
+							</mx:HBox>
+						</mx:VBox>
+					</mx:HBox>
+				</mx:VBox>
+			</mx:AddChild>
+		</mx:State>
+
+		<mx:State id="smally" name="small">
+			<mx:AddChild>
+				<mx:VBox height="100%" paddingLeft="8" paddingRight="8" paddingTop="9" paddingBottom="9"
+					verticalScrollPolicy="off"
+					horizontalScrollPolicy="off"
+					verticalAlign="middle">
+					<mx:HBox height="100%" id="noteboxSmall" width="100%">
+						<!-- start actual note -->
+						<mx:VBox rollOver="{ if (largeNoteEnabled) { if (currentLargeNote!=null) { currentLargeNote.currentState='small'; } currentLargeNote=this; currentState = 'large'; } }" backgroundColor="{bgColor}" filters="{[new DropShadowFilter(4,45,0,0.6)]}"
+							rotation="{rotValues[Math.floor(Math.random()*(5))]}" styleName="note"
+							id="noteSmall" width="80" height="80" horizontalScrollPolicy="off"
+							paddingTop="7" paddingLeft="3" paddingRight="3" paddingBottom="7" verticalGap="1"
+							useHandCursor="{!largeNoteEnabled}"
+							buttonMode="{!largeNoteEnabled}">
+							<mx:Image source="{noteData.sender.photo_url}" width="40" height="40"/>
+							<mx:Spacer height="100%"/>
+							<mx:TextArea text="{noteData.sender.screen_name}" id="senderSmall" styleName="senderSmall"
+								enabled="false" width="100%" height="10" verticalScrollPolicy="off"/>
+							<mx:TextArea text="{noteData.created_at}" id="created" styleName="senderSmall"
+								enabled="false" width="100%" height="10" verticalScrollPolicy="off"/>
+						</mx:VBox>
+					</mx:HBox>
+				</mx:VBox>
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+</mx:Box>

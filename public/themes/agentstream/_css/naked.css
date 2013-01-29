@@ -1,0 +1,425 @@
+/* SSJ 6/14/11 -- This Stylesheet is not added to the style.scss 
+   and should only be loaded with the naked layout  */
+/*  body {
+    background-color: #999;
+  }*/
+/*********  WELCOME PAGE  ************/
+/* line 8, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-page {
+  background-color: #FFF;
+  border: 6px solid #DDD;
+  margin-left: 60px;
+}
+/* line 12, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-page h2 {
+  margin-top: 10px;
+}
+
+/* line 17, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-header {
+  background-color: #DDD;
+  height: 50px;
+}
+/* line 20, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-header .text-logo {
+  padding: 7px 0px;
+}
+/* line 23, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-header #login {
+  float: right;
+  padding: 8px 10px;
+}
+/* line 26, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-header #login a:link, div#welcome-header #login a:visited {
+  display: block;
+  width: 70px;
+  height: 32px;
+  text-indent: -9999px;
+  background: url(/images/welcome/AS_LoginButton_blue.png);
+}
+/* line 33, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-header #login a:hover, div#welcome-header #login a:active {
+  background: url(/images/welcome/AS_LoginButton_blue.png) 0 33px;
+}
+
+/* line 39, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main {
+  margin: 20px 50px;
+  height: 580px;
+}
+/* line 42, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.left {
+  margin-left: 0px;
+  float: left;
+}
+/* line 46, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.right {
+  float: right;
+  width: 390px;
+}
+/* line 49, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.right h1 {
+  margin-bottom: -10px;
+}
+/* line 52, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.right h1 p {
+  color: #000;
+  text-align: right;
+  line-height: 0.9em;
+  font-size: 2.6em;
+  letter-spacing: -2px;
+}
+/* line 59, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.right p {
+  text-align: right;
+  line-height: 1.2em;
+  font-size: 1.5em;
+}
+/* line 64, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.right a.sing-up:link, div#welcome-main div.right a.sing-up:visited {
+  float: right;
+  display: block;
+  width: 170px;
+  height: 61px;
+  text-indent: -9999px;
+  background: url(/images/welcome/AS_SignUpButton.gif);
+}
+/* line 72, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.right a.sing-up:hover, div#welcome-main div.right a.sing-up:active {
+  background: url(/images/welcome/AS_SignUpButton.gif) 0 62px;
+}
+/* line 76, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.bottom {
+  clear: both;
+  padding-top: 10px;
+  text-align: center;
+}
+/* line 80, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.bottom p {
+  padding-left: 5px;
+  font-size: 1.1em;
+  margin-bottom: 0px;
+}
+/* line 85, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.bottom div.bottom-left {
+  float: left;
+}
+/* line 89, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.bottom div.bottom-center p {
+  margin-left: 240px;
+}
+/* line 91, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-main div.bottom div.bottom-right {
+  float: right;
+}
+
+/* line 97, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-footer {
+  padding: 20px 0;
+  height: 60px;
+  background-color: #DDD;
+  text-align: center;
+}
+/* line 102, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-footer div.footer-top {
+  margin-bottom: 10px;
+}
+/* line 104, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-footer div.footer-top a, div#welcome-footer div.footer-top a.visited {
+  color: #676767;
+  text-decoration: underline;
+}
+/* line 109, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-footer div.footer-bottom {
+  margin-top: 10px;
+}
+/* line 111, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-footer div.footer-bottom p {
+  margin: 10px 80px;
+  font-style: italic;
+  font-size: 0.7em;
+  line-height: 1.2em;
+}
+/* line 118, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#welcome-footer div.footer-right {
+  padding-right: 20px;
+  float: right;
+}
+
+/* line 124, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div.disclaimer {
+  text-align: center;
+}
+
+/*********  LOGIN  ************/
+/* line 129, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main {
+  text-align: center;
+  margin-top: 100px;
+}
+/* line 132, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main form {
+  margin-right: 28px;
+}
+/* line 134, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main form input, div#login-main form button {
+  float: right;
+  font-size: 1.2em;
+  margin-bottom: 7px;
+}
+/* line 139, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main form input[type="text"], div#login-main form input[type="password"] {
+  width: 190px;
+}
+/* line 142, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main form button {
+  border: 0 none;
+  display: block;
+  width: 70px;
+  height: 32px;
+  text-indent: -9999px;
+  background: url(/images/welcome/AS_LoginButton_blue.png);
+}
+/* line 150, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main form button:hover, div#login-main form button:active {
+  background: url(/images/welcome/AS_LoginButton_blue.png) 0 33px;
+}
+/* line 155, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main div#public-focus {
+  border: 6px solid #DDDDDD;
+  height: 240px;
+}
+/* line 158, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main div#public-focus div.header {
+  background-color: #DDD;
+}
+/* line 161, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main div#public-focus div.header h1 {
+  font-size: 22px;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 10px 0px;
+}
+/* line 168, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-main p#login-request {
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* line 174, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#agentstream-login {
+  padding-top: 20px;
+  width: 251px;
+  height: 140px;
+  border-right: 1px solid #DDDDDD;
+  float: left;
+}
+/* line 180, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#agentstream-login a, div#agentstream-login a:visited {
+  margin-left: 20px;
+  margin-top: 15px;
+  float: left;
+  font-size: 10px;
+  text-decoration: underline;
+  color: #555;
+}
+
+/* line 189, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#facebook-login {
+  padding-top: 20px;
+  width: 215px;
+  float: right;
+}
+/* line 193, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#facebook-login p {
+  margin-bottom: 5px;
+  line-height: 1.2em;
+}
+
+/* line 199, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div.disclaimer {
+  margin-top: 30px;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+/******* REGISTRATION PAGE *******/
+/* line 206, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main {
+  text-align: center;
+  margin-top: 100px;
+}
+/* line 209, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main form {
+  padding-bottom: 40px;
+}
+/* line 210, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main form input {
+  width: 240px;
+  font-size: 1.2em;
+  margin: 5px 40px 0px 5px;
+}
+/* line 215, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main form select {
+  width: 246px;
+  font-size: 1.2em;
+  margin: 5px 40px 0px 5px;
+}
+/* line 220, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main form .submit {
+  width: 90px;
+  margin-right: 105px;
+  margin-bottom: 20px;
+  float: right;
+}
+/* line 228, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main div#public-focus {
+  border: 6px solid #DDDDDD;
+}
+/* line 230, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main div#public-focus div.header {
+  background-color: #DDD;
+}
+/* line 233, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main div#public-focus div.header h1 {
+  font-size: 22px;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 10px 0px;
+}
+/* line 240, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main p#login-request {
+  margin-top: 10px;
+  text-align: right;
+}
+/* line 244, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#register-main p#submit {
+  padding-bottom: 30px;
+}
+
+/******* FACEBOOK & AGENTSTREAM  PAGE *******/
+/* line 249, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main {
+  text-align: center;
+  margin-top: 100px;
+}
+/* line 252, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main form {
+  padding-bottom: 10px;
+}
+/* line 253, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main form input, div#login-agentstream-facebook-main form select {
+  font-size: 1.2em;
+  margin: 5px 5px 0px 5px;
+}
+/* line 257, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main form input[type="text"], div#login-agentstream-facebook-main form input[type="password"] {
+  width: 230px;
+}
+/* line 260, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main form .submit {
+  margin-right: 60px;
+  margin-bottom: 10px;
+  float: right;
+}
+/* line 268, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main div#agentstream-facebook-login {
+  padding-top: 20px;
+  height: 140px;
+}
+/* line 271, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main div#agentstream-facebook-login a, div#login-agentstream-facebook-main div#agentstream-facebook-login a:visited {
+  margin-left: 60px;
+  float: left;
+  margin-top: 0px;
+  font-size: 0.8em;
+  text-decoration: underline;
+  color: #555;
+}
+/* line 281, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main div#public-focus {
+  border: 1px solid #888;
+}
+/* line 283, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main div#public-focus div.header {
+  background-color: #DDD;
+}
+/* line 286, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main div#public-focus div.header h1 {
+  padding: 10px 0px;
+  line-height: 1.0em;
+  border-bottom: 1px solid #888;
+}
+/* line 293, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#login-agentstream-facebook-main p#login-request {
+  margin-top: 20px;
+  text-align: right;
+}
+
+/******* PUBLIC PAGE *******/
+/* line 300, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main {
+  text-align: center;
+  margin-top: 10px;
+}
+/* line 303, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main form {
+  padding-bottom: 40px;
+}
+/* line 304, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main form input {
+  width: 240px;
+  font-size: 1.2em;
+  margin: 5px 40px 0px 5px;
+}
+/* line 309, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main form select {
+  width: 246px;
+  font-size: 1.2em;
+  margin: 5px 40px 0px 5px;
+}
+/* line 314, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main form .submit {
+  width: 90px;
+  margin-right: 105px;
+  margin-bottom: 20px;
+  float: right;
+}
+/* line 322, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main div#public-focus {
+  border: 1px solid #888;
+  text-align: left;
+}
+/* line 326, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main div#public-focus div.header {
+  background-color: #DDD;
+  text-align: center;
+}
+/* line 329, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main div#public-focus div.header h1 {
+  padding: 10px 0px;
+  border-bottom: 1px solid #888;
+}
+/* line 334, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main div#public-focus h2 {
+  display: none;
+}
+/* line 337, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main div#public-focus div.content {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+/* line 343, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+div#public-main p#submit {
+  padding-bottom: 30px;
+}
+
+/******  OTHER ******/
+/* line 351, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+form.retrieval {
+  margin: 30px 40px;
+}
+
+/* line 354, ../../../../app/stylesheets/themes/agentstream/naked.scss */
+a.no_underline {
+  text-decoration: none !important;
+}

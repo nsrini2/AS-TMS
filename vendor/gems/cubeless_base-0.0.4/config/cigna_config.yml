@@ -1,0 +1,122 @@
+feedback_email: 'Matt.surmolian@cigna.com'
+email_from_address: 'Picture Yourself Feeling Better [Snapshot] <no-reply@cubeless.com>'
+
+#analytics_tracker_code: ''
+
+theme: 'theme_13'
+
+logo_file: "cigna_logo.png"
+
+favicon: "cigna_favicon.ico"
+
+site_name: "Picture Yourself Feeling Better"
+
+site_base_url: "http://snapshot.cubeless.com"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: [
+  "Shutterbugs (Current Students)",
+  "Food on Film (Eating Well)",
+  "Moving Pictures (Get Moving)",
+  "Mixed Media (Other Program Topics)",
+  "Mash-Ups (Off-Topic)"
+]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Company"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Location"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Optional Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'profile_4'
+  ]
+  business_card: [
+    'profile_3'
+  ]
+
+profile_complex_questions:
+  - title: "About Me"
+    questions:
+      - question: question_1
+        label: "Hometown:"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Hobbies:"
+        example: "Things you like to do in your free time"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "Favorite Things:"
+        example: "Your favorites – books, music, movies, sports, teams … anything!"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "Why I Joined:"
+        example: "Why you’re picturing yourself feeling better"
+        completes_profile: true
+        matchable: true
+  - title: "Picturing Myself"
+    questions:
+      - question: question_5
+        label: "My Motiviation:"
+        example: "What’s your motivation for making a healthy change?"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "My Goals:"
+        example: "What are your goals – start eating healthy, lower my cholesterol, get off my medication"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What I want to learn most:"
+        example: "What do you want to learn in this class – what foods to eat? How to manage stress?"
+        completes_profile: true
+        matchable: true
+        - question: question_8
+          label: "Favorite session:"
+          example: "What is your favorite session of the program? Mindful eating? Strength Training?"
+          completes_profile: true
+          matchable: true
+  - title: "Healthy Living"
+    questions:
+      - question: question_9
+        label: "Favorite healthy meal:"
+        example: "What is your favorite healthy meal?"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "Favorite exercises:"
+        example: "How do you like to get in your daily exercise? Walking? Basketball? Wii Sports?"
+        completes_profile: true
+        matchable: false
+      - question: question_11
+        label: "Favorite healthy living tip:"
+        example: "What’s your favorite tip for healthy eating? Fitness? Stress? Daily Life?"
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "Strategy for living healthy:"
+        example: "What do you do each day to live a healthy life or apply what you learn in class?"
+        completes_profile: true
+        matchable: true

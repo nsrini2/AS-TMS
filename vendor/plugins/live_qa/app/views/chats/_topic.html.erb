@@ -1,0 +1,15 @@
+<div class="question list_item <%= cycle("odd", "even") %>" id="<%= dom_id(topic) %>">
+	
+	<%= link_to_avatar_for(topic.profile) %>
+
+  <div class="details">
+  	<div class="item_text">
+  	  <%= link_to topic.title, chat_path(:id => topic.chat.id, :topic => topic.id ) %>
+  	</div>
+  	<p>
+  	  <%= pretty_datetime topic.created_at %> by <%= link_to_author topic %>
+  	</p>
+  	
+  </div>
+
+</div>

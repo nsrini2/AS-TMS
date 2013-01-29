@@ -1,0 +1,48 @@
+<div id="group_moderators">
+	<% collection_content_for(@group.moderators) do |moderators| %>
+		<h3>Current Moderators</h3>
+		<% moderators.each do |profile| %>
+			<div class="mini_card">
+				<div class="h_avatar">
+					<%= primary_photo_for(profile, :size => '30x30', :hide_status_indicator => true) %>
+				</div>
+				<strong><%= profile.screen_name %></strong>
+				<div class="assign_link">
+					<%= link_to_assign_moderator("unassign",profile) %>
+				</div>
+				
+			</div>
+		<% end %>
+	<% end %>
+</div>
+<div id="group_members">
+	<% collection_content_for(@non_moderators) do %>
+		<h3>Members</h3>
+		<% @non_moderators.each do |profile| %>
+			<div class="mini_card">
+				<div class="h_avatar">
+					<%= primary_photo_for(profile, :size => '30x30', :hide_status_indicator => true) %>
+				</div>
+				<strong><%= profile.screen_name %></strong>
+				<div class="assign_link">
+					<%= link_to_assign_moderator("assign",profile) %>
+				</div>
+				
+			</div>
+		<% end %>
+		<div id="paging">
+			<%= render_pagination @non_moderators %>
+		</div>
+	<% end %>
+</div>
+
+<style>
+	#moderator_list { padding: 10px 30px; }
+		#moderator_list .mini_card { margin: 5px 0; padding: 5px; border: 1px solid #000; position: relative; }	
+		#moderator_list .assign_link { position: absolute; bottom: 5px; right: 5px; }
+		
+	#group_moderators { float: left; width: 45%; }
+	#group_members { float: right; width: 45%; }
+	
+	#group_moderators .mini_card { background: #ddd; }
+</style>

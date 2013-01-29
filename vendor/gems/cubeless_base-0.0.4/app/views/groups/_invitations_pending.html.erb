@@ -1,0 +1,31 @@
+<%
+require 'enumerator'
+-%>
+<% if @invitations_pending.size > 0 && @group.invitation_can_be_accepted_by?(current_profile) -%>
+<div id="invitation_requests">
+	<h3>People You Invited</h3>
+	<p>The following people have been invited to the group but have not accepted to date. You can <%= "view their profile," unless current_profile.sponsor? -%> resend an invitation or recall your original invitation.</p>
+	<div class="profile_results">
+		<% @invitations_pending.each do |invitations_pending| -%>
+		<% profile = invitations_pending.receiver -%>
+		<div class="profile <%= cycle('odd','even') -%>">
+			<%= link_to_avatar_for(profile, :thumb => :thumb_80) -%>
+			<dl class="profile_info">
+				<dt class="name"><%= profile.screen_name.blank? ?  "No Name Provided" : link_to(profile.screen_name, profile) -%></dt>
+				<dd class="title"><%= profile.profile_1.blank? ? "No #{profile_question_label_for :profile_1} Provided" : replace_newline_with_br(auto_link(profile.profile_1)) -%></dd>
+				<dd class="tagline"><%= profile.profile_2.blank? ? "No #{profile_question_label_for :profile_2} Provided" : replace_newline_with_br(auto_link(profile.profile_2)) -%></dd>
+				<dd class="invite_requested_on">Invitation sent on <%= pretty_datetime(invitations_pending.created_at) -%></dd>
+			</dl>
+			<div class="action_buttons">
+				<%= primary_small_button("Resend", resend_group_invitation_path(invitations_pending, :authenticity_token => form_authenticity_token), :method => :post) -%>
+				<%= secondary_small_button("Recall", rescind_group_invitation_path(invitations_pending, :authenticity_token => form_authenticity_token), :method => :post) -%>
+			</div>
+		</div>
+		<% end -%>
+	</div>
+	<%#= put pagination stuff here -%>
+</div>
+<% end -%>
+
+
+ 

@@ -1,0 +1,11 @@
+<% content_for :admin_tabs_submenu do %>
+	<div id="admin_header">
+		<div id="title"><h2>Company Channels</h2></div>
+		<div id="action_buttons"><%= link_to("All", companies_admin_path, {:class => "button" }) %></div>
+	</div>	
+<% end %>
+
+<%= render :partial => "/companies/as_admin/company_form", 
+					 :locals => {:company => @company, :button => "Update", 
+					 :url => update_company_admin_path(:id => @company) } %>
+	

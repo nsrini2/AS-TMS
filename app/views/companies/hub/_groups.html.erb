@@ -1,0 +1,30 @@
+<h2>My Agency Groups</h2>
+<h3>Coming Soon</h3>
+<% groups.each do |group| %>
+	<div id="group140" class="list_item group_item <%= cycle "even", "odd" %>">
+		<%= primary_photo_for(group, :thumb => :thumb, :linkable => true, :class => "photo", :alt => "#{group.name} avatar", :hide_group_icon => true ) %>
+
+		<div class="details">
+			<h3><%= link_to group.name, group_path(group) %></h3>
+			<p>
+			  <%= pluralize group.group_memberships_count, "member" %>
+			</p>
+			<% if false %>
+  			<p>
+  			  Founded on <%= short_date(group.created_at) %>
+  			</p>
+  			<p class="description">
+  			  <%= truncate(group.description, { :length => 200, :omission => "..." }) %>
+  			</p>
+			<% end %>
+
+		</div>
+	</div>
+<% end %>
+<%#= "<br/><br/>" if groups.empty? %>
+
+<div class="see_all">
+  <%#= link_to "See All My Agency Groups", groups_profile_path(current_profile) %>
+  <%#= &nbsp;&nbsp;|&nbsp;&nbsp; %>
+  <%#= link_to "Explore Agency Groups", groups_explorations_path %>
+</div>

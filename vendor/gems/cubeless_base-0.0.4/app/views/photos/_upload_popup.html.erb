@@ -1,0 +1,11 @@
+<% content_for(:title, "Upload Photo") -%>
+<% form_for :asset, :url => (defined?(photo) && photo ? profile_photo_path(@profile, photo) : profile_photos_path(@profile)), :html => { :multipart => true, :method => (defined?(photo) && photo ? :put : :post) } do |f| -%>
+	<p>Click browse to find an image on your computer. Your new image will appear after you click the save button below. We like JPG, GIF or PNG files 2MB or smaller.</p>
+	<dl>
+		<dd><%= f.file_field :uploaded_data %></dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Upload" class="button medium">
+		<input type="button" name="reset" value="Cancel" class="button light medium close">
+	</div>
+<% end -%>

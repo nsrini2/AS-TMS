@@ -1,0 +1,8 @@
+<div class="mini_card">
+	<%= primary_photo_for(moderator, :size => '30x30', :hide_status_indicator => true) %>
+	<strong><%= moderator.screen_name %></strong>
+	<div class="assign_link">
+		<%= link_to_assign_moderator("unassign",moderator) %>
+	</div>
+	
+</div>

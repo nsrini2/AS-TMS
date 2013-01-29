@@ -1,0 +1,15 @@
+<% content_for(:title, 'Refer the Question') -%>
+<% form_for :question_referral, :url => question_referrals_path do |f| -%>
+	<%= f.hidden_field :question_id, :value => question_id -%>
+	<%= f.hidden_field :suggestion_id, :class => 'suggestion_id' -%>
+	<%= f.hidden_field :suggestion_type, :class => 'suggestion_type' -%>
+	<p>Don't know the answer, but know someone who does? It's easy! Use the form below to tell us who to send it to. Shazam! Next time they open "Help Answer", the question will be ready and waiting for them.</p>
+	<dl>
+		<dt><label for="question_referral_name">Name</label></dt>
+		<dd><%= f.text_field :name -%></dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Refer" class="button medium">
+		<input type="button" value="Cancel" class="button medium light close">
+	</div>
+<% end -%>

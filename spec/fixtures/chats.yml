@@ -1,0 +1,38 @@
+# sample chats
+
+inactive:
+  host_id: 1
+  title: Test Starting Soon
+  description: Test Starting Soon Description
+  start_at:  <%= Time.now.utc.advance(:minutes => -100).strftime("%Y-%m-%d %H:%M:%S") %>
+  active: 0
+  notifications_sent: 0
+  duration: 30
+
+live:
+  host_id: 1
+  title: Test Starting Soon
+  description: Test Starting Soon Description
+  start_at:  <%= Time.now.utc.advance(:minutes => -18).strftime("%Y-%m-%d %H:%M:%S") %>
+  started_at:  <%= Time.now.utc.advance(:minutes => -18).strftime("%Y-%m-%d %H:%M:%S") %>
+  active: 1
+  notifications_sent: 0
+  duration: 30
+
+starting_soon:
+ host_id: 1
+ title: Test Starting Soon
+ description: Test Starting Soon Description
+ start_at:  <%= Time.now.utc.advance(:minutes => 18).strftime("%Y-%m-%d %H:%M:%S") %>
+ active: 1
+ notifications_sent: 0
+ duration: 30
+ 
+starting_later:
+  host_id: 1
+  title: Test Starting Soon
+  description: Test Starting Soon Description
+  start_at:  <%= Time.now.utc.advance(:minutes => 60).strftime("%Y-%m-%d %H:%M:%S") %>
+  active: 1
+  notifications_sent: 0
+  duration: 30 

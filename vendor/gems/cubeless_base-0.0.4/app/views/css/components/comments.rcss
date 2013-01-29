@@ -1,0 +1,7 @@
+.comments .item_text { font-size: 1em; font-weight: normal; }
+.comments .item_text p { margin: 2px 0 5px; font-size: 1em;}
+.comments .links { margin-top: 5px; }
+
+#group_posts .comments { padding-left: 60px; }
+
+.comments a { color: <%= @theme_colors['link_color'] %>; text-decoration: underline; }

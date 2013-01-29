@@ -1,0 +1,25 @@
+<div id="map_canvas" style="width: 800px; height: 500px"></div>
+
+<script type="text/javascript">
+
+    function initialize() {
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map_canvas"));
+        
+        map.setCenter(new GLatLng(<%= @offers[0].locations[0].latitude %> , <%= @offers[0].locations[0].longitude %>), 13);
+        
+        map.setUIToDefault();
+        
+        var point;
+        
+        <% @offers.each do |o| -%>
+            point = new GLatLng(<%= o.locations[0].latitude %> , <%= o.locations[0].longitude %>);
+            map.addOverlay(new GMarker(point));
+        <% end %>
+        
+      }
+    }
+
+    initialize();
+
+</script>

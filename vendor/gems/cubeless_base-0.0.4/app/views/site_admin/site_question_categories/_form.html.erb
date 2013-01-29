@@ -1,0 +1,9 @@
+<%= f.error_messages %>
+<fieldset>
+	<dl class="admin_details">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </dl>
+</fieldset>
+
+<%= f.hidden_field :position, :value => SiteQuestionCategory.count+1 %>

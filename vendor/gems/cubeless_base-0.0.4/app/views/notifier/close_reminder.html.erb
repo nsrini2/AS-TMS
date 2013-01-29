@@ -1,0 +1,10 @@
+<p><strong>The following question will close automatically to new answers in 4 days.</strong><br /><br />
+&#8220;<%= @question.question %>&#8221;</p>
+<p><strong><a href="<%= @question_url %>">Click here</a> to view this question's answers or to extend the close date.</strong><br /><br />
+<br />
+Regards,
+<br /><br />
+<%=@site_name%><br /><br />
+
+<p style="padding:20px 0 0 30px;font-size:12px;">You control the communications you get from us. You can change your
+	<%= link_to "email preferences", @site_base_url + email_subscriptions_account_path %> at any time.<br /></p>

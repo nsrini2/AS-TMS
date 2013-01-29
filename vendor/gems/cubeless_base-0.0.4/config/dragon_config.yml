@@ -1,0 +1,135 @@
+site_name: "DragonTown"
+
+site_base_url: "http://dragon.cubeless.com"
+
+theme: 'theme_17'
+
+logo_file: "dragontown_logo.png"
+
+favicon: "dragontown_favicon.ico"
+
+terms_acceptance_required: true
+
+feedback_email: "brownd@cisdmail.com"
+
+email_from_address: 'DragonTown <no-reply@cubeless.com>'
+
+viewable_karma: true
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+question_categories: [
+	"Curriculum", 
+	"Classroom", 
+	"Professional Development", 
+	"Technology", 
+	"Extracurricular", 
+	"Publicity / Public Information", 
+	"Travel", 
+	"Life", 
+	"Fun", 
+	"DragonTown"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Title"
+    completes_profile: true
+    matchable: false
+  - question: profile_2
+    label: "Tag Line"
+    completes_profile: true
+    matchable: false
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+  - question: profile_3
+    label: "Campus"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Grade Level(s)"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Content(s)"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Work Phone"
+    completes_profile: true
+    matchable: false
+  - question: profile_7
+    label: "Technologies/software proficient in"
+    completes_profile: true
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'email',
+    'profile_3',
+    'profile_4',
+    'profile_5',
+    'profile_6'
+  ]
+  business_card: [
+    'profile_1',
+    'profile_2' 
+  ]
+
+
+profile_complex_questions:
+  - title: "About Me"
+    questions:
+      - question: question_1
+        label: "What’s your hometown or places you have lived?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Where do you live now?"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "Where have you traveled?"
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "What job did you want to do when you were a kid?"
+        completes_profile: true
+        matchable: true
+  - title: "On The Job"
+    questions:
+      - question: question_5
+        label: "What skills, talents and expertise can you share with others in the district?"
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What professional development have you attended that has made a difference for you?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What work do you do or have you done outside of teaching?"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What groups and organizations do you belong to or support?"
+        completes_profile: true
+        matchable: true
+  - title: "Stuff I Like"
+    questions:
+      - question: question_9
+        label: "What's the music you put on continuous repeat?"
+        completes_profile: true
+        matchable: true     
+      - question: question_10
+        label: "What are your favorite hobbies?"
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What is your favorite lunchspot or watering hole?"
+        completes_profile: true
+        matchable: true     
+      - question: question_12
+        label: "Tell about your family."
+        completes_profile: true
+        matchable: true

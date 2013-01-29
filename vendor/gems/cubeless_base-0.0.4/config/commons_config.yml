@@ -1,0 +1,137 @@
+
+theme: 'theme_3'
+
+logo_file: "commons_logo.gif"
+
+favicon: "commons_favicon.ico"
+
+site_name: "The Commons"
+
+disclaimer: "*Unauthorized use, copying or printing of pictures and/or information is prohibited."
+
+terms_acceptance_required: true
+
+viewable_karma: true
+
+question_categories: ["Curriculum", "Classroom", "Professional Development", "Technology", "Extracurricular", "Publicity / Public Information", "Travel", "Life", "Fun"]
+
+profile_biz_card_questions:
+  - question: profile_1
+    label: "Location"
+    completes_profile: true
+    matchable: true
+  - question: profile_2
+    label: "Tagline (e.g. mantra, sales tips, mission statement, etc.)"
+    completes_profile: true
+    matchable: false
+  - question: profile_3
+    label: "Title / Position"
+    completes_profile: true
+    matchable: true
+  - question: profile_4
+    label: "Phone Number"
+    completes_profile: true
+    matchable: false
+  - question: profile_5
+    label: "Cell Phone (optional)"
+    completes_profile: false
+    matchable: false
+  - question: profile_6
+    label: "Room / Office Number"
+    completes_profile: true
+    matchable: true
+  - question: profile_7
+    label: "Years in Education"
+    completes_profile: true
+    matchable: true
+  - question: email
+    label: "Email"
+    completes_profile: false
+    matchable: false
+
+contact_info_order:
+  profile: [
+    'profile_3',
+    'email',
+    'profile_4',
+    'profile_5',
+    'profile_6',
+    'profile_7'
+  ]
+  business_card: [
+    'profile_3',
+    'email',
+    'profile_4',
+    'profile_5'
+  ]
+
+
+profile_complex_questions:
+  - title: "Background"
+    questions:
+      - question: question_1
+        label: "Where were you born or where have you lived?"
+        example: "What places do you admit to living in your life?"
+        completes_profile: true
+        matchable: true
+      - question: question_2
+        label: "Where do you live now?"
+        example: "Don’t worry, we aren’t coming to visit, just want to know the city you live in now"
+        completes_profile: true
+        matchable: true
+      - question: question_3
+        label: "What schools have you attended and what degrees and professional certifications do you hold?"
+        example: "Give us a brain dump of your educational background.  Inquiring minds want to know."
+        completes_profile: true
+        matchable: true
+      - question: question_4
+        label: "Where do you travel?"
+        example: "Either for business or pleasure, the places you love (even if you’ve only been there once) or are forced to visit but know a lot about."
+        completes_profile: true
+        matchable: true
+
+  - title: "Work Information"
+    questions:
+      - question: question_5
+        label: "What other districts and businesses do you have an “in” with?"
+        example: "We’re looking for the specific districts or schools and businesses that you’ve worked for or where you have a solid contact."
+        completes_profile: true
+        matchable: true
+      - question: question_6
+        label: "What groups and organizations do you belong to or support?"
+        example: "What are the groups and organizations you give your time, money and/or attention to, both professionally and personally?"
+        completes_profile: true
+        matchable: true
+      - question: question_7
+        label: "What do you really do for a living?"
+        example: "Yeah, yeah, we see your title up above, but we also know we all wear a boatload of hats.  What do you spend your work hours doing?"
+        completes_profile: true
+        matchable: true
+      - question: question_8
+        label: "What skills, talents and expertise can you share with others in the district?"
+        example: "This is important.  Both in your job and beyond, what skills/talents do you possess, what do you know a lot about, and what are you really good at?"
+        completes_profile: true
+        matchable: true
+
+  - title: "Just For Fun"
+    questions:
+      - question: question_9
+        label: "What hobbies and activities do you enjoy outside of work?"
+        example: "When you step away from the MISD, how do you occupy your free time (or you wish you could if you had free time)?"
+        completes_profile: true
+        matchable: true
+      - question: question_10
+        label: "What music do you put on continuous repeat?"
+        example: "The songs and groups that you prefer to occupy your auditory."
+        completes_profile: true
+        matchable: true
+      - question: question_11
+        label: "What are your favorite lunch spots and dining destinations?"
+        example: "Where would we likely find you hanging out?"
+        completes_profile: true
+        matchable: true
+      - question: question_12
+        label: "Why did you get into education in the first place and what keeps you in this profession?"
+        example: "Your candid thoughts, please!"
+        completes_profile: true
+        matchable: true

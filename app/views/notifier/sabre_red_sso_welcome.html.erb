@@ -1,0 +1,19 @@
+<p style='line-height: 24px;'>
+	<font color='#004f5a' face='linotype universe, helvetica, arial' size='4'>
+		<strong>Welcome to AgentStream!</strong>
+	</font>
+</p>
+<p style='line-height: 18px;'>
+	<font color='#333333' face='linotype universe, helvetica, arial' size='2'>
+    Your new account in AgentStream has been activated.
+		<br /><br />
+		As a Sabre Red Workspace user, you can access AgentStream via Single Sign-On and gain immediate access to the community without logging in separately. To access AgentStream from Sabre Red Workspace, click the Community &gt;&gt; AgentStream drop-down links to enable Single Sign-On.
+    <br /><br />
+		If you need to access AgentStream outside of Sabre Red Workspace via web or mobile browser, visit <%= link_from_email("www.agentstream.com", "http://www.agentstream.com") %> and enter your Username (shown below) &amp; Password once set at the link below.
+	</font>
+</p>
+
+<p style='line-height: 18px;'><font color='#333333' face='linotype universe, helvetica, arial' size='3'><strong>
+	<p>Username: <%= @login %></p>
+	<p>Password: <%= link_from_email("Click here to set your password", @password_set_link ) %></p>
+</strong></font></p>

@@ -1,0 +1,16 @@
+#answers { }
+	#answers h3.answers { float: left; margin: 0; color: <%= @theme_colors['primary_color'] %>; }
+		#answers h3.answers .count { font-weight: normal; font-size: 90%; color: #666; }
+		#answers #filter_form { margin: 20px 0 10px; }
+		#answers .answer { padding: 12px; }
+			.answer .photo_wrapper { margin-right: 15px;}
+			.answer .letter { float: left; font-size: 11px; display: block; font-weight: bold; width: auto; padding: 2px 5px 2px 0; color: #f00; }
+			.answer .details { width: 590px; color: #555; margin: 0 0 8px; }
+				.answer .details p { margin: 0; font-size: 11px; }
+				.answer .details .answer_text { padding-bottom: 5px; color: #333; }
+
+			.answer .reply_wrapper { width: 572px; overflow: auto; clear: both; margin: 0 0 0 60px; padding: 8px; background-color: #fff; border: 1px solid #5692B7; <%= border_radius('5px') %> }
+				.answer .reply_wrapper .details { padding: 0; }
+					.answer .reply_wrapper .details p { padding: 0; margin: 0; }
+					.answer .reply_wrapper .details .photo_wrapper { padding: 0; margin: 0 5px 0 0; }
+				.answer .reply_wrapper .reply { margin-bottom: 7px; }

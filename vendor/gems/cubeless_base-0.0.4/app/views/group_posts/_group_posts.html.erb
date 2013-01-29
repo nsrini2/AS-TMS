@@ -1,0 +1,4 @@
+<% unless @group.group_posts.size.zero? -%>
+	<%= render :partial =>'group_posts/group_post', :collection => @group_posts %>
+<%= render_pagination @group_posts unless @group_posts.size == 1 -%>
+<% end %>

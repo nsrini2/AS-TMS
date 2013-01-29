@@ -1,0 +1,69 @@
+
+form#filter_form {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+label.filter_form_label
+{
+	margin-top:20px;
+}
+
+#filter_includes label{
+  display: inline;
+}
+
+form#filter_form select {
+	width: 100%;
+}
+
+div#filter_header {
+	color: white;
+	text-align: center;
+}
+
+h4#filter_header_line1 {
+	font: bold 20px Helvetica Neue;
+	width: 100%;
+	height: 15%;
+	background-color: #444444;
+	margin: 0px
+}
+
+h5#filter_header_line2 {
+	font: bold 18px Helvetica Neue;
+	height: 25%;
+	background-color: #444444;
+	margin: 0px
+}
+
+button#filter_uncheck_all {
+	float: right;
+	margin-top: 15px
+}
+
+div#filter_includes {
+	height: 90px;
+	overflow: auto;
+	border: #535353 solid thin;
+	width: 95%;
+}
+
+div#filter_dates {
+	width: 100%;
+	clear: both;
+	overflow: auto;
+}
+
+div#filter_dates_1 {
+	float:left;
+}
+
+div#filter_dates_2 {
+	float:right;
+}
+
+div#filter_clear_and_search {
+	width: 100%;
+	margin-top: 10px
+}
