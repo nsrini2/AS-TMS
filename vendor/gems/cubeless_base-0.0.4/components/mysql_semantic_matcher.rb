@@ -295,10 +295,10 @@ class MysqlSemanticMatcher < SemanticMatcher
   end
 
   def question_profile_match_deleted(question_profile_match)
-
+      
       # if count() of question matches drops below threshold, rematch
       ps = ActiveRecord::Base.connection.execute("select count(1) from question_profile_matches where question_id=#{question_profile_match.question_id}").first
-      count = ps.fetch[0]
+      count = ps[0]
 
       #!O eventually mark there were <max_queued found - i.e. never search again
       if count<@@question_match_max_assigned

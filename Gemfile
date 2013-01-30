@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.16'
+gem 'rails', '3.0.20'
 
-gem "sass"
+gem "sass", '~>3.2.1'
 
 # Bundle the extra gems:
 
@@ -13,6 +13,7 @@ gem "RedCloth", '4.2.3'
 gem 'rmagick', '2.5.2', :require => false # this is getting required by attachment_fu/processors/rmagick_processor
 gem 'nokogiri', '1.5.2'
 gem "json", '~>1.4.6'
+gem 'log4r', '1.1.9'
 
 # require native mysql driver, not the ruby version
 gem 'fastercsv', '1.5.4' # admin user import/export
@@ -37,7 +38,7 @@ gem 'panda', '0.2.1'
 gem 'capistrano', '2.5.18'
 
 gem 'delayed_job', '~>2.1.4'
-gem 'spawn'
+gem 'spawn', '~> 0.1.4'
 
 gem 'koala', '1.2.1'
 
@@ -49,15 +50,15 @@ gem 'tire', '~>0.5.1'
 
 # TNSS Engines
 gem 'cubeless_base', '0.0.4', :path => 'vendor/gems/cubeless_base-0.0.4'
-gem 'ruport'
-gem 'acts_as_reportable'
+gem 'ruport', '~>1.6.3'
+gem 'acts_as_reportable', '~>1.1.1'
 
 gem 'deals_and_extras', '0.0.2', :path => 'vendor/gems/deals_and_extras-0.0.2'
 
 gem 'devise', '1.3.1'
-gem 'ym4r'
-gem 'hpricot'
-gem 'prawn'
+gem 'ym4r', '~>0.6.1'
+gem 'hpricot', '~>0.8.6'
+gem 'prawn', '~>0.12.0'
 gem 'feedzirra', '~> 0.1.2'
 gem 'inherits_from', '~> 0.0.2'
 gem 'newrelic_rpm', '~> 3.3.4.1' 
@@ -71,11 +72,11 @@ group :development, :test do
   gem 'ruby-debug'
   # gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'seed_me'
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
-  gem 'rcov'
+  gem 'factory_girl_rails', '~> 1.3.0'
+  gem 'rspec-rails', '~>2.11.0'
+  gem 'rcov', '~>1.0.0'
   # from app folder $> thin start
-  gem 'thin'  
+  gem 'thin', '~> 1.4.1'  
   # gem 'ruby-prof'
 end
 

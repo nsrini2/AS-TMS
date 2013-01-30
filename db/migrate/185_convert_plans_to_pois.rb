@@ -32,8 +32,8 @@ class ConvertPlansToPois < ActiveRecord::Migration
     
     execute "update attachments set owner_type='Poi' where owner_type='PlanElement'"
     
-    execute "update poly_text_indices set owner_type='Poi' where owner_type='PlanElement'"
-    execute "delete from poly_text_indices where owner_type='Plan'"
+    # execute "update poly_text_indices set owner_type='Poi' where owner_type='PlanElement'"
+    # execute "delete from poly_text_indices where owner_type='Plan'"
     
     execute "update comments set owner_type='Poi' where owner_type='PlanElement'"
     execute "delete from comments where owner_type='Plan'"
