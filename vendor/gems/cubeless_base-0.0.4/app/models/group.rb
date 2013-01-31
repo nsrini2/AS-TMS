@@ -69,14 +69,14 @@ class Group < ActiveRecord::Base
   end
 
   def self.find(*args)
-    here args
+    #here args
     
     current_profile = AuthenticatedSystem.current_profile
     #!H super-awful performance hack
     ModelUtil.add_selects!(args,"groups.*, (select count(1) from group_memberships where group_id=groups.id and profile_id=#{current_profile.id}) as current_profile_is_member, #{current_profile.id} as current_profile_id") if current_profile
     ModelUtil.add_includes!(args,:primary_photo)
     
-    here args
+    #here args
     
     super(*args)
   end
