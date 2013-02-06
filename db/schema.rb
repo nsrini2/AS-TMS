@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122171616) do
+ActiveRecord::Schema.define(:version => 20130206192250) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -1234,6 +1234,7 @@ ActiveRecord::Schema.define(:version => 20130122171616) do
     t.text     "facebook_graph"
     t.string   "srw_agent_id"
     t.text     "srw_ticket"
+    t.boolean  "take_survey",                                    :default => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login"

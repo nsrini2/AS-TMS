@@ -6,6 +6,9 @@ class ProfilesController
   helper :watches
   
   def hub
+    if params.member?('survey')
+      current_user.survey_taken!
+    end
     @widgets = {}
         
     # Add the default widget
