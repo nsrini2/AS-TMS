@@ -34,6 +34,7 @@ $cfg['Servers'][$i]['compress'] = false;
 /* Select mysqli if your server has it */
 $cfg['Servers'][$i]['extension'] = 'mysql';
 /* User for advanced features */
+$cfg['Error_Handler']['display'] = true;
 // $cfg['Servers'][$i]['controluser'] = 'pma';
 // $cfg['Servers'][$i]['controlpass'] = 'pmapass';
 /* Advanced phpMyAdmin features */
