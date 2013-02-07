@@ -2,8 +2,25 @@
   <div class="content2" style="width: 100%;">
     <div style="margin: 0 auto; width: 400px;">
       <center>
-        <h2>AgentStream Survey</h2>
-        <%= link_to("Close", "#{request.url}?survey=true") %>
+        <div id="wufoo-z7p1a7">
+		Fill out my <a href="http://designchemistry.wufoo.com/forms/z7p1a7">survey</a>.
+		</div>
+		<script type="text/javascript">var z7p1a7;(function(d, t) {
+		var s = d.createElement(t), options = {
+		'userName':'designchemistry', 
+		'formHash':'z7p1a7', 
+		'autoResize':true,
+		'height':'312',
+		'async':true,
+		'header':'show', 
+		'ssl':true};
+		s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
+		s.onload = s.onreadystatechange = function() {
+		var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+		try { z7p1a7 = new WufooForm();z7p1a7.initialize(options);z7p1a7.display(); } catch (e) {}};
+		var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+		})(document, 'script');</script>
+        <%= #link_to("Close", "#{request.url}?survey=true") %>
       </center>
     </div>
   </div>  
