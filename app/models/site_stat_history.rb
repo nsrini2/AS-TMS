@@ -11,7 +11,7 @@ class SiteStatHistory < ActiveRecord::Base
     
     def stat_by_week(stat, day = Date.today)
       start_date = day.at_beginning_of_week
-      self.where(:name => stat).where(:created_at => start_date).value 
+      self.where(:name => stat).where("DATE(created_at) = ?", start_date).value 
       rescue NoMethodError
         0
     end
