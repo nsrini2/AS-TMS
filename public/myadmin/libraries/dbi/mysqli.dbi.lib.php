@@ -3,17 +3,13 @@
 /**
  * Interface to the improved MySQL extension (MySQLi)
  *
- * @package PhpMyAdmin-DBI-MySQLi
+ * @version $Id$
  */
 if (! defined('PHPMYADMIN')) {
     exit;
 }
 
-require_once './libraries/logging.lib.php';
-
-/**
- * MySQL client API
- */
+// MySQL client API
 if (!defined('PMA_MYSQL_CLIENT_API')) {
     $client_api = explode('.', mysqli_get_client_info());
     define('PMA_MYSQL_CLIENT_API', (int)sprintf('%d%02d%02d', $client_api[0], $client_api[1], intval($client_api[2])));
@@ -21,13 +17,7 @@ if (!defined('PMA_MYSQL_CLIENT_API')) {
 }
 
 /**
- * some PHP versions are reporting extra messages like "No index used in query"
- */
-
-mysqli_report(MYSQLI_REPORT_OFF);
-
-/**
- * some older mysql client libs are missing these constants ...
+ * some older mysql client libs are missing this constants ...
  */
 if (! defined('MYSQLI_BINARY_FLAG')) {
    define('MYSQLI_BINARY_FLAG', 128);
@@ -43,93 +33,38 @@ if (! defined('MYSQLI_TYPE_BIT')) {
     define('MYSQLI_TYPE_BIT', 16);
 }
 
-// for Drizzle
-if (! defined('MYSQLI_TYPE_VARCHAR')) {
-    define('MYSQLI_TYPE_VARCHAR', 15);
-}
-
-/**
- * Helper function for connecting to the database server
- *
- * @param   mysqli  $link
- * @param   string  $host
- * @param   string  $user
- * @param   string  $password
- * @param   string  $dbname
- * @param   int     $server_port
- * @param   string  $server_socket
- * @param   int     $client_flags
- * @param   bool    $persistent
- * @return  bool
- */
-function PMA_DBI_real_connect($link, $host, $user, $password, $dbname, $server_port, $server_socket, $client_flags = null, $persistent = false)
-{
-    global $cfg;
-
-    // mysqli persistent connections only on PHP 5.3+
-    if (PMA_PHP_INT_VERSION >= 50300) {
-        if ($cfg['PersistentConnections'] || $persistent) {
-            $host = 'p:' . $host;
-        }
-    }
-    if ($client_flags === null) {
-        return @mysqli_real_connect(
-            $link,
-            $host,
-            $user,
-            $password,
-            $dbname,
-            $server_port,
-            $server_socket
-        );
-    } else {
-        return @mysqli_real_connect(
-            $link,
-            $host,
-            $user,
-            $password,
-            $dbname,
-            $server_port,
-            $server_socket,
-            $client_flags
-        );
-    }
-}
-
 /**
  * connects to the database server
  *
+ * @uses    $GLOBALS['cfg']['Server']
+ * @uses    PMA_auth_fails()
+ * @uses    PMA_DBI_postConnect()
+ * @uses    MYSQLI_CLIENT_COMPRESS
+ * @uses    MYSQLI_OPT_LOCAL_INFILE
+ * @uses    strtolower()
+ * @uses    mysqli_init()
+ * @uses    mysqli_options()
+ * @uses    mysqli_real_connect()
+ * @uses    defined()
  * @param   string  $user           mysql user name
  * @param   string  $password       mysql user password
- * @param   bool    $is_controluser
- * @param   array   $server host/port/socket
- * @param   bool    $auxiliary_connection (when true, don't go back to login if connection fails)
+ * @param   boolean $is_controluser
  * @return  mixed   false on error or a mysqli object on success
  */
-function PMA_DBI_connect($user, $password, $is_controluser = false, $server = null, $auxiliary_connection = false)
+function PMA_DBI_connect($user, $password, $is_controluser = false)
 {
-    global $cfg;
+    $server_port   = (empty($GLOBALS['cfg']['Server']['port']))
+                   ? false
+                   : (int) $GLOBALS['cfg']['Server']['port'];
 
-    if ($server) {
-        $server_port   = (empty($server['port']))
-            ? false
-            : (int)$server['port'];
-        $server_socket = (empty($server['socket']))
-            ? ''
-            : $server['socket'];
-        $server['host'] = (empty($server['host']))
-            ? 'localhost'
-            : $server['host'];
-    } else {
-        $server_port   = (empty($cfg['Server']['port']))
-            ? false
-            : (int) $cfg['Server']['port'];
-        $server_socket = (empty($cfg['Server']['socket']))
-            ? null
-            : $cfg['Server']['socket'];
+    if (strtolower($GLOBALS['cfg']['Server']['connect_type']) == 'tcp') {
+        $GLOBALS['cfg']['Server']['socket'] = '';
     }
 
     // NULL enables connection to the default socket
+    $server_socket = (empty($GLOBALS['cfg']['Server']['socket']))
+                   ? null
+                   : $GLOBALS['cfg']['Server']['socket'];
 
     $link = mysqli_init();
 
@@ -138,71 +73,33 @@ function PMA_DBI_connect($user, $password, $is_controluser = false, $server = nu
     $client_flags = 0;
 
     /* Optionally compress connection */
-    if ($cfg['Server']['compress'] && defined('MYSQLI_CLIENT_COMPRESS')) {
+    if ($GLOBALS['cfg']['Server']['compress'] && defined('MYSQLI_CLIENT_COMPRESS')) {
         $client_flags |= MYSQLI_CLIENT_COMPRESS;
     }
 
     /* Optionally enable SSL */
-    if ($cfg['Server']['ssl'] && defined('MYSQLI_CLIENT_SSL')) {
+    if ($GLOBALS['cfg']['Server']['ssl'] && defined('MYSQLI_CLIENT_SSL')) {
         $client_flags |= MYSQLI_CLIENT_SSL;
     }
 
-    if (!$server) {
-        $return_value = @PMA_DBI_real_connect(
-            $link,
-            $cfg['Server']['host'],
-            $user,
-            $password,
-            false,
-            $server_port,
-            $server_socket,
-            $client_flags
-        );
-        // Retry with empty password if we're allowed to
-        if ($return_value == false && isset($cfg['Server']['nopassword']) && $cfg['Server']['nopassword'] && !$is_controluser) {
-            $return_value = @PMA_DBI_real_connect(
-                $link,
-                $cfg['Server']['host'],
-                $user,
-                '',
-                false,
-                $server_port,
-                $server_socket,
-                $client_flags
-            );
-        }
-    } else {
-        $return_value = @PMA_DBI_real_connect(
-            $link,
-            $server['host'],
-            $user,
-            $password,
-            false,
-            $server_port,
-            $server_socket
-        );
+    $return_value = @mysqli_real_connect($link, $GLOBALS['cfg']['Server']['host'], $user, $password, false, $server_port, $server_socket, $client_flags);
+
+    // Retry with empty password if we're allowed to
+    if ($return_value == false && isset($cfg['Server']['nopassword']) && $cfg['Server']['nopassword'] && !$is_controluser) {
+        $return_value = @mysqli_real_connect($link, $GLOBALS['cfg']['Server']['host'], $user, '', false, $server_port, $server_socket, $client_flags);
     }
 
     if ($return_value == false) {
         if ($is_controluser) {
-            trigger_error(
-                __('Connection for controluser as defined in your configuration failed.'),
-                E_USER_WARNING
-            );
+            if (! defined('PMA_DBI_CONNECT_FAILED_CONTROLUSER')) {
+                define('PMA_DBI_CONNECT_FAILED_CONTROLUSER', true);
+            }
             return false;
         }
-        // we could be calling PMA_DBI_connect() to connect to another
-        // server, for example in the Synchronize feature, so do not
-        // go back to main login if it fails
-        if (! $auxiliary_connection) {
-            PMA_log_user($user, 'mysql-denied');
-            PMA_auth_fails();
-        } else {
-            return false;
-        }
-    } else {
-        PMA_DBI_postConnect($link, $is_controluser);
-    }
+        PMA_auth_fails();
+    } // end if
+
+    PMA_DBI_postConnect($link, $is_controluser);
 
     return $link;
 }
@@ -210,9 +107,13 @@ function PMA_DBI_connect($user, $password, $is_controluser = false, $server = nu
 /**
  * selects given database
  *
- * @param string  $dbname  database name to select
- * @param mysqli  $link    the mysqli object
- * @return boolean
+ * @uses    $GLOBALS['userlink']
+ * @uses    PMA_MYSQL_INT_VERSION
+ * @uses    PMA_convert_charset()
+ * @uses    mysqli_select_db()
+ * @param   string          $dbname database name to select
+ * @param   object mysqli   $link   the mysli object
+ * @return  boolean         treu or false
  */
 function PMA_DBI_select_db($dbname, $link = null)
 {
@@ -223,18 +124,30 @@ function PMA_DBI_select_db($dbname, $link = null)
             return false;
         }
     }
+    if (PMA_MYSQL_INT_VERSION < 40100) {
+        $dbname = PMA_convert_charset($dbname);
+    }
     return mysqli_select_db($link, $dbname);
 }
 
 /**
  * runs a query and returns the result
  *
- * @param   string  $query    query to execute
- * @param   mysqli  $link     mysqli object
- * @param   int     $options
- * @return  mysqli_result|bool
+ * @uses    PMA_DBI_QUERY_STORE
+ * @uses    PMA_DBI_QUERY_UNBUFFERED
+ * @uses    PMA_MYSQL_INT_VERSION
+ * @uses    $GLOBALS['userlink']
+ * @uses    PMA_convert_charset()
+ * @uses    MYSQLI_STORE_RESULT
+ * @uses    MYSQLI_USE_RESULT
+ * @uses    mysqli_query()
+ * @uses    defined()
+ * @param   string          $query      query to execute
+ * @param   object mysqli   $link       mysqli object
+ * @param   integer         $options
+ * @return  mixed           true, false or result object
  */
-function PMA_DBI_real_query($query, $link, $options)
+function PMA_DBI_try_query($query, $link = null, $options = 0)
 {
     if ($options == ($options | PMA_DBI_QUERY_STORE)) {
         $method = MYSQLI_STORE_RESULT;
@@ -244,106 +157,175 @@ function PMA_DBI_real_query($query, $link, $options)
         $method = 0;
     }
 
+    if (empty($link)) {
+        if (isset($GLOBALS['userlink'])) {
+            $link = $GLOBALS['userlink'];
+        } else {
+            return false;
+        }
+    }
+    if (defined('PMA_MYSQL_INT_VERSION') && PMA_MYSQL_INT_VERSION < 40100) {
+        $query = PMA_convert_charset($query);
+    }
     return mysqli_query($link, $query, $method);
+
+    // From the PHP manual:
+    // "note: returns true on success or false on failure. For SELECT,
+    // SHOW, DESCRIBE or EXPLAIN, mysqli_query() will return a result object"
+    // so, do not use the return value to feed mysqli_num_rows() if it's
+    // a boolean
+}
+
+/**
+ * returns $type array of rows from given $result
+ *
+ * The following function is meant for internal use only.
+ * Do not call it from outside this library!
+ *
+ * @uses    $GLOBALS['allow_recoding']
+ * @uses    $GLOBALS['cfg']['AllowAnywhereRecoding']
+ * @uses    PMA_MYSQL_INT_VERSION
+ * @uses    PMA_DBI_get_fields_meta()
+ * @uses    PMA_convert_display_charset()
+ * @uses    mysqli_fetch_array()
+ * @uses    mysqli_num_fields()
+ * @uses    stristr()
+ * @param   object mysqli result    $result
+ * @param   integer                 $type   ASSOC, BOTH, or NUMERIC array
+ * @return  array                   results
+ * @access  protected
+ */
+function PMA_mysqli_fetch_array($result, $type = false)
+{
+    if ($type != false) {
+        $data = @mysqli_fetch_array($result, $type);
+    } else {
+        $data = @mysqli_fetch_array($result);
+    }
+
+    /* No data returned => do not touch it */
+    if (! $data) {
+        return $data;
+    }
+
+    if (!defined('PMA_MYSQL_INT_VERSION') || PMA_MYSQL_INT_VERSION >= 40100
+      || !(isset($GLOBALS['cfg']['AllowAnywhereRecoding'])
+        && $GLOBALS['cfg']['AllowAnywhereRecoding']
+        && $GLOBALS['allow_recoding'])) {
+        /* No recoding -> return data as we got them */
+        return $data;
+    }
+
+    $ret    = array();
+    $num    = mysqli_num_fields($result);
+    if ($num > 0) {
+        $fields = PMA_DBI_get_fields_meta($result);
+    }
+    // sometimes, mysqli_fetch_fields() does not return results
+    // (as seen in PHP 5.1.0-dev), so for now, return $data unchanged
+    if (!$fields) {
+        return $data;
+    }
+    $i = 0;
+    for ($i = 0; $i < $num; $i++) {
+        if (!isset($fields[$i]->type)) {
+            /* No meta information available -> we guess that it should be
+             * converted */
+            if (isset($data[$i])) {
+                $ret[$i] = PMA_convert_display_charset($data[$i]);
+            }
+            if (isset($fields[$i]->name) && isset($data[$fields[$i]->name])) {
+                $ret[PMA_convert_display_charset($fields[$i]->name)] =
+                    PMA_convert_display_charset($data[$fields[$i]->name]);
+            }
+        } else {
+            /* Meta information available -> check type of field and convert
+             * it according to the type */
+            if (stristr($fields[$i]->type, 'BLOB')
+              || stristr($fields[$i]->type, 'BINARY')) {
+                if (isset($data[$i])) {
+                    $ret[$i] = $data[$i];
+                }
+                if (isset($data[$fields[$i]->name])) {
+                    $ret[PMA_convert_display_charset($fields[$i]->name)] =
+                        $data[$fields[$i]->name];
+                }
+            } else {
+                if (isset($data[$i])) {
+                    $ret[$i] = PMA_convert_display_charset($data[$i]);
+                }
+                if (isset($data[$fields[$i]->name])) {
+                    $ret[PMA_convert_display_charset($fields[$i]->name)] =
+                        PMA_convert_display_charset($data[$fields[$i]->name]);
+                }
+            }
+        }
+    }
+    return $ret;
 }
 
 /**
  * returns array of rows with associative and numeric keys from $result
  *
- * @param   mysqli_result  $result
- * @return  array
+ * @uses    PMA_mysqli_fetch_array()
+ * @uses    MYSQLI_BOTH
+ * @param   object mysqli result    $result
+ * @return  array                   result rows
  */
 function PMA_DBI_fetch_array($result)
 {
-    return mysqli_fetch_array($result, MYSQLI_BOTH);
+    return PMA_mysqli_fetch_array($result, MYSQLI_BOTH);
 }
 
 /**
  * returns array of rows with associative keys from $result
  *
- * @param   mysqli_result  $result
- * @return  array
+ * @uses    PMA_mysqli_fetch_array()
+ * @uses    MYSQLI_ASSOC
+ * @param   object mysqli result    $result
+ * @return  array                   result rows
  */
 function PMA_DBI_fetch_assoc($result)
 {
-    return mysqli_fetch_array($result, MYSQLI_ASSOC);
+    return PMA_mysqli_fetch_array($result, MYSQLI_ASSOC);
 }
 
 /**
  * returns array of rows with numeric keys from $result
  *
- * @param   mysqli_result  $result
- * @return  array
+ * @uses    PMA_mysqli_fetch_array()
+ * @uses    MYSQLI_NUM
+ * @param   object mysqli result    $result
+ * @return  array                   result rows
  */
 function PMA_DBI_fetch_row($result)
 {
-    return mysqli_fetch_array($result, MYSQLI_NUM);
+    return PMA_mysqli_fetch_array($result, MYSQLI_NUM);
 }
 
 /**
- * Adjusts the result pointer to an arbitrary row in the result
+ * Frees the memory associated with the results
  *
- * @param   $result
- * @param   $offset
- * @return  bool  true on success, false on failure
+ * @uses    mysqli_result
+ * @uses    func_get_args()
+ * @uses    is_object()
+ * @uses    mysqli_free_result()
+ * @param   result  $result,...     one or more mysql result resources
  */
-function PMA_DBI_data_seek($result, $offset)
+function PMA_DBI_free_result()
 {
-    return mysqli_data_seek($result, $offset);
-}
-
-/**
- * Frees memory associated with the result
- *
- * @param  mysqli_result  $result
- */
-function PMA_DBI_free_result($result)
-{
-    if ($result instanceof mysqli_result) {
-        mysqli_free_result($result);
-    }
-}
-
-/**
- * Check if there are any more query results from a multi query
- *
- * @param   mysqli  $link  the mysqli object
- * @return  bool         true or false
- */
-function PMA_DBI_more_results($link = null)
-{
-    if (empty($link)) {
-        if (isset($GLOBALS['userlink'])) {
-            $link = $GLOBALS['userlink'];
-        } else {
-            return false;
+    foreach (func_get_args() as $result) {
+        if ($result instanceof mysqli_result) {
+            mysqli_free_result($result);
         }
     }
-    return mysqli_more_results($link);
-}
-
-/**
- * Prepare next result from multi_query
- *
- * @param   mysqli  $link  the mysqli object
- * @return  bool         true or false
- */
-function PMA_DBI_next_result($link = null)
-{
-    if (empty($link)) {
-        if (isset($GLOBALS['userlink'])) {
-            $link = $GLOBALS['userlink'];
-        } else {
-            return false;
-        }
-    }
-    return mysqli_next_result($link);
 }
 
 /**
  * Returns a string representing the type of connection used
- *
- * @param   resource  $link  mysql link
+ * @uses    mysqli_get_host_info()
+ * @uses    $GLOBALS['userlink']    as default for $link
+ * @param   resource        $link   mysql link
  * @return  string          type of connection used
  */
 function PMA_DBI_get_host_info($link = null)
@@ -360,8 +342,9 @@ function PMA_DBI_get_host_info($link = null)
 
 /**
  * Returns the version of the MySQL protocol used
- *
- * @param   resource  $link  mysql link
+ * @uses    mysqli_get_proto_info()
+ * @uses    $GLOBALS['userlink']    as default for $link
+ * @param   resource        $link   mysql link
  * @return  integer         version of the MySQL protocol used
  */
 function PMA_DBI_get_proto_info($link = null)
@@ -378,7 +361,7 @@ function PMA_DBI_get_proto_info($link = null)
 
 /**
  * returns a string that represents the client library version
- *
+ * @uses    mysqli_get_client_info()
  * @return  string          MySQL client library version
  */
 function PMA_DBI_get_client_info()
@@ -389,17 +372,24 @@ function PMA_DBI_get_client_info()
 /**
  * returns last error message or false if no errors occured
  *
- * @param   resource  $link  mysql link
- * @return  string|bool  $error or false
+ * @uses    PMA_MYSQL_INT_VERSION
+ * @uses    PMA_convert_display_charset()
+ * @uses    PMA_DBI_convert_message()
+ * @uses    $GLOBALS['errno']
+ * @uses    $GLOBALS['userlink']
+ * @uses    $GLOBALS['strServerNotResponding']
+ * @uses    $GLOBALS['strSocketProblem']
+ * @uses    mysqli_errno()
+ * @uses    mysqli_error()
+ * @uses    mysqli_connect_errno()
+ * @uses    mysqli_connect_error()
+ * @uses    defined()
+ * @param   resource        $link   mysql link
+ * @return  string|boolean  $error or false
  */
 function PMA_DBI_getError($link = null)
 {
     $GLOBALS['errno'] = 0;
-
-    /* Treat false same as null because of controllink */
-    if ($link === false) {
-        $link = null;
-    }
 
     if (null === $link && isset($GLOBALS['userlink'])) {
         $link =& $GLOBALS['userlink'];
@@ -423,14 +413,45 @@ function PMA_DBI_getError($link = null)
     // keep the error number for further check after the call to PMA_DBI_getError()
     $GLOBALS['errno'] = $error_number;
 
-    return PMA_DBI_formatError($error_number, $error_message);
+    if (! empty($error_message)) {
+        $error_message = PMA_DBI_convert_message($error_message);
+    }
+
+    $error_message = htmlspecialchars($error_message);
+
+    if ($error_number == 2002) {
+        $error = '#' . ((string) $error_number) . ' - ' . $GLOBALS['strServerNotResponding'] . ' ' . $GLOBALS['strSocketProblem'];
+    } elseif (defined('PMA_MYSQL_INT_VERSION') && PMA_MYSQL_INT_VERSION >= 40100) {
+        $error = '#' . ((string) $error_number) . ' - ' . $error_message;
+    } else {
+        $error = '#' . ((string) $error_number) . ' - ' . PMA_convert_display_charset($error_message);
+    }
+    return $error;
 }
 
 /**
- * returns the number of rows returned by last query
+ * closes given database $link or $GLOBALS['userlink']
  *
- * @param   mysqli_result  $result
- * @return  string|int
+ * @uses    $GLOBALS['userlink']
+ * @uses    mysqli_close()
+ * @param   object mysqli   $link   the mysqli object
+ * @return  boolean         treu or false
+ */
+function PMA_DBI_close($link = null)
+{
+    if (empty($link)) {
+        if (isset($GLOBALS['userlink'])) {
+            $link = $GLOBALS['userlink'];
+        } else {
+            return false;
+        }
+    }
+    return @mysqli_close($link);
+}
+
+/**
+ *
+ * @param   object mysqli result    $result
  */
 function PMA_DBI_num_rows($result)
 {
@@ -445,10 +466,12 @@ function PMA_DBI_num_rows($result)
 /**
  * returns last inserted auto_increment id for given $link or $GLOBALS['userlink']
  *
- * @param   mysqli  $link  the mysqli object
- * @return  string|int
+ * @uses    $GLOBALS['userlink']
+ * @uses    mysqli_insert_id()
+ * @param   object mysqli   $link   the mysqli object
+ * @return  string ineteger
  */
-function PMA_DBI_insert_id($link = null)
+function PMA_DBI_insert_id($link = '')
 {
     if (empty($link)) {
         if (isset($GLOBALS['userlink'])) {
@@ -457,23 +480,18 @@ function PMA_DBI_insert_id($link = null)
             return false;
         }
     }
-    // When no controluser is defined, using mysqli_insert_id($link)
-    // does not always return the last insert id due to a mixup with
-    // the tracking mechanism, but this works:
-    return PMA_DBI_fetch_value('SELECT LAST_INSERT_ID();', 0, 0, $link);
-    // Curiously, this problem does not happen with the mysql extension but
-    // there is another problem with BIGINT primary keys so PMA_DBI_insert_id()
-    // in the mysql extension also uses this logic.
+    return mysqli_insert_id($link);
 }
 
 /**
  * returns the number of rows affected by last query
  *
- * @param   mysqli   $link            the mysqli object
- * @param   boolean  $get_from_cache
- * @return  string|int
+ * @uses    $GLOBALS['userlink']
+ * @uses    mysqli_affected_rows()
+ * @param   object mysqli   $link   the mysqli object
+ * @return  string integer
  */
-function PMA_DBI_affected_rows($link = null, $get_from_cache = true)
+function PMA_DBI_affected_rows($link = null)
 {
     if (empty($link)) {
         if (isset($GLOBALS['userlink'])) {
@@ -482,18 +500,29 @@ function PMA_DBI_affected_rows($link = null, $get_from_cache = true)
             return false;
         }
     }
-    if ($get_from_cache) {
-        return $GLOBALS['cached_affected_rows'];
-    } else {
-        return mysqli_affected_rows($link);
-    }
+    return mysqli_affected_rows($link);
 }
 
 /**
  * returns metainfo for fields in $result
  *
- * @param   mysqli_result  $result
- * @return  array  meta info for fields in $result
+ * @todo preserve orignal flags value
+ * @uses    PMA_DBI_field_flags()
+ * @uses    MYSQLI_TYPE_*
+ * @uses    MYSQLI_MULTIPLE_KEY_FLAG
+ * @uses    MYSQLI_PRI_KEY_FLAG
+ * @uses    MYSQLI_UNIQUE_KEY_FLAG
+ * @uses    MYSQLI_NOT_NULL_FLAG
+ * @uses    MYSQLI_UNSIGNED_FLAG
+ * @uses    MYSQLI_ZEROFILL_FLAG
+ * @uses    MYSQLI_NUM_FLAG
+ * @uses    MYSQLI_TYPE_BLOB
+ * @uses    MYSQLI_BLOB_FLAG
+ * @uses    defined()
+ * @uses    mysqli_fetch_fields()
+ * @uses    is_array()
+ * @param   object mysqli result    $result
+ * @return  array                   meta info for fields in $result
  */
 function PMA_DBI_get_fields_meta($result)
 {
@@ -524,13 +553,12 @@ function PMA_DBI_get_fields_meta($result)
     $typeAr[MYSQLI_TYPE_BLOB]        = 'blob';
     $typeAr[MYSQLI_TYPE_VAR_STRING]  = 'string';
     $typeAr[MYSQLI_TYPE_STRING]      = 'string';
-    $typeAr[MYSQLI_TYPE_VARCHAR]     = 'string'; // for Drizzle
     // MySQL returns MYSQLI_TYPE_STRING for CHAR
     // and MYSQLI_TYPE_CHAR === MYSQLI_TYPE_TINY
     // so this would override TINYINT and mark all TINYINT as string
     // https://sf.net/tracker/?func=detail&aid=1532111&group_id=23067&atid=377408
     //$typeAr[MYSQLI_TYPE_CHAR]        = 'string';
-    $typeAr[MYSQLI_TYPE_GEOMETRY]    = 'geometry';
+    $typeAr[MYSQLI_TYPE_GEOMETRY]    = 'unknown';
     $typeAr[MYSQLI_TYPE_BIT]         = 'bit';
 
     $fields = mysqli_fetch_fields($result);
@@ -572,8 +600,8 @@ function PMA_DBI_get_fields_meta($result)
 /**
  * return number of fields in given $result
  *
- * @param   mysqli_result  $result
- * @return  int  field count
+ * @param   object mysqli result    $result
+ * @return  integer                 field count
  */
 function PMA_DBI_num_fields($result)
 {
@@ -583,33 +611,61 @@ function PMA_DBI_num_fields($result)
 /**
  * returns the length of the given field $i in $result
  *
- * @param   mysqli_result  $result
- * @param   int            $i       field
- * @return  int  length of field
+ * @uses    mysqli_fetch_field_direct()
+ * @param   object mysqli result    $result
+ * @param   integer                 $i      field
+ * @return  integer                 length of field
  */
 function PMA_DBI_field_len($result, $i)
 {
-    return mysqli_fetch_field_direct($result, $i)->length;
+    $info = mysqli_fetch_field_direct($result, $i);
+    // stdClass::$length will be integrated in
+    // mysqli-ext when mysql4.1 has been released.
+    return @$info->length;
 }
 
 /**
  * returns name of $i. field in $result
  *
- * @param   mysqli_result  $result
- * @param   int            $i       field
- * @return  string  name of $i. field in $result
+ * @uses    mysqli_fetch_field_direct()
+ * @param   object mysqli result    $result
+ * @param   integer                 $i      field
+ * @return  string                  name of $i. field in $result
  */
 function PMA_DBI_field_name($result, $i)
 {
-    return mysqli_fetch_field_direct($result, $i)->name;
+    $info = mysqli_fetch_field_direct($result, $i);
+    return $info->name;
 }
 
 /**
  * returns concatenated string of human readable field flags
  *
- * @param   mysqli_result  $result
- * @param   int            $i       field
- * @return  string  field flags
+ * @uses    MYSQLI_UNIQUE_KEY_FLAG
+ * @uses    MYSQLI_NUM_FLAG
+ * @uses    MYSQLI_PART_KEY_FLAG
+ * @uses    MYSQLI_TYPE_SET
+ * @uses    MYSQLI_TIMESTAMP_FLAG
+ * @uses    MYSQLI_AUTO_INCREMENT_FLAG
+ * @uses    MYSQLI_TYPE_ENUM
+ * @uses    MYSQLI_ZEROFILL_FLAG
+ * @uses    MYSQLI_UNSIGNED_FLAG
+ * @uses    MYSQLI_BLOB_FLAG
+ * @uses    MYSQLI_MULTIPLE_KEY_FLAG
+ * @uses    MYSQLI_UNIQUE_KEY_FLAG
+ * @uses    MYSQLI_PRI_KEY_FLAG
+ * @uses    MYSQLI_NOT_NULL_FLAG
+ * @uses    MYSQLI_TYPE_TINY_BLOB 
+ * @uses    MYSQLI_TYPE_BLOB
+ * @uses    MYSQLI_TYPE_MEDIUM_BLOB  
+ * @uses    MYSQLI_TYPE_LONG_BLOB 
+ * @uses    MYSQLI_TYPE_VAR_STRING  
+ * @uses    MYSQLI_TYPE_STRING
+ * @uses    mysqli_fetch_field_direct()
+ * @uses    PMA_convert_display_charset()
+ * @param   object mysqli result    $result
+ * @param   integer                 $i      field
+ * @return  string                  field flags
  */
 function PMA_DBI_field_flags($result, $i)
 {
@@ -622,58 +678,28 @@ function PMA_DBI_field_flags($result, $i)
     $charsetnr = $f->charsetnr;
     $f = $f->flags;
     $flags = '';
-    if ($f & MYSQLI_UNIQUE_KEY_FLAG) {
-        $flags .= 'unique ';
-    }
-    if ($f & MYSQLI_NUM_FLAG) {
-        $flags .= 'num ';
-    }
-    if ($f & MYSQLI_PART_KEY_FLAG) {
-        $flags .= 'part_key ';
-    }
-    if ($f & MYSQLI_SET_FLAG) {
-        $flags .= 'set ';
-    }
-    if ($f & MYSQLI_TIMESTAMP_FLAG) {
-        $flags .= 'timestamp ';
-    }
-    if ($f & MYSQLI_AUTO_INCREMENT_FLAG) {
-        $flags .= 'auto_increment ';
-    }
-    if ($f & MYSQLI_ENUM_FLAG) {
-        $flags .= 'enum ';
-    }
+    if ($f & MYSQLI_UNIQUE_KEY_FLAG)     { $flags .= 'unique ';}
+    if ($f & MYSQLI_NUM_FLAG)            { $flags .= 'num ';}
+    if ($f & MYSQLI_PART_KEY_FLAG)       { $flags .= 'part_key ';}
+    if ($f & MYSQLI_SET_FLAG)            { $flags .= 'set ';}
+    if ($f & MYSQLI_TIMESTAMP_FLAG)      { $flags .= 'timestamp ';}
+    if ($f & MYSQLI_AUTO_INCREMENT_FLAG) { $flags .= 'auto_increment ';}
+    if ($f & MYSQLI_ENUM_FLAG)           { $flags .= 'enum ';}
     // See http://dev.mysql.com/doc/refman/6.0/en/c-api-datatypes.html:
     // to determine if a string is binary, we should not use MYSQLI_BINARY_FLAG
     // but instead the charsetnr member of the MYSQL_FIELD
     // structure. Watch out: some types like DATE returns 63 in charsetnr
     // so we have to check also the type.
     // Unfortunately there is no equivalent in the mysql extension.
-    if (($type == MYSQLI_TYPE_TINY_BLOB || $type == MYSQLI_TYPE_BLOB || $type == MYSQLI_TYPE_MEDIUM_BLOB || $type == MYSQLI_TYPE_LONG_BLOB || $type == MYSQLI_TYPE_VAR_STRING || $type == MYSQLI_TYPE_STRING) && 63 == $charsetnr) {
-        $flags .= 'binary ';
-    }
-    if ($f & MYSQLI_ZEROFILL_FLAG) {
-        $flags .= 'zerofill ';
-    }
-    if ($f & MYSQLI_UNSIGNED_FLAG) {
-        $flags .= 'unsigned ';
-    }
-    if ($f & MYSQLI_BLOB_FLAG) {
-        $flags .= 'blob ';
-    }
-    if ($f & MYSQLI_MULTIPLE_KEY_FLAG) {
-        $flags .= 'multiple_key ';
-    }
-    if ($f & MYSQLI_UNIQUE_KEY_FLAG) {
-        $flags .= 'unique_key ';
-    }
-    if ($f & MYSQLI_PRI_KEY_FLAG) {
-        $flags .= 'primary_key ';
-    }
-    if ($f & MYSQLI_NOT_NULL_FLAG) {
-        $flags .= 'not_null ';
-    }
-    return trim($flags);
+    if (($type == MYSQLI_TYPE_TINY_BLOB || $type == MYSQLI_TYPE_BLOB || $type == MYSQLI_TYPE_MEDIUM_BLOB || $type == MYSQLI_TYPE_LONG_BLOB || $type == MYSQLI_TYPE_VAR_STRING || $type == MYSQLI_TYPE_STRING) && 63 == $charsetnr)                { $flags .= 'binary ';}
+    if ($f & MYSQLI_ZEROFILL_FLAG)       { $flags .= 'zerofill ';}
+    if ($f & MYSQLI_UNSIGNED_FLAG)       { $flags .= 'unsigned ';}
+    if ($f & MYSQLI_BLOB_FLAG)           { $flags .= 'blob ';}
+    if ($f & MYSQLI_MULTIPLE_KEY_FLAG)   { $flags .= 'multiple_key ';}
+    if ($f & MYSQLI_UNIQUE_KEY_FLAG)     { $flags .= 'unique_key ';}
+    if ($f & MYSQLI_PRI_KEY_FLAG)        { $flags .= 'primary_key ';}
+    if ($f & MYSQLI_NOT_NULL_FLAG)       { $flags .= 'not_null ';}
+    return PMA_convert_display_charset(trim($flags));
 }
 
 ?>

@@ -6,26 +6,21 @@
  * Note: please do not fold this script into a general script
  * that would read any file using a GET parameter, it would open a hole
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
-
-/**
- * Gets core libraries and defines some variables
- */
-require './libraries/common.inc.php';
 
 /**
  *
  */
-header('Content-type: text/plain; charset=utf-8');
+header('Content-type: text/plain; charset=iso-8859-1');
 
-$filename = LICENSE_FILE;
+$filename = 'LICENSE';
 
 // Check if the file is available, some distributions remove these.
 if (is_readable($filename)) {
     readfile($filename);
 } else {
-    printf(__('The %s file is not available on this system, please visit www.phpmyadmin.net for more information.'), $filename);
+    echo "The $filename file is not available on this system, please visit www.phpmyadmin.net for more information.";
 }
 
 ?>

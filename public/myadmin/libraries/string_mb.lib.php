@@ -12,14 +12,18 @@
  *
  * The SQL Parser code relies heavily on these functions.
  *
- * @package PhpMyAdmin-String-MB
+ * @version $Id$
  */
 
 /**
  * Returns length of string depending on current charset.
  *
- * @param string   string to count
+ * @uses    mb_strlen()
+ * @param   string   string to count
  * @return  int      string length
+ * @access  public
+ * @author  nijel
+ * @todo rename to PM_STR_len()
  */
 function PMA_strlen($string)
 {
@@ -29,10 +33,14 @@ function PMA_strlen($string)
 /**
  * Returns substring from string, works depending on current charset.
  *
- * @param string $string  string to count
- * @param int    $start   start of substring
- * @param int    $length  length of substring
- * @return  string
+ * @uses    mb_substr()
+ * @param   string   string to count
+ * @param   int      start of substring
+ * @param   int      length of substring
+ * @return  int      substring
+ * @access  public
+ * @author  nijel
+ * @todo rename to PM_STR_sub()
  */
 function PMA_substr($string, $start, $length = 2147483647)
 {
@@ -40,27 +48,30 @@ function PMA_substr($string, $start, $length = 2147483647)
 }
 
 /**
- * Returns postion of $needle in $haystack or false if not found
+ * returns postion of $needle in $haystack or false if not found
  *
- * @param string  $haystack
- * @param string  $needle
- * @param int     $offset
+ * @uses    mb_strpos()
+ * @param   string  $needle
+ * @param   string  $haystack
  * @return  integer position of $needle in $haystack or false
  */
-function PMA_strpos($haystack, $needle, $offset = 0)
+function PMA_STR_pos($haystack, $needle, $offset = 0)
 {
     return mb_strpos($haystack, $needle, $offset);
 }
 
 /**
- * Make a string lowercase
+ * returns right most postion of $needle in $haystack or false if not found
  *
- * @param string  $string
- * @return  string
+ * @uses    mb_strrpos()
+ * @param   string  $needle
+ * @param   string  $haystack
+ * @return  integer position of $needle in $haystack or false
+ * @todo    add workaround for offset for PHP < 5.2.0
  */
-function PMA_strtolower($string)
+function PMA_STR_rPos($haystack, $needle, $offset = 0)
 {
-    return mb_strtolower($string);
+    return mb_strrpos($haystack, $needle);
 }
 
 ?>

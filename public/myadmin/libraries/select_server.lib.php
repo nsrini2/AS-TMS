@@ -1,19 +1,29 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * Code for displaying server selection
+ * Code for displaying server selection written by nijel
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 
 /**
  * display server selection in list or selectbox form, or option tags only
  *
- * @param boolean $not_only_options   whether to include form tags or not
- * @param boolean $ommit_fieldset     whether to ommit fieldset tag or not
+ * @globals $lang
+ * @globals $convcharset
+ * @uses    $GLOBALS['cfg']['DisplayServersList']
+ * @uses    $GLOBALS['strServer']
+ * @uses    $GLOBALS['cfg']['Servers']
+ * @uses    $GLOBALS['strGo']
+ * @uses    implode()
+ * @uses    htmlspecialchars()
+ * @param   boolean $not_only_options   whether to include form tags or not
+ * @param   boolean $ommit_fieldset     whether to ommit fieldset tag or not
  */
 function PMA_select_server($not_only_options, $ommit_fieldset)
 {
+    global $lang, $convcharset;
+
     // Show as list?
     if ($not_only_options) {
         $list = $GLOBALS['cfg']['DisplayServersList'];
@@ -24,17 +34,17 @@ function PMA_select_server($not_only_options, $ommit_fieldset)
 
     if ($not_only_options) {
         echo '<form method="post" action="index.php" target="_parent">';
-        echo PMA_generate_common_hidden_inputs();
 
         if (! $ommit_fieldset) {
             echo '<fieldset>';
         }
-        echo '<label for="select_server">' . __('Current Server') . ':</label> ';
+        echo '<label for="select_server">' . $GLOBALS['strServer'] . ':</label> ';
 
-        echo '<select name="server" id="select_server" class="autosubmit">';
-        echo '<option value="">(' . __('Servers') . ') ...</option>' . "\n";
+        echo '<select name="server" id="select_server"'
+            . ' onchange="if (this.value != \'\') this.form.submit();">';
+        echo '<option value="">(' . $GLOBALS['strServers'] . ') ...</option>' . "\n";
     } elseif ($list) {
-        echo __('Current Server') . ':<br />';
+        echo $GLOBALS['strServer'] . ':<br />';
         echo '<ul id="list_server">';
     }
 
@@ -48,6 +58,7 @@ function PMA_select_server($not_only_options, $ommit_fieldset)
         } else {
             $selected = 0;
         }
+
         if (!empty($server['verbose'])) {
             $label = $server['verbose'];
         } else {
@@ -70,27 +81,26 @@ function PMA_select_server($not_only_options, $ommit_fieldset)
 
         if ($list) {
             echo '<li>';
-            if ($selected) {
-                echo '<strong>' . htmlspecialchars($label) . '</strong>';
+            if ($selected && !$ommit_fieldset) {
+                echo '<b>' . htmlspecialchars($label) . '</b>';
             } else {
-
-                echo '<a class="item" href="index.php'
-                    . PMA_generate_common_url(array('server' => $key))
-                    . '" target="_top">' . htmlspecialchars($label) . '</a>';
+                echo '<a class="item" href="index.php?server=' . $key . '&amp;lang=' . $lang . '&amp;convcharset=' . $convcharset . '" target="_top">' . htmlspecialchars($label) . '</a>';
             }
             echo '</li>';
         } else {
-            echo '<option value="' . $key . '" '
-                . ($selected ? ' selected="selected"' : '') . '>'
-                . htmlspecialchars($label) . '</option>' . "\n";
+            echo '            <option value="' . $key . '" ' . ($selected ? ' selected="selected"' : '') . '>' . htmlspecialchars($label) . '</option>' . "\n";
         }
     } // end while
 
     if ($not_only_options) {
         echo '</select>';
+        ?>
+        <input type="hidden" name="lang" value="<?php echo $lang; ?>" />
+        <input type="hidden" name="convcharset" value="<?php echo $convcharset; ?>" />
+        <?php
         // Show submit button if we have just one server (this happens with no default)
         echo '<noscript>';
-        echo '<input type="submit" value="' . __('Go') . '" />';
+        echo '<input type="submit" value="' . $GLOBALS['strGo'] . '" />';
         echo '</noscript>';
         if (! $ommit_fieldset) {
             echo '</fieldset>';

@@ -3,16 +3,15 @@
 /**
  * Functions for listing directories
  *
- * @todo rename to file_listing.lib.php
- * @package PhpMyAdmin
+ * @version $Id$
  */
 
 /**
  * Returns array of filtered file names
  *
- * @param string $dir        directory to list
- * @param string $expression regular expression to match files
- * @return array   sorted file list on success, false on failure
+ * @param   string  directory to list
+ * @param   string  regular expression to match files
+ * @returns array   sorted file list on success, FALSE on failure
  */
 function PMA_getDirContent($dir, $expression = '')
 {
@@ -32,23 +31,23 @@ function PMA_getDirContent($dir, $expression = '')
         asort($result);
         return $result;
     } else {
-        return false;
+        return FALSE;
     }
 }
 
 /**
  * Returns options of filtered file names
  *
- * @param string $dir        directory to list
- * @param string $extensions regullar expression to match files
- * @param string $active     currently active choice
- * @return array   sorted file list on success, false on failure
+ * @param   string  directory to list
+ * @param   string  regullar expression to match files
+ * @param   string  currently active choice
+ * @returns array   sorted file list on success, FALSE on failure
  */
 function PMA_getFileSelectOptions($dir, $extensions = '', $active = '')
 {
     $list = PMA_getDirContent($dir, $extensions);
-    if ($list === false) {
-        return false;
+    if ($list === FALSE) {
+        return FALSE;
     }
     $result = '';
     foreach ($list as $key => $val) {
@@ -64,7 +63,7 @@ function PMA_getFileSelectOptions($dir, $extensions = '', $active = '')
 /**
  * Get currently supported decompressions.
  *
- * @return string | separated list of extensions usable in PMA_getDirContent
+ * @returns string | separated list of extensions usable in PMA_getDirContent
  */
 function PMA_supportedDecompressions()
 {

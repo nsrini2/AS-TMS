@@ -1,12 +1,11 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * @package PhpMyAdmin-Engines
+ * @version $Id$
  */
 
 /**
  *
- * @package PhpMyAdmin-Engines
  */
 class PMA_StorageEngine_ndbcluster extends PMA_StorageEngine
 {

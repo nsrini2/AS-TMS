@@ -22,12 +22,12 @@
  * run this: "pear install Mail_Mime Net_DIME SOAP"
  *
  * Enable the SQL Validator options in the configuration file
- * $cfg['SQLQuery']['Validate'] = true;
- * $cfg['SQLValidator']['use']  = true;
+ * $cfg['SQLQuery']['Validate'] = TRUE;
+ * $cfg['SQLValidator']['use']  = FALSE;
  *
  * Also set a username and password if you have a private one
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 if (! defined('PHPMYADMIN')) {
     exit;
@@ -38,9 +38,9 @@ if (! defined('PHPMYADMIN')) {
  * I'm not sure if PEAR was available before this point
  * For now we actually use a configuration flag
  */
-if ($cfg['SQLValidator']['use'] == true) {
-    include_once './libraries/sqlvalidator.class.php';
-} // if ($cfg['SQLValidator']['use'] == true)
+if ($cfg['SQLValidator']['use'] == TRUE)  {
+    require_once './libraries/sqlvalidator.class.php';
+} // if ($cfg['SQLValidator']['use'] == TRUE)
 
 
 /**
@@ -49,7 +49,7 @@ if ($cfg['SQLValidator']['use'] == true) {
  *
  * <http://developer.mimer.com/validator/index.htm>
  *
- * @param string   SQL query to validate
+ * @param   string   SQL query to validate
  *
  * @return  string   Validator result string
  *
@@ -64,7 +64,7 @@ function PMA_validateSQL($sql)
     if ($cfg['SQLValidator']['use']) {
         if (isset($GLOBALS['sqlvalidator_error'])
             && $GLOBALS['sqlvalidator_error']) {
-            $str = sprintf(__('The SQL validator could not be initialized. Please check if you have installed the necessary PHP extensions as described in the %sdocumentation%s.'), '<a href="./Documentation.html#faqsqlvalidator" target="documentation">', '</a>');
+            $str = sprintf($GLOBALS['strValidatorError'], '<a href="./Documentation.html#faqsqlvalidator" target="documentation">', '</a>');
         } else {
             // create new class instance
             $srv = new PMA_SQLValidator();

@@ -3,7 +3,7 @@
 /**
  * finishes HTML output
  *
- * updates javascript variables in index.php for correct working with querywindow
+ * updates javascript variables in index.php for coorect working with querywindow
  * and navigation frame refreshing
  *
  * send buffered data if buffered
@@ -13,7 +13,36 @@
  *
  * always use $GLOBALS, as this script is also included by functions
  *
- * @package PhpMyAdmin
+ * @uses    $_REQUEST['no_history']
+ * @uses    $GLOBALS['lang']
+ * @uses    $GLOBALS['collation_connection']
+ * @uses    $GLOBALS['server']
+ * @uses    $GLOBALS['db']
+ * @uses    $GLOBALS['table']
+ * @uses    $GLOBALS['error_message']
+ * @uses    $GLOBALS['reload']
+ * @uses    $GLOBALS['sql_query']
+ * @uses    $GLOBALS['focus_querywindow']
+ * @uses    $GLOBALS['checked_special']
+ * @uses    $GLOBALS['pmaThemeImage']
+ * @uses    $GLOBALS['controllink'] to close it
+ * @uses    $GLOBALS['userlink'] to close it
+ * @uses    $cfg['Server']['user']
+ * @uses    $cfg['NavigationBarIconic']
+ * @uses    $cfg['DBG']['enable']
+ * @uses    $cfg['DBG']['profile']['enable']
+ * @uses    $GLOBALS['strOpenNewWindow']
+ * @uses    $cfg['MaxCharactersInDisplayedSQL'] 
+ * @uses    PMA_isValid()
+ * @uses    PMA_setHistory()
+ * @uses    PMA_ifSetOr()
+ * @uses    PMA_escapeJsString()
+ * @uses    PMA_getenv()
+ * @uses    PMA_generate_common_url()
+ * @uses    PMA_DBI_close()
+ * @uses    basename()
+ * @uses    file_exists()
+ * @version $Id$
  */
 if (! defined('PHPMYADMIN')) {
     exit;
@@ -22,6 +51,8 @@ if (! defined('PHPMYADMIN')) {
 /**
  * for PMA_setHistory()
  */
+require_once './libraries/relation.lib.php';
+
 if (! PMA_isValid($_REQUEST['no_history']) && empty($GLOBALS['error_message'])
  && ! empty($GLOBALS['sql_query'])) {
     PMA_setHistory(PMA_ifSetOr($GLOBALS['db'], ''),
@@ -30,47 +61,12 @@ if (! PMA_isValid($_REQUEST['no_history']) && empty($GLOBALS['error_message'])
         $GLOBALS['sql_query']);
 }
 
-if ($GLOBALS['error_handler']->hasDisplayErrors()) {
-    echo '<div class="clearfloat">';
-    $GLOBALS['error_handler']->dispErrors();
-    echo '</div>';
-}
-
-if (count($GLOBALS['footnotes'])) {
-    echo '<div class="footnotes">';
-    foreach ($GLOBALS['footnotes'] as $footnote) {
-        echo '<span id="footnote_' . $footnote['nr'] . '"><sup>'
-            . $footnote['nr'] . '</sup> ' . $footnote['note'] . '</span><br />';
-    }
-    echo '</div>';
-}
-
-if (! empty($_SESSION['debug'])) {
-    $sum_time = 0;
-    $sum_exec = 0;
-    foreach ($_SESSION['debug']['queries'] as $query) {
-        $sum_time += $query['count'] * $query['time'];
-        $sum_exec += $query['count'];
-    }
-
-    echo '<div>';
-    echo count($_SESSION['debug']['queries']) . ' queries executed '
-        . $sum_exec . ' times in ' . $sum_time . ' seconds';
-    echo '<pre>';
-    print_r($_SESSION['debug']);
-    echo '</pre>';
-    echo '</div>';
-    $_SESSION['debug'] = array();
-}
-
-if (!$GLOBALS['is_ajax_request']) {
 ?>
 <script type="text/javascript">
 //<![CDATA[
 <?php
 if (empty($GLOBALS['error_message'])) {
     ?>
-$(document).ready(function() {
 // updates current settings
 if (window.parent.setAll) {
     window.parent.setAll('<?php
@@ -89,15 +85,7 @@ if (window.parent.refreshNavigation) {
     window.parent.refreshNavigation();
 }
         <?php
-    } else if (isset($_GET['reload_left_frame']) && $_GET['reload_left_frame'] == '1') {
-        // reload left frame (used by user preferences)
-        ?>
-        if (window.parent && window.parent.frame_navigation) {
-            window.parent.frame_navigation.location.reload();
-        }
-        <?php
     }
-
     ?>
 // set current db, table and sql query in the querywindow
 if (window.parent.reload_querywindow) {
@@ -133,59 +121,77 @@ if (window.parent.frame_content) {
     //window.parent.frame_content.setAttribute('name', 'frame_content');
     //window.parent.frame_content.setAttribute('id', 'frame_content');
 }
-});
-
 //]]>
 </script>
 <?php
-}
 
 // Link to itself to replicate windows including frameset
-if (! isset($GLOBALS['checked_special'])) {
+if (!isset($GLOBALS['checked_special'])) {
     $GLOBALS['checked_special'] = false;
 }
 
-if (PMA_getenv('SCRIPT_NAME') && empty($_POST) && !$GLOBALS['checked_special'] && ! $GLOBALS['is_ajax_request']) {
+if (PMA_getenv('SCRIPT_NAME') && empty($_POST) && !$GLOBALS['checked_special']) {
     echo '<div id="selflink" class="print_ignore">' . "\n";
     $url_params['target'] = basename(PMA_getenv('SCRIPT_NAME'));
-    ?>
-<script type="text/javascript">
-//<![CDATA[
-
-/* Store current location in hash part of URL to allow direct bookmarking */
-setURLHash("<?php echo PMA_generate_common_url($url_params, 'text', ''); ?>");
-
-//]]>
-</script>
-<?php
-
     echo '<a href="index.php' . PMA_generate_common_url($url_params) . '"'
-        . ' title="' . __('Open new phpMyAdmin window') . '" target="_blank">';
+        . ' title="' . $GLOBALS['strOpenNewWindow'] . '" target="_blank">';
+    /*
+    echo '<a href="index.php?target=' . basename(PMA_getenv('SCRIPT_NAME'));
+    $url = PMA_generate_common_url($GLOBALS['db'], $GLOBALS['table']);
+    if (!empty($url)) {
+        echo '&amp;' . $url;
+    }
+    echo '" target="_blank">';
+    */
     if ($GLOBALS['cfg']['NavigationBarIconic']) {
-        echo PMA_getImage('window-new.png', __('Open new phpMyAdmin window'));
+        echo '<img class="icon" src="'. $GLOBALS['pmaThemeImage'] . 'window-new.png"'
+            . ' alt="' . $GLOBALS['strOpenNewWindow'] . '" />';
     }
     if ($GLOBALS['cfg']['NavigationBarIconic'] !== true) {
-        echo __('Open new phpMyAdmin window');
+        echo $GLOBALS['strOpenNewWindow'];
     }
     echo '</a>' . "\n";
     echo '</div>' . "\n";
 }
 
-// Include possible custom footers
-if (! $GLOBALS['is_ajax_request'] && file_exists(CUSTOM_FOOTER_FILE)) {
-    include CUSTOM_FOOTER_FILE;
+/**
+ * Close database connections
+ */
+if (! empty($GLOBALS['controllink'])) {
+    @PMA_DBI_close($GLOBALS['controllink']);
+}
+if (! empty($GLOBALS['userlink'])) {
+    @PMA_DBI_close($GLOBALS['userlink']);
 }
 
+// Include possible custom footers
+if (file_exists('./config.footer.inc.php')) {
+    require './config.footer.inc.php';
+}
+
+
 /**
- * If we are in an AJAX request, we do not need to generate the closing tags for
- * body and html.
+ * Generates profiling data if requested
  */
-if (! $GLOBALS['is_ajax_request']) {
+
+// profiling deactivated due to licensing issues
+if (! empty($GLOBALS['cfg']['DBG']['enable'])
+  && ! empty($GLOBALS['cfg']['DBG']['profile']['enable'])) {
+    //run the basic setup code first
+    require_once './libraries/dbg/setup.php';
+    //if the setup ran fine, then do the profiling
+    /*
+    if (! empty($GLOBALS['DBG'])) {
+        require_once './libraries/dbg/profiling.php';
+        dbg_dump_profiling_results();
+    }
+    */
+}
+
 ?>
 </body>
 </html>
 <?php
-}
 /**
  * Stops the script execution
  */

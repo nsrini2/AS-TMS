@@ -7,9 +7,32 @@
  * fills tooltip arrays and provides $tables, $num_tables, $is_show_stats
  * and $db_is_information_schema
  *
- * speedup view on locked tables
+ * staybyte: speedup view on locked tables - 11 June 2001
  *
- * @package PhpMyAdmin
+ * @uses    PMA_MYSQL_INT_VERSION
+ * @uses    $cfg['ShowStats']
+ * @uses    $cfg['ShowTooltip']
+ * @uses    $cfg['ShowTooltipAliasTB']
+ * @uses    $cfg['SkipLockedTables']
+ * @uses    $GLOBALS['db']
+ * @uses    PMA_fillTooltip()
+ * @uses    PMA_checkParameters()
+ * @uses    PMA_escape_mysql_wildcards()
+ * @uses    PMA_DBI_query()
+ * @uses    PMA_backquote()
+ * @uses    PMA_DBI_num_rows()
+ * @uses    PMA_DBI_fetch_row()
+ * @uses    PMA_DBI_fetch_assoc()
+ * @uses    PMA_DBI_free_result()
+ * @uses    PMA_DBI_get_tables_full()
+ * @uses    PMA_isValid()
+ * @uses    preg_match()
+ * @uses    preg_quote()
+ * @uses    uksort()
+ * @uses    strnatcasecmp()
+ * @uses    count()
+ * @uses    addslashes()
+ * @version $Id$
  */
 if (! defined('PHPMYADMIN')) {
     exit;
@@ -23,37 +46,27 @@ require_once './libraries/common.inc.php';
 /**
  * limits for table list
  */
-if (! isset($_SESSION['tmp_user_values']['table_limit_offset']) || $_SESSION['tmp_user_values']['table_limit_offset_db'] != $db) {
-    $_SESSION['tmp_user_values']['table_limit_offset'] = 0;
-    $_SESSION['tmp_user_values']['table_limit_offset_db'] = $db;
+if (! isset($_SESSION['userconf']['table_limit_offset'])) {
+    $_SESSION['userconf']['table_limit_offset'] = 0;
 }
 if (isset($_REQUEST['pos'])) {
-    $_SESSION['tmp_user_values']['table_limit_offset'] = (int) $_REQUEST['pos'];
+    $_SESSION['userconf']['table_limit_offset'] = (int) $_REQUEST['pos'];
 }
-$pos = $_SESSION['tmp_user_values']['table_limit_offset'];
+$pos = $_SESSION['userconf']['table_limit_offset'];
 
 /**
  * fills given tooltip arrays
  *
- * @param array   $tooltip_truename   tooltip data
- * @param array   $tooltip_aliasname  tooltip data
- * @param array   $table              tabledata
+ * @uses    $cfg['ShowTooltipAliasTB']
+ * @uses    $GLOBALS['strStatCreateTime']
+ * @uses    PMA_localisedDate()
+ * @uses    strtotime()
+ * @param   array   $tooltip_truename   tooltip data
+ * @param   array   $tooltip_aliasname  tooltip data
+ * @param   array   $table              tabledata
  */
 function PMA_fillTooltip(&$tooltip_truename, &$tooltip_aliasname, $table)
 {
-    if (strstr($table['Comment'], '; InnoDB free') === false) {
-        if (!strstr($table['Comment'], 'InnoDB free') === false) {
-            // here we have just InnoDB generated part
-            $table['Comment'] = '';
-        }
-    } else {
-        // remove InnoDB comment from end, just the minimal part (*? is non greedy)
-        $table['Comment'] = preg_replace('@; InnoDB free:.*?$@', '', $table['Comment']);
-    }
-    // views have VIEW as comment so it's not a real comment put by a user
-    if ('VIEW' == $table['Comment']) {
-        $table['Comment'] = '';
-    }
     if (empty($table['Comment'])) {
         $table['Comment'] = $table['Name'];
     } else {
@@ -62,7 +75,7 @@ function PMA_fillTooltip(&$tooltip_truename, &$tooltip_aliasname, $table)
     }
 
     if ($GLOBALS['cfg']['ShowTooltipAliasTB']
-     && $GLOBALS['cfg']['ShowTooltipAliasTB'] !== 'nested') {
+     && $GLOBALS['cfg']['ShowTooltipAliasTB'] != 'nested') {
         $tooltip_truename[$table['Name']] = $table['Comment'];
         $tooltip_aliasname[$table['Name']] = $table['Name'];
     } else {
@@ -71,17 +84,17 @@ function PMA_fillTooltip(&$tooltip_truename, &$tooltip_aliasname, $table)
     }
 
     if (isset($table['Create_time']) && !empty($table['Create_time'])) {
-        $tooltip_aliasname[$table['Name']] .= ', ' . __('Creation')
+        $tooltip_aliasname[$table['Name']] .= ', ' . $GLOBALS['strStatCreateTime']
              . ': ' . PMA_localisedDate(strtotime($table['Create_time']));
     }
 
     if (! empty($table['Update_time'])) {
-        $tooltip_aliasname[$table['Name']] .= ', ' . __('Last update')
+        $tooltip_aliasname[$table['Name']] .= ', ' . $GLOBALS['strStatUpdateTime']
              . ': ' . PMA_localisedDate(strtotime($table['Update_time']));
     }
 
     if (! empty($table['Check_time'])) {
-        $tooltip_aliasname[$table['Name']] .= ', ' . __('Last check')
+        $tooltip_aliasname[$table['Name']] .= ', ' . $GLOBALS['strStatCheckTime']
              . ': ' . PMA_localisedDate(strtotime($table['Check_time']));
     }
 }
@@ -98,7 +111,7 @@ $is_show_stats = $cfg['ShowStats'];
  */
 $db_is_information_schema = false;
 
-if (PMA_is_system_schema($db)) {
+if (PMA_MYSQL_INT_VERSION >= 50002 && $db == 'information_schema') {
     $is_show_stats = false;
     $db_is_information_schema = true;
 }
@@ -140,15 +153,15 @@ if (true === $cfg['SkipLockedTables']) {
                 null, PMA_DBI_QUERY_STORE);
             if ($db_info_result && PMA_DBI_num_rows($db_info_result) > 0) {
                 while ($tmp = PMA_DBI_fetch_row($db_info_result)) {
-                    if (! isset($sot_cache[$tmp[0]])) {
+                    if (!isset($sot_cache[$tmp[0]])) {
                         $sts_result  = PMA_DBI_query(
                             'SHOW TABLE STATUS FROM ' . PMA_backquote($db)
-                             . ' LIKE \'' . PMA_sqlAddSlashes($tmp[0], true) . '\';');
+                             . ' LIKE \'' . addslashes($tmp[0]) . '\';');
                         $sts_tmp     = PMA_DBI_fetch_assoc($sts_result);
                         PMA_DBI_free_result($sts_result);
                         unset($sts_result);
 
-                        if (! isset($sts_tmp['Type']) && isset($sts_tmp['Engine'])) {
+                        if (!isset($sts_tmp['Type']) && isset($sts_tmp['Engine'])) {
                             $sts_tmp['Type'] =& $sts_tmp['Engine'];
                         }
 
@@ -183,55 +196,30 @@ if (true === $cfg['SkipLockedTables']) {
 }
 
 if (! isset($sot_ready)) {
-
-    // Set some sorting defaults
-    $sort = 'Name';
-    $sort_order = 'ASC';
-
-    if (isset($_REQUEST['sort'])) {
-        $sortable_name_mappings = array(
-            'table'     => 'Name',
-            'records'   => 'Rows',
-            'type'      => 'Engine',
-            'collation' => 'Collation',
-            'size'      => 'Data_length',
-            'overhead'  => 'Data_free'
-        );
-
-        // Make sure the sort type is implemented
-        if (isset($sortable_name_mappings[$_REQUEST['sort']])) {
-            $sort = $sortable_name_mappings[$_REQUEST['sort']];
-            if ($_REQUEST['sort_order'] == 'DESC') {
-                $sort_order = 'DESC';
-            }
-        }
-    }
-
     if (! empty($tbl_group) && ! $cfg['ShowTooltipAliasTB']) {
         // only tables for selected group
-        $tables = PMA_DBI_get_tables_full($db, $tbl_group, true, null, 0, false, $sort, $sort_order);
+        $tables = PMA_DBI_get_tables_full($db, $tbl_group, true);
     } elseif (! empty($tbl_group) && $cfg['ShowTooltipAliasTB']) {
         // only tables for selected group,
         // but grouping is done on comment ...
-        $tables = PMA_DBI_get_tables_full($db, $tbl_group, 'comment', null, 0, false, $sort, $sort_order);
+        $tables = PMA_DBI_get_tables_full($db, $tbl_group, 'comment');
     } else {
         // all tables in db
         // - get the total number of tables
-        //  (needed for proper working of the MaxTableList feature)
         $tables = PMA_DBI_get_tables($db);
         $total_num_tables = count($tables);
         if (isset($sub_part) && $sub_part == '_export') {
             // (don't fetch only a subset if we are coming from db_export.php,
-            // because I think it's too risky to display only a subset of the
+            // because I think it's too risky to display only a subset of the 
             // table names when exporting a db)
             /**
              *
              * @todo Page selector for table names?
              */
-            $tables = PMA_DBI_get_tables_full($db, false, false, null, 0, false, $sort, $sort_order);
+            $tables = PMA_DBI_get_tables_full($db, false, false, null, 0, false);
         } else {
             // fetch the details for a possible limited subset
-            $tables = PMA_DBI_get_tables_full($db, false, false, null, $pos, true, $sort, $sort_order);
+            $tables = PMA_DBI_get_tables_full($db, false, false, null, $pos, true);
         }
     }
 
@@ -246,7 +234,6 @@ if (! isset($sot_ready)) {
  * @global int count of tables in db
  */
 $num_tables = count($tables);
-//  (needed for proper working of the MaxTableList feature)
 if (! isset($total_num_tables)) {
     $total_num_tables = $num_tables;
 }
@@ -258,9 +245,6 @@ unset($each_table, $tbl_group_sql, $db_info_result);
 
 /**
  * Displays top menu links
- * If in an Ajax request, we do not need to show this
  */
-if ($GLOBALS['is_ajax_request'] != true) {
-    include './libraries/db_links.inc.php';
-}
+require './libraries/db_links.inc.php';
 ?>

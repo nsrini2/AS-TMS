@@ -3,64 +3,57 @@
 /**
  * Common Option Constants For DBI Functions
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 if (! defined('PHPMYADMIN')) {
     exit;
 }
 
 /**
- * Force STORE_RESULT method, ignored by classic MySQL.
+ *
  */
-define('PMA_DBI_QUERY_STORE',       1);
-/**
- * Do not read whole query.
- */
-define('PMA_DBI_QUERY_UNBUFFERED',  2);
-/**
- * Get session variable.
- */
-define('PMA_DBI_GETVAR_SESSION',    1);
-/**
- * Get global variable.
- */
-define('PMA_DBI_GETVAR_GLOBAL',     2);
+// PMA_DBI_try_query()
+define('PMA_DBI_QUERY_STORE',       1);  // Force STORE_RESULT method, ignored by classic MySQL.
+define('PMA_DBI_QUERY_UNBUFFERED',  2);  // Do not read whole query
+// PMA_DBI_get_variable()
+define('PMA_DBI_GETVAR_SESSION', 1);
+define('PMA_DBI_GETVAR_GLOBAL', 2);
 
 /**
- * Checks whether database extension is loaded
+ * Loads the mysql extensions if it is not loaded yet
  *
- * @param string $extension mysql extension to check
- *
- * @return bool
+ * @param   string  $extension  mysql extension to load
  */
-function PMA_DBI_checkDbExtension($extension = 'mysql')
-{
-    if ($extension == 'drizzle' && function_exists('drizzle_create')) {
-        return true;
-    } else if (function_exists($extension . '_connect')) {
-        return true;
+function PMA_DBI_checkAndLoadMysqlExtension($extension = 'mysql') {
+    if (! function_exists($extension . '_connect')) {
+        PMA_dl($extension);
+        // check whether mysql is available
+        if (! function_exists($extension . '_connect')) {
+            return false;
+        }
     }
 
-    return false;
+    return true;
 }
+
 
 /**
  * check for requested extension
  */
-if (! PMA_DBI_checkDbExtension($GLOBALS['cfg']['Server']['extension'])) {
+if (! PMA_DBI_checkAndLoadMysqlExtension($GLOBALS['cfg']['Server']['extension'])) {
 
     // if it fails try alternative extension ...
     // and display an error ...
 
     /**
-     * @todo add different messages for alternative extension
-     * and complete fail (no alternative extension too)
+     * @todo 2.7.1: add different messages for alternativ extension
+     * and complete fail (no alternativ extension too)
      */
-    PMA_warnMissingExtension(
-        $GLOBALS['cfg']['Server']['extension'],
-        false,
-        PMA_showDocu('faqmysql')
-    );
+    $GLOBALS['PMA_errors'][] =
+        sprintf(PMA_sanitize($GLOBALS['strCantLoad']),
+            $GLOBALS['cfg']['Server']['extension'])
+        .' - <a href="./Documentation.html#faqmysql" target="documentation">'
+        .$GLOBALS['strDocu'] . '</a>';
 
     if ($GLOBALS['cfg']['Server']['extension'] === 'mysql') {
         $alternativ_extension = 'mysqli';
@@ -68,13 +61,13 @@ if (! PMA_DBI_checkDbExtension($GLOBALS['cfg']['Server']['extension'])) {
         $alternativ_extension = 'mysql';
     }
 
-    if (! PMA_DBI_checkDbExtension($alternativ_extension)) {
-        // if alternative fails too ...
-        PMA_warnMissingExtension(
-            $GLOBALS['cfg']['Server']['extension'],
-            true,
-            PMA_showDocu('faqmysql')
-        );
+    if (! PMA_DBI_checkAndLoadMysqlExtension($alternativ_extension)) {
+        // if alternativ fails too ...
+        PMA_fatalError(
+            sprintf($GLOBALS['strCantLoad'],
+                $GLOBALS['cfg']['Server']['extension'])
+            . ' - [a@./Documentation.html#faqmysql@documentation]'
+            . $GLOBALS['strDocu'] . '[/a]');
     }
 
     $GLOBALS['cfg']['Server']['extension'] = $alternativ_extension;
@@ -84,107 +77,37 @@ if (! PMA_DBI_checkDbExtension($GLOBALS['cfg']['Server']['extension'])) {
 /**
  * Including The DBI Plugin
  */
-require_once './libraries/dbi/'
-    . $GLOBALS['cfg']['Server']['extension'] . '.dbi.lib.php';
+require_once './libraries/dbi/' . $GLOBALS['cfg']['Server']['extension'] . '.dbi.lib.php';
 
 /**
- * runs a query
- *
- * @param string $query               SQL query to execte
- * @param mixed  $link                optional database link to use
- * @param int    $options             optional query options
- * @param bool   $cache_affected_rows whether to cache affected rows
- *
- * @return mixed
+ * Common Functions
  */
-function PMA_DBI_query($query, $link = null, $options = 0, $cache_affected_rows = true)
-{
-    $res = PMA_DBI_try_query($query, $link, $options, $cache_affected_rows)
+function PMA_DBI_query($query, $link = null, $options = 0) {
+    $res = PMA_DBI_try_query($query, $link, $options)
         or PMA_mysqlDie(PMA_DBI_getError($link), $query);
     return $res;
 }
 
 /**
- * runs a query and returns the result
- *
- * @param string   $query               query to run
- * @param resource $link                mysql link resource
- * @param integer  $options             query options
- * @param bool     $cache_affected_rows whether to cache affected row
- *
- * @return mixed
- */
-function PMA_DBI_try_query($query, $link = null, $options = 0, $cache_affected_rows = true)
-{
-    if (empty($link)) {
-        if (isset($GLOBALS['userlink'])) {
-            $link = $GLOBALS['userlink'];
-        } else {
-            return false;
-        }
-    }
-
-    if ($GLOBALS['cfg']['DBG']['sql']) {
-        $time = microtime(true);
-    }
-
-    $r = PMA_DBI_real_query($query, $link, $options);
-
-    if ($cache_affected_rows) {
-        $GLOBALS['cached_affected_rows'] = PMA_DBI_affected_rows($link, $get_from_cache = false);
-    }
-
-    if ($GLOBALS['cfg']['DBG']['sql']) {
-        $time = microtime(true) - $time;
-
-        $hash = md5($query);
-
-        if (isset($_SESSION['debug']['queries'][$hash])) {
-            $_SESSION['debug']['queries'][$hash]['count']++;
-        } else {
-            $_SESSION['debug']['queries'][$hash] = array();
-            if ($r == false) {
-                $_SESSION['debug']['queries'][$hash]['error'] = '<b style="color:red">'.mysqli_error($link).'</b>';
-            }
-            $_SESSION['debug']['queries'][$hash]['count'] = 1;
-            $_SESSION['debug']['queries'][$hash]['query'] = $query;
-            $_SESSION['debug']['queries'][$hash]['time'] = $time;
-        }
-
-        $trace = array();
-        foreach (debug_backtrace() as $trace_step) {
-            $trace[] = PMA_Error::relPath($trace_step['file']) . '#'
-                . $trace_step['line'] . ': '
-                . (isset($trace_step['class']) ? $trace_step['class'] : '')
-                //. (isset($trace_step['object']) ? get_class($trace_step['object']) : '')
-                . (isset($trace_step['type']) ? $trace_step['type'] : '')
-                . (isset($trace_step['function']) ? $trace_step['function'] : '')
-                . '('
-                . (isset($trace_step['params']) ? implode(', ', $trace_step['params']) : '')
-                . ')'
-                ;
-        }
-        $_SESSION['debug']['queries'][$hash]['trace'][] = $trace;
-    }
-    if ($r != false && PMA_Tracker::isActive() == true ) {
-        PMA_Tracker::handleQuery($query);
-    }
-
-    return $r;
-}
-
-/**
- * converts charset of a mysql message, usually coming from mysql_error(),
+ * converts charset of a mysql message, usally coming from mysql_error(),
  * into PMA charset, usally UTF-8
  * uses language to charset mapping from mysql/share/errmsg.txt
  * and charset names to ISO charset from information_schema.CHARACTER_SETS
  *
- * @param string $message the message
- *
+ * @uses    $GLOBALS['cfg']['IconvExtraParams']
+ * @uses    $GLOBALS['charset']     as target charset
+ * @uses    PMA_DBI_fetch_value()   to get server_language
+ * @uses    preg_match()            to filter server_language
+ * @uses    in_array()
+ * @uses    function_exists()       to check for a convert function
+ * @uses    iconv()                 to convert message
+ * @uses    libiconv()              to convert message
+ * @uses    recode_string()         to convert message
+ * @uses    mb_convert_encoding()   to convert message
+ * @param   string  $message
  * @return  string  $message
  */
-function PMA_DBI_convert_message($message)
-{
+function PMA_DBI_convert_message($message) {
     // latin always last!
     $encodings = array(
         'japanese'      => 'EUC-JP', //'ujis',
@@ -222,38 +145,24 @@ function PMA_DBI_convert_message($message)
 
     if (! empty($server_language) && isset($encodings[$server_language])) {
         if (function_exists('iconv')) {
-            if ((@stristr(PHP_OS, 'AIX'))
-                && (@strcasecmp(ICONV_IMPL, 'unknown') == 0)
-                && (@strcasecmp(ICONV_VERSION, 'unknown') == 0)
-            ) {
-                include_once './libraries/iconv_wrapper.lib.php';
-                $message = PMA_aix_iconv_wrapper(
-                    $encodings[$server_language],
-                    'utf-8' . $GLOBALS['cfg']['IconvExtraParams'],
-                    $message
-                );
+            if ((@stristr(PHP_OS, 'AIX')) && (@strcasecmp(ICONV_IMPL, 'unknown') == 0) && (@strcasecmp(ICONV_VERSION, 'unknown') == 0)) {
+                require_once './libraries/iconv_wrapper.lib.php';
+                $message = PMA_aix_iconv_wrapper($encodings[$server_language],
+                    $GLOBALS['charset'] . $GLOBALS['cfg']['IconvExtraParams'], $message);
             } else {
-                $message = iconv(
-                    $encodings[$server_language],
-                    'utf-8' . $GLOBALS['cfg']['IconvExtraParams'],
-                    $message
-                );
+                $message = iconv($encodings[$server_language],
+                    $GLOBALS['charset'] . $GLOBALS['cfg']['IconvExtraParams'], $message);
             }
         } elseif (function_exists('recode_string')) {
-            $message = recode_string(
-                $encodings[$server_language] . '..'  . 'utf-8',
-                $message
-            );
+            $message = recode_string($encodings[$server_language] . '..'  . $GLOBALS['charset'],
+                $message);
         } elseif (function_exists('libiconv')) {
-            $message = libiconv($encodings[$server_language], 'utf-8', $message);
+            $message = libiconv($encodings[$server_language], $GLOBALS['charset'], $message);
         } elseif (function_exists('mb_convert_encoding')) {
             // do not try unsupported charsets
             if (! in_array($server_language, array('ukrainian', 'greek', 'serbian'))) {
-                $message = mb_convert_encoding(
-                    $message,
-                    'utf-8',
-                    $encodings[$server_language]
-                );
+                $message = mb_convert_encoding($message, $GLOBALS['charset'],
+                    $encodings[$server_language]);
             }
         }
     } else {
@@ -268,30 +177,27 @@ function PMA_DBI_convert_message($message)
 /**
  * returns array with table names for given db
  *
- * @param string $database name of database
- * @param mixed  $link     mysql link resource|object
- *
+ * @param   string  $database   name of database
+ * @param   mixed   $link       mysql link resource|object
  * @return  array   tables names
  */
 function PMA_DBI_get_tables($database, $link = null)
 {
-    return PMA_DBI_fetch_result(
-        'SHOW TABLES FROM ' . PMA_backquote($database) . ';',
-        null,
-        0,
-        $link,
-        PMA_DBI_QUERY_STORE
-    );
+    return PMA_DBI_fetch_result('SHOW TABLES FROM ' . PMA_backquote($database) . ';',
+        null, 0, $link, PMA_DBI_QUERY_STORE);
 }
 
 /**
  * usort comparison callback
  *
- * @param string $a first argument to sort
- * @param string $b second argument to sort
+ * @param   string  $a first argument to sort 
+ * @param   string  $b second argument to sort 
  *
  * @return  integer  a value representing whether $a should be before $b in the
  *                   sorted array or not
+ *
+ * @global  string   the column the array shall be sorted by
+ * @global  string   the sorting order ('ASC' or 'DESC')
  *
  * @access  private
  */
@@ -303,7 +209,7 @@ function PMA_usort_comparison_callback($a, $b)
         $sorter = 'strcasecmp';
     }
     /* No sorting when key is not present */
-    if (! isset($a[$GLOBALS['callback_sort_by']]) || ! isset($b[$GLOBALS['callback_sort_by']])) {
+    if (!isset($a[$GLOBALS['callback_sort_by']]) || ! isset($b[$GLOBALS['callback_sort_by']])) {
         return 0;
     }
     // produces f.e.:
@@ -327,21 +233,24 @@ function PMA_usort_comparison_callback($a, $b)
  * PMA_DBI_get_tables_full('my_database', 'my_tables_', 'comment'));
  * </code>
  *
- * @param string          $database     database
- * @param string|bool     $table        table or false
- * @param boolean|string  $tbl_is_group $table is a table group
- * @param mixed           $link         mysql link
- * @param integer         $limit_offset zero-based offset for the count
- * @param boolean|integer $limit_count  number of tables to return
- * @param string          $sort_by      table attribute to sort by
- * @param string          $sort_order   direction to sort (ASC or DESC)
- *
- * @todo    move into PMA_Table
- *
+ * @uses    PMA_MYSQL_INT_VERSION
+ * @uses    PMA_DBI_fetch_result()
+ * @uses    PMA_escape_mysql_wildcards()
+ * @uses    PMA_backquote()
+ * @uses    is_array()
+ * @uses    addslashes()
+ * @uses    strpos()
+ * @uses    strtoupper()
+ * @param   string          $databases      database
+ * @param   string          $table          table
+ * @param   boolean|string  $tbl_is_group   $table is a table group
+ * @param   resource        $link           mysql link
+ * @param   integer         $limit_offset   zero-based offset for the count 
+ * @param   boolean|integer $limit_count    number of tables to return 
  * @return  array           list of tables in given db(s)
  */
-function PMA_DBI_get_tables_full($database, $table = false, $tbl_is_group = false, $link = null,
-     $limit_offset = 0, $limit_count = false, $sort_by = 'Name', $sort_order = 'ASC')
+function PMA_DBI_get_tables_full($database, $table = false,
+    $tbl_is_group = false, $link = null, $limit_offset = 0, $limit_count = false)
 {
     if (true === $limit_count) {
         $limit_count = $GLOBALS['cfg']['MaxTableList'];
@@ -355,17 +264,17 @@ function PMA_DBI_get_tables_full($database, $table = false, $tbl_is_group = fals
 
     $tables = array();
 
-    if (! $GLOBALS['cfg']['Server']['DisableIS']) {
+    if (PMA_MYSQL_INT_VERSION >= 50002) {
         // get table information from information_schema
         if ($table) {
             if (true === $tbl_is_group) {
-                $sql_where_table = 'AND t.`TABLE_NAME` LIKE \''
-                  . PMA_escape_mysql_wildcards(PMA_sqlAddSlashes($table)) . '%\'';
+                $sql_where_table = 'AND `TABLE_NAME` LIKE \''
+                    . PMA_escape_mysql_wildcards(addslashes($table)) . '%\'';
             } elseif ('comment' === $tbl_is_group) {
-                $sql_where_table = 'AND t.`TABLE_COMMENT` LIKE \''
-                  . PMA_escape_mysql_wildcards(PMA_sqlAddSlashes($table)) . '%\'';
+                $sql_where_table = 'AND `TABLE_COMMENT` LIKE \''
+                    . PMA_escape_mysql_wildcards(addslashes($table)) . '%\'';
             } else {
-                $sql_where_table = 'AND t.`TABLE_NAME` = \'' . PMA_sqlAddSlashes($table) . '\'';
+                $sql_where_table = 'AND `TABLE_NAME` = \'' . addslashes($table) . '\'';
             }
         } else {
             $sql_where_table = '';
@@ -378,57 +287,12 @@ function PMA_DBI_get_tables_full($database, $table = false, $tbl_is_group = fals
         // added BINARY in the WHERE clause to force a case sensitive
         // comparison (if we are looking for the db Aa we don't want
         // to find the db aa)
-        $this_databases = array_map('PMA_sqlAddSlashes', $databases);
+        $this_databases = array_map('PMA_sqlAddslashes', $databases);
 
-        if (PMA_DRIZZLE) {
-            $engine_info = PMA_cacheGet('drizzle_engines', true);
-            $stats_join = "LEFT JOIN (SELECT 0 NUM_ROWS) AS stat ON false";
-            if (isset($engine_info['InnoDB'])
-                && $engine_info['InnoDB']['module_library'] == 'innobase'
-            ) {
-                $stats_join = "LEFT JOIN data_dictionary.INNODB_SYS_TABLESTATS stat ON (t.ENGINE = 'InnoDB' AND stat.NAME = (t.TABLE_SCHEMA || '/') || t.TABLE_NAME)";
-            }
-
-            // data_dictionary.table_cache may not contain any data for some tables, it's just a table cache
-            // auto_increment == 0 is cast to NULL because currently (2011.03.13 GA) Drizzle doesn't provide correct value
-            $sql = "
-                SELECT t.*,
-                    t.TABLE_SCHEMA        AS `Db`,
-                    t.TABLE_NAME          AS `Name`,
-                    t.TABLE_TYPE          AS `TABLE_TYPE`,
-                    t.ENGINE              AS `Engine`,
-                    t.ENGINE              AS `Type`,
-                    t.TABLE_VERSION       AS `Version`,-- VERSION
-                    t.ROW_FORMAT          AS `Row_format`,
-                    coalesce(tc.ROWS, stat.NUM_ROWS)
-                                          AS `Rows`,-- TABLE_ROWS,
-                    coalesce(tc.ROWS, stat.NUM_ROWS)
-                                          AS `TABLE_ROWS`,
-                    tc.AVG_ROW_LENGTH     AS `Avg_row_length`, -- AVG_ROW_LENGTH
-                    tc.TABLE_SIZE         AS `Data_length`, -- DATA_LENGTH
-                    NULL                  AS `Max_data_length`, -- MAX_DATA_LENGTH
-                    NULL                  AS `Index_length`, -- INDEX_LENGTH
-                    NULL                  AS `Data_free`, -- DATA_FREE
-                    nullif(t.AUTO_INCREMENT, 0)
-                                          AS `Auto_increment`,
-                    t.TABLE_CREATION_TIME AS `Create_time`, -- CREATE_TIME
-                    t.TABLE_UPDATE_TIME   AS `Update_time`, -- UPDATE_TIME
-                    NULL                  AS `Check_time`, -- CHECK_TIME
-                    t.TABLE_COLLATION     AS `Collation`,
-                    NULL                  AS `Checksum`, -- CHECKSUM
-                    NULL                  AS `Create_options`, -- CREATE_OPTIONS
-                    t.TABLE_COMMENT       AS `Comment`
-                FROM data_dictionary.TABLES t
-                    LEFT JOIN data_dictionary.TABLE_CACHE tc ON tc.TABLE_SCHEMA = t.TABLE_SCHEMA AND tc.TABLE_NAME = t.TABLE_NAME
-                    $stats_join
-                WHERE t.TABLE_SCHEMA IN ('" . implode("', '", $this_databases) . "')
-                    " . $sql_where_table;
-        } else {
-            $sql = '
-                SELECT *,
+        $sql = '
+             SELECT *,
                     `TABLE_SCHEMA`       AS `Db`,
                     `TABLE_NAME`         AS `Name`,
-                    `TABLE_TYPE`         AS `TABLE_TYPE`,
                     `ENGINE`             AS `Engine`,
                     `ENGINE`             AS `Type`,
                     `VERSION`            AS `Version`,
@@ -447,118 +311,51 @@ function PMA_DBI_get_tables_full($database, $table = false, $tbl_is_group = fals
                     `CHECKSUM`           AS `Checksum`,
                     `CREATE_OPTIONS`     AS `Create_options`,
                     `TABLE_COMMENT`      AS `Comment`
-                FROM `information_schema`.`TABLES` t
-                WHERE ' . (PMA_IS_WINDOWS ? '' : 'BINARY') . ' `TABLE_SCHEMA` IN (\'' . implode("', '", $this_databases) . '\')
-                    ' . $sql_where_table;
-        }
-
-        // Sort the tables
-        $sql .= " ORDER BY $sort_by $sort_order";
+               FROM `information_schema`.`TABLES`
+              WHERE ' . (PMA_IS_WINDOWS ? '' : 'BINARY') . ' `TABLE_SCHEMA` IN (\'' . implode("', '", $this_databases) . '\')
+                ' . $sql_where_table;
 
         if ($limit_count) {
             $sql .= ' LIMIT ' . $limit_count . ' OFFSET ' . $limit_offset;
         }
-
-        $tables = PMA_DBI_fetch_result(
-            $sql, array('TABLE_SCHEMA', 'TABLE_NAME'), null, $link
-        );
+        $tables = PMA_DBI_fetch_result($sql, array('TABLE_SCHEMA', 'TABLE_NAME'),
+            null, $link);
         unset($sql_where_table, $sql);
-
-        if (PMA_DRIZZLE) {
-            // correct I_S and D_D names returned by D_D.TABLES - Drizzle generally uses lower case for them,
-            // but TABLES returns uppercase
-            foreach ((array)$database as $db) {
-                $db_upper = strtoupper($db);
-                if (!isset($tables[$db]) && isset($tables[$db_upper])) {
-                    $tables[$db] = $tables[$db_upper];
-                    unset($tables[$db_upper]);
-                }
-            }
-        }
-
-        if ($sort_by == 'Name' && $GLOBALS['cfg']['NaturalOrder']) {
-            // here, the array's first key is by schema name
-            foreach ($tables as $one_database_name => $one_database_tables) {
-                uksort($one_database_tables, 'strnatcasecmp');
-
-                if ($sort_order == 'DESC') {
-                    $one_database_tables = array_reverse($one_database_tables);
-                }
-                $tables[$one_database_name] = $one_database_tables;
-            }
-        }
-    } // end (get information from table schema)
-
+    }
     // If permissions are wrong on even one database directory,
     // information_schema does not return any table info for any database
     // this is why we fall back to SHOW TABLE STATUS even for MySQL >= 50002
-    if (empty($tables) && !PMA_DRIZZLE) {
+    if (PMA_MYSQL_INT_VERSION < 50002 || empty($tables)) {
         foreach ($databases as $each_database) {
-            if ($table || (true === $tbl_is_group)) {
+            if (true === $tbl_is_group) {
                 $sql = 'SHOW TABLE STATUS FROM '
                     . PMA_backquote($each_database)
-                    .' LIKE \'' . PMA_escape_mysql_wildcards(PMA_sqlAddSlashes($table, true)) . '%\'';
+                    .' LIKE \'' . PMA_escape_mysql_wildcards(addslashes($table)) . '%\'';
             } else {
                 $sql = 'SHOW TABLE STATUS FROM '
-                    . PMA_backquote($each_database);
+                    . PMA_backquote($each_database) . ';';
             }
-
             $each_tables = PMA_DBI_fetch_result($sql, 'Name', null, $link);
-
-            // Sort naturally if the config allows it and we're sorting
-            // the Name column.
-            if ($sort_by == 'Name' && $GLOBALS['cfg']['NaturalOrder']) {
-                uksort($each_tables, 'strnatcasecmp');
-
-                if ($sort_order == 'DESC') {
-                    $each_tables = array_reverse($each_tables);
-                }
-            } else {
-                // Prepare to sort by creating array of the selected sort
-                // value to pass to array_multisort
-
-                // Size = Data_length + Index_length
-                if ($sort_by == 'Data_length') {
-                    foreach ($each_tables as $table_name => $table_data) {
-                        ${$sort_by}[$table_name] = strtolower($table_data['Data_length'] + $table_data['Index_length']);
-                    }
-                } else {
-                    foreach ($each_tables as $table_name => $table_data) {
-                        ${$sort_by}[$table_name] = strtolower($table_data[$sort_by]);
-                    }
-                }
-
-                if ($sort_order == 'DESC') {
-                    array_multisort($$sort_by, SORT_DESC, $each_tables);
-                } else {
-                    array_multisort($$sort_by, SORT_ASC, $each_tables);
-                }
-
-                // cleanup the temporary sort array
-                unset($$sort_by);
-            }
-
             if ($limit_count) {
                 $each_tables = array_slice($each_tables, $limit_offset, $limit_count);
             }
 
             foreach ($each_tables as $table_name => $each_table) {
                 if ('comment' === $tbl_is_group
-                    && 0 === strpos($each_table['Comment'], $table)
-                ) {
+                  && 0 === strpos($each_table['Comment'], $table))
+                {
                     // remove table from list
                     unset($each_tables[$table_name]);
                     continue;
                 }
 
                 if (! isset($each_tables[$table_name]['Type'])
-                    && isset($each_tables[$table_name]['Engine'])
-                ) {
+                  && isset($each_tables[$table_name]['Engine'])) {
                     // pma BC, same parts of PMA still uses 'Type'
                     $each_tables[$table_name]['Type']
                         =& $each_tables[$table_name]['Engine'];
                 } elseif (! isset($each_tables[$table_name]['Engine'])
-                        && isset($each_tables[$table_name]['Type'])) {
+                  && isset($each_tables[$table_name]['Type'])) {
                     // old MySQL reports Type, newer MySQL reports Engine
                     $each_tables[$table_name]['Engine']
                         =& $each_tables[$table_name]['Type'];
@@ -586,9 +383,7 @@ function PMA_DBI_get_tables_full($database, $table = false, $tbl_is_group = fals
                 $each_tables[$table_name]['CREATE_OPTIONS']    =& $each_tables[$table_name]['Create_options'];
                 $each_tables[$table_name]['TABLE_COMMENT']     =& $each_tables[$table_name]['Comment'];
 
-                if (strtoupper($each_tables[$table_name]['Comment']) === 'VIEW'
-                    && $each_tables[$table_name]['Engine'] == null
-                ) {
+                if (strtoupper($each_tables[$table_name]['Comment']) === 'VIEW') {
                     $each_tables[$table_name]['TABLE_TYPE'] = 'VIEW';
                 } else {
                     /**
@@ -602,22 +397,11 @@ function PMA_DBI_get_tables_full($database, $table = false, $tbl_is_group = fals
         }
     }
 
-    // cache table data
-    // so PMA_Table does not require to issue SHOW TABLE STATUS again
-    // Note: I don't see why we would need array_merge_recursive() here,
-    // as it creates double entries for the same table (for example a double
-    // entry for Comment when changing the storage engine in Operations)
-    // Note 2: Instead of array_merge(), simply use the + operator because
-    //  array_merge() renumbers numeric keys starting with 0, therefore
-    //  we would lose a db name thats consists only of numbers
-    foreach ($tables as $one_database => $its_tables) {
-        if (isset(PMA_Table::$cache[$one_database])) {
-            PMA_Table::$cache[$one_database] = PMA_Table::$cache[$one_database] + $tables[$one_database];
-        } else {
-            PMA_Table::$cache[$one_database] = $tables[$one_database];
+    if ($GLOBALS['cfg']['NaturalOrder']) {
+        foreach ($tables as $key => $val) {
+            uksort($tables[$key], 'strnatcasecmp');
         }
     }
-    unset($one_database, $its_tables);
 
     if (! is_array($database)) {
         if (isset($tables[$database])) {
@@ -631,14 +415,6 @@ function PMA_DBI_get_tables_full($database, $table = false, $tbl_is_group = fals
             // http://sf.net/support/tracker.php?aid=1436171
             return $tables[strtolower($database)];
         } else {
-            // one database but inexact letter case match
-            // as Drizzle is always case insensitive, we can safely return the only result
-            if (PMA_DRIZZLE && count($tables) == 1) {
-                $keys = array_keys($tables);
-                if (strlen(array_pop($keys)) == strlen($database)) {
-                    return array_pop($tables);
-                }
-            }
             return $tables;
         }
     } else {
@@ -649,17 +425,15 @@ function PMA_DBI_get_tables_full($database, $table = false, $tbl_is_group = fals
 /**
  * returns array with databases containing extended infos about them
  *
- * @param string   $database     database
- * @param boolean  $force_stats  retrieve stats also for MySQL < 5
- * @param resource $link         mysql link
- * @param string   $sort_by      column to order by
- * @param string   $sort_order   ASC or DESC
- * @param integer  $limit_offset starting offset for LIMIT
- * @param bool|int $limit_count  row count for LIMIT or true for $GLOBALS['cfg']['MaxDbList']
- *
  * @todo    move into PMA_List_Database?
- *
- * @return array $databases
+ * @param   string      $databases      database
+ * @param   boolean     $force_stats    retrieve stats also for MySQL < 5
+ * @param   resource    $link           mysql link
+ * @param   string      $sort_by        column to order by
+ * @param   string      $sort_order     ASC or DESC
+ * @param   integer     $limit_offset   starting offset for LIMIT
+ * @param   bool|int    $limit_count    row count for LIMIT or true for $GLOBALS['cfg']['MaxDbList']
+ * @return  array       $databases
  */
 function PMA_DBI_get_databases_full($database = null, $force_stats = false,
     $link = null, $sort_by = 'SCHEMA_NAME', $sort_order = 'ASC',
@@ -676,13 +450,14 @@ function PMA_DBI_get_databases_full($database = null, $force_stats = false,
 
     $apply_limit_and_order_manual = true;
 
-    if (! $GLOBALS['cfg']['Server']['DisableIS']) {
+    if (PMA_MYSQL_INT_VERSION >= 50002) {
         /**
          * if $GLOBALS['cfg']['NaturalOrder'] is enabled, we cannot use LIMIT
          * cause MySQL does not support natural ordering, we have to do it afterward
          */
-        $limit = '';
-        if (!$GLOBALS['cfg']['NaturalOrder']) {
+        if ($GLOBALS['cfg']['NaturalOrder']) {
+            $limit = '';
+        } else {
             if ($limit_count) {
                 $limit = ' LIMIT ' . $limit_count . ' OFFSET ' . $limit_offset;
             }
@@ -693,70 +468,46 @@ function PMA_DBI_get_databases_full($database = null, $force_stats = false,
         // get table information from information_schema
         if ($database) {
             $sql_where_schema = 'WHERE `SCHEMA_NAME` LIKE \''
-                . PMA_sqlAddSlashes($database) . '\'';
+                . addslashes($database) . '\'';
         } else {
             $sql_where_schema = '';
         }
 
-        if (PMA_DRIZZLE) {
-            // data_dictionary.table_cache may not contain any data for some
-            // tables, it's just a table cache
-            $sql = 'SELECT
-                s.SCHEMA_NAME,
-                s.DEFAULT_COLLATION_NAME';
-            if ($force_stats) {
-                // no TABLE_CACHE data, stable results are better than
-                // constantly changing
-                $sql .= ',
-                    COUNT(t.TABLE_SCHEMA) AS SCHEMA_TABLES,
-                    SUM(stat.NUM_ROWS)    AS SCHEMA_TABLE_ROWS';
-            }
-            $sql .= '
-                   FROM data_dictionary.SCHEMAS s';
-            if ($force_stats) {
-                $engine_info = PMA_cacheGet('drizzle_engines', true);
-                $stats_join = "LEFT JOIN (SELECT 0 NUM_ROWS) AS stat ON false";
-                if (isset($engine_info['InnoDB']) && $engine_info['InnoDB']['module_library'] == 'innobase') {
-                    $stats_join = "LEFT JOIN data_dictionary.INNODB_SYS_TABLESTATS stat ON (t.ENGINE = 'InnoDB' AND stat.NAME = (t.TABLE_SCHEMA || '/') || t.TABLE_NAME)";
-                }
-
-                $sql .= "
-                    LEFT JOIN data_dictionary.TABLES t
-                        ON t.TABLE_SCHEMA = s.SCHEMA_NAME
-                    $stats_join";
-            }
-            $sql .= $sql_where_schema . '
-                    GROUP BY s.SCHEMA_NAME
-                    ORDER BY ' . PMA_backquote($sort_by) . ' ' . $sort_order
-                . $limit;
-        } else {
-            $sql = 'SELECT
-                s.SCHEMA_NAME,
-                s.DEFAULT_COLLATION_NAME';
-            if ($force_stats) {
-                $sql .= ',
-                    COUNT(t.TABLE_SCHEMA)  AS SCHEMA_TABLES,
-                    SUM(t.TABLE_ROWS)      AS SCHEMA_TABLE_ROWS,
-                    SUM(t.DATA_LENGTH)     AS SCHEMA_DATA_LENGTH,
-                    SUM(t.MAX_DATA_LENGTH) AS SCHEMA_MAX_DATA_LENGTH,
-                    SUM(t.INDEX_LENGTH)    AS SCHEMA_INDEX_LENGTH,
-                    SUM(t.DATA_LENGTH + t.INDEX_LENGTH)
-                                           AS SCHEMA_LENGTH,
-                    SUM(t.DATA_FREE)       AS SCHEMA_DATA_FREE';
-            }
-            $sql .= '
-                   FROM `information_schema`.SCHEMATA s';
-            if ($force_stats) {
-                $sql .= '
-                    LEFT JOIN `information_schema`.TABLES t
-                        ON BINARY t.TABLE_SCHEMA = BINARY s.SCHEMA_NAME';
-            }
-            $sql .= $sql_where_schema . '
-                    GROUP BY BINARY s.SCHEMA_NAME
-                    ORDER BY BINARY ' . PMA_backquote($sort_by) . ' ' . $sort_order
-                . $limit;
+        // for PMA bc:
+        // `SCHEMA_FIELD_NAME` AS `SHOW_TABLE_STATUS_FIELD_NAME`
+        $sql = '
+             SELECT `information_schema`.`SCHEMATA`.*';
+        if ($force_stats) {
+            $sql .= ',
+                    COUNT(`information_schema`.`TABLES`.`TABLE_SCHEMA`)
+                        AS `SCHEMA_TABLES`,
+                    SUM(`information_schema`.`TABLES`.`TABLE_ROWS`)
+                        AS `SCHEMA_TABLE_ROWS`,
+                    SUM(`information_schema`.`TABLES`.`DATA_LENGTH`)
+                        AS `SCHEMA_DATA_LENGTH`,
+                    SUM(`information_schema`.`TABLES`.`MAX_DATA_LENGTH`)
+                        AS `SCHEMA_MAX_DATA_LENGTH`,
+                    SUM(`information_schema`.`TABLES`.`INDEX_LENGTH`)
+                        AS `SCHEMA_INDEX_LENGTH`,
+                    SUM(`information_schema`.`TABLES`.`DATA_LENGTH`
+                      + `information_schema`.`TABLES`.`INDEX_LENGTH`)
+                        AS `SCHEMA_LENGTH`,
+                    SUM(`information_schema`.`TABLES`.`DATA_FREE`)
+                        AS `SCHEMA_DATA_FREE`';
         }
-
+        $sql .= '
+               FROM `information_schema`.`SCHEMATA`';
+        if ($force_stats) {
+            $sql .= '
+          LEFT JOIN `information_schema`.`TABLES`
+                 ON BINARY `information_schema`.`TABLES`.`TABLE_SCHEMA`
+                  = BINARY `information_schema`.`SCHEMATA`.`SCHEMA_NAME`';
+        }
+        $sql .= '
+              ' . $sql_where_schema . '
+           GROUP BY BINARY `information_schema`.`SCHEMATA`.`SCHEMA_NAME`
+           ORDER BY BINARY ' . PMA_backquote($sort_by) . ' ' . $sort_order
+           . $limit;
         $databases = PMA_DBI_fetch_result($sql, 'SCHEMA_NAME', null, $link);
 
         $mysql_error = PMA_DBI_getError($link);
@@ -766,7 +517,7 @@ function PMA_DBI_get_databases_full($database = null, $force_stats = false,
 
         // display only databases also in official database list
         // f.e. to apply hide_db and only_db
-        $drops = array_diff(array_keys($databases), (array) $GLOBALS['pma']->databases);
+        $drops = array_diff(array_keys($databases), $GLOBALS['PMA_List_Database']->items);
         if (count($drops)) {
             foreach ($drops as $drop) {
                 unset($databases[$drop]);
@@ -775,18 +526,18 @@ function PMA_DBI_get_databases_full($database = null, $force_stats = false,
         }
         unset($sql_where_schema, $sql, $drops);
     } else {
-        foreach ($GLOBALS['pma']->databases as $database_name) {
+        foreach ($GLOBALS['PMA_List_Database']->items as $database_name) {
             // MySQL forward compatibility
             // so pma could use this array as if every server is of version >5.0
             $databases[$database_name]['SCHEMA_NAME']      = $database_name;
 
             if ($force_stats) {
-                include_once './libraries/mysql_charsets.lib.php';
+                require_once 'mysql_charsets.lib.php';
 
                 $databases[$database_name]['DEFAULT_COLLATION_NAME']
                     = PMA_getDbCollation($database_name);
 
-                // get additional info about tables
+                // get additonal info about tables
                 $databases[$database_name]['SCHEMA_TABLES']          = 0;
                 $databases[$database_name]['SCHEMA_TABLE_ROWS']      = 0;
                 $databases[$database_name]['SCHEMA_DATA_LENGTH']     = 0;
@@ -806,13 +557,8 @@ function PMA_DBI_get_databases_full($database = null, $force_stats = false,
                         += $row['Max_data_length'];
                     $databases[$database_name]['SCHEMA_INDEX_LENGTH']
                         += $row['Index_length'];
-
-                    // for InnoDB, this does not contain the number of
-                    // overhead bytes but the total free space
-                    if ('InnoDB' != $row['Engine']) {
-                        $databases[$database_name]['SCHEMA_DATA_FREE']
-                            += $row['Data_free'];
-                    }
+                    $databases[$database_name]['SCHEMA_DATA_FREE']
+                        += $row['Data_free'];
                     $databases[$database_name]['SCHEMA_LENGTH']
                         += $row['Data_length'] + $row['Index_length'];
                 }
@@ -821,7 +567,6 @@ function PMA_DBI_get_databases_full($database = null, $force_stats = false,
             }
         }
     }
-
 
     /**
      * apply limit and order manually now
@@ -848,82 +593,51 @@ function PMA_DBI_get_databases_full($database = null, $force_stats = false,
  * returns detailed array with all columns for given table in database,
  * or all tables/databases
  *
- * @param string $database name of database
- * @param string $table    name of table to retrieve columns from
- * @param string $column   name of specific column
- * @param mixed  $link     mysql link resource
- *
- * @return array
+ * @param   string  $database   name of database
+ * @param   string  $table      name of table to retrieve columns from
+ * @param   string  $column     name of specific column
+ * @param   mixed   $link       mysql link resource
  */
 function PMA_DBI_get_columns_full($database = null, $table = null,
     $column = null, $link = null)
 {
     $columns = array();
 
-    if (! $GLOBALS['cfg']['Server']['DisableIS']) {
+    if (PMA_MYSQL_INT_VERSION >= 50002) {
         $sql_wheres = array();
         $array_keys = array();
 
         // get columns information from information_schema
         if (null !== $database) {
-            $sql_wheres[] = '`TABLE_SCHEMA` = \'' . PMA_sqlAddSlashes($database) . '\' ';
+            $sql_wheres[] = '`TABLE_SCHEMA` = \'' . addslashes($database) . '\' ';
         } else {
             $array_keys[] = 'TABLE_SCHEMA';
         }
         if (null !== $table) {
-            $sql_wheres[] = '`TABLE_NAME` = \'' . PMA_sqlAddSlashes($table) . '\' ';
+            $sql_wheres[] = '`TABLE_NAME` = \'' . addslashes($table) . '\' ';
         } else {
             $array_keys[] = 'TABLE_NAME';
         }
         if (null !== $column) {
-            $sql_wheres[] = '`COLUMN_NAME` = \'' . PMA_sqlAddSlashes($column) . '\' ';
+            $sql_wheres[] = '`COLUMN_NAME` = \'' . addslashes($column) . '\' ';
         } else {
             $array_keys[] = 'COLUMN_NAME';
         }
 
         // for PMA bc:
         // `[SCHEMA_FIELD_NAME]` AS `[SHOW_FULL_COLUMNS_FIELD_NAME]`
-        if (PMA_DRIZZLE) {
-            $sql = "SELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME,
-                column_name        AS `Field`,
-                (CASE
-                    WHEN character_maximum_length > 0
-                        THEN concat(lower(data_type), '(', character_maximum_length, ')')
-                    WHEN numeric_precision > 0 OR numeric_scale > 0
-                        THEN concat(lower(data_type), '(', numeric_precision, ',', numeric_scale, ')')
-                    WHEN enum_values IS NOT NULL
-                        THEN concat(lower(data_type), '(', enum_values, ')')
-                    ELSE lower(data_type) END)
-                                   AS `Type`,
-                collation_name     AS `Collation`,
-                (CASE is_nullable
-                    WHEN 1 THEN 'YES'
-                    ELSE 'NO' END) AS `Null`,
-                (CASE
-                    WHEN is_used_in_primary THEN 'PRI'
-                    ELSE '' END)   AS `Key`,
-                column_default     AS `Default`,
-                (CASE
-                    WHEN is_auto_increment THEN 'auto_increment'
-                    WHEN column_default_update THEN 'on update ' || column_default_update
-                    ELSE '' END)   AS `Extra`,
-                NULL               AS `Privileges`,
-                column_comment     AS `Comment`
-            FROM data_dictionary.columns";
-        } else {
-            $sql = '
-                 SELECT *,
-                        `COLUMN_NAME`       AS `Field`,
-                        `COLUMN_TYPE`       AS `Type`,
-                        `COLLATION_NAME`    AS `Collation`,
-                        `IS_NULLABLE`       AS `Null`,
-                        `COLUMN_KEY`        AS `Key`,
-                        `COLUMN_DEFAULT`    AS `Default`,
-                        `EXTRA`             AS `Extra`,
-                        `PRIVILEGES`        AS `Privileges`,
-                        `COLUMN_COMMENT`    AS `Comment`
-                   FROM `information_schema`.`COLUMNS`';
-        }
+        $sql = '
+             SELECT *,
+                    `COLUMN_NAME`       AS `Field`,
+                    `COLUMN_TYPE`       AS `Type`,
+                    `COLLATION_NAME`    AS `Collation`,
+                    `IS_NULLABLE`       AS `Null`,
+                    `COLUMN_KEY`        AS `Key`,
+                    `COLUMN_DEFAULT`    AS `Default`,
+                    `EXTRA`             AS `Extra`,
+                    `PRIVILEGES`        AS `Privileges`,
+                    `COLUMN_COMMENT`    AS `Comment`
+               FROM `information_schema`.`COLUMNS`';
         if (count($sql_wheres)) {
             $sql .= "\n" . ' WHERE ' . implode(' AND ', $sql_wheres);
         }
@@ -932,18 +646,16 @@ function PMA_DBI_get_columns_full($database = null, $table = null,
         unset($sql_wheres, $sql);
     } else {
         if (null === $database) {
-            foreach ($GLOBALS['pma']->databases as $database) {
-                $columns[$database] = PMA_DBI_get_columns_full(
-                    $database, null, null, $link
-                );
+            foreach ($GLOBALS['PMA_List_Database']->items as $database) {
+                $columns[$database] = PMA_DBI_get_columns_full($database, null,
+                    null, $link);
             }
             return $columns;
         } elseif (null === $table) {
             $tables = PMA_DBI_get_tables($database);
             foreach ($tables as $table) {
                 $columns[$table] = PMA_DBI_get_columns_full(
-                    $database, $table, null, $link
-                );
+                    $database, $table, null, $link);
             }
             return $columns;
         }
@@ -951,251 +663,109 @@ function PMA_DBI_get_columns_full($database = null, $table = null,
         $sql = 'SHOW FULL COLUMNS FROM '
             . PMA_backquote($database) . '.' . PMA_backquote($table);
         if (null !== $column) {
-            $sql .= " LIKE '" . PMA_sqlAddSlashes($column, true) . "'";
+            $sql .= " LIKE '" . $column . "'";
         }
 
         $columns = PMA_DBI_fetch_result($sql, 'Field', null, $link);
-    }
-    $ordinal_position = 1;
-    foreach ($columns as $column_name => $each_column) {
 
-        // MySQL forward compatibility
-        // so pma could use this array as if every server is of version >5.0
-        $columns[$column_name]['COLUMN_NAME'] =& $columns[$column_name]['Field'];
-        $columns[$column_name]['COLUMN_TYPE'] =& $columns[$column_name]['Type'];
-        $columns[$column_name]['COLLATION_NAME'] =& $columns[$column_name]['Collation'];
-        $columns[$column_name]['IS_NULLABLE'] =& $columns[$column_name]['Null'];
-        $columns[$column_name]['COLUMN_KEY'] =& $columns[$column_name]['Key'];
-        $columns[$column_name]['COLUMN_DEFAULT'] =& $columns[$column_name]['Default'];
-        $columns[$column_name]['EXTRA'] =& $columns[$column_name]['Extra'];
-        $columns[$column_name]['PRIVILEGES'] =& $columns[$column_name]['Privileges'];
-        $columns[$column_name]['COLUMN_COMMENT'] =& $columns[$column_name]['Comment'];
+        $ordinal_position = 1;
+        foreach ($columns as $column_name => $each_column) {
 
-        $columns[$column_name]['TABLE_CATALOG'] = null;
-        $columns[$column_name]['TABLE_SCHEMA'] = $database;
-        $columns[$column_name]['TABLE_NAME'] = $table;
-        $columns[$column_name]['ORDINAL_POSITION'] = $ordinal_position;
-        $columns[$column_name]['DATA_TYPE']
-            = substr(
-                $columns[$column_name]['COLUMN_TYPE'],
-                0,
-                strpos($columns[$column_name]['COLUMN_TYPE'], '(')
-            );
-        /**
-         * @todo guess CHARACTER_MAXIMUM_LENGTH from COLUMN_TYPE
-         */
-        $columns[$column_name]['CHARACTER_MAXIMUM_LENGTH'] = null;
-        /**
-         * @todo guess CHARACTER_OCTET_LENGTH from CHARACTER_MAXIMUM_LENGTH
-         */
-        $columns[$column_name]['CHARACTER_OCTET_LENGTH'] = null;
-        $columns[$column_name]['NUMERIC_PRECISION'] = null;
-        $columns[$column_name]['NUMERIC_SCALE'] = null;
-        $columns[$column_name]['CHARACTER_SET_NAME']
-            = substr(
-                $columns[$column_name]['COLLATION_NAME'],
-                0,
-                strpos($columns[$column_name]['COLLATION_NAME'], '_')
-            );
+            // MySQL forward compatibility
+            // so pma could use this array as if every server is of version >5.0
+            $columns[$column_name]['COLUMN_NAME']                 =& $columns[$column_name]['Field'];
+            $columns[$column_name]['COLUMN_TYPE']                 =& $columns[$column_name]['Type'];
+            $columns[$column_name]['COLLATION_NAME']              =& $columns[$column_name]['Collation'];
+            $columns[$column_name]['IS_NULLABLE']                 =& $columns[$column_name]['Null'];
+            $columns[$column_name]['COLUMN_KEY']                  =& $columns[$column_name]['Key'];
+            $columns[$column_name]['COLUMN_DEFAULT']              =& $columns[$column_name]['Default'];
+            $columns[$column_name]['EXTRA']                       =& $columns[$column_name]['Extra'];
+            $columns[$column_name]['PRIVILEGES']                  =& $columns[$column_name]['Privileges'];
+            $columns[$column_name]['COLUMN_COMMENT']              =& $columns[$column_name]['Comment'];
 
-        $ordinal_position++;
-    }
+            $columns[$column_name]['TABLE_CATALOG']               = null;
+            $columns[$column_name]['TABLE_SCHEMA']                = $database;
+            $columns[$column_name]['TABLE_NAME']                  = $table;
+            $columns[$column_name]['ORDINAL_POSITION']            = $ordinal_position;
+            $columns[$column_name]['DATA_TYPE']                   =
+                substr($columns[$column_name]['COLUMN_TYPE'], 0,
+                    strpos($columns[$column_name]['COLUMN_TYPE'], '('));
+            /**
+             * @todo guess CHARACTER_MAXIMUM_LENGTH from COLUMN_TYPE
+             */
+            $columns[$column_name]['CHARACTER_MAXIMUM_LENGTH']    = null;
+            /**
+             * @todo guess CHARACTER_OCTET_LENGTH from CHARACTER_MAXIMUM_LENGTH
+             */
+            $columns[$column_name]['CHARACTER_OCTET_LENGTH']      = null;
+            $columns[$column_name]['NUMERIC_PRECISION']           = null;
+            $columns[$column_name]['NUMERIC_SCALE']               = null;
+            $columns[$column_name]['CHARACTER_SET_NAME']          =
+                substr($columns[$column_name]['COLLATION_NAME'], 0,
+                    strpos($columns[$column_name]['COLLATION_NAME'], '_'));
 
-    if (null !== $column) {
-        reset($columns);
-        $columns = current($columns);
+            $ordinal_position++;
+        }
+
+        if (null !== $column) {
+            reset($columns);
+            $columns = current($columns);
+        }
     }
 
     return $columns;
 }
 
 /**
- * Returns SQL query for fetching columns for a table
+ * @todo should only return columns names, for more info use PMA_DBI_get_columns_full()
  *
- * The 'Key' column is not calculated properly, use PMA_DBI_get_columns() to get
- * correct values.
- *
- * @param string  $database name of database
- * @param string  $table    name of table to retrieve columns from
- * @param string  $column   name of column, null to show all columns
- * @param boolean $full     whether to return full info or only column names
- *
- * @see PMA_DBI_get_columns()
- *
- * @return  string
+ * @deprecated by PMA_DBI_get_columns() or PMA_DBI_get_columns_full()
+ * @param   string  $database   name of database
+ * @param   string  $table      name of table to retrieve columns from
+ * @param   mixed   $link       mysql link resource
+ * @return  array   column info
  */
-function PMA_DBI_get_columns_sql($database, $table, $column = null, $full = false)
+function PMA_DBI_get_fields($database, $table, $link = null)
 {
-    if (PMA_DRIZZLE) {
-        // `Key` column:
-        // * used in primary key => PRI
-        // * unique one-column => UNI
-        // * indexed, one-column or first in multi-column => MUL
-        // Promotion of UNI to PRI in case no promary index exists is done after query is executed
-        $sql = "SELECT
-                column_name        AS `Field`,
-                (CASE
-                    WHEN character_maximum_length > 0
-                        THEN concat(lower(data_type), '(', character_maximum_length, ')')
-                    WHEN numeric_precision > 0 OR numeric_scale > 0
-                        THEN concat(lower(data_type), '(', numeric_precision, ',', numeric_scale, ')')
-                    WHEN enum_values IS NOT NULL
-                        THEN concat(lower(data_type), '(', enum_values, ')')
-                    ELSE lower(data_type) END)
-                                   AS `Type`,
-                " . ($full ? "
-                collation_name     AS `Collation`," : '') . "
-                (CASE is_nullable
-                    WHEN 1 THEN 'YES'
-                    ELSE 'NO' END) AS `Null`,
-                (CASE
-                    WHEN is_used_in_primary THEN 'PRI'
-                    WHEN is_unique AND NOT is_multi THEN 'UNI'
-                    WHEN is_indexed AND (NOT is_multi OR is_first_in_multi) THEN 'MUL'
-                    ELSE '' END)   AS `Key`,
-                column_default     AS `Default`,
-                (CASE
-                    WHEN is_auto_increment THEN 'auto_increment'
-                    WHEN column_default_update <> '' THEN 'on update ' || column_default_update
-                    ELSE '' END)   AS `Extra`
-                " . ($full ? " ,
-                NULL               AS `Privileges`,
-                column_comment     AS `Comment`" : '') . "
-            FROM data_dictionary.columns
-            WHERE table_schema = '" . PMA_sqlAddSlashes($database) . "'
-                AND table_name = '" . PMA_sqlAddSlashes($table) . "'
-                " . (($column != null) ? "
-                AND column_name = '" . PMA_sqlAddSlashes($column) . "'" : '');
-        // ORDER BY ordinal_position
-    } else {
-        $sql = 'SHOW ' . ($full ? 'FULL' : '') . ' COLUMNS
-            FROM ' . PMA_backquote($database) . '.' . PMA_backquote($table)
-            . (($column != null) ? "LIKE '" . PMA_sqlAddSlashes($column, true) . "'" : '');
+    // here we use a try_query because when coming from
+    // tbl_create + tbl_properties.inc.php, the table does not exist
+    $fields = PMA_DBI_fetch_result(
+        'SHOW FULL COLUMNS
+        FROM ' . PMA_backquote($database) . '.' . PMA_backquote($table),
+        null, null, $link);
+    if (! is_array($fields) || count($fields) < 1) {
+        return false;
     }
-    return $sql;
+    return $fields;
 }
 
 /**
- * Returns descriptions of columns in given table (all or given by $column)
+ * array PMA_DBI_get_columns(string $database, string $table, bool $full = false, mysql db link $link = null)
  *
- * @param string  $database name of database
- * @param string  $table    name of table to retrieve columns from
- * @param string  $column   name of column, null to show all columns
- * @param boolean $full     whether to return full info or only column names
- * @param mixed   $link     mysql link resource
- *
- * @return  false|array   array indexed by column names or,
- *                        if $column is given, flat array description
+ * @param   string  $database   name of database
+ * @param   string  $table      name of table to retrieve columns from
+ * @param   boolean $full       wether to return full info or only column names
+ * @param   mixed   $link       mysql link resource
+ * @return  array   column names
  */
-function PMA_DBI_get_columns($database, $table, $column = null, $full = false, $link = null)
+function PMA_DBI_get_columns($database, $table, $full = false, $link = null)
 {
-    $sql = PMA_DBI_get_columns_sql($database, $table, $column, $full);
-    $fields = PMA_DBI_fetch_result($sql, 'Field', null, $link);
-    if (! is_array($fields) || count($fields) == 0) {
-        return null;
+    $fields = PMA_DBI_fetch_result(
+        'SHOW ' . ($full ? 'FULL' : '') . ' COLUMNS
+        FROM ' . PMA_backquote($database) . '.' . PMA_backquote($table),
+        'Field', ($full ? null : 'Field'), $link);
+    if (! is_array($fields) || count($fields) < 1) {
+        return false;
     }
-    if (PMA_DRIZZLE) {
-        // fix Key column, it's much simpler in PHP than in SQL
-        $has_pk = false;
-        $has_pk_candidates = false;
-        foreach ($fields as $f) {
-            if ($f['Key'] == 'PRI') {
-                $has_pk = true;
-                break;
-            } else if ($f['Null'] == 'NO' && ($f['Key'] == 'MUL' || $f['Key'] == 'UNI')) {
-                $has_pk_candidates = true;
-            }
-        }
-        if (!$has_pk && $has_pk_candidates) {
-            // check whether we can promote some unique index to PRI
-            $sql = "
-                SELECT i.index_name, p.column_name
-                FROM data_dictionary.indexes i
-                    JOIN data_dictionary.index_parts p USING (table_schema, table_name)
-                WHERE i.table_schema = '" . PMA_sqlAddSlashes($database) . "'
-                    AND i.table_name = '" . PMA_sqlAddSlashes($table) . "'
-                    AND i.is_unique
-                        AND NOT i.is_nullable";
-            $fs = PMA_DBI_fetch_result($sql, 'index_name', null, $link);
-            $fs = $fs ? array_shift($fs) : array();
-            foreach ($fs as $f) {
-                $fields[$f]['Key'] = 'PRI';
-            }
-        }
-    }
-
-    return ($column != null) ? array_shift($fields) : $fields;
-}
-
-/**
-* Returns SQL for fetching information on table indexes (SHOW INDEXES)
-*
-* @param string $database name of database
-* @param string $table    name of the table whose indexes are to be retreived
-* @param string $where    additional conditions for WHERE
-*
-* @return   array   $indexes
-*/
-function PMA_DBI_get_table_indexes_sql($database, $table, $where = null)
-{
-    if (PMA_DRIZZLE) {
-        $sql = "SELECT
-                ip.table_name          AS `Table`,
-                (NOT ip.is_unique)     AS Non_unique,
-                ip.index_name          AS Key_name,
-                ip.sequence_in_index+1 AS Seq_in_index,
-                ip.column_name         AS Column_name,
-                (CASE
-                    WHEN i.index_type = 'BTREE' THEN 'A'
-                    ELSE NULL END)     AS Collation,
-                NULL                   AS Cardinality,
-                compare_length         AS Sub_part,
-                NULL                   AS Packed,
-                ip.is_nullable         AS `Null`,
-                i.index_type           AS Index_type,
-                NULL                   AS Comment,
-                i.index_comment        AS Index_comment
-            FROM data_dictionary.index_parts ip
-                LEFT JOIN data_dictionary.indexes i USING (table_schema, table_name, index_name)
-            WHERE table_schema = '" . PMA_sqlAddSlashes($database) . "'
-                AND table_name = '" . PMA_sqlAddSlashes($table) . "'
-        ";
-    } else {
-        $sql = 'SHOW INDEXES FROM ' . PMA_backquote($database) . '.' . PMA_backquote($table);
-    }
-    if ($where) {
-        $sql .= (PMA_DRIZZLE ? ' AND (' : ' WHERE (') . $where . ')';
-    }
-    return $sql;
-}
-
-/**
-* Returns indexes of a table
-*
-* @param string $database name of database
-* @param string $table    name of the table whose indexes are to be retrieved
-* @param mixed  $link     mysql link resource
-*
-* @return   array   $indexes
-*/
-function PMA_DBI_get_table_indexes($database, $table, $link = null)
-{
-    $sql = PMA_DBI_get_table_indexes_sql($database, $table);
-    $indexes = PMA_DBI_fetch_result($sql, null, null, $link);
-
-    if (! is_array($indexes) || count($indexes) < 1) {
-        return array();
-    }
-    return $indexes;
+    return $fields;
 }
 
 /**
  * returns value of given mysql server variable
  *
- * @param string $var  mysql server variable name
- * @param int    $type PMA_DBI_GETVAR_SESSION|PMA_DBI_GETVAR_GLOBAL
- * @param mixed  $link mysql link resource|object
- *
+ * @param   string  $var    mysql server variable name
+ * @param   int     $type   PMA_DBI_GETVAR_SESSION|PMA_DBI_GETVAR_GLOBAL
+ * @param   mixed   $link   mysql link resource|object
  * @return  mixed   value for mysql server variable
  */
 function PMA_DBI_get_variable($var, $type = PMA_DBI_GETVAR_SESSION, $link = null)
@@ -1207,126 +777,140 @@ function PMA_DBI_get_variable($var, $type = PMA_DBI_GETVAR_SESSION, $link = null
             return false;
         }
     }
-
+    if (PMA_MYSQL_INT_VERSION < 40002) {
+        $type = 0;
+    }
     switch ($type) {
-    case PMA_DBI_GETVAR_SESSION:
-        $modifier = ' SESSION';
-        break;
-    case PMA_DBI_GETVAR_GLOBAL:
-        $modifier = ' GLOBAL';
-        break;
-    default:
-        $modifier = '';
+        case PMA_DBI_GETVAR_SESSION:
+            $modifier = ' SESSION';
+            break;
+        case PMA_DBI_GETVAR_GLOBAL:
+            $modifier = ' GLOBAL';
+            break;
+        default:
+            $modifier = '';
     }
     return PMA_DBI_fetch_value(
-        'SHOW' . $modifier . ' VARIABLES LIKE \'' . $var . '\';', 0, 1, $link
-    );
+        'SHOW' . $modifier . ' VARIABLES LIKE \'' . $var . '\';', 0, 1, $link);
 }
 
 /**
- * Function called just after a connection to the MySQL database server has
- * been established. It sets the connection collation, and determins the
- * version of MySQL which is running.
- *
- * @param mixed   $link           mysql link resource|object
- * @param boolean $is_controluser whether link is for control user
+ * @uses    ./libraries/charset_conversion.lib.php
+ * @uses    PMA_DBI_QUERY_STORE
+ * @uses    PMA_REMOVED_NON_UTF_8
+ * @uses    PMA_MYSQL_INT_VERSION
+ * @uses    PMA_MYSQL_STR_VERSION
+ * @uses    PMA_DBI_GETVAR_SESSION
+ * @uses    PMA_DBI_fetch_value()
+ * @uses    PMA_DBI_query()
+ * @uses    PMA_DBI_get_variable()
+ * @uses    $GLOBALS['collation_connection']
+ * @uses    $GLOBALS['charset_connection']
+ * @uses    $GLOBALS['available_languages']
+ * @uses    $GLOBALS['mysql_charset_map']
+ * @uses    $GLOBALS['charset']
+ * @uses    $GLOBALS['lang']
+ * @uses    $GLOBALS['cfg']['Lang']
+ * @uses    $GLOBALS['cfg']['ColumnTypes']
+ * @uses    defined()
+ * @uses    explode()
+ * @uses    sprintf()
+ * @uses    intval()
+ * @uses    define()
+ * @uses    defined()
+ * @uses    substr()
+ * @uses    count()
+ * @param   mixed   $link   mysql link resource|object
+ * @param   boolean $is_controluser
  */
 function PMA_DBI_postConnect($link, $is_controluser = false)
 {
-    if (! defined('PMA_MYSQL_INT_VERSION')) {
-        if (PMA_cacheExists('PMA_MYSQL_INT_VERSION', true)) {
-            define(
-                'PMA_MYSQL_INT_VERSION',
-                PMA_cacheGet('PMA_MYSQL_INT_VERSION', true)
-            );
-            define(
-                'PMA_MYSQL_MAJOR_VERSION',
-                PMA_cacheGet('PMA_MYSQL_MAJOR_VERSION', true)
-            );
-            define(
-                'PMA_MYSQL_STR_VERSION',
-                PMA_cacheGet('PMA_MYSQL_STR_VERSION', true)
-            );
-            define(
-                'PMA_MYSQL_VERSION_COMMENT',
-                PMA_cacheGet('PMA_MYSQL_VERSION_COMMENT', true)
-            );
+    if (!defined('PMA_MYSQL_INT_VERSION')) {
+        $mysql_version = PMA_DBI_fetch_value(
+            'SELECT VERSION()', 0, 0, $link, PMA_DBI_QUERY_STORE);
+        if ($mysql_version) {
+            $match = explode('.', $mysql_version);
+            define('PMA_MYSQL_INT_VERSION',
+                (int) sprintf('%d%02d%02d', $match[0], $match[1],
+                        intval($match[2])));
+            define('PMA_MYSQL_STR_VERSION', $mysql_version);
+            unset($mysql_version, $match);
         } else {
-            $version = PMA_DBI_fetch_single_row(
-                'SELECT @@version, @@version_comment',
-                'ASSOC',
-                $link
-            );
+            define('PMA_MYSQL_INT_VERSION', 32332);
+            define('PMA_MYSQL_STR_VERSION', '3.23.32');
+        }
+    }
 
-            if ($version) {
-                $match = explode('.', $version['@@version']);
-                define('PMA_MYSQL_MAJOR_VERSION', (int)$match[0]);
-                define(
-                    'PMA_MYSQL_INT_VERSION',
-                    (int) sprintf('%d%02d%02d', $match[0], $match[1], intval($match[2]))
-                );
-                define('PMA_MYSQL_STR_VERSION', $version['@@version']);
-                define('PMA_MYSQL_VERSION_COMMENT', $version['@@version_comment']);
-            } else {
-                define('PMA_MYSQL_INT_VERSION', 50015);
-                define('PMA_MYSQL_MAJOR_VERSION', 5);
-                define('PMA_MYSQL_STR_VERSION', '5.00.15');
-                define('PMA_MYSQL_VERSION_COMMENT', '');
+    if (!defined('PMA_ENGINE_KEYWORD')) {
+        if (PMA_MYSQL_INT_VERSION >= 40102) {
+            define('PMA_ENGINE_KEYWORD','ENGINE');
+        } else {
+            define('PMA_ENGINE_KEYWORD','TYPE');
+        }
+    }
+
+    if (PMA_MYSQL_INT_VERSION >= 40100) {
+
+        // If $lang is defined and we are on MySQL >= 4.1.x,
+        // we auto-switch the lang to its UTF-8 version (if it exists and user
+        // didn't force language)
+        if (!empty($GLOBALS['lang'])
+          && (substr($GLOBALS['lang'], -5) != 'utf-8')
+          && !isset($GLOBALS['cfg']['Lang'])) {
+            $lang_utf_8_version =
+                substr($GLOBALS['lang'], 0, strpos($GLOBALS['lang'], '-'))
+                . '-utf-8';
+            if (!empty($GLOBALS['available_languages'][$lang_utf_8_version])) {
+                $GLOBALS['lang'] = $lang_utf_8_version;
+                $GLOBALS['charset'] = 'utf-8';
+                define('PMA_LANG_RELOAD', 1);
             }
-            PMA_cacheSet(
-                'PMA_MYSQL_INT_VERSION',
-                PMA_MYSQL_INT_VERSION,
-                true
-            );
-            PMA_cacheSet(
-                'PMA_MYSQL_MAJOR_VERSION',
-                PMA_MYSQL_MAJOR_VERSION,
-                true
-            );
-            PMA_cacheSet(
-                'PMA_MYSQL_STR_VERSION',
-                PMA_MYSQL_STR_VERSION,
-                true
-            );
-            PMA_cacheSet(
-                'PMA_MYSQL_VERSION_COMMENT',
-                PMA_MYSQL_VERSION_COMMENT,
-                true
-            );
         }
-        // detect Drizzle by version number:
-        // <year>.<month>.<build number>(.<patch rev)
-        define('PMA_DRIZZLE', PMA_MYSQL_MAJOR_VERSION >= 2009);
-    }
 
-    // Skip charsets for Drizzle
-    if (!PMA_DRIZZLE) {
-        if (! empty($GLOBALS['collation_connection'])) {
-            PMA_DBI_query("SET CHARACTER SET 'utf8';", $link, PMA_DBI_QUERY_STORE);
-            PMA_DBI_query(
-                "SET collation_connection = '" . PMA_sqlAddSlashes($GLOBALS['collation_connection']) . "';",
-                $link,
-                PMA_DBI_QUERY_STORE
-            );
+        // and we remove the non-UTF-8 choices to avoid confusion
+        // (unless there is a forced language)
+        if (!defined('PMA_REMOVED_NON_UTF_8') && ! isset($GLOBALS['cfg']['Lang'])) {
+            foreach ($GLOBALS['available_languages'] as $each_lang => $dummy) {
+                if (substr($each_lang, -5) != 'utf-8') {
+                    unset($GLOBALS['available_languages'][$each_lang]);
+                }
+            }
+            define('PMA_REMOVED_NON_UTF_8', 1);
+        }
+
+        $mysql_charset = $GLOBALS['mysql_charset_map'][$GLOBALS['charset']];
+        if ($is_controluser
+          || empty($GLOBALS['collation_connection'])
+          || (strpos($GLOBALS['collation_connection'], '_')
+                ? substr($GLOBALS['collation_connection'], 0, strpos($GLOBALS['collation_connection'], '_'))
+                : $GLOBALS['collation_connection']) == $mysql_charset) {
+
+            PMA_DBI_query('SET NAMES ' . $mysql_charset . ';', $link,
+                PMA_DBI_QUERY_STORE);
         } else {
-            PMA_DBI_query(
-                "SET NAMES 'utf8' COLLATE 'utf8_general_ci';",
-                $link,
-                PMA_DBI_QUERY_STORE
-            );
+            PMA_DBI_query('SET CHARACTER SET ' . $mysql_charset . ';', $link,
+                PMA_DBI_QUERY_STORE);
         }
-    }
+        if (!empty($GLOBALS['collation_connection'])) {
+            PMA_DBI_query('SET collation_connection = \'' . $GLOBALS['collation_connection'] . '\';',
+                $link, PMA_DBI_QUERY_STORE);
+        }
+        if (!$is_controluser) {
+            $GLOBALS['collation_connection'] = PMA_DBI_get_variable('collation_connection',
+                PMA_DBI_GETVAR_SESSION, $link);
+            $GLOBALS['charset_connection']   = PMA_DBI_get_variable('character_set_connection',
+                PMA_DBI_GETVAR_SESSION, $link);
+        }
 
-    // Cache plugin list for Drizzle
-    if (PMA_DRIZZLE && !PMA_cacheExists('drizzle_engines', true)) {
-        $sql = "SELECT p.plugin_name, m.module_library
-            FROM data_dictionary.plugins p
-                JOIN data_dictionary.modules m USING (module_name)
-            WHERE p.plugin_type = 'StorageEngine'
-                AND p.plugin_name NOT IN ('FunctionEngine', 'schema')
-                AND p.is_active = 'YES'";
-        $engines = PMA_DBI_fetch_result($sql, 'plugin_name', null, $link);
-        PMA_cacheSet('drizzle_engines', $engines, true);
+        // Add some field types to the list, this needs to be done once per session!
+        if (!in_array('BINARY', $GLOBALS['cfg']['ColumnTypes'])) {
+            $GLOBALS['cfg']['ColumnTypes'][] = 'BINARY';
+        }
+        if (!in_array('VARBINARY', $GLOBALS['cfg']['ColumnTypes'])) {
+            $GLOBALS['cfg']['ColumnTypes'][] = 'VARBINARY';
+        }
+    } else {
+        require_once './libraries/charset_conversion.lib.php';
     }
 }
 
@@ -1342,22 +926,28 @@ function PMA_DBI_postConnect($link, $is_controluser = false)
  * // $user_name = 'John Doe'
  * </code>
  *
- * @param string|mysql_result $result     query or mysql result
- * @param integer             $row_number row to fetch the value from,
- *                                        starting at 0, with 0 beeing default
- * @param integer|string      $field      field to fetch the value from,
- *                                        starting at 0, with 0 beeing default
- * @param resource            $link       mysql link
- *
- * @return mixed value of first field in first row from result
- *               or false if not found
+ * @uses    is_string()
+ * @uses    is_int()
+ * @uses    PMA_DBI_try_query()
+ * @uses    PMA_DBI_num_rows()
+ * @uses    PMA_DBI_fetch_row()
+ * @uses    PMA_DBI_fetch_assoc()
+ * @uses    PMA_DBI_free_result()
+ * @param   string|mysql_result $result query or mysql result
+ * @param   integer             $row_number row to fetch the value from,
+ *                                      starting at 0, with 0 beeing default
+ * @param   integer|string      $field  field to fetch the value from,
+ *                                      starting at 0, with 0 beeing default
+ * @param   resource            $link   mysql link
+ * @param   mixed               $options
+ * @return  mixed               value of first field in first row from result
+ *                              or false if not found
  */
-function PMA_DBI_fetch_value($result, $row_number = 0, $field = 0, $link = null)
-{
+function PMA_DBI_fetch_value($result, $row_number = 0, $field = 0, $link = null, $options = 0) {
     $value = false;
 
     if (is_string($result)) {
-        $result = PMA_DBI_try_query($result, $link, PMA_DBI_QUERY_STORE, false);
+        $result = PMA_DBI_try_query($result, $link, $options | PMA_DBI_QUERY_STORE);
     }
 
     // return false if result is empty or false
@@ -1398,19 +988,25 @@ function PMA_DBI_fetch_value($result, $row_number = 0, $field = 0, $link = null)
  * // $user = array('id' => 123, 'name' => 'John Doe')
  * </code>
  *
- * @param string|mysql_result $result query or mysql result
- * @param string              $type   NUM|ASSOC|BOTH
- *                                    returned array should either numeric
- *                                    associativ or booth
- * @param resource            $link   mysql link
- *
- * @return array|boolean first row from result
- *                       or false if result is empty
+ * @uses    is_string()
+ * @uses    PMA_DBI_try_query()
+ * @uses    PMA_DBI_num_rows()
+ * @uses    PMA_DBI_fetch_row()
+ * @uses    PMA_DBI_fetch_assoc()
+ * @uses    PMA_DBI_fetch_array()
+ * @uses    PMA_DBI_free_result()
+ * @param   string|mysql_result $result query or mysql result
+ * @param   string              $type   NUM|ASSOC|BOTH
+ *                                      returned array should either numeric
+ *                                      associativ or booth
+ * @param   resource            $link   mysql link
+ * @param   mixed               $options
+ * @return  array|boolean       first row from result
+ *                              or false if result is empty
  */
-function PMA_DBI_fetch_single_row($result, $type = 'ASSOC', $link = null)
-{
+function PMA_DBI_fetch_single_row($result, $type = 'ASSOC', $link = null, $options = 0) {
     if (is_string($result)) {
-        $result = PMA_DBI_try_query($result, $link, PMA_DBI_QUERY_STORE, false);
+        $result = PMA_DBI_try_query($result, $link, $options | PMA_DBI_QUERY_STORE);
     }
 
     // return null if result is empty or false
@@ -1419,16 +1015,16 @@ function PMA_DBI_fetch_single_row($result, $type = 'ASSOC', $link = null)
     }
 
     switch ($type) {
-    case 'NUM' :
-        $fetch_function = 'PMA_DBI_fetch_row';
-        break;
-    case 'ASSOC' :
-        $fetch_function = 'PMA_DBI_fetch_assoc';
-        break;
-    case 'BOTH' :
-    default :
-        $fetch_function = 'PMA_DBI_fetch_array';
-        break;
+        case 'NUM' :
+            $fetch_function = 'PMA_DBI_fetch_row';
+            break;
+        case 'ASSOC' :
+            $fetch_function = 'PMA_DBI_fetch_assoc';
+            break;
+        case 'BOTH' :
+        default :
+            $fetch_function = 'PMA_DBI_fetch_array';
+            break;
     }
 
     $row = $fetch_function($result);
@@ -1466,27 +1062,24 @@ function PMA_DBI_fetch_single_row($result, $type = 'ASSOC', $link = null)
  * $users = PMA_DBI_fetch_result($sql);
  * // produces
  * // $users[] = 'John Doe'
- *
- * $sql = 'SELECT `group`, `name` FROM `user`'
- * $users = PMA_DBI_fetch_result($sql, array('group', null), 'name');
- * // produces
- * // $users['admin'][] = 'John Doe'
- *
- * $sql = 'SELECT `group`, `name` FROM `user`'
- * $users = PMA_DBI_fetch_result($sql, array('group', 'name'), 'id');
- * // produces
- * // $users['admin']['John Doe'] = '123'
  * </code>
  *
- * @param string|mysql_result $result query or mysql result
- * @param string|integer      $key    field-name or offset
- *                                    used as key for array
- * @param string|integer      $value  value-name or offset
- *                                    used as value for array
- * @param resource            $link   mysql link
- * @param mixed               $options
- *
- * @return array resultrows or values indexed by $key
+ * @uses    is_string()
+ * @uses    is_int()
+ * @uses    PMA_DBI_try_query()
+ * @uses    PMA_DBI_num_rows()
+ * @uses    PMA_DBI_num_fields()
+ * @uses    PMA_DBI_fetch_row()
+ * @uses    PMA_DBI_fetch_assoc()
+ * @uses    PMA_DBI_free_result()
+ * @param   string|mysql_result $result query or mysql result
+ * @param   string|integer      $key    field-name or offset
+ *                                      used as key for array
+ * @param   string|integer      $value  value-name or offset
+ *                                      used as value for array
+ * @param   resource            $link   mysql link
+ * @param   mixed               $options
+ * @return  array               resultrows or values indexed by $key
  */
 function PMA_DBI_fetch_result($result, $key = null, $value = null,
     $link = null, $options = 0)
@@ -1494,7 +1087,7 @@ function PMA_DBI_fetch_result($result, $key = null, $value = null,
     $resultrows = array();
 
     if (is_string($result)) {
-        $result = PMA_DBI_try_query($result, $link, $options, false);
+        $result = PMA_DBI_try_query($result, $link, $options);
     }
 
     // return empty array if result is empty or false
@@ -1528,11 +1121,6 @@ function PMA_DBI_fetch_result($result, $key = null, $value = null,
             while ($row = $fetch_function($result)) {
                 $result_target =& $resultrows;
                 foreach ($key as $key_index) {
-                    if (null === $key_index) {
-                        $result_target =& $result_target[];
-                        continue;
-                    }
-
                     if (! isset($result_target[$row[$key_index]])) {
                         $result_target[$row[$key_index]] = array();
                     }
@@ -1550,11 +1138,6 @@ function PMA_DBI_fetch_result($result, $key = null, $value = null,
             while ($row = $fetch_function($result)) {
                 $result_target =& $resultrows;
                 foreach ($key as $key_index) {
-                    if (null === $key_index) {
-                        $result_target =& $result_target[];
-                        continue;
-                    }
-
                     if (! isset($result_target[$row[$key_index]])) {
                         $result_target[$row[$key_index]] = array();
                     }
@@ -1574,42 +1157,62 @@ function PMA_DBI_fetch_result($result, $key = null, $value = null,
 }
 
 /**
+ * return default table engine for given database
+ *
+ * @return  string  default table engine
+ */
+function PMA_DBI_get_default_engine()
+{
+    if (PMA_MYSQL_INT_VERSION > 50002) {
+        return PMA_DBI_fetch_value('SHOW VARIABLES LIKE \'storage_engine\';', 0, 1);
+    } else {
+        return PMA_DBI_fetch_value('SHOW VARIABLES LIKE \'table_type\';', 0, 1);
+    }
+}
+
+/**
  * Get supported SQL compatibility modes
  *
- * @return array supported SQL compatibility modes
+ * @return  array   supported SQL compatibility modes
  */
 function PMA_DBI_getCompatibilities()
 {
-    // Drizzle doesn't support compatibility modes
-    if (PMA_DRIZZLE) {
+    if (PMA_MYSQL_INT_VERSION < 40100) {
         return array();
     }
-
     $compats = array('NONE');
-    $compats[] = 'ANSI';
-    $compats[] = 'DB2';
-    $compats[] = 'MAXDB';
-    $compats[] = 'MYSQL323';
-    $compats[] = 'MYSQL40';
-    $compats[] = 'MSSQL';
-    $compats[] = 'ORACLE';
-    // removed; in MySQL 5.0.33, this produces exports that
-    // can't be read by POSTGRESQL (see our bug #1596328)
-    //$compats[] = 'POSTGRESQL';
-    $compats[] = 'TRADITIONAL';
-
+    if (PMA_MYSQL_INT_VERSION >= 40101) {
+        $compats[] = 'ANSI';
+        $compats[] = 'DB2';
+        $compats[] = 'MAXDB';
+        $compats[] = 'MYSQL323';
+        $compats[] = 'MYSQL40';
+        $compats[] = 'MSSQL';
+        $compats[] = 'ORACLE';
+        // removed; in MySQL 5.0.33, this produces exports that
+        // can't be read by POSTGRESQL (see our bug #1596328)
+        //$compats[] = 'POSTGRESQL';
+        if (PMA_MYSQL_INT_VERSION >= 50002) {
+            $compats[] = 'TRADITIONAL';
+        }
+    }
     return $compats;
 }
 
 /**
  * returns warnings for last query
  *
- * @param resource $link mysql link resource
- *
- * @return array warnings
+ * @uses    $GLOBALS['userlink']
+ * @uses    PMA_DBI_fetch_result()
+ * @param   resource mysql link  $link   mysql link resource
+ * @return  array   warnings
  */
 function PMA_DBI_get_warnings($link = null)
 {
+    if (PMA_MYSQL_INT_VERSION < 40100) {
+        return array();
+    }
+
     if (empty($link)) {
         if (isset($GLOBALS['userlink'])) {
             $link = $GLOBALS['userlink'];
@@ -1625,54 +1228,26 @@ function PMA_DBI_get_warnings($link = null)
  * returns true (int > 0) if current user is superuser
  * otherwise 0
  *
- * @return bool Whether use is a superuser
+ * @return integer  $is_superuser
  */
-function PMA_isSuperuser()
-{
-    if (PMA_cacheExists('is_superuser', true)) {
-        return PMA_cacheGet('is_superuser', true);
-    }
-
-    // when connection failed we don't have a $userlink
-    if (isset($GLOBALS['userlink'])) {
-        if (PMA_DRIZZLE) {
-            // Drizzle has no authorization by default, so when no plugin is
-            // enabled everyone is a superuser
-            // Known authorization libraries: regex_policy, simple_user_policy
-            // Plugins limit object visibility (dbs, tables, processes), we can
-            // safely assume we always deal with superuser
-            $r = true;
-        } else {
-            // check access to mysql.user table
-            $r = (bool) PMA_DBI_try_query(
-                'SELECT COUNT(*) FROM mysql.user',
-                $GLOBALS['userlink'],
-                PMA_DBI_QUERY_STORE
-            );
-        }
-        PMA_cacheSet('is_superuser', $r, true);
-    } else {
-        PMA_cacheSet('is_superuser', false, true);
-    }
-
-    return PMA_cacheGet('is_superuser', true);
+function PMA_isSuperuser() {
+    return PMA_DBI_try_query('SELECT COUNT(*) FROM mysql.user',
+        $GLOBALS['userlink'], PMA_DBI_QUERY_STORE);
 }
+
 
 /**
  * returns an array of PROCEDURE or FUNCTION names for a db
  *
- * @param string   $db    db name
- * @param string   $which PROCEDURE | FUNCTION
- * @param resource $link  mysql link
+ * @uses    PMA_DBI_free_result()
+ * @param   string              $db     db name
+ * @param   string              $which  PROCEDURE | FUNCTION
+ * @param   resource            $link   mysql link
  *
- * @returnarray the procedure names or function names
+ * @return  array   the procedure names or function names
  */
-function PMA_DBI_get_procedures_or_functions($db, $which, $link = null)
-{
-    if (PMA_DRIZZLE) {
-        // Drizzle doesn't support functions and procedures
-        return array();
-    }
+function PMA_DBI_get_procedures_or_functions($db, $which, $link = null) {
+
     $shows = PMA_DBI_fetch_result('SHOW ' . $which . ' STATUS;', null, null, $link);
     $result = array();
     foreach ($shows as $one_show) {
@@ -1684,172 +1259,59 @@ function PMA_DBI_get_procedures_or_functions($db, $which, $link = null)
 }
 
 /**
- * returns the definition of a specific PROCEDURE, FUNCTION, EVENT or VIEW
+ * returns the definition of a specific PROCEDURE or FUNCTION
  *
- * @param string   $db    db name
- * @param string   $which PROCEDURE | FUNCTION | EVENT | VIEW
- * @param string   $name  the procedure|function|event|view name
- * @param resource $link  mysql link
+ * @uses    PMA_DBI_fetch_value()
+ * @param   string              $db     db name
+ * @param   string              $which  PROCEDURE | FUNCTION
+ * @param   string              $proc_or_function_name  the procedure name or function name
+ * @param   resource            $link   mysql link
  *
- * @return string the definition
+ * @return  string              the procedure's or function's definition
  */
-function PMA_DBI_get_definition($db, $which, $name, $link = null)
-{
-    $returned_field = array(
-        'PROCEDURE' => 'Create Procedure',
-        'FUNCTION'  => 'Create Function',
-        'EVENT'     => 'Create Event',
-        'VIEW'      => 'Create View'
-    );
-    $query = 'SHOW CREATE ' . $which . ' '
-        . PMA_backquote($db) . '.' . PMA_backquote($name);
+function PMA_DBI_get_procedure_or_function_def($db, $which, $proc_or_function_name, $link = null) {
+
+    $returned_field = array('PROCEDURE' => 'Create Procedure', 'FUNCTION' => 'Create Function');
+    $query = 'SHOW CREATE ' . $which . ' ' . PMA_backquote($db) . '.' . PMA_backquote($proc_or_function_name);
     return(PMA_DBI_fetch_value($query, 0, $returned_field[$which]));
 }
 
 /**
- * returns details about the TRIGGERs for a specific table or database
+ * returns details about the TRIGGERs of a specific table
  *
- * @param string $db        db name
- * @param string $table     table name
- * @param string $delimiter the delimiter to use (may be empty)
+ * @uses    PMA_DBI_fetch_result()
+ * @param   string              $db     db name
+ * @param   string              $table  table name
  *
- * @return array information about triggers (may be empty)
+ * @return  array               information about triggers (may be empty)
  */
-function PMA_DBI_get_triggers($db, $table = '', $delimiter = '//')
-{
-    if (PMA_DRIZZLE) {
-        // Drizzle doesn't support triggers
-        return array();
-    }
+function PMA_DBI_get_triggers($db, $table) {
 
     $result = array();
-    if (! $GLOBALS['cfg']['Server']['DisableIS']) {
-        // Note: in http://dev.mysql.com/doc/refman/5.0/en/faqs-triggers.html
-        // their example uses WHERE TRIGGER_SCHEMA='dbname' so let's use this
-        // instead of WHERE EVENT_OBJECT_SCHEMA='dbname'
-        $query = 'SELECT TRIGGER_SCHEMA, TRIGGER_NAME, EVENT_MANIPULATION'
-            . ', EVENT_OBJECT_TABLE, ACTION_TIMING, ACTION_STATEMENT'
-            . ', EVENT_OBJECT_SCHEMA, EVENT_OBJECT_TABLE, DEFINER'
-            . ' FROM information_schema.TRIGGERS'
-            . ' WHERE TRIGGER_SCHEMA= \'' . PMA_sqlAddSlashes($db) . '\'';
 
-        if (! empty($table)) {
-            $query .= " AND EVENT_OBJECT_TABLE = '" . PMA_sqlAddSlashes($table) . "';";
-        }
-    } else {
-        $query = "SHOW TRIGGERS FROM " . PMA_backquote($db);
-        if (! empty($table)) {
-            $query .= " LIKE '" . PMA_sqlAddSlashes($table, true) . "';";
-        }
-    }
+    // available in INFORMATION_SCHEMA since MySQL 5.0.10
+    // Note: in http://dev.mysql.com/doc/refman/5.0/en/faqs-triggers.html
+    // their example uses WHERE TRIGGER_SCHEMA='dbname' so let's use this
+    // instead of WHERE EVENT_OBJECT_SCHEMA='dbname'
+    if (PMA_MYSQL_INT_VERSION >= 50010) {
+        $triggers = PMA_DBI_fetch_result("SELECT TRIGGER_SCHEMA, TRIGGER_NAME, EVENT_MANIPULATION, ACTION_TIMING, ACTION_STATEMENT, EVENT_OBJECT_SCHEMA, EVENT_OBJECT_TABLE FROM information_schema.TRIGGERS WHERE TRIGGER_SCHEMA= '" . PMA_sqlAddslashes($db,true) . "' and EVENT_OBJECT_TABLE = '" . PMA_sqlAddslashes($table, true) . "';");
 
-    if ($triggers = PMA_DBI_fetch_result($query)) {
-        foreach ($triggers as $trigger) {
-            if ($GLOBALS['cfg']['Server']['DisableIS']) {
-                $trigger['TRIGGER_NAME'] = $trigger['Trigger'];
-                $trigger['ACTION_TIMING'] = $trigger['Timing'];
-                $trigger['EVENT_MANIPULATION'] = $trigger['Event'];
-                $trigger['EVENT_OBJECT_TABLE'] = $trigger['Table'];
-                $trigger['ACTION_STATEMENT'] = $trigger['Statement'];
-                $trigger['DEFINER'] = $trigger['Definer'];
+        if ($triggers) {
+            $delimiter = '//';
+            foreach ($triggers as $trigger) {
+                $one_result = array();
+                $one_result['name'] = $trigger['TRIGGER_NAME'];
+                $one_result['action_timing'] = $trigger['ACTION_TIMING'];
+                $one_result['event_manipulation'] = $trigger['EVENT_MANIPULATION'];
+
+                $one_result['full_trigger_name'] = PMA_backquote($trigger['TRIGGER_SCHEMA']) . '.' . PMA_backquote($trigger['TRIGGER_NAME']);
+                $one_result['drop'] = 'DROP TRIGGER IF EXISTS ' . $one_result['full_trigger_name'];
+                $one_result['create'] = 'CREATE TRIGGER ' . $one_result['full_trigger_name'] . ' ' . $trigger['ACTION_TIMING']. ' ' . $trigger['EVENT_MANIPULATION'] . ' ON ' . PMA_backquote($trigger['EVENT_OBJECT_SCHEMA']) . '.' . PMA_backquote($trigger['EVENT_OBJECT_TABLE']) . "\n" . ' FOR EACH ROW ' . $trigger['ACTION_STATEMENT'] . "\n" . $delimiter . "\n";
+
+                $result[] = $one_result;
             }
-            $one_result = array();
-            $one_result['name'] = $trigger['TRIGGER_NAME'];
-            $one_result['table'] = $trigger['EVENT_OBJECT_TABLE'];
-            $one_result['action_timing'] = $trigger['ACTION_TIMING'];
-            $one_result['event_manipulation'] = $trigger['EVENT_MANIPULATION'];
-            $one_result['definition'] = $trigger['ACTION_STATEMENT'];
-            $one_result['definer'] = $trigger['DEFINER'];
-
-            // do not prepend the schema name; this way, importing the
-            // definition into another schema will work
-            $one_result['full_trigger_name'] = PMA_backquote($trigger['TRIGGER_NAME']);
-            $one_result['drop'] = 'DROP TRIGGER IF EXISTS '
-                . $one_result['full_trigger_name'];
-            $one_result['create'] = 'CREATE TRIGGER '
-                . $one_result['full_trigger_name'] . ' '
-                . $trigger['ACTION_TIMING']. ' '
-                . $trigger['EVENT_MANIPULATION']
-                . ' ON ' . PMA_backquote($trigger['EVENT_OBJECT_TABLE'])
-                . "\n" . ' FOR EACH ROW '
-                . $trigger['ACTION_STATEMENT'] . "\n" . $delimiter . "\n";
-
-            $result[] = $one_result;
         }
     }
-
-    // Sort results by name
-    $name = array();
-    foreach ($result as $key => $value) {
-        $name[] = $value['name'];
-    }
-    array_multisort($name, SORT_ASC, $result);
-
     return($result);
 }
-
-/**
- * Formats database error message in a friendly way.
- * This is needed because some errors messages cannot
- * be obtained by mysql_error().
- *
- * @param int    $error_number  Error code
- * @param string $error_message Error message as returned by server
- *
- * @return string HML text with error details
- */
-function PMA_DBI_formatError($error_number, $error_message)
-{
-    if (! empty($error_message)) {
-        $error_message = PMA_DBI_convert_message($error_message);
-    }
-
-    $error_message = htmlspecialchars($error_message);
-
-    $error = '#' . ((string) $error_number);
-
-    if ($error_number == 2002) {
-        $error .= ' - ' . $error_message;
-        $error .= '<br />' . __('The server is not responding (or the local server\'s socket is not correctly configured).');
-    } elseif ($error_number == 2003) {
-        $error .= ' - ' . $error_message;
-        $error .= '<br />' . __('The server is not responding.');
-    } elseif ($error_number == 1005) {
-        if (strpos($error_message, 'errno: 13') !== false) {
-            $error .= ' - ' . $error_message;
-            $error .= '<br />' . __('Please check privileges of directory containing database.');
-        } else {
-            /* InnoDB contraints, see
-             * http://dev.mysql.com/doc/refman/5.0/en/innodb-foreign-key-constraints.html
-             */
-            $error .= ' - ' . $error_message .
-                ' (<a href="server_engines.php' .
-                PMA_generate_common_url(array('engine' => 'InnoDB', 'page' => 'Status')) .
-                '">' . __('Details...') . '</a>)';
-        }
-    } else {
-        $error .= ' - ' . $error_message;
-    }
-
-    return $error;
-}
-
-/**
- * Checks whether given schema is a system schema: information_schema
- * (MySQL and Drizzle) or data_dictionary (Drizzle)
- *
- * @param string $schema_name           Name of schema (database) to test
- * @param bool   $test_for_mysql_schema Whether 'mysql' schema should
- *                                      be treated the same as IS and DD
- *
- * @return bool
- */
-function PMA_is_system_schema($schema_name, $test_for_mysql_schema = false)
-{
-    return strtolower($schema_name) == 'information_schema'
-            || (!PMA_DRIZZLE && strtolower($schema_name) == 'performance_schema')
-            || (PMA_DRIZZLE && strtolower($schema_name) == 'data_dictionary')
-            || ($test_for_mysql_schema && !PMA_DRIZZLE && $schema_name == 'mysql');
-}
-
 ?>

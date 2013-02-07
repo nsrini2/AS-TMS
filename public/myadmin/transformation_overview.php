@@ -2,12 +2,11 @@
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 
 /**
  * Don't display the page heading
- * @ignore
  */
 define('PMA_DISPLAY_HEADING', 0);
 
@@ -16,12 +15,14 @@ define('PMA_DISPLAY_HEADING', 0);
  */
 require_once './libraries/common.inc.php';
 require_once './libraries/header.inc.php';
+require_once './libraries/relation.lib.php';
 require_once './libraries/transformations.lib.php';
+$cfgRelation = PMA_getRelationsParam();
 
 $types = PMA_getAvailableMIMEtypes();
 ?>
 
-<h2><?php echo __('Available MIME types'); ?></h2>
+<h2><?php echo $strMIME_available_mime; ?></h2>
 <?php
 foreach ($types['mimetype'] as $key => $mimetype) {
 
@@ -34,28 +35,29 @@ foreach ($types['mimetype'] as $key => $mimetype) {
 }
 ?>
 <br />
-<i>(<?php echo __('MIME types printed in italics do not have a separate transformation function'); ?>)</i>
+<i>(<?php echo $strMIME_without; ?>)</i>
 
 <br />
 <br />
 <br />
-<h2><?php echo __('Available transformations'); ?></h2>
+<h2><?php echo $strMIME_available_transform; ?></h2>
 <table border="0" width="90%">
 <thead>
 <tr>
-    <th><?php echo __('Browser transformation'); ?></th>
-    <th><?php echo _pgettext('for MIME transformation', 'Description'); ?></th>
+    <th><?php echo $strMIME_transformation; ?></th>
+    <th><?php echo $strMIME_description; ?></th>
 </tr>
 </thead>
 <tbody>
 <?php
 $odd_row = true;
 foreach ($types['transformation'] as $key => $transform) {
-    $desc = PMA_getTransformationDescription($types['transformation_file'][$key]);
+    $func = strtolower(preg_replace('@(\.inc\.php3?)$@i', '', $types['transformation_file'][$key]));
+    $desc = 'strTransformation_' . $func;
     ?>
     <tr class="<?php echo $odd_row ? 'odd' : 'even'; ?>">
         <td><?php echo $transform; ?></td>
-        <td><?php echo $desc; ?></td>
+        <td><?php echo (isset($$desc) ? $$desc : '<i>' . sprintf($strMIME_nodescription, 'PMA_transformation_' . $func . '()') . '</i>'); ?></td>
     </tr>
     <?php
     $odd_row = !$odd_row;
@@ -68,5 +70,5 @@ foreach ($types['transformation'] as $key => $transform) {
 /**
  * Displays the footer
  */
-require './libraries/footer.inc.php';
+require_once './libraries/footer.inc.php';
 ?>

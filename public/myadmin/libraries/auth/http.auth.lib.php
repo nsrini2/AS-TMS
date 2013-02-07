@@ -4,7 +4,7 @@
  * Set of functions used to run http authentication.
  * NOTE: Requires PHP loaded as a Apache module.
  *
- * @package PhpMyAdmin-Auth-HTTP
+ * @version $Id$
  */
 
 
@@ -19,59 +19,51 @@
  *
  * @access  public
  */
-function PMA_auth()
-{
+function PMA_auth() {
+
     /* Perform logout to custom URL */
     if (!empty($_REQUEST['old_usr']) && !empty($GLOBALS['cfg']['Server']['LogoutURL'])) {
         PMA_sendHeaderLocation($GLOBALS['cfg']['Server']['LogoutURL']);
         exit;
     }
 
-    if (empty($GLOBALS['cfg']['Server']['auth_http_realm'])) {
-        if (empty($GLOBALS['cfg']['Server']['verbose'])) {
-            $server_message = $GLOBALS['cfg']['Server']['host'];
-        } else {
-            $server_message = $GLOBALS['cfg']['Server']['verbose'];
-        }
-        $realm_message = 'phpMyAdmin ' . $server_message;
+    if (empty($GLOBALS['cfg']['Server']['verbose'])) {
+        $server_message = $GLOBALS['cfg']['Server']['host'];
     } else {
-        $realm_message = $GLOBALS['cfg']['Server']['auth_http_realm'];
+        $server_message = $GLOBALS['cfg']['Server']['verbose'];
     }
     // remove non US-ASCII to respect RFC2616
-    $realm_message = preg_replace('/[^\x20-\x7e]/i', '', $realm_message);
-    header('WWW-Authenticate: Basic realm="' . $realm_message .  '"');
+    $server_message = preg_replace('/[^\x20-\x7e]/i', '', $server_message);
+    header('WWW-Authenticate: Basic realm="phpMyAdmin ' . $server_message .  '"');
     header('HTTP/1.0 401 Unauthorized');
     if (php_sapi_name() !== 'cgi-fcgi') {
-        header('status: 401 Unauthorized');
+	header('status: 401 Unauthorized');
     }
 
     // Defines the charset to be used
-    header('Content-Type: text/html; charset=utf-8');
+    header('Content-Type: text/html; charset=' . $GLOBALS['charset']);
     /* HTML header */
-    $page_title = __('Access denied');
-    include './libraries/header_meta_style.inc.php';
+    $page_title = $GLOBALS['strAccessDenied'];
+    require './libraries/header_meta_style.inc.php';
     ?>
 </head>
 <body>
-    <?php
-    if (file_exists(CUSTOM_HEADER_FILE)) {
-        include CUSTOM_HEADER_FILE;
-    }
-    ?>
+<?php if (file_exists('./config.header.inc.php')) {
+          require './config.header.inc.php';
+      }
+ ?>
 
 <br /><br />
 <center>
-    <h1><?php echo sprintf(__('Welcome to %s'), ' phpMyAdmin'); ?></h1>
+    <h1><?php echo sprintf($GLOBALS['strWelcome'], ' phpMyAdmin ' . PMA_VERSION); ?></h1>
 </center>
 <br />
+<div class="warning"><?php echo $GLOBALS['strWrongUser']; ?></div>
 
-    <?php
-    PMA_Message::error(__('Wrong username/password. Access denied.'))->display();
-
-    if (file_exists(CUSTOM_FOOTER_FILE)) {
-        include CUSTOM_FOOTER_FILE;
-    }
-    ?>
+<?php if (file_exists('./config.footer.inc.php')) {
+         require './config.footer.inc.php';
+      }
+ ?>
 
 </body>
 </html>
@@ -106,6 +98,7 @@ function PMA_auth_check()
 
     // Grabs the $PHP_AUTH_USER variable whatever are the values of the
     // 'register_globals' and the 'variables_order' directives
+    // loic1 - 2001/25/11: use the new globals arrays defined with php 4.1+
     if (empty($PHP_AUTH_USER)) {
         if (PMA_getenv('PHP_AUTH_USER')) {
             $PHP_AUTH_USER = PMA_getenv('PHP_AUTH_USER');
@@ -128,6 +121,7 @@ function PMA_auth_check()
     }
     // Grabs the $PHP_AUTH_PW variable whatever are the values of the
     // 'register_globals' and the 'variables_order' directives
+    // loic1 - 2001/25/11: use the new globals arrays defined with php 4.1+
     if (empty($PHP_AUTH_PW)) {
         if (PMA_getenv('PHP_AUTH_PW')) {
             $PHP_AUTH_PW = PMA_getenv('PHP_AUTH_PW');
@@ -159,8 +153,8 @@ function PMA_auth_check()
     if (!empty($old_usr)
         && (isset($PHP_AUTH_USER) && $old_usr == $PHP_AUTH_USER)) {
         $PHP_AUTH_USER = '';
-        // -> delete user's choices that were stored in session
-        session_destroy();
+        // -> delete user's choices that were stored in session 
+        session_destroy(); 
     }
 
     // Returns whether we get authentication settings or not
@@ -206,10 +200,6 @@ function PMA_auth_set_user()
 
     $cfg['Server']['user']     = $PHP_AUTH_USER;
     $cfg['Server']['password'] = $PHP_AUTH_PW;
-
-    // Avoid showing the password in phpinfo()'s output
-    unset($GLOBALS['PHP_AUTH_PW']);
-    unset($_SERVER['PHP_AUTH_PW']);
 
     return true;
 } // end of the 'PMA_auth_set_user()' function

@@ -3,63 +3,105 @@
 /**
  * hold the PMA_List base class
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 
 /**
  * @todo add caching
  * @since phpMyAdmin 2.9.10
  * @abstract
- * @package PhpMyAdmin
  */
-abstract class PMA_List extends ArrayObject
+/* abstract public */ class PMA_List
 {
+    /**
+     * @var array   the list items
+     * @access public
+     */
+    var $items = array();
+
+    /**
+     * @var array   details for list items
+     * @access public
+     */
+    var $details = array();
+
+    /**
+     * @var bool    whether we need to re-index the database list for consistency keys
+     * @access protected
+     */
+    var $_need_to_reindex = false;
+
     /**
      * @var mixed   empty item
      */
-    protected $item_empty = '';
+    var $item_empty = '';
 
-    public function __construct($array = array(), $flags = 0, $iterator_class = "ArrayIterator")
+    /**
+     * returns first item from list
+     *
+     * @uses    PMA_List::$items to get first item
+     * @uses    reset() to retrive first item from PMA_List::$items array
+     * @return  string  value of first item
+     */
+    function getFirst()
     {
-        parent::__construct($array, $flags, $iterator_class);
+        return reset($this->items);
     }
 
     /**
      * returns item only if there is only one in the list
      *
+     * @uses    PMA_List::count() to decide what to return
+     * @uses    PMA_List::getFirst() to return it
+     * @uses    PMA_List::getEmpty() to return it
      * @return  single item
      */
-    public function getSingleItem()
+    function getSingleItem()
     {
-        if (count($this) === 1) {
-            return reset($this);
+        if ($this->count() === 1) {
+            return $this->getFirst();
         }
 
         return $this->getEmpty();
     }
 
     /**
+     * returns list item count
+     *
+     * @uses    PMA_List::$items to count it items
+     * @uses    count() to count items in PMA_List::$items
+     * @return  integer PMA_List::$items count
+     */
+    function count()
+    {
+        return count($this->items);
+    }
+
+    /**
      * defines what is an empty item (0, '', false or null)
      *
+     * @uses    PMA_List::$item_empty as return value
      * @return  mixed   an empty item
      */
-    public function getEmpty()
+    function getEmpty()
     {
         return $this->item_empty;
     }
 
     /**
      * checks if the given db names exists in the current list, if there is
-     * missing at least one item it returns false otherwise true
+     * missing at least one item it reutrns false other wise true
      *
-     * @param string  $db_name,..     one or more mysql result resources
+     * @uses    PMA_List::$items to check for existence of specific item
+     * @uses    func_get_args()
+     * @uses    in_array() to check if given arguments exists in PMA_List::$items
+     * @param   string  $db_name,..     one or more mysql result resources
      * @return  boolean true if all items exists, otheriwse false
      */
-    public function exists()
+    function exists()
     {
-        $this_elements = $this->getArrayCopy();
         foreach (func_get_args() as $result) {
-            if (! in_array($result, $this_elements)) {
+            if (! in_array($result, $this->items)) {
                 return false;
             }
         }
@@ -70,27 +112,29 @@ abstract class PMA_List extends ArrayObject
     /**
      * returns HTML <option>-tags to be used inside <select></select>
      *
-     * @param mixed   $selected   the selected db or true for selecting current db
-     * @param boolean $include_information_schema
+     * @uses    PMA_List::$items to build up the option items
+     * @uses    PMA_List::getDefault() to mark this as selected if requested
+     * @uses    htmlspecialchars() to escape items
+     * @param   mixed   $selected   the selected db or true for selecting current db
+     * @param   boolean $include_information_schema
      * @return  string  HTML option tags
      */
-    public function getHtmlOptions($selected = '', $include_information_schema = true)
+    function getHtmlOptions($selected = '', $include_information_schema = true)
     {
         if (true === $selected) {
             $selected = $this->getDefault();
         }
 
         $options = '';
-        foreach ($this as $each_item) {
-            if (false === $include_information_schema
-                    && PMA_is_system_schema($each_item)) {
+        foreach ($this->items as $each_db) {
+            if (false === $include_information_schema && 'information_schema' === $each_db) {
                 continue;
             }
-            $options .= '<option value="' . htmlspecialchars($each_item) . '"';
-            if ($selected === $each_item) {
+            $options .= '<option value="' . htmlspecialchars($each_db) . '"';
+            if ($selected === $each_db) {
                 $options .= ' selected="selected"';
             }
-            $options .= '>' . htmlspecialchars($each_item) . '</option>' . "\n";
+            $options .= '>' . htmlspecialchars($each_db) . '</option>' . "\n";
         }
 
         return $options;
@@ -99,9 +143,10 @@ abstract class PMA_List extends ArrayObject
     /**
      * returns default item
      *
+     * @uses    PMA_List::getEmpty() as fallback
      * @return  string  default item
      */
-    public function getDefault()
+    function getDefault()
     {
         return $this->getEmpty();
     }
@@ -109,7 +154,8 @@ abstract class PMA_List extends ArrayObject
     /**
      * builds up the list
      *
+     * @abstract
      */
-    abstract public function build();
+    /* abstract public */ function build() {}
 }
 ?>

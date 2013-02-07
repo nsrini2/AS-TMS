@@ -12,13 +12,16 @@
  *
  * The SQL Parser code relies heavily on these functions.
  *
- * @package PhpMyAdmin-StringType-Native
+ * @version $Id$
  */
 
 /**
  * Checks if a character is an alphanumeric one
  *
- * @param string   character to check for
+ * @uses    PMA_STR_isUpper()
+ * @uses    PMA_STR_isLower()
+ * @uses    PMA_STR_isDigit()
+ * @param   string   character to check for
  * @return  boolean  whether the character is an alphanumeric one or not
  */
 function PMA_STR_isAlnum($c)
@@ -29,7 +32,9 @@ function PMA_STR_isAlnum($c)
 /**
  * Checks if a character is an alphabetic one
  *
- * @param string   character to check for
+ * @uses    PMA_STR_isUpper()
+ * @uses    PMA_STR_isLower()
+ * @param   string   character to check for
  * @return  boolean  whether the character is an alphabetic one or not
  */
 function PMA_STR_isAlpha($c)
@@ -40,7 +45,9 @@ function PMA_STR_isAlpha($c)
 /**
  * Checks if a character is a digit
  *
- * @param string   character to check for
+ * @uses    PMA_STR_numberInRangeInclusive()
+ * @uses    ord()
+ * @param   string   character to check for
  * @return  boolean  whether the character is a digit or not
  */
 function PMA_STR_isDigit($c)
@@ -55,7 +62,9 @@ function PMA_STR_isDigit($c)
 /**
  * Checks if a character is an upper alphabetic one
  *
- * @param string   character to check for
+ * @uses    PMA_STR_numberInRangeInclusive()
+ * @uses    ord()
+ * @param   string   character to check for
  * @return  boolean  whether the character is an upper alphabetic one or not
  */
 function PMA_STR_isUpper($c)
@@ -70,7 +79,9 @@ function PMA_STR_isUpper($c)
 /**
  * Checks if a character is a lower alphabetic one
  *
- * @param string   character to check for
+ * @uses    PMA_STR_numberInRangeInclusive()
+ * @uses    ord()
+ * @param   string   character to check for
  * @return  boolean  whether the character is a lower alphabetic one or not
  */
 function PMA_STR_isLower($c)
@@ -85,7 +96,9 @@ function PMA_STR_isLower($c)
 /**
  * Checks if a character is a space one
  *
- * @param string   character to check for
+ * @uses    PMA_STR_numberInRangeInclusive()
+ * @uses    ord()
+ * @param   string   character to check for
  * @return  boolean  whether the character is a space one or not
  */
 function PMA_STR_isSpace($c)
@@ -104,7 +117,9 @@ function PMA_STR_isSpace($c)
 /**
  * Checks if a character is an hexadecimal digit
  *
- * @param string   character to check for
+ * @uses    PMA_STR_numberInRangeInclusive()
+ * @uses    ord()
+ * @param   string   character to check for
  * @return  boolean  whether the character is an hexadecimal digit or not
  */
 function PMA_STR_isHexDigit($c)

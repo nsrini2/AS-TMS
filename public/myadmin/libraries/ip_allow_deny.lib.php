@@ -4,9 +4,7 @@
  * This library is used with the server IP allow/deny host authentication
  * feature
  *
- * @todo Broken for IPv6
- *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 
 
@@ -29,13 +27,12 @@ function PMA_getIp()
 
     /* Do we trust this IP as a proxy? If yes we will use it's header. */
     if (isset($GLOBALS['cfg']['TrustedProxies'][$direct_ip])) {
-        $trusted_header_value = PMA_getenv($GLOBALS['cfg']['TrustedProxies'][$direct_ip]);
-        $matches = array();
-        // the $ checks that the header contains only one IP address, ?: makes sure the () don't capture
-        $is_ip = preg_match('|^(?:[0-9]{1,3}\.){3,3}[0-9]{1,3}$|', $trusted_header_value, $matches);
-        if ($is_ip && (count($matches) == 1)) {
+        $proxy_ip = PMA_getenv($GLOBALS['cfg']['TrustedProxies'][$direct_ip]);
+        // the $ checks that the header contains only one IP address
+        $is_ip = preg_match('|^([0-9]{1,3}\.){3,3}[0-9]{1,3}$|', $proxy_ip, $regs);
+        if ($is_ip && (count($regs) > 0)) {
             // True IP behind a proxy
-            return $matches[0];
+            return $regs[0];
         }
     }
 
@@ -48,7 +45,7 @@ function PMA_getIp()
  * Based on IP Pattern Matcher
  * Originally by J.Adams <jna@retina.net>
  * Found on <http://www.php.net/manual/en/function.ip2long.php>
- * Modified for phpMyAdmin
+ * Modified by Robbat2 <robbat2@users.sourceforge.net>
  *
  * Matches:
  * xxx.xxx.xxx.xxx        (exact)
@@ -58,8 +55,8 @@ function PMA_getIp()
  * Does not match:
  * xxx.xxx.xxx.xx[yyy-zzz]  (range, partial octets not supported)
  *
- * @param string   string of IP range to match
- * @param string   string of IP to test against range
+ * @param   string   string of IP range to match
+ * @param   string   string of IP to test against range
  *
  * @return  boolean    always true
  *
@@ -114,7 +111,7 @@ function PMA_ipMaskTest($testRange, $ipToTest)
 /**
  * Runs through IP Allow/Deny rules the use of it below for more information
  *
- * @param string 'allow' | 'deny' type of rule to match
+ * @param   string 'allow' | 'deny' type of rule to match
  *
  * @return  bool   Matched a rule ?
  *
@@ -173,6 +170,7 @@ function PMA_allowDeny($type)
         }
 
         // Handle shortcuts with above array
+        // DON'T use "array_key_exists" as it's only PHP 4.1 and newer.
         if (isset($shortcuts[$rule_data[2]])) {
             $rule_data[2] = $shortcuts[$rule_data[2]];
         }

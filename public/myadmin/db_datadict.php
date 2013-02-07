@@ -2,7 +2,7 @@
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 
 /**
@@ -10,19 +10,18 @@
  */
 require_once './libraries/common.inc.php';
 
-if (! isset($selected_tbl)) {
-    include './libraries/db_common.inc.php';
-    include './libraries/db_info.inc.php';
+if (!isset($selected_tbl)) {
+    require_once './libraries/header.inc.php';
 }
 
 
 /**
  * Gets the relations settings
  */
-$cfgRelation  = PMA_getRelationsParam();
-
+require_once './libraries/relation.lib.php';
 require_once './libraries/transformations.lib.php';
 
+$cfgRelation  = PMA_getRelationsParam();
 
 /**
  * Check parameters
@@ -39,15 +38,15 @@ if (strlen($table)) {
 }
 
 if ($cfgRelation['commwork']) {
-    $comment = PMA_getDbComment($db);
+    $comment = PMA_getComments($db);
 
     /**
      * Displays DB comment
      */
-    if ($comment) {
+    if (is_array($comment)) {
         ?>
-    <p> <?php echo __('Database comment: '); ?>
-        <i><?php echo htmlspecialchars($comment); ?></i></p>
+    <p> <?php echo $strDBComment; ?>
+        <i><?php echo htmlspecialchars(implode(' ', $comment)); ?></i></p>
         <?php
     } // end if
 }
@@ -56,27 +55,40 @@ if ($cfgRelation['commwork']) {
  * Selects the database and gets tables names
  */
 PMA_DBI_select_db($db);
-$tables = PMA_DBI_get_tables($db);
+$rowset = PMA_DBI_query('SHOW TABLES FROM ' . PMA_backquote($db) . ';', null, PMA_DBI_QUERY_STORE);
 
 $count  = 0;
-foreach ($tables as $table) {
-    $comments = PMA_getComments($db, $table);
+while ($row = PMA_DBI_fetch_assoc($rowset)) {
+    $myfieldname = 'Tables_in_' . htmlspecialchars($db);
+    $table        = $row[$myfieldname];
+    if ($cfgRelation['commwork'] || PMA_MYSQL_INT_VERSION >= 40100) {
+        $comments = PMA_getComments($db, $table);
+    }
 
-    echo '<div>' . "\n";
+    if ($count != 0) {
+        echo '<div style="page-break-before: always;">' . "\n";
+    } else {
+        echo '<div>' . "\n";
+    }
 
-    echo '<h2>' . htmlspecialchars($table) . '</h2>' . "\n";
+    echo '<h2>' . $table . '</h2>' . "\n";
 
     /**
      * Gets table informations
      */
-    $show_comment = PMA_Table::sGetStatusInfo($db, $table, 'TABLE_COMMENT');
+    // The 'show table' statement works correct since 3.23.03
+    $showtable    = PMA_DBI_get_tables_full($db, $table);
+    $num_rows     = (isset($showtable[$table]['TABLE_ROWS']) ? $showtable[$table]['TABLE_ROWS'] : 0);
+    $show_comment = (isset($showtable[$table]['TABLE_COMMENT']) ? $showtable[$table]['TABLE_COMMENT'] : '');
+    unset($showtable);
+
 
     /**
      * Gets table keys and retains them
      */
 
     PMA_DBI_select_db($db);
-    $indexes      = PMA_DBI_get_table_indexes($db, $table);
+    $result       = PMA_DBI_query('SHOW KEYS FROM ' . PMA_backquote($table) . ';');
     $primary      = '';
     $indexes      = array();
     $lastIndex    = '';
@@ -84,14 +96,14 @@ foreach ($tables as $table) {
     $indexes_data = array();
     $pk_array     = array(); // will be use to emphasis prim. keys in the table
                              // view
-    foreach ($indexes as $row) {
+    while ($row = PMA_DBI_fetch_assoc($result)) {
         // Backups the list of primary keys
         if ($row['Key_name'] == 'PRIMARY') {
             $primary   .= $row['Column_name'] . ', ';
             $pk_array[$row['Column_name']] = 1;
         }
         // Retains keys informations
-        if ($row['Key_name'] != $lastIndex) {
+        if ($row['Key_name'] != $lastIndex){
             $indexes[] = $row['Key_name'];
             $lastIndex = $row['Key_name'];
         }
@@ -111,38 +123,41 @@ foreach ($tables as $table) {
         }
 
     } // end while
-
-    /**
-     * Gets columns properties
-     */
-    $columns = PMA_DBI_get_columns($db, $table);
-    $fields_cnt  = count($columns);
-
-    if (PMA_MYSQL_INT_VERSION < 50025) {
-        // We need this to correctly learn if a TIMESTAMP is NOT NULL, since
-        // SHOW FULL COLUMNS or INFORMATION_SCHEMA incorrectly says NULL
-        // and SHOW CREATE TABLE says NOT NULL
-        // http://bugs.mysql.com/20910.
-
-        $show_create_table = PMA_DBI_fetch_value(
-            'SHOW CREATE TABLE ' . PMA_backquote($db) . '.' . PMA_backquote($table),
-            0, 1);
-        $analyzed_sql = PMA_SQP_analyze(PMA_SQP_parse($show_create_table));
+    if ($result) {
+        PMA_DBI_free_result($result);
     }
 
-    // Check if we can use Relations
+
+    /**
+     * Gets fields properties
+     */
+    $result      = PMA_DBI_query('SHOW FIELDS FROM ' . PMA_backquote($table) . ';', null, PMA_DBI_QUERY_STORE);
+    $fields_cnt  = PMA_DBI_num_rows($result);
+
+
+// We need this to correctly learn if a TIMESTAMP is NOT NULL, since
+// SHOW FULL FIELDS or INFORMATION_SCHEMA incorrectly says NULL
+// and SHOW CREATE TABLE says NOT NULL (tested
+// in MySQL 4.0.25 and 5.0.21, http://bugs.mysql.com/20910).
+
+    $show_create_table = PMA_DBI_fetch_value(
+        'SHOW CREATE TABLE ' . PMA_backquote($db) . '.' . PMA_backquote($table),
+        0, 1);
+    $analyzed_sql = PMA_SQP_analyze(PMA_SQP_parse($show_create_table));
+
+    // Check if we can use Relations (Mike Beck)
     if (!empty($cfgRelation['relation'])) {
         // Find which tables are related with the current one and write it in
         // an array
         $res_rel = PMA_getForeigners($db, $table);
 
         if (count($res_rel) > 0) {
-            $have_rel = true;
+            $have_rel = TRUE;
         } else {
-            $have_rel = false;
+            $have_rel = FALSE;
         }
     } else {
-        $have_rel = false;
+        $have_rel = FALSE;
     } // end if
 
 
@@ -150,7 +165,7 @@ foreach ($tables as $table) {
      * Displays the comments of the table if MySQL >= 3.23
      */
     if (!empty($show_comment)) {
-        echo __('Table comments') . ': ' . htmlspecialchars($show_comment) . '<br /><br />';
+        echo $strTableComments . ': ' . htmlspecialchars($show_comment) . '<br /><br />';
     }
 
     /**
@@ -159,17 +174,19 @@ foreach ($tables as $table) {
     ?>
 
 <table width="100%" class="print">
-<tr><th width="50"><?php echo __('Column'); ?></th>
-    <th width="80"><?php echo __('Type'); ?></th>
-<?php /*    <th width="50"><?php echo __('Attributes'); ?></th>*/ ?>
-    <th width="40"><?php echo __('Null'); ?></th>
-    <th width="70"><?php echo __('Default'); ?></th>
-<?php /*    <th width="50"><?php echo __('Extra'); ?></th>*/ ?>
+<tr><th width="50"><?php echo $strField; ?></th>
+    <th width="80"><?php echo $strType; ?></th>
+<?php /*    <th width="50"><?php echo $strAttr; ?></th>*/ ?>
+    <th width="40"><?php echo $strNull; ?></th>
+    <th width="70"><?php echo $strDefault; ?></th>
+<?php /*    <th width="50"><?php echo $strExtra; ?></th>*/ ?>
     <?php
     if ($have_rel) {
-        echo '    <th>' . __('Links to') . '</th>' . "\n";
+        echo '    <th>' . $strLinksTo . '</th>' . "\n";
     }
-    echo '    <th>' . __('Comments') . '</th>' . "\n";
+    if ($cfgRelation['commwork'] || PMA_MYSQL_INT_VERSION >= 40100) {
+        echo '    <th>' . $strComments . '</th>' . "\n";
+    }
     if ($cfgRelation['mimework']) {
         echo '    <th>MIME</th>' . "\n";
     }
@@ -177,60 +194,76 @@ foreach ($tables as $table) {
 </tr>
     <?php
     $odd_row = true;
-    foreach ($columns as $row) {
+    while ($row = PMA_DBI_fetch_assoc($result)) {
 
-        if ($row['Null'] == '') {
-            $row['Null'] = 'NO';
-        }
-        $extracted_fieldspec = PMA_extractFieldSpec($row['Type']);
-        // reformat mysql query output
-        // set or enum types: slashes single quotes inside options
-        if ('set' == $extracted_fieldspec['type'] || 'enum' == $extracted_fieldspec['type']) {
+        $type             = $row['Type'];
+        // reformat mysql query output - staybyte - 9. June 2001
+        // loic1: set or enum types: slashes single quotes inside options
+        if (preg_match('@^(set|enum)\((.+)\)$@i', $type, $tmp)) {
+            $tmp[2]       = substr(preg_replace('@([^,])\'\'@', '\\1\\\'', ',' . $tmp[2]), 1);
+            $type         = $tmp[1] . '(' . str_replace(',', ', ', $tmp[2]) . ')';
             $type_nowrap  = '';
 
+            $binary       = 0;
+            $unsigned     = 0;
+            $zerofill     = 0;
         } else {
+            $binary       = stristr($row['Type'], 'binary');
+            $unsigned     = stristr($row['Type'], 'unsigned');
+            $zerofill     = stristr($row['Type'], 'zerofill');
             $type_nowrap  = ' nowrap="nowrap"';
+            $type         = preg_replace('@BINARY@i', '', $type);
+            $type         = preg_replace('@ZEROFILL@i', '', $type);
+            $type         = preg_replace('@UNSIGNED@i', '', $type);
+            if (empty($type)) {
+                $type     = ' ';
+            }
         }
-        $type = htmlspecialchars($extracted_fieldspec['print_type']);
-        $attribute     = $extracted_fieldspec['attribute'];
-        if (! isset($row['Default'])) {
-            if ($row['Null'] != 'NO') {
+        $strAttribute     = ' ';
+        if ($binary) {
+            $strAttribute = 'BINARY';
+        }
+        if ($unsigned) {
+            $strAttribute = 'UNSIGNED';
+        }
+        if ($zerofill) {
+            $strAttribute = 'UNSIGNED ZEROFILL';
+        }
+        if (!isset($row['Default'])) {
+            if ($row['Null'] != '' && $row['Null'] != 'NO') {
                 $row['Default'] = '<i>NULL</i>';
             }
         } else {
             $row['Default'] = htmlspecialchars($row['Default']);
         }
-        $field_name = $row['Field'];
+        $field_name = htmlspecialchars($row['Field']);
 
-        if (PMA_MYSQL_INT_VERSION < 50025
-         && ! empty($analyzed_sql[0]['create_table_fields'][$field_name]['type'])
-         && $analyzed_sql[0]['create_table_fields'][$field_name]['type'] == 'TIMESTAMP'
-         && $analyzed_sql[0]['create_table_fields'][$field_name]['timestamp_not_null']) {
-            // here, we have a TIMESTAMP that SHOW FULL COLUMNS reports as having the
-            // NULL attribute, but SHOW CREATE TABLE says the contrary. Believe
-            // the latter.
-            /**
-             * @todo merge this logic with the one in tbl_structure.php
-             * or move it in a function similar to PMA_DBI_get_columns_full()
-             * but based on SHOW CREATE TABLE because information_schema
-             * cannot be trusted in this case (MySQL bug)
-             */
-             $row['Null'] = 'NO';
+        // here, we have a TIMESTAMP that SHOW FULL FIELDS reports as having the
+        // NULL attribute, but SHOW CREATE TABLE says the contrary. Believe
+        // the latter.
+        /**
+         * @todo merge this logic with the one in tbl_structure.php
+         * or move it in a function similar to PMA_DBI_get_columns_full()
+         * but based on SHOW CREATE TABLE because information_schema
+         * cannot be trusted in this case (MySQL bug)
+         */
+        if (!empty($analyzed_sql[0]['create_table_fields'][$field_name]['type']) && $analyzed_sql[0]['create_table_fields'][$field_name]['type'] == 'TIMESTAMP' && $analyzed_sql[0]['create_table_fields'][$field_name]['timestamp_not_null']) {
+            $row['Null'] = '';
         }
         ?>
 <tr class="<?php echo $odd_row ? 'odd' : 'even'; $odd_row = ! $odd_row; ?>">
     <td nowrap="nowrap">
         <?php
         if (isset($pk_array[$row['Field']])) {
-            echo '<u>' . htmlspecialchars($field_name) . '</u>';
+            echo '<u>' . $field_name . '</u>';
         } else {
-            echo htmlspecialchars($field_name);
+            echo $field_name;
         }
         ?>
     </td>
     <td<?php echo $type_nowrap; ?> xml:lang="en" dir="ltr"><?php echo $type; ?></td>
-<?php /*    <td<?php echo $type_nowrap; ?>><?php echo $attribute; ?></td>*/ ?>
-    <td><?php echo (($row['Null'] == 'NO') ? __('No') : __('Yes')); ?></td>
+<?php /*    <td<?php echo $type_nowrap; ?>><?php echo $strAttribute; ?></td>*/ ?>
+    <td><?php echo (($row['Null'] == '' || $row['Null'] == 'NO') ? $strNo : $strYes); ?></td>
     <td nowrap="nowrap"><?php if (isset($row['Default'])) { echo $row['Default']; } ?></td>
 <?php /*    <td<?php echo $type_nowrap; ?>><?php echo $row['Extra']; ?></td>*/ ?>
         <?php
@@ -241,11 +274,13 @@ foreach ($tables as $table) {
             }
             echo '</td>' . "\n";
         }
-        echo '    <td>';
-        if (isset($comments[$field_name])) {
-            echo htmlspecialchars($comments[$field_name]);
+        if ($cfgRelation['commwork'] || PMA_MYSQL_INT_VERSION >= 40100) {
+            echo '    <td>';
+            if (isset($comments[$field_name])) {
+                echo htmlspecialchars($comments[$field_name]);
+            }
+            echo '</td>' . "\n";
         }
-        echo '</td>' . "\n";
         if ($cfgRelation['mimework']) {
             $mime_map = PMA_getMIME($db, $table, true);
 
@@ -258,7 +293,8 @@ foreach ($tables as $table) {
         ?>
 </tr>
         <?php
-    } // end foreach
+    } // end while
+    PMA_DBI_free_result($result);
     $count++;
     ?>
 </table>
@@ -269,7 +305,22 @@ foreach ($tables as $table) {
 /**
  * Displays the footer
  */
-PMA_printButton();
+?>
+<script type="text/javascript">
+//<![CDATA[
+function printPage()
+{
+    document.getElementById('print').style.visibility = 'hidden';
+    // Do print the page
+    if (typeof(window.print) != 'undefined') {
+        window.print();
+    }
+    document.getElementById('print').style.visibility = '';
+}
+//]]>
+</script>
+<?php
+echo '<br /><br /><input type="button" id="print" value="' . $strPrint . '" onclick="printPage()" />';
 
-require './libraries/footer.inc.php';
+require_once './libraries/footer.inc.php';
 ?>

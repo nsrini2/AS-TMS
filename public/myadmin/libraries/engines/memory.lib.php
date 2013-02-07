@@ -1,12 +1,11 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * @package PhpMyAdmin-Engines
+ * @version $Id$
  */
 
 /**
  * the MEMORY (HEAP) storage engine
- * @package PhpMyAdmin-Engines
  */
 class PMA_StorageEngine_memory extends PMA_StorageEngine
 {

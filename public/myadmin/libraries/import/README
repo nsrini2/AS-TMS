@@ -4,6 +4,7 @@ messages with their definition in language files, if you build some
 plugins for your use, you can use directly texts in plugin.
 
 <?php
+/* $Id$ */
 // vim: expandtab sw=4 ts=4 sts=4 ft=php:
 
 /* Demo import plugin for phpMyAdmin */
@@ -22,11 +23,11 @@ if (isset($plugin_list)) {
     $buffer = '';
     while (!($finished && $i >= $len) && !$error && !$timeout_passed) {
         $data = PMA_importGetNextChunk();
-        if ($data === false) {
+        if ($data === FALSE) {
             // subtract data we didn't handle yet and stop processing
             $offset -= strlen($buffer);
             break;
-        } elseif ($data === true) {
+        } elseif ($data === TRUE) {
             // Handle rest of buffer
         } else {
             // Append new data to buffer

@@ -3,24 +3,18 @@
 /**
  * navigation css file from theme Original
  *
- * @package PhpMyAdmin-theme
+ * @version $Id$
+ * @package phpMyAdmin-theme
  * @subpackage Original
  */
 
 // unplanned execution path
-if (!defined('PMA_MINIMUM_COMMON') && !defined('TESTSUITE')) {
+if (!defined('PMA_MINIMUM_COMMON')) {
     exit();
 }
 ?>
 /******************************************************************************/
 /* general tags */
-html {
-    font-size: <?php echo (null !== $GLOBALS['PMA_Config']->get('fontsize') ? $GLOBALS['PMA_Config']->get('fontsize') : $_COOKIE['pma_fontsize']); ?>;
-}
-
-input, select, textarea {
-    font-size: 1em;
-}
 
 body {
 <?php if (! empty($GLOBALS['cfg']['FontFamily'])) { ?>
@@ -44,8 +38,8 @@ a:active {
 }
 
 ul {
-    margin:0;
-}
+	margin:0;
+}	
 
 form {
     margin:             0;
@@ -64,27 +58,30 @@ button {
     display:            inline;
 }
 
+
 /******************************************************************************/
 /* classes */
+
+/* leave some space between icons and text */
+.icon {
+    vertical-align:     middle;
+    margin-right:       0.3em;
+    margin-left:        0.3em;
+}
+
+.navi_dbName {
+    font-weight:    bold;
+    color:          <?php echo $GLOBALS['cfg']['NaviDatabaseNameColor']; ?>;
+}
 
 /******************************************************************************/
 /* specific elements */
 
 div#pmalogo {
-    <?php //better echo $GLOBALS['cfg']['logoBGC']; ?>
+    <?php //better echo $GLOBALS['cfg']['logoBGC']; ?>;
     background-color: <?php echo $GLOBALS['cfg']['NaviBackground']; ?>;
     padding:.3em;
 }
-
-div#recentTableList {
-    text-align: center;
-    margin-bottom: 0.5em;
-}
-
-div#recentTableList select {
-    width: 100%;
-}
-
 div#pmalogo,
 div#leftframelinks,
 div#databaseList {
@@ -97,23 +94,16 @@ ul#databaseList {
     margin-bottom:      0.5em;
     padding-bottom:     0.5em;
     padding-<?php echo $left; ?>:     1.5em;
-    font-style: italic;
 }
 
 ul#databaseList a {
     display: block;
-    font-style: normal;
 }
 
 div#navidbpageselector a,
 ul#databaseList a {
     background:         <?php echo $GLOBALS['cfg']['NaviBackground']; ?>;
     color:              <?php echo $GLOBALS['cfg']['NaviColor']; ?>;
-}
-
-ul#databaseList ul {
-    padding-left: 1em;
-    padding-right: 0;
 }
 
 ul#databaseList a:hover {
@@ -132,13 +122,13 @@ div#leftframelinks .icon {
 }
 
 div#leftframelinks a img.icon {
-    margin:             2px;
-    border:             0.1em solid <?php echo $GLOBALS['cfg']['NaviColor']; ?>;
-    padding:            0;
+    margin:             0;
+    padding:            0.2em;
+    border:             0.05em solid <?php echo $GLOBALS['cfg']['NaviColor']; ?>;
 }
 
-div#leftframelinks a:hover img {
-    background-color:         <?php echo $GLOBALS['cfg']['NaviPointerBackground']; ?>;
+div#leftframelinks a:hover {
+    background:         <?php echo $GLOBALS['cfg']['NaviPointerBackground']; ?>;
     color:              <?php echo $GLOBALS['cfg']['NaviPointerColor']; ?>;
 }
 
@@ -215,9 +205,8 @@ div#left_tableList ul ul {
     padding-<?php echo $left; ?>:       0.1em;
     border-<?php echo $left; ?>:        0.1em solid <?php echo $GLOBALS['cfg']['NaviColor']; ?>;
     padding-bottom:     0.1em;
-    border-bottom:      0.1em solid <?php echo $GLOBALS['cfg']['NaviColor']; ?>;
+    border-bottom:      0.1em solid <?php echo $GLOBALS['cfg']['NaviColor']; ?>; 
 }
-
 /* for the servers list in navi panel */
 #serverinfo .item {
     white-space:        nowrap;
@@ -226,29 +215,4 @@ div#left_tableList ul ul {
 #serverinfo a:hover {
     background:         <?php echo $GLOBALS['cfg']['NaviPointerBackground']; ?>;
     color:              <?php echo $GLOBALS['cfg']['NaviPointerColor']; ?>;
-}
-
-#NavFilter {
-    display: none;
-}
-
-#clear_fast_filter {
-    background: white;
-    color: black;
-    cursor: pointer;
-    padding: 0;
-    margin: 3px 5px 0 -23px;
-    position: relative;
-    float: right;
-}
-
-#fast_filter {
-    width: 100%;
-    padding: 2px 0;
-    margin: 0;
-    border: 0;
-}
-
-#fast_filter.gray {
-    color: gray;
 }

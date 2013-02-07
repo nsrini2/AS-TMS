@@ -4,12 +4,15 @@
  * Ensure the database and the table exist (else move to the "parent" script)
  * and display headers
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 if (! defined('PHPMYADMIN')) {
     exit;
 }
 
+/**
+ *
+ */
 if (empty($is_db)) {
     if (strlen($db)) {
         $is_db = @PMA_DBI_select_db($db);
@@ -38,19 +41,14 @@ if (empty($is_db)) {
     }
 } // end if (ensures db exists)
 
-if (empty($is_table) && !defined('PMA_SUBMIT_MULT') && ! defined('TABLE_MAY_BE_ABSENT')) {
+if (empty($is_table) && !defined('PMA_SUBMIT_MULT')) {
     // Not a valid table name -> back to the db_sql.php
-
     if (strlen($table)) {
-        $is_table = isset(PMA_Table::$cache[$db][$table]);
-
-        if (! $is_table) {
-            $_result = PMA_DBI_try_query(
-                'SHOW TABLES LIKE \'' . PMA_sqlAddSlashes($table, true) . '\';',
-                null, PMA_DBI_QUERY_STORE);
-            $is_table = @PMA_DBI_num_rows($_result);
-            PMA_DBI_free_result($_result);
-        }
+        $_result = PMA_DBI_try_query(
+            'SHOW TABLES LIKE \'' . PMA_sqlAddslashes($table, true) . '\';',
+            null, PMA_DBI_QUERY_STORE);
+        $is_table = @PMA_DBI_num_rows($_result);
+        PMA_DBI_free_result($_result);
     } else {
         $is_table = false;
     }
@@ -73,8 +71,19 @@ if (empty($is_table) && !defined('PMA_SUBMIT_MULT') && ! defined('TABLE_MAY_BE_A
             }
 
             if (! $is_table) {
-                include './db_sql.php';
-                exit;
+                $url_params = array('reload' => 1, 'db' => $db);
+                if (isset($message)) {
+                    $url_params['message'] = $message;
+                }
+                if (! empty($sql_query)) {
+                    $url_params['sql_query'] = $sql_query;
+                }
+                if (isset($display_query)) {
+                    $url_params['display_query'] = $display_query;
+                }
+                PMA_sendHeaderLocation(
+                    $cfg['PmaAbsoluteUri'] . 'db_sql.php'
+                        . PMA_generate_common_url($url_params, '&'));
             }
         }
 

@@ -3,8 +3,29 @@
 /**
  * forms frameset
  *
+ * @version $Id$
+ * @uses    $GLOBALS['strNoFrames']
+ * @uses    $GLOBALS['cfg']['QueryHistoryDB']
+ * @uses    $GLOBALS['cfg']['Server']['user']
+ * @uses    $GLOBALS['cfg']['DefaultTabServer']     as src for the mainframe
+ * @uses    $GLOBALS['cfg']['DefaultTabDatabase']   as src for the mainframe
+ * @uses    $GLOBALS['cfg']['NaviWidth']            for navi frame width
+ * @uses    $GLOBALS['collation_connection']    from $_REQUEST (grab_globals.lib.php)
  *                                              or common.inc.php
- * @package PhpMyAdmin
+ * @uses    $GLOBALS['available_languages'] from common.inc.php (select_lang.lib.php)
+ * @uses    $GLOBALS['db']
+ * @uses    $GLOBALS['charset']
+ * @uses    $GLOBALS['lang']
+ * @uses    $GLOBALS['text_dir']
+ * @uses    $_ENV['HTTP_HOST']
+ * @uses    PMA_getRelationsParam()
+ * @uses    PMA_purgeHistory()
+ * @uses    PMA_generate_common_url()
+ * @uses    PMA_VERSION
+ * @uses    session_write_close()
+ * @uses    time()
+ * @uses    PMA_getenv()
+ * @uses    header()                to send charset
  */
 
 /**
@@ -12,10 +33,16 @@
  */
 require_once './libraries/common.inc.php';
 
+/**
+ * Includes the ThemeManager if it hasn't been included yet
+ */
+require_once './libraries/relation.lib.php';
+
 // free the session file, for the other frames to be loaded
 session_write_close();
 
 // Gets the host name
+// loic1 - 2001/25/11: use the new globals arrays defined with php 4.1+
 if (empty($HTTP_HOST)) {
     if (PMA_getenv('HTTP_HOST')) {
         $HTTP_HOST = PMA_getenv('HTTP_HOST');
@@ -36,7 +63,7 @@ unset($cfgRelation);
 /**
  * pass variables to child pages
  */
-$drops = array('lang', 'server', 'collation_connection',
+$drops = array('lang', 'server', 'convcharset', 'collation_connection',
     'db', 'table');
 
 foreach ($drops as $each_drop) {
@@ -54,7 +81,7 @@ if (! strlen($GLOBALS['db'])) {
 } else {
     $_GET['db'] = $GLOBALS['db'];
     $_GET['table'] = $GLOBALS['table'];
-    $main_target = ! empty($GLOBALS['goto']) ? $GLOBALS['goto'] : $GLOBALS['cfg']['DefaultTabTable'];
+    $main_target = $GLOBALS['cfg']['DefaultTabTable'];
 }
 
 $url_query = PMA_generate_common_url($_GET);
@@ -65,11 +92,11 @@ if (isset($GLOBALS['target']) && is_string($GLOBALS['target']) && !empty($GLOBAL
 
 $main_target .= $url_query;
 
-$lang_iso_code = $GLOBALS['available_languages'][$GLOBALS['lang']][1];
+$lang_iso_code = $GLOBALS['available_languages'][$GLOBALS['lang']][2];
 
 
 // start output
-require './libraries/header_http.inc.php';
+header('Content-Type: text/html; charset=' . $GLOBALS['charset']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
@@ -82,11 +109,11 @@ require './libraries/header_http.inc.php';
 <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 <title>phpMyAdmin <?php echo PMA_VERSION; ?> -
     <?php echo htmlspecialchars($HTTP_HOST); ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="robots" content="noindex,nofollow" />
+<meta http-equiv="Content-Type"
+    content="text/html; charset=<?php echo $GLOBALS['charset']; ?>" />
 <script type="text/javascript">
 // <![CDATA[
-    // definitions used in common.js
+    // definitions used in querywindow.js
     var common_query = '<?php echo PMA_escapeJsString(PMA_generate_common_url('', '', '&'));?>';
     var opendb_url = '<?php echo PMA_escapeJsString($GLOBALS['cfg']['DefaultTabDatabase']); ?>';
     var safari_browser = <?php echo PMA_USR_BROWSER_AGENT == 'SAFARI' ? 'true' : 'false' ?>;
@@ -100,8 +127,6 @@ require './libraries/header_http.inc.php';
     var token = '<?php echo PMA_escapeJsString($_SESSION[' PMA_token ']); ?>';
     var text_dir = '<?php echo PMA_escapeJsString($GLOBALS['text_dir']); ?>';
     var pma_absolute_uri = '<?php echo PMA_escapeJsString($GLOBALS['cfg']['PmaAbsoluteUri']); ?>';
-    var pma_text_default_tab = '<?php echo PMA_escapeJsString(PMA_getTitleForTarget($GLOBALS['cfg']['DefaultTabTable'])); ?>';
-    var pma_text_left_default_tab = '<?php echo PMA_escapeJsString(PMA_getTitleForTarget($GLOBALS['cfg']['LeftDefaultTabTable'])); ?>';
 
     // for content and navigation frames
 
@@ -116,26 +141,22 @@ require './libraries/header_http.inc.php';
         frame_navigation = window.frames[1];
 <?php } ?>
     }
-    var onloadCnt = 0;
+    var onloadCnt = 0; 
     var onLoadHandler = window.onload;
     window.onload = function() {
         if (onloadCnt == 0) {
-            if (typeof(onLoadHandler) == "function") {
-                onLoadHandler();
+            if (typeof(onLoadHandler) == "function") { 
+                onLoadHandler(); 
             }
-            if (typeof(getFrames) != 'undefined' && typeof(getFrames) == 'function') {
-                getFrames();
+            if (typeof(getFrames) != 'undefined' && typeof(getFrames) == 'function') { 
+                getFrames(); 
             }
             onloadCnt++;
         }
     };
 // ]]>
 </script>
-<?php
-echo PMA_includeJS('jquery/jquery-1.6.2.js');
-echo PMA_includeJS('update-location.js');
-echo PMA_includeJS('common.js');
-?>
+<script src="./js/querywindow.js" type="text/javascript"></script>
 </head>
 <frameset cols="<?php
 if ($GLOBALS['text_dir'] === 'rtl') {
@@ -161,7 +182,7 @@ if ($GLOBALS['text_dir'] === 'ltr') {
     <?php } ?>
     <noframes>
         <body>
-            <p><?php echo __('phpMyAdmin is more friendly with a <b>frames-capable</b> browser.'); ?></p>
+            <p><?php echo $GLOBALS['strNoFrames']; ?></p>
         </body>
     </noframes>
 </frameset>

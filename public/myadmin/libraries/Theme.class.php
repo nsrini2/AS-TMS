@@ -3,21 +3,19 @@
 /**
  * hold PMA_Theme class
  *
- * @package PhpMyAdmin
+ * @version $Id$
  */
 
 /**
  * handles theme
  *
- * @todo add the possibility to make a theme depend on another theme and by default on original
- * @todo make all components optional - get missing components from 'parent' theme
+ * @todo add the possibility to make a theme depends on another theme and by default on original
+ * @todo make all components optional - taking missing components from 'parent' theme
  * @todo make css optionally replacing 'parent' css or extending it (by appending at the end)
  * @todo add an optional global css file - which will be used for both frames
  *
- * @package PhpMyAdmin
  */
-class PMA_Theme
-{
+class PMA_Theme {
     /**
      * @var string theme version
      * @access  protected
@@ -70,6 +68,13 @@ class PMA_Theme
 
     /**
      * @access  public
+     * @uses    PMA_Theme::getPath()
+     * @uses    PMA_Theme::$mtime_info
+     * @uses    PMA_Theme::setVersion()
+     * @uses    PMA_Theme::setName()
+     * @uses    filemtime()
+     * @uses    filesize()
+     * @uses    file_exists()
      * @return  boolean     whether loading them info was successful or not
      */
     function loadInfo()
@@ -84,7 +89,7 @@ class PMA_Theme
 
         @include $this->getPath() . '/info.inc.php';
 
-        // was it set correctly?
+        // did it set correctly?
         if (! isset($theme_name)) {
             return false;
         }
@@ -108,10 +113,14 @@ class PMA_Theme
      *
      * @static
      * @access  public
-     * @param string  $folder path to theme
+     * @uses    PMA_Theme
+     * @uses    PMA_Theme::setPath()
+     * @uses    PMA_Theme::loadInfo()
+     * @uses    PMA_Theme::checkImgPath()
+     * @param   string  $folder path to theme
      * @return  object  PMA_Theme
      */
-    static public function load($folder)
+    function load($folder)
     {
         $theme = new PMA_Theme();
 
@@ -130,7 +139,14 @@ class PMA_Theme
      * checks image path for existance - if not found use img from original theme
      *
      * @access  public
-     * @return bool
+     * @uses    PMA_Theme::getPath()
+     * @uses    PMA_Theme::setImgPath()
+     * @uses    PMA_Theme::getName()
+     * @uses    $GLOBALS['cfg']['ThemePath']
+     * @uses    $GLOBALS['PMA_errors']
+     * @uses    $GLOBALS['strThemeNoValidImgPath']
+     * @uses    is_dir()
+     * @uses    sprintf()
      */
     function checkImgPath()
     {
@@ -141,9 +157,13 @@ class PMA_Theme
             $this->setImgPath($GLOBALS['cfg']['ThemePath'] . '/original/img/');
             return true;
         } else {
+            $GLOBALS['PMA_errors'][] =
+                sprintf($GLOBALS['strThemeNoValidImgPath'], $this->getName());
+            /*
             trigger_error(
-                sprintf(__('No valid image path for theme %s found!'), $this->getName()),
-                E_USER_ERROR);
+                sprintf($GLOBALS['strThemeNoValidImgPath'], $this->getName()),
+                E_USER_WARNING);
+            */
             return false;
         }
     }
@@ -152,6 +172,7 @@ class PMA_Theme
      * returns path to theme
      *
      * @access  public
+     * @uses    PMA_Theme::$path    as return value
      * @return  string  $path   path to theme
      */
     function getPath()
@@ -163,6 +184,7 @@ class PMA_Theme
      * returns layout file
      *
      * @access  public
+     * @uses    PMA_Theme::getPath()
      * @return  string  layout file
      */
     function getLayoutFile()
@@ -174,7 +196,8 @@ class PMA_Theme
      * set path to theme
      *
      * @access  public
-     * @param string  $path   path to theme
+     * @uses    PMA_Theme::$path    to set it
+     * @param   string  $path   path to theme
      */
     function setPath($path)
     {
@@ -185,7 +208,8 @@ class PMA_Theme
      * sets version
      *
      * @access  public
-     * @param string new version
+     * @uses    PMA_Theme::$version
+     * @param   string new version
      */
     function setVersion($version)
     {
@@ -196,6 +220,7 @@ class PMA_Theme
      * returns version
      *
      * @access  public
+     * @uses    PMA_Theme::$version
      * @return  string  version
      */
     function getVersion()
@@ -208,7 +233,9 @@ class PMA_Theme
      * returns true if theme version is equal or higher to $version
      *
      * @access  public
-     * @param string  $version    version to compare to
+     * @uses    version_compare()
+     * @uses    PMA_Theme::getVersion()
+     * @param   string  $version    version to compare to
      * @return  boolean
      */
     function checkVersion($version)
@@ -220,7 +247,9 @@ class PMA_Theme
      * sets name
      *
      * @access  public
-     * @param string  $name   new name
+     * @uses    PMA_Theme::$name to set it
+     * @uses    trim()
+     * @param   string  $name   new name
      */
     function setName($name)
     {
@@ -231,6 +260,7 @@ class PMA_Theme
      * returns name
      *
      * @access  public
+     * @uses    PMA_Theme::$name    as return value
      * @return  string name
      */
     function getName()
@@ -242,7 +272,8 @@ class PMA_Theme
      * sets id
      *
      * @access  public
-     * @param string  $id   new id
+     * @uses    PMA_Theme::$id to set it
+     * @param   string  $id   new id
      */
     function setId($id)
     {
@@ -253,6 +284,7 @@ class PMA_Theme
      * returns id
      *
      * @access  public
+     * @uses    PMA_Theme::$id as return value
      * @return  string  id
      */
     function getId()
@@ -262,7 +294,8 @@ class PMA_Theme
 
     /**
      * @access  public
-     * @param string  path to images for this theme
+     * @uses    PMA_Theme::$img_path to set it
+     * @param   string  path to images for this theme
      */
     function setImgPath($path)
     {
@@ -271,6 +304,7 @@ class PMA_Theme
 
     /**
      * @access  public
+     * @uses    PMA_Theme::$img_path as retunr value
      * @return  string image path for this theme
      */
     function getImgPath()
@@ -279,11 +313,15 @@ class PMA_Theme
     }
 
     /**
-     * load css (send to stdout, normally the browser)
+     * load css (send to stdout, normaly the browser)
      *
      * @access  public
-     * @param string  $type   left, right or print
-     * @return bool
+     * @uses    PMA_Theme::getPath()
+     * @uses    PMA_Theme::$types
+     * @uses    PMA_SQP_buildCssData()
+     * @uses    file_exists()
+     * @uses    in_array()
+     * @param   string  $type   left, right or print
      */
     function loadCss(&$type)
     {
@@ -311,18 +349,6 @@ class PMA_Theme
         }
 
         include $_css_file;
-
-        if ($type != 'print') {
-            $_sprites_data_file = $this->getPath() . '/sprites.lib.php';
-            $_sprites_css_file = './themes/sprites.css.php';
-            if (   (file_exists($_sprites_data_file)  && is_readable($_sprites_data_file))
-                && (file_exists($_sprites_css_file) && is_readable($_sprites_css_file))
-            ) {
-                include $_sprites_data_file;
-                include $_sprites_css_file;
-            }
-        }
-
         return true;
     }
 
@@ -330,18 +356,27 @@ class PMA_Theme
      * prints out the preview for this theme
      *
      * @access  public
+     * @uses    PMA_Theme::getName()
+     * @uses    PMA_Theme::getVersion()
+     * @uses    PMA_Theme::getId()
+     * @uses    PMA_Theme::getPath()
+     * @uses    $GLOBALS['strThemeNoPreviewAvailable']
+     * @uses    $GLOBALS['strTakeIt']
+     * @uses    PMA_generate_common_url()
+     * @uses    addslashes()
+     * @uses    file_exists()
+     * @uses    htmlspecialchars()
      */
     function printPreview()
     {
         echo '<div class="theme_preview">';
         echo '<h2>' . htmlspecialchars($this->getName())
-            .' (' . htmlspecialchars($this->getVersion()) . ')</h2>';
-        echo '<p>';
-        echo '<a target="_top" class="take_theme" '
-            .'name="' . htmlspecialchars($this->getId()) . '" '
-            . 'href="index.php'.PMA_generate_common_url(array(
-                'set_theme' => $this->getId()
-                )) . '">';
+            .' (' . htmlspecialchars($this->getVersion()) . ')</h2>'
+            .'<p>'
+            .'<a target="_top" href="index.php'
+            .PMA_generate_common_url(array('set_theme' => $this->getId())) . '"'
+            .' onclick="takeThis(\'' . addslashes($this->getId()) . '\');'
+            .' return false;">';
         if (@file_exists($this->getPath() . '/screen.png')) {
             // if screen exists then output
 
@@ -349,97 +384,12 @@ class PMA_Theme
                 .' alt="' . htmlspecialchars($this->getName()) . '"'
                 .' title="' . htmlspecialchars($this->getName()) . '" /><br />';
         } else {
-            echo __('No preview available.');
+            echo $GLOBALS['strThemeNoPreviewAvailable'];
         }
 
-        echo '[ <strong>' . __('take it') . '</strong> ]</a>'
+        echo '[ <strong>' . $GLOBALS['strTakeIt'] . '</strong> ]</a>'
             .'</p>'
             .'</div>';
-    }
-
-    /**
-     * Remove filter for IE.
-     *
-     * @return string CSS code.
-     */
-    function getCssIEClearFilter() {
-        return PMA_USR_BROWSER_AGENT == 'IE' && PMA_USR_BROWSER_VER >= 6 && PMA_USR_BROWSER_VER <= 8
-            ? 'filter: none'
-            : '';
-    }
-
-    /**
-     * Generates code for CSS gradient using various browser extensions.
-     *
-     * @param string $start_color Color of gradient start, hex value without #
-     * @param string $end_color   Color of gradient end, hex value without #
-     *
-     * @return string CSS code.
-     */
-    function getCssGradient($start_color, $end_color)
-    {
-        $result = array();
-        // Opera 9.5+, IE 9
-        $result[] = 'background-image: url(./themes/svg_gradient.php?from=' . $start_color . '&to=' . $end_color . ');';
-        $result[] = 'background-size: 100% 100%;';
-        // Safari 4-5, Chrome 1-9
-        $result[] = 'background: -webkit-gradient(linear, left top, left bottom, from(#' . $start_color . '), to(#' . $end_color . '));';
-        // Safari 5.1, Chrome 10+
-        $result[] = 'background: -webkit-linear-gradient(top, #' . $start_color . ', #' . $end_color . ');';
-        // Firefox 3.6+
-        $result[] = 'background: -moz-linear-gradient(top, #' . $start_color . ', #' . $end_color . ');';
-        // IE 10
-        $result[] = 'background: -ms-linear-gradient(top, #' . $start_color . ', #' . $end_color . ');';
-        // Opera 11.10
-        $result[] = 'background: -o-linear-gradient(top, #' . $start_color . ', #' . $end_color . ');';
-        // IE 6-8
-        if (PMA_USR_BROWSER_AGENT == 'IE' && PMA_USR_BROWSER_VER >= 6 && PMA_USR_BROWSER_VER <= 8) {
-            $result[] = 'filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#' . $start_color . '", endColorstr="#' . $end_color . '");';
-        }
-        return implode("\n", $result);
-    }
-
-    /**
-     * Returns CSS styles for CodeMirror editor based on query formatter colors.
-     *
-     * @return string CSS code.
-     */
-    function getCssCodeMirror()
-    {
-        $result[] = 'span.cm-keyword, span.cm-statement-verb {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['alpha_reservedWord'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-variable {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['alpha_identifier'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-comment {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['comment'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-mysql-string {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['quote'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-operator {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['punct'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-mysql-word {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['alpha_identifier'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-builtin {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['alpha_functionName'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-variable-2 {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['alpha_columnType'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-variable-3 {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['alpha_columnAttrib'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-separator {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['punct'] . ';';
-        $result[] = '}';
-        $result[] = 'span.cm-number {';
-        $result[] = '    color: ' . $GLOBALS['cfg']['SQP']['fmtColor']['digit_integer'] . ';';
-        $result[] = '}';
-        return implode("\n", $result);
     }
 }
 ?>

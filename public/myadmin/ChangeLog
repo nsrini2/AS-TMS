@@ -1,554 +1,663 @@
+﻿----------------------
 phpMyAdmin - ChangeLog
-======================
+----------------------
 
-3.5.6.0 (2013-01-28)
-- bug #3593604 [status] Erroneous advisor rule
-- bug #3596070 [status] localStorage broken in server status monitor
-- bug #3598736 [routines] Editing a procedure with special characters
-- bug #3600322 [core] Visualize GIS data throws Fatal Error
-- bug #3599362 [core] Double-escaped error message
-- bug #3776 [cookies] Login without auth on second server
+$Id$
+$HeadURL: https://phpmyadmin.svn.sourceforge.net/svnroot/phpmyadmin/trunk/phpMyAdmin/ChangeLog $
 
-3.5.5.0 (2012-12-21)
-- bug #3563824 [export] Support Apache's mod_deflate
-- bug #3585523 [interface] Inline query editing broken after row update
-- bug #3586389 [setup] Cannot switch language in /setup
-- bug #3585695 [CSS] Font size in inline query editor is way too big
-- bug #3588354 [l10n] Portuguese Language not displaying correctly
-- bug #3591412 [status] Live charts don't work for non-default server
-- bug [core] Proxy ajax calls to pma.net to avoid browser notices
-- bug #3593534 [tracking] Structure Snapshot on tracked view renders invalid
-SQL
-- bug #3544366 [events] Event comments not saved
-
-3.5.4.0 (2012-11-16)
-- bug #3570212 [edit] uuid_short() is a no-arguments function
-- bug #3569577 [edit] Add routine parameter headers not valid for "function"
-- bug #3575799 [search] Various search operators not working as expected
-- bug #3576322 [search] Invalid select query generated for tables with ENUM fields
-- bug #3577468 [display] Incorrect imagejpeg Syntax Breaks Image Transformation
-- bug #3578776 [search] Editing SQL not possible when no records found
-- bug #3571970 [interface] Display chart and number of rows to plot
-- bug #3582631 [core] Wrong redirect url caused cookies error with ForceSSL
-
-3.5.3.0 (2012-10-08)
-- bug #3539044 [interface] Browse mode "Show" button gives blank page if no results anymore
-- bug #3534979 [interface] Copy Database Ajax feedback vanishes long before copying is done
-- bug #3527531 [interface] GC-maxlifetime warning incorrectly displayed
-- bug #3526916 [interface] Search fails with JS error when tooltips disabled
-- bug #3544366 [interface] Event comments not saved
-- bug #3549084 [edit] Can't enter date directly when editing inline
-- bug #3548491 [interface] Inline query editor doesn't work from search results
-- bug #3547825 [edit] BLOB download no longer works
-- bug #3541966 [config] Error in generated configuration arrray
-- bug #3553551 [GUI] Invalid HTML code in multi submits confirmation form
-- [interface] Designer sometimes places tables on the top menu
-- bug #3546277 [core] Call to undefined function __() when config file has wrong permissions
-- bug #3540922 [edit] Error searching table with many fields
-- bug #3555104 [edit] Cannot copy a DB with table & views
-- bug #3559925 [privileges] Incorrect updating of the list of users
-- bug #3561224 [edit] cell edit date field with empty date fills in current date
-- bug #3559955 [edit] current_date from function drop down fails on update
-- bug #3562472 add support for Solaris and FreeBSD system load and memory display in server status
-- bug #3553068 [import] Table import from XML file fails
-- replace Highcharts with jqplot for Display chart
-- bug #3567684 [edit] Pasting value doesn't clear null checkbox
-- bug #3570786 [edit] Datepicker for date and datetime fields is broken
-
-3.5.2.2 (2012-08-12)
-- [security] Fixed XSS vulnerabilities, see PMASA-2012-4
-
-3.5.2.1 (2012-08-03)
-- [security] Fixed local path disclosure vulnerability, see PMASA-2012-3
-
-3.5.2.0 (2012-07-07)
-- bug #3521416 [interface] JS error when editing index
-- bug #3521313 [core] Call to undefined function __()
-- bug #3521016 [edit] NOW() function incorrectly selected
-- bug [GUI] Invalid HTML code on transformation_overview.php
-- bug #3522930 [browse] Missing validation in Ajax mode
-- bug Fix popup message on build SQL of import
-- bug #3523499 [core] Make X-WebKit-CSP work better
-- replace Highcharts with jqplot for query profiling, zoom search
-- bug #3531584 [interface] No form validation in change password dialog
-- bug #3531585 [interface] Broken password validation in copy user form
-- bug #3531586 [unterface] Add user form prints JSON when user presses enter
-- bug #3534121 [config] duplicate line in config.sample.inc.php
-- bug #3534311 [interface] Grid editing incorrectly parses ENUM/SET values
-- bug #3510196 [core] More clever URL rewriting with ForceSSL
-
-3.5.1.0 (2012-05-03)
-- bug #3510784 [edit] Limit clause ignored when sort order is remembered
-- bug #3511471 [interface] View name not seen in navi panel (MySQL 5.1)
-- bug #3512916 [display] Right frame reloads after displaying SQL result(zero rows)
-- bug [interface] Fixed missing Codemirror for inline query edit when exporting a result set
-- bug #3514490 [auth] Multiple Navigation panels bug still present
-- bug #3515181 [users] Error in create user + underscore + create database
-- bug #3515666 [display] Profiling chart shows wrong data
-- bug #3516037 [auth] JS includes missing in auth config error page
-- bug #3516183 [display] Missing image extension
-- bug [display] Added missing icons in original theme
-- bug #3516761 [edit] Query error after search
-- bug #3516405 [display] Chart title is getting wrong within chart export
-- bug #3517021 [interface] Header links except 'More' hide after closing dialog
-- bug #3516817 [interface] "More" actions in table structure
-- bug #3518484 [privileges] PMA_sqlAddSlashes() does not quote the table names correctly
-- bug #3518983 [designer] Error messages do not appear in the Designer
-- bug #3519747 [interface] Suhosin patch warning incorrectly displayed
-- bug #3520107 [interface] Server status page: Incorrect dialog box titles
-- bug #3516089 [structure] DROP does not work on defective VIEWs
-
-3.5.0.0 (2012-04-07)
-+ rfe #2021981 [interface] Add support for mass prefix change.
-+ "up to date" message on main page when current version is up to date
-+ Update to jQuery 1.6.2
-+ Patch #3256122 [search] Show/hide db search results
-+ Patch #3302354 Add gettext wrappers around a message
-+ Remove deprecated function PMA_DBI_get_fields
-+ rfe #2098927 Remember recent tables
-+ rfe #3078542 Remember the last sort order for each table
-+ AJAX for Create table in navigation panel
-+ rfe #3310562 Wording about Column
-+ AJAX for Add a user in Database privileges
-+ Patch #3271804 for rfe #3177495, new DisableMultiTableMaintenance directive
-+ [interface] Reorganised server status page.
-+ [interface] Changed way of generating charts.
-+ rfe #939233 [interface] Flexible column width
-+ [interface] Mouse-based column reordering in query results
-+ AJAX for Insert to a table from database Structure page
-- Patch #3316969 PMA_ajaxShowMessage() does not respect timeout
-+ AJAX for Change on multiple rows in table Browse
-+ [interface] Improved support for stored routines
-+ [display] More options for browsing GIS data
-+ [interface] Support for spatial indexes
-+ [display] GIS data visualization
-+ AJAX for table structure multiple-column change
-+ AJAX for table structure index edit
-+ Show/hide indexes in table Structure
-+ More compact navigation bar
-+ Display direction (horizontal/vertical) no longer displayed by default
-+ Shift/click support in database Structure
-+ Show/hide column in table Browse
-- bug #3353856 [AJAX] AJAX dialogs use wrong font-size
-- bug #3354356 [interface] Timepicker does not work in AJAX dialogs
-+ AJAX for table Structure Indexes Edit
-+ AJAX for table Structure column Change
-+ [interface] Improved support for events
-+ [interface] Improved support for triggers
-+ [interface] Improved server monitoring
-+ AJAX for table Structure column Add
-+ AJAX for table Operations copy table
-- bug #3380946 [export] no uid Query result export (Suhosin limit)
-+ Grid editing in browse mode (replaces row inline edit)
-+ Zoom-search in table Search
-+ [interface] Editor for GIS data
-+ [import] Import GIS data from ESRI Shapefiles
-+ [interface] 'Function based search' for GIS data
-+ Support Drizzle database
-- bug #3356456 [interface] Interface problems for queries having LIMIT clauses
-+ [interface] Remove DefaultPropDisplay feature
-- bug #3299486 [prettyprint] Order By in a query containing comment character
-+ [interface] Improved ENUM/SET editor
-+ patch #3428376 [pmadb] pmadb on a different MySQL server
-+ patch #3410688 [interface] Improving field size for character columns
-- [usability] Removed an unnecessary AJAX request from database search
-- bug #3302419 [navi] Tabs break when squeezing page
-+ rfe #3406797 [navi] Stick table tools to top of page on scroll
-+ rfe #1632106 [interface] Improved error handling
-+ patch #3432835 [interface] Add useful intermediate pages to pageselector
-+ [interface] Improved index editor
-+ View editing via a generated ALTER VIEW
-- bug #3408377 [interface] Deleting table from the DB does not change the table counter
-+ rfe #3438266 [designer] Toggle for relation lines
-- bug #3442069 [AJAX] database list not updated after adding/deleting a user + database
-- bug #3461750 [edit] Sort by key generates wrong sql with limit clause
-- bug #3340842 [structure] Error dropping index of non-existing column
-- bug #3093145 [display] Page through rows returned from a view
-+ patch #3303195 [interface] Checkbox to have SQL input remain
-- patch #3472899 [export] Fixed CSV escape for the export
-- patch #3475424 [import] Fixed CSV escape for the import
-- bug #3482734 [interface] No warning on syntax error in search form
-- bug #3423717 [core] Improved detection of SSL connection
-+ FULLTEXT support for InnoDB, starting with MySQL 5.6.4
-- bug #3497151 [interface] Duplicate inline query edit box
-- bug #3504567 [mime] Description of the transformation missing in the tooltip
-
-3.4.11.1 (2012-08-12)
-- [security] Fixed XSS vulnerabilities, see PMASA-2012-4
-
-3.4.11.0 (2012-04-14)
-- bug #3486970 [import] Exception on XML import
-- bug #3488777 [navi] $cfg['ShowTooltipAliasTB'] and blank names in navigation
-
-3.4.10.2 (2012-03-28)
-- [security] Fixed local path disclosure vulnerability, see PMASA-2012-2
-
-3.4.10.1 (2012-02-18)
-- [security] XSS in replication setup, see PMASA-2012-1
-
-3.4.10.0 (2012-02-14)
-- bug #3460090 [interface] TextareaAutoSelect feature broken
-- patch #3375984 [export] PHP Array export might generate invalid php code
-- bug #3049209 [import] Import from ODS ignores cell that is the same as cell before
-- bug #3463933 [display] SELECT DISTINCT displays wrong total records found
-- patch #3458944 [operations] copy table data missing SET SQL_MODE='NO_AUTO_VALUE_ON_ZERO'
-- bug #3469254 [edit] Setting data to NULL and drop-downs
-- bug #3477063 [edit] Missing set fields and values in generated INSERT query
-- bug #3460867 [libraries] license issue with TCPDF (updated to 5.9.145)
-
-3.4.9.0 (2011-12-21)
-- bug #3442028 [edit] Inline editing enum fields with null shows no dropdown
-- bug #3442004 [interface] DB suggestion not correct for user with underscore
-- bug #3438420 [core] Magic quotes removed in PHP 5.4
-- bug #3398788 [session] No feedback when result is empty (signon auth_type)
-- bug #3384035 [display] Problems regarding ShowTooltipAliasTB
-- bug #3306875 [edit] Can't rename a database that contains views
-- bug #3452506 [edit] Unable to move tables with triggers
-- bug #3449659 [navi] Fast filter broken with table tree
-- bug #3448485 [GUI] Firefox favicon frameset regression
-- [core] Better compatibility with mysql extension
-- [security] Self-XSS on export options (export server/database/table), see PMASA-2011-20
-- [security] Self-XSS in setup (host parameter), see PMASA-2011-19
-
-3.4.8.0 (2011-12-01)
-- bug #3425230 [interface] enum data split at space char (more space to edit)
-- bug #3426840 [interface] ENUM/SET editor can't handle commas in values
-- bug #3427256 [interface] no links to browse/empty views and tables
-- bug #3430377 [interface] Deleted search results remain visible
-- bug #3428627 [import] ODS import ignores memory limits
-- bug #3426836 [interface] Visual column separation
-- bug #3428065 [parser] TRUE not recognized by parser
-+ patch #3433770 [config] Make location of php-gettext configurable
-- patch #3430291 [import] Handle conflicts in some open_basedir situations
-- bug #3431427 [display] Dropdown results - setting NULL does not work
-- patch #3428764 [edit] Inline edit on multi-server configuration
-- patch #3437354 [core] Notice: Array to string conversion in PHP 5.4
-- [interface] When ShowTooltipAliasTB is true, VIEW is wrongly shown as the
-  view name in main panel db Structure page
-- bug #3439292 [core] Fail to synchronize column with name of keyword
-- bug #3425156 [interface] Add column after drop
-- [interface] Avoid showing the password in phpinfo()'s output
-- bug #3441572 [GUI] 'newer version of phpMyAdmin' message not shown in IE8
-- bug #3407235 [interface] Entering the key through a lookup window does not reset NULL
-- [security] Self-XSS on database names (Synchronize), see PMASA-2011-18
-- [security] Self-XSS on database names (Operations/rename), see PMASA-2011-18
-- [security] Self-XSS on column type (Create index), see PMASA-2011-18
-- [security] Self-XSS on column type (table Search), see PMASA-2011-18
-- [security] Self-XSS on invalid query (table overview), see PMASA-2011-18
-
-3.4.7.1 (2011-11-10)
-- [security] Fixed possible local file inclusion in XML import
-(CVE-2011-4107).
-
-3.4.7.0 (2011-10-23)
-- bug #3418610 [interface] Links in navigation when $cfg['MainPageIconic'] = false
-- bug #3418849 [interface] Inline edit shows dropdowns even after closing
-- bug [view] View renaming did not work
-- bug [navi] Wrong icon for view (MySQL 5.5)
-- bug #3420229 [doc] Missing documentation section
-- bug #3423725 [pdf] Broken PDF file when exporting database to PDF
-- [core] Allow to set language in URL
-- bug #3425184 [doc] Fix links to PHP documentation
-- bug #3426031 [export] Export to bzip2 is not working
-
-3.4.6.0 (2011-10-16)
-- patch #3404173 InnoDB comment display with tooltips/aliases
-- bug #3404886 [navi] Edit SQL statement after error
-- bug #3403165 [interface] Collation not displayed for long enum fields
-- bug #3399951 [export] Config for export compression not used
-- bug #3400690 [privileges] DB-specific privileges won't submit
-- bug #3410604 [config] Configuration storage incorrect suggested table name
-- bug #3383572 [interface] Cannot execute saved query
-- bug #3411535 [display] Full text button unchecks results display options
-- bug #3411224 [display] Broken binary column when 'Show binary contents' is not set
-- bug #3411633 [core] Call to undefined function PMA_isSuperuser()
-- bug #3413743 [interface] Display options link missing after search
-- bug #3324161 [core] CSP policy causing designer JS buttons to fail
-- bug #3412862 [relation] Relations/constraints are dropped/created on every change
-- bug #3390832 [display] Delete records from last page breaks search
-- bug #3392150 [schema] PMA_User_Schema::processUserChoice() is broken
-- bug #3414744 [core] External link fails in 3.4.5
-- patch #3314626 [display] CharTextareaRows is not respected
-- bug #3417089 [synchronize] Extraneous db choices
-- [security] Fixed local path disclosure vulnerability, see PMASA-2011-15
-- [security] Fixed XSS in setup (host/verbose parameter), see PMASA-2011-16
-
-3.4.5.0 (2011-09-14)
-- bug #3375325 [interface] Page list in navigation frame looks odd
-- bug #3313235 [interface] Error div misplaced
-- bug #3374802 [interface] Comment on a column breaks inline editing
-- patch #3383711 [display] Order by a column in a view doesn't work in some cases
-- bug #3386434 [interface] Add missing space to server status
-- [core] Remove library PHPExcel, due to license issues
-- [export] Remove native Excel export modules (xls and xlsx formats)
-- [import] Remove native Excel import modules (xls and xlsx formats)
-- bug #3392920 [edit] BLOB emptied after editing another column
-- [security] Fixed XSS in Inline Edit on save action, see PMASA-2011-14
-- [security] Fixed XSS with db/table/column names, see PMASA-2011-14
-
-3.4.4.0 (2011-08-24)
-- bug #3323060 [parser] SQL parser breaks AJAX requests if query has unclosed quotes
-- bug #3323101 [parser] Invalid escape sequence in SQL parser
-- bug #3348995 [config] $cfg['Export']['asfile'] set to false does not select asText option
-- bug #3340151 [export] Working SQL query exports error page
-- bug #3353649 [interface] "Create an index on X columns" form not validated
-- bug #3350790 [interface] JS error in Table->Structure->Index->Edit
-- bug #3353811 [interface] Info message has "error" class
-- bug #3357837 [interface] TABbing through a NULL field in the inline mode resets NULL
-- remove version number in /setup
-- bug #3367993 [usability] Missing "Generate Password" button
-- bug #3363221 [display] Missing Server Parameter on inline sql query
-- bug #3367986 [navi] Drop field -> lost active table
-- remove misleading comment on the "Rename database" interface
-- bug #3374374 [interface] Fix footnote for inexact count while browsing
-- bug #3372807 [interface] Fix security warning link in setup
-- bug #3374347 [display] Backquotes in normal text on import page
-- bug #3358750 [core] With Suhosin, urls are too long in edit links
-- [security] Missing sanitization on the table, column and index names leads to XSS vulnerabilities, see PMASA-2011-13
-
-3.4.3.2 (2011-07-23)
-- [security] Fixed XSS vulnerability, see PMASA-2011-9
-- [security] Fixed local file inclusion vulnerability, see PMASA-2011-10
-- [security] Fixed local file inclusion vulnerability and code execution, see PMASA-2011-11
-- [security] Fixed possible session manipulation in swekey authentication, see PMASA-2011-12
-
-3.4.3.1 (2011-07-02)
-- [security] Fixed possible session manipulation in swekey authentication, see PMASA-2011-5
-- [security] Fixed possible code injection incase session variables are compromised, see PMASA-2011-6
-- [security] Fixed regexp quoting issue in Synchronize code, see PMASA-2011-7
-- [security] Fixed filtering of a file path, which allowed for directory traversal, see PMASA-2011-8
-
-3.4.3.0 (2011-06-27)
-- bug #3311170 [sync] Missing helper icons in Synchronize
-- patch #3304473 [setup] Redefine a lable that was wrong
-- bug #3304544 [parser] master is not a reserved word
-- bug #3307616 [edit] Inline edit updates multiple duplicate rows
-- patch #3311539 [edit] Inline edit does not escape backslashes
-- bug #3313210 [interface] Columns class sometimes changed for nothing
-- patch #3313326 [interface] Some tooltips do not disappear
-- bug #3315720 [search] Fix search in non unicode tables
-- bug #3315741 [display] Inline query edit broken
-- patch #3317206 [privileges] Generate password option missing on new accounts
-- bug #3317293 [edit] Inline edit places HTML line breaks in edit area
-- bug #3319466 [interface] Inline query edit does not escape special characters
-- minor XSS (require a valid token)
-
-3.4.2.0 (2011-06-07)
-- bug #3301249 [interface] Iconic table operations does not remove inline edit label
-- bug #3303869 [interface] Unnecessary scrolling on Databases page
-- patch #3303813 [setup] Define a label that was missing
-- bug #3305606 [interface] Show all button wraps on privileges page
-- bug #3305517 [config] Config for export compression not used
-- bug #3305883 [interface] Table is dropped regardless of confirmation
-- [auth] Fixed error handling for signon auth method.
-- bug #3276001 [core] Avoid caching of index.php.
-- bug #3306958 [interface] Unnecessary Details slider
-- bug #3308476 [interface] "Show all" not persistent after a sort
-- bug #3308072 [auth] Version disclosure to anonymous visitors
-- bug #3306981 [interface] pmahomme and table statistics
-
-3.4.1.0 (2011-05-20)
-- bug #3301108 [interface] Synchronize and already configured host
-- bug #3302457 Inline edit and $cfg['PropertiesIconic']
-- Patch #3302313 Show a translated label
-- bug #3300981 [navi] Table filter is case sensitive
-- bug #3285929 [privileges] Revert temporary fix
-- bug #3302872 [synchronize] Synchronize and user name
-- bug #3302733 [core] Some browsers report an insecure https connection
-- [security] Make redirector require valid token
-
-3.4.0.0 (2011-05-11)
-+ rfe #2890226 [view] Enable VIEW rename
-+ rfe #838637 [privileges] Export a user's privileges
-- [core] Updated mootools to fix some glitches with Safari.
-+ rfe #2816943 [interface] Add REGEXP ^...$ to select dialog.
-+ rfe #2924956 [interface] Add insert ignore option to editing row.
-+ rfe #2838080 [interface] Show warning when javascript is disabled.
-+ rfe #2823707 [edit] Call UUID function separately to show it in insert.
-+ rfe #2420684 [export] Allow export of timestamps in UTC.
-+ [core] Remove config data from session as it brings chicken-egg problem.
-+ [core] Cookie path now honors PmaAbsoluteUri.
-+ rfe #2393597 [core] phpMyAdmin honors https in PmaAbsoluteUri.
-+ rfe #1778337 [core] Try moving tables by RENAME and fail to CREATE/INSERT if that fails.
-+ rfe #1721189 [core] Force reload js on code change.
-+ rfe #1954161 [interface] Do not display long numbers in server status.
-+ rfe #2033616 [edit] Add option to just display insert query.
-+ rfe #1435032 [interface] Move SSL status to the end, it is usually empty.
-+ rfe #1340812 [interface] Show numbers of columns in table structure.
-+ rfe #1186511 [inrerface] Add link to reload navigation frame.
-+ rfe #2936156 [auth] Signon authentication forwards error message through session data.
-+ rfe #2835109 [interface] Move ^1 to the end of message.
-+ rfe #854911  [interface] Grey out non applicable actions in structure
-+ [interface] Allow to create new table from navigation frame (in light mode).
-+ rfe #1025696 [browse] Add direct download of binary fields.
-- [browse] Properly display NULL value for BLOB.
-- rfe #1516803 [edit] Allow to set BLOB to/from NULL with ProtectBinary.
-- [edit] Do not default to UNHEX when using file upload.
-- rfe #1379201 [core] Add option to configure session_save_path.
-+ [interface] Provide links to documentation in highlighted SQL.
-+ [interface] It is now possible to bookmark most pages in JS capable browser.
-- bug #2936482 [core] Fix SSL detection.
-+ rfe #2937850 [doc] Add some hints to chk_rel.php for quick setup.
-+ rfe #2938579 [interface] Add class to some elements for easier theming.
-+ rfe #2937840 [doc] Add some interesting configs to config.sample.inc.php.
-+ rfe #2792992 [doc] Added advice to re-login after changing pmadb settings
-+ patch #2952353 [interface] Prefill "Copy table to" in tbl_operations.php, thanks to iinl
-+ [lang] Add English (United Kingdom) translation, thanks to Robert Readman.
-+ patch #2948421 [auth] HTTP Basic auth realm name,
-  thanks to Harald Jenny - haraldj
-- bug #2954916 [interface] Do not insert doc links to not formatted SQL.
-+ [lang] Chinese Simplified update, thanks to Shanyan Baishui - rimyxp
-+ [lang] Turkish update, thanks to Burak Yavuz
-+ rfe #2963310 [interface] Focus TEXTAREA "sql_query" on click on "SQL" link
-+ [lang] Uzbek update, thanks to Orzu Samarqandiy
-+ rfe #2958013 [import] After import, also list uploaded filename, thanks
-  to Pavel Konnikov and Herman van Rink
-+ patch #2974341 [structure] Clicking on table name in db Structure should
-  Browse the table if possible, thanks to bhdouglass - dougboybhd
-+ patch #2975533 [search] New search operators, thanks to
-  Martynas Mickevičius
-+ patch #2967320 [designer] Colored relations based on the primary key,
-  thanks to GreenRover - greenrover
-- [core] Provide way for vendors to easily change paths to config files.
-+ patch #2979922, rfe #2804874 [interface] Add inline query editing, thanks to Muhammd Adnan.
-- bug #2966752 [setup] Allow to configure changes tracking in setup script.
-+ patch #2981165 [edit] Optionally disable the Type column,
-  thanks to Brian Douglass - bhdouglass
-+ patch #2984058 [edit] Buttons for quicky creating common SQL queries, thanks
-  to sutharshan.
-+ patch #2984337 [interface] Convert loading of export/import to jQuery ready
-  event, thanks to sutharshan.
-- [edit] CURRENT_TIMESTAMP is also valid for datetime fields.
-- patch #2985068 [engines] Fix parsing of PBXT status, thanks to Madhura Jayaratne.
-- patch #2986073 [interface] Convert upload progress bar to jQuery, thanks to
-  Philip Frank.
-- patch #2983960 [interface] Add javascript validation of datetime input,
-  thanks to Sutharshan Balachandren.
-- rfe #2981999 [interface] Default sort order is now SMART.
-- rfe #2972969 [interface] Fix flipping of headers in non-IE browsers.
-+ rfe #2964518 [interface] Allow to choose servers from configuration for
-  synchronisation.
-+ rfe #2988633 [relation] Improve ON DELETE/ON UPDATE drop-downs
-+ rfe #2988629 [relation] Improve labels in relation view
-+ rfe #2983207, patch #2988715 [interface] Use jQuery calendar dialog, thanks
-  to Muhammad Adnan.
-+ [doc] Incorporate synchronisation docs into main document.
-+ [core] Include Content Security Policy HTTP headers.
-- bug #3004216 [CSS] Field attributes use inline CSS
-- patch #2999595, rfe #2998130 [interface] Cleanup navigation frame.
-- patch #3025161 [core] Prevent sending of unnecessary cookies,
-  thanks to Piotr Przybylski  - crackpl
-- bug [password] Generate password only available if JS is enabled
-  (fixed for Privileges and Change password)
-- [core] RecodingEngine now accepts none as valid option.
-+ [core] Dropped AllowAnywhereRecoding configuration variable.
-- rfe #3016457 [interface] Define tab order in SQL form to allow easier tab
-  navigation.
-+ [core] Centralized format string expansion, @VARIABLES@ are recommended way
-  now, used by file name templates, default queries, export and title
-  generating.
-+ [validator] SQL validator works also with SOAP PHP extension.
-- [interface] Better formatting for SQL validator results.
-- [doc] The linked-tables infrastructure is now called phpMyAdmin
-  configuration storage.
-- [interface] Move drop/empty links from being tabs to Operations tab.
-- [interface] Fixed rendering of error/notice/info titles background.
-- patch #3038293 [doc] Language and grammar fixes,
-  thanks to Isaac Bennetch - ibennetch
-- patch #3038312 [export] JSON export,
-  thanks to Hauke Henningsen - blubberkeks152
-- rfe #1494550 [interface] Editor for SET/ENUM fields.
-- rfe #2649375 [interface] Simplified interface to backup/restore.
-- rfe #2973909 Users preferences
-- [relations] Dropped WYSIWYG-PDF configuration variable.
-- rfe #806035, #686260 [relations] Export relations to Dia, SVG and others
-+ [interface] Added charts to status tab, profiling page and query results
-+ [interface] AJAXification on various pages
-- [core] Remove last remaining parts of profiling code which was removed in 2006.
-- bug #3042665 [parser] Add workaround for MySQL way of handling backtick.
-- bug #3056610 [interface] Removed modification options for information_schema
-+ patch #3055886 [config] Add Left frame table filter visibility config option, thanks to eesau
-- [core] Force generating of new session on login
-+ rfe #1105678 [interface] Drop page-break-before as it is useless for smaller
-  tables.
-+ rfe #2956556 [interface] Allow to wrap enum values.
-- bug #1669459 [interface] Do not automatically mark PDF schema rows to delete
-- bug #3087682 [interface] Do not apply LeftFrameDBSeparator on first character.
-+ rfe #3111455 [interface] Column highlighting and marking in table view
-+ Visual query builder
-- bug #3115519 [interface] Prevent long queries from being shown in confirmation popup
-- patch #3112792 [navi] Left panel table grouping incorrect,
-  thanks to garas - garas
-- bug #3123433 [interface] Avoid double escaping of MySQL errors.
-- [interface] Use less noisy message and remove disable link on server charts and database statistics.
-+ rfe #3141330 [relation] When displaying results, show a link to the foreign
-  table even when phpMyAdmin configuration storage is not active
-- bug #3141327 [relation] Foreign key input options
-- [export] Better handling of export to PHP array.
-- rfe #3158867 [privileges] No DROP DATABASE warning if you delete a user
-- [interface] Add link to documentation for status variables.
-- [security] Redirect external links to avoid Referer leakage.
-- [interface] Default to not count tables in database.
-- patch #3172172 [interface] Shortcut for copying table row.
-- bug #3175227 [auth] Reset user cache on login.
-- rfe #3148361 [interface] Replace hard coded limit with $cfg['LimitChars'].
-- bug #3177136 [interface] Indicate that bookmark is being used on browse.
-- [interface] Indicate shared bookmarks in interface.
-- patch #3176420 [Search] Ajaxify browse and delete criteria in DB Search,
-  thanks to Thilanka Kaushalya
-- [interface] New default theme pmahomme, dropped darkblue_orange theme.
-- rfe #2936155 [auth] Allow to pass additional parameters using signon method.
-- rfe #1640812 [auth] Add example for OpenID authentication using signon method.
-- rfe #1312657 [dbi] Default to mysqli extension.
-- rfe #1168350 [interface] Add clear button to SQL edit box.
-- [core] Update library PHPExcel to version 1.7.6
-- bug #3206876 [core] Work without mbstring installed.
-- rfe #3196075, patch #3212068 [interface] Add links to variables documentation.
-- bug #3208723 [import] Fix import of utf-8 XML files.
-- bug #3039384 [auth] Force signon auth on signon URL change.
-- bug #3168733 [core] Synchronization does not honor AllowArbitraryServer
-- bug #3134495 [synchronization] Data containing single quotes prevents sync,
-  thanks to jviewer
-- Remove the custom color picker feature
-- bug #3285929 [privileges] Don't fail silently on missing priviledge to execute REVOKE ALL PRIVILEGES
-
-3.3.11.0 (not yet released)
-
-3.3.10.1 (2011-05-20)
-- [security] XSS on Tracking page
-
-3.3.10.0 (2011-03-19)
-- patch #3147400 [structure] Aria table size printed as unknown,
-  thanks to erickoh75 - erickoh75
-- patch #3150164 [structure] Ordering by size gives incorrect results,
-  thanks to Madhura Jayaratne - madhuracj
-- bug #3153409 [core] 0 row(s) affected
-- bug #3155842 [core] Edit relational page and page number
-- [security] Minor security fixes, see PMASA-2010-9 and PMASA-2010-10
-- [lang] German update, thanks to to jannicars@users.sourceforge.net.
-
-3.3.9.2 (2011-02-11)
+2.11.11.3 (2011-02-11)
 - [security] SQL injection, see PMASA-2011-2
 
-3.3.9.1 (2011-02-08)
+2.11.11.2 (2011-02-08)
 - [security] Path disclosure, see PMASA-2011-1
 
-3.3.9.0 (2011-01-03)
-- bug [doc] Fix references to MySQL doc
-- patch #3101490 Default function for TIMESTAMP, thanks to jirand - jirand
-- bug #3103853 [js] Double quotes were not escaped in generated js
-- bug #3077463 [core] Events were not copied when copying/renaming database
-- bug #1762306 [core] Copy database with view of a view
-- patch #3117535 [replication] Add quotes to database in initial statement,
-  thanks to Craig Duncan - duncan3dc
-- bug #3112614 [pdf schema] Scratchboard for PDF pages not working
-- bug #3125606 [parser] Query for table "level" causes strange display
-- bug #3127904 [parser] Close all opened round brackets indents
+2.11.11.1 (2010-11-29)
+- bug #3115519 (private) [security] XSS on db search, see PMASA-2010-8
+
+2.11.11.0 (2010-09-07)
+- [core] Fix broken cleanup of $_GET
+- bug #3054458 [core] Fixed displaying number of rows.
+
+2.11.10.1 (2010-08-20)
+- [setup] Fixed output sanitizing in setup script, see PMASA-2010-4 for
+  more details.
+- [core] Fixed various XSS issues, see PMASA-2010-5 for more details.
+
+2.11.10.0 (2009-12-07)
+- [core] safer handling of temporary files with open_basedir (thanks to Thijs
+  Kinkhorst)
+- [core] do not automatically set and create TempDir, it might lead to security
+  issue (thanks to Thijs Kinkhorst)
+- [setup] avoid usage of (un)serialize, what might be unsafe in some cases
+
+2.11.9.6 (2009-10-12)
+- [security] XSS and SQL injection, thanks to Herman van Rink
+
+2.11.9.5 (2009-03-24)
+- [security] XSS vulnerability on export page
+- [security] Insufficient output sanitizing when generating configuration file
+
+2.11.9.4 (2008-12-09)
+- [security] possible XSRF on several pages
+
+2.11.9.3 (2008-10-30)
+- [security] XSS in a Designer component 
+
+2.11.9.2 (2008-09-22)
+- [security] XSS in MSIE using NUL byte, thanks to JPCERT.
+
+2.11.9.1 (2008-09-15)
+- [security] Code execution vulnerability, thanks to Norman Hippert
+
+2.11.9.0 (2008-08-28)
+- bug #2031221 [auth] Links to version number on login screen 
+- bug #2032707 [core] PMA does not start if ini_set() is disabled 
+- bug #2004915 [bookmarks] Saved queries greater than 1000 chars not
+  displayed, thanks to Maik Wiege - mswiege
+- bug #2037381 [export] Export type "replace" does not work 
+- bug #2037375 [export] DROP PROCEDURE needs IF EXISTS 
+- bug #2045512 [export] Numbers in Excel export
++ [lang] Norwegian UTF-8 original file remerged, thanks to Sven-Erik Andersen 
+- bug #2074250 [parser] Undefined variable seen_from 
+
+2.11.8.0 (2008-07-28)
+- patch #1987593 [interface] Table list pagination in navi, 
+  thanks to Jason Day - jday29
+- bug #1989081 [profiling] Profiling causes query to be executed again
+  (really causes a problem in case of INSERT/UPDATE)
+- bug #1990342 [import] SQL file import very slow on Windows,
+  thanks to Richard Heaton - wotnot
+- bug [XHTML] problem with tabindex and radio fields
+- bug #1971221 [interface] tabindex not set correctly 
+- bug [views] VIEW name created via the GUI was not protected with backquotes 
+- bug #1989813 [interface] Deleting multiple views (space in name) 
+- bug #1992628 [parser] SQL parser removes essential space 
+- bug #1989281 [export] CSV for MS Excel incorrect escaping of double quotes 
+- bug #1959855 [interface] Font size option problem when no config file 
+- bug #1982489 [relation] Relationship view should check for changes 
+- bug [history] Do not save too big queries in history 
+- [security] Do not show version info on login screen 
+- bug #2018595 [import] Potential data loss on import resubmit 
+- patch #2020630 [export] Safari and timedate, thanks to Sebastian Mendel,
+  Isaac Bennetch and Jürgen Wind 
+- bug #2022182 [import, export] Import/Export fails because of Mac files 
+- [security] protection against cross-frame scripting and
+  new directive AllowThirdPartyFraming, thanks to YGN Ethical Hacker Group
+- [security] possible XSS during setup, thanks to YGN Ethical Hacker Group 
+- [interface] revert language changing problem introduced with 2.11.7.1
+
+2.11.7.1 (2008-07-15)
+- bug [security] XSRF/CSRF by manipulating the db,
+  convcharset and collation_connection parameters,
+  thanks to YGN Ethical Hacker Group
+
+2.11.7.0 (2008-06-23)
+- bug #1908719 [interface] New field cannot be auto-increment and primary key 
+- [dbi] Incorrect interpretation for some mysqli field flags 
+- bug #1910621 [display] part 1: do not display a TEXT utf8_bin as BLOB
+  (fixed for mysqli extension only)
+- [interface] sanitize the after_field parameter,
+  thanks to Norman Hippert
+- [structure] do not remove the BINARY attribute in drop-down 
+- bug #1955386 [session] Overriding session.hash_bits_per_character 
+- [interface] sanitize the table comments in table print view, 
+  db print view and db data dictionary, thanks to Norman Hippert
+- bug #1939031 Auto_Increment selected for TimeStamp by Default
+- patch #1957998 [display] No tilde for InnoDB row counter when we know
+  it for sure, thanks to Vladyslav Bakayev - dandy76 
+- bug #1955572 [display] alt text causes duplicated strings
+- bug #1762029 [interface] Cannot upload BLOB into existing row 
+- bug #1981043 [export] HTML in exports getting corrupted,
+  thanks to Jason Judge - jasonjudge
+- bug #1936761 [interface] BINARY not treated as BLOB: update/delete issues 
+- protection against XSS when register_globals is on and .htaccess has
+  no effect, thanks to Tim Starling
+- bug #1996943 [export] Firefox 3 and .sql.gz (corrupted); detect Gecko 1.9,
+  thanks to Jürgen Wind - windkiel
+
+2.11.6.0 (2008-04-29)
+- bug #1903724 [interface] Displaying of very large queries in error message 
+- bug #1905711 [compatibility] Functions deprecated in PHP 5.3: is_a() and
+  get_magic_quotes_gpc(), thanks to Dmitry N. Shilnikov - yrtimd
+- bug [lang] catalan wrong accented characters
+- bug #1893034 [Export] SET NAMES for importing with command-line client 
++ [lang] Russian update, thanks to Victor Volkov
+- bug #1910485 [core] Unsetting the whitelist during the loop,
+  thanks to Jeroen Vrijkorte - jv_map
+- bug #1906980 [Export] Import of VIEWs fails if temp table exists,
+  thanks to Falk Nisius - klaf
+- bug #1812763 [Copy] Table copy when server is in ANSI_QUOTES sql_mode 
+  thanks to Tony Marston - tonymarston 
+- bug #1918531 [compatibility] Navigation isn't w3.org valid 
+  thanks to Michael Keck - mkkeck 
+- bug #1926357 [data] BIT defaults displayed incorrectly
+- patch #1930057 [auth] colon in password prevents HTTP login on CGI/IIS, 
+  thanks to Jürgen Wind - windkiel
+- patch #1929553 [lang] Don't output BOM character in Swedish language file,
+  thanks to Samuel L. B. - samuellb
+- patch #1895796 [lang] Typo in Japanese lang files,
+  thanks to tyman - acoustype
+- bug #1935652 [auth] Access denied (show warning about mcrypt on login page)
+- bug #1906983 [export] Reimport of FUNCTION fails
+- bug #1919808 [operations] Renaming a database fails to handle functions 
+- bug #1934401 [core] Cannot force a language
+- bug #1944077 [core] Config file containing a BOM,
+  thanks to Gaetano Giunta - ggiunta
+- bug #1947189 [scripts] Missing </head> in scripts/signon.php,
+  thanks to Dolf Schimmel
++ [lang] Romanian update, thanks to Sergiu Bivol - sbivol
+
+2.11.5.2 (2008-04-22)
+- PMASA-2008-3 [security] File disclosure 
+
+2.11.5.1 (2008-03-29)
+- bug #1909711 [security] Sensitive data in session files
+
+2.11.5.0 (2008-03-01)
+- bug #1862661 [GUI] Warn about rename deleting database 
+- bug #1866041 [interface] Incorrect sorting with AS 
+- bug #1871038 [import] Notice: undefined variable first_sql_delimiter 
+- bug #1873110 [export] Problem exporting with a LIMIT clause 
+- bug #1871164 [GUI] Empty and navigation frame synch. 
+- patch #1873188 [GUI] Making db pager work when js is disabled,
+  thanks to Jürgen Wind - windkiel
+- bug #1875010 [auth] MySQL server and client version mismatch (mysql ext.) 
+- patch #1879031 [transform] dateformat transformation and UNIX timestamps,
+  thanks to Tim Steiner - spam38
+- bug [import] Do not verify a missing enclosing character for CSV,
+  because files generated by Excel don't have any enclosing character
+- bug #1799691 [export] "Propose table structure" and Export 
+- bug #1884911 [GUI] Space usage
+- bug #1863326 [GUI] Wrong error message / no edit (Suhosin) 
+- bug #1887204 [GUI] Order columns in result list messing up query 
+- patch #1893538 [GUI] Display issues on Opera 9.50,
+  thanks to Jürgen Wind - windkiel
+- bug [GUI] Do not display the database name used by the previous user,
+  thanks to Ronny Görner
+- bug [security] Remove cookies from $_REQUEST for better coexistence with
+  other applications, thanks to Richard Cunningham. See PMASA-2008-1.
+
+2.11.4.0 (2008-01-12)
+- bug #1843428 [GUI] Space issue with DROP/DELETE/ALTER TABLE 
+- bug #1807816 [search] regular expression search doesn't work with
+  backslashes
+- bug #1843463 [GUI] DROP PROCEDURE does not show alert 
+- bug #1835904 [GUI] Back link after a SQL error forgets the query 
+- bug #1835654 [core] wrong escaping when using double quotes 
+- bug #1817612 [cookies] Wrong cookie path on IIS with PHP-CGI, 
+  thanks to Carsten Wiedmann
+- bug #1848889 [export] export trigger should use DROP TRIGGER IF EXISTS
+- bug #1851833 [display] Sorting forgets an explicit LIMIT
+ (fix for sorting on column headers)
+- bug #1764182 [cookies] Suhosin cookie encryption breaks phpMyAdmin
+- bug #1798786 [import] Wrong error when a string contains semicolon
+- bug #1813508 [login] Missing parameter: field after re-login 
+- bug #1710144 [parser] Space after COUNT breaks Export but not Query 
+- bug #1783620 [parser] Subquery results without "as" are ignored 
+- bug #1821264 [display] MaxTableList and INFORMATION_SCHEMA 
+- bug #1859460 [display] Operations and many databases 
+- bug #1814679 [display] Database selection pagination when switching servers 
+- patch #1861717 [export] CSV Escape character not exported right,
+  thanks to nicolasdigraf
+- bug #1864468 [display] Theme does not switch to darkblue_orange 
+- bug #1847409 [security] Path disclosure on darkblue_orange/layout.inc.php,
+  thanks to Jürgen Wind - windkiel
+
+2.11.3.0 (2007-12-08)
+- patch #1818389 to remove a notice (failed to flush buffer), thanks to
+  Bertrand
+- patch #1821154, HTTP authentication: fix auth working with php/mod_fastcgi,
+  thanks to yarodin
+- wrong default charset in case of broken session
+- bug #1824506 [profiling] Profile command repeated on older MySQL servers
+- bug #1825172 [export] Exporting and functions
+- bug #1817224 [import] Incorrect detection of file_uploads in some cases,
+  thanks to Juergen Wind
+- bug #1777249 [display] Do not underline links in left panel (in default
+- bug #1826022 [privileges] unable to add user (MySQL 3.23) since PMA 2.11.2
+- bug #1823045 [import] Error importing file with lowercase "delimiter"
+- bug #1828913 [structure] Can't set FULLTEXT index on CHAR column
+- bug #1804081 [export] export on server doesn't obey AllowAnyWhereRecoding 
+- bug #1789988 [display] space before SHOW COLUMNS 
+- bug #1831646 [table creation] Error in CREATE TABLE with multiple primary
+  keys and AUTO_INCREMENT
+- [display] Division by zero when showing all records (page selector)
+- bug #1828265 [privileges] No weird characters in generated password 
+- bug #1759194 [import] open_basedir warning
+- bug #1793948 [parser] ROW_FORMAT incorrectly parsed
+- undefined PMA_MYSQL_INT_VERSION when no default server is set 
+- bug #1763343 [session] Behavior with session.auto_start enabled 
++ [lang] Hungarian update, thanks to Mihály Mészáros 
++ [lang] German update, thanks to Jürgen Wind - windkiel
+- patch #1837691 [query window] js errors, thanks to Victor Volkov 
+- patch #1839052 [lang] catalan not in UTF-8, thanks to jaz001 
+- patch #1838626 [GUI] Login interface broken on Konqueror, thanks to fhimpe
+
+2.11.2.2 (2007-11-20)
+- bug #1835123 [security] fixed XSS vulnerability on login page, 
+  thanks to Tim Brown (Nth Dimension) for the advisory 
+  and to Sebastian for the fix
+
+2.11.2.1 (2007-11-11)
+- fixed possible SQL injection using database name
+- fixed possible XSS in database name - thanks to Omer Singer, The DigiTrust Group
+
+2.11.2.0 (2007-10-27)
+- patch #1791576 HTTP auth: support REDIRECT_REMOTE_USER, thanks to Allard
++ [lang] Serbian update, thanks to Mihailo Stefanovic 
+- bug #1798841 [relations] Copying db does not copy internal relations 
+- bug #1798646 [display] Character '+' in query wrongly interpreted 
+- bug #1801919 [themes] Do not use NaviDatabaseNameColor for fieldset legend 
+- bug #1764735 [core] Designer: PDF error when deleting a table
+- bug #1764195 [views] DROP button does not work on defective views 
+- bug #1805773 [relations] browse foreign values: return values not escaped,
+  thanks to Alex Rambau
+- bug #1807923 [login] Login with html entities in password fails
+- [core] Undefined variable when creating a table that exists
+- patch #1808578 Changes in font size were no longer detected after patch
+  #1787915
++ [lang] Croatian update, thanks to Renato Pavicic
+- patch #1807615 [GUI] Display patch for column rights in Opera
+- bug #1811519 Can't delete user with a german umlaut.
+- bug #1811519 [privileges] fixed used collation for accessing mysql.user in server privileges
+- it should not be possible to move or copy a table to information_schema
+- bug #1814733 win: copy db to mixed name db fails
+- bug #1777249 [display] Remove horizontal lines in navigation panel 
+- bug #1805102 [display] TextareaAutoSelect issues: set this parameter
+  default value to false to help cut&paste from a terminal window; also
+  set focus to the textarea
+- bug #1814463 [display] Wrong database size
+- bug #1811527 [display] Problem with links to the MySQL manual
+- patch #1817529 [auth] Incorrect login via URL when AllowArbitraryServer
+  is true, thanks to Juergen Wind
+
+2.11.1.2 (2007-10-17)
+- fixed XSS in server_status.php, thanks to Omer Singer, The DigiTrust Group
+- fixed some possible XSS with PHP_SELF, PATH_INFO, REQUEST_URI
+  (reference: CVE-2007-5589)
+
+2.11.1.1 (2007-10-15)
+- bug #1810629 [setup] XSS in setup.php, thanks to Omer Singer, The DigiTrust Group
+
+2.11.1.0 (2007-09-20)
+- bug #1783667 [export] NO_AUTO_VALUE_ON_ZERO and MySQL version 
+- bug #1780098 [GUI] Logout causes CSS loss, thanks to Juergen Wind
+. incorrect field ids, thanks to Michael Keck
+- bug #1787522 [view] wrong choice in algorithm drop-down
+- bug #1777620 [GUI] Table Print preview: missing column header,
+  thanks to Mario Rohkrämer
+- Do not display "Your MySQL library..." if only the Z part of X.Y.Z version
+  is different
+- bugs #1767759, 1216521 [data] Duplicate entry error Browse feature: this minor
+  feature removed due to its complexity
+- bug #1774825 [operations] Rename database loses charset info
+- bug #1791568 [core] Undefined cfg, thanks to Christian Schmidt
+- bug #1782332 [structure] New table form does not overtake data 
+- bug #1793763 [requirements] minimum PHP should be 4.2.0 
+- patch #1787915 Avoid CSS reloading on every click, thanks to Juergen Wind
+- bug #1798627 [GUI] Wrong storage engine displayed
+
+2.11.0.0 (2007-08-21)
++ [import] support handling of DELIMITER to mimic mysql CLI, thanks to fb1
++ improved PHP 6 compatibility
+- bug #1674914 [structure] changing definition of a TIMESTAMP field
+- bug #1615530 [upload] added more specific error message if field upload fails
+- bug #1627210, #1083301, #1482401 [data] warning on duplicate indexes
+- bug #1668724 JavaScript focus login Opera
+- bug #1666657 [auth] Cookie password delete on timeout / inactivity
+- bug #1648802 different mysql library and server version
+- bug #1662976 [auth] Authentication fails when controluser/pass is set
+- bug #1643758 [import] Error #1264 importing NULL values in MySQL 5.0
+- bug #1523747 [innodb] make warning about row count more visible
+- bug #1676012 [auth] strip non-US-ASCII characters (RFC2616)
+- bug #1679440 Added FAQ entry about header errors under IIS caused by
+  an end-of-line character
+- [gui] avoid displaying a wide selector in server selection
+- bug #1614004 [relation] foreign key spanning multiple columns are
+  incorrectly displayed
+- bug #1681598 [interface] Edit next row
+- bug #1688053 [export] Wrong export of binary character fields
+- bug #1498281 [parser] Wrong primary key used for displaying results
+  with subquery
+- bug #1699772 Visual space bug in table name (in browser)
+- bug #1699532 Cause of data manipulation issues: implemented changes
+  as suggested by crisp_; still have to work on updating an ENUM value
++ [core] added PMA_fatalError() and made use of it
+. [core] added PMA_isValid() and PMA_ifSetOr() for variable handling
+. [i18n] use generic $strOptions
+. [core] get rid of $propicon
+. [core] globalized variables to be includable inside function in
+  libraries/select_lang.lib.php
++ [doc] changed all documentation in config.inc.php to phpDocumentor style
++ [data] support for CREATE VIEW from query results
++ [gui] dropped css/ folder and moved into root of PMA
++ [l10n] new: Sinhala, Macedonian
++ [export] YAML export (see yaml.org), thanks to Bryce Thornton
++ [upload] moved file upload functionality into own class
++ [upload] make use of $cfg['TempDir'] for file uploads
++ [server] improved display of binary logs
++ [data] better error handling in tbl_create.php
++ [routines] from Patch #1649881, thanks to Mike Beck
++ [querywindow] store sql history in session
++ [querywindow] sql history now without db too
++ [querywindow] tweaks in sql history view
++ [export] Native Excel (Spreadsheet_Excel_Writer) improvements,
+   thanks to Christian Schmidt
++ [doc] requirement of mcrypt on 64-bit, thanks to Isaac Bennetch
++ [lang] Danish update, thanks to Finn Sorensen
++ RFE #1435922 [gui] navigation frame shows listing of databases when none selected
++ [data] support BIT datatype (under mysqli), thanks to Christian Schmidt
++ [display] automatic confirmation for sort by key, thanks to Juergen Wind
++ [data] can now choose the number of insert rows
++ RFE #1704779 [gui] link documentation from login page
++ RFE #1513345 [setup] check control user connection during setup
++ [structure] TRIGGERS: display/edit/drop/SQL export
++ [browse] store browse state in session per query
++ [lang] Turkish update, thanks to Burak Yavuz
++ [lang] Galician update, thanks to Xosé Calvo
++ [lang] Brazilian-Portuguese update, thanks to Airon Luis Pereira
++ [gui] Insert/Edit: no longer display the Go button each 15 lines 
+  but just at the end of a row
++ [gui] Query window: use verbose server name if any 
++ [auth] patch #1712514 specify host for single signon, thanks to Thierry
++ [gui] Navigator for the db list in the navigation panel 
++ [gui] Navigator for the table list in the content panel 
+- bug #1727138 HTML not encoded (more than 1000 characters)
++ [display] Support for MySQL 5.0.37 profiling 
++ RFE #1743983 [gui] Replace $max_characters by a configurable param:
+  $cfg['MaxCharactersInDisplayedSQL']
+- bug #1746186 LeftLogoLink fails if set to some external site
+. [transformations]: remove "auto-detect" MIME-type that was never implemented
++ [display] patch #1749705, Allow multibyte characters in number formatting,
+  thanks to garas
+- bug #1747215 Export emits blanks at line ends
+- bug #1751172 Do not export data when exporting a single VIEW
++ [lang] Swedish update, thanks to Björn T. Hallberg 
++ [lang] Russian update, thanks to Victor Volkov and the php-myadmin.ru users 
++ [privileges] Support password hashing on the Edit Privileges interface 
+- bug #1755339 Warn about rename dataase actually being copy/delete
+- bug #1746921 Left frame shrinks on db change, thanks to Juergen Wind
++ [gui] Export: Select All/Unselect All over the choices,
+  thanks to Florian Schmitz
++ [lang] Japanese update, thanks to Ishigaki Kenichi 
+- bug #1759528 browse_foreigners fails due to newlines,
+  thanks to Hanno Boeck
++ [lang] Norwegian update, thanks to Sven-Erik Andersen 
++ [lang] Italian update, thanks to Luca Rebellato 
++ [lang] Spanish update, thanks to Daniel Hinostroza 
+. [export] Do not obey $cfg['MaxTableList'] on database export
+- [doc] UploadDir and the Import tab, thanks to Juergen Wind
+- bug #1766975 Parameters lost when editing stored routine
+- [export] patch #1766633 Incorrect export with specified MySQL port,
+  thanks to Juergen Wind
++ [lang] Catalan update, thanks to Xavier Navarro 
+- bug #1751553 Drop-down instead of input when editing
+- [data] foreign key browser: encoding mixups, thanks to Thijs Kinkhorst
+- bug #1771721 Old SVN URLs
+
+2.10.3.0 (2007-07-20)
+- bug #1734285 Copy database with VIEWs
+- bug #1722502 DROP TABLE in export VIEW
+- bug #1729027 Sorting results of VIEW browsing
+- bug #1733012 Unwanted table alias in delete button
+- bug #1736405 Pretty printer and HTML line breaks
+- bug #1745257 Invalid DB name is still displayed
+- bug #1730367 Calendar "Go" has no effect
+- bug #1748633 Incorrect parameter validation for VIEWs
++ [lang] Russian revision, thanks to Victor Volkov and the users of
+  php-myadmin.ru
+- Do not try to delete an internal relation if we just deleted an InnoDB one
+
+2.10.2.0 (2007-06-15)
++ [data] display all warnings, not only last one
+- typo in fix for bug #1671813
+- bug #1714908 Inserted Row Count is wrong
+- bug #1712570 Deleting last record freezes
+- bug #1717339 Missing header when deleting a checked column,
+  thanks to Michael Keck
+- bug #1717477 Warning on Query page when db is empty
+- bug #1721002 db rename -> undefined cfgRelation, thanks to Jürgen Wind
+- bug #1721571 CREATE database privilege not always detected,
+  thanks to Gordon McNaughton
+- bug #1715709 export in SQL format always includes procedures and functions
+- bug #1722502 DROP TABLE in export view structure
+- bug #1718787 Multi-server setup breaks Designer
+- bug #1724401 Column truncation in repair table output
+- patch #1726500 Wrong position of </tbody>, thanks to Jürgen Wind
+- bug #1728590 Detected failing session_start fails, thanks to Jürgen Wind
+- RFE #1714760 Obey ShowCreateDb on the Databases tab
+- patch #1733762 Typo in message "INSERT DELAY", thanks to Victor Volkov
+- patch #1730171 Dead message strLanguageFileNotFound, thanks to Victor Volkov
+- patch #1731280 Avoid negative exponent in gmp_pow(), thanks to anosek
+
+2.10.1.0 (2007-04-23)
+- bug #1541147 [js] '#' in database names not correctly handled by queywindow.js
+- bug #1671403 [parser] using "client" as table name
+- bug #1672379 [core] Call to undefined function PMA_removeCookie()
+- bug [core] undefined variable in libraries/tbl_replace_fields.inc.php
+- bug [gui] query window icon did not work, thanks to Jürgen Wind - windkiel
+. [general] use PMA_getenv('PHP_SELF')
+- bug #1676033 [core] pow(int,int) causes overflow
+- bug #1680952 [core] undefined function PMA_getUvaCondition()
+- bug #1596328 [export] drop support for POSTGRESQL compatibility mode
+- bug #1609443 [privileges] Grant all priv. on wildcard name (fix message)
+- bug #1567317 [sqp] Syntax highlighter: extra spaces
+- bug #1239401 [sqp] table dot numeric field name
+- bug #1672789 [sqp] Undefined offset: 4 in sqlparser.lib.php #1674
+- bug #1682044 [export] Export file even if file not selected
+- bug #1664212 querywindow loses url encoded characters
+- replaced ctype_digit() with is_numeric()
++ [config] clean cookies on phpMyAdmin upgrade
+- bug #1674972 [export] no export with %afm%
+- bug #1667887 HTML maxlength
+- bug #1679055 #1050 - Table '<table name>' already exists
+- patch #1681620 [interface] support reordering of $cfg['ColumnTypes'],
+  thanks to Leonard den Ottolander
+- bug #1690718 Can't edit if BLOB and no PK
+- bug #1672636 [export] PDF export too wide
++ [lang] brazilian-portuguese update, thanks to Airon Luis Pereira
+- patch #1698964 javascript typo, thanks to Corey Hollaway
+- bug #1703897 [css] undefined index 'js_frame'
+- bug #1690561 Blobs being cleared on Edit of row
+- bug #1679801 [core] XSS vulnerability in PMA_sanitize(), thanks to sp3x SecurityReason
+- bug #1704467 XSS vulnerability in browse_foreigners.php, thanks to sp3x SecurityReason
+
+2.10.0.2 (2007-03-02)
++ bug #1671813 CVE-2006-1549 deep recursion crash
+
+2.10.0.1 (2007-03-01)
+. [config] set $cfg['Servers'][$i]['ssl'] default value to false,
+   we got reports from some users having problems with the default value of true
+
+2.10.0.0 (2007-02-28)
+- bug #1659176 [general] memory error displaying a table with large BLOBs
+- bug #1668662 [install] can create the new pma_designer_coords table
++ [gui] navi logo now links to main page by default, with still the possibility
+  of having an external URL
+
+2007-02-25 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/common.lib.php: bug #1667466, undefined variable when
+      export + save on server
+    * server_status.php: bug #1665930, undefined PHP_SELF
+
+2007-02-24 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/config.default.php: RFE #1621437, HEX and UNHEX were not
+      available for a BINARY field
+
+2007-02-21 Marc Delisle  <lem9@users.sourceforge.net>
+    * pmd/scripts/move.js: bug #1650770, Designer and Mac OSX,
+      thanks to Ivan Kirillov
+
+2007-02-17 Marc Delisle  <lem9@users.sourceforge.net>
+    * Documentation.html: patch #1659347, missing doc for some config,
+      thanks to Isaac Bennetch
+    * libraries/export/sql.php: bug #1663336, undefined variable
+
+2007-02-16 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/common.lib.php, footer.inc.php: avoid generating big links
+      after an upload into a BLOB
+
+2007-02-14 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/common.lib.php: white page after uploading a 700 Kio BLOB
+    * add a warning on main page if mcrypt can't be loaded (bug 1658160)
+
+2007-02-12 Sebastian Mendel <cybot_tm@users.sourceforge.net>
+    * libraries/database_interface.lib.php: bug #1616486 server_databases does
+      not show all databases
+    * libraries/sqlparser.data.php: MySQL function and column names, reserved
+      and forbidden words updated,
+      bug #1657045 Spatial functions not supported
+      bug #1657037 Missing column type "geometry"
+
+2007-02-09 Marc Delisle  <lem9@users.sourceforge.net>
+    * main.php: some links should open a new page
+    * Documentation.html, libraries/navigation_header.inc.php,
+      libraries/config.default.php: $cfg['LeftLogoLinkWindow'] to decide
+      in which window the logo-linked page will appear
+
+2007-02-09 Michal Čihař  <michal@cihar.com>
+    * lang/czech: Fix syntax error (sorry for that).
+
+2007-02-08 Marc Delisle  <lem9@users.sourceforge.net>
+    * themes/darkblue_orange/img/logo_left.png,
+      themes/original/img/logo_left.png: smaller PMA logo for navi
+
+2007-02-08 Sebastian Mendel <cybot_tm@users.sourceforge.net>
+    * themes/*/css/theme_right.css.php: bug #1653769 browsing highlight disabling
+      doesn't work
+
+2007-02-06 Sebastian Mendel <cybot_tm@users.sourceforge.net>
+    * pmd_general.php, pmd_pdf.php, pmd_save_pos.php: fixed short open tags
+      patch #1652886 thanks to Martin Thielecke - mthie
+    * tbl_change.php: fixed escaping of field names in HTML and JavaScript
+    * libraries/common.lib.php: PMA_backquote() did not quote 0
+    * tbl_change.php: bug #1652810 - slashes are not escaped properly
+
+2007-02-05 Marc Delisle  <lem9@users.sourceforge.net>
+    * lang/japanese: Update, thanks to Ishigaki Kenichi - tcool.
+
+2007-02-05 Sebastian Mendel <cybot_tm@users.sourceforge.net>
+    * lang/german: updated
+
+2007-02-03 Marc Delisle  <lem9@users.sourceforge.net>
+    * pmd/scripts/move.js: display problems in Opera, thanks to Maxim Bulygin
+
+2007-02-02 Marc Delisle  <lem9@users.sourceforge.net>
+    * tbl_replace.php: Calendar icon does not work on "Insert another new row"
+
+2007-02-01 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/import.lib.php: bug #1626064, too much quoting on import
+
+2007-02-01 Sebastian Mendel <cybot_tm@users.sourceforge.net>
+    * libraries/display_tbl.lib.php: bug #1644740 - $cfg['Order'] = 'SMART'
+      overwritten
+    * libraries/Theme.class.php: removed __wakeup() due to some requirements are
+      not fulfilled at this point - also thanks to Jürgen Wind - windkiel
+
+2007-01-31 Sebastian Mendel <cybot_tm@users.sourceforge.net>
+    * libraries/session.inc.php:
+      bug #1630871 - Detecting a missing write permission on sessions directory
+
+2007-01-30 Sebastian Mendel <cybot_tm@users.sourceforge.net>
+    * libraries/sqlparser.lib.php PMA_SQP_analyze():
+      bug #1647785 - do not pass variables by reference
+
+2007-01-29 Marc Delisle  <lem9@users.sourceforge.net>
+    * lang/catalan update, thanks to Xavier Navarro (xavin)
+    * pmd_general.php: possibility of quotes in Designer messages,
+      thanks to Ivan Kirillov
+
+2007-01-26 Michal Čihař  <michal@cihar.com>
+    * libraries/common.lib.php, libraries/js_escape.lib.php,
+      test/escape_js_string.php, test/core.lib.php: Move java script escaping
+      to separate library, make it safer on </script> escaping and add
+      testcase for it.
+    * test/theme.php: Move to test package.
+
+2007-01-22 Marc Delisle  <lem9@users.sourceforge.net>
+    * pmd/*: button for direct/angular links, thanks to Ivan Kirillov
+
+2007-01-22 Michal Čihař  <michal@cihar.com>
+    * lang/czech: Updated.
+
+2007-01-21 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/Table.class.php: on a MySQL 5.0.33 server with 4400 databases,
+      one of which having 400 tables, it took more than 3 minutes just to
+      see the database structure (some accesses to INFORMATION_SCHEMA are
+      just too slow) so I changed PMA_Table::isView() to avoid calling
+      INFORMATION_SCHEMA
+
+2007-01-20 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/sqlparser.lib.php: bug #1638267, wrong reserved word
+      recognition
+    * server_privileges.php: bug #1635377, superfluous backslash,
+      thanks to Hanut
+
+2007-01-19 Marc Delisle  <lem9@users.sourceforge.net>
+    * pmd*, lang/*: Designer now supports set/unset of the display field,
+      thanks to Ivan Kirillov
+
+2007-01-18 Michal Čihař  <michal@cihar.com>
+    * lang/czech: Updated.
+    * libraries/auth/cookie.auth.lib.php: Make server switching honour more
+      server settings (patch #1630104).
+
+2007-01-17 Marc Delisle  <lem9@users.sourceforge.net>
+    * lang/turkish: update, thanks to Burak Yavuz - bourock
+
+2007-01-16 Marc Delisle  <lem9@users.sourceforge.net>
+    ### 2.9.2 released from QA_2_9
+
+2007-01-12 Marc Delisle  <lem9@users.sourceforge.net>
+    * (many files): Designer, two features (snap to grid / display field)
+      thanks to Ivan Kirillov
+    * libraries/Theme_Manager.class.php: patch #1611684, force a change
+      of a session variable to avoid phpmyadmin.css.php caching problems,
+      thanks to Christian Schmidt
+
+2007-01-11 Marc Delisle  <lem9@users.sourceforge.net>
+    * lang/estonian: Update, thanks to Marko Ellermaa - uhuu
+
+2007-01-09 Michal Čihař  <michal@cihar.com>
+    * index.php: Properly escape strings written in JS code.
+    * libraries/Theme_Manager.class.php: Avoid trigger error here, parameter
+      comes from user and it might lead to path disclossure.
+    * libraries/common.lib.php:
+        - Properly escape </script> in JS code.
+        - Check db, table and sql_query params to be string.
+
+2007-01-08 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/session.inc.php: prevent attack on session name cookie
+
+2007-01-05 Marc Delisle  <lem9@users.sourceforge.net>
+    * libraries/session.inc.php: bug #1538132, remove the setting of
+      session.save_handler to 'files'
+    * pmd_general.php: patch #1627831,
+      English language improvements, thanks to Isaac Bennetch
+    * pmd_general.php, pmd_relation_new.php, lang/*: abstract messages
+
+2007-01-04 Marc Delisle  <lem9@users.sourceforge.net>
+    * pmd/scripts/move.js: avoid text selection when moving a table object
+      under MSIE 6, thanks to Ivan Kirillov
+    * libraries/db_links.inc.php: better icon for Designer, thanks to I.K.
+
+2007-01-02 Marc Delisle  <lem9@users.sourceforge.net>
+    * Designer: various fixes and improvements (for example support
+      for MSIE 6), thanks to Ivan Kirillov
+    * pdf_pages.php: undefined $pdf_page_number when no auto layout
+    * server_privileges.php: bug #1614087, deleting a user having a
+      global GRANT privilege fails under MySQL 4.1.x
+
+2007-01-02 Michal Čihař  <michal@cihar.com>
+    * libraries/common.lib.php: Add <div> to allow selecting whole SQL by
+      tripple click (patch #1611591).
+    * libraries/export/sql.php: DELIMITER should not be commented out (bug
+      #1612870).
 
          --- Older ChangeLogs can be found on our project website ---
                      http://www.phpmyadmin.net/old-stuff/ChangeLogs/
 
 # vim: et ts=4 sw=4 sts=4
-# vim: ft=changelog fenc=utf-8
-# vim: fde=getline(v\:lnum-1)=~'^\\s*$'&&getline(v\:lnum)=~'\\S'?'>1'\:1&&v\:lnum>4&&getline(v\:lnum)!~'^#'
+# vim: ft=changelog fenc=utf-8 encoding=utf-8
+# vim: fde=getline(v\:lnum-1)=~'^\\s*$'&&getline(v\:lnum)=~'\\S'?'>1'\:1&&v\:lnum>8&&getline(v\:lnum)!~'^#'
 # vim: fdn=1 fdm=expr
