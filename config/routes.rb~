@@ -245,13 +245,6 @@ AgentStream::Application.routes.draw do
   end
 
   resources :sponsor_accounts do
-   member do
-	get :delete
-   end
-  end
- 
-
-  resources :sponsor_accounts do
     resources :sponsor_members do    
       member do
         post :add_group
