@@ -240,11 +240,11 @@ class ReportQueries
   end
 
   def self.top_x_most_active_bloggers
-    get_top_x("select p.screen_name,count(1) as total_posts, p.id from blog_posts bp, users u, profiles p where bp.profile_id=p.id and #{@@top_x_primary_conditions} group by bp.profile_id order by total_posts desc")
+    get_top_x("select p.screen_name,count(1) as total_posts, p.id from blog_posts bp, users u, profiles p where bp.creator_id=p.id and #{@@top_x_primary_conditions} group by bp.creator_id order by total_posts desc")
   end
 
   def self.top_x_most_active_group_bloggers
-    get_top_x("select p.screen_name,count(1) as total_posts, p.id from blog_posts bp, blogs b, users u, profiles p where bp.profile_id=p.id and bp.blog_id=b.id and b.owner_type='Group' and #{@@top_x_primary_conditions} group by bp.profile_id order by total_posts desc")
+    get_top_x("select p.screen_name,count(1) as total_posts, p.id from blog_posts bp, blogs b, users u, profiles p where bp.creator_id=p.id and bp.blog_id=b.id and b.owner_type='Group' and #{@@top_x_primary_conditions} group by bp.creator_id order by total_posts desc")
   end
 
   def self.top_x_most_active_groups

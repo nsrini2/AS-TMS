@@ -374,7 +374,7 @@ module Notifications
       
       def send_group_referral_email
         tmail = Notifier.group_referral(self)
-        recipients = self.group.members
+        recipients = self.group.members.collect {|p| p.email }
         self.class.send_batch_email(tmail, recipients)
       end
     end  
