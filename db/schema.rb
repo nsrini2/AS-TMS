@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109223340) do
+ActiveRecord::Schema.define(:version => 20130206192250) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -481,6 +481,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.integer "month"
     t.integer "year"
     t.integer "value"
+    t.integer "karma_login", :default => 0
   end
 
   add_index "karma_histories", ["profile_id", "month", "year"], :name => "karma_month_index", :unique => true
@@ -1223,6 +1224,7 @@ ActiveRecord::Schema.define(:version => 20121109223340) do
     t.text     "facebook_graph"
     t.string   "srw_agent_id"
     t.text     "srw_ticket"
+    t.boolean  "take_survey",                                    :default => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login"

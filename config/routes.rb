@@ -245,6 +245,13 @@ AgentStream::Application.routes.draw do
   end
 
   resources :sponsor_accounts do
+   member do
+	get :delete
+   end
+  end
+ 
+
+  resources :sponsor_accounts do
     resources :sponsor_members do    
       member do
         post :add_group
@@ -417,7 +424,7 @@ AgentStream::Application.routes.draw do
     resources :group_posts do
       resources :comments
     end
-    resource :announcement
+    resource :announcement, :controller => "group_announcements"
     resources :gallery_photos do
       member do
         match :update, :as => :update, :via => :put
