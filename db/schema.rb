@@ -665,15 +665,6 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
   add_index "pois", ["popularity"], :name => "index_plan_elements_on_popularity"
   add_index "pois", ["rating_avg"], :name => "index_trip_elements_on_rating_avg"
 
-  create_table "poly_text_indices", :force => true do |t|
-    t.string  "owner_type", :null => false
-    t.integer "owner_id",   :null => false
-    t.string  "domain"
-    t.text    "text"
-  end
-
-  add_index "poly_text_indices", ["owner_type", "owner_id"], :name => "index_poly_text_indices_on_owner_type_and_owner_id"
-
   create_table "posts", :force => true do |t|
     t.integer  "topic_id"
     t.integer  "author_id"
@@ -707,9 +698,9 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
   end
 
   create_table "profile_text_indices", :force => true do |t|
-    t.integer "profile_id",                         :null => false
+    t.integer "profile_id",                       :null => false
     t.text    "profile_text"
-    t.text    "answers_text", :limit => 2147483647
+    t.text    "answers_text", :limit => 16777215
   end
 
   add_index "profile_text_indices", ["profile_id"], :name => "index_profile_text_indices_on_profile_id", :unique => true
@@ -853,7 +844,7 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
     t.date     "open_until",                                               :null => false
-    t.integer  "profile_id",                            :default => 0,     :null => false
+    t.integer  "profile_id",                                               :null => false
     t.text     "question",                                                 :null => false
     t.boolean  "per_answer_notification",               :default => false
     t.datetime "author_viewed_at"
@@ -870,6 +861,7 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
   add_index "questions", ["category"], :name => "index_questions_on_category"
   add_index "questions", ["created_at"], :name => "index_questions_on_created_at"
   add_index "questions", ["open_until"], :name => "index_questions_on_open_until"
+  add_index "questions", ["profile_id"], :name => "index_questions_on_profile_id"
 
   create_table "rating_categories", :force => true do |t|
     t.string   "rating_category", :null => false
@@ -963,12 +955,12 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
     t.string   "monitor_email_address"
     t.boolean  "frozen_emails",             :default => false
     t.boolean  "ssl_enabled",               :default => false
-    t.string   "welcome_promo_title_1"
-    t.string   "welcome_promo_1"
-    t.string   "welcome_promo_title_2"
-    t.string   "welcome_promo_2"
-    t.string   "welcome_promo_title_3"
-    t.string   "welcome_promo_3"
+    t.string   "welcome_promo_title_1",     :default => ""
+    t.string   "welcome_promo_1",           :default => ""
+    t.string   "welcome_promo_title_2",     :default => ""
+    t.string   "welcome_promo_2",           :default => ""
+    t.string   "welcome_promo_title_3",     :default => ""
+    t.string   "welcome_promo_3",           :default => ""
   end
 
   create_table "site_profile_cards", :force => true do |t|
@@ -1156,8 +1148,6 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
     t.string "name"
   end
 
-  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
-
   create_table "temp_users", :force => true do |t|
     t.string   "email"
     t.string   "name"
@@ -1210,7 +1200,6 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "facebook_id",                      :limit => 8
     t.string   "login"
     t.string   "email"
     t.string   "crypted_password",                 :limit => 40
@@ -1231,6 +1220,7 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
     t.text     "crypted_password_history"
     t.integer  "tfce_req_nonce"
     t.integer  "tfce_res_nonce"
+    t.integer  "facebook_id",                      :limit => 8
     t.text     "facebook_graph"
     t.string   "srw_agent_id"
     t.text     "srw_ticket"
