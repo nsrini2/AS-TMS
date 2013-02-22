@@ -1,5 +1,5 @@
 <% content_for(:page_title, "Delete #{@sponsor_account.name} Sponsor Account") -%>
 <% form_for @sponsor_account, :html => { :method => :delete } do |f| -%>
-	<h3>Are you sure you want to delete <%= @sponsor_account.name -%>?</h3><br />
+	<h3>Are you sure you want to delete showcase category <em><%= @sponsor_account.name -%></em> ?</h3><br />
 	<%= submit_tag "Yes" -%>&nbsp;&nbsp;&nbsp;<%= submit_tag "No" -%>
 <% end -%>

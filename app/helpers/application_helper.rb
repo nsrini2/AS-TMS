@@ -18,7 +18,7 @@ module ApplicationHelper
                 :company => /companies/,
                 :"my agency" => /companies/,
                 :de => /deals_and_extras/,
-                :hub => /(questions|groups|blogs|news|chat|companies)/ }
+                :hub => /(questions|groups|blogs|news|chat|companies|showcase)/ }
                     
     regex = regexes[name.downcase.to_sym]    
     css_class = global_nav_link_active?(name, regex) ? "active" : ""
