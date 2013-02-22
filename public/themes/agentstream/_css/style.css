@@ -124,7 +124,7 @@ input, select {
 $line-height: 18px;*/
 /* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
 body {
-  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   font-size: 14px;
   line-height: 1.6em;
   color: #676767;
@@ -337,7 +337,7 @@ div#deals-header h2, div#deals-header p {
 */
 /* line 18, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 h2 {
-  text-shadow: #fff 0 1px 0;
+  text-shadow: white 0 1px 0;
   font-size: 18px;
   color: #6f563b;
   text-transform: uppercase;
@@ -389,7 +389,7 @@ p.category, p.answers {
 
 /* line 30, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 img.photo {
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
 }
 
 /* line 32, ../../../../app/stylesheets/themes/agentstream/screen.scss */
@@ -845,7 +845,7 @@ img.photo {
 
 /* line 137, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #widget div.content {
-  border-bottom: 1px solid #C4D7DC;
+  border-bottom: 1px solid #c4d7dc;
   margin-bottom: 30px;
   padding-bottom: 30px;
 }
@@ -1023,7 +1023,7 @@ form#create_topic input.button {
 /* line 8, ../../../../app/stylesheets/themes/agentstream/modal.scss */
 .popup {
   background-color: #fff;
-  border: 3px solid #C4D7DC;
+  border: 3px solid #c4d7dc;
   padding: 10px;
   width: 425px;
   margin: 0 auto;
@@ -1112,7 +1112,7 @@ form#create_topic input.button {
   /*resets*/
   margin: 0;
   padding: 0;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
   outline: 0;
   line-height: 1.3;
   text-decoration: none;
@@ -1140,7 +1140,7 @@ form#create_topic input.button {
 .ui-autocomplete-results li {
   position: relative;
   color: #222222;
-  padding: .2em .5em;
+  padding: 0.2em 0.5em;
   font-size: 11px;
   font-weight: normal;
   margin: 1px 0;
@@ -1161,13 +1161,13 @@ form#create_topic input.button {
 /* line 31, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
 .ui-autocomplete-results li.ui-autocomplete-over {
   background: #90B4BC;
-  color: #fff !important;
+  color: white !important;
 }
 
 /* line 35, ../../../../app/stylesheets/themes/agentstream/autocomplete.scss */
 .ui-autocomplete-results li.ui-autocomplete-active {
   background: #90B4BC;
-  color: #fff !important;
+  color: white !important;
   outline: none;
 }
 
@@ -1191,13 +1191,13 @@ form#create_topic input.button {
 /* line 7, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
 .ui-datepicker {
   width: 17em;
-  padding: .2em .2em 0;
+  padding: 0.2em 0.2em 0;
 }
 
 /* line 8, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
 .ui-datepicker .ui-datepicker-header {
   position: relative;
-  padding: .2em 0;
+  padding: 0.2em 0;
 }
 
 /* line 9, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
@@ -1278,12 +1278,12 @@ form#create_topic input.button {
   width: 100%;
   font-size: .9em;
   border-collapse: collapse;
-  margin: 0 0 .4em;
+  margin: 0 0 0.4em;
 }
 
 /* line 23, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
 .ui-datepicker th {
-  padding: .7em .3em;
+  padding: 0.7em 0.3em;
   text-align: center;
   font-weight: bold;
   border: 0;
@@ -1306,8 +1306,8 @@ form#create_topic input.button {
 /* line 26, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
 .ui-datepicker .ui-datepicker-buttonpane {
   background-image: none;
-  margin: .7em 0 0 0;
-  padding: 0 .2em;
+  margin: 0.7em 0 0 0;
+  padding: 0 0.2em;
   border-left: 0;
   border-right: 0;
   border-bottom: 0;
@@ -1316,9 +1316,9 @@ form#create_topic input.button {
 /* line 27, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
 .ui-datepicker .ui-datepicker-buttonpane button {
   float: right;
-  margin: .5em .2em .4em;
+  margin: 0.5em 0.2em 0.4em;
   cursor: pointer;
-  padding: .2em .6em .3em .6em;
+  padding: 0.2em 0.6em 0.3em 0.6em;
   width: auto;
   overflow: visible;
 }
@@ -1342,7 +1342,7 @@ form#create_topic input.button {
 /* line 33, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
 .ui-datepicker-multi .ui-datepicker-group table {
   width: 95%;
-  margin: 0 auto .4em;
+  margin: 0 auto 0.4em;
 }
 
 /* line 34, ../../../../app/stylesheets/themes/agentstream/calendar.scss */
@@ -1477,7 +1477,7 @@ form#create_topic input.button {
 #tooltip {
   position: absolute;
   z-index: 3000;
-  border: 1px solid #111;
+  border: 1px solid #111111;
   padding: 5px;
   background: #ff9;
 }
@@ -1514,7 +1514,7 @@ div.pagination a, div.pagination span {
 /* line 4, ../../../../app/stylesheets/themes/agentstream/paging.scss */
 div.pagination a,
 div.pagination a:visited {
-  border: 1px solid #888;
+  border: 1px solid #888888;
   padding: 2px 5px 0;
   color: #888;
   font-weight: bold;
@@ -1524,7 +1524,7 @@ div.pagination a:visited {
 /* line 6, ../../../../app/stylesheets/themes/agentstream/paging.scss */
 div.pagination a:hover,
 div.pagination a:active {
-  border: 1px solid #000;
+  border: 1px solid black;
   background-color: #EFF8FA;
   color: #888;
 }
@@ -1537,7 +1537,7 @@ div.pagination span {
 /* line 8, ../../../../app/stylesheets/themes/agentstream/paging.scss */
 div.pagination span.currentpage {
   font-weight: bold;
-  border: 1px solid #000;
+  border: 1px solid black;
   padding: 2px 5px 0;
   background-color: #EFF8FA;
   color: #888;
@@ -1650,15 +1650,15 @@ div.action_buttons a.button {
 
 /* line 25, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav {
-  font-size: 16px;
-  margin: 30px 0 0;
+  font-size: 15px;
+  margin: 20px 0 0;
   text-transform: lowercase;
-  text-align: right;
+  text-align: left;
 }
 
 /* line 32, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav li:first-child {
-  margin-left: 40px;
+  margin-left: 25px;
 }
 
 /* line 36, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -1670,7 +1670,7 @@ div.action_buttons a.button {
 #header .global_nav li a {
   display: block;
   padding: 30px 0 0 0;
-  min-width: 30px;
+  min-width: 27px;
 }
 
 /* line 44, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -1764,18 +1764,28 @@ div.action_buttons a.button {
 }
 
 /* line 106, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #showcase_nav {
+  background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
+}
+
+/* line 110, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #showcase_nav.active, #header .nav #showcase_nav a:hover {
+  background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top;
+}
+
+/* line 114, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav .line2 {
   display: block;
   margin-top: -5px;
   text-align: left;
 }
 
-/* line 112, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 120, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .stats {
   margin: 20px 0 0 50px;
   font-size: 14px;
 }
-/* line 115, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 123, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .stats h4 {
   font-size: 19px;
   font-weight: normal;
@@ -1783,38 +1793,38 @@ div.action_buttons a.button {
   margin-top: 50px;
 }
 
-/* line 124, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 132, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility {
   margin: 20px 10px 0 0;
   font-size: 14px;
   float: right;
 }
 
-/* line 125, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 133, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav {
   float: right;
 }
 
-/* line 126, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 134, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav li {
   font-size: 0.9em;
   margin-right: 8px;
 }
 
-/* line 132, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 140, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search {
   float: right;
   margin: 0 5px 0 0;
 }
 
-/* line 136, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 144, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search input[type=text], #header .utility .search #global_search_input {
   margin-top: 0;
   height: 20px;
   width: 210px;
 }
 
-/* line 141, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 149, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search .button {
   font-size: 12px;
   margin: 0 3px 0 0;
@@ -1827,35 +1837,35 @@ div.action_buttons a.button {
 }
 
 /*#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('/images/bg_nav_online_now.png') 0 50% no-repeat; }*/
-/* line 153, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 161, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav .online_now {
   padding: 7px 0 5px 20px;
   background: url("/images/icons/as/online-now.png") 0 50% no-repeat;
 }
 
-/* line 154, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 162, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .nav .drop_down {
   padding: 0 15px 0 0;
   background: url("/images/bg_nav_dropdown.png") 100% 50% no-repeat;
 }
 
-/* line 156, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 164, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header, #main {
   border: 1px solid #c4d7dc;
   border-width: 0 1px 0;
 }
 
-/* line 157, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 165, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #main {
   border-width: 0 1px 1px;
 }
 
-/* line 158, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 166, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #footer {
   clear: both;
 }
 
-/* line 159, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 167, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .module, .primary .module {
   margin: 0;
   padding: 10px 20px 10px;
@@ -1864,12 +1874,12 @@ div.action_buttons a.button {
   background: #fff;
 }
 
-/* line 160, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 168, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .module {
   border-width: 1px 0 0 1px;
 }
 
-/* line 161, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 169, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .last {
   border-bottom: 1px solid #c4d7dc;
 }
@@ -1912,14 +1922,14 @@ div.news_item div.details div.icon img.icon {
   /*border-bottom: 0 !important; */
   padding: 0;
   white-space: nowrap;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
   font-weight: bold;
 }
 
 /* line 16, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
 .tabs .tabs-nav li a, .tabs .tabs-nav li span {
   float: left;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   text-decoration: none;
 }
 
@@ -1946,7 +1956,7 @@ div.news_item div.details div.icon img.icon {
   clear: left;
   padding: 10px;
   background: none;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
   position: relative;
   top: -1px;
   margin-top: -1px;
@@ -1960,7 +1970,7 @@ div.news_item div.details div.icon img.icon {
 
 /* line 34, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
 .tabs .tabs-nav {
-  background: #fff;
+  background: white;
 }
 
 /* required comment for clearfix to work in Opera \*/
@@ -1989,7 +1999,7 @@ div.news_item div.details div.icon img.icon {
   white-space: nowrap;
   background: #fff;
   color: #92b5bd;
-  text-shadow: #fff 0 1px 0;
+  text-shadow: white 0 1px 0;
 }
 
 /* line 40, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
@@ -2041,7 +2051,7 @@ div.news_item div.details div.icon img.icon {
   display: block;
   border-width: 0;
   background: #eff8fa;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
 }
 
 /* line 54, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
@@ -2135,7 +2145,7 @@ div.news_item div.details div.icon img.icon {
 
 /* line 20, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 .profile .tabs-panel #list {
-  background: #EFF8FA !important;
+  background: #eff8fa !important;
 }
 
 /* line 22, ../../../../app/stylesheets/themes/agentstream/profile.scss */
@@ -2179,12 +2189,12 @@ div.news_item div.details div.icon img.icon {
   z-index: 40;
   width: 150px;
   background: #ff9;
-  border: 3px solid #2392C9;
+  border: 3px solid #2392c9;
 }
 
 /* line 36, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 #photos .disabledPhotoHover .pad {
-  border: 1px solid #000;
+  border: 1px solid black;
   padding: 10px;
   padding: 10px;
 }
@@ -2427,13 +2437,13 @@ div.news_item div.details div.icon img.icon {
   font-size: 16px;
   color: #fff;
   font-weight: bold;
-  text-shadow: #111 4px 4px 3px;
+  text-shadow: #111111 4px 4px 3px;
 }
 
 /* line 127, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 #awards .award {
   margin: 15px auto 10px;
-  border: 4px solid #fff;
+  border: 4px solid white;
   padding: 1px;
   width: 90px;
   background: #f00;
@@ -2479,7 +2489,7 @@ div.news_item div.details div.icon img.icon {
 #profile_questions h3 {
   clear: both;
   margin: 0 0 15px;
-  border-bottom: 1px solid #C4D7DC;
+  border-bottom: 1px solid #c4d7dc;
   color: #1E678A;
   font-weight: bold;
 }
@@ -2596,7 +2606,7 @@ div.profile_results {
 div.profile_results div.profile {
   float: left;
   margin: 0 0 15px;
-  border: 1px solid #666;
+  border: 1px solid #666666;
   padding: 0 0 13px;
   width: 387px;
   background: transparent url(/images/userCardBG.png) repeat scroll 0 0;
@@ -3166,7 +3176,7 @@ span.profile_notification.urgent {
 /* stats */
 /* line 359, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 #stats_container {
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
   border-left: 0;
   border-right: 0;
   margin-top: 10px;
@@ -3190,7 +3200,7 @@ span.profile_notification.urgent {
 
 /* line 374, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 #stats table td {
-  border-right: 1px solid #C4D7DC;
+  border-right: 1px solid #c4d7dc;
   padding: 0 15px 0 15px;
   text-align: left;
 }
@@ -3359,7 +3369,7 @@ div.avatar_large {
 div#terms_and_conditions {
   height: 175px;
   overflow: auto;
-  border: 2px solid #ccc;
+  border: 2px solid #cccccc;
 }
 /* line 469, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 div#terms_and_conditions p {
@@ -3424,7 +3434,7 @@ table.badges td p {
 $line-height: 18px;*/
 /* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
 body {
-  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   font-size: 14px;
   line-height: 1.6em;
   color: #676767;
@@ -3638,7 +3648,7 @@ ul.group_actions li a {
 
 /* line 16, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions li a.button {
-  border: 1px solid #fff;
+  border: 1px solid white;
   display: block;
   text-decoration: none;
   width: 100px;
@@ -3646,7 +3656,7 @@ ul.group_actions li a.button {
 
 /* line 22, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions li a.button:hover {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
 }
 
 /* line 25, ../../../../app/stylesheets/themes/agentstream/group.scss */
@@ -3757,7 +3767,7 @@ ul.group_actions.full_screen {
   margin-right: 18px;
   margin-bottom: 18px;
   background: #fff;
-  border: 1px solid #000;
+  border: 1px solid black;
   padding: 10px;
   width: 370px;
   _height: 190px;
@@ -4024,7 +4034,7 @@ ul.thumbnails li {
 
 /* line 153, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails li a img {
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
 }
 
 /* line 156, ../../../../app/stylesheets/themes/agentstream/group.scss */
@@ -4143,7 +4153,7 @@ span.topic_buttons a {
 /* line 230, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details img {
   margin-right: 8px;
-  border: 1px solid #bbb;
+  border: 1px solid #bbbbbb;
 }
 
 /* line 231, ../../../../app/stylesheets/themes/agentstream/group.scss */
@@ -4339,7 +4349,7 @@ form#new_group_post p.meta {
 /*#group_posts div.group_post_item div.replies div.odd { background: #f0f0f0; }*/
 /* line 268, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies div.even {
-  border-top: 1px solid #4A6970;
+  border-top: 1px solid #4a6970;
   padding-top: 14px;
 }
 
@@ -4502,7 +4512,7 @@ span.h6 {
 
 /* line 47, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.blog_post_p a, div.blog_post_p a:visited, a.answer_link, a.answer_link:visited, div.alert div.content a {
-  color: #900;
+  color: #990000;
   text-decoration: underline;
   font-weight: bold;
 }
@@ -4525,7 +4535,7 @@ div.question p {
 }
 /* line 66, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.question p a {
-  color: #900;
+  color: #990000;
   text-decoration: underline;
 }
 
@@ -4917,7 +4927,7 @@ table#rss_feed tr.odd {
 
 /* line 292, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list, table#company_members_list {
-  border: 1px solid #4A6970;
+  border: 1px solid #4a6970;
   margin: 20px;
   width: 840px;
 }
@@ -4954,7 +4964,7 @@ table#companies_list .odd, table#company_members_list .odd {
 div.news_results .primary {
   margin-left: 10px;
   width: 720px;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
 }
 
 /* line 331, ../../../../app/stylesheets/themes/agentstream/lists.scss */
@@ -4963,7 +4973,7 @@ div.news_post_item {
   padding: 10px;
   width: 720px;
   background-color: #EFF8FA;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
 }
 /* line 332, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.news_post_item .photo_wrapper {
@@ -4994,6 +5004,56 @@ div.aside-small {
   width: 195px;
   margin: 0 0 10px 0;
   float: right;
+}
+
+/* line 364, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories {
+  margin-top: 250px;
+}
+
+/* line 366, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories #expo_categories {
+  list-style-type: none;
+}
+
+/* line 368, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories #expo_categories .travelexpo_category {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 370, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories #expo_categories .travelexpo_category li {
+  float: left;
+  margin-left: 6px;
+  margin-right: 5px;
+  padding: 2px;
+  margin-top: 15px;
+}
+
+/* line 372, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories #expo_categories .travelexpo_category h3 {
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  width: 100%;
+  left: 30px;
+  top: 30px;
+}
+
+/* line 374, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list #travelexpo_marketing_message {
+  float: right;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  width: 395px;
+  margin-right: 8px;
+}
+
+/* line 376, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list #travelexpo_marketing_message #marketing_message img {
+  display: block;
 }
 
 /* line 1, ../../../../app/stylesheets/themes/agentstream/rating.scss */
@@ -5129,7 +5189,7 @@ div.rate p.rating_total {
 $line-height: 18px;*/
 /* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
 body {
-  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   font-size: 14px;
   line-height: 1.6em;
   color: #676767;
@@ -5434,7 +5494,7 @@ div#chat_queue > div {
 
 /* line 111, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_queue #question_bin form#new_chat_question_form input {
-  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   font-size: 0.9em;
   float: right;
   margin: 2px 10px;
@@ -5613,12 +5673,12 @@ div#chat_discuss table tr td:first-child {
   /*margin-right: 10px;*/
   width: 120px;
   background: #EEE;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #cccccc;
 }
 
 /* line 288, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td.name {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
   font-weight: bold;
 }
 
@@ -5629,7 +5689,7 @@ div#chat_discuss table tbody tr:first-child td.name {
 
 /* line 295, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tbody tr:last-child td.name {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #cccccc;
 }
 
 /* line 298, ../../../../app/stylesheets/themes/agentstream/chat.scss */
@@ -5640,7 +5700,7 @@ div#chat_discuss table tr.host td {
 /* line 301, ../../../../app/stylesheets/themes/agentstream/chat.scss */
 div#chat_discuss table tr td:last-child {
   width: 540px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #cccccc;
 }
 
 /* line 307, ../../../../app/stylesheets/themes/agentstream/chat.scss */
@@ -5709,7 +5769,7 @@ div.attendees table#attendees td {
 $line-height: 18px;*/
 /* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
 body {
-  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   font-size: 14px;
   line-height: 1.6em;
   color: #676767;
@@ -6458,7 +6518,7 @@ body {
 .marquee_panel_photo {
   float: left;
   margin-right: 10px;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
   width: 100px;
 }
 
@@ -6635,7 +6695,7 @@ div#search_filter {
 /* line 54, ../../../../app/stylesheets/themes/agentstream/search.scss */
 div#search_filter .accordionButton {
   background: #C4D7DC;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid white;
   padding: 10px;
 }
 
