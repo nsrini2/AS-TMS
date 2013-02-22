@@ -105,7 +105,7 @@ span.h6 {
 
 /* line 47, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.blog_post_p a, div.blog_post_p a:visited, a.answer_link, a.answer_link:visited, div.alert div.content a {
-  color: #900;
+  color: #990000;
   text-decoration: underline;
   font-weight: bold;
 }
@@ -128,7 +128,7 @@ div.question p {
 }
 /* line 66, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.question p a {
-  color: #900;
+  color: #990000;
   text-decoration: underline;
 }
 
@@ -520,7 +520,7 @@ table#rss_feed tr.odd {
 
 /* line 292, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list, table#company_members_list {
-  border: 1px solid #4A6970;
+  border: 1px solid #4a6970;
   margin: 20px;
   width: 840px;
 }
@@ -557,7 +557,7 @@ table#companies_list .odd, table#company_members_list .odd {
 div.news_results .primary {
   margin-left: 10px;
   width: 720px;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
 }
 
 /* line 331, ../../../../app/stylesheets/themes/agentstream/lists.scss */
@@ -566,7 +566,7 @@ div.news_post_item {
   padding: 10px;
   width: 720px;
   background-color: #EFF8FA;
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
 }
 /* line 332, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.news_post_item .photo_wrapper {
@@ -597,4 +597,54 @@ div.aside-small {
   width: 195px;
   margin: 0 0 10px 0;
   float: right;
+}
+
+/* line 364, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories {
+  margin-top: 250px;
+}
+
+/* line 366, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories #expo_categories {
+  list-style-type: none;
+}
+
+/* line 368, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories #expo_categories .travelexpo_category {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 370, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories #expo_categories .travelexpo_category li {
+  float: left;
+  margin-left: 6px;
+  margin-right: 5px;
+  padding: 2px;
+  margin-top: 15px;
+}
+
+/* line 372, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list .categories #expo_categories .travelexpo_category h3 {
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  width: 100%;
+  left: 30px;
+  top: 30px;
+}
+
+/* line 374, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list #travelexpo_marketing_message {
+  float: right;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  width: 395px;
+  margin-right: 8px;
+}
+
+/* line 376, ../../../../app/stylesheets/themes/agentstream/lists.scss */
+#list #travelexpo_marketing_message #marketing_message img {
+  display: block;
 }

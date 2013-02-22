@@ -1,13 +1,13 @@
-<% content_for(:page_title, "Manage Sponsor Accounts") -%>
-<h2>Showcase Categories <a href="<%= new_sponsor_account_url %>">Create a new Showcase Category</a></h2>
-
+<% content_for(:page_title, "Manage Travel Showcase") -%>
+<h2>Showcase Categories</h2>
+<h3><a href="<%= new_sponsor_account_url %>">Create a new Showcase Category</a></h3><br/>
 <% @sponsor_accounts.each_index do |index| -%>
 <% account = @sponsor_accounts[index] -%>
 <% klass = index%2 != 0 ? 'even' : 'odd' -%>
 <div class="sponsor_account sponsor_account_<%= klass %>">
         <h3><%= account.name%></h3>
         <%#if !@sponsor_accounts.size==0%>
-        <%= image_tag(account.showcase_category_image.public_filename())%>
+        <%= image_tag(account.showcase_category_image.public_filename(:medium))%>
         <%#end%>
 	<p class="sponsor_account_notes"><%= replace_newline_with_br(auto_link(account.notes, :all))%></p>
 	<p><a href="<%= sponsor_account_sponsor_groups_path(account) %>"><%= pluralize(account.groups.size, 'booth') %> created</a> - <%= pluralize (account.group_slots_remaining, 'unused booth slot') %></p>
@@ -17,8 +17,11 @@
 			<li><%= link_to "Edit Showcase Category", edit_sponsor_account_path(account) %></li>
 			<li><%= link_to "Delete Showcase Category", delete_sponsor_account_path(account) %></li>
 			<li><%= link_to "Create Sponsor Member", new_sponsor_account_sponsor_member_url(account) %></li>
-			<li><%= link_to "Create Booth", new_sponsor_account_sponsor_group_url(account) %></li><br /><br />
+                        <% if account.group_slots_remaining > 0 %>
+			<li><%= link_to "Create Booth", new_sponsor_account_sponsor_group_url(account) %></li>
+                        <% end %>
                </ul>
+          <br /><br />
         </div>
  </div>
 <% end -%>

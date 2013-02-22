@@ -1,5 +1,5 @@
 <% content_for(:page_title, "Create a New User }") -%>
-<h2>Create a New User</h2>
+<h2>New Sponsor Member in <%="#{@sponsor_account.name}"%> category</h2>
 
 <% form_for :user, :url => [@sponsor_account, :sponsor_members] do |f| -%>
 
@@ -26,6 +26,6 @@
 	<label for="profile_karma_points">Karma</label><br />
 	<%= text_field :profile, :karma_points, :size =>'10', :placeholder => "Karma points of user" -%><br /><br />
 
-	<%= f.submit "Create New Sponsor Member in #{@sponsor_account.name} category", :class => "button large"  %>
+	<%= f.submit "Create New User", :class => "button large"  %>
 
 <% end -%>
