@@ -1,0 +1,7 @@
+<% content_for(:sponsor_accounts_tab_selected, 'selected') -%>
+
+<% content_for :admin_tabs_submenu do %>
+	
+<% end %>
+
+<#%= render :file => 'layouts/_admin_tabs' -%>
