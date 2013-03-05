@@ -1,6 +1,6 @@
 <% content_for(:page_title, "Manage Travel Showcase") -%>
-<h2>Showcase Categories</h2>
-<h3><a href="<%= new_sponsor_account_url %>">Create a new Showcase Category</a></h3><br/>
+<h3>Showcase Categories</h3>
+<a href="<%= new_sponsor_account_url %>">new showcase category</a><br/><br/><br/>
 <% @sponsor_accounts.each_index do |index| -%>
 <% account = @sponsor_accounts[index] -%>
 <% klass = index%2 != 0 ? 'even' : 'odd' -%>
@@ -18,9 +18,10 @@
 			<li><%= link_to "Delete Showcase Category", delete_sponsor_account_path(account) %></li>
 			<li><%= link_to "Create Sponsor Member", new_sponsor_account_sponsor_member_url(account) %></li>
                         <% if account.group_slots_remaining > 0 %>
-			<li><%= link_to "Create Booth", new_sponsor_account_sponsor_group_url(account) %></li><br /><br />
+			<li><%= link_to "Create Booth", new_sponsor_account_sponsor_group_url(account) %></li>
                         <% end %>
                </ul>
+          <br /><br />
         </div>
  </div>
 <% end -%>

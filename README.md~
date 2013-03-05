@@ -1,27 +1,12 @@
 This change includes the following:
 ----------------------------------------------------------------------------------------------------------------
-1. Fixes to defect #'s 277, 280
-
-Defect #277:
--------------
-Description: User is able to create a group in a sponsor account even when the no of groups allowed is set to 0
-
-Defect #280
--------------
-Description: When the user tries to create a group without name/ desc/ tags the group is not saved but a flash
-notice informs the user that the nameless group has been saved
+1. Changes in Agentstream Travel Expo Admin tab as follows:
+a) Added menu for setting Showcase Text
+b) Added menu for creating Showcase Marketing Messages
 
 ----------------------------------------------------------------------------------------------------------------
 
-2. Changes in Agentstream admin (Sponsors tab) as follows:
-a) Tab renamed as "Travel Expo"
-b) Modified display size of showcase category images
-c) Added "Edit Booth" option
-
-----------------------------------------------------------------------------------------------------------------
-
-3. Changes in top level menu:
-a) Added a dummy icon for "Travel Expo" which links to travel expo landing page - "/showcase"
-b) Created the travel expo landing page
+2. Changes in 'Travel Expo' page
+a) Added category level listings page
 
 ----------------------------------------------------------------------------------------------------------------

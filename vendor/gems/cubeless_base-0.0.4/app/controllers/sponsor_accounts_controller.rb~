@@ -45,8 +45,7 @@ class SponsorAccountsController < ApplicationController
            @sponsor_account.showcase_category_image = ShowcaseCategoryImage.new(:uploaded_data => params[:showcase_category_image_file])
         end
         flash[:notice] = "Showcase category #{@sponsor_account.name} was updated!"
-        redirect_to request.referrer
-        #redirect_to sponsor_accounts_path
+        redirect_to sponsor_accounts_path
     else
          flash[:errors] = @sponsor_account.errors
          redirect_to edit_sponsor_account_path(@sponsor_account)
@@ -69,5 +68,14 @@ class SponsorAccountsController < ApplicationController
     end
     redirect_to sponsor_accounts_path
   end
+
+def category_level
+   @sponsor_account = SponsorAccount.find(params[:id])
+   #Rails.logger.info "The selected showcase category is:" + @sponsor_account.name
+   @category_groups=@sponsor_account.groups
+   @groups = @category_groups.paginate(:page => params[:page], :per_page => 7)
+   @wide_skyscraper = exploration_ad_units['groups']['wide_skyscraper']
+   render_group_results
+end
 
 end

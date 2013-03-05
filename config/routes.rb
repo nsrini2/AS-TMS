@@ -133,9 +133,11 @@ AgentStream::Application.routes.draw do
       get :about_us
       get :activity_stream_messages
       get :marketing_messages
+      get :showcase_marketing_messages
       get :rss_feeds
       match :stats_by_date
       match :welcome_note
+      match :showcase_text
       get :user_setup
       get :current_awards
       get :profiles_summary
@@ -247,6 +249,7 @@ AgentStream::Application.routes.draw do
   resources :sponsor_accounts do
    member do
 	get :delete
+        get :category_level
    end
   end
 
@@ -277,6 +280,7 @@ AgentStream::Application.routes.draw do
   end
 
   resources :showcase
+ 
 
   resources :api, :controller => "apis" do
     collection do
@@ -442,6 +446,14 @@ AgentStream::Application.routes.draw do
       match :toggle_activation
     end
   end
+
+ resources :showcase_marketing_messages do
+    member do
+      match :toggle_activation
+    end
+  end
+
+ 
   
   resources :rss_feeds do
     member do

@@ -1,0 +1,12 @@
+<%
+classname = '' unless defined?(classname)
+-%>
+<div id="group<%=group.id%>" class="list_item group_item <%= classname -%>">
+	<%= primary_photo_for(group, :hide_sponsor_sash => true, :thumb => :thumb, :linkable=>true) %>
+	<h4><%= link_to(group.name, group_path(group)) -%></h4>
+        <div class="details">
+		<span class="founded_on">Founded on <%= pretty_datetime(group.created_at) -%> &nbsp;&ndash;&nbsp; <%= pluralize(group.group_memberships_count, "member", "members") -%> &nbsp;&ndash;&nbsp; <%= "#{group.stat_text} Activity"%></span><br/>
+		<span class="description"><%= group.description -%></span>
+                <br/><br/>
+        </div>
+</div>

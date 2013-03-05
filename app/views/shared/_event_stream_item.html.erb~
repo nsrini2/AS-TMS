@@ -1,0 +1,26 @@
+<style>
+  div.news_item div.details a {
+    color: inherit;
+  }
+  
+</style>
+
+<div id="<%= "news_item_#{index}" %>" class="list_item news_item <%= cycle("even", "odd") %>">
+  <%# display = display_event(event) %>
+  <%#= display[:avatar] %>
+  <%= link_to(primary_photo_for(event, :thumb => :thubm_80, :hide_status_indicator => false, :hide_sponsor_sash => false), event.owner_path) %>
+  <div class="details">
+    <a href="<%= event.event_path %>">
+      <div class="icon">
+        <%= image_tag event.icon_path, :class => "icon" %>
+      </div>
+      <h3 class="who"><%= event.who %></h3>
+      <p class="what">
+        <%= event.what %>
+      </p>
+      <p class="when"><br/><%= event.when %></p>
+      
+    </a>
+  </div>
+</div>
+

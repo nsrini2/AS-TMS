@@ -1,0 +1,5 @@
+module ActivityStreamEventsHelper
+   def category_events
+      #@events=ActivityStreamEvent.find_by_sql "Select 
+   end
+end

@@ -1,0 +1,31 @@
+<% content_for(:showcase_marketing_message, 'selected') -%>
+<% content_for(:page_title, 'Manage Travel Expo Marketing Messages') -%>
+<h3>Showcase Marketing Messages</h3>
+<p class="help">You can have an unlimited number of rotating messages. Be creative and have fun with them.</p>
+<p class="help">These marketing messages will be displayed in the Travel Market Showcase page.</p>
+<p><%= link_to_create_showcase_marketing_message %></p>
+<table id="admin_marketing">
+	<tbody>
+		<tr>
+			<th>Active</th>
+			<th>Preview</th>
+			<th>Image</th>
+			<th>Link</th>
+		</tr>
+		<% @showcase_marketing_messages.each do |showcase_marketing_message| -%>
+		<tr id="marketing_message_<%= showcase_marketing_message.id %>">
+			<td><%= link_to_toggle_activation(showcase_marketing_message) %></td>
+			<td><%= link_to(image_tag(showcase_marketing_image_path(showcase_marketing_message,:thumbnail), :alt => '', :width => '119', :height => '44'), showcase_marketing_image_path(showcase_marketing_message), :target => '_blank') -%></td>
+			<td>
+				<%=link_to_change_image(showcase_marketing_message) -%>
+			</td>
+			<td class="link">
+				<%= render_inline_editor_for(showcase_marketing_message, :link_to_url, showcase_marketing_message_path( showcase_marketing_message ), :tag => :p, :editable => 'true', :tooltip => "Click to edit the link", :placeholder => 'Click to add a link') -%>
+			</td>
+			<td>
+				<%= link_to_remove(showcase_marketing_message) -%>
+			</td>
+		</tr>
+		<% end -%>
+	</tbody>
+</table>
