@@ -1,0 +1,3 @@
+class SponsorAccount < ActiveRecord::Base
+validates_presence_of :showcase_text
+end

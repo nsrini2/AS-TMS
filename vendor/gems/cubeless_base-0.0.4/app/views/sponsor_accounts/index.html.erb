@@ -1,11 +1,11 @@
 <% content_for(:page_title, "Manage Travel Showcase") -%>
-<h2>Showcase Categories</h2>
-<h3><a href="<%= new_sponsor_account_url %>">Create a new Showcase Category</a></h3><br/>
+<h3>Showcase Categories</h3>
+<a href="<%= new_sponsor_account_url %>">new showcase category</a><br/><br/><br/>
 <% @sponsor_accounts.each_index do |index| -%>
 <% account = @sponsor_accounts[index] -%>
 <% klass = index%2 != 0 ? 'even' : 'odd' -%>
 <div class="sponsor_account sponsor_account_<%= klass %>">
-        <h3><%= account.name%></h3>
+        <h4><%= account.name%></h4>
         <%#if !@sponsor_accounts.size==0%>
         <%= image_tag(account.showcase_category_image.public_filename(:medium))%>
         <%#end%>

@@ -3,6 +3,7 @@ module FilterSortHelper
   @@filter_options = {
     'Question' => [['All','all'], ['Open','open'], ['Closed','closed'], ['Unanswered','unanswered']],
     'Group' => [['All','all'], ['Public','public'], ['Invite Only','invite_only'], ['Private','private'], ['Sponsored', 'sponsored']],
+    'CategoryGroup' => [['All','all'], ['Public','public'], ['Invite Only','invite_only'], ['Private','private']],
     'Watch' => [['All','all'], ['Questions','questions'], ['Question Referrals','referrals'], ['Blog Posts','blog_posts']],
     'Watch_profile' => [['All','all'], ['Questions','questions'], ['Blog Posts','blog_posts']],
     'Watch_group' => [['All','all'], ['Question Referrals','referrals'], ['Blog Posts','blog_posts']],
@@ -14,6 +15,7 @@ module FilterSortHelper
     'Question' => [["Newest to Oldest", "newest_to_oldest"],["Oldest to Newest", "oldest_to_newest"],["Most Answers","most_answers"],["Least Answers","least_answers"],["Relevance","relevance"]],
     'Answer' => [["Newest to Oldest", "newest_to_oldest"],["Oldest to Newest", "oldest_to_newest"],["Most Helpful","most_helpful"]],
     'Group' => [["Newest to Oldest", "newest_to_oldest"],["Oldest to Newest", "oldest_to_newest"],["Most Members","most_members"], ["Most Activity", "most_activity"],["Relevance","relevance"]],
+    'CategoryGroup' => [["Newest to Oldest", "newest_to_oldest"],["Oldest to Newest", "oldest_to_newest"],["Most Members","most_members"], ["Most Activity", "most_activity"]],
     'Profile' => [["Last Name","last_first"],["First Name","first_last"]],
     'Post' => [["Newest to Oldest", "newest_to_oldest"],["Oldest to Newest", "oldest_to_newest"],["Best Rating", "best_rating"], ["Most Comments", "most_comments"]],
     'BlogPost' => [["Newest to Oldest", "newest_to_oldest"],["Oldest to Newest", "oldest_to_newest"],["Highest Rated", "highest_rating"],["Most Comments", "most_comments"]],

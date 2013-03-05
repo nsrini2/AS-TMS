@@ -21,6 +21,7 @@ module Streamed
           else opts[:profile_id] = self.profile_id
         end
         Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+        Rails.logger.info "Yes #{self.class} is using Streamed for logging the ActivityStreamEvents"
         ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
       end    
     end
