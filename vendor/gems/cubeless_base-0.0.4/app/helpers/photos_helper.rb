@@ -1,10 +1,9 @@
 module PhotosHelper
 
-  @@thumb_sizes = {:thumb => '50x50', :thumb_80 => '80x80', :thumb_large => '175x175'}
+  @@thumb_sizes = {:thumb_small => '30x30', :thumb => '50x50', :thumb_80 => '80x80', :thumb_large => '175x175'}
 
   def primary_photo_for(model=nil, options={})
     options[:size] ||= @@thumb_sizes[options[:thumb] || :thumb]
-
     unless options[:hide_tooltip]
       tooltip = model.screen_name if model.is_a?(Profile) && !current_profile.is_sponsored? && model.visible?
     end
@@ -12,7 +11,6 @@ module PhotosHelper
     if model.is_a?(Profile) && photo_linkable?(model, options)
       link_opts = { :class => 'photo_link_to' }.merge(options.delete(:link_options) || {})
     end
-
     content_tag :div, :class => "photo_wrapper" do
       (options[:hide_sponsor_sash] ? "" : sponsor_indicator_for(model).to_s) +
       link_to_if(photo_linkable?(model, options), image_tag(primary_photo_path_for(model, options[:thumb]), :size => options[:size], :alt => "avatar", :class => "photo #{'tooltip' if tooltip}", :title => tooltip), photo_link(model), link_opts) +

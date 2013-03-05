@@ -1,0 +1,13 @@
+<% content_for(:travelexpo_tab_selected, 'selected') -%>
+
+<% content_for :admin_tabs_submenu do %>
+  <%= 
+  sub_menu_for([
+  	sub_menu_li_for(sponsor_accounts_path, :text => 'Manage Showcase'),
+  	sub_menu_li_for(awards_archive_admin_path, :text => 'Enter Showcase Text'),
+  	sub_menu_li_for(new_award_path, :text => 'Marketing Message')
+  ])
+  -%>
+<% end %>
+
+<%= render :file => 'layouts/_admin_tabs' -%>
