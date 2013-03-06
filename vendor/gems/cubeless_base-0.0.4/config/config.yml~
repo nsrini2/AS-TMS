@@ -4,11 +4,10 @@ global:
   rank_enabled: false
   semantic_matcher: MysqlSemanticMatcher
   config: 'cubeless'
-  email_from_address: 'agentstream.tnss@gmail.com'
-  feedback_email: 'agentstream.tnss@gmail.com'
-  cubeless_support_email: "agentstream.tnss@gmail.com"
-  # monitor_email_address: 'agentstream.tnss@gmail.com'
-  open_registration: false
+  email_from_address: 'cubeless <no-reply@cubeless.com>'
+  feedback_email: 'discard@discard.pri'
+  cubeless_support_email: "support@cubeless.com"
+  # monitor_email_address: 'discard@discard.pri'  open_registration: false
   registration_queue: false
   
   mapquest_client_id: '34264'
