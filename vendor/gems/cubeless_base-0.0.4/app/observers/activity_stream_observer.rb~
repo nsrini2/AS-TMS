@@ -30,6 +30,7 @@ class ActivityStreamObserver < ActiveRecord::Observer
 
   @@monitor_save = [ProfilePhoto,GroupPhoto].to_set
   def after_save(model)
+    Rals.logger.info "Here in the dumps"  
     return unless @@monitor_save.member?(model.class)
     case model
       when GroupPhoto

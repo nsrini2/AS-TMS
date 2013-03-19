@@ -1,0 +1,20 @@
+<% content_for :booth_info_panel do %>
+   <div id="booth_info">
+        <div id="follow">
+          <h5>Booth Follow</h5>
+        </div>
+
+        <div id="booth_tags">
+            <% tag_cloud @tags, %w(vb b m s) do |tag, css_class| %>
+               <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+            <% end %>
+        </div>
+  
+        <div id="booth_links">
+         <h5>Booth links</h5>
+        </div>
+ 
+   </div>
+<% end %>
+
+<%= render :file => 'layouts/_booth_social_feeds_panel' %>

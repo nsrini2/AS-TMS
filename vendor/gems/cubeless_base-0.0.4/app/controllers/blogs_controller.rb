@@ -16,7 +16,7 @@ class BlogsController < ApplicationController
       if @owner.is_a?(Profile) && @owner == current_profile && @blog_posts.blank?
         redirect_to url_for([@owner, :blog, :blog_posts])+'/new'
       else
-        render :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
+        render :layout => @owner.is_a?(Group) ? (@owner.is_sponsored? ? 'sponsored_group' :'group') : '_my_stuff'
       end
     end
   end

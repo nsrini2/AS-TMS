@@ -46,7 +46,10 @@ class MarketingMessagesController < ApplicationController
            return redirect_to marketing_messages_admin_path
            flash[:errors] = nil
          end
-      }
+       }
+       format.json{
+        render :json => @message
+     }
     end
   end
 

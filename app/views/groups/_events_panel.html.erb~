@@ -1,0 +1,5 @@
+<div id="group_events">				  
+  <% events.each_with_index do |event, index| -%>
+	<%= render :partial => 'showcase_event_stream_item', :locals => { :event => event.reference, :index => (index + 1) } -%>
+  <% end -%>
+</div>

@@ -5,7 +5,7 @@
 $line-height: 18px;*/
 /* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
 body {
-  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   font-size: 14px;
   line-height: 1.6em;
   color: #676767;
@@ -219,7 +219,7 @@ ul.group_actions li a {
 
 /* line 16, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions li a.button {
-  border: 1px solid #fff;
+  border: 1px solid white;
   display: block;
   text-decoration: none;
   width: 100px;
@@ -227,7 +227,7 @@ ul.group_actions li a.button {
 
 /* line 22, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.group_actions li a.button:hover {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
 }
 
 /* line 25, ../../../../app/stylesheets/themes/agentstream/group.scss */
@@ -240,28 +240,212 @@ ul.group_actions.full_screen {
   float: right;
 }
 
-/* Group Hub */
+/* Sponsored group hub */
 /* line 33, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_card_sponsored {
+  position: absolute;
+  width: 655px;
+  height: 220px;
+  border: 1px solid silver;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  float: left;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_card_sponsored img {
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-right: 25px;
+  margin-left: 10px;
+}
+
+/* line 51, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_card_sponsored .sponsored_group_details h2 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+/* line 56, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_card_sponsored .sponsored_group_details h6 {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+/* line 61, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsored_group_announcement {
+  border: 1px solid #c4d7dc;
+  border-radius: 15px;
+  background-color: #FBFFDD;
+  width: 655px;
+  height: 30px;
+  margin-left: 10px;
+  float: left;
+  margin-top: 240px;
+  position: relative;
+  display: table;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+/* line 78, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_announcement #announcement_text {
+  position: absolute;
+  top: 40%;
+  height: 30%;
+  margin-left: 2%;
+  width: 20%;
+  display: table-row;
+}
+
+/* line 87, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#group_announcement #announcement_details {
+  float: right;
+  margin-left: 150px;
+  height: 100%;
+  width: 480px;
+  margin-right: 3%;
+  font-size: 1em;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: justify;
+}
+
+/* line 99, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#booth_info {
+  margin-right: 10px;
+  border: 1px solid #c4d7dc;
+  width: 270px;
+  position: relative;
+  float: right;
+  top: 0;
+  right: 0;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+/* line 112, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#booth_info #follow {
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 250px;
+  height: 200px;
+  border: 1px solid blue;
+}
+
+/* line 121, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#booth_info #booth_tags {
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 250px;
+  height: 200px;
+  border: 1px solid blue;
+}
+
+/* line 130, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#booth_info #booth_links {
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 250px;
+  height: 150px;
+  border: 1px solid blue;
+  margin-bottom: 10px;
+}
+
+/* line 143, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.sponsored_group_events {
+  border: 1px solid #c4d7dc;
+  float: left;
+  width: 300px;
+}
+
+/* line 149, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.group_video {
+  float: right;
+  width: 320px;
+  border: 1px solid violet;
+  height: 200px;
+}
+
+/* line 156, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.group_marketing_message {
+  float: right;
+  width: 320px;
+  border: 1px solid magenta;
+  height: 150px;
+  margin-top: 10px;
+}
+
+/* line 164, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.vb {
+  font-size: 1.0em;
+}
+
+/* line 165, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.b {
+  font-size: 1.2em;
+}
+
+/* line 166, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.m {
+  font-size: 1.4em;
+}
+
+/* line 167, ../../../../app/stylesheets/themes/agentstream/group.scss */
+.s {
+  font-size: 1.6em;
+}
+
+/* line 170, ../../../../app/stylesheets/themes/agentstream/group.scss */
+table #booth_marketing {
+  width: 90%;
+}
+
+/* line 174, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#booth_marketing th {
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 50px;
+  font-size: 1em;
+}
+
+/* line 184, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#booth_marketing td {
+  height: 50px;
+  width: 110px;
+  align: center;
+  padding-left: 30px;
+}
+
+/* Group Hub */
+/* line 192, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub #notes {
   display: none;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 195, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub .group_card .photo_wrapper {
   float: left;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 198, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub .group_card .details {
   margin-left: 190px;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 201, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub .group_card .details h3 {
   margin-bottom: 0;
 }
 
-/* line 45, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 204, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_hub .group_card .details h4 {
   font-size: 1.0em;
   font-weight: bold;
@@ -270,57 +454,57 @@ ul.group_actions.full_screen {
 }
 
 /* Group Widgets */
-/* line 53, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 212, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_widgets, #chat_attendees {
   margin: 10px 20px;
 }
-/* line 55, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 214, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_widgets a.right, #chat_attendees a.right {
   float: right;
 }
 
-/* line 59, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 218, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_widgets h3, #chat_attendees h3 {
   margin-bottom: 2px;
 }
 
-/* line 62, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 221, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_widgets #group_drive_bys .content .photo_wrapper, #chat_attendees div.photo_wrapper {
   float: left;
   margin: 0 3px 3px 0;
 }
 
 /* Group Stream */
-/* line 68, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 227, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group h5 {
   margin-bottom: 0;
 }
 
-/* line 71, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 230, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group .events .evemt {
   clear: both;
   margin-top: 10px 0 40px 0;
 }
 
-/* line 75, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 234, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group .events .event .photo_wrapper {
   float: left;
   margin: 0 3px;
 }
 
-/* line 79, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 238, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group .events .event .detail {
   margin: 10px 0 20px 30px;
 }
 
-/* line 82, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 241, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #stream.group .events .event .detail .did, #stream.group .events .event .detail .what, #stream.group .events .event .detail .detail {
   display: block;
   margin: 0;
 }
 
 /* Group Members */
-/* line 88, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 247, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .group_members:after {
   content: '.';
   display: block;
@@ -329,7 +513,7 @@ ul.group_actions.full_screen {
   visibility: hidden;
 }
 
-/* line 90, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 249, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card {
   position: relative;
   clear: right;
@@ -338,7 +522,7 @@ ul.group_actions.full_screen {
   margin-right: 18px;
   margin-bottom: 18px;
   background: #fff;
-  border: 1px solid #000;
+  border: 1px solid black;
   padding: 10px;
   width: 370px;
   _height: 190px;
@@ -347,7 +531,25 @@ ul.group_actions.full_screen {
   overflow: hidden;
 }
 
-/* line 91, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 250, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card {
+  position: relative;
+  clear: right;
+  float: left;
+  display: block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background: #fff;
+  border: 1px solid black;
+  padding: 10px;
+  width: 350px;
+  _height: 140px;
+  min-height: 140px;
+  zoom: 1;
+  overflow: hidden;
+}
+
+/* line 253, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card ul.group_member_card_actions {
   float: right;
   _display: inline;
@@ -355,7 +557,15 @@ ul.group_actions.full_screen {
   list-style: none;
 }
 
-/* line 92, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 254, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card ul.sponsor_group_member_card_actions {
+  float: right;
+  _display: inline;
+  margin: 0 4px;
+  list-style: none;
+}
+
+/* line 256, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card div.member_photo_and_meta {
   clear: right;
   float: left;
@@ -363,34 +573,70 @@ ul.group_actions.full_screen {
   width: 100px;
 }
 
-/* line 93, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 257, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card div.sponsor_member_photo_and_meta {
+  clear: right;
+  float: left;
+  margin-right: 20px;
+  padding-right: 5px;
+  width: 70px;
+}
+
+/* line 259, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card div.photo_wrapper {
   margin-bottom: 5px;
   zoom: 1;
 }
 
-/* line 94, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 260, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card div.photo_wrapper {
+  margin-bottom: 5px;
+  zoom: 1;
+}
+
+/* line 262, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card div.photo_wrapper img.photo {
   display: block;
 }
 
-/* line 95, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 263, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card div.photo_wrapper img.photo {
+  display: block;
+}
+
+/* line 265, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.meta {
   margin: 0;
   text-align: center;
 }
 
-/* line 96, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 266, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_meta {
+  text-align: center;
+}
+
+/* line 268, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl dt {
   font-weight: bold;
 }
 
-/* line 97, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 269, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl dt {
+  font-weight: bold;
+}
+
+/* line 271, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl dd {
   margin: 0 0 5px 0;
 }
 
-/* line 98, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 272, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl dd {
+  margin: 0 0 5px 0;
+  font-size: .95em;
+}
+
+/* line 274, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl dd.owner {
   margin-top: 5px;
   padding-top: 35px;
@@ -400,7 +646,17 @@ ul.group_actions.full_screen {
   text-transform: uppercase;
 }
 
-/* line 99, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 275, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl dd.owner {
+  margin-top: 5px;
+  padding-top: 35px;
+  background: url(/images/icon_group_owner.png) no-repeat center top;
+  font-weight: bold;
+  color: #d2931f;
+  text-transform: uppercase;
+}
+
+/* line 278, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl dd.moderator {
   margin-top: 5px;
   padding-top: 50px;
@@ -410,35 +666,73 @@ ul.group_actions.full_screen {
   text-transform: uppercase;
 }
 
-/* line 100, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 279, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl dd.moderator {
+  margin-top: 5px;
+  padding-top: 50px;
+  background: url(/images/icon_group_moderator.png) no-repeat center top;
+  font-weight: bold;
+  color: #d2931f;
+  text-transform: uppercase;
+}
+
+/* line 282, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info {
   float: left;
   margin: 0;
   width: 255px;
 }
 
-/* line 101, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 283, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info {
+  float: left;
+  margin: 0;
+  width: 255px;
+}
+
+/* line 285, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dt {
   font-weight: bold;
 }
 
-/* line 102, ../../../../app/stylesheets/themes/agentstream/group.scss */
-#member_card dl.member_info dt.name {
+/* line 286, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info dt {
+  font-weight: bold;
+}
+
+/* line 288, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info dt.name {
   font-size: 16px;
 }
 
-/* line 103, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 289, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info dt.name {
+  font-size: 16px;
+}
+
+/* line 291, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd {
   margin: 0;
 }
 
-/* line 104, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 292, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.member_info dd {
+  margin: 0;
+}
+
+/* line 294, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.title {
   margin-top: 3px;
   color: #111;
 }
 
-/* line 105, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 295, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info dd.title {
+  margin-top: 3px;
+  color: #111;
+}
+
+/* line 297, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.tagline {
   margin: 8px 0;
   font-size: 14px;
@@ -446,13 +740,27 @@ ul.group_actions.full_screen {
   font-style: italic;
 }
 
-/* line 106, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 298, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info dd.tagline {
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 300, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.contact_info dl {
   margin: 0;
   zoom: 1;
 }
 
-/* line 107, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 301, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info dd.contact_info dl {
+  margin: 0;
+  zoom: 1;
+}
+
+/* line 303, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.contact_info dl dt {
   clear: left;
   float: left;
@@ -460,19 +768,33 @@ ul.group_actions.full_screen {
   margin-right: 5px;
 }
 
-/* line 108, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 304, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info dd.contact_info dl dt {
+  clear: left;
+  float: left;
+  margin: 0;
+  margin-right: 5px;
+}
+
+/* line 306, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_card dl.member_info dd.contact_info dl dd {
   float: left;
   margin: 0;
 }
 
-/* line 111, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 307, ../../../../app/stylesheets/themes/agentstream/group.scss */
+#sponsor_member_card dl.sponsor_member_info dd.contact_info dl dd {
+  float: left;
+  margin: 0;
+}
+
+/* line 310, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #members_images_wrapper {
   float: left;
   width: 484px;
 }
 
-/* line 115, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 314, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #members_images {
   position: relative;
   margin: 0;
@@ -480,37 +802,37 @@ ul.group_actions.full_screen {
   overflow: hidden;
 }
 
-/* line 116, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 315, ../../../../app/stylesheets/themes/agentstream/group.scss */
 table#members {
   font-size: 0;
 }
 
-/* line 120, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 319, ../../../../app/stylesheets/themes/agentstream/group.scss */
 table#members tbody tr td div.photo_wrapper {
   margin: 0 3px 3px 0;
 }
 
-/* line 121, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 320, ../../../../app/stylesheets/themes/agentstream/group.scss */
 table#members tbody tr td.last div.photo_wrapper {
   margin-right: 0;
 }
 
-/* line 122, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 321, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #member_scrollers {
   width: 384px;
 }
 
-/* line 123, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 322, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #left_scroll {
   float: left;
 }
 
-/* line 124, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 323, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #right_scroll {
   float: right;
 }
 
-/* line 126, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 325, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.group_owner {
   clear: both;
   float: left;
@@ -518,7 +840,15 @@ dl.group_owner {
   width: 350px;
 }
 
-/* line 127, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 326, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.sponsor_group_owner {
+  clear: both;
+  float: left;
+  margin: 0;
+  width: 350px;
+}
+
+/* line 328, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.group_owner dt {
   float: left;
   padding: 4px 0 0 32px;
@@ -528,14 +858,31 @@ dl.group_owner dt {
   text-transform: uppercase;
 }
 
-/* line 128, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 329, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.sponsor_group_owner dt {
+  float: left;
+  padding: 4px 0 0 32px;
+  background: url(/images/icon_group_owner_sm.png) no-repeat left center;
+  font-weight: bold;
+  color: #d2931f;
+  text-transform: uppercase;
+}
+
+/* line 331, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.group_owner dd {
   float: left;
   margin: 0 0 0 5px;
   padding: 4px 0 0;
 }
 
-/* line 129, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 332, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.sponsor_group_owner dd {
+  float: left;
+  margin: 0 0 0 5px;
+  padding: 4px 0 0;
+}
+
+/* line 334, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.moderators {
   clear: left;
   float: left;
@@ -543,7 +890,15 @@ dl.moderators {
   width: 350px;
 }
 
-/* line 130, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 335, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.sponsor_group_moderators {
+  clear: left;
+  float: left;
+  margin: 8px 0 0;
+  width: 350px;
+}
+
+/* line 337, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.moderators dt {
   float: left;
   padding: 5px 0 5px 32px;
@@ -553,62 +908,79 @@ dl.moderators dt {
   text-transform: uppercase;
 }
 
-/* line 131, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 338, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.sponsor_group_moderators dt {
+  float: left;
+  padding: 5px 0 5px 32px;
+  background: url(/images/icon_group_moderator_sm.png) no-repeat left center;
+  font-weight: bold;
+  color: #d2931f;
+  text-transform: uppercase;
+}
+
+/* line 340, ../../../../app/stylesheets/themes/agentstream/group.scss */
 dl.moderators dd {
   float: left;
   margin: 0 0 0 5px;
   padding: 4px 0 0;
 }
 
-/* line 133, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 341, ../../../../app/stylesheets/themes/agentstream/group.scss */
+dl.sponsor_group_moderators dd {
+  float: left;
+  margin: 0 0 0 5px;
+  padding: 4px 0 0;
+}
+
+/* line 343, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #invitation_requests {
   clear: left;
   padding-top: 25px;
 }
 
-/* line 135, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 345, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #invitation_requests div.profile_results dl.profile_info {
   width: 200px;
 }
 
-/* line 136, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 346, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #invitation_requests div.profile_results dd.invite_requested_on {
   margin-top: 13px;
   color: #444;
   font-weight: bold;
 }
 
-/* line 137, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 347, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #invitation_requests div.action_buttons {
   margin: 13px 13px 0 0;
 }
 
 /* Photo Gallery */
-/* line 140, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 350, ../../../../app/stylesheets/themes/agentstream/group.scss */
 h3.gallery a.title_action_link {
   display: block;
   float: right;
   font-size: 0.9em;
 }
 
-/* line 145, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 355, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails {
   list-style: none;
   margin: 5px 0;
 }
 
-/* line 149, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 359, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails li {
   float: left;
   margin: 2px;
 }
 
-/* line 153, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 363, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails li a img {
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
 }
 
-/* line 156, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 366, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul.thumbnails:after {
   content: '.';
   display: block;
@@ -617,27 +989,27 @@ ul.thumbnails:after {
   visibility: hidden;
 }
 
-/* line 158, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 368, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul li.no_bullet {
   list-style: none;
 }
 
-/* line 161, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 371, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_list {
   list-style: none;
 }
 
-/* line 165, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 375, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_list li.topic {
   position: relative;
   width: 360px;
 }
-/* line 169, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 379, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_list li.topic span.h5 {
   width: 180px;
   margin-left: 0;
 }
-/* line 173, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 383, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_list li.topic span.topic_buttons {
   display: block;
   padding-left: 420px;
@@ -645,29 +1017,29 @@ ul#topic_list li.topic span.topic_buttons {
   margin-right: 0;
 }
 
-/* line 179, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 389, ../../../../app/stylesheets/themes/agentstream/group.scss */
 ul#topic_buttons {
   /*  margin-bottom: 5px;*/
 }
 
-/* line 183, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 393, ../../../../app/stylesheets/themes/agentstream/group.scss */
 span.topic_buttons {
   position: absolute;
   top: 6%;
 }
-/* line 184, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 394, ../../../../app/stylesheets/themes/agentstream/group.scss */
 span.topic_buttons a {
   margin-left: 20px;
   padding: 1px 5px;
 }
 
-/* line 192, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 402, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details {
   float: left;
   width: 500px;
 }
 
-/* line 196, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 406, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details .gallery_photo_full {
   background: #fff;
   margin-bottom: 5px;
@@ -676,58 +1048,58 @@ span.topic_buttons a {
   text-align: center;
 }
 
-/* line 203, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 413, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details p {
   margin-bottom: 0;
 }
 
-/* line 207, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 417, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details .gallery_photo_rate {
   float: right;
   margin-top: -20px;
   margin-right: 10px;
 }
 
-/* line 212, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 422, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details dl {
   margin-top: 10px;
 }
 
-/* line 215, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 425, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details dl dt {
   float: left;
   margin-right: 5px;
 }
 
-/* line 219, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 429, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details ul.action_list {
   list-style: none;
 }
 
-/* line 222, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 432, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .photo_details ul.action_list li {
   display: inline;
   margin-left: 0;
   margin-right: 20px;
 }
 
-/* line 228, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 438, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .current {
   border: 1px solid #990000;
 }
 
-/* line 229, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 439, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .thumbnail_link {
   float: left;
 }
 
-/* line 230, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 440, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details img {
   margin-right: 8px;
-  border: 1px solid #bbb;
+  border: 1px solid #bbbbbb;
 }
 
-/* line 231, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 441, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .at_last_photo {
   display: block;
   margin-top: 40px;
@@ -738,7 +1110,7 @@ span.topic_buttons a {
   color: #666;
 }
 
-/* line 232, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 442, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .at_first_photo {
   display: block;
   margin-top: 40px;
@@ -749,56 +1121,56 @@ span.topic_buttons a {
   color: #666;
 }
 
-/* line 234, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 444, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details {
   margin-left: 510px;
   width: 300px;
   overflow: hidden;
 }
 
-/* line 235, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 445, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments {
   clear: both;
   padding-top: 4px;
 }
 
-/* line 236, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 446, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments img {
   border: 0;
 }
 
-/* line 237, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 447, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details textarea#comment_text {
   width: 290px;
   height: 60px;
 }
 
-/* line 238, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 448, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details div.buttons {
   clear: both;
   margin-top: 14px;
   text-align: center;
 }
 
-/* line 241, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 451, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments div.comment_item div.details {
   margin-left: 0;
   width: 225px;
 }
 
-/* line 242, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 452, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments div.comment_item div.details h5 {
   margin: 3px 0 3px;
 }
 
-/* line 243, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 453, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments div.comment_item div.details p.meta {
   margin-bottom: 1.2em;
   font-size: 11px;
   color: #555;
 }
 
-/* line 244, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 454, ../../../../app/stylesheets/themes/agentstream/group.scss */
 .secondary_photo_details .comments div.comment_item div.details p.text {
   margin-bottom: 3px;
   color: #333;
@@ -808,7 +1180,7 @@ span.topic_buttons a {
 }
 
 /* group talk */
-/* line 247, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 457, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post {
   position: relative;
   float: left;
@@ -818,39 +1190,39 @@ form#new_group_post {
   width: 227px;
 }
 
-/* line 248, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 458, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post h2 {
   font-size: 1.5em;
   line-height: 1.2em;
 }
 
-/* line 249, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 459, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post textarea {
   width: 223px;
   height: 100px;
 }
 
-/* line 250, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 460, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post div.buttons {
   margin: 20px 0;
   text-align: center;
 }
 
-/* line 251, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 461, ../../../../app/stylesheets/themes/agentstream/group.scss */
 form#new_group_post p.meta {
   text-align: center;
   color: #333;
   font-size: 11px;
 }
 
-/* line 253, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 463, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts {
   width: 500px;
   margin-left: 140px;
   float: left;
 }
 
-/* line 254, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 464, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts:after {
   content: '.';
   display: block;
@@ -859,52 +1231,52 @@ form#new_group_post p.meta {
   visibility: hidden;
 }
 
-/* line 255, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 465, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item {
   padding-bottom: 2px;
 }
 
-/* line 256, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 466, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.photo_wrapper {
   float: left;
 }
 
-/* line 257, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 467, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.details {
   margin-left: 65px;
   width: 400px;
 }
 
-/* line 258, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 468, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.details h5 {
   margin-bottom: 0;
 }
 
-/* line 260, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 470, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.details div.item_text {
   margin-top: -3px;
 }
 
-/* line 261, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 471, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.details div.asked_by {
   margin-top: 3px;
   color: #333;
 }
 
-/* line 262, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 472, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.details ul.action_list {
   margin: 4px 0 5px -2px;
   color: #333;
   list-style: none;
 }
 
-/* line 263, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 473, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.details ul.action_list li {
   display: inline;
   margin: 0 10px 0 0px;
 }
 
-/* line 265, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 475, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies {
   clear: both;
   margin-left: 65px;
@@ -912,65 +1284,65 @@ form#new_group_post p.meta {
   width: 400px;
 }
 
-/* line 266, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 476, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies div.comment_item {
   margin-bottom: 10px;
 }
 
 /*#group_posts div.group_post_item div.replies div.odd { background: #f0f0f0; }*/
-/* line 268, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 478, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies div.even {
-  border-top: 1px solid #4A6970;
+  border-top: 1px solid #4a6970;
   padding-top: 14px;
 }
 
-/* line 269, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 479, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies h4 {
   margin-bottom: 12px;
   font-size: 13px;
 }
 
-/* line 270, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 480, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies div.comment_item div.details {
   width: 300px;
 }
 
-/* line 271, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 481, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form {
   margin-bottom: 18px;
   padding: 0px;
 }
 
-/* line 272, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 482, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form h5 {
   margin: 0 0 8px;
   font-size: 12px;
 }
 
-/* line 273, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 483, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form p.error {
   font-weight: bold;
   color: #f00;
 }
 
-/* line 274, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 484, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form fieldset {
   margin-bottom: 0;
 }
 
-/* line 275, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 485, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form fieldset label {
   display: block;
   font-weight: bold;
 }
 
-/* line 276, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 486, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form fieldset textarea {
   width: 355px;
   height: 100px;
 }
 
-/* line 278, ../../../../app/stylesheets/themes/agentstream/group.scss */
+/* line 488, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #group_posts div.group_post_item div.replies form div.buttons input.button {
   display: inline;
   margin-right: 10px;
