@@ -26,7 +26,7 @@ namespace :bam do
     u.sync_exclude = true
     u.save
     p = Profile.find_or_initialize_by_screen_name(:screen_name => 'Cubeless Admin', :first_name => 'Cubeless', :last_name => 'Admin', :user => u, :status => 1, :visible => 0)
-    p.add_roles(Role::CubelessAdmin, Role::ReportAdmin, Role::ContentAdmin, Role::ShadyAdmin, Role::UserAdmin, Role::AwardsAdmin, Role::SponsorAdmin)
+    p.add_roles(Role::CubelessAdmin, Role::ReportAdmin, Role::ContentAdmin, Role::UserAdmin, Role::ShadyAdmin, Role::AwardsAdmin, Role::SponsorAdmin)
     p.save
     u.password = '$abre90T00th45'
     u.save

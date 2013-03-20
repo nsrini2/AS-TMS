@@ -65,12 +65,12 @@
             <%= link_to("Settings", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => "#{@content_for_settings_selected}") if current_profile %>
           </li>
           <% 
-            admin_roles = [Role::ReportAdmin, Role::ContentAdmin, Role::ShadyAdmin, Role::UserAdmin, Role::AwardsAdmin, Role::SponsorAdmin]
+            admin_roles = [Role::UserAdmin, Role::ReportAdmin, Role::ContentAdmin, Role::ShadyAdmin, Role::AwardsAdmin, Role::SponsorAdmin]
             admin_paths = {
+              Role::UserAdmin => users_path,
               Role::ReportAdmin => stats_summary_admin_path,
               Role::ContentAdmin => marketing_messages_admin_path,
               Role::ShadyAdmin => shady_admin_admin_path,
-              Role::UserAdmin => users_path,
               Role::AwardsAdmin => current_awards_admin_path,
               Role::SponsorAdmin => sponsor_accounts_path
             }

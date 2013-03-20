@@ -43,12 +43,12 @@
 						<% end -%>
 						<%= content_tag('li', link_to('My Stuff', profile_path(current_profile.id)), :class => @content_for_my_stuff_selected) -%>
 						<% 
-							admin_roles = [Role::ReportAdmin, Role::ContentAdmin, Role::ShadyAdmin, Role::UserAdmin, Role::AwardsAdmin, Role::SponsorAdmin]
+							admin_roles = [Role::UserAdmin, Role::ReportAdmin, Role::ContentAdmin, Role::ShadyAdmin,  Role::AwardsAdmin, Role::SponsorAdmin]
 							admin_paths = {
+								Role::UserAdmin => users_path,
 								Role::ReportAdmin => stats_summary_admin_path,
 								Role::ContentAdmin => marketing_messages_admin_path,
 								Role::ShadyAdmin => shady_admin_admin_path,
-								Role::UserAdmin => users_path,
 								Role::AwardsAdmin => current_awards_admin_path,
 								Role::SponsorAdmin => sponsor_accounts_path
 							}
