@@ -7,7 +7,7 @@ before_filter :set_booth_marketing_message
   def index
     @group = Group.find(params[:group_id])
     @booth_marketing_messages = @group.booth_marketing_messages.all
-    render :template => 'booth_marketing_messages/booth_marketing_messages', :layout => '/layouts/sponsored_group_manage_submenu'
+    render :template => 'booth_marketing_messages/booth_marketing_messages', :layout => '/layouts/sponsored_group'
   end
 
   def new
