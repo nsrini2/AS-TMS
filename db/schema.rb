@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227052336) do
+ActiveRecord::Schema.define(:version => 20130320131039) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -196,6 +196,14 @@ ActiveRecord::Schema.define(:version => 20130227052336) do
   end
 
   add_index "bookmarks", ["profile_id"], :name => "index_bookmarks_on_profile_id"
+
+  create_table "booth_marketing_messages", :force => true do |t|
+    t.boolean  "active"
+    t.text     "link_to_url"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "chat_topic_indices", :force => true do |t|
     t.integer  "topic_id",        :null => false
@@ -409,6 +417,14 @@ ActiveRecord::Schema.define(:version => 20130227052336) do
   add_index "group_invitations", ["receiver_id"], :name => "index_group_invitations_on_receiver_id"
   add_index "group_invitations", ["sender_id"], :name => "index_group_invitations_on_sender_id"
   add_index "group_invitations", ["type"], :name => "index_group_invitations_on_type"
+
+  create_table "group_links", :force => true do |t|
+    t.string   "url"
+    t.string   "text"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "group_memberships", :force => true do |t|
     t.integer  "profile_id",                                :null => false

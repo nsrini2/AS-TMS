@@ -106,3 +106,25 @@
   width: 400px;
   padding: 10px;
 }
+
+/* line 94, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+table #admin_marketing {
+  width: 90%;
+}
+
+/* line 98, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#admin_marketing th {
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 50px;
+}
+
+/* line 106, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#admin_marketing td {
+  height: 50px;
+  width: 110px;
+  align: center;
+  padding-left: 30px;
+}

@@ -15,5 +15,10 @@ class Group < ActiveRecord::Base
   def search_content
     tags
   end
+  
+  @@de_values = { 0 => false, 1 => true }
+  def de_allowed?
+     @@de_values[de_flag]
+  end
     
 end    

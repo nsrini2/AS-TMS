@@ -1,7 +1,7 @@
 class WatchObserver < ActiveRecord::Observer
 
   observe Question, BlogPost, QuestionReferral, Note, GroupPost, Comment, GroupPhoto, Group, GroupMembership
-
+  
   def after_create(model)
     case model
       when Question

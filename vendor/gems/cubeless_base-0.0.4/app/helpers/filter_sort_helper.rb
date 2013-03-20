@@ -2,7 +2,9 @@ module FilterSortHelper
 
   @@filter_options = {
     'Question' => [['All','all'], ['Open','open'], ['Closed','closed'], ['Unanswered','unanswered']],
-    'Group' => [['All','all'], ['Public','public'], ['Invite Only','invite_only'], ['Private','private'], ['Sponsored', 'sponsored']],
+     # 03/14/2013-SRIWW: Sponsored groups will no longer be available from the 'Groups' top-level menu 
+     #'Group' => [['All','all'], ['Public','public'], ['Invite Only','invite_only'], ['Private','private'], ['Sponsored', 'sponsored']],
+    'Group' => [['All','all'], ['Public','public'], ['Invite Only','invite_only'], ['Private','private']],
     'CategoryGroup' => [['All','all'], ['Public','public'], ['Invite Only','invite_only'], ['Private','private']],
     'Watch' => [['All','all'], ['Questions','questions'], ['Question Referrals','referrals'], ['Blog Posts','blog_posts']],
     'Watch_profile' => [['All','all'], ['Questions','questions'], ['Blog Posts','blog_posts']],

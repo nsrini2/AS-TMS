@@ -1,4 +1,5 @@
 class ShowcaseMarketingMessagesController < ApplicationController
+  respond_to :html, :json
 
   allow_access_for :all => :sponsor_admin
 
@@ -12,13 +13,14 @@ class ShowcaseMarketingMessagesController < ApplicationController
 
   def create
     @message.marketing_image = MarketingImage.new(params[:asset])
+    @message.group_id=@group.id
     @message.save if @message.marketing_image.valid?
     respond_to do |format| 
       format.html {
         add_to_errors([@message, @message.marketing_image].compact)
         if flash[:errors].blank?
-          add_to_notices "A new marketing message for the travel market showcase page has been created"
-          return redirect_to showcase_marketing_messages_admin_path+"#marketing_message_#{@message.id}"
+          flash[:notice]= "A new marketing message for the travel market showcase page has been created"
+          return redirect_to showcase_marketing_messages_admin_path
         else
           return redirect_to showcase_marketing_messages_admin_path
           flash[:errors] = nil
@@ -40,13 +42,16 @@ class ShowcaseMarketingMessagesController < ApplicationController
       format.html {
          add_to_errors([@message, @message.marketing_image].compact)
          if flash[:errors].blank?
-           add_to_notices "The showcase marketing message has been successfully updated"
-           return redirect_to showcase_marketing_messages_admin_path
+           flash.now[:notice] = "The showcase marketing message was successfully updated"
+           redirect_to showcase_marketing_messages_admin_path
          else
-           return redirect_to showcase_marketing_messages_admin_path
+           redirect_to showcase_marketing_messages_admin_path
            flash[:errors] = nil
          end
       }
+      format.json{
+         render :json => @message
+      } 
     end
   end
 

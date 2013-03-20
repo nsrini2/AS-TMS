@@ -10,7 +10,7 @@ class ShowcaseController < ApplicationController
 
   def category_level_details
     @sponsor_account = SponsorAccount.find(params[:id])
-    @category_groups=category_filtered_groups(@sponsor_account.id).paginate(:page => params[:groups_page], :per_page => 2)
+    @category_groups=category_filtered_groups(@sponsor_account.id).paginate(:page => params[:groups_page], :per_page => 10)
     @events=ActivityStreamEvent.find_by_category(@sponsor_account.id,:all,:page=> params[:events_page])
   end
 end

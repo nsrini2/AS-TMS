@@ -121,7 +121,7 @@ class BlogPostsController < ApplicationController
     end
   end
 
-  private
+ private
 
   def check_for_news_post
     @post = BlogPost.unscoped.find(params[:id])
