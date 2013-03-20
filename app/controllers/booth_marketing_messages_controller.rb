@@ -1,6 +1,6 @@
 class BoothMarketingMessagesController < ApplicationController
 
-allow_access_for :all => :sponsor_admin 
+allow_access_for :all => :sponsor_admin
 
 before_filter :set_booth_marketing_message
 

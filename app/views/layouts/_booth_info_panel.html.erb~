@@ -5,13 +5,15 @@
         </div>
 
         <div id="booth_tags">
-            <% tag_cloud @tags, %w(vb b m s) do |tag, css_class| %>
-               <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
-            <% end %>
+            <%# tag_cloud @group_blog_tags, %w(vb b m s) do |tag, css_class| %>
+               <%#= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+            <%# end %>
         </div>
   
         <div id="booth_links">
-         <h5>Booth links</h5>
+             <% @booth_links.each do |booth_link| -%>
+              <%#= link_to booth_link.text, booth_link.url %><br/>
+             <%end%>
         </div>
  
    </div>

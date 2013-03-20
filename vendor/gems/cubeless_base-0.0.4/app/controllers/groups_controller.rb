@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   
   before_filter :init_group, :except => [:create, :new]
-  
   allow_access_for :destroy => :shady_admin
   deny_access_for :show => :sponsor_member, :when => lambda{ |c| !c.instance_variable_get(:@group).is_member?(c.current_profile) }
   deny_access_for [:new, :create, :quit] => :sponsor_member
@@ -83,8 +82,14 @@ class GroupsController < ApplicationController
 
   def booth_marketing_messages
     @booth_marketing_messages = @group.booth_marketing_messages.all
-    render :template => 'booth_marketing_messages/booth_marketing_messages', :layout => '/layouts/sponsored_group'
+    render :template => 'booth_marketing_messages/booth_marketing_messages', :layout => '/layouts/sponsored_group_manage_sub_menu'
   end
+
+  def get_group_links
+    @booth_links = @group.group_links.all
+    render :template => 'group_links/group_links', :layout => '/layouts/sponsored_group_manage_sub_menu'
+  end
+
 
   def create
     # MM2: Old Group.crate override syntax
@@ -121,13 +126,11 @@ class GroupsController < ApplicationController
 
  def show
     if @group.is_sponsored?
-      @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:events_page])
-      #@tags=@group.blog.tags.count
-      #Rails.logger.info "Tag_count is:" + @tags.to_s
-      @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
-      render :action => 'group', :layout => '/layouts/sponsored_group'
+         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:events_page])
+         @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
+         render :action => 'group', :layout => '/layouts/sponsored_group'
     else
-      render :action => 'group', :layout => '/layouts/group'
+         render :action => 'group', :layout => '/layouts/group'
     end
   end
 
@@ -294,6 +297,11 @@ class GroupsController < ApplicationController
 
   def init_group
     @group = Group.find_by_id(params[:id])
+    @group_blog_tags=@group.blog.blog_posts.tag_counts
+    @booth_links = @group.group_links.all
+    #@group_links=@group.group_links
+    #Rails.logger.info "Blog id is:" + @group_blog.id.to_s
+    #@group_blog_tags=BlogPost.find_all_by_blog_id(@group_blog.id)
     redirect_to groups_explorations_path unless @group
   end
 

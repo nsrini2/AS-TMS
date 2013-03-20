@@ -157,7 +157,7 @@ height:200px;
 float:right;
 width:320px;
 border:1px solid magenta;
-height:120px;
+height:150px;
 margin-top:10px;
 }
 

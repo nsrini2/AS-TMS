@@ -390,6 +390,7 @@ AgentStream::Application.routes.draw do
     member do
       post :resend_all
       get :booth_marketing_messages
+      get :get_group_links
       put :update
       post :remove_member
       get :stats_summary
@@ -418,6 +419,8 @@ AgentStream::Application.routes.draw do
       end
     end
 
+    resources :group_links
+    
     resources :photos
     resource :blog do
       resources :blog_posts do

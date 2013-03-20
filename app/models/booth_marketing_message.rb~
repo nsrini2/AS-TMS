@@ -4,7 +4,7 @@ belongs_to :group
 validates_presence_of :group_id
 
   def toggle_activation
-    if last_message?(group_id)
+    if last_message?
       self.errors.add_to_base="You must have at least one active booth marketing message."
     else
       self.toggle!(:active)
