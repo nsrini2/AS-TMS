@@ -6,11 +6,11 @@ validates_presence_of :text
 @@text="Welcome to the Travel Market Showcase"
 
 def self.get
-   ShowcaseText.instance || ShowcaseText.instance.reset
+   ShowcaseText.get || ShowcaseText.create.reset
 end
 
 def self.reset
-    ShowcaseText.instance.reset
+    ShowcaseText.get.reset
 end
   
 def reset

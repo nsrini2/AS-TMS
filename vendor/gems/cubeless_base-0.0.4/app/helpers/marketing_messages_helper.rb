@@ -6,9 +6,11 @@ module MarketingMessagesHelper
 
   def link_to_remove(message)
     if(message.class.to_s=="MarketingMessage")
-   	link_to("remove", marketing_message_path(message), :class => "modal delete")
+   	link_to("remove message", marketing_message_path(message), :class => "modal delete")
     elsif(message.class.to_s=="ShowcaseMarketingMessage")
-        link_to("remove", showcase_marketing_message_path(message), :class => "modal delete")
+        link_to("remove message", showcase_marketing_message_path(message), :class => "modal delete")
+    elsif(message.class.to_s=="BoothMarketingMessage")
+        link_to("remove", group_booth_marketing_message_path(message.group,message), :class => "modal delete")
     end
   end
 
@@ -21,6 +23,8 @@ module MarketingMessagesHelper
     	link_to("change image", edit_marketing_message_path(message), :class => "modal change_marketing_image")
     elsif(message.class.to_s=="ShowcaseMarketingMessage")
 	link_to("change image", edit_showcase_marketing_message_path(message), :class => "modal change_marketing_image")
+    elsif(message.class.to_s=="BoothMarketingMessage")
+	link_to("change image", edit_group_booth_marketing_message_path(message.group,message), :class => "modal change_marketing_image")
     end
   end
 
@@ -31,6 +35,8 @@ module MarketingMessagesHelper
       link_to(image_tag("/images/#{image}", :title => title, :alt => "", :width => 20, :height => 32), toggle_activation_marketing_message_path(message), :class => 'toggle_marketing_message')
     elsif(message.class.to_s=="ShowcaseMarketingMessage")
       link_to(image_tag("/images/#{image}", :title => title, :alt => "", :width => 20, :height => 32), toggle_activation_showcase_marketing_message_path(message), :class => 'toggle_marketing_message')
+     elsif(message.class.to_s=="BoothMarketingMessage")
+      link_to(image_tag("/images/#{image}", :title => title, :alt => "", :width => 20, :height => 32), toggle_activation_group_booth_marketing_message_path(message.group,message), :class => 'toggle_marketing_message')
     end
   end
   
@@ -54,6 +60,18 @@ module MarketingMessagesHelper
 
   def showcase_marketing_image_path(showcase_marketing_message,which=:large)
     showcase_marketing_message.marketing_image.public_filename(which)
+  end
+
+ def link_to_create_booth_marketing_message
+    link_to("new booth marketing message", new_booth_marketing_message_path(), :class => "modal new_marketing_image")
+  end
+
+  def booth_marketing_image_tag(message)
+    link_to_if(message.link_to_url, image_tag( booth_marketing_image_path(message), :alt => '', :width => "320", :height => "150"),message.link_to_url,:target => "_blank") if message
+  end
+
+  def booth_marketing_image_path(booth_marketing_message,which=:large)
+    booth_marketing_message.marketing_image.public_filename(which)
   end
 
 end

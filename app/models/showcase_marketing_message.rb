@@ -22,7 +22,7 @@ has_one :marketing_image, :as => :owner, :dependent => :destroy
   end
 
   def last_message?
-    count = ShowcaseMarketingMessage.count_by_sql "select count(1) from marketing_messages where active=1"
+    count = ShowcaseMarketingMessage.count_by_sql "select count(1) from showcase_marketing_messages where active=1"
     count == 1 && self.active
   end
   

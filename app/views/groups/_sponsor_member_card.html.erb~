@@ -1,0 +1,37 @@
+<div id="member_card">
+	<%= action_list_for([
+		(link_to_remove_member(member) unless member == current_profile)
+	], :class => 'sponsor_group_member_card_actions') -%>
+
+	<div class="sponsor_member_photo_and_meta">
+		<%= link_to_avatar_for(member, :size => '80x80', :thumb => :thumb_80) -%>
+		<dl class="sponsor_meta">
+			<dt>Joined On</dt>
+			<dd><%= member_since_display(member, @group) -%></dd>
+			<% if @group.is_owner?(member) -%>
+				<dd class="owner">Group Owner</dd>
+			<% elsif @group.moderators.include?(member) -%>
+				<dd class="moderator">Moderator</dd>
+			<% end -%>
+		</dl>
+	</div>
+
+	<dl class="sponsor_member_info">
+		<dt class="sponsor_name"><%= member.screen_name %> <%= render_karma_icons_for_profile(member, :large) %></dt>
+		<dd class="sponsor_title"><%= member.profile_1.blank? ? "No #{profile_question_label_for :profile_1}" : member.profile_1 %></dd>
+		<dd class="sponsor_tagline"><%= member.profile_2.blank? ? "No #{profile_question_label_for :profile_2}" : member.profile_2 %></dd>
+		<dd class="sponsor_contact_info">
+			<dl>
+				<dt>Rank:</dt>
+				<dd><%= member.karma.title %></dd>
+			</dl>
+			<% contact_info_order(member)['profile'].each do |item| -%>
+			<dl>
+				<dt><%= profile_question_label_for item %>:</dt>
+				<dd><%= item=='email' ? link_to(member.email, "mailto:#{member.email}") : member.send(item) %></dd>
+			</dl>
+			<% end -%>
+			</dl>
+		</dd>
+	</dl>
+</div>

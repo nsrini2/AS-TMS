@@ -49,7 +49,7 @@
         <%#= global_nav_link "Blogs", blogs_explorations_path, "blog_nav" %>
         <%= global_nav_link "Chat", quick_reg_path || chats_path, "chats_nav" %>
         <%= global_nav_link "Deals+<span class=\"line2\">Extras</span>", quick_reg_path || "/deals_and_extras", "de_nav" %>
-        <%= global_nav_link "Travel<span class='line2'>Showcase</span>", quick_reg_path || '/showcase', "showcase_nav" %>
+        <%= global_nav_link "Travel<span class='line2'>Expo</span>", quick_reg_path || '/showcase', "showcase_nav" %>
       </ul>
     </div>
 
@@ -103,7 +103,7 @@
 
 
 
-  <div id="main">
+  <div id="main" style="overflow:hidden;">
     <div id="primary">
 
       <%#= yield %>
@@ -141,7 +141,7 @@
   <%#= stylesheet_link_tag "/themes/default/_css/style.css" %>
   <%= stylesheet_link_tag "/javascripts/jquery-ui/css/smoothness/jquery-ui.css" %>
 
-
+  <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "jquery-current" %>
   <%= javascript_include_tag "/javascripts/jquery-ui/js/jquery-ui.min.js" %>
   <%= javascript_include_tag "/javascripts/jquery/jquery.html5_form_custom.js" %>

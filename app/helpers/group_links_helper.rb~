@@ -1,0 +1,2 @@
+module GroupLinksHelper
+end

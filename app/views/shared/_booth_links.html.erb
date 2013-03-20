@@ -1,0 +1,17 @@
+<table id="booth_links">
+	<tbody>
+		<tr>
+			<th>URL</th>
+			<th>Text</th>
+	       </tr>
+		<% @booth_links.each do |booth_link| -%>
+		<tr id="booth_link_<%= booth_link.id %>">
+			<td><%= booth_link.url %></td>
+			<td><%= booth_link.text %></td>
+			
+                        <td><%= link_to_remove(booth_link) -%></td>
+			
+		</tr>
+		<% end -%>
+	</tbody>
+</table>

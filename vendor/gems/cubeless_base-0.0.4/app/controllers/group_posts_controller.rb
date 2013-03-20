@@ -8,6 +8,9 @@ class GroupPostsController < ApplicationController
     return redirect_to(group_path(@group)) unless @group.is_member?(current_profile) || current_profile.has_role?(Role::ShadyAdmin)
     @group_post = GroupPost.new
     @group_posts = @group.group_posts.all(:page => default_paging(4))
+    if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
+    end
   end
 
   def create
@@ -19,6 +22,9 @@ class GroupPostsController < ApplicationController
       @group_posts = @group.group_posts.all(:page => default_paging(4))
       add_to_errors @group_post
       render :template => 'group_posts/index'
+    end
+    if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
     end
   end
   
@@ -36,6 +42,9 @@ class GroupPostsController < ApplicationController
         end
       end
     end
+     if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
+    end
   end
 
   def show
@@ -44,6 +53,9 @@ class GroupPostsController < ApplicationController
     @group_posts = [post]
     @group = post.group
     render :template => 'group_posts/index'
+     if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
+    end
     # redirect_to group_talk_group_path GroupPost.find(params[:id]).group
   end
 
@@ -55,6 +67,9 @@ class GroupPostsController < ApplicationController
         add_to_errors(comment) unless comment.save
         redirect_to :back
       }
+    end
+     if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
     end
   end
 
