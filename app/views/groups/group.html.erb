@@ -20,7 +20,7 @@ content_for(:page_title, @group.name)
 <% else %>
 
 <div id="group_hub" <%= 'class="with_stream"' if group_member_or_public_content(@group) %>>
- <%= action_list_for([
+  <%= action_list_for([
   	(link_for_group_action(@group) unless hide_for_sponsor)
   ], :class => 'group_actions full_screen') -%>
 
@@ -60,7 +60,7 @@ content_for(:page_title, @group.name)
     </div>
     <% end -%>
 
-  <#% end %>
+  <% end %>
 <% end %>
 
 <% content_for :post_panel do %>
@@ -70,7 +70,5 @@ content_for(:page_title, @group.name)
 			<%= render :partial => 'widget_drive_bys' -%>
 		<% end -%>
 	</div>
-  <% end %>
-<%end%>
-
-<%end%>
+<% end %>
+<% end %>

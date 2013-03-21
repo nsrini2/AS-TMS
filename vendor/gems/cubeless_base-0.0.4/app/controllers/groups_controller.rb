@@ -299,6 +299,8 @@ class GroupsController < ApplicationController
     @group = Group.find_by_id(params[:id])
     @group_blog_tags=@group.blog.blog_posts.tag_counts
     @booth_links = @group.group_links.all
+     max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
+    @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
     #@group_links=@group.group_links
     #Rails.logger.info "Blog id is:" + @group_blog.id.to_s
     #@group_blog_tags=BlogPost.find_all_by_blog_id(@group_blog.id)

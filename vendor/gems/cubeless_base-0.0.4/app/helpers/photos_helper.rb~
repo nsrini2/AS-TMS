@@ -4,7 +4,6 @@ module PhotosHelper
 
   def primary_photo_for(model=nil, options={})
     options[:size] ||= @@thumb_sizes[options[:thumb] || :thumb]
-    Rails.logger.info "The size selected is:" + options[:size].to_s
     unless options[:hide_tooltip]
       tooltip = model.screen_name if model.is_a?(Profile) && !current_profile.is_sponsored? && model.visible?
     end
@@ -17,6 +16,22 @@ module PhotosHelper
       link_to_if(photo_linkable?(model, options), image_tag(primary_photo_path_for(model, options[:thumb]), :size => options[:size], :alt => "avatar", :class => "photo #{'tooltip' if tooltip}", :title => tooltip), photo_link(model), link_opts) +
       (options[:hide_status_indicator] ? "" : online_indicator_for(model).to_s ) +
       (options[:hide_group_icon] || !model.is_a?(Group) ? "" : group_icon(model).to_s)
+    end
+  end
+
+ def primary_booth_follow_photo_for(model=nil, options={})
+    options[:size] ||= @@thumb_sizes[options[:thumb] || :thumb]
+    unless options[:hide_tooltip]
+      tooltip = model.screen_name if model.is_a?(Profile) && !current_profile.is_sponsored? && model.visible?
+    end
+
+    if model.is_a?(Profile) && photo_linkable?(model, options)
+      link_opts = { :class => 'photo_link_to' }.merge(options.delete(:link_options) || {})
+    end
+    content_tag :div, :class => "photo_wrapper" do
+      (options[:hide_sponsor_sash] => true) +
+      link_to_if(photo_linkable?(model, options), image_tag(primary_photo_path_for(model, options[:thumb]), :size => options[:size], :alt => "avatar", :class => "photo #{'tooltip' if tooltip}", :title => tooltip), photo_link(model), link_opts) +
+      (options[:hide_status_indicator] => true)
     end
   end
 

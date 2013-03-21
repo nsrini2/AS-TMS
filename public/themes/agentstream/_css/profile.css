@@ -73,7 +73,7 @@
 
 /* line 20, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 .profile .tabs-panel #list {
-  background: #EFF8FA !important;
+  background: #eff8fa !important;
 }
 
 /* line 22, ../../../../app/stylesheets/themes/agentstream/profile.scss */
@@ -117,12 +117,12 @@
   z-index: 40;
   width: 150px;
   background: #ff9;
-  border: 3px solid #2392C9;
+  border: 3px solid #2392c9;
 }
 
 /* line 36, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 #photos .disabledPhotoHover .pad {
-  border: 1px solid #000;
+  border: 1px solid black;
   padding: 10px;
   padding: 10px;
 }
@@ -365,13 +365,13 @@
   font-size: 16px;
   color: #fff;
   font-weight: bold;
-  text-shadow: #111 4px 4px 3px;
+  text-shadow: #111111 4px 4px 3px;
 }
 
 /* line 127, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 #awards .award {
   margin: 15px auto 10px;
-  border: 4px solid #fff;
+  border: 4px solid white;
   padding: 1px;
   width: 90px;
   background: #f00;
@@ -417,7 +417,7 @@
 #profile_questions h3 {
   clear: both;
   margin: 0 0 15px;
-  border-bottom: 1px solid #C4D7DC;
+  border-bottom: 1px solid #c4d7dc;
   color: #1E678A;
   font-weight: bold;
 }
@@ -534,7 +534,7 @@ div.profile_results {
 div.profile_results div.profile {
   float: left;
   margin: 0 0 15px;
-  border: 1px solid #666;
+  border: 1px solid #666666;
   padding: 0 0 13px;
   width: 387px;
   background: transparent url(/images/userCardBG.png) repeat scroll 0 0;
@@ -1104,7 +1104,7 @@ span.profile_notification.urgent {
 /* stats */
 /* line 359, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 #stats_container {
-  border: 1px solid #C4D7DC;
+  border: 1px solid #c4d7dc;
   border-left: 0;
   border-right: 0;
   margin-top: 10px;
@@ -1128,7 +1128,7 @@ span.profile_notification.urgent {
 
 /* line 374, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 #stats table td {
-  border-right: 1px solid #C4D7DC;
+  border-right: 1px solid #c4d7dc;
   padding: 0 15px 0 15px;
   text-align: left;
 }
@@ -1180,14 +1180,14 @@ div.photo_wrapper {
 /* line 394, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 div.photo_wrapper img.online_now_indicator {
   position: absolute;
-  right: -2px;
+  right: -5px;
   bottom: -2px;
 }
 
 /* line 395, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 div.photo_wrapper img.sponsor_indicator {
   position: absolute;
-  bottom: -2px;
+  bottom: -1px;
   left: -4px;
 }
 
@@ -1297,7 +1297,7 @@ div.avatar_large {
 div#terms_and_conditions {
   height: 175px;
   overflow: auto;
-  border: 2px solid #ccc;
+  border: 2px solid #cccccc;
 }
 /* line 469, ../../../../app/stylesheets/themes/agentstream/profile.scss */
 div#terms_and_conditions p {

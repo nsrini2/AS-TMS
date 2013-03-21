@@ -29,6 +29,25 @@ ul.group_actions.full_screen {
   float: right;
 }
 
+/* Sponsored Group (Booth) Actions */
+
+.sponsor_group_actions {
+	text-align: left;
+}
+ul.sponsor_group_actions li {
+	display: inline;
+	margin: 0 20px 0 0px;
+}
+ul.sponsor_group_actions li a {
+  text-decoration: underline;
+}
+
+#group_action_list.group_actions {
+	float: left;
+}
+
+
+
 /* Sponsored group hub */
 #group_card_sponsored {
 position:absolute;
@@ -110,11 +129,11 @@ overflow:auto;
 }
 
 #booth_info #follow{
-float:left;
 margin-left:10px;
 margin-top:10px;
+margin-bottom:20px;
+min-height:300px;
 width:250px;
-height:200px;
 border:1px solid blue;
 }
 
@@ -122,17 +141,18 @@ border:1px solid blue;
 float:left;
 margin-left:10px;
 margin-top:10px;
+margin-bottom:20px;
 width:250px;
 height:200px;
 border:1px solid blue;
 }
 
-#booth_info #booth_links{
+#booth_info #booth_useful_links{
 float:left;
 margin-left:10px;
 margin-top:10px;
 width:250px;
-height:150px;
+min-height:150px;
 border:1px solid blue;
 margin-bottom:10px;
 }
@@ -207,6 +227,21 @@ height: 50px;
 width: 110px;
 align:center;
 padding-left:30px;
+}
+
+#booth_useful_links{
+text-align:center;
+}
+
+#booth_useful_links h5{
+margin-top:5px;
+margin-bottom:5px;
+}
+
+#booth_useful_links .click_me{
+font-size:1.2em;
+horizontal-align:center;
+margin-bottom:10px;
 }
 
 /* Group Hub */
@@ -332,13 +367,25 @@ padding-left:30px;
 	float: left;
 	width: 484px;
 }
+
+#booth_members_images_wrapper { 
+	width: 250px;
+        
+}
+
 	#members_images { position: relative; margin: 0; width: 484px; overflow: hidden; }
+        #booth_members_images { position: relative; margin-left: 30px; width: 200px; margin-right:25px; margin-top:10px; margin-bottom:10px; overflow: hidden; }
+
 		table#members { font-size: 0; }
 			table#members tbody {  }
 				table#members tbody tr {  }
 					table#members tbody tr td {  }
 						table#members tbody tr td div.photo_wrapper { margin: 0 3px 3px 0; }
-						table#members tbody tr td.last div.photo_wrapper { margin-right: 0; }
+                         			table#members tbody tr td.last div.photo_wrapper { margin-right: 0; }
+
+                                                table#booth_members tbody tr td div.photo_wrapper { margin: 0 3px 3px 0; }
+                         			table#booth_members tbody tr td.last div.photo_wrapper { margin-right: 0; }
+
 		#member_scrollers { width: 384px; }
 			#left_scroll { float: left; }
 			#right_scroll { float: right; }
