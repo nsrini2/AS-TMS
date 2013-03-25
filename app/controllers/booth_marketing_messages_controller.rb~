@@ -1,18 +1,16 @@
 class BoothMarketingMessagesController < ApplicationController
 
 allow_access_for :all => :sponsor_admin
+before_filter :set_group_booth_marketing_message
+ 
+ def index
+    render :layout => '/layouts/sponsored_group_manage_sub_menu'
+ end
 
-before_filter :set_booth_marketing_message
-
-  def index
-    @group = Group.find(params[:group_id])
-    @booth_marketing_messages = @group.booth_marketing_messages.all
-    render :template => 'booth_marketing_messages/booth_marketing_messages', :layout => '/layouts/sponsored_group'
-  end
-
-  def new
+ 
+ def new
     respond_to do |format|
-      format.js { render(:partial => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup') }
+      format.html { render(:partial => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup') }
     end
   end
 
@@ -78,7 +76,9 @@ before_filter :set_booth_marketing_message
 
   private
 
-  def set_booth_marketing_message
+  def set_group_booth_marketing_message
+    @group = Group.find(params[:group_id])
+    @booth_marketing_messages = @group.booth_marketing_messages.all
     @message = BoothMarketingMessage.find_or_initialize_by_id(params[:id])
   end
 

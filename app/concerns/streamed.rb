@@ -18,6 +18,7 @@ module Streamed
           when GroupPhoto then opts[:group_id] = self.owner_id
           when GroupMembership then opts.merge!(:profile_id => self.profile_id, :group_id => self.group_id)
           when ProfileAward then opts[:profile_id] = self.profile.id
+          when ProfilePhoto then opts[:profile_id] = self.owner_id
           else opts[:profile_id] = self.profile_id
         end
         Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
