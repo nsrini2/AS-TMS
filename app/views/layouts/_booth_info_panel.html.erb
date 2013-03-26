@@ -12,8 +12,8 @@
         </div>
   
         <div id="booth_useful_links">
-            <h5>Useful links</h5>
-             <% @booth_links.each do |booth_link| -%>
+            <h5>Interesting links</h5>
+             <% @group_links.each do |booth_link| -%>
               <span class="click_me">
                  <%= link_to booth_link.text, booth_link.url, :target => "_blank"-%>
               </span>

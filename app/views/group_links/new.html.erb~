@@ -7,7 +7,7 @@
 	<label for="group_link_text">Text</label><br />
 	<%= f.text_field :text, :size => 20, :maxlength => 40, :placeholder => "The text for this booth link" %><br/><br />
         <div class="buttons">
-	<%= f.submit "Create", :class => "button medium" %>
+	<%= f.submit "Create Booth Link", :class => "button medium" %>
         </div>
 </fieldset>
 <% end -%>
