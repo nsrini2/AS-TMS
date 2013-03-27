@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325121632) do
+ActiveRecord::Schema.define(:version => 20130327072551) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -199,6 +199,14 @@ ActiveRecord::Schema.define(:version => 20130325121632) do
   create_table "booth_marketing_messages", :force => true do |t|
     t.boolean  "active"
     t.text     "link_to_url"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "booth_videos", :force => true do |t|
+    t.string   "title"
+    t.string   "panda_video_id"
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"

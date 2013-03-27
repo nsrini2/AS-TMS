@@ -158,6 +158,7 @@ margin-bottom:10px;
 }
 
 .sponsored_group_events{
+border:1px solid #C4D7DC;
 float:left;
 width:300px;
 }
@@ -176,6 +177,17 @@ width:320px;
 border:1px solid violet;
 height:200px;
 }
+
+#browse{
+background: #90b4bc;
+font-size: .8em;
+padding: 3px 12px;
+margin-top:10px; 
+font-weight: bold; 
+text-align: center;
+width:  70px;
+}
+
 
 .group_marketing_message{
 float:right;

@@ -1,0 +1,15 @@
+<% content_for(:page_title, "Create a New Booth Video") -%>
+<% form_for(:booth_video,:url => group_booth_video_path, :html => {:id => "new_booth_video", :multipart => true}) do |f| %>
+<h5>New Booth Video</h5>
+<fieldset>
+	<input type="hidden" name="panda_video_id"/>
+        <label for="title">Title</label><br />
+        <%= f.text_field :title, :size => 32, :placeholder => "Title for the new booth video" %><br /><br />
+        <div class='progress'>
+                <span id="progress-bar" class='bar'></span>
+        </div>
+        <div id="browse">Choose file</div>
+        <%=f.submit "Upload video" %>
+<% end %>
+
+
