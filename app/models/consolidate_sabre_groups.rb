@@ -136,7 +136,7 @@ class ConsolidateSabreGroups
     ActiveRecord::Base.connection.execute(sql)
   end
   def self.consolidate!
-    groups_to_change = [[140,176],[171,176],[24,177],[25,177],[79,177],[84,177],[99,177]]
+    groups_to_change = [[140,176],[171,176],[24,177],[25,177],[79,177],[84,177],[99,177],[2,178],[3,178],[4,178],[62,178],[63,178],[69,178],[72,178],[163,178],[30,178],[28,179],[55,179],[98,179]]
     groups_to_change.each do |tuple|
       consolidator = ConsolidateSabreGroups.new(*tuple)
       update_methods = ConsolidateSabreGroups.instance_methods(false).select { |m| m[/^update_.*/] }

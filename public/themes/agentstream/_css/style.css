@@ -6652,7 +6652,7 @@ div#search_filter .accordionButton a {
   font-weight: normal;
   text-transform: lowercase;
 }
-.expert {
+/*.expert {
 	background: url("/images/expert.gif") no-repeat 0 0;
 	width: 86px;
 	height: 102px;
@@ -6660,4 +6660,4 @@ div#search_filter .accordionButton a {
 .expert img.photo {
 	margin: 3px;
 	border: none;
-}
+}*/
