@@ -1,5 +1,4 @@
 class ShowcaseMarketingMessagesController < ApplicationController
-  respond_to :html, :json
 
   allow_access_for :all => :sponsor_admin
 

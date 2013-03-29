@@ -72,7 +72,7 @@
 	</dl>
 	<%= action_list_for([
 		render_abuse(@photo),
-		(link_to("delete", group_gallery_photo_path(@group, @photo), :class => "delete") if editable_content_for(@photo))
+		(link_to("delete", group_gallery_photo_path(@group, @photo), :class => "modal delete") if editable_content_for(@photo))
 	])%>
 </div>
 

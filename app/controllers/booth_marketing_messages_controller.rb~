@@ -1,16 +1,17 @@
 class BoothMarketingMessagesController < ApplicationController
+  
 
-before_filter :set_group_booth_marketing_message
-before_filter :find_booth_details
+  before_filter :set_group_booth_marketing_message
+  before_filter :find_booth_details
 
  def index
-      @booth_marketing_messages = BoothMarketingMessage.find(:all, :conditions => ['group_id =?',@group.id]).paginate(:page => params[:booth_marketing_page], :per_page => 8)
+      @booth_marketing_messages = BoothMarketingMessage.find(:all, :conditions => ['group_id =?',@group.id]).paginate(:page => params[:booth_marketing_page], :per_page => 5)
      render :layout => '/layouts/sponsored_group_manage_sub_menu'
  end
 
  def new
     respond_to do |format|
-      format.html { render(:partial => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup') }
+      format.js { render(:partial => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup') }
     end
   end
 
