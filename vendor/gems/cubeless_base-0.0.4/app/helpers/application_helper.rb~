@@ -274,9 +274,25 @@ module ApplicationHelper
       nil # link_for_group_action(group) 
     end
   end
+
+  def link_for_sponsor_group_members_action(group)
+    if group.sponsor_group_invitation_can_be_sent_by?(current_profile)
+      link_to("invite someone", new_group_invitation_path(:group_id => group.id), :class => "modal invite")
+    else
+      nil # link_for_group_action(group) 
+    end
+  end
   
   def link_for_resend_action(group)
     if group.invitation_can_be_accepted_or_sent_by?(current_profile)
+      link_to("Resend ALL Invitations", resend_all_group_path(group), :class => "invite_all")
+    else
+      nil # link_for_group_action(group)
+    end
+  end
+
+  def link_for_resend_sponsor_group_action(group)
+    if group.sponsor_group_invitation_can_be_sent_by?(current_profile)
       link_to("Resend ALL Invitations", resend_all_group_path(group), :class => "invite_all")
     else
       nil # link_for_group_action(group)
@@ -348,7 +364,7 @@ module ApplicationHelper
       data.merge!({ :height => options[:height] }) if options[:height]
       data.merge!({ :placeholder => options[:placeholder] }) if options[:placeholder]
       data.merge!({ :maxlength => options[:maxlength] }) if options[:maxlength]
-      #val += content_tag(:script, data.to_json, :type => "application/json")
+      val += content_tag(:script, data.to_json, :type => "application/json")
     end
     content_tag( options[:tag] || :p, replace_newline_with_br(editable ? val : auto_link(val, :all)), html_options )
   end

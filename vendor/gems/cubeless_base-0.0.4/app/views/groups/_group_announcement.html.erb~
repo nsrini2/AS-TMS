@@ -1,0 +1,6 @@
+<% if !group_announcement.blank? && group_announcement.is_active? -%>
+<div id="group_announcement" class="widget">
+	<div class="header"><h3>Group Announcement</h3></div>
+	<div class="content"><%= @group.group_announcement.content %></div>
+</div>
+<% end -%>

@@ -8,8 +8,13 @@ content_for(:page_title, "Members of #{@group.name}")
 	<div>
 		No members in this group 
 	</div>
-<% else -%>
-<div class="sponsored_group_members">
+  <% else -%>
+  <% action_list_items = [
+		(link_for_group_members_action(@group)),
+		(link_for_resend_sponsor_group_action(@group))
+	].uniq.compact %>
+	<%= action_list_for(action_list_items, :class => 'sponsor_group_actions', :id => "sponsor_group_action_list") unless action_list_items.empty? -%>
+     <div class="sponsored_group_members">
 		<%= render :partial => 'groups/sponsor_member_card', :locals => { :member => @members.first } -%>
 		<%= render :partial => 'groups/member_table' -%>
 		<dl class="sponsor_group_owner">

@@ -32,7 +32,7 @@ gem "rest-client", '1.6.1'
 gem "hashie", '>= 0.4.0'
 gem "microreviewr", :require => 'microreview', :path => 'vendor/gems/microreviewr-0.1.2'
 
-gem 'panda', '0.2.1'
+gem 'panda', '1.6.0'
 
 # Deploy with Capistrano
 gem 'capistrano', '2.5.18'

@@ -1,5 +1,4 @@
 class ShowcaseMarketingMessagesController < ApplicationController
-  respond_to :html, :json
 
   allow_access_for :all => :sponsor_admin
 
@@ -13,7 +12,6 @@ class ShowcaseMarketingMessagesController < ApplicationController
 
   def create
     @message.marketing_image = MarketingImage.new(params[:asset])
-    @message.group_id=@group.id
     @message.save if @message.marketing_image.valid?
     respond_to do |format| 
       format.html {

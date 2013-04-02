@@ -5,9 +5,9 @@
 <% account = @sponsor_accounts[index] -%>
 <% klass = index%2 != 0 ? 'even' : 'odd' -%>
 <div class="sponsor_account sponsor_account_<%= klass %>">
-        <h3><%= account.name%></h3>
+        <h4><%= account.name%></h4>
         <%#if !@sponsor_accounts.size==0%>
-        <%= image_tag(account.showcase_category_image.public_filename(:medium))%>
+        <%= image_tag(account.showcase_category_image.filename(:medium))%>
         <%#end%>
 	<p class="sponsor_account_notes"><%= replace_newline_with_br(auto_link(account.notes, :all))%></p>
 	<p><a href="<%= sponsor_account_sponsor_groups_path(account) %>"><%= pluralize(account.groups.size, 'booth') %> created</a> - <%= pluralize (account.group_slots_remaining, 'unused booth slot') %></p>

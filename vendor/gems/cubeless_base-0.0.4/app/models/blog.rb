@@ -8,6 +8,8 @@ class Blog < ActiveRecord::Base
 
   belongs_to :owner, :polymorphic => true
 
+  belongs_to :group
+
   def tags(limit=false)
     sql = <<-EOS
             SELECT tags.name, count(0) as total 

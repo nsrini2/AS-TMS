@@ -9,6 +9,8 @@ class Group < ActiveRecord::Base
 
   has_many :group_links, :dependent => :destroy
 
+  has_one :booth_video, :dependent => :destroy
+
   has_many :notes, :order => 'notes.created_at DESC', :include => [:sender,:abuse], :as => :receiver
 
   has_many :group_memberships, :dependent => :destroy
@@ -182,6 +184,10 @@ class Group < ActiveRecord::Base
   def invitation_can_be_accepted_or_sent_by?(profile)
     !profile.has_role?(Role::SponsorMember) && ((self.moderators.count > 0 && !self.is_public? ? self.is_moderator?(profile) : self.is_member?(profile) ) || self.is_owner?(profile))
   end
+
+ def sponsor_group_invitation_can_be_sent_by?(profile)
+    self.is_owner?(profile) || (self.moderators.count > 0 && !self.is_public? ? self.is_moderator?(profile) : self.is_member?(profile))
+ end
 
   def is_private_and_members_include?(profile)
     is_private? && is_member?(profile)

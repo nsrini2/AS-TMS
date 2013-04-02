@@ -46,6 +46,12 @@ module GroupsHelper
     block_text if current_profile.has_role?(Role::ShadyAdmin) || group.is_member?(current_profile)
   end
 
+  def booth_admin_or_shady_or_cubeless_admin_content(group, &block)
+    # yield if current_profile.has_role?(Role::ShadyAdmin) || current_profile.has_role?(Role::CubelessAdmin) ||  group.is_group_admin?(current_profile)
+    block_text = capture(&block)
+    block_text if group.is_group_admin?(current_profile) || current_profile.has_role?(Role::ShadyAdmin) || current_profile.has_role?(Role::CubelessAdmin)
+  end
+
   def non_private_content(group, &block)
     # yield unless group.is_private?
     block_text = capture(&block)
