@@ -34,6 +34,8 @@ AgentStream::Application.routes.draw do
   resources :offers
   
   resources :favorites
+
+  match "/panda/authorize_upload", :to => "panda#authorize_upload"
   
   # MM2: Make DE the default report route
   match "/reports/prepare/*p", :to => "reports#prepare"
@@ -389,8 +391,10 @@ AgentStream::Application.routes.draw do
   resources :groups do
     member do
       post :resend_all
-      get :booth_marketing_messages
+      get :get_booth_marketing_messages
       get :get_group_links
+      get :get_booth_video
+      get :get_booth_de
       put :update
       post :remove_member
       get :stats_summary
@@ -420,6 +424,8 @@ AgentStream::Application.routes.draw do
     end
 
     resources :group_links
+    
+    resource :booth_video
     
     resources :photos
     resource :blog do

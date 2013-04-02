@@ -62,8 +62,8 @@ module MarketingMessagesHelper
     showcase_marketing_message.marketing_image.public_filename(which)
   end
 
- def link_to_create_booth_marketing_message
-    link_to("new booth marketing message", new_booth_marketing_message_path(), :class => "modal new_marketing_image")
+ def link_to_create_booth_marketing_message(group)
+    link_to("new booth marketing message", new_group_booth_marketing_message_path(group), :class => "modal new_marketing_image", :remote => true)
   end
 
   def booth_marketing_image_tag(message)

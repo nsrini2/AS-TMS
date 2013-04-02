@@ -1,16 +1,15 @@
 class BoothMarketingMessagesController < ApplicationController
+  
 
-allow_access_for :all => :sponsor_admin
+  before_filter :set_group_booth_marketing_message
+  before_filter :find_booth_details
 
-before_filter :set_booth_marketing_message
+ def index
+      @booth_marketing_messages = BoothMarketingMessage.find(:all, :conditions => ['group_id =?',@group.id]).paginate(:page => params[:booth_marketing_page], :per_page => 5)
+     render :layout => '/layouts/sponsored_group_manage_sub_menu'
+ end
 
-  def index
-    @group = Group.find(params[:group_id])
-    @booth_marketing_messages = @group.booth_marketing_messages.all
-    render :template => 'booth_marketing_messages/booth_marketing_messages', :layout => '/layouts/sponsored_group'
-  end
-
-  def new
+ def new
     respond_to do |format|
       format.js { render(:partial => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup') }
     end
@@ -78,8 +77,17 @@ before_filter :set_booth_marketing_message
 
   private
 
-  def set_booth_marketing_message
+  def set_group_booth_marketing_message
+    @group = Group.find(params[:group_id])
+    @booth_marketing_messages = @group.booth_marketing_messages.all
     @message = BoothMarketingMessage.find_or_initialize_by_id(params[:id])
+  end
+
+  def find_booth_details
+    @group = Group.find(params[:group_id])
+    @group_links = @group.group_links.all
+     max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
+    @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
   end
 
 end

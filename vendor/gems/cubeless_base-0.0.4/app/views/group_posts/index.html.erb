@@ -3,6 +3,12 @@ content_for(:group_talk_tab, 'selected')
 content_for(:page_title, "Group Talk for #{@group.name}")
 -%>
 <%= render :partial => 'group_posts/group_post_form' if @group.is_member?(current_profile) -%>
+<%if @group.is_sponsored? %>
+<div id="booth_group_posts">
+	<%= render :partial => 'group_posts/group_posts' -%>
+</div>
+<%else%>
 <div id="group_posts">
 	<%= render :partial => 'group_posts/group_posts' -%>
 </div>
+<%end%>
