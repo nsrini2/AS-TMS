@@ -57,22 +57,22 @@
       <%= render :partial => "/questions/hub", :locals => { :question => @latest_question } %>
     <% end %>
   </div>
-  <div id="news_posts" class="module">
-    <%= render :partial=> "/hub/news_posts", :locals => { :news_posts => @news_posts }%>
+  <!--<div id="news_posts" class="module">
+    <%#= render :partial=> "/hub/news_posts", :locals => { :news_posts => @news_posts }%>
   </div>
   <div id="groups" class="module">
-    <%= render :partial => "/hub/groups", :locals => { :groups => @groups } %>
+    <%#= render :partial => "/hub/groups", :locals => { :groups => @groups } %>
   </div>
   <div id="deals" class="module">
-    <%= render :partial => "/hub/deals", :locals => { :deals => @deals } %>
-  </div>
+    <%#= render :partial => "/hub/deals", :locals => { :deals => @deals } %>
+  </div>-->
   <div id="blog_posts" class="module">
     <%= render :partial=> "/hub/blog_posts", :locals => { :blog_posts => @blog_posts }%>
   </div>
   <div id="statistics" class="module">
     <%= render :partial => "/hub/stats", :locals => { :profile_stats => @profile_stats }%>
   </div>
-  <div id="widget" class="widget">
+  <!--<div id="widget" class="widget">
     <div class="module last">
       <% if false %>
         <% (1..@widgets.keys.size).to_a.reverse.each do |idx| %>      
@@ -80,5 +80,5 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+  </div>-->
 </div>
