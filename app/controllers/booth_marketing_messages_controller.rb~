@@ -1,6 +1,5 @@
 class BoothMarketingMessagesController < ApplicationController
   
-
   before_filter :set_group_booth_marketing_message
   before_filter :find_booth_details
 

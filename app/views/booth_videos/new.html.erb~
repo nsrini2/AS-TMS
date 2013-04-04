@@ -7,8 +7,12 @@
         <%= f.text_field :title, :size => 32, :placeholder => "Title for the new booth video" %><br /><br />
         <div class='progress'><span id="progress-bar" class='bar'></span></div>
         <div id="file-drop">Drop files here</div>
-        <div id="browse">Choose file</div>
+        <div id="browse-files">Choose file</div>
         <%=f.submit "Upload video" %>
 <% end %>
+
+ <%= javascript_tag "var AUTH_TOKEN_PANDA = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+<script src="/javascripts/panda_uploader/panda_upload.js"></script>
+
 
 

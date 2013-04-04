@@ -4,14 +4,14 @@
 	<h3>Group Details</h3>
 	<dl class="group_details">
 		<dt class="name"><label for="group_name">Name</label></dt>
-		<dd class="name"><%= f.text_field :name, :size => nil, :tabindex => 1, :maxlength => '200' -%></dd>
+		<dd class="name"><%= f.text_field :name, :size => nil, :tabindex => 1, :maxlength => '100' -%></dd>
 		<dt><label>Photo</label></dt>
 		<dd class="photo"><input type="file" name="asset[uploaded_data]" id="asset_uploaded_data" tabindex="2"></dd>
 		<dd class="photo"><%= primary_photo_for(@group, :thumb => :thumb, :hide_group_icon => true) %></dd>
 		<dt class="description"><label for="group_description">Description</label></dt>
-		<dd class="description"><%= f.text_area :description, :rows => nil, :cols => nil, :tabindex => 3, :maxlength => '1000' -%></dd>
+		<dd class="description"><%= f.text_area :description, :rows => nil, :cols => nil, :tabindex => 3, :maxlength => '500' -%></dd>
 		<dt class="tags"><label for="group_tags">Tags</label></dt>
-		<dd class="tags"><%= f.text_field :tags, :size => nil, :tabindex => 4, :maxlength => '600' -%></dd>
+		<dd class="tags"><%= f.text_field :tags, :size => nil, :tabindex => 4, :maxlength => '300' -%></dd>
 		<dt class="group_type"><label>Group Type</label></dt>
 		<dd class="group_type">
 			<%= radio_button("group", "group_type", 0, :id => 'public_group_type', :tabindex => 5) %><label for="public_group_type">Public</label>

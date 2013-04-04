@@ -20,7 +20,7 @@ respond_to :html, :json
     @group_link.group_id=params[:group_id]
     if @group_link.save
        flash[:notice] = "A new booth link was created!"
-       redirect_to group_group_links_path(@group),:group_links_page => (@group.group_links.count/10.to_f).ceil
+       redirect_to group_group_links_path(@group), :group_links_page => (@group.group_links.count/10.to_f).ceil
      else
        flash[:errors] = @group_link.errors
        render :action => "new", :layout => '/layouts/sponsored_group_manage_sub_menu'

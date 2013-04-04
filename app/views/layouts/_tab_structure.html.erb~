@@ -43,6 +43,18 @@
           <div style="clear: both;"></div>
         </div>
       </div>
+      <% if content_for? :post_panel %>
+        <div class="post-panel">
+          <%= yield :post_panel %>
+        </div>
+      <% end %>
+    </div>
+  
+    <% if content_for? :aside %>
+      <div class="aside">
+      	<%= yield :aside %>
+      </div>
+    <% end %>
       
   <% elsif content_for? :tabs %>
    <div class="profile">
@@ -61,7 +73,7 @@
       
       <% if content_for? :post_panel %>
         <div class="post-panel">
-          <%#= yield :post_panel %>
+          <%= yield :post_panel %>
         </div>
       <% end %>
     </div>

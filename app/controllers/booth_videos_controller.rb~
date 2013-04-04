@@ -3,18 +3,16 @@ class BoothVideosController < ApplicationController
   before_filter :find_booth_details
 
  def show
-    #@original_video = @group_video.panda_video
-    #@h264_encoding = @original_video.encodings["h264"]
     render :template => 'booth_video/booth_video', :layout => 'sponsored_group_manage_sub_menu'
-  end
+ end
 
   def new
-    @video = Video.new
+    @video = BoothVideo.new
     render :layout => 'sponsored_group_manage_sub_menu'
   end
 
   def create
-    @video = Video.create!(params[:video])
+     @video = BoothVideo.create!(params[:video])
     redirect_to :action => :show, :id => @video.id 
   end
 

@@ -5,7 +5,7 @@ blog_explore = false unless defined?(blog_explore)
 preview = false unless defined?(preview)
 -%>
 <div id="<%= "list" unless blog_explore %>">
-  <div class="list_item blog_post_item <%= classname %>">
+  <div class="list_item blog_post_item <%= classname %>" >
     <%= link_to_avatar_for(blog_post.profile) if blog_explore || blog_post.root_parent.is_a?(Group) -%>
     <div class="details">
       <h3><%= (full_post || preview) ? blog_post.title : link_to(blog_post.title, blog_post_path(blog_post)) %></h3>

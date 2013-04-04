@@ -1581,8 +1581,8 @@ $.fn.extend({
 
 
 
-panda.uploader.init({
-   'buttonId': 'browse',
+var upl=panda.uploader.init({
+   'buttonId': 'browse-files',
    'progressBarId': "progress-bar",
    'fileDropId': "file-drop",
    

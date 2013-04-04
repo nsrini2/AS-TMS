@@ -309,9 +309,10 @@ class GroupsController < ApplicationController
     @group_links = @group.group_links.all
     max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
     @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
-    #@group_links=@group.group_links
-    #Rails.logger.info "Blog id is:" + @group_blog.id.to_s
-    #@group_blog_tags=BlogPost.find_all_by_blog_id(@group_blog.id)
+    @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
+    @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
+    @minTagOccurs=@group_blog_tags.first[:count]
+    @maxTagOccurs=@group_blog_tags.last[:count]
     redirect_to groups_explorations_path unless @group
   end
 

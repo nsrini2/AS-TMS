@@ -197,10 +197,11 @@ height:150px;
 margin-top:10px;
 }
 
- .vb { font-size: 1.0em; }
-  .b { font-size: 1.2em; }
-  .m { font-size: 1.4em; }
-  .s { font-size: 1.6em; }
+#booth_tag_cloud{
+text-align:justify;
+margin-top:10px;
+vertical-align:middle;
+}
 
 
 table #booth_marketing{
@@ -577,14 +578,14 @@ span.topic_buttons {
 		form#new_group_post div.buttons { margin: 20px 0; text-align: center; }
 		form#new_group_post p.meta { text-align: center; color: #333; font-size: 11px; }
 
-	#group_posts { width: 500px; margin-left: 140px; float: left;border:1px solid red }
+	#group_posts { width: 500px; margin-left: 140px; float: left;}
 		#group_posts:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 		#group_posts div.group_post_item { padding-bottom: 2px; }
 			#group_posts div.photo_wrapper { float: left;}
 			#group_posts div.details { margin-left: 65px; width: 400px; }
 				#group_posts div.details h5 { margin-bottom: 0;}
 
-        #booth_group_posts { width: 350px; margin-left: 5px; margin-top:30px; float: left;border:1px solid red }
+        #booth_group_posts { width: 350px; margin-left: 5px; margin-top:30px; float: left;}
 		#booth_group_posts:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 		#booth_group_posts div.group_post_item { padding-bottom: 2px; }
 			#booth_group_posts div.photo_wrapper { float: left;}

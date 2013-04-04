@@ -46,7 +46,11 @@ module BlogsHelper
     link_to_if(params[:tag] != name, name + (count ? "&nbsp;(#{total})" : ""), "#{polymorphic_path([owner, :blog])}?tag=#{name}")
   end
 
-  def link_to_tags(owner, tags)
+  def link_to_booth_tag(owner, tag)
+    link_to(tag, "#{polymorphic_path([owner, :blog])}?tag=#{name}")
+  end
+
+   def link_to_tags(owner, tags)
     result = []
     tags.sort.each do |tag|
       result << link_to_tag(owner, tag)
