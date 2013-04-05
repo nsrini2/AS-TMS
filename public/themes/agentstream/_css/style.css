@@ -4041,7 +4041,7 @@ ul.sponsor_group_actions li a {
 
 /* line 200, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #booth_tag_cloud {
-  text-align: justify;
+  text-align: center;
   margin-top: 10px;
   vertical-align: middle;
 }

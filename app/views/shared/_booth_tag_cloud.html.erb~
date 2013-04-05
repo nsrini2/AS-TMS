@@ -1,5 +1,5 @@
 <div id="booth_tag_cloud">
-  <% @group_blog_tags.sort_by{rand}.each do |tag| %>
-  <%= link_to_booth_tag(@group,tag,minTagOccurs,maxTagOccurs) %>
+  <% @group_blog_tags.each do |tag| %>
+  <%= link_to_booth_tag(@group,tag,@minTagOccurs,@maxTagOccurs) %>
   <% end %>
 </div>
