@@ -116,7 +116,7 @@ div.question div.item_text {
 }
 /* line 56, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.question div.item_text span, div.question div.item_text a {
-  font-size: 1.3em !important;
+  font-size: 0.9em !important;
 }
 /* line 60, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.question ul.action_list {

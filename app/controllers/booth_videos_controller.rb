@@ -1,6 +1,11 @@
 class BoothVideosController < ApplicationController
 before_filter :find_booth_details
 
+  def show
+    render :layout => 'sponsored_group_manage_sub_menu'
+  end
+
+
   def new
     @booth_video = BoothVideo.new
     render :layout => 'sponsored_group_manage_sub_menu'
@@ -8,22 +13,38 @@ before_filter :find_booth_details
 
   def create
     @booth_video = BoothVideo.new(params[:booth_video])
+    @booth_video.group_id = params[:group_id]
     if params[:marketing_video_file].blank?
        flash[:errors] = "We need a video file for creating this booth video"
        render :action => "new"
     else
        @booth_video.marketing_video=MarketingVideo.new(:uploaded_data => params[:marketing_video_file])
-       @booth_video.convert
-       #flash[:notice] = 'Video has been uploaded'
-       #redirect_to :action => 'show'
-       #else
-       #render :action => 'new'
+       @booth_video.save
+       Rails.logger.info("Values are: Video - #{@booth_video.marketing_video.public_filename.to_s}")
+       #@booth_video.marketing_video.convert
+       flash[:notice] = 'Video has been uploaded'
+       redirect_to :action => 'show'
     end
   end
 
-  def show
-    @video = BoothVideo.find(params[:id])
-    render :template => 'booth_video/booth_video', :layout => 'sponsored_group_manage_sub_menu'
+  def edit
+    @booth_video = BoothVideo.find(params[:id])
+    @video_filename = @booth_video.marketing_video.filename
+  end
+
+  def update
+    @booth_video = BoothVideo.find(params[:id])
+    @booth_video.update_attributes(params[:booth_video])
+    if @booth_video.save
+        if params[:showcase_category_image_file] && !params[:showcase_category_image_file].blank?
+           @sponsor_account.showcase_category_image = ShowcaseCategoryImage.new(:uploaded_data => params[:showcase_category_image_file])
+        end
+        flash[:notice] = "Showcase category #{@sponsor_account.name} was updated!"
+        redirect_to sponsor_accounts_path
+    else
+         flash[:errors] = @sponsor_account.errors
+         redirect_to edit_sponsor_account_path(@sponsor_account)
+    end
   end
   
   def delete

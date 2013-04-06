@@ -1,5 +1,4 @@
 <% content_for :content do -%>
-
   <% if content_for? :tab_heading %>
     <h2 class="page_title">
       <%= yield :tab_heading %>
@@ -9,29 +8,23 @@
   <% if content_for? :sponsored_group_about %>
      <div class="about">
         <%= yield :sponsored_group_about %>
-     </div>
+   </div>
   <% end %>
 
-  <% if content_for? :announcement_panel %>
-     <div class="sponsor_group_announcement">
-       <%=yield :announcement_panel %>
-     </div>
-  <% end %>
-
- <% if content_for? :booth_info_panel %>
+  <% if content_for? :booth_info_panel %>
      <div class="booth_user_info">
        <%=yield :booth_info_panel %>
      </div>
   <% end %>
-
-  <% if content_for? :booth_social_feeds_panel %>
-     <div class="booth_social_feeds">
-       <%=yield :booth_social_feeds_panel %>
-     </div>
+      
+  <% if content_for? :announcement_panel %>
+    <div class="sponsor_group_announcement">
+       <%=yield :announcement_panel %>
+    </div>
   <% end %>
 
-<% if content_for? :sponsored_group_tabs %>
-   <div class="profile">
+ <% if content_for? :sponsored_group_tabs %>
+   <div class="sponsor_grp">
     <div class="primary <%= "full_length" unless content_for?(:aside) %>">
       <div class="sponsor_tabs"> 
       	<ul class="sponsor_tabs-nav standard">
@@ -43,7 +36,15 @@
           <div style="clear: both;"></div>
         </div>
       </div>
-      
+     </div>
+   </div>
+
+  <% if content_for? :booth_social_feeds_panel %>
+     <div class="booth_social_feeds">
+       <%=yield :booth_social_feeds_panel %>
+     </div>
+  <% end %>
+
       
   <% elsif content_for? :tabs %>
    <div class="profile">

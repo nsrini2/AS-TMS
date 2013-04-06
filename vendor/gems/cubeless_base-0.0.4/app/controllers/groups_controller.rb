@@ -93,7 +93,7 @@ class GroupsController < ApplicationController
 
   def get_booth_video
      #@booth_video=BoothVideo.find(:conditions => ['group_id =?',@group.id])
-     render :template => 'booth_videos/show', :layout => '/layouts/sponsored_group_manage_sub_menu'
+     render :template => 'booth_videos/booth_video', :layout => '/layouts/sponsored_group_manage_sub_menu'
   end
 
   def get_booth_de

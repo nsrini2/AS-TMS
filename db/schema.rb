@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404105149) do
+ActiveRecord::Schema.define(:version => 20130405073916) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130404105149) do
     t.string  "type"
     t.integer "owner_id"
     t.string  "owner_type"
+    t.string  "state"
   end
 
   add_index "attachments", ["owner_type", "owner_id"], :name => "index_attachments_on_owner_type_and_owner_id"
@@ -207,7 +208,6 @@ ActiveRecord::Schema.define(:version => 20130404105149) do
   create_table "booth_videos", :force => true do |t|
     t.string   "title"
     t.integer  "group_id"
-    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

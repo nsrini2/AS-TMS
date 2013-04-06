@@ -1,6 +1,6 @@
 <div id="questions">
     <%if referred_questions.size > 0%>
-        <h3>Questions Referred To This Group</h3>
+        <h5>Questions Referred To This Group</h5>
             <%= render_referred_questions_for @group, referred_questions, @group.editable_by?(current_profile) %>
 		<div id="paging">
         	<%= will_paginate referred_questions %>
