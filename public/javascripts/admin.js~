@@ -10,7 +10,8 @@ $(document).ready(function() {
 		.find('.archive').confirm_post("Are you sure you want to archive this award?").end()
 		.find('.unarchive').confirm_post("Are you sure want to unarchive this award?").end()
 		.find('.toggle_marketing_message').toggle_marketing_message().end()
-		.find('.new_marketing_image, .change_marketing_image').setup_marketing_message_links().end()
+		.find('.new_marketing_image').setup_marketing_message_links().end()
+		.find('.change_marketing_image').setup_marketing_message_links().end()
 		.find('.view_recipients').setup_recipients_link().end()
 		.find('.user_actions').setup_user_actions().end()
 		.find('#user_setup_form').create_screen_name().end();
@@ -41,7 +42,7 @@ $.fn.extend({
 		return this.live('click', function(event) {
 			var $this = $(this);
 			$.ajax({
-				//url: $this.attr('href'), dataType: 'html', type: 'get', 
+				url: $this.attr('href'), dataType: 'html', type: 'get', 
 				success: function(data) {
 					var $dialog = $(data);
 					$dialog

@@ -27,30 +27,52 @@ ul.group_actions li a.button:hover {
 }
 ul.group_actions.full_screen {
   float: right;
+
 }
 
 /* Sponsored Group (Booth) Actions */
 
-.sponsor_group_actions {
-	text-align: left;
+.booth_actions {
+	text-align: center;
 }
-ul.sponsor_group_actions li {
-	display: inline;
-	margin: 0 20px 0 0px;
+
+ul.booth_actions li {
+       display: inline;
+       margin: 0 20px 0 0px;
+       font-size:1.2em;
+       font-style:bold;
 }
-ul.sponsor_group_actions li a {
+
+ul.booth_actions li a {
   text-decoration: underline;
 }
 
-#sponsor_group_actions_list.sponsor_group_actions {
-	float: left;
+ul.booth_actions li a.button {
+  border: 1px solid #DE3636;
+  border-radius:10px;
+  text-decoration: none;
+  margin-left:25px;
+  padding-top:6px;
+  padding-bottom:6px;
+  background-color:#DE3636;
+  text-align:center;
+  font-size:1.1em;
 }
 
+ul.booth_actions li a.button:hover {
+  border: 1px solid #ccc;
+}
+
+#booth_action_list.booth_actions {
+	margin-left:20px;
+        margin-top:10px;
+        text-align:center;
+}
 
 
 /* Sponsored group hub */
 #group_card_sponsored {
-position:absolute;
+position:relative;
 width: 655px;
 height:220px;
 border: 1px solid #C0C0C0;
@@ -85,7 +107,7 @@ width: 655px;
 height:30px;
 margin-left:10px;
 float:left;
-margin-top:240px;
+margin-top:5px;
 position:relative;
 display:table;
 overflow:hidden;
@@ -96,7 +118,7 @@ margin-bottom:15px;
 
 #group_announcement #announcement_text{
 position:absolute;
-top:40%;
+top:35%;
 height:30%;
 margin-left:2%;
 width:20%;
@@ -115,7 +137,7 @@ vertical-align:middle;
 text-align:justify;
 }
 
-#booth_info{
+#booth_info, #booth_user_info{
 margin-right:10px;
 border:1px solid #C4D7DC;
 width:270px;
@@ -134,7 +156,6 @@ margin-top:10px;
 margin-bottom:20px;
 min-height:300px;
 width:250px;
-border:1px solid blue;
 }
 
 #booth_info #booth_tags{
@@ -144,7 +165,6 @@ margin-top:10px;
 margin-bottom:20px;
 width:250px;
 height:200px;
-border:1px solid blue;
 }
 
 #booth_info #booth_useful_links{
@@ -153,8 +173,15 @@ margin-left:10px;
 margin-top:10px;
 width:250px;
 min-height:150px;
-border:1px solid blue;
 margin-bottom:10px;
+}
+
+.booth_social_feeds{
+float:left;
+clear:both;
+border: 1px solid #C4D7DC;
+width:100%;
+height:65px;
 }
 
 .sponsored_group_events{
@@ -192,15 +219,15 @@ width:  70px;
 .group_marketing_message{
 float:right;
 width:320px;
-border:1px solid magenta;
 height:150px;
 margin-top:10px;
 }
 
- .vb { font-size: 1.0em; }
-  .b { font-size: 1.2em; }
-  .m { font-size: 1.4em; }
-  .s { font-size: 1.6em; }
+#booth_tag_cloud{
+text-align:center;
+margin-top:10px;
+vertical-align:middle;
+}
 
 
 table #booth_marketing{
@@ -258,6 +285,17 @@ margin-bottom:5px;
 font-size:1.2em;
 horizontal-align:center;
 margin-bottom:10px;
+}
+
+/*Booth Questions*/
+#question_item_odd{
+background: #f0f0f0;
+}
+
+#question_item_even{
+margin-bottom: 12px;
+font-size: 13px;
+border-top:1px solid black;
 }
 
 /* Group Hub */
@@ -387,11 +425,11 @@ margin-bottom:10px;
 
 #booth_members_images_wrapper { 
 	width: 250px;
-        
+        margin-bottom:5px;
 }
 
 	#members_images { position: relative; margin: 0; width: 484px; overflow: hidden; }
-        #booth_members_images { position: relative; margin-left: 30px; width: 200px; margin-right:25px; margin-top:10px; margin-bottom:10px; overflow: hidden; }
+        #booth_members_images { position: relative; margin-left: 30px; width: 200px; margin-right:25px; margin-top:10px; margin-bottom:10px; overflow: hidden;}
 
 		table#members { font-size: 0; }
 			table#members tbody {  }
@@ -400,7 +438,7 @@ margin-bottom:10px;
 						table#members tbody tr td div.photo_wrapper { margin: 0 3px 3px 0; }
                          			table#members tbody tr td.last div.photo_wrapper { margin-right: 0; }
 
-                                                table#booth_members tbody tr td div.photo_wrapper { margin: 0 3px 3px 0; }
+                                                table#booth_members tbody tr td div.photo_wrapper { margin: 0 3px 0 0;}
                          			table#booth_members tbody tr td.last div.photo_wrapper { margin-right: 0; }
 
 		#member_scrollers { width: 384px; }
@@ -577,14 +615,14 @@ span.topic_buttons {
 		form#new_group_post div.buttons { margin: 20px 0; text-align: center; }
 		form#new_group_post p.meta { text-align: center; color: #333; font-size: 11px; }
 
-	#group_posts { width: 500px; margin-left: 140px; float: left;border:1px solid red }
+	#group_posts { width: 500px; margin-left: 140px; float: left;}
 		#group_posts:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 		#group_posts div.group_post_item { padding-bottom: 2px; }
 			#group_posts div.photo_wrapper { float: left;}
 			#group_posts div.details { margin-left: 65px; width: 400px; }
 				#group_posts div.details h5 { margin-bottom: 0;}
 
-        #booth_group_posts { width: 350px; margin-left: 5px; margin-top:30px; float: left;border:1px solid red }
+        #booth_group_posts { width: 350px; margin-left: 5px; margin-top:30px; float: left;}
 		#booth_group_posts:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 		#booth_group_posts div.group_post_item { padding-bottom: 2px; }
 			#booth_group_posts div.photo_wrapper { float: left;}

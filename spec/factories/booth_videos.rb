@@ -4,6 +4,5 @@ FactoryGirl.define do
   factory :booth_video do
     title "MyString"
     panda_video_id "MyString"
-    group_id ""
   end
 end

@@ -1113,7 +1113,7 @@ $.fn.extend({
   request_invite: function() {
     return this.bind('click', function(event) {
       var $this = $(this), $li = $this.parent();
-      $li.fadeTo('fast', 0, function() { $li.html('<span class="clicked">request sent</span>'); }).fadeTo('fast', 1);
+      $li.fadeTo('fast', 0, function() { $li.html('<span class="clicked">Invite Request Sent</span>'); }).fadeTo('fast', 1);
       $.ajax({ url: $this.attr('href'), dataType: 'json', type: 'post' });
       return false;
     });
@@ -1578,41 +1578,6 @@ $.fn.extend({
   }
 
 });
-
-
-
-panda.uploader.init({
-   'buttonId': 'browse-files',
-   'progressBarId': "progress-bar",
-   'fileDropId': "file-drop",
-   
-   'onQueue': function(files) {
-    $.each(files, function(i, file) {
-    upl.setPayload(file, {'authenticity_token': AUTH_TOKEN});
-   })
-  },   
-
-   'onProgress': function(file, percent) {
-    console.log("progress", percent, "%");
-   },
-
-    'onSuccess': function(file, data) {
-      $("#new_video")
-      .find("[name=panda_video_id]")
-      .val(data.id)
-      .end()
-      .submit();
-   },
-
-   'onComplete': function(){
-      $("#new_video").submit();
-    },
-
-  'onError': function(file, message) {
-   console.log("error", message);
-  },
-  });
-
 
 
 

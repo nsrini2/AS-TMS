@@ -966,6 +966,8 @@ div.single_item div.action_buttons { float: right; width: 15%; }
 #list div.answer:after, div.single_item:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 
 /* Blog Posts */
+#list .blog_post_item{overflow:hidden}
+
 #list .blog_post_item .details { width: 470px; }
 
 #list .blog_post_item .details h3, #list .blog_post_item .details h3 a { margin-bottom: 0; font-weight: bold; }
