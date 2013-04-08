@@ -5,7 +5,7 @@
 $line-height: 18px;*/
 /* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
 body {
-  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
   font-size: 14px;
   line-height: 1.6em;
   color: #676767;
@@ -182,19 +182,25 @@ div#deals-header h2, div#deals-header p {
 }
 
 /* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .sponsor_grp {
+  width: 655px;
+  margin-left: 0;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .primary {
   width: 720px;
   clear: both;
   margin-left: 0;
 }
 
-/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 44, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .aside {
   width: 240px;
   margin-right: 0;
 }
 
-/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 46, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .full_length {
   width: 960px;
   clear: both;

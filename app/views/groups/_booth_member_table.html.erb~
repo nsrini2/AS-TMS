@@ -3,7 +3,7 @@
 		<table id="booth_members" cellpadding="0" cellspacing="0" border="0">
 			<%
 				num_rows = 4
-				num_cols = 
+				num_cols = 5
 			-%>
 			<% num_rows.times do |row| -%>
 				<tr>

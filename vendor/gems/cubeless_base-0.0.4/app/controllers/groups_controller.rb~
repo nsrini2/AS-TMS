@@ -64,7 +64,7 @@ class GroupsController < ApplicationController
           add_to_errors @mailer
         end
       end
-      render :layout => 'group_manage_sub_menu'
+      render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu'
     end
   end
 
@@ -93,12 +93,11 @@ class GroupsController < ApplicationController
 
   def get_booth_video
      #@booth_video=BoothVideo.find(:conditions => ['group_id =?',@group.id])
-     render :template => 'booth_videos/show', :layout => '/layouts/sponsored_group_manage_sub_menu'
+     render :template => 'booth_videos/booth_video', :layout => '/layouts/sponsored_group_manage_sub_menu'
   end
 
   def get_booth_de
-      if @group.de_allowed?
-      render :template => 'groups/booth_de', :layout => '/layouts/sponsored_group_manage_sub_menu'         
+      render :template => 'groups/booth_de', :layout => '/layouts/sponsored_group_manage_sub_menu' if @group.de_allowed?
   end
 
   def create
@@ -166,7 +165,7 @@ class GroupsController < ApplicationController
 
   def help_answer
     redirect_to group_path(@group) and return if @group.is_private?
-    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 6)
+    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 1)
      if @group.is_sponsored?
       render :layout => '/layouts/sponsored_group'
     end
@@ -217,7 +216,7 @@ class GroupsController < ApplicationController
    @members = owner_transfer_results(@group, params[:q])
    
    respond_to do |format|
-     format.html { render :layout => 'group_manage_sub_menu' }
+     format.html { render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu' }
    end
   end
 
@@ -273,7 +272,7 @@ class GroupsController < ApplicationController
   def stats_summary
     redirect_to group_path(@group) and return unless is_editable?(@group)
     @stats = @group.stats
-    render :layout => 'group_manage_sub_menu'
+    render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu'
   end
 
   def remove_member
@@ -310,9 +309,12 @@ class GroupsController < ApplicationController
     @group_links = @group.group_links.all
     max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
     @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
-    #@group_links=@group.group_links
-    #Rails.logger.info "Blog id is:" + @group_blog.id.to_s
-    #@group_blog_tags=BlogPost.find_all_by_blog_id(@group_blog.id)
+    @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
+    if @group_blog_tags.count > 0
+      @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
+      @minTagOccurs=@group_blog_tags.first[:count]
+      @maxTagOccurs=@group_blog_tags.last[:count]
+    end
     redirect_to groups_explorations_path unless @group
   end
 

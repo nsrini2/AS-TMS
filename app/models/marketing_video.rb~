@@ -1,0 +1,29 @@
+class MarketingVideo < Attachment
+
+   has_attachment :content_type => :video,
+                 :storage => :file_system,
+                 :max_size => 500.megabytes,
+                 :thumbnails => { :large => [595,220], :thumbnail => [119,44] }
+
+   validates_as_attachment
+
+  acts_as_state_machine :initial => :pending
+  
+  state :pending
+  state :converting
+  state :converted, :enter => :set_new_filename
+  state :error
+
+  event :convert do
+    transitions :from => :pending, :to => :converting
+  end
+
+  event :converted do
+    transitions :from => :converting, :to => :converted
+  end
+
+  event :failure do
+    transitions :from => :converting, :to => :error
+  end
+
+end
