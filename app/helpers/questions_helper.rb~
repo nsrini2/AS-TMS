@@ -60,6 +60,16 @@ module QuestionsHelper
     end 
     link_to('Answer', link_path, :class => "button little") 
   end
+
+  def link_to_booth_question_answer(question)
+    return unless question.is_open?
+    if question.company_question? 
+      link_path = new_companies_question_answer_path(:question_id => question.id)
+    else  
+      link_path = new_question_answer_path(:question_id => question.id)
+    end 
+    link_to('Answer', link_path, :class => "button little") 
+  end
   
   def link_to_delete_question(question)
     if question.authored_by?(current_profile) && question.num_answers == 0 || current_profile.has_role?(Role::ShadyAdmin)

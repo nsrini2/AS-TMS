@@ -30,7 +30,7 @@ module GroupsHelper
 
   def calc_tag_sizes(tag,minoccurs,maxoccurs)
     minFontSize=15
-    maxFontSize=40
+    maxFontSize=35
     maxlog=Math.log(maxoccurs)
     minlog=Math.log(minoccurs)
     occursrange=maxlog-minlog

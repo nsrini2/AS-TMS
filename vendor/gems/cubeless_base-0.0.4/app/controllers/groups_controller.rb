@@ -64,7 +64,7 @@ class GroupsController < ApplicationController
           add_to_errors @mailer
         end
       end
-      render :layout => 'group_manage_sub_menu'
+      render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu'
     end
   end
 
@@ -165,7 +165,7 @@ class GroupsController < ApplicationController
 
   def help_answer
     redirect_to group_path(@group) and return if @group.is_private?
-    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 6)
+    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 3)
      if @group.is_sponsored?
       render :layout => '/layouts/sponsored_group'
     end
@@ -216,7 +216,7 @@ class GroupsController < ApplicationController
    @members = owner_transfer_results(@group, params[:q])
    
    respond_to do |format|
-     format.html { render :layout => 'group_manage_sub_menu' }
+     format.html { render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu' }
    end
   end
 
@@ -272,7 +272,7 @@ class GroupsController < ApplicationController
   def stats_summary
     redirect_to group_path(@group) and return unless is_editable?(@group)
     @stats = @group.stats
-    render :layout => 'group_manage_sub_menu'
+    render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu'
   end
 
   def remove_member

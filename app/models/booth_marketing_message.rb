@@ -19,6 +19,15 @@ validates_presence_of :group_id
     BoothMarketingMessage.find(:all, :conditions => ["active = ? and group_id =?", true, group_id] )
   end
 
+  def validate_on_destroy
+    self.errors.add_to_base("You cannot delete the last active travel expo marketing message.") if self.last_message?
+  end
+
+  def last_message?
+    count = BoothMarketingMessage.count_by_sql(["select count(1) from booth_marketing_messages where active=1"])
+    count == 1 && self.active
+  end
+
   def editable_by?(group,profile)
     profile.has_role?(Role::ContentAdmin) || group.editable_by?(profile)
   end

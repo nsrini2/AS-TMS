@@ -51,11 +51,17 @@ div.blog_post_p a, div.blog_post_p a:visited, a.answer_link, a.answer_link:visit
 }
 
 div.question {
+border-bottom: 1px solid #c4d7dc;  
+margin-top:15px;
+padding-top:15px;
+ div.details{
+  max-width:410px;
   div.item_text{
     margin-bottom: 20px;
     span, a {
       font-size: .9em ! important;
     }
+   }
   }
   ul.action_list {
     margin-top: 10px;
@@ -203,7 +209,7 @@ div.bestAnswer {
 
 /* Blog Posts */
 #list .blog_post_item .details {
-  width: 470px;
+  width: 410px;
 }
 #list .blog_post_item .details h3, #list .blog_post_item .details h3 a {
   margin-bottom: 0;

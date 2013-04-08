@@ -1,5 +1,32 @@
 <% content_for(:page_title, "Edit #{@group.name}") -%>
 <% form_for @group, :url => group_path(@group), :html => { :multipart => true } do |f| -%>
+<%if @group.is_sponsored?%>
+<fieldset>
+	<h5>Group Details</h5>
+	<dl class="group_details">
+		<dt class="name"><label for="group_name">Name</label></dt>
+		<dd class="name"><%= f.text_field :name, :size => nil, :tabindex => 1, :maxlength => '400' -%></dd>
+		<dt><label>Photo</label></dt>
+		<dd class="photo"><input type="file" name="asset[uploaded_data]" id="asset_uploaded_data" tabindex="2"></dd>
+		<dd class="photo"><%= primary_photo_for(@group, :thumb => :thumb, :hide_group_icon => true) %></dd>
+		<dt class="description"><label for="group_description">Description</label></dt>
+		<dd class="description"><%= f.text_area :description, :rows => nil, :cols => nil, :tabindex => 3, :maxlength => '1000' -%></dd>
+		<dt class="tags"><label for="group_tags">Tags</label></dt>
+		<dd class="tags"><%= f.text_field :tags, :size => nil, :tabindex => 4, :maxlength => '600' -%></dd>
+		<dt class="group_type"><label>Group Type</label></dt>
+		<dd class="group_type">
+			<%= radio_button("group", "group_type", 0, :id => 'public_group_type', :tabindex => 5) %><label for="public_group_type">Public</label>
+			<%= radio_button("group", "group_type", 1, :id => 'invite_group_type', :tabindex => 6) %><label for="invite_group_type">Invite Only</label>
+			<%= radio_button("group", "group_type", 2, :id => 'private_group_type', :tabindex => 7) %><label for="private_group_type">Private</label>
+		</dd>
+	</dl>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Save Details" class="button large" tabindex="8">
+		<input type="reset" name="cancel" value="Reset" class="button large light" tabindex="9">
+	</div>
+</fieldset>
+
+<% else %>
 <fieldset>
 	<h3>Group Details</h3>
 	<dl class="group_details">
@@ -24,4 +51,5 @@
 		<input type="reset" name="cancel" value="Reset" class="button large light" tabindex="9">
 	</div>
 </fieldset>
+<% end -%>
 <% end -%>

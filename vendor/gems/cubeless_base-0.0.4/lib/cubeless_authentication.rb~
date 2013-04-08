@@ -18,6 +18,7 @@ module CubelessAuthentication
     end
     return respond_not_authorized if @@header_sso_id_key
     store_location
+    Rails.logger.info("Niranjana: am in here")
     return redirect_to(SsoController.login_url) if SsoController.configured?
     redirect_to :controller => '/account', :action => 'login'
   end

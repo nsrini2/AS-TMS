@@ -4,6 +4,89 @@ classname = '' unless defined?(classname)
 blog_explore = false unless defined?(blog_explore)
 preview = false unless defined?(preview)
 -%>
+<% if blog_post.root_parent.is_a?(Group) && blog_post.root_parent.is_sponsored? %>
+<div class="list_item blog_post_item <%= classname %>">
+	<%= link_to_avatar_for(blog_post.profile) if blog_explore-%>
+	<div class="details">
+                <span>NIranjana</span>
+		<h6><%= link_to_unless(full_post || preview, blog_post.title, blog_post_path(blog_post))%></h6>
+		<p class="meta">Posted on <%= pretty_datetime(blog_post.created_at || Time.new) %><%= blog_post.root_parent.is_a?(Group) && blog_explore ? " in #{link_to(blog_post.root_parent.name, group_blog_url(blog_post.root_parent))}" : "" %> by&nbsp;<%= link_to_author blog_post %></p>
+		<% if full_post -%>
+			<%= blog_post.text -%>
+			<% unless preview -%>
+				<%= action_list_for([
+					render_abuse(blog_post),
+					(link_to_edit_blog_post(blog_post.blog.owner, blog_post) if editable_content_for(blog_post)),
+					link_to_delete_blog_post(blog_post),
+					(content_tag(:span, "Tags: " + (blog_explore ? link_to_blog_tags(blog_post.blog.owner, blog_post.tag_list) : link_to_tags(blog_post.blog.owner, blog_post.tag_list)), :class => 'tags') unless blog_post.tag_list.blank?)
+				]) -%>
+			<% end -%>
+		<% else -%>
+			<p class="summary"><%= truncate(blog_post.text.gsub(/<\/?[^>]*>/, ""), :length => 514, :omission => "&hellip;&nbsp;") -%><%= (link_to("read more &raquo;", blog_post_path(blog_post)) if blog_post.text.size > 500) -%></p>
+			<%= action_list_for([
+				(content_tag(:span, "No comments yet") if blog_post.comments.count.zero?),
+				(link_to(pluralize(blog_post.comments.count, 'comment'), "#{blog_post_path(blog_post)}#comments") unless blog_post.comments.count.zero?),
+				render_abuse(blog_post),
+				(link_to_edit_blog_post(blog_post.blog.owner, blog_post) if editable_content_for(blog_post)),
+				link_to_delete_blog_post(blog_post),
+				(content_tag(:span, "Tags: " + (blog_explore ? link_to_blog_tags(blog_post.blog.owner, blog_post.tag_list) : link_to_tags(blog_post.blog.owner, blog_post.tag_list)), :class => 'tags') unless blog_post.tag_list.blank?)
+			]) -%>
+		<% end -%>
+	</div>
+
+	<% unless preview -%>
+	<div class="rate">
+	<% if full_post -%>
+		<%= render :partial => 'blog_posts/rating', :locals => { :blog_post => blog_post } -%>
+	<% else -%>
+		<ul>
+			<% (1..5).each do |i| %>
+				<li class="rate rating<%=i%> <%= "rated" if blog_post.rating_avg.round >= i %>"><%=i%></li>
+			<% end %>
+		</ul>
+		<p class="rating_total"><%= blog_post.rating_count.zero? ? "No ratings yet" : "#{blog_post.rating_avg} rating from #{pluralize(blog_post.rating_count, 'user')}" -%></p>
+	<% end -%>
+	</div>
+	<% end -%>
+
+	<% if full_post && !preview -%>
+	<div id="comments">
+		<h4>Comments (<%= blog_post.comments.size -%>)</h4>
+		<% unless blog_post.comments.size.zero? %>
+			<% blog_post.comments.each do |comment| -%>
+				<div id="comment_<%=comment.id.to_s%>" class="list_item comment_item <%= cycle('odd', 'even') %>">
+					<%= link_to_avatar_for(comment.profile) -%>
+					<div class="details">
+						<h5><%= link_to_author(comment) -%> says:</h5>
+						<p class="meta">on <%= pretty_datetime(comment.created_at) %></p>
+						<p id="comment_<%= comment.id.to_s%>_text" class="text"><%= comment_text(comment) %></p>
+						<%= action_list_for([
+							render_abuse(comment),
+							(link_to_edit_comment(comments_poly_path(blog_post, comment, :action => :edit)) if author_or_shady_admin_content_for(comment)),
+							link_to("permanent link", "#{blog_post_url(blog_post)}#comment_#{comment.id.to_s}")
+						])%>
+					</div>
+				</div>
+			<% end -%>
+		<% end -%>
+		<% form_for :comment, :url => new_comment_blog_post_path(blog_post), :html => { :id => 'new_comment' } do |f| -%>
+			<h5>Add your 2 cents to the conversation</h5>
+			<p>Comments are a great way to show your support and add another perspective.</p>
+			<%= content_tag(:p, flash[:error], :class => 'error') unless flash[:error].blank? -%>
+			<fieldset>
+				<label for="blog_post_comment_text">Your Comment</label>
+				<textarea name="comment[text]" id="blog_post_comment_text" maxlength="4000"><%= params[:comment] -%></textarea>
+			</fieldset>
+			<div class="buttons">
+				<input type="submit" name="commit" value="Submit" class="button medium">
+				<input type="reset" name="cancel" value="Cancel" class="button medium light">
+			</div>
+		<% end -%>
+	</div>
+	<% end -%>
+</div>
+
+<%else%>
 <div class="list_item blog_post_item <%= classname %>">
 	<%= link_to_avatar_for(blog_post.profile) if blog_explore || blog_post.root_parent.is_a?(Group) -%>
 	<div class="details">
@@ -83,3 +166,4 @@ preview = false unless defined?(preview)
 	</div>
 	<% end -%>
 </div>
+<%end%>
