@@ -49,15 +49,15 @@
 
 /* line 25, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav {
-  font-size: 16px;
-  margin: 30px 0 0;
+  font-size: 15px;
+  margin: 20px 0 0;
   text-transform: lowercase;
-  text-align: right;
+  text-align: left;
 }
 
 /* line 32, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav li:first-child {
-  margin-left: 40px;
+  margin-left: 25px;
 }
 
 /* line 36, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -69,7 +69,7 @@
 #header .global_nav li a {
   display: block;
   padding: 30px 0 0 0;
-  min-width: 30px;
+  min-width: 27px;
 }
 
 /* line 44, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -163,18 +163,28 @@
 }
 
 /* line 106, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #showcase_nav {
+  background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
+}
+
+/* line 110, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #showcase_nav.active, #header .nav #showcase_nav a:hover {
+  background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top;
+}
+
+/* line 114, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav .line2 {
   display: block;
   margin-top: -5px;
   text-align: left;
 }
 
-/* line 112, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 120, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .stats {
   margin: 20px 0 0 50px;
   font-size: 14px;
 }
-/* line 115, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 123, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .stats h4 {
   font-size: 19px;
   font-weight: normal;
@@ -182,38 +192,38 @@
   margin-top: 50px;
 }
 
-/* line 124, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 132, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility {
   margin: 20px 10px 0 0;
   font-size: 14px;
   float: right;
 }
 
-/* line 125, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 133, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav {
   float: right;
 }
 
-/* line 126, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 134, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav li {
   font-size: 0.9em;
   margin-right: 8px;
 }
 
-/* line 132, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 140, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search {
   float: right;
   margin: 0 5px 0 0;
 }
 
-/* line 136, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 144, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search input[type=text], #header .utility .search #global_search_input {
   margin-top: 0;
   height: 20px;
   width: 210px;
 }
 
-/* line 141, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 149, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search .button {
   font-size: 12px;
   margin: 0 3px 0 0;
@@ -226,35 +236,35 @@
 }
 
 /*#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('/images/bg_nav_online_now.png') 0 50% no-repeat; }*/
-/* line 153, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 161, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav .online_now {
   padding: 7px 0 5px 20px;
   background: url("/images/icons/as/online-now.png") 0 50% no-repeat;
 }
 
-/* line 154, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 162, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .nav .drop_down {
   padding: 0 15px 0 0;
   background: url("/images/bg_nav_dropdown.png") 100% 50% no-repeat;
 }
 
-/* line 156, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 164, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header, #main {
   border: 1px solid #c4d7dc;
   border-width: 0 1px 0;
 }
 
-/* line 157, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 165, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #main {
   border-width: 0 1px 1px;
 }
 
-/* line 158, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 166, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #footer {
   clear: both;
 }
 
-/* line 159, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 167, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .module, .primary .module {
   margin: 0;
   padding: 10px 20px 10px;
@@ -263,12 +273,12 @@
   background: #fff;
 }
 
-/* line 160, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 168, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .module {
   border-width: 1px 0 0 1px;
 }
 
-/* line 161, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 169, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .last {
   border-bottom: 1px solid #c4d7dc;
 }

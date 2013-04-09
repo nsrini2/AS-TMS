@@ -1,0 +1,58 @@
+<%
+content_for(:home_tab, 'selected')
+content_for(:page_title, @group.name)
+-%>
+
+<div id="group_hub" <%= 'class="with_stream"' if group_member_or_public_content(@group) %>>
+ <%= action_list_for([
+  	(link_for_group_action(@group) unless hide_for_sponsor)
+  ], :class => 'group_actions full_screen') -%>
+
+	<div class="group_card <%= 'sponsored' if @group.is_sponsored? -%>">
+		<%= primary_photo_for(@group, :thumb => :thumb_large, :hide_sponsor_sash => true, :hide_group_icon => true) -%>
+		<div class="details">
+			<h2><%= @group.name -%></h2>
+			<p class="founded_on">Founded on <%= short_date(@group.created_at) -%> &nbsp;&ndash;&nbsp; <%= pluralize(@group.group_memberships_count, "member", "members") -%></p>
+			<%= render_inline_editor_for(@group, :description, group_path(@group, {:method => :put} ), :class => 'description', :type => 'expandable', :maxlength => '500', :tooltip => "Click to edit the Group's description") -%>
+			<h4>Things We Know About</h4>
+			<%= render_inline_editor_for(@group, :tags, group_path(@group, {:method => :put} ), :class => 'tags', :type => 'expandable', :maxlength => '300', :tooltip => "Click to edit the Group's knowledge", :placeholder => "Click to add to your Group's knowledge") -%>
+			<p class="last_edited">Last edited by <%= @group.last_updater.screen_name -%> <%= timeago(@group.updated_at) -%></p>
+		</div>
+	</div>
+</div>
+
+<% if false %>
+  <% content_for :aside do %>
+    <%#= action_list_for([
+    	(render_watch_link(@group) unless hide_for_sponsor),
+    	(link_for_group_action(@group) unless hide_for_sponsor),
+    	render_abuse(@group),
+    	(link_to_delete(@group) if shady_admin_content)
+    ], :class => 'group_actions') -%>
+
+
+
+    <%= group_member_or_public_content @group do -%>
+    <div id="stream" class="group">
+      <% if false %>
+    	  <script type="application/json">{ url: '/groups/<%= @group.id %>/stream' }</script>
+    	  <div id="online_now"><%= image_tag("/images/onlineNow.gif", :size => "18x14", :alt => "#{@active_users} Online Now") -%><%= "#{@group.active_users_count} Online Now" -%></div>
+    	<% end %>
+    	<div class="events">
+    		<%#= render :partial => 'event_stream', :locals => {:group => @group} -%>
+    	</div>
+    </div>
+    <% end -%>
+
+  <#% end %>
+<% end %>
+
+<% content_for :post_panel do %>
+  <div id="group_widgets">
+		<%= group_member_or_public_content @group do -%>
+			<%= render :partial => 'groups/group_announcement', :locals => { :group_announcement => @group.group_announcement } -%>
+			<%#= render :partial => 'widget_drive_bys' -%>
+		<% end -%>
+	</div>
+  <% end %>
+<%end%>

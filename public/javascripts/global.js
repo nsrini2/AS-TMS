@@ -1113,7 +1113,7 @@ $.fn.extend({
   request_invite: function() {
     return this.bind('click', function(event) {
       var $this = $(this), $li = $this.parent();
-      $li.fadeTo('fast', 0, function() { $li.html('<span class="clicked">request sent</span>'); }).fadeTo('fast', 1);
+      $li.fadeTo('fast', 0, function() { $li.html('<span class="clicked">Invite Request Sent</span>'); }).fadeTo('fast', 1);
       $.ajax({ url: $this.attr('href'), dataType: 'json', type: 'post' });
       return false;
     });
@@ -1578,6 +1578,8 @@ $.fn.extend({
   }
 
 });
+
+
 
 $.confirmation_dialog = function(options) {
   options = $.extend({

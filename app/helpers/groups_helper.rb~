@@ -1,0 +1,18 @@
+require_cubeless_engine_file :helper, :groups_helper
+
+module GroupsHelper
+  
+  def group_active_qa_count(group)
+    # SSJ FIX 
+    # unless group.active_questions_referred_to_me.empty?
+    #   "(<span class='inline' id='matchedq'>#{group.active_questions_referred_to_me.count}</span>)"
+    # end  
+  end
+
+  
+def link_to_remove(link)
+      link_to("remove link", group_group_link_path(link.group,link), :class => "modal delete")
+end
+  
+  
+end

@@ -1,0 +1,41 @@
+<% content_for(:page_title, "Create a New Booth Video") -%>
+<% form_for(:video,:url => {:action => "create"}, :html => {:id => "new_booth_video", :multipart => true, :method => "post"}) do |f| %>
+<h5>New Booth Video</h5>
+  <!-- field where the video ID will be stored after the upload -->
+  <input type="hidden" name="panda_video_id"/>
+
+  <label>Title</label>
+  <input type="text" name='video[title]' placeholder="Give a title">
+
+  <!-- upload progress bar (optional) -->
+  <div class='progress'><span id="progress-bar" class='bar'></span></div>
+
+  <!-- file selector -->
+  <div id="browse-files">Choose file</div>
+<% end %>
+
+<script src="//cdn.pandastream.com/u/2.0/panda-uploader.min.js"></script>
+
+<script>
+  var upl=panda.uploader.init({
+    'buttonId': 'browse-files',
+    'progressBarId': 'progress-bar',
+
+     'onQueue': function(files) {
+     $.each(files, function(i, file) {
+      upl.setPayload(file, {'authenticity_token': AUTH_TOKEN});
+     })
+    },
+
+    'onSuccess': function(file, data) {
+      $("#panda_video_id").val(data.id)
+    },
+    'onComplete': function(){
+      $("#new_video").submit();
+    }
+  });
+</script>
+
+
+
+

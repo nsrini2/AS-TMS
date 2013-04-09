@@ -1,0 +1,64 @@
+<%
+#!H optional var protection
+show = nil unless defined?(show)
+questions_for = nil unless defined?(questions_for)
+domain = '' unless defined?(domain)
+questions_counter = questions_counter || 0
+should_show = question_render_toggle_list(show)
+avatar_size = :thumb_large unless avatar_size
+%>
+<% hide_for_sponsor do %>
+  <%= referred_by_content_for(questions_for, question, should_show) %>
+  <%= referred_to_content_for(questions_for, question, should_show) %>
+  <%= referred_to_groups_content_for(question, should_show) %>
+<% end %>
+
+<% avatar_content_for_question(should_show) do %>
+  <% link_to_avatar_for(question.profile, :reference => question.id, :thumb => avatar_size) %>
+<% end %>
+<div class="details">
+  <div class="item_text">
+    <%= question_link_content_for(should_show, question) %>
+  </div>
+  <p>
+    <% if question.is_closed? -%>
+      <%= "asked on #{pretty_date(question.created_at)} by #{link_to_author question}"-%>
+    <% else -%>
+      <%= "asked #{time_ago_in_words(question.created_at)} ago by #{link_to_author question}"-%>
+    <% end -%>
+     - <strong><span class="closing_date"><%= open_until_or_closed_on_for question -%></span></strong>
+  </p>
+  <p class="question_category">
+    <%= render_question_category question -%>
+    <% if show %>
+      <%=  pluralize(question.num_answers, "answer") if question.num_answers > 0 -%>
+    <% else %>
+      <%= link_to_if(question.num_answers > 0, pluralize(question.num_answers, "answer"), question_path(question)) -%>
+    <% end %>  
+  </p>
+  <%rank_content_for question do %>
+  <p>rank: <%= question.match_rank -%></p>
+  <% end -%>
+  <%= action_list_for([
+    link_to_watch_for(question),
+    (render_abuse(question) if shady_content(should_show)),
+    (link_to_edit_question(question) if question_author_or_shady_admin_content(question)),
+    (link_to_delete_question(question) if question_author_or_shady_admin_content(question))
+  ]) -%>
+</div>
+<div class="action_buttons">
+  <% open_question_actions_content question do %>
+  <%if defined?(questions_for) && model.is_a?(Group)%>
+    <%= answer_button_content(should_show) { link_to_booth_question_answer question,questions_for.id } -%>
+  <%else%>
+       <%= answer_button_content(should_show) { link_to_answer question } -%>
+  <%end%>
+    <%= refer_button_content(should_show) { link_to_refer question } -%>
+    <%= remove_match_and_referral_button_content(should_show) { link_to_remove_match_and_referral_for(questions_for, question) } -%>
+    <% close_button_content(should_show) { link_to_close question } -%>
+  <% end -%>
+  <% unless question.is_open? -%>
+    <div class="closed">Closed to new answers</div>
+  <% end -%>
+  <%= remove_watched_question_button_content(should_show){ link_to('Remove', remove_bookmark_path(question), :class => 'button little light') } -%>
+</div>

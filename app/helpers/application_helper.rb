@@ -2,7 +2,7 @@ require_cubeless_engine_file(:helper, :application_helper)
 require_de_engine_file(:helper, :application_helper)
 
 module ApplicationHelper
-
+  include TagsHelper
   # MM2: Overwrite the default cubeless engine marketing_image_tag method to change the width and height
   def marketing_image_tag(message)
     link_to_if(message.link_to_url, image_tag( marketing_image_path(message), :alt => '', :width => "394", :height => "150"),message.link_to_url) if message
@@ -18,7 +18,7 @@ module ApplicationHelper
                 :company => /companies/,
                 :"my agency" => /companies/,
                 :de => /deals_and_extras/,
-                :hub => /(questions|groups|blogs|news|chat|companies)/ }
+                :hub => /(questions|groups|blogs|news|chat|companies|showcase)/ }
                     
     regex = regexes[name.downcase.to_sym]    
     css_class = global_nav_link_active?(name, regex) ? "active" : ""

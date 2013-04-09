@@ -1,8 +1,17 @@
 <% content_for(:help_answer_tab, 'selected') -%>
 <% content_for(:page_title, "Questions for #{@group.name}") -%>
 
+<% if @group.is_sponsored? %>
+<div id="list">
+  <div id="matches">
+  	<%= render :partial => 'groups/booth_matched_questions', :locals => {:referred_questions => @referred_questions }%>
+  </div>
+</div>
+
+<% else %>
 <div id="list">
   <div id="matches">
   	<%= render :partial => 'groups/matched_questions', :locals => {:referred_questions => @referred_questions }%>
   </div>
 </div>
+<% end %>

@@ -22,6 +22,8 @@
 
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
 
+  <script src="//cdn.pandastream.com/u/2.0/panda-uploader.min.js"></script>
+
   <style>
     #header h1#logo a { background: transparent url(/images/logo.png) no-repeat 0 0;}
   </style>
@@ -38,6 +40,24 @@
 <div id="page">
   <div id="header">
     <h1 id="logo"><%= link_to "AgentStream", home_path %></h1>
+<<<<<<< HEAD
+=======
+    <div class="global_nav">
+      <% quick_reg_path = url_for(:controller => :account, :action => :login) if !logged_in?%>
+      <ul class="nav">
+        <%= global_nav_link "Hub", quick_reg_path || '/', "hub_nav" %>
+        <%= global_nav_link "My Agency", quick_reg_path || "/companies/hub", "company_nav" %>
+        <%= global_nav_link "Q&amp;A", quick_reg_path || questions_explorations_path, "qa_nav" %>
+        <%= global_nav_link "News", news_path, "news_nav" %>
+        <%= global_nav_link "Groups", quick_reg_path || groups_explorations_path, "group_nav" %>
+        <%#= global_nav_link "Blogs", blogs_explorations_path, "blog_nav" %>
+        <%= global_nav_link "Chat", quick_reg_path || chats_path, "chats_nav" %>
+        <%= global_nav_link "Deals+<span class=\"line2\">Extras</span>", quick_reg_path || "/deals_and_extras", "de_nav" %>
+        <%= global_nav_link "Travel<span class='line2'>Expo</span>", quick_reg_path || '/showcase', "showcase_nav" %>
+      </ul>
+    </div>
+
+>>>>>>> travelexpoadmin/master
     <div class="utility">
       <% if logged_in? %>
         <ul class="nav">
@@ -103,7 +123,13 @@
     </div>
   </div>
 
+<<<<<<< HEAD
   <div id="main">
+=======
+
+
+  <div id="main" style="overflow:hidden;">
+>>>>>>> travelexpoadmin/master
     <div id="primary">
 
       <%#= yield %>
@@ -142,11 +168,12 @@
   <%#= stylesheet_link_tag "/themes/default/_css/style.css" %>
   <%= stylesheet_link_tag "/javascripts/jquery-ui/css/smoothness/jquery-ui.css" %>
 
-
+  <%#= javascript_include_tag :defaults %>
   <%= javascript_include_tag "jquery-current" %>
   <%= javascript_include_tag "/javascripts/jquery-ui/js/jquery-ui.min.js" %>
   <%= javascript_include_tag "/javascripts/jquery/jquery.html5_form_custom.js" %>
-  <%= javascript_include_tag "/javascripts/marquee.js" %>  
+  <%= javascript_include_tag "/javascripts/marquee.js" %>
+  <%= javascript_include_tag "/javascripts/flowplayer.min.js" %>  
 
 
   <%= javascript_include_tag "chat" %>

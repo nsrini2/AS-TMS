@@ -1,0 +1,6 @@
+<div id="groups">
+   <% @category_groups.each do |group| -%>
+     <%type=group.type%>
+    <%= render :partial =>'showcase/group', :locals => { :group => group, :classname => cycle('odd', 'even'), :avatar_size => :thumb_80 } -%>
+  <% end -%>
+</div>

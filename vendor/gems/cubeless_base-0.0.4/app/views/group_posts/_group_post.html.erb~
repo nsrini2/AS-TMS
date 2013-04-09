@@ -1,0 +1,106 @@
+<%if @group.is_sponsored? %>
+<div id="booth_group_post_<%=group_post.id%>" class="booth_group_post_item <%=group_post.id%> list_item odd">
+	<%= link_to_avatar_for(group_post.profile, :reference => "#{group_post.id}") -%>
+	<div class="booth_post_details">
+		<h6><%= link_to_author(group_post) -%> says:</h6>
+		<p class="meta">on <%= pretty_datetime(group_post.created_at) %></p>
+		<p class="item_text"><%= replace_newline_with_br(auto_link(group_post.post, :all)) -%></p>
+		<%= action_list_for([
+			# (content_tag(:span, "No replies yet") if group_post.comments.count.zero?),
+			# (content_tag(:span, pluralize(group_post.comments.count, 'reply')) unless group_post.comments.count.zero?),
+			# link_to("leave a reply", new_reply_group_post_path(group_post), :class => "modal reply"),
+			# (content_tag(:span, link_to_view_comments(group_post), :class => 'comment_link')),
+			# link_to_leave_comment(group_post),
+			link_for_group_post_delete(group_post, @group),
+			render_abuse(group_post)
+		])%>
+	</div>
+
+	<div class="replies">
+		<h5>Replies (<%= group_post.comments.size -%>)</h5>
+		<% unless group_post.comments.size.zero? %>
+			<% group_post.comments.each do |comment| -%>
+				<div id="comment_<%=comment.id.to_s%>" class="list_item comment_item <%= cycle('odd', 'even') %>">
+					<%= link_to_avatar_for(comment.profile, :size => "37x37") -%>
+					<div class="details">
+						<h6><%= link_to_author(comment) -%> replied:</h6>
+						<p class="meta">on <%= pretty_datetime(comment.created_at) %></p>
+						<p id="comment_<%= comment.id.to_s%>_text" class="text"><%= comment_text(comment) %></p>
+						<%= action_list_for([
+							render_abuse(comment)
+							# (link_to_edit(comments_poly_path(group_post, comment, :action => :edit)) if author_or_shady_admin_content_for(comment)),
+							# link_to("permanent link", "#{group_post_url(group_post)}#comment_#{comment.id.to_s}")
+						])%>
+					</div>
+				</div><br/><br/>
+			<% end -%>
+		<% end -%>
+		<% form_for :comment, :url => create_reply_group_post_path(group_post), :html => { :id => 'new_reply' } do |f| -%>
+			<h6>Add your 2 cents to the conversation</h6>
+			<%= content_tag(:p, flash[:error], :class => 'error') unless flash[:error].blank? -%>
+			<fieldset>
+				<label for="group_post_comment_text">Your Reply</label>
+				<textarea name="comment[text]" id="group_post_comment_text" maxlength="4000" style="width:250px;height:40px"><%= params[:comment] -%></textarea>
+			</fieldset>
+			<div class="buttons">
+				<input type="submit" name="commit" value="Submit" class="button medium">
+				<input type="reset" name="cancel" value="Cancel" class="button medium light">
+			</div>
+		<% end -%>
+	</div>
+</div>
+
+
+<%else%>
+<div id="group_post_<%=group_post.id%>" class="group_post_item <%=group_post.id%> list_item odd">
+	<%= link_to_avatar_for(group_post.profile, :reference => "#{group_post.id}") -%>
+	<div class="details">
+		<h5><%= link_to_author(group_post) -%> says:</h5>
+		<p class="meta">on <%= pretty_datetime(group_post.created_at) %></p>
+		<p class="item_text"><%= replace_newline_with_br(auto_link(group_post.post, :all)) -%></p>
+		<%= action_list_for([
+			# (content_tag(:span, "No replies yet") if group_post.comments.count.zero?),
+			# (content_tag(:span, pluralize(group_post.comments.count, 'reply')) unless group_post.comments.count.zero?),
+			# link_to("leave a reply", new_reply_group_post_path(group_post), :class => "modal reply"),
+			# (content_tag(:span, link_to_view_comments(group_post), :class => 'comment_link')),
+			# link_to_leave_comment(group_post),
+			link_for_group_post_delete(group_post, @group),
+			render_abuse(group_post)
+		])%>
+	</div>
+
+	<div class="replies">
+		<h4>Replies (<%= group_post.comments.size -%>)</h4>
+		<% unless group_post.comments.size.zero? %>
+			<% group_post.comments.each do |comment| -%>
+				<div id="comment_<%=comment.id.to_s%>" class="list_item comment_item <%= cycle('odd', 'even') %>">
+					<%= link_to_avatar_for(comment.profile, :size => "37x37") -%>
+					<div class="details">
+						<h5><%= link_to_author(comment) -%> replied:</h5>
+						<p class="meta">on <%= pretty_datetime(comment.created_at) %></p>
+						<p id="comment_<%= comment.id.to_s%>_text" class="text"><%= comment_text(comment) %></p>
+						<%= action_list_for([
+							render_abuse(comment)
+							# (link_to_edit(comments_poly_path(group_post, comment, :action => :edit)) if author_or_shady_admin_content_for(comment)),
+							# link_to("permanent link", "#{group_post_url(group_post)}#comment_#{comment.id.to_s}")
+						])%>
+					</div>
+				</div>
+			<% end -%>
+		<% end -%>
+		<% form_for :comment, :url => create_reply_group_post_path(group_post), :html => { :id => 'new_reply' } do |f| -%>
+			<h5>Add your 2 cents to the conversation</h5>
+			<%= content_tag(:p, flash[:error], :class => 'error') unless flash[:error].blank? -%>
+			<fieldset>
+				<label for="group_post_comment_text">Your Reply</label>
+				<textarea name="comment[text]" id="group_post_comment_text" maxlength="4000"><%= params[:comment] -%></textarea>
+			</fieldset>
+			<div class="buttons">
+				<input type="submit" name="commit" value="Submit" class="button medium">
+				<input type="reset" name="cancel" value="Cancel" class="button medium light">
+			</div>
+		<% end -%>
+	</div>
+</div>
+
+<%end%>

@@ -86,7 +86,7 @@ input, select {
 #login-header {
   margin-top: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #4A6970;
+  border-bottom: 1px solid #4a6970;
   font-weight: bold;
   font-size: 2.8em;
   line-height: 75%;
@@ -166,14 +166,14 @@ div#login-or p {
 
 /* line 136, ../../../../app/stylesheets/themes/agentstream/public.scss */
 div#login-top-bar {
-  border-right: 1px solid #4A6970;
+  border-right: 1px solid #4a6970;
   margin: 10px 5px 0px 0px;
   padding: 33px 0px;
 }
 
 /* line 142, ../../../../app/stylesheets/themes/agentstream/public.scss */
 div#login-bottom-bar {
-  border-right: 1px solid #4A6970;
+  border-right: 1px solid #4a6970;
   margin: 0px 5px 10px 0px;
   padding: 33px 0px;
 }

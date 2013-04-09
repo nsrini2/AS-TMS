@@ -1,0 +1,39 @@
+div.action_buttons {
+	float: right;
+	margin-top: 20px;
+	width: 15%;
+ 
+ .button {
+  	display: block ;
+  	width: 100px;
+  }	
+  a.button {
+    padding: 0px;
+  }
+}
+
+.button, a.button {
+	margin: 0 2px 5px 0; 
+	background: #4A6970; 
+	border: 0; 
+	color: #fff; 
+	font-size: 1em;
+	padding: 3px 12px;  
+	text-transform: uppercase; 
+	font-weight: bold; 
+	text-align: center;
+}
+
+.button.little, a.button.little {
+	font-size: 0.8em;
+	padding: 1px 4px;
+	width:  60px;
+}
+
+.button.light, a.button.light {
+	background: #90b4bc;
+}
+.button.xlarge, a.button.xlarge {
+  font-size: 1.8em;
+}
+

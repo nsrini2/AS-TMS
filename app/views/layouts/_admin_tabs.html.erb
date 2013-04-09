@@ -7,7 +7,7 @@
 	<%= content_tag('li', link_to("Content Management", marketing_messages_admin_path), :class => yield(:home_admin_tab_selected)) if current_profile.has_role?(Role::ContentAdmin) -%>
 	<%= content_tag('li', link_to("Shady Admin", shady_admin_admin_path), :class => yield(:shady_admin_tab_selected)) if current_profile.has_role?(Role::ShadyAdmin) -%>
 	<%= content_tag('li', link_to("Awards", current_awards_admin_path), :class => yield(:awards_tab_selected)) if current_profile.has_role?(Role::AwardsAdmin) -%>
-	<%= content_tag('li', link_to("Sponsors", sponsor_accounts_path), :class => yield(:sponsor_accounts_tab_selected)) if current_profile.has_role?(Role::SponsorAdmin) -%>
+	<%= content_tag('li', link_to("Travel Expo", sponsor_accounts_path), :class => yield(:sponsor_accounts_tab_selected)) if current_profile.has_role?(Role::SponsorAdmin) -%>
 	<%= content_tag('li', link_to("Channels", companies_admin_path), :class => yield(:company_admin_tab_selected)) if current_profile.has_role?(Role::SponsorAdmin) -%>
 <% end -%>
 

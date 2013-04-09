@@ -1,0 +1,8 @@
+<%
+content_for(:group_talk_tab, 'selected')
+content_for(:page_title, "Group Talk for #{@group.name}")
+-%>
+<%= render :partial => 'group_posts/group_post_form' if @group.is_member?(current_profile) -%>
+<div id="group_posts">
+	<%= render :partial => 'group_posts/group_posts' -%>
+</div>

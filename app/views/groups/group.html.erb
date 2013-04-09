@@ -3,7 +3,21 @@ content_for(:home_tab, 'selected')
 content_for(:page_title, @group.name)
 -%>
 
+<% if @group.is_sponsored? %>
+   <div class="sponsored_group_events">
+    	 <%= render :partial => '/groups/events_panel', :locals => { :events => @events } %>
+        <%= will_paginate @events, :param_name => 'booth_page' %>
+   </div>
+  
+   <div class="group_video">
+        <h6>Video here!</h6>
+   </div>
 
+   <div class="group_marketing_message">
+        <div id="booth_marketing_message"><%= booth_marketing_image_tag(@random_marketing_message) -%></div>
+   </div>
+
+<% else %>
 
 <div id="group_hub" <%= 'class="with_stream"' if group_member_or_public_content(@group) %>>
   <%= action_list_for([
@@ -56,4 +70,5 @@ content_for(:page_title, @group.name)
 			<%= render :partial => 'widget_drive_bys' -%>
 		<% end -%>
 	</div>
+<% end %>
 <% end %>

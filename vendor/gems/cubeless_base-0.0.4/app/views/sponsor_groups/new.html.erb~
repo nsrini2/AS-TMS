@@ -1,0 +1,33 @@
+<% content_for(:page_title, "Create a New Booth for #{@sponsor_account.name} category") -%>
+<h2>New Booth for <%= @sponsor_account.name %> Category </h2>
+<% form_for(:sponsor_group, :url => [@sponsor_account, :sponsor_groups]) do |f| -%>
+
+	<label for="sponsor_group_owner">Booth Owner</label><br />
+	<% sponsors = @sponsor_account.sponsors.collect { |s| ["#{s.first_name} #{s.last_name}", s.id] } %>
+	<%= sponsors.size > 0 ? select(:sponsor_group, :owner_id, sponsors) : "<strong class='big_action'><a href=\"#{new_sponsor_account_sponsor_member_path(@sponsor_account)} \">Create a sponsor member first</a></strong>" %>
+	<br /><br />
+
+        <label for="sponsor_group_type">Booth Type</label><br />
+        <%=f.select(:group_type,@group_types,html_options => {:disabled => sponsors.size > 0 ? false : true} )%><br/><br/>
+     
+	<label for="sponsor_group_name">Booth Name</label><br/>
+	<%= f.text_field :name, :size => 32, :disabled => sponsors.size > 0 ? false : true -%><br /><br />
+
+	<label for="sponsor_group_description">Booth Description</label><br/>
+	<%= f.text_area :description, :rows => 10, :cols => 40, :disabled => sponsors.size > 0 ? false : true -%><br /><br />
+
+	<label for="sponsor_group_de_allowed">Deals and Extras Allowed?</label><br/>
+        <%= f.radio_button :de_flag, 1 %>
+        <label for="sponsor_group_de_allowed_yes">Yes</label><br/>
+        <%= f.radio_button :de_flag, 0 %>
+        <label for="sponsor_group_de_allowed_no">No</label><br/><br/>
+
+        <label for="sponsor_group_tags">Booth Tags</label><br/>
+	<%= f.text_field :tags, :size => 32, :class => 'input', :disabled => sponsors.size > 0 ? false : true -%><br /><br />
+
+
+	<%= f.submit "Create Booth", :disabled => sponsors.size > 0 ? false : true, :class => "button large"%>
+<% end %>
+<style>
+ .big_action {font-size: 13px}
+</style>

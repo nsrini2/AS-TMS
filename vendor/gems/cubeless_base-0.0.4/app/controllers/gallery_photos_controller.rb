@@ -2,6 +2,7 @@ class GalleryPhotosController < ApplicationController
   layout 'group'
 
   before_filter :group_up_and_protect_privates
+  before_filter :find_booth_details
   before_filter :clean_tags, :only => [:create, :update]
 
   def new
@@ -13,6 +14,7 @@ class GalleryPhotosController < ApplicationController
 
   def index
     @photos = @group.gallery_photos.all(gallery_photo_filters)
+    render :layout => '/layouts/sponsored_group' if @group.is_sponsored?
   end
 
   def update
@@ -21,7 +23,7 @@ class GalleryPhotosController < ApplicationController
     respond_to do |format|
       format.json { render :text => @photo.to_json(:methods => 'tag_list') }
     end
-  end
+ end
 
   def create
     return redirect_to(group_gallery_photos_path(@group)) unless @group.is_member?(current_profile)
@@ -49,6 +51,7 @@ class GalleryPhotosController < ApplicationController
     begin
       @comment = Comment.new
       @photo = @group.gallery_photos.find(params[:id])
+      render :layout => '/layouts/sponsored_group' if @group.is_sponsored?
     rescue
       redirect_to group_gallery_photos_path(@group) and return if @photo.blank?
     end
@@ -64,7 +67,7 @@ class GalleryPhotosController < ApplicationController
     @photo.destroy
     add_to_notices "Photo was successfully deleted."
     redirect_to group_gallery_photos_path(@group)
-  end
+ end
 
   def rate
     photo = @group.gallery_photos.find(params[:id])
@@ -74,6 +77,9 @@ class GalleryPhotosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :back }
       format.js { render(:partial => 'gallery_photos/rating', :layout => false, :locals => { :gallery_photo => photo } ) }
+    end
+    if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
     end
   end
 
@@ -97,6 +103,19 @@ class GalleryPhotosController < ApplicationController
 
   def clean_tags
     params[:gallery_photo][:tag_list] && params[:gallery_photo][:tag_list].tr!("'","")
+  end
+
+  def find_booth_details
+    @group = Group.find(params[:group_id])
+    @group_links = @group.group_links.all
+     max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
+    @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
+    @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
+    if @group_blog_tags.count > 0
+      @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
+      @minTagOccurs=@group_blog_tags.first[:count]
+      @maxTagOccurs=@group_blog_tags.last[:count]
+    end
   end
 
 end

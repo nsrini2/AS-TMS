@@ -1,0 +1,13 @@
+<% content_for(:title, "Create a New Booth Link") -%>
+<% form_for(:group_link,:url => group_group_links_path, :html => {:id => "new_group_link", :method => :post}) do |f| %>
+<fieldset>
+	<h6>New Booth Link</h6>
+        <label for="group_link_url">URL</label><br />
+	<%= f.text_field :url, :size => 20, :maxlength => 40, :placeholder => "URL for the booth link" %><br /><br />
+	<label for="group_link_text">Text</label><br />
+	<%= f.text_field :text, :size => 20, :maxlength => 40, :placeholder => "The text for this booth link" %><br/><br />
+        <div class="buttons">
+	<%= f.submit "Create Booth Link", :class => "button medium" %>
+        </div>
+</fieldset>
+<% end -%>

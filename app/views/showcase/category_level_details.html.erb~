@@ -1,0 +1,21 @@
+<link href="/themes/agentstream/_css/showcase.css" rel="stylesheet">
+<h2 class="page_title"><%=@sponsor_account.name%></h2>
+<div id="list" >
+  <% if @category_groups.count >0 %>
+   <div id="news_feed">
+        <%= render :partial => '/showcase/events_panel', :locals => { :events => @events } %>
+        <%= will_paginate @events, :param_name => 'events_page' %>
+   </div>
+   <div class="group_results">
+       <div id="controls">
+        <%= filter_control('CategoryGroup') %>
+        <%= sort_control('CategoryGroup') %><br/><br/>
+       </div>
+    	<%= render :partial => 'showcase/groups_panel' %>
+	<%= will_paginate @category_groups, :param_name => 'groups_page' %>
+   </div>
+   <%else%>
+     <span><h6>There are no results to display in this category</h6></span>
+   <%end%>
+</div>
+

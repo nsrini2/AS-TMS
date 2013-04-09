@@ -1,5 +1,26 @@
 <% content_for(:page_title, "Transfer Ownership of #{@group.name}") -%>
-
+<% if @group.is_sponsored? %>
+<% if group_owner_or_shady_admin_content(@group)  %>
+	
+	
+	<div id="ownership_transfer">
+		<h5>Who should be the new owner of <%= @group.name %>?</h5>
+		<p class="help">After transferring ownership, you will remain a moderator of this group.
+			You will no longer be able to assign moderators or transfer ownership once you have transferred ownership.
+		</p>
+		<div class="candidates">
+			<form id="candidates_search" method="get" action="">
+				<input type="text" id="search" value="search..." class="member_search" onfocus="this.select()" name="q" />
+				<input type="submit" class="button small" value="Search" name="commit"/>
+			</form>
+				<div id="member_list">
+					<%= render :partial => 'groups/member', :collection => @members, :locals => {:transfer_ownership => true} %>
+				</div>
+		</div>
+	</div>
+	
+<% end %>
+<% else %>
 <% if group_owner_or_shady_admin_content(@group)  %>
 	
 	
@@ -19,4 +40,5 @@
 		</div>
 	</div>
 	
+<% end %>
 <% end %>
