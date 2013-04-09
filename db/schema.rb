@@ -716,7 +716,6 @@ ActiveRecord::Schema.define(:version => 20130408050245) do
   add_index "pois", ["popularity"], :name => "index_plan_elements_on_popularity"
   add_index "pois", ["rating_avg"], :name => "index_trip_elements_on_rating_avg"
 
-<<<<<<< HEAD
   create_table "poly_text_indices", :force => true do |t|
     t.string  "owner_type", :null => false
     t.integer "owner_id",   :null => false
@@ -728,8 +727,6 @@ ActiveRecord::Schema.define(:version => 20130408050245) do
   add_index "poly_text_indices", ["owner_type", "owner_id"], :name => "index_poly_text_indices_on_owner_type_and_owner_id"
   add_index "poly_text_indices", ["text"], :name => "fulltext_text"
 
-=======
->>>>>>> travelexpoadmin/master
   create_table "posts", :force => true do |t|
     t.integer  "topic_id"
     t.integer  "author_id"
@@ -1033,10 +1030,7 @@ ActiveRecord::Schema.define(:version => 20130408050245) do
     t.string   "monitor_email_address"
     t.boolean  "frozen_emails",             :default => false
     t.boolean  "ssl_enabled",               :default => false
-<<<<<<< HEAD
     t.boolean  "use_gen_widgets_enabled",   :default => true
-=======
->>>>>>> travelexpoadmin/master
     t.string   "welcome_promo_title_1",     :default => ""
     t.string   "welcome_promo_1",           :default => ""
     t.string   "welcome_promo_title_2",     :default => ""

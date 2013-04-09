@@ -119,13 +119,10 @@ input, select {
 $line-height: 18px;*/
 /* line 6, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 body {
-<<<<<<< HEAD
   background: #fff url(/images/bg-header.gif) repeat-x 0 0;
   font-family: "Lucida Sans", Arial, sans-serif;
   color: #333;
-=======
   font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
->>>>>>> travelexpoadmin/master
   font-size: 14px;
 }
 
@@ -388,11 +385,8 @@ p.category, p.answers {
 
 /* line 30, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 img.photo {
-<<<<<<< HEAD
   /*border: 1px solid #C4D7DC;*/
-=======
   border: 1px solid #c4d7dc;
->>>>>>> travelexpoadmin/master
 }
 
 /* line 32, ../../../../app/stylesheets/themes/agentstream/screen.scss */
@@ -1653,7 +1647,6 @@ div.action_buttons a.button {
 
 /* line 25, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav {
-<<<<<<< HEAD
   font-size: 16px;
   margin: 0;
   text-transform: uppercase;
@@ -1661,22 +1654,12 @@ div.action_buttons a.button {
   height: 37px;
   display: block;
   clear: left;
-=======
-  font-size: 15px;
-  margin: 20px 0 0;
-  text-transform: lowercase;
-  text-align: left;
->>>>>>> travelexpoadmin/master
 }
 
 /* line 32, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav li:first-child {
-<<<<<<< HEAD
   margin-left: 15px;
   border-left: 0;
-=======
-  margin-left: 25px;
->>>>>>> travelexpoadmin/master
 }
 
 /* line 36, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -1687,11 +1670,9 @@ div.action_buttons a.button {
 /* line 38, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav li a {
   display: block;
-<<<<<<< HEAD
   padding: 0;
   color: #fff;
   line-height: 37px;
-=======
   padding: 30px 0 0 0;
   min-width: 27px;
 }
@@ -1784,7 +1765,6 @@ div.action_buttons a.button {
 /* line 102, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #de_nav.active, #header .nav #de_nav:hover {
   background: url("/images/icons/as/nav/on/de.gif") no-repeat 50% top;
->>>>>>> travelexpoadmin/master
 }
 
 /* line 106, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -1840,12 +1820,8 @@ div.action_buttons a.button {
 #header .utility .nav li:first-child {
   border: 0;
 }
-<<<<<<< HEAD
-/* line 132, ../../../../app/stylesheets/themes/agentstream/header.scss */
-=======
 
 /* line 140, ../../../../app/stylesheets/themes/agentstream/header.scss */
->>>>>>> travelexpoadmin/master
 #header .utility .search {
   float: right;
   margin: 0 5px 0 0;
@@ -2049,13 +2025,6 @@ div.news_item div.details div.icon img.icon {
   clear: left;
   padding: 10px;
   background: none;
-<<<<<<< HEAD
-=======
-  border: 1px solid #c4d7dc;
-  position: relative;
-  top: -1px;
-  margin-top: -1px;
-  margin-bottom: 10px;
 }
 
 /* line 58, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
@@ -2070,11 +2039,6 @@ div.news_item div.details div.icon img.icon {
   padding: 10px;
   background: none;
   border: 1px solid #c4d7dc;
->>>>>>> travelexpoadmin/master
-  position: relative;
-  top: -1px;
-  margin-top: -1px;
-  margin-bottom: 10px;
 }
 
 /* line 71, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
@@ -3657,16 +3621,6 @@ table.badges td p {
 /*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
 /*$font-size: 12px;
 $line-height: 18px;*/
-<<<<<<< HEAD
-=======
-/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
-body {
-  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
-  font-size: 14px;
-  line-height: 1.6em;
-  color: #676767;
-}
->>>>>>> travelexpoadmin/master
 
 /* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
 a:focus {
@@ -6017,16 +5971,6 @@ div.rate p.rating_total {
 /*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
 /*$font-size: 12px;
 $line-height: 18px;*/
-<<<<<<< HEAD
-=======
-/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
-body {
-  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
-  font-size: 14px;
-  line-height: 1.6em;
-  color: #676767;
-}
->>>>>>> travelexpoadmin/master
 
 /* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
 a:focus {
@@ -6569,16 +6513,6 @@ div.attendees table#attendees td {
 /*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
 /*$font-size: 12px;
 $line-height: 18px;*/
-<<<<<<< HEAD
-=======
-/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
-body {
-  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
-  font-size: 14px;
-  line-height: 1.6em;
-  color: #676767;
-}
->>>>>>> travelexpoadmin/master
 
 /* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
 a:focus {
@@ -6675,14 +6609,6 @@ div#deals-header h2, div#deals-header p {
   margin-left: 0;
 }
 
-<<<<<<< HEAD
-=======
-/* line 19, ../../../../app/stylesheets/themes/agentstream/layout.scss */
-.global_nav {
-  width: 470px;
-}
-
->>>>>>> travelexpoadmin/master
 /* line 20, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .utility {
   width: 320px;

@@ -40,8 +40,6 @@
 <div id="page">
   <div id="header">
     <h1 id="logo"><%= link_to "AgentStream", home_path %></h1>
-<<<<<<< HEAD
-=======
     <div class="global_nav">
       <% quick_reg_path = url_for(:controller => :account, :action => :login) if !logged_in?%>
       <ul class="nav">
@@ -56,8 +54,6 @@
         <%= global_nav_link "Travel<span class='line2'>Expo</span>", quick_reg_path || '/showcase', "showcase_nav" %>
       </ul>
     </div>
-
->>>>>>> travelexpoadmin/master
     <div class="utility">
       <% if logged_in? %>
         <ul class="nav">
@@ -123,13 +119,7 @@
     </div>
   </div>
 
-<<<<<<< HEAD
-  <div id="main">
-=======
-
-
   <div id="main" style="overflow:hidden;">
->>>>>>> travelexpoadmin/master
     <div id="primary">
 
       <%#= yield %>
