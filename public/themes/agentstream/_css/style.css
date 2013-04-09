@@ -1874,20 +1874,6 @@ div.action_buttons a.button {
   clear: both;
 }
 
-<<<<<<< HEAD
-/* line 160, ../../../../app/stylesheets/themes/agentstream/header.scss */
-=======
-/* line 167, ../../../../app/stylesheets/themes/agentstream/header.scss */
-.aside .module, .primary .module {
-  margin: 0;
-  padding: 10px 20px 10px;
-  border: 1px solid #c4d7dc;
-  border-width: 1px 0 0 0;
-  background: #fff;
-}
-
-/* line 168, ../../../../app/stylesheets/themes/agentstream/header.scss */
->>>>>>> travelexpoadmin/master
 .aside .module {
   border-width: 1px 0 0 1px;
 }
@@ -2128,20 +2114,6 @@ div.news_item div.details div.icon img.icon {
   color: #92b5bd;
 }
 
-<<<<<<< HEAD
-/* line 54, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
-=======
-/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-/* line 93, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
-.tabs .tabs-panel {
-  display: block;
-  border-width: 0;
-  background: #eff8fa;
-  border: 1px solid #c4d7dc;
-}
-
-/* line 94, ../../../../app/stylesheets/themes/agentstream/tabs.scss */
->>>>>>> travelexpoadmin/master
 .tabs .hide {
   display: none !important;
 }
