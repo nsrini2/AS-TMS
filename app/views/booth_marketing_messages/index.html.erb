@@ -1,9 +1,0 @@
-<link href="/themes/agentstream/_css/tabs.css" rel="stylesheet">
-<% content_for(:booth_marketing_message, 'selected') -%>
-<% content_for(:page_title, 'Manage Booth Marketing Messages') -%>
-<h6>Booth Marketing Messages</h6>
-<p class="booth_help">You can have an unlimited number of rotating messages. Be creative and have fun with them.</p>
-<p class="booth_help">These marketing messages will be displayed in the Booth homepage.</p>
-<p><%= link_to_create_booth_marketing_message(@group) %></p>
-<%=render "shared/booth_marketing_messages"%>
-<%= will_paginate @booth_marketing_messages, :param_name => 'booth_marketing_page' %>

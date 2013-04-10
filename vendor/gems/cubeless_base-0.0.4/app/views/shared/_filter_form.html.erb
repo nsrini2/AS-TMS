@@ -18,7 +18,7 @@
 	<% elsif options[:filter_options] %>
 		<%= hidden_field_tag('filter_scope',scope,:id => 'filter_scope') %>
 		<dl id="filter_options">
-			<dt><strong>View:</strong></dt>
+			<dt>View:</dt>
 			<%= filter_links_for(options,scope) %>
 		</dl>
 	<% end %>

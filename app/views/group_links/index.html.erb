@@ -1,8 +1,0 @@
-<link href="/themes/agentstream/_css/tabs.css" rel="stylesheet">
-<% content_for(:booth_links, 'selected') -%>
-<% content_for(:page_title, 'Manage Booth Links') -%>
-<h6>Useful Links</h6>
-<p class="booth_help">These links will be displayed in the Booth Info section.</p>
-<p><%= link_to "create new booth link", new_group_group_link_path(@group) %></p>
-<%=render "shared/booth_links"%>
-<%= will_paginate @useful_links, :param_name => 'group_links_page' %>

@@ -1,8 +1,0 @@
-<link href="/themes/agentstream/_css/showcase.css" rel="stylesheet">
-<% content_for(:showcase_marketing_message, 'selected') -%>
-<% content_for(:page_title, 'Manage Travel Expo Marketing Messages') -%>
-<h3>Showcase Marketing Messages</h3>
-<p class="help">You can have an unlimited number of rotating messages. Be creative and have fun with them.</p>
-<p class="help">These marketing messages will be displayed in the Travel Market Showcase page.</p>
-<p><%= link_to_create_showcase_marketing_message %></p>
-<%=render "shared/marketing_messages"%>

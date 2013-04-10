@@ -139,12 +139,6 @@ module QuestionsHelper
               :questions_for => object, :model => object.class.name, :show => {:referred_by => true, :referred_to_groups => false, :remove => can_remove_question}} )
   end
 
-  def render_booth_referred_questions_for(object, referred_questions, can_remove_question=true)
-    render( :partial => 'questions/booth_questions',
-              :locals => {:domain => 'referred_questions', :questions => referred_questions,
-              :questions_for => object, :model => object.class.name, :show => {:referred_by => true, :referred_to_groups => false, :remove => can_remove_question}} )
-  end
-
   def link_to_delete_question(question)
     if question.authored_by?(current_profile) && question.num_answers == 0 || current_profile.has_role?(Role::ShadyAdmin)
       link_to("delete", question_path(question), :class => 'modal delete')

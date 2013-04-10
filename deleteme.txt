@@ -1,2 +1,0 @@
-This is just to create a file we will delete 
-but we need something to create the svn repo

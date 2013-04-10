@@ -5,17 +5,8 @@ div.news_item div.details div.icon {
   width: 22px;
 }
 
-/* line 12, ../../../../app/stylesheets/themes/agentstream/icons.scss */
+/* line 11, ../../../../app/stylesheets/themes/agentstream/icons.scss */
 div.news_item div.details div.icon img.icon {
   height: 22px;
   /*opacity: 0.7;*/
-}
-
-/* line 18, ../../../../app/stylesheets/themes/agentstream/icons.scss */
-.booth_activity_details img {
-  width: 18px;
-  height: 20px;
-  display: block;
-  float: left;
-  margin: 0 15px 0 0;
 }

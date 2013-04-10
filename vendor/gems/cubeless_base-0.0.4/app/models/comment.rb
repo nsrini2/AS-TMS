@@ -5,8 +5,6 @@ class Comment < ActiveRecord::Base
   belongs_to :owner, :polymorphic => true, :counter_cache => true
   belongs_to :profile
 
-  stream_to :activity
-
   has_one :abuse, :as => :abuseable, :conditions => 'remover_id is null'
 
   validates_length_of :text, :within => 1..4000, :too_long => "is too long. Limit to 4000 characters.", :too_short => "cannot be blank."

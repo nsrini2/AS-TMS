@@ -7,5 +7,5 @@ avatar_size = :thumb_large unless avatar_size
 questions.each_with_index do |question, index|%>
 	<div id="qaQuestion<%=question.id%>" class="question <%=question.id%> list_item <%=cycle("odd", "even") %>">
 		<%= render :partial =>'questions/question', :locals => {:questions_for => questions_for, :domain => domain, :questions_counter => index, :question => question, :show => show, :model => model, :avatar_size => avatar_size }%>
-       </div>
+	</div>
 <%end%>

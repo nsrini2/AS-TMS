@@ -1,8 +1,8 @@
-Set up:
+#Set up:
 
-1 - git clone  to create local copy of repo 
+1 - git clone   
 
-2 - create local files and dir structure
+2 - create local files
 
     - config/panda.yml
     - config/facebook.yml
@@ -40,38 +40,21 @@ Set up:
 
     - u: cubeless_admin  p: abc123
     - u: agent_a         p: abc123
+    
 
-Fixes to defect #'s 254, 274, 275, 276
+#Cached Objects
 
-Changes in Agentstream admin (Sponsors tab) as follows:
-a) Tab renamed as "Showcase"
-b) Included showcase category image as a compulsory input field for creating a new showcase category
-c) Fixed delete action for showcase category (defect # 257)
-d) Modified name references on these pages so:
-      sponsor account => showcase category
-      sponsor member => booth owner
-      sponsor group (group) => booth
+Because some classes get overridden in development mode, you must set caching to true to work use these files.  Some notable areas include:
 
+       My Agency -- Companies::HubController
+       Search -- ChatTopicIndex
+       
+To turn on caching in development:
 
-This change includes the following:
-----------------------------------------------------------------------------------------------------------------
-1. Fixes to defect #'s 277, 280
-
-Defect #277:
--------------
-Description: User is able to create a group in any sponsor account even when the 'no of groups allowed' for the
-sponsor account is set to 0
-
-Defect #280
--------------
-Description: When the user tries to create a group without entering values for the name/desc fields, the group 
-is not saved, but a flash notice informs the user that the nameless group has been saved
-
-This change includes the following:
-----------------------------------------------------------------------------------------------------------------
-1. Tag cloud
-2. Booth level marketing messages
-3. Interesting links
-4. Booth 'Follow'
-5. Booth fomatting
-----------------------------------------------------------------------------------------------------------------
+    config/environments/development.rb
+    # change line 8 from:
+    config.cache_classes = false 
+    # to
+    config.cache_classes = true
+    
+Note:  You will need to restart your server instance to see changes in code base when this is set to true.

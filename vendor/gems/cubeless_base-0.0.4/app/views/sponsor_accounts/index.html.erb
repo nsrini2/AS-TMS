@@ -1,28 +1,21 @@
-<% content_for(:page_title, "Manage Travel Showcase") -%>
-<h3>Showcase Categories</h3>
-<a href="<%= new_sponsor_account_url %>">new showcase category</a><br/><br/><br/>
+<% content_for(:page_title, "Manage Sponsor Accounts") -%>
+<h2>Sponsor Accounts <a href="<%= new_sponsor_account_url %>">Create a new Account</a></h2>
+
 <% @sponsor_accounts.each_index do |index| -%>
 <% account = @sponsor_accounts[index] -%>
 <% klass = index%2 != 0 ? 'even' : 'odd' -%>
 <div class="sponsor_account sponsor_account_<%= klass %>">
-        <h4><%= account.name%></h4>
-        <%#if !@sponsor_accounts.size==0%>
-        <%= image_tag(account.showcase_category_image.public_filename(:medium))%>
-        <%#end%>
+	<h3><%= account.name%></h3>
 	<p class="sponsor_account_notes"><%= replace_newline_with_br(auto_link(account.notes, :all))%></p>
-	<p><a href="<%= sponsor_account_sponsor_groups_path(account) %>"><%= pluralize(account.groups.size, 'booth') %> created</a> - <%= pluralize (account.group_slots_remaining, 'unused booth slot') %></p>
+	<p><a href="<%= sponsor_account_sponsor_groups_path(account) %>"><%= pluralize(account.groups.size, 'group') %> created</a> - <%= pluralize(account.group_slots_remaining, 'unused group slot') %></p>
 	<p><a href="<%= sponsor_account_sponsor_members_path(account) %>"><%= pluralize(account.sponsors.size, 'sponsor member') %></a></p>
 	<div class="container">
 		<ul class="action_list">
-			<li><%= link_to "Edit Showcase Category", edit_sponsor_account_path(account) %></li>
-			<li><%= link_to "Delete Showcase Category", delete_sponsor_account_path(account) %></li>
+			<li><%= link_to "Edit", edit_sponsor_account_path(account) %></li>
+			<li><%= link_to "Delete", sponsor_account_path(account), :method => :delete %></li>
 			<li><%= link_to "Create Sponsor Member", new_sponsor_account_sponsor_member_url(account) %></li>
-                        <% if account.group_slots_remaining > 0 %>
-			<li><%= link_to "Create Booth", new_sponsor_account_sponsor_group_url(account) %></li>
-                        <% end %>
-               </ul>
-          <br /><br />
-        </div>
- </div>
+			<li><%= link_to "Create Group", new_sponsor_account_sponsor_group_url(account) %></li>
+		</ul>
+	</div>
+</div>
 <% end -%>
-<%= will_paginate @sponsor_accounts %>

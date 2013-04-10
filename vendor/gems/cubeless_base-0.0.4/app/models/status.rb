@@ -2,8 +2,6 @@ class Status < ActiveRecord::Base
 
   belongs_to :profile
 
-  stream_to :activity
-
   # MM2: Apparently only in Rails 2.3 :(
   # default_scope :order => 'created_at DESC'
   

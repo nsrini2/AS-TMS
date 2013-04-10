@@ -171,7 +171,7 @@ class Profile < ActiveRecord::Base
 
   @@active_timeout_in_minutes = 30
   def self.active_users_count
-    self.count_by_sql("select count(1) from profiles where last_accessed>timestampadd(minute,-#{@@active_timeout_in_minutes},UTC_TIMESTAMP())")
+    self.count_by_sql("select count(1) from profiles where last_accessed>timestampadd(minute,-#{@@active_timeout_in_minutes},now())")
   end
 
   def online_now?

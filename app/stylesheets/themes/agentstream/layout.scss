@@ -39,7 +39,6 @@ $ninesixty-grid-width: 960px;
 	.list .primary { width: 720px;  }
 	.list .aside { width: 240px; }
 	
-	.profile .sponsor_grp { width: 655px; @include alpha; }
 	.profile .primary { @include grid-width(12); clear: both; @include alpha; }
 	.profile .aside { @include grid-width(4); @include omega; }
 	

@@ -10,7 +10,6 @@
     <%= render :partial => "/statuses/list", :locals => { :statuses => @statuses.to_a } %>
   </div>
   
-  <%#= render_pagination @statuses %>
-  <%= will_paginate @statuses %>
+  <%= render_pagination @statuses %>
   
 </div>

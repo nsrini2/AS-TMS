@@ -9,10 +9,9 @@
 		<%= content_tag('li', link_to("Blog", group_blog_path(@group)), :class => yield(:blog_tab)) -%>
 		<%= content_tag('li', link_to("Photos", group_gallery_photos_path(@group)), :class => yield(:photos_tab)) -%>
 	<% end -%>
-       <%= group_member_or_shady_admin_content @group do -%>
+	<%= group_member_or_shady_admin_content @group do -%>
 		<%= content_tag('li', link_to("Group Talk", group_group_posts_path(@group)), :class => yield(:group_talk_tab)) -%>
 	<% end -%>
-       
 	<% if @group.editable_by?(current_profile) -%>
 		<%= content_tag('li', link_to("Manage", edit_group_path(@group)), :class => yield(:manage_tab)) -%>
 	<% end -%>

@@ -5,58 +5,27 @@ class SponsorGroupsController < ApplicationController
 
   def index
     @sponsor_account = SponsorAccount.find(params[:sponsor_account_id])
-    @sponsor_groups=@sponsor_account.groups.paginate(:page => params[:page], :per_page => 5)
   end
 
   def new
     @sponsor_account = SponsorAccount.find(params[:sponsor_account_id])
     @sponsor_group = Group.new
-    @group_types=[["Public",0],["Invitation Only",1],["Private",2]]
   end
-
-  def edit
-    @sponsor_account=SponsorAccount.find(params[:sponsor_account_id])
-    @sponsor_group=@sponsor_account.groups.find(params[:id])
-    @group_types=[["Public",0],["Invitation Only",1],["Private",2]]
-  end
-
-
-  def update
-    @sponsor_account = SponsorAccount.find(params[:sponsor_account_id])
-    @sponsor_group=@sponsor_account.groups.find(params[:id])
-    @group_types=[["Public",0],["Invitation Only",1],["Private",2]]
-    @sponsor_group.update_attributes(params[:sponsor_group])
-    if @sponsor_group.save
-        flash[:notice] = "Booth #{@sponsor_group.name} was updated!"
-        redirect_to sponsor_account_sponsor_groups_path(@sponsor_account)
-    else
-         flash[:errors] = @sponsor_group.errors
-         render :action => "edit"
-    end
-  end
-
 
   def create
-    @group_types=[["Public",0],["Invitation Only",1],["Private",2]]
     @sponsor_account = SponsorAccount.find(params[:sponsor_account_id])
     @sponsor_group = Group.create(params[:sponsor_group].merge!({ :sponsor_account_id => @sponsor_account.id, 
                                                                   :owner => @sponsor_account.sponsors.find(params[:sponsor_group][:owner_id])}))
-    if @sponsor_group.save
-      add_to_notices "#{@sponsor_group.name.titleize} has been saved"
-      redirect_to sponsor_account_sponsor_groups_path(@sponsor_account)
-    else
-      flash[:errors] = @sponsor_group.errors
-      render :action => "new"
-    end
+
+    add_to_notices "#{@sponsor_group.name.titleize} has been saved"
+    redirect_to sponsor_account_sponsor_groups_path(@sponsor_account)
   end
   
-
   def delete
     @sponsor_account = SponsorAccount.find( params[:sponsor_account_id] )
     @sponsor_group = @sponsor_account.groups.find(params[:id])
   end
   
-
   def destroy
     @sponsor_account = SponsorAccount.find(params[:sponsor_account_id])
     @sponsor_group = @sponsor_account.groups.find(params[:id])
@@ -118,6 +87,7 @@ class SponsorGroupsController < ApplicationController
     rescue
       add_to_errors "We couldn't remove that user from the group :("
     end
+
     redirect_to sponsor_account_sponsor_groups_path(@sponsor_account)
   end
   
@@ -131,6 +101,8 @@ class SponsorGroupsController < ApplicationController
     rescue
       add_to_errors "We couldn't transfer the ownership to that user :("
     end
+
     redirect_to sponsor_account_sponsor_groups_path(@sponsor_account)
   end
+
 end

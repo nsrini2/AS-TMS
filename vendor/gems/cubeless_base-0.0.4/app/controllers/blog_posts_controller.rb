@@ -10,7 +10,7 @@ class BlogPostsController < ApplicationController
     return redirect_to(url_for([@owner, :blog])) if !bloggable?
     @blog_post = BlogPost.new
     @blog = @owner.blog
-    render :template => 'blog_posts/new', :layout => @owner.is_a?(Group) ? (@owner.is_sponsored? ? 'sponsored_group' :'group') : '_my_stuff'
+    render :template => 'blog_posts/new', :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
   end
 
   def create
@@ -25,12 +25,12 @@ class BlogPostsController < ApplicationController
       else
         @blog = @owner.blog
         add_to_errors(@blog_post)
-        render :template => 'blog_posts/new', :layout => @owner.is_a?(Group) ? (@owner.is_sponsored? ? 'sponsored_group' :'group') : '_my_stuff'
+        render :template => 'blog_posts/new', :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
       end
     elsif params[:preview]
       @blog = @owner.blog
       @preview_blog_post = @blog_post
-      render :template => 'blog_posts/new', :layout => @owner.is_a?(Group) ? (@owner.is_sponsored? ? 'sponsored_group' :'group') : '_my_stuff'
+      render :template => 'blog_posts/new', :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
     else
       redirect_to [@owner, :blog]
     end
@@ -49,22 +49,7 @@ class BlogPostsController < ApplicationController
         @archives = @blog.archived_posts
         instance_variable_set("@#{@owner.class.name.downcase}", @owner)
         @blog_posts[0].increment_post_views! unless @owner==current_profile
-        if @owner.is_a?(Group)
-          @group = @owner
-          @group_links = @group.group_links.all
-          max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
-          @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
-          @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
-          if @group_blog_tags.count > 0
-            @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
-            @minTagOccurs=@group_blog_tags.first[:count]
-            @maxTagOccurs=@group_blog_tags.last[:count]
-            #@maxTagOccurs=@minTagOccurs if @maxTagOccurs.NaN?
-          end
-          render :template => 'blogs/show', :layout => @owner.is_sponsored? ? 'sponsored_group' :'group'
-         else
-          render :template => 'blogs/show', :layout => '_my_stuff'
-        end
+        render :template => 'blogs/show', :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
       end
     end
   end
@@ -72,51 +57,22 @@ class BlogPostsController < ApplicationController
   def edit
     @blog_post = BlogPost.find(params[:id])
     @blog = @blog_post.blog
-    @owner = @blog.owner
     if is_editable?(@blog_post)
-      if @owner.is_a?(Group)
-          @group = @owner
-          @group_links = @group.group_links.all
-          max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
-          @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }  
-          @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
-          if @group_blog_tags.count > 0
-            @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
-            @minTagOccurs=@group_blog_tags.first[:count]
-            @maxTagOccurs=@group_blog_tags.last[:count]  
-          end
-         render :template => 'blog_posts/edit', :layout => @owner.is_sponsored? ? 'sponsored_group' :'group'
-         else
-          render :template => 'blog_posts/edit', :layout => '_my_stuff'
-      end
+      render :template => 'blog_posts/edit', :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
     end
   end
 
   def update
     @blog_post = BlogPost.find(params[:id])
-    @blog = @blog_post.blog
-    @owner = @blog.owner
-     if @owner.is_a?(Group)
-        @group = @owner
-        @group_links = @group.group_links.all
-        max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
-        @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
-        @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
-        if @group_blog_tags.count > 0
-          @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
-          @minTagOccurs=@group_blog_tags.first[:count]
-          @maxTagOccurs=@group_blog_tags.last[:count]  
-        end
-      end
-
       if is_editable?(@blog_post)
         if params[:commit]
           if @blog_post.update_attributes(params[:blog_post])
             add_to_notices('Blog post successfully updated!')
             redirect_to @blog_post
           else
+            @blog = @blog_post.blog
             add_to_errors(@blog_post)
-            render :template => 'blog_posts/edit', :layout => @owner.is_a?(Group) ?  (@owner.is_sponsored? ? 'sponsored_group' :'group') : '_my_stuff'
+            render :template => 'blog_posts/edit', :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
           end
         elsif params[:preview]
           @blog_post.title = params[:blog_post][:title]
@@ -124,7 +80,7 @@ class BlogPostsController < ApplicationController
           @blog_post.tag_list = params[:blog_post][:tag_list]
           @blog = @blog_post.blog
           @preview_blog_post = @blog_post
-          render :template => 'blog_posts/edit', :layout => @owner.is_a?(Group) ? (@owner.is_sponsored? ? 'sponsored_group' :'group') : '_my_stuff'
+          render :template => 'blog_posts/edit', :layout => @owner.is_a?(Group) ? 'group': '_my_stuff'
         else
           redirect_to @blog_post
         end
@@ -165,7 +121,7 @@ class BlogPostsController < ApplicationController
     end
   end
 
- private
+  private
 
   def check_for_news_post
     @post = BlogPost.unscoped.find(params[:id])
@@ -176,7 +132,6 @@ class BlogPostsController < ApplicationController
 
   def set_owner
     @owner = parent
-    find_booth_details if @owner.is_a?(Group) && @owner.is_sponsored?
   end
 
   def bloggable?
@@ -185,19 +140,6 @@ class BlogPostsController < ApplicationController
   
   def clean_tags
     params[:blog_post][:tag_list].tr!("'","")
-  end
-
-  def find_booth_details
-    @group = Group.find(params[:group_id])
-    @group_links = @group.group_links.all
-     max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
-    @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
-    @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
-    if @group_blog_tags.count > 0
-      @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
-      @minTagOccurs=@group_blog_tags.first[:count]
-      @maxTagOccurs=@group_blog_tags.last[:count]
-    end
   end
   
 end

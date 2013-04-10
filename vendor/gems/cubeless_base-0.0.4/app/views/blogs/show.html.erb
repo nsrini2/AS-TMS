@@ -3,21 +3,6 @@ content_for(:blog_tab, 'selected')
 content_for(:page_title, blog_title(@blog, @blog_posts))
 current = true unless params[:date]
 -%>
-<% if @group.is_sponsored?%>
-<%= render :partial => 'blogs/booth_side_bar', :locals => { :show_create => true } -%>
-<div id="booth_blog">
-  <div id="booth_blog_posts">
-    <% @blog_posts.each do |blog_post| -%>
-      <%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => blog_post, :full_post => full_post?(@blog_posts), :classname => cycle('odd', 'even') } -%>
-    <% end -%>
-    <% empty_blog_content_for_non_blogger(@blog) do -%>
-    <% end -%>
-  </div>
-  <div class="see_all" style="margin-left: 10px;">
-    <%= will_paginate @blog_posts %>
-  </div>
-
-<% else %>
 <div id="blog">
   <div id="blog_posts">
     <% @blog_posts.each do |blog_post| -%>
@@ -31,4 +16,3 @@ current = true unless params[:date]
   </div>
   <%= render :partial => 'blogs/side_bar', :locals => { :show_create => true } -%>
 </div>
-<% end %>

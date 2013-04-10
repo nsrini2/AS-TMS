@@ -23,14 +23,14 @@ width: 200px; }
 		color: #4a6970; 
 	}
 #header .global_nav { 
-	font-size: 15px; 
-	margin: 20px 0 0; 
+	font-size: 16px; 
+	margin: 30px 0 0; 
 	text-transform: lowercase; 
-	text-align: left;
+	text-align: right;
 }
 
 #header .global_nav li:first-child {
-	margin-left:25px;
+	margin-left:40px;
 }
 
 #header .global_nav li.active { border-bottom: 1px solid #4a6970; } 
@@ -38,7 +38,7 @@ width: 200px; }
 #header .global_nav li a {
 	display: block;
 	padding: 30px 0 0 0;  
-	min-width: 27px;
+	min-width: 30px;
 }
 
 #header .nav #hub_nav {
@@ -101,14 +101,6 @@ width: 200px; }
 
 #header .nav #de_nav.active, #header .nav #de_nav:hover {
 	background: url('/images/icons/as/nav/on/de.gif') no-repeat 50% top;
-}
-
-#header .nav #showcase_nav {
-    background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
-}
-
-#header .nav #showcase_nav.active, #header .nav #showcase_nav a:hover {
-    background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top; 
 }
 
 #header .nav .line2 {

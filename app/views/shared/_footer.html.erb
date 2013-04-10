@@ -1,21 +1,22 @@
 <style>
-  #footer { float: left; font-size: 12px; color: #fff; padding: 35px 0 25px 0; background-color: #1e3a53; width: 100%; }
-  #footer a { color:#fff; text-decoration: underline; }
+  #footer { padding: 10px 0 30px 0;}
+  #footer a { color:#4a6970; text-decoration: none;}
+  #footer a:hover { text-decoration: underline;}
   #footer h6 {
     margin-bottom: 0;
   }
-  #footer p {
-    margin-bottom: 10px;
-  }
-  #footer #wrapper {
-    width: 960px;
-    margin: 0 auto;
-  }
+
   #footer .footer-left { 
     float: left;
     margin: 0 60px 10px 0;
   }
   #footer .footer-right { float: right; text-align:right;}
+
+  #footer .footer-other { 
+    border-top: 1px solid #C4D7DC;
+    clear: both;
+    padding: 20px 0 0 0;
+  }
   
   #footer .footer-left ul {
     margin: 0;
@@ -26,54 +27,37 @@
     margin: 5px 0;
     padding: 0;
   }
-  #footer-other {
-    width: 960px;
-    margin: 0 auto;
-    clear: both;
-    padding: 20px 0;
-  }
-  #footer-other .footer-left {
-    width: 583px;
-    font-size: 10px;
-    font-family: Arial;
-    line-height: 1.5;
-    color: #666;
-    float: left;
-  }
-  #footer-other .footer-right {
-    float: right;
-    width: 357px;
-    text-align: right;
-    padding-top: 10px;
-  }
 
 </style>
 
 <div id="footer">
-  <div id="wrapper">
   <div class="footer-left">
-    <p><strong>About:</strong>
-      <a href="/feedback">Contact Us</a> | 
-      <a href="/our_story">FAQ</a> | 
-      <a href="/terms_and_conditions">Terms &amp; Conditions</a> |
-      <a href="http://www.sabretravelnetwork.com/home/about/">About Sabre Travel Network</a>
-    </p>
-    <p><strong>Explore:</strong>
-      <%= link_to "Questions", questions_explorations_path %> | 
-      <%= link_to "Groups", groups_explorations_path %> | 
-      <%= link_to "Blogs", blogs_explorations_path %> | 
-      <%= link_to "News", news_path %>
-    <p><strong>Partners:</strong>
-      <a href="http://www.travelmarketreport.com">Travel Market Report</a> | 
-      <a href="http://www.tnooz.com">Tnooz – Talking Travel Tech</a> | 
-      <a href="http://www.agentstream.com/groups/78">Industry Insiders</a>
-    </p>
+    <h6>About</h6>
+    <ul>
+      <li><a href="/feedback">Contact Us</a></li>
+      <li><a href="/our_story">FAQ</a></li>      
+      <li><a href="/terms_and_conditions">Terms and Conditions</a></li>
+      <li><a href="http://www.sabretravelnetwork.com/home/about/">About Sabre Travel Network</a></li>
+    </ul>
+  </div>
+  <div class="footer-left">
+    <h6>Explore</h6>
+    <ul>      
+      <li><%= link_to "Q&amp;A", questions_explorations_path %></li>
+      <li><%= link_to "Groups", groups_explorations_path %></li>
+      <li><%= link_to "Blogs", blogs_explorations_path %></li>
+      <li><%= link_to "News", news_path %></li>
+    </ul>
+  </div>
+  <div class="footer-left">
+    <h6>Partners</h6>
+    <ul>
+      <li><a href="http://www.travelmarketreport.com">Travel Market Report</a></li>
+      <li><a href="http://www.tnooz.com">Tnooz – Talking Travel Tech</a></li>
+      <li><a href="http://www.agentstream.com/groups/78">Industry Insiders</a></li>
+    </ul>
   </div>  
   <div class="footer-right">
-    <p><strong>&copy; 2013 AgentStream / Sabre Travel Network</strong><br />
-      3150 Sabre Drive &bull; Southlake, Texas 76092<br />
-      <a href="mailto:admin@agentstream.com">admin@agentstream.com</a><br />
-      <a href="http://www.facebook.com/">Facebook</a> <a href="http://www.twitter.com/">Twitter</a></p>
       <div id="google_translate_element"></div>
       <% if Rails.env.production? && !de_request -%>
         <script>
@@ -90,15 +74,16 @@
         </script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
       <% end -%>
   </div>
+  <div class="footer-other">
+    <div class="footer-left">
+      <p><%= Config[:disclaimer].html_safe -%></p>
+    </div>
+    <div class="footer-right">
+      
+      <span><a href="http://www.sabretravelnetwork.com"><img src="/images/sabre_tn_logo.png"></a></span>
+    </div>
   </div>
-</div>
-<div id="footer-other">
-  <div class="footer-left">
-    <p><em><%= Config[:disclaimer].html_safe -%></em></p>
-  </div>
-  <div class="footer-right">
-    <span><a href="http://www.sabretravelnetwork.com"><img src="/images/sabre_tn_logo.png"></a></span>
-  </div>
+  
 </div>
 
 

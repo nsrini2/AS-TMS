@@ -1,5 +1,5 @@
 # require_de_engine_file 'controller', :admin_controller
-require 'will_paginate/array'
+
 require 'user_sync'
 class AdminController < ApplicationController
   include BackgroundProcessing
@@ -10,8 +10,7 @@ class AdminController < ApplicationController
   allow_access_for [:current_awards, :awards_archive] => :awards_admin
   allow_access_for [:upload_users] => :user_admin
   
-  allow_access_for [:environment] => :cubeless_admin
-  allow_access_for [:showcase_text] => :sponsor_admin
+  allow_access_for [:environment] => :cubeless_admin 
 
   # MM2: Removed in the great Rails 3 upgrade of 2011
   # before_filter :report_queries_cache_hack
@@ -81,11 +80,6 @@ class AdminController < ApplicationController
     @marketing_messages = MarketingMessage.find(:all, :order => 'is_default desc, id asc')
     render :template => 'marketing_messages/marketing_messages', :layout => 'home_admin_sub_menu'
   end
-
-  def showcase_marketing_messages
-    @showcase_marketing_messages = ShowcaseMarketingMessage.find(:all, :order => 'id asc')
-    render :template => 'showcase_marketing_messages/showcase_marketing_messages', :layout => 'sponsor_accounts_sub_menu'
-  end
   
   def companies
     @companies = Company.all
@@ -137,16 +131,12 @@ class AdminController < ApplicationController
   end
 
   def current_awards
-    #SRIWW -- This was not paginating properly
-    #@awards = Award.visible.find(:all, :page => {:size => 5, :current => params[:page]})
-    @awards = Award.visible.all.paginate(:page => params[:page], :per_page => 5)
+    @awards = Award.visible.find(:all, :page => {:size => 5, :current => params[:page]})
     render :template => 'awards/awards', :layout => 'awards_sub_menu'
   end
 
   def awards_archive
-    #SRIWW -- This was not paginating properly
-    #@awards = Award.hidden.find(:all, :page => {:size => 5, :current => params[:page]})
-    @awards = Award.hidden.all.paginate(:page => params[:page], :per_page => 5)
+    @awards = Award.hidden.find(:all, :page => {:size => 5, :current => params[:page]})
     render :template => 'awards/awards', :layout => 'awards_sub_menu'
   end
 
@@ -166,25 +156,6 @@ class AdminController < ApplicationController
       redirect_to welcome_note_admin_path
     else
       render :layout => 'home_admin_sub_menu'
-    end
-  end
-
- def showcase_text
-    @showcase_text=ShowcaseText.get
-    if request.post?
-      if params[:commit] == "Delete"
-        ShowcaseText.get.destroy
-        add_to_notices "Showcase text has been deleted."
-      else
-        if @showcase_text.update_attributes(:text => params[:showcase_text][:text])
-          add_to_notices "Showcase text has been updated."
-        else
-          add_to_errors @showcase_text
-        end
-      end
-      redirect_to showcase_text_admin_path
-    else
-      render :layout => 'sponsor_accounts_sub_menu'
     end
   end
 
@@ -211,7 +182,6 @@ class AdminController < ApplicationController
       render :layout => 'home_admin_sub_menu'
     end
   end
-
 
   def reset_welcome_email
     WelcomeEmail.reset

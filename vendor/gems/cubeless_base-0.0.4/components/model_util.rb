@@ -3,7 +3,6 @@ module ModelUtil
   def self.get_options(args)
     return args if args.is_a?(Hash)
     hash = args[-1]
-    Rails.logger.info "The options are:" + args[-1].to_s
     hash.is_a?(Hash) ? hash : nil
   end
 

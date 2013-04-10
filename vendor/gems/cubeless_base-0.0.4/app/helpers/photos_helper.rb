@@ -1,9 +1,10 @@
 module PhotosHelper
 
-  @@thumb_sizes = {:thumb_small => '30x30', :thumb => '50x50', :thumb_80 => '80x80', :thumb_large => '175x175'}
+  @@thumb_sizes = {:thumb => '50x50', :thumb_80 => '80x80', :thumb_large => '175x175'}
 
   def primary_photo_for(model=nil, options={})
     options[:size] ||= @@thumb_sizes[options[:thumb] || :thumb]
+
     unless options[:hide_tooltip]
       tooltip = model.screen_name if model.is_a?(Profile) && !current_profile.is_sponsored? && model.visible?
     end
@@ -11,26 +12,23 @@ module PhotosHelper
     if model.is_a?(Profile) && photo_linkable?(model, options)
       link_opts = { :class => 'photo_link_to' }.merge(options.delete(:link_options) || {})
     end
-    content_tag :div, :class => "photo_wrapper" do
+    
+    div_class_name = "photo_wrapper"
+    
+    Rails.logger.info "detect expert"
+    Rails.logger.info model.class.to_s
+    
+    if (model.is_a?(Profile) && model.sponsor_account_id == 1) || 
+        (model.is_a?(ActivityStreamEvent) && model.profile.sponsor_account_id == 1)
+      div_class_name << " expert"
+    end
+    
+    content_tag :div, :class => div_class_name do
       (options[:hide_sponsor_sash] ? "" : sponsor_indicator_for(model).to_s) +
       link_to_if(photo_linkable?(model, options), image_tag(primary_photo_path_for(model, options[:thumb]), :size => options[:size], :alt => "avatar", :class => "photo #{'tooltip' if tooltip}", :title => tooltip), photo_link(model), link_opts) +
       (options[:hide_status_indicator] ? "" : online_indicator_for(model).to_s ) +
       (options[:hide_group_icon] || !model.is_a?(Group) ? "" : group_icon(model).to_s)
     end
-  end
-
- def primary_booth_follow_photo_for(model=nil, options={})
-    options[:size] ||= @@thumb_sizes[options[:thumb] || :thumb]
-    unless options[:hide_tooltip]
-      tooltip = model.screen_name if model.is_a?(Profile) && !current_profile.is_sponsored? && model.visible?
-    end
-
-    if model.is_a?(Profile) && photo_linkable?(model, options)
-      link_opts = { :class => 'photo_link_to' }.merge(options.delete(:link_options) || {})
-    end
-    content_tag :div, :class => "photo_wrapper" do
-      link_to_if(photo_linkable?(model, options), image_tag(primary_photo_path_for(model, options[:thumb]), :size => options[:size], :alt => "avatar", :class => "photo #{'tooltip' if tooltip}", :title => tooltip, :hide_sponsor_sash => true, :hide_status_indicator => true), photo_link(model), link_opts)
-       end
   end
 
   def primary_photo_path_for(model=nil, which=nil)

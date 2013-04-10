@@ -1,30 +1,30 @@
-<% content_for(:page_title, "Manage Booths for #{@sponsor_account.name} Showcase Category") -%>
-<h2><%= @sponsor_account.name %> Booths </h2>
-<a href="<%= sponsor_accounts_path -%>">&laquo; Back to Showcase Categories</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%= sponsor_account_sponsor_members_path(@sponsor_account) -%>">Manage Sponsor Members</a>&nbsp;&nbsp;|&nbsp;&nbsp;<% if @sponsor_account.group_slots_remaining > 0 %><a href="<%= new_sponsor_account_sponsor_group_url(@sponsor_account) %>">Create a new Booth</a><br /><% end %>
-<p><%= pluralize(@sponsor_groups.size, 'booth') %> created - <%= pluralize(@sponsor_account.group_slots_remaining, 'unused booth slot') %></p>
-<% @sponsor_groups.each_index do |index| -%>
-<% group = @sponsor_groups[index] -%>
+<% content_for(:page_title, "Manage Groups for #{@sponsor_account.name} Sponsor Account") -%>
+<h2><%= @sponsor_account.name %> Groups </h2>
+<a href="<%= sponsor_accounts_path -%>">&laquo; Back to Sponsor Accounts</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%= sponsor_account_sponsor_members_path(@sponsor_account) -%>">Manage <% @sponsor_account.name -%> Sponsor Members</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%= new_sponsor_account_sponsor_group_url(@sponsor_account) %>">Create a new Group</a><br />
+<p><%= pluralize(@sponsor_account.groups.size, 'group') %> created - <%= pluralize(@sponsor_account.group_slots_remaining, 'unused group slot') %></p>
+<% @sponsor_account.groups.each_index do |index| -%>
+<% group = @sponsor_account.groups[index] -%>
 <% klass = index%2 != 0 ? 'even' : 'odd' -%>
 <div class="sponsor_account_group sponsor_account_group_<%= klass %>">
 	<h3><%= group.name %></h3>
 	<p>
-Booth Owner: <a href="<%= profile_path(group.owner) %>"><%= group.owner.full_name %></a>
+Group Owner: <a href="<%= profile_path(group.owner) %>"><%= group.owner.full_name %></a>
 	</p>
 	<div class="container">
 		<% form_for :sponsor_group, :url => transfer_ownership_sponsor_account_sponsor_group_path(@sponsor_account, group) do |f| -%>
 			<% sponsors_excluding_owner = group.members.include_sponsor_members.exclude_profile(group.owner).collect { |s| ["#{s.first_name} #{s.last_name}", s.id] } %>
-			<label for="transfer_ownership_<%= "#{group.id}" %>">Transfer ownership to:</label>&nbsp;&nbsp;&nbsp;&nbsp; <%= select(:profile, :id, sponsors_excluding_owner, { :prompt => 'Select Sponsor' }, {:id => "transfer_ownership_#{group.id}", :disabled => sponsors_excluding_owner.size > 0 ? false : true}) -%>
-			<%= submit_tag "Transfer Ownership", :disabled => sponsors_excluding_owner.size > 0 ? false : true %>
+			<label for="transfer_ownership_<%= "#{group.id}" %>">Transfer ownership to:</label> <%= select(:profile, :id, sponsors_excluding_owner, { :prompt => 'Select Sponsor' }, {:id => "transfer_ownership_#{group.id}", :disabled => sponsors_excluding_owner.size > 0 ? false : true}) -%>
+			<%= submit_tag "Transfer Owner", :disabled => sponsors_excluding_owner.size > 0 ? false : true %>
 		<% end -%>
 
 		<% form_for :sponsor_group, :url => add_sponsor_sponsor_account_sponsor_group_path(@sponsor_account, group) do |f| -%>	
 			<% account_sponsors = (@sponsor_account.sponsors.to_a - group.members.include_sponsor_members.to_a).collect { |s| ["#{s.first_name} #{s.last_name}", s.id] } %>
-			<label for="add_sponsor_<%= "#{group.id}" %>">Add a sponsor:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= select(:profile, :id, account_sponsors, { :prompt => 'Select Sponsor' }, {:id => "add_sponsor_#{group.id}", :disabled => account_sponsors.size > 0 ? false : true } ) -%>
+			<label for="add_sponsor_<%= "#{group.id}" %>">Add a sponsor:</label> <%= select(:profile, :id, account_sponsors, { :prompt => 'Select Sponsor' }, {:id => "add_sponsor_#{group.id}", :disabled => account_sponsors.size > 0 ? false : true } ) -%>
 			<%= submit_tag "Add Sponsor", :disabled => account_sponsors.size > 0 ? false : true %>
 		<% end -%>
 
 		<% form_for :sponsor_group, :url => remove_sponsor_sponsor_account_sponsor_group_path(@sponsor_account, group) do |f| -%>
-			<label for="remove_sponsor_<%= "#{group.id}" %>">Remove a sponsor:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="remove_sponsor_<%= "#{group.id}" %>">Remove a sponsor:</label>
 			<% group_sponsor_members = group.members.include_sponsor_members.exclude_profile(group.owner).collect { |s| ["#{s.full_name}", s.id] } %>
 			<%= select(:profile, :id, group_sponsor_members, { :prompt => 'Select Sponsor' }, {:id => "remove_sponsor_#{group.id}", :disabled => group_sponsor_members.size > 0 ? false : true }) -%>
 			<%= submit_tag "Remove Sponsor", :disabled => group_sponsor_members.size > 0 ? false : true %>
@@ -32,11 +32,9 @@ Booth Owner: <a href="<%= profile_path(group.owner) %>"><%= group.owner.full_nam
 		<br />
 		<ul class="action_list">
 			<li><a href="<%= members_group_path(group) %>"><%= pluralize(group.members.size, "member") %></a></li>
-			<li><a href="<%= group_path(group) %>">View Booth</a></li>
-                        <li><a href="<%= edit_sponsor_account_sponsor_group_path(@sponsor_account, group) -%>">Edit Booth</a></li>
-			<li><a href="<%= delete_sponsor_account_sponsor_group_path(@sponsor_account, group) -%>">Delete Booth</a></li>
+			<li><a href="<%= group_path(group) %>">View Group</a></li>
+			<li><a href="<%= delete_sponsor_account_sponsor_group_path(@sponsor_account, group) -%>">Delete Group</a></li>
 		</ul>
 	</div>
-</div><br/><br/><br/>
-<% end -%>	
-<%= will_paginate @sponsor_groups %>
+</div>
+<% end -%>

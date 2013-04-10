@@ -36,27 +36,14 @@ module ListFiltering
     find_options[:page] ||= default_paging
     find_options
   end
-
   def filtered_groups(find_options={})
-    #03/14/2013-SRIWW: Removing sponsored groups from results
-    #group_types = {'all' => 'groups.group_type >= 0', 'public' => 'groups.group_type = 0', 'invite_only' => 'groups.group_type = 1', 'private' => 'groups.group_type = 2', 'sponsored' => 'exists (select 1 from profiles where groups.owner_id=profiles.id and profiles.roles like "%6%")' }
-    group_types = {'all' => 'groups.group_type >= 0 && groups.sponsor_account_id is null', 'public' => 'groups.group_type = 0 && groups.sponsor_account_id is null', 'invite_only' => 'groups.group_type = 1 && groups.sponsor_account_id is null', 'private' => 'groups.group_type = 2 && groups.sponsor_account_id is null', 'sponsored' => 'exists (select 1 from profiles where groups.owner_id=profiles.id and profiles.roles like "%6%")' }
+    group_types = {'all' => 'groups.group_type >= 0', 'public' => 'groups.group_type = 0', 'invite_only' => 'groups.group_type = 1', 'private' => 'groups.group_type = 2', 'sponsored' => 'exists (select 1 from profiles where groups.owner_id=profiles.id and profiles.roles like "%6%")' }
     order_hash = {'newest_to_oldest' => 'groups.created_at desc', 'oldest_to_newest' => 'groups.created_at', 'most_members' => 'groups.group_memberships_count desc', 'most_activity' => 'groups.activity_status desc', 'relevance' => nil}
-    Rails.logger.info "using new filtered_groups"
+    Rails.logger.info "using new filterd_groups"
     filter_order = params[:filter_order] || "newest_to_oldest"
     filter_scope = params[:filter_scope] || 'all'
     
     Group.where(group_types[filter_scope]).order(order_hash[filter_order])
-  end
-
-  def category_filtered_groups(sponsor_account_id,find_options={})
-    group_types = {'all' => 'groups.group_type >= 0', 'public' => 'groups.group_type = 0', 'invite_only' => 'groups.group_type = 1', 'private' => 'groups.group_type = 2'}
-    order_hash = {'newest_to_oldest' => 'groups.created_at desc', 'oldest_to_newest' => 'groups.created_at', 'most_members' => 'groups.group_memberships_count desc', 'most_activity' => 'groups.activity_status desc', 'relevance' => nil}
-    Rails.logger.info "using category_filtered_groups"
-    filter_order = params[:filter_order] || "newest_to_oldest"
-    filter_scope = params[:filter_scope] || 'all'
-    Rails.logger.info("The selected showcase category is:" + SponsorAccount.find(sponsor_account_id).name.to_s)
-    Group.where(group_types[filter_scope]).where('sponsor_account_id=?',sponsor_account_id).order(order_hash[filter_order])
   end
 
   @@profile_sort_options_list = {"last_first" => "last_name, first_name", "first_last" => "first_name, last_name"}

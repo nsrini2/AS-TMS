@@ -8,8 +8,7 @@ class BlogPost < ActiveRecord::Base
   include ActionView::Context
   include Indexed::Add
   
-  stream_to :company, :activity
- 
+  stream_to :company
   after_save :update_indexes
   
   acts_as_taggable
