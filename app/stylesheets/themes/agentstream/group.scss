@@ -181,8 +181,47 @@ float:left;
 clear:both;
 border: 1px solid #C4D7DC;
 width:100%;
-height:65px;
+height:100px;
 }
+
+#booth_social #booth_twitter{
+display:table;
+position:relative;
+overflow:hidden;
+margin-bottom:5px;
+margin-top:3px;
+height:90px;
+margin-left:10px;
+width:300px;
+border:1px solid cyan;
+}
+
+#booth_social #booth_twitter #twitter_logo{
+float:left;
+margin-left:40px;
+margin-top:20px;
+margin-bottom:20px;
+border:1px solid blue;
+display:table-row;
+}
+
+#booth_social #booth_twitter #tweet_feed{
+position:absolute;
+top:50%;
+height:80px;
+margin-left:60px;
+font-size:1.2em;
+border:1px solid pink;
+display:table-cell;
+vertical-align:middle;
+text-align:justify;
+}
+
+#booth_social #booth_twitter #twitter_logo img{
+display: table-cell; vertical-align: middle 
+}
+
+
 
 .booth_events_page{
 float:left;
