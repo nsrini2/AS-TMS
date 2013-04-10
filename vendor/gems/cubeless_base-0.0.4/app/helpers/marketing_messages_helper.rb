@@ -63,7 +63,7 @@ module MarketingMessagesHelper
   end
 
  def link_to_create_booth_marketing_message(group)
-    link_to("new booth marketing message", new_group_booth_marketing_message_path(group), :class => "modal new_marketing_image", :remote => true)
+    link_to("new booth marketing message", new_group_booth_marketing_message_path(group))
   end
 
   def booth_marketing_image_tag(message)

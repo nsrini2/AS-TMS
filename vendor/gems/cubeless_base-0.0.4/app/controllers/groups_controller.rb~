@@ -93,7 +93,7 @@ class GroupsController < ApplicationController
 
   def get_booth_video
      #@booth_video=BoothVideo.find(:conditions => ['group_id =?',@group.id])
-     render :template => 'booth_videos/booth_video', :layout => '/layouts/sponsored_group_manage_sub_menu'
+     render :template => 'booth_videos/show', :layout => '/layouts/sponsored_group_manage_sub_menu'
   end
 
   def get_booth_de
@@ -135,7 +135,7 @@ class GroupsController < ApplicationController
 
  def show
     if @group.is_sponsored?
-         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:booth_page],:per_page => 5)
+         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:booth_page],:per_page => 3)
          @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
          render :action => 'group', :layout => '/layouts/sponsored_group'
     else
@@ -165,7 +165,7 @@ class GroupsController < ApplicationController
 
   def help_answer
     redirect_to group_path(@group) and return if @group.is_private?
-    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 1)
+    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 3)
      if @group.is_sponsored?
       render :layout => '/layouts/sponsored_group'
     end

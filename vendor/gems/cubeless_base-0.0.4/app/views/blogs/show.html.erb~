@@ -6,7 +6,7 @@ current = true unless params[:date]
 <% if @group.is_sponsored?%>
 <%= render :partial => 'blogs/booth_side_bar', :locals => { :show_create => true } -%>
 <div id="booth_blog">
-  <div id="booth_blog_posts" style="border:1px solid blue;">
+  <div id="blog_posts">
     <% @blog_posts.each do |blog_post| -%>
       <%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => blog_post, :full_post => full_post?(@blog_posts), :classname => cycle('odd', 'even') } -%>
     <% end -%>
