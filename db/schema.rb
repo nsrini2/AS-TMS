@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410072030) do
+ActiveRecord::Schema.define(:version => 20130411065926) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -483,6 +483,7 @@ ActiveRecord::Schema.define(:version => 20130410072030) do
     t.integer  "active",                                 :default => 1
     t.integer  "de_flag"
     t.string   "booth_video_location"
+    t.string   "booth_twitter_id"
   end
 
   add_index "groups", ["activity_points"], :name => "index_groups_on_activity_points"

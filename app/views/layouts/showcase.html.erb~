@@ -1,9 +1,0 @@
-<html>
-<body>
-<% content_for :showcase_content do %>
-  <div id="showcase">
-  	<%= yield %>
-  </div>
-<% end %>
-</body>
-</html>

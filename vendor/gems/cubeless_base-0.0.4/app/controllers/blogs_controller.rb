@@ -39,6 +39,12 @@ class BlogsController < ApplicationController
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
     end
+    source=@group.booth_twitter_id
+    if !source.nil?
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+    end
   end
 
 end

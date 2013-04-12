@@ -41,9 +41,15 @@ class GroupPostsController < ApplicationController
           @minTagOccurs=@group_blog_tags.first[:count]
           @maxTagOccurs=@group_blog_tags.last[:count]
         end
-        page.select(".group_post.#{group_post.id}").each do |div|
-          page.visual_effect :highlight, div, :duration =>  1, :startcolor => "#666666"
+        source=@group.booth_twitter_id
+        if !source.nil?
+         @twitter_feed=Twitter.user_timeline("#{source}").first.text
+         @twitter_user_name=Twitter.user("#{source}").name
+         @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
         end
+        page.select(".group_post.#{group_post.id}").each do |div|
+        page.visual_effect :highlight, div, :duration =>  1, :startcolor => "#666666"
+    end
         page.delay 1 do
           page[:group_posts].replace_html :partial =>'group_posts/group_post', :collection => @group.group_posts.all(:page => default_paging(4))
         end
@@ -76,6 +82,12 @@ class GroupPostsController < ApplicationController
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
     end
+    source=@group.booth_twitter_id
+    if !source.nil?
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+    end
     comment = Comment.new(:profile => current_profile, :owner => @group_post, :owner_type => 'GroupPost', :text => params[:comment][:text])
     respond_to do |format|
       format.html {
@@ -105,6 +117,12 @@ class GroupPostsController < ApplicationController
       @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
+    end
+    source=@group.booth_twitter_id
+    if !source.nil?
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
     end
   end
 

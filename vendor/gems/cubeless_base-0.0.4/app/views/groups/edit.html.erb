@@ -20,7 +20,11 @@
 			<%= radio_button("group", "group_type", 2, :id => 'private_group_type', :tabindex => 7) %><label for="private_group_type">Private</label>
 		</dd><br/>
                 <dt class="booth_video"><label for="booth_video_location">URL for Booth Video</label></dt>
-                <dd class="booth_video"><%= f.text_field :booth_video_location, :size => nil, :tabindex => 4, :maxlength => '600' -%></dd>
+                <dd class="booth_video"><%= f.text_field :booth_video_location, :size => nil, :tabindex => 4, :maxlength => '100' -%></dd><br/>
+                <dt class="booth_twitter"><label for="booth_Twitter_Id">Twitter Handle For Booth Feed (without the "@")</label></dt>
+                <dd class="booth_twitter_id"><%= f.text_field :booth_twitter_id, :size => nil, :tabindex => 4, :maxlength => '100' -%></dd>
+                <dd class="help"><span>Note: The twitter account should be public</span></dd>
+                <dd class="help"><span>(For ex: if you want to stream feeds from the public twitter id @xyz, enter xyz)</span></dd>
 	</dl>
 	<div class="buttons">
 		<input type="submit" name="commit" value="Save Details" class="button large" tabindex="8">

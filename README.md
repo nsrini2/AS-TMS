@@ -1,8 +1,12 @@
 This change includes the following:
 ----------------------------------------------------------------------------------------------------------------
-1. Tag cloud
-2. Booth level marketing messages
-3. Interesting links
-4. Booth 'Follow'
-5. Booth fomatting
+1. Booth video embed
+2. Booth twitter feed
+3. Formatting changes
+----------------------------------------------------------------------------------------------------------------
+
+Setup:
+---------------
+The /initializers/twitter.rb file needs to be setup with the values for AgentStream
+
 ----------------------------------------------------------------------------------------------------------------

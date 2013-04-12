@@ -59,7 +59,12 @@ class BlogPostsController < ApplicationController
             @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
             @minTagOccurs=@group_blog_tags.first[:count]
             @maxTagOccurs=@group_blog_tags.last[:count]
-            #@maxTagOccurs=@minTagOccurs if @maxTagOccurs.NaN?
+          end
+          source=@group.booth_twitter_id
+          if !source.nil?
+            @twitter_feed=Twitter.user_timeline("#{source}").first.text
+            @twitter_user_name=Twitter.user("#{source}").name
+            @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
           end
           render :template => 'blogs/show', :layout => @owner.is_sponsored? ? 'sponsored_group' :'group'
          else
@@ -106,6 +111,12 @@ class BlogPostsController < ApplicationController
           @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
           @minTagOccurs=@group_blog_tags.first[:count]
           @maxTagOccurs=@group_blog_tags.last[:count]  
+        end
+        source=@group.booth_twitter_id
+        if !source.nil?
+         @twitter_feed=Twitter.user_timeline("#{source}").first.text
+         @twitter_user_name=Twitter.user("#{source}").name
+         @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
         end
       end
 
@@ -197,6 +208,12 @@ class BlogPostsController < ApplicationController
       @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
+    end
+    source=@group.booth_twitter_id
+    if !source.nil?
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
     end
   end
   
