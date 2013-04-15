@@ -1,6 +1,8 @@
+/* ------------- /app/stylesheets/themes/agentstream/form.scss ---------------- */
+
 textarea {
-	font: inherit ! important;
-	padding: 3px 5px;
+  font: inherit ! important;
+  padding: 3px 5px;
 }
 
 textarea.fckeditor {
@@ -9,17 +11,17 @@ textarea.fckeditor {
 
 
 /* registration form Error formatting */
-form#registration_form  div#errors li{
-	color: #990000;
+form#registration_form  div#errors li {
+  color: #900;
 }
   form#registration_form .fieldWithErrors { 
-  	border: 1px dashed #990000; 
+    border: 1px dashed #900; 
   }
   form#registration_form div#errors { 
-  	display: none; 
+    display: none; 
   }
-    form#registration_form div.error h2{
-    	color: #990000;
+    form#registration_form div.error h2 {
+      color: #900;
     }
 
 /* New Live QA */

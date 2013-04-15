@@ -1,169 +1,193 @@
+/* ------------- /app/stylesheets/themes/agentstream/header.scss ---------------- */
+
 #header { height: 110px; }
 
-#header h1 {float: left;
-height: 110px;
-margin: 0;
-overflow: hidden;
-text-indent: -9999px;}
-
-#header h1 a { background: url('http://placehold.it/140x80/eeeeee/&text=logo') no-repeat 0 0;
-display: block;
-height: 100px;
-margin: 5px 0px 0px 10px;
-width: 200px; }
-
-#header .nav {display: block; }
-	#header .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-#header .nav li { 
-	display: block; 
-	float: left; 
-	margin: 0 10px 0 0; 
+#header h1 {
+  float: left;
+  height: 110px;
+  margin: 0;
+  overflow: hidden;
+  text-indent: -9999px;
 }
-	#header .nav a { 
-		color: #4a6970; 
-	}
-#header .global_nav { 
-	font-size: 15px; 
-	margin: 20px 0 0; 
-	text-transform: lowercase; 
-	text-align: left;
+
+#header h1 a {
+  background: url('http://placehold.it/140x80/eeeeee/&text=logo') no-repeat 0 0;
+  display: block;
+  height: 100px;
+  margin: 5px 0 0 10px;
+  width: 200px;
+}
+
+#header .nav { display: block; }
+#header .nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#header .nav li {
+  display: block;
+  float: left;
+  margin: 0 15px 0 0;
+}
+#header .nav a {
+  color: #4a6970;
+}
+#header .global_nav {
+  font-size: 15px;
+  margin: 20px 0 0;
+  text-transform: lowercase;
+  text-align: left;
 }
 
 #header .global_nav li:first-child {
-	margin-left:25px;
+  margin-left:25px;
 }
 
-#header .global_nav li.active { border-bottom: 1px solid #4a6970; } 
-
+#header .global_nav li.active { border-bottom: 1px solid #4a6970; }
 #header .global_nav li a {
-	display: block;
-	padding: 30px 0 0 0;  
-	min-width: 27px;
+  display: block;
+  padding: 30px 0 0 0;
+  min-width: 27px;
 }
 
 #header .nav #hub_nav {
-	background: url('/images/icons/as/nav/off/home.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/home.png') no-repeat 50% top;
 }
-
 #header .nav #hub_nav.active, #header .nav #hub_nav:hover {
-	background: url('/images/icons/as/nav/on/home.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/home.png') no-repeat 50% top;
 }
 #header .nav #company_nav {
-	background: url('/images/icons/as/nav/off/agency.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/agency.png') no-repeat 50% top;
 }
 #header .nav #company_nav.active, #header .nav #company_nav:hover {
-	background: url('/images/icons/as/nav/on/agency.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/agency.png') no-repeat 50% top;
 }
 #header .nav #qa_nav {
-	background: url('/images/icons/as/nav/off/help.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/help.png') no-repeat 50% top;
 }
 #header .nav #qa_nav.active, #header .nav #qa_nav:hover {
-	background: url('/images/icons/as/nav/on/help.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/help.png') no-repeat 50% top;
 }
 #header .nav #group_nav {
-	background: url('/images/icons/as/nav/off/user-group.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/user-group.png') no-repeat 50% top;
 }
 #header .nav #group_nav.active, #header .nav #group_nav:hover {
-	background: url('/images/icons/as/nav/on/user-group.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/user-group.png') no-repeat 50% top;
 }
 #header .nav #blog_nav {
-	background: url('/images/icons/as/nav/off/write-note.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/write-note.png') no-repeat 50% top;
 }
 #header .nav #blog_nav.active, #header .nav #blog_nav:hover {
-	background: url('/images/icons/as/nav/on/write-note.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/write-note.png') no-repeat 50% top;
 }
 #header .nav #news_nav {
-	background: url('/images/icons/as/nav/off/news_new.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/news_new.png') no-repeat 50% top;
 }
 #header .nav #news_nav.active, #header .nav #news_nav:hover {
-	background: url('/images/icons/as/nav/on/news_new.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/news_new.png') no-repeat 50% top;
 }
-
 #header .nav #chats_nav {
-	background: url('/images/icons/as/nav/off/chat.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/chat.png') no-repeat 50% top;
 }
-
 #header .nav #chats_nav.active, #header .nav #chats_nav:hover {
-	background: url('/images/icons/as/nav/on/chat.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/chat.png') no-repeat 50% top;
 }
-
 #header .nav #new_nav {
   background: url('/images/icons/as/nav/off/new.png') no-repeat 50% top;
-} 
-
+}
 #header .nav #new_nav.active, #header .nav #new_nav:hover {
-	background: url('/images/icons/as/nav/on/new.png') no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/new.png') no-repeat 50% top;
 } 
 
 #header .nav #de_nav {
   background: url('/images/icons/as/nav/off/de.gif') no-repeat 50% top;
-} 
-
-#header .nav #de_nav.active, #header .nav #de_nav:hover {
-	background: url('/images/icons/as/nav/on/de.gif') no-repeat 50% top;
 }
-
+#header .nav #de_nav.active, #header .nav #de_nav:hover {
+  background: url('/images/icons/as/nav/on/de.gif') no-repeat 50% top;
+}
 #header .nav #showcase_nav {
-    background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
+  background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
 }
 
 #header .nav #showcase_nav.active, #header .nav #showcase_nav a:hover {
-    background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top; 
+  background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top; 
 }
 
 #header .nav .line2 {
   display:block; 
   margin-top: -5px;
-  text-align: left; 
+  text-align: left;
 }
 
-#header .stats { 
-  margin: 20px 0 0 50px; 
-  font-size: 14px; 
+#header .stats {
+  margin: 20px 0 0 50px;
+  font-size: 14px;
   h4 {
     font-size: 19px;
     font-weight: normal;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     margin-top: 50px;
   }
 }
 
-
-#header .utility { margin: 20px 10px 0 0; font-size: 14px; float: right; }
+#header .utility {
+  margin: 20px 10px 0 0;
+  font-size: 14px;
+  float: right;
+}
 #header .utility .nav { float: right; }
 #header .utility .nav li { 
-	font-size: 0.9em;
-	margin-right: 8px; 
+  font-size: 0.9em;
+  margin-right: 8px; 
 }
 
-
-#header .utility .search { 
-	float: right;
-	margin: 0 5px 0 0; 
+#header .utility .search {
+  float: right;
+  margin: 0 5px 0 0;
 }
-#header .utility .search input[type=text], #header .utility .search #global_search_input {
-	margin-top: 0;
-	height: 20px;
-	width: 210px;
+#header .utility .search input[type=text],
+#header .utility .search #global_search_input {
+  margin-top: 0;
+  height: 20px;
+  width: 210px;
 }
 #header .utility .search .button {
-	font-size: 12px;
-	margin: 0 3px 0 0;
-	padding-bottom: 4px;
-	padding-top: 1px;
-	text-align: center;
-	text-transform: uppercase;
-	height: 22px;
-	width: 70px;
+  font-size: 12px;
+  margin: 0 3px 0 0;
+  padding-bottom: 4px;
+  padding-top: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  height: 22px;
+  width: 70px;
 }
 
 /*#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('/images/bg_nav_online_now.png') 0 50% no-repeat; }*/
-#header .utility .nav .online_now {  padding: 7px 0 5px 20px; background: url('/images/icons/as/online-now.png') 0 50% no-repeat; }
-.nav .drop_down { padding: 0 15px 0 0; background: url('/images/bg_nav_dropdown.png') 100% 50% no-repeat; }
+#header .utility .nav .online_now {
+  padding: 7px 0 5px 20px;
+  background: url('/images/icons/as/online-now.png') 0 50% no-repeat;
+}
+.nav .drop_down {
+  padding: 0 15px 0 0;
+  background: url('/images/bg_nav_dropdown.png') 100% 50% no-repeat;
+}
 
-#header, #main { border: 1px solid #c4d7dc; border-width: 0 1px 0; }
-#main { border-width: 0 1px 1px;}
+#header,
+#main {
+  border: 1px solid #c4d7dc;
+  border-width: 0 1px 0;
+}
+#main { border-width: 0 1px 1px; }
 #footer { clear: both; }
-.aside .module, .primary .module { margin: 0; padding: 10px 20px 10px; border: 1px solid #c4d7dc; border-width: 1px 0 0 0; background: #fff;}
+.aside .module,
+.primary .module {
+  margin: 0;
+  padding: 10px 20px 10px;
+  border: 1px solid #c4d7dc;
+  border-width: 1px 0 0 0;
+  background: #fff;
+}
 .aside .module { border-width: 1px 0 0 1px; }
-	.aside .last { border-bottom: 1px solid #c4d7dc; }
+.aside .last { border-bottom: 1px solid #c4d7dc; }
