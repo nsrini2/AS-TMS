@@ -1,22 +1,47 @@
+/* ------------- /app/stylesheets/themes/agentstream/color.scss ---------------- */
 /* Lighter Blue */
 /*$tertiary: #EFF8FA;*/
-/*body{font:14px/1.6 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;color: #4A6970;}a:focus{outline:1px dotted invert}hr{border-color:#ccc;border-style:solid;border-width:1px 0 0;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}*/
+/* ------------- /app/stylesheets/themes/agentstream/text.scss ---------------- */
+/*body {
+  font: 14px/1.6 Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
+  color: #4A6970;
+}
+a:focus {
+  outline: 1px dotted invert;
+}
+hr {
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height:0;
+}
+h1 { font-size: 25px; }
+h2 { font-size: 23px; }
+h3 { font-size: 21px; }
+h4 { font-size: 19px; }
+h5 { font-size: 17px }
+h6 { font-size: 15px }
+ol { list-style: decimal }
+ul { list-style: square }
+li { margin-left: 30px }
+p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset { margin-bottom: 20px }*/
 /*$font-size: 12px;
 $line-height: 18px;*/
-/* line 11, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 35, ../../../../app/stylesheets/themes/agentstream/text.scss */
 body {
-  font-family: Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
   font-size: 14px;
-  line-height: 1.6em;
-  color: #676767;
+  line-height: 1.5;
+  color: #333333;
 }
 
-/* line 17, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 41, ../../../../app/stylesheets/themes/agentstream/text.scss */
 a:focus {
   outline: 1px dotted invert;
 }
 
-/* line 20, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 44, ../../../../app/stylesheets/themes/agentstream/text.scss */
 hr {
   border-color: #ccc;
   border-style: solid;
@@ -25,72 +50,73 @@ hr {
   height: 0;
 }
 
-/* line 27, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
 h1 {
   font-size: 25px;
 }
 
-/* line 30, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 52, ../../../../app/stylesheets/themes/agentstream/text.scss */
 h2 {
   font-size: 23px;
 }
 
-/* line 33, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 53, ../../../../app/stylesheets/themes/agentstream/text.scss */
 h3 {
   font-size: 21px;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
 h4 {
   font-size: 19px;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 55, ../../../../app/stylesheets/themes/agentstream/text.scss */
 h5 {
   font-size: 17px;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 56, ../../../../app/stylesheets/themes/agentstream/text.scss */
 h6 {
   font-size: 15px;
 }
 
-/* line 45, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 57, ../../../../app/stylesheets/themes/agentstream/text.scss */
 ol {
   list-style: decimal;
 }
 
-/* line 48, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 58, ../../../../app/stylesheets/themes/agentstream/text.scss */
 ul {
   list-style: square;
 }
 
-/* line 51, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 59, ../../../../app/stylesheets/themes/agentstream/text.scss */
 li {
   margin-left: 30px;
 }
 
-/* line 54, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
 p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
   margin-bottom: 20px;
 }
 
-/* line 58, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 62, ../../../../app/stylesheets/themes/agentstream/text.scss */
 div#deals-header {
-  padding: 0px 5px;
+  padding: 0 5px;
 }
-/* line 60, ../../../../app/stylesheets/themes/agentstream/text.scss */
+/* line 64, ../../../../app/stylesheets/themes/agentstream/text.scss */
 div#deals-header h2, div#deals-header p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
-/* line 7, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* ------------- /app/stylesheets/themes/agentstream/layout.scss ---------------- */
+/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 #page {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
 }
-/* line 9, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 11, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 #page #welcome-page {
   width: 840px;
 }
@@ -152,55 +178,55 @@ div#deals-header h2, div#deals-header p {
   padding-left: 300px;
 }
 
-/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 31, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .primary {
   width: 560px;
   margin-left: 0;
 }
 
-/* line 34, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 32, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .aside {
   margin-top: 30px;
   width: 400px;
   margin-right: 0;
 }
 
-/* line 35, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 33, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .aside .module {
   margin-right: 0px;
   margin-left: 5px;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 37, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .primary {
   width: 720px;
 }
 
-/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 38, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .list .aside {
   width: 240px;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 40, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .sponsor_grp {
   width: 655px;
   margin-left: 0;
 }
 
-/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 41, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .primary {
   width: 720px;
   clear: both;
   margin-left: 0;
 }
 
-/* line 44, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .aside {
   width: 240px;
   margin-right: 0;
 }
 
-/* line 46, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 44, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .full_length {
   width: 960px;
   clear: both;
