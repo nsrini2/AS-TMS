@@ -316,7 +316,8 @@ class GroupsController < ApplicationController
        @twitter_feed=Twitter.user_timeline("#{source}").first.text
        @twitter_user_name=Twitter.user("#{source}").name
        @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
-      rescue
+      rescue => e
+       Rails.logger.info("Twitter error: " + e.message)
       end
     end
     redirect_to groups_explorations_path unless @group
