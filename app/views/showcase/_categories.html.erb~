@@ -1,9 +1,0 @@
-<% @sponsor_accounts.each_index do |index| -%>
-   <% account = @sponsor_accounts[index] -%>
-    <% klass = index%2 != 0 ? 'even' : 'odd' -%>
-     <div class="sponsor_account showcase_category_image_<%= klass %>">
-     <img src="/home/vasu/Sabre/agentstream-travel-showcase/public/images/ajax-loader.gif" alt="ajax-loader"/>
-     
-     <h3><%= account.name%></h3>
-    </div>
- <%end>

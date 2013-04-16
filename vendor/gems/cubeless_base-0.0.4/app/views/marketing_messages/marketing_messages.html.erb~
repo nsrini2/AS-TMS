@@ -1,6 +1,0 @@
-<% content_for(:marketing_message, 'selected') -%>
-<% content_for(:page_title, 'Manage Marketing Messages') -%>
-<h3>Marketing Messages</h3>
-<p class="help">You can have an unlimited number of rotating messages. Be creative and have fun with them.</p>
-<p><%= link_to_create_marketing_message %></p>
-<%=render "shared/marketing_messages"%>
