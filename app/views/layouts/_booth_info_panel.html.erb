@@ -11,13 +11,15 @@
         </div>
   
         <div id="booth_useful_links">
+          <% if @group_links.size > 0 %>
             <h5>Interesting links</h5>
              <% @group_links.each do |link| -%>
               <span class="click_me">
                  <%= link_to link.text, link.url, :target => "_blank"-%>
               </span>
               <br/>
-           <%end%>
+           <% end %>
+          <% end %>
         </div>
  
    </div>

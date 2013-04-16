@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '3.0.20'
 
@@ -43,13 +43,17 @@ gem 'capistrano', '2.5.18'
 gem 'delayed_job', '~>2.1.4'
 gem 'spawn', '~> 0.1.4'
 
-gem 'koala', '1.2.1'
+#gem 'koala', '1.2.1'
+
+gem 'koala'
 
 gem 'compass', '0.10.6'
 gem 'compass-960-plugin', '0.10.0'
 
 gem 'will_paginate', "~> 3.0.pre2"
 gem 'tire', '~>0.5.1'
+gem 'twitter', :git => 'https://github.com/sferik/twitter.git' 
+
 
 # TNSS Engines
 gem 'cubeless_base', '0.0.4', :path => 'vendor/gems/cubeless_base-0.0.4'

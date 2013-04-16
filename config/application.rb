@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'twitter'
 
 require 'log4r'
 require 'log4r/yamlconfigurator'
@@ -176,7 +177,7 @@ module AgentStream
     config.filter_parameters += [:password]
     
     # More cubeless specific stuff
-    config.active_record.observers = :activity_stream_observer, :karma_observer, :watch_observer, :watch_event_observer #, :general_observer
+    config.active_record.observers = :activity_stream_observer, :karma_observer #, :watch_observer, :watch_event_observer, :general_observer
 
     config.action_view.sanitized_allowed_attributes = 'style'
     config.after_initialize do

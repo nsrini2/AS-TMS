@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408050245) do
+ActiveRecord::Schema.define(:version => 20130411065926) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -199,14 +199,6 @@ ActiveRecord::Schema.define(:version => 20130408050245) do
   create_table "booth_marketing_messages", :force => true do |t|
     t.boolean  "active"
     t.text     "link_to_url"
-    t.integer  "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "booth_videos", :force => true do |t|
-    t.string   "title"
-    t.string   "panda_video_id"
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -490,6 +482,8 @@ ActiveRecord::Schema.define(:version => 20130408050245) do
     t.integer  "company_id",                             :default => 0
     t.integer  "active",                                 :default => 1
     t.integer  "de_flag"
+    t.string   "booth_video_location"
+    t.string   "booth_twitter_id"
   end
 
   add_index "groups", ["activity_points"], :name => "index_groups_on_activity_points"

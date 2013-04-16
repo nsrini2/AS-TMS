@@ -91,11 +91,6 @@ class GroupsController < ApplicationController
     render :template => 'group_links/index', :layout => '/layouts/sponsored_group_manage_sub_menu'
   end
 
-  def get_booth_video
-     #@booth_video=BoothVideo.find(:conditions => ['group_id =?',@group.id])
-     render :template => 'booth_videos/booth_video', :layout => '/layouts/sponsored_group_manage_sub_menu'
-  end
-
   def get_booth_de
       render :template => 'groups/booth_de', :layout => '/layouts/sponsored_group_manage_sub_menu' if @group.de_allowed?
   end
@@ -135,7 +130,7 @@ class GroupsController < ApplicationController
 
  def show
     if @group.is_sponsored?
-         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:booth_page],:per_page => 5)
+         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:booth_page],:per_page => 3)
          @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
          render :action => 'group', :layout => '/layouts/sponsored_group'
     else
@@ -315,8 +310,19 @@ class GroupsController < ApplicationController
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
     end
+    source=@group.booth_twitter_id
+    if !source.nil?
+      begin
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+      rescue => e
+       Rails.logger.info("Twitter error: " + e.message)
+      end
+    end
     redirect_to groups_explorations_path unless @group
   end
+
 
   def add_or_update_visitor
     @group.increment_group_views!

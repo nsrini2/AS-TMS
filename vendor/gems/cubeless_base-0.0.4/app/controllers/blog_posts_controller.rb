@@ -59,7 +59,16 @@ class BlogPostsController < ApplicationController
             @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
             @minTagOccurs=@group_blog_tags.first[:count]
             @maxTagOccurs=@group_blog_tags.last[:count]
-            #@maxTagOccurs=@minTagOccurs if @maxTagOccurs.NaN?
+          end
+          source=@group.booth_twitter_id
+          if !source.nil?
+            begin
+              @twitter_feed=Twitter.user_timeline("#{source}").first.text
+              @twitter_user_name=Twitter.user("#{source}").name
+              @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+            rescue => e
+              Rails.logger.info("Twitter error: " + e.message)
+            end
           end
           render :template => 'blogs/show', :layout => @owner.is_sponsored? ? 'sponsored_group' :'group'
          else
@@ -85,6 +94,16 @@ class BlogPostsController < ApplicationController
             @minTagOccurs=@group_blog_tags.first[:count]
             @maxTagOccurs=@group_blog_tags.last[:count]  
           end
+          source=@group.booth_twitter_id
+          if !source.nil?
+            begin
+              @twitter_feed=Twitter.user_timeline("#{source}").first.text
+              @twitter_user_name=Twitter.user("#{source}").name
+              @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+            rescue => e
+              Rails.logger.info("Twitter error: " + e.message)
+            end
+          end
          render :template => 'blog_posts/edit', :layout => @owner.is_sponsored? ? 'sponsored_group' :'group'
          else
           render :template => 'blog_posts/edit', :layout => '_my_stuff'
@@ -106,6 +125,16 @@ class BlogPostsController < ApplicationController
           @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
           @minTagOccurs=@group_blog_tags.first[:count]
           @maxTagOccurs=@group_blog_tags.last[:count]  
+        end
+        source=@group.booth_twitter_id
+        if !source.nil?
+          begin
+           @twitter_feed=Twitter.user_timeline("#{source}").first.text
+           @twitter_user_name=Twitter.user("#{source}").name
+           @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+         rescue => e
+           Rails.logger.info("Twitter error: " + e.message)
+         end
         end
       end
 
@@ -197,6 +226,16 @@ class BlogPostsController < ApplicationController
       @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
+    end
+    source=@group.booth_twitter_id
+    if !source.nil?
+      begin
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+      rescue => e
+       Rails.logger.info("Twitter error: " + e.message)
+      end
     end
   end
   

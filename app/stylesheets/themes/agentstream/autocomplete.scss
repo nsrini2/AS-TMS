@@ -1,45 +1,60 @@
+/* ------------- /app/stylesheets/themes/agentstream/autocomplete.scss ---------------- */
+
 .ui-autocomplete-results {
-	/*resets*/margin: 0; padding: 0; border: 1px solid #C4D7DC; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none;
-	font-family: Verdana, Arial, sans-serif;
-	font-size: 1.1em;
-	z-index: 9999;	
+  /*resets*/
+  margin: 0;
+  padding: 0;
+  border: 1px solid #C4D7DC;
+  outline: 0;
+  line-height: 1.3;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+  /* end */
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 1.1em;
+  z-index: 9999;
 }
 .ui-autocomplete-results ul, .ui-autocomplete-results li {
-	margin: 0; 
-	padding: 0; 
-	list-style: none;
+  margin: 0; 
+  padding: 0; 
+  list-style: none;
 }
 .ui-autocomplete-results ul {
-	position: relative;
-	background: #ffffff;
+  position: relative;
+  background: #fff;
 }
 .ui-autocomplete-results li {
-	position: relative;
-	color: #222222;
-	padding: .2em .5em;
-	font-size: 11px;
-	font-weight: normal;
-	margin: 1px 0;
+  position: relative;
+  color: #222;
+  padding: .2em .5em;
+  font-size: 11px;
+  font-weight: normal;
+  margin: 1px 0;
 }
 
 .ui-autocomplete-results li .name {  }
-.ui-autocomplete-results li .type { position: absolute; top: 2px; right: 5px; }
+.ui-autocomplete-results li .type {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
 .ui-autocomplete-results li.ui-hover-state, .ui-autocomplete-results li.ui-active-state {
-	margin: 0;
+  margin: 0;
 }
 
 .ui-autocomplete-results li.ui-autocomplete-over {
-	background: #90B4BC;
-	color: #fff !important;
+  background: #90B4BC;
+  color: #fff !important;
 }
 .ui-autocomplete-results li.ui-autocomplete-active {
-	background: #90B4BC;
-	color: #fff !important;
-	outline: none;
+  background: #90B4BC;
+  color: #fff !important;
+  outline: none;
 }
 .ui-autocomplete-results li:first-child, .ui-autocomplete-results li.first  {
-	margin-top: 0;
+  margin-top: 0;
 }
 .ui-autocomplete-results li:last-child, .ui-autocomplete-results li.last {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
