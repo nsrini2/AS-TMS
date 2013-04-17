@@ -557,7 +557,7 @@ ul.booth_actions li a.button:hover {
 #booth_tag_cloud {
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding-bottom: 20px;
   vertical-align: middle;
 }
@@ -610,10 +610,10 @@ table #booth_links {
 
 /* line 341, ../../../../app/stylesheets/themes/agentstream/group.scss */
 #booth_useful_links {
-  margin-top: 10;
-  padding-top: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
   margin-bottom: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   text-align: left;
 }
 
