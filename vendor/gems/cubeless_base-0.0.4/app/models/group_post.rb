@@ -10,6 +10,8 @@ class GroupPost < ActiveRecord::Base
   belongs_to :group
   belongs_to :profile
 
+  stream_to :activity
+
   has_one :abuse, :as => :abuseable, :conditions => 'remover_id is null'
 
   has_many :comments, :as => :owner, :order => "comments.created_at asc", :dependent => :destroy
