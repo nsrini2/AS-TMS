@@ -10,7 +10,7 @@
   <%#= display[:avatar] %>
   <%= link_to(primary_photo_for(event, :thumb => :thumb_80, :hide_status_indicator => false, :hide_sponsor_sash => false), event.owner_path) %>
   <div class="details">
-    <a href="<%= event.event_path %>">
+    <a href="<%#= event.event_path %>">
       <div class="icon">
         <%= image_tag event.icon_path, :class => "icon" %>
       </div>

@@ -24,32 +24,36 @@ module ActivityStreamInterface
 
   def event_path
     # SSJ want to try setting @event to the event.klass then calling path on it?
-    if group_id && !profile_id
-      url_for(group_path(:id => group_id))
-    else
+
+    # SRIWW:04/17/13 - Changing this method to include all possible activity stream events
+    #if group_id && !profile_id
+      #url_for(group_path(:id => group_id))
+    #else
       case klass
-      when "Answer": "/questions/#{Answer.find_by_id(klass_id).question_id}"
-      when "Question": "/questions/#{klass_id}"
-      when "GroupMembership": url_for(group_path(:id => group_id))
-      when "BlogPost": "/blog_posts/#{klass_id}"
-      when "Comment": "/comments/#{klass_id}"
+        when "Answer": "/questions/#{Answer.find_by_id(klass_id).question_id}"
+        when "Question": "/questions/#{klass_id}"
+        when "GroupMembership": url_for(group_path(:id => group_id))
+        when "BlogPost": "/blog_posts/#{klass_id}"
+        when "Comment": "/comments/#{klass_id}"
+        when "QuestionReferral": "/questions/#{(QuestionReferral.find_by_id(klass_id)).question_id}"
+        when "Group": url_for(group_path(:id => group_id))
+        when "GroupPhoto" : url_for(group_path(:id => group_id))
       #   if event_object.owner.respond_to?(:news?) && event_object.owner.news? #Exception for news post
       #     news_post_path(event_object.owner) + "#comments"
       #   else    
       #     polymorphic_path(event_object.owner) + "#comments"
       #   end 
-      else
-         self.profile ? url_for(profile_path(self.profile)) : ""
-       end
-    end  
+        else self.profile ? url_for(profile_path(self.profile)) : ""
+      end
+    #end  
   end
 
   def icon_path
    event_icon_path = "/images/icons/as"
    event_icon_path << case klass
-                       when /Group/: "/user-group.png"
+                       when /(Group|GroupMembership)/: "/user-group.png"
                        when "Status": "/comment.png"
-                       when /(Question|Answer)/: "/help.png"
+                       when /(Question|Answer|QuestionReferral)/: "/help.png"
                        when /(Blog|Comment)/: "/write-note.png"
                        when /Profile/: "/user.png"
                        when /Ad/: "/ticket.png"
