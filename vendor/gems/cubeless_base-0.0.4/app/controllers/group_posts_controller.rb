@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class GroupPostsController < ApplicationController
 
   layout 'group'
@@ -67,10 +69,10 @@ class GroupPostsController < ApplicationController
   def show
     @group_post = GroupPost.new
     post = GroupPost.find(params[:id])
-    @group_posts = [post]
+    @group_posts = [post].paginate :page => params[:page], :per_page => 1
     @group = post.group
-    render :template => 'group_posts/index'
-    # redirect_to group_talk_group_path GroupPost.find(params[:id]).group
+    render :template => 'group_posts/index', :layout =>  @group.is_sponsored? ? '/layouts/sponsored_group' : '/layouts/group'
+    #redirect_to group_talk_group_path GroupPost.find(params[:id]).group
   end
 
   def create_reply
@@ -102,9 +104,6 @@ class GroupPostsController < ApplicationController
         redirect_to :back
       }
     end
-     if @group.is_sponsored?
-      render :layout => '/layouts/sponsored_group'
-     end
   end
 
   private

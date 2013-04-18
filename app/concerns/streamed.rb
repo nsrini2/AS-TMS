@@ -27,24 +27,23 @@ module Streamed
                case self.blog.owner_type
                     when 'Group'
                           opts[:group_id]=self.blog.owner.id
+                          opts[:profile_id]=self.creator_id
                     when 'Profile'
                           opts[:profile_id]=self.blog.owner.id
                           
                end
           when Comment
-               case self.owner_type
+               case self.owner
                       when GroupPost
-                         opts.merge!(:profile_id => self.owner.profile_id, :group_id => self.owner.group_id)
+                         opts.merge!(:profile_id => self.profile_id, :group_id => self.owner.group_id)
                       when BlogPost
                             case self.owner.blog.owner_type
-                                 when 'Group'
-                                   opts[:group_id]=self.owner.blog.owner.id
-                                 when 'Profile'
-                                   opts[:profile_id]=self.owner.blog.owner.id
+                                 when 'Group' then opts.merge!(:group_id => self.owner.blog.owner.id, :profile_id => self.profile_id)
+                                 when 'Profile' then opts.merge!(:profile_id => self.profile_id)
                             end
                       end
             
-          when ProfileAward then opts[:profile_id] = self.profile.id
+          when ProfileAward then opts[:profile_id] = self.profile_id
           when ProfilePhoto then opts[:profile_id] = self.owner_id
           else opts[:profile_id] = self.profile_id
         end

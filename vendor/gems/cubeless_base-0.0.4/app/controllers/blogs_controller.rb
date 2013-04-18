@@ -1,6 +1,5 @@
 class BlogsController < ApplicationController
   before_filter :set_owner
-  before_filter :find_booth_details
   deny_access_for :all => :sponsor_member, :when => lambda{|c| c.instance_variable_get(:@owner).is_a?(Profile)}
 
   def show
@@ -16,8 +15,11 @@ class BlogsController < ApplicationController
       end
       if @owner.is_a?(Profile) && @owner == current_profile && @blog_posts.blank?
         redirect_to url_for([@owner, :blog, :blog_posts])+'/new'
+      elsif @owner.is_a?(Group)
+        Rails.logger.info("But somehow I am in here when I should not be...")
+        render :layout => @owner.is_sponsored? ? 'sponsored_group' :'group'
       else
-        render :layout => @owner.is_a?(Group) ? (@owner.is_sponsored? ? 'sponsored_group' :'group') : '_my_stuff'
+        render :layout => '_my_stuff'
       end
     end
   end
@@ -26,6 +28,7 @@ class BlogsController < ApplicationController
   def set_owner
     owner = parent
     @owner = [owner].flatten.first
+    find_booth_details if @owner.is_a?(Group)
   end
 
   def find_booth_details

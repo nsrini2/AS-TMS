@@ -19,8 +19,9 @@
 			<%= radio_button("group", "group_type", 1, :id => 'invite_group_type', :tabindex => 6) %><label for="invite_group_type">Invite Only</label>
 			<%= radio_button("group", "group_type", 2, :id => 'private_group_type', :tabindex => 7) %><label for="private_group_type">Private</label>
 		</dd><br/>
-                <dt class="booth_video"><label for="booth_video_location">URL for Booth Video</label></dt>
-                <dd class="booth_video"><%= f.text_field :booth_video_location, :size => nil, :tabindex => 4, :maxlength => '100' -%></dd><br/>
+                <dt class="booth_video"><label for="booth_video_location">URL for Embed Booth Video</label></dt>
+                <dd class="booth_video"><%= f.text_field :booth_video_location, :size => nil, :tabindex => 4, :maxlength => '100' -%></dd>
+                <dd class="help"><span>Hint: You should enter only the 'embed' url for the video, it will include '/embed' in it</span></dd><br/>
                 <dt class="booth_twitter"><label for="booth_Twitter_Id">Twitter Handle For Booth Feed (without the "@")</label></dt>
                 <dd class="booth_twitter_id"><%= f.text_field :booth_twitter_id, :size => nil, :tabindex => 4, :maxlength => '100' -%></dd>
                 <dd class="help"><span>Note: The twitter account should be public</span></dd>
