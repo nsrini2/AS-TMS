@@ -118,7 +118,8 @@ margin-bottom:15px;
 
 #group_announcement #announcement_text{
 position:absolute;
-top:35%;
+top:36%;
+bottom:34%;
 height:30%;
 margin-left:2%;
 width:20%;
@@ -148,6 +149,7 @@ right:0;
 margin-left:10px;
 margin-bottom:10px;
 overflow:auto;
+min-height:920px;
 }
 
 #booth_info #follow{
@@ -252,21 +254,23 @@ text-align:left;
 border:1px solid #C4D7DC;
 float:left;
 width:300px;
-min-height:358px;
+min-height:416px;
 }
 
 .booth_activity_details{
-clear: both; margin: 20px 0 0; color: #4a6970; padding: 10px;
+clear: both; margin: 10px 0 0; color: #4a6970; padding: 10px;
 }
 
-.booth_activity_details p{
-display: inline; 
+.booth_activity_who {
+display: inline;
+font-size:1.1em;
+font-weight:bold;
 }
 
 .group_video{
 float:right;
 width:320px;
-height:200px;
+height:235px;
 }
 
 #browse{
@@ -283,8 +287,9 @@ width:  70px;
 .group_marketing_message{
 float:right;
 width:320px;
-height:150px;
-margin-top:10px;
+height:175px;
+margin-top:6px;
+padding-bottom:0;
 }
 
 #booth_tag_cloud{
@@ -294,6 +299,27 @@ margin-bottom:20px;
 padding-bottom:20px;
 vertical-align:middle;
 }
+
+.tag0{
+font-size:1em;
+}
+
+.tag1{
+font-size:1.5em;
+}
+
+.tag2{
+font-size: 2em;
+}
+
+.tag3{
+font-size: 2.5em;
+}
+
+.tag4{
+font-size:3em;
+}
+
 
 
 table #booth_marketing{
@@ -339,15 +365,16 @@ padding-left:30px;
 }
 
 #booth_useful_links{
-margin-top:20px;
-padding-top:20px;
-margin-bottom:20px;
-padding-bottom:20px;
+margin-top:30px;
+padding-top:30px;
+margin-bottom:10px;
+padding-bottom:10px;
 text-align:left;
 }
 
 #booth_useful_links h5{
-margin-top:10px;
+margin-top:20px;
+padding-top:10px;
 margin-bottom:10px;
 }
 

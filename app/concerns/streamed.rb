@@ -14,15 +14,33 @@ module Streamed
         opts = {}
         # REFACTOR
         case self
-          when Group then opts[:group_id] = self.id
-          when GroupPhoto then opts[:group_id] = self.owner_id
-          when GroupMembership then opts.merge!(:profile_id => self.profile_id, :group_id => self.group_id)
-          when GroupPost then opts.merge!(:profile_id => self.profile_id, :group_id => self.group_id)
+          when Group
+                   opts[:group_id] = self.id
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+          when GroupPhoto
+                   opts[:group_id] = self.owner_id
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+          when GroupMembership
+                   opts.merge!(:profile_id => self.profile_id, :group_id => self.group_id)
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+          when GroupPost
+                   opts.merge!(:profile_id => self.profile_id, :group_id => self.group_id)
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+          when GalleryPhoto
+                   opts.merge!(:profile_id => self.uploader_id, :group_id => self.group_id)
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
           when QuestionReferral
                case self.owner_type
                    when 'Group' then opts[:group_id]=self.owner_id
                    when 'Profile' then opts[:profile_id]=self.owner_id
                end
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
           when BlogPost
                case self.blog.owner_type
                     when 'Group'
@@ -30,26 +48,38 @@ module Streamed
                           opts[:profile_id]=self.creator_id
                     when 'Profile'
                           opts[:profile_id]=self.blog.owner.id
-                          
                end
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
           when Comment
                case self.owner
-                      when GroupPost
-                         opts.merge!(:profile_id => self.profile_id, :group_id => self.owner.group_id)
-                      when BlogPost
-                            case self.owner.blog.owner_type
-                                 when 'Group' then opts.merge!(:group_id => self.owner.blog.owner.id, :profile_id => self.profile_id)
-                                 when 'Profile' then opts.merge!(:profile_id => self.profile_id)
-                            end
-                      end
-            
-          when ProfileAward then opts[:profile_id] = self.profile_id
-          when ProfilePhoto then opts[:profile_id] = self.owner_id
-          else opts[:profile_id] = self.profile_id
-        end
-        Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
-        ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
-      end    
+                   when GroupPost
+                        opts.merge!(:profile_id => self.profile_id, :group_id => self.owner.group_id)
+                   when BlogPost
+                        case self.owner.blog.owner_type
+                             when 'Group' then opts.merge!(:group_id => self.owner.blog.owner.id, :profile_id => self.profile_id)
+                             when 'Profile' then opts.merge!(:profile_id => self.profile_id)
+                         end
+                   end
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+          when ProfileAward 
+                   opts[:profile_id] = self.profile_id
+                   groupmemship=Profile.group_memberships(self.profile_id)
+                   for i in 0...groupmemship.size-1
+                     opts[:group_id]=groupmemship[i].group_id
+                     ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+                   end
+          when ProfilePhoto
+                  opts[:profile_id] = self.owner_id
+                  Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                  ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+          else
+                  opts[:profile_id] = self.profile_id
+                  Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                  ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+          end
+       end    
     end
     
     def remove_from_activity_stream

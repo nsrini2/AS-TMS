@@ -52,7 +52,8 @@ border-right: 1px solid #676767;
 
 #list #travelexpo_marketing_message {
 float: right;
-margin-top:30px;
+margin-top:25px;
+height:150px;
 margin-bottom: 5px;
 width: 395px;
 margin-right: 8px;
@@ -76,8 +77,9 @@ display: inline;
 position: inherit;
 }
 
-.news_item .details p.what{
-font-size: 12px;
+.news_item .details .category_activity_who{
+font-size: 1.3em;
+font-weight:bold;
 }
 
 #news_feed .news_item .details p.what span {

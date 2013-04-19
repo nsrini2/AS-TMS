@@ -28,21 +28,16 @@ module GroupsHelper
   end
 
 
-  def calc_tag_sizes(tag,minoccurs,maxoccurs)
-    minFontSize=10
-    maxFontSize=50
-    maxlog=Math.log(maxoccurs)
-    minlog=Math.log(minoccurs)
-    occursrange=maxlog-minlog
-    occursrange=1 if maxlog==minlog
-    fontrange=maxFontSize-minFontSize
-    weight = (Math.log(tag[:count])-minlog)/occursrange
-    size = minFontSize + (fontrange*weight).round
+  def calc_tag_classes(tag,minoccurs,maxoccurs)
+    classes=%w(tag0 tag1 tag2 tag3 tag4)
+    div=((maxoccurs-minoccurs)/classes.size) + 1
+    weight = ((tag[:count]-minoccurs)/div).round
+    tag_class=classes[weight]
   end  
 
   def link_to_booth_tag(owner, tag, minoccurs, maxoccurs)
-      tag_size=calc_tag_sizes(tag,minoccurs,maxoccurs)
-      content_tag(:a, tag[:text], {:href => "#{polymorphic_path([owner, :blog])}?tag=#{tag[:text]}", :title =>"Tag Cloud", :style => "font-size:#{tag_size}px" })
+      tag_class=calc_tag_classes(tag,minoccurs,maxoccurs)
+      content_tag(:a, tag[:text], {:href => "#{polymorphic_path([owner, :blog])}?tag=#{tag[:text]}", :title =>"Tag Cloud", :class => "#{tag_class}" })
       #link_to(tag[:text], "#{polymorphic_path([owner, :blog])}?tag=#{tag[:text]}", :class => 'booth_tag_'+"{#tag_size}")
   end
 

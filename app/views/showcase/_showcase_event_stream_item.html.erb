@@ -12,11 +12,11 @@
       <div class="icon">
         <%= image_tag event.icon_path, :class => "icon" %>
       </div>
-      <h6 class="who"><%= event.who %></h6>
-      <p class="what">
-        <%= event.what %>
-      </p>
-      <p class="when"><br/><%= event.when %></p>
+      <div class="category_activity_who"><%= event.who %></div>
+      <div class="category_what_when">
+        <%= event.what %><br/>
+        <%= event.when %><br/>
+      </div>
      </a>
   </div>
 </div>

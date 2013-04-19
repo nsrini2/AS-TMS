@@ -8,7 +8,7 @@ class GroupPhoto < Attachment
   has_one :group, :foreign_key => :primary_photo_id, :dependent => :nullify
 
  
-  stream_to :activity
+  #stream_to :activity
   validates_as_attachment
 
 end

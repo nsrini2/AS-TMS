@@ -130,7 +130,7 @@ class GroupsController < ApplicationController
 
  def show
     if @group.is_sponsored?
-         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:booth_page],:per_page => 3)
+         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:booth_page],:per_page => 4)
          @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
          render :action => 'group', :layout => '/layouts/sponsored_group'
     else

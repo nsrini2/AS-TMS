@@ -157,6 +157,10 @@ class Profile < ActiveRecord::Base
     GroupMembership.find(:first, :conditions => ["profile_id = #{self.id} and group_id = #{group.id}"])
   end
 
+  def self.group_memberships(profile_id)
+      GroupMembership.find(:all,:conditions => ["profile_id = #{profile_id}"])
+  end
+
   def self.all_visible_profiles(options={})
     self.visible
   end

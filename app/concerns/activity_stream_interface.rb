@@ -40,6 +40,7 @@ module ActivityStreamInterface
         when "GroupPhoto" : url_for(group_path(:id => group_id))
         when "GroupPost": "/groups/#{group_id}/group_posts/#{klass_id}"
         when "ProfileAward": "/profiles/#{profile_id}"
+        when "GalleryPhoto": "/groups/#{group_id}/gallery_photos/#{klass_id}"
       #   if event_object.owner.respond_to?(:news?) && event_object.owner.news? #Exception for news post
       #     news_post_path(event_object.owner) + "#comments"
       #   else    
@@ -60,14 +61,14 @@ module ActivityStreamInterface
                        when /ProfileAward/: "/trophy.png"
                        when /(Profile|ProfilePhoto)/: "/user.png"
                        when /Ad/: "/ticket.png"
-                       when /(Group|GroupMembership|GroupPhoto)/: "/user-group.png"
+                       when /(Group|GroupMembership|GroupPhoto|GalleryPhoto)/: "/user-group.png"
                     end
   end
 
 
   def who
    if group_id && !profile_id
-     group_name 
+     group_name
    elsif respond_to?(:profile_screen_name)
      profile_screen_name
    elsif respond_to?(:profile) && profile
@@ -114,8 +115,9 @@ module ActivityStreamInterface
     	  text << "joined the group: " + truncate(self.group_name, { :length => 50, :omission => "..." })
      when 'BlogPost': 
     	  text << "added a blog post:"
-          text << "<br/>"
+          text << "<br/>'"
     	  text << truncate(self.blog_post_title, { :length => 50, :omission => "..." })
+          text << "'"
      when 'Comment':
           text << "added a comment:" 
           text << "<br/>'"
@@ -129,7 +131,7 @@ module ActivityStreamInterface
      when 'ProfileAward': 
     	  text << "received an award:"
           text << "<br/>"
-    	  text << "was awarded the " + truncate(self.award_title, { :length => 100, :omission => "..." })
+    	  text << "was awarded the '" + truncate(self.award_title, { :length => 100, :omission => "..." }) + "'"
      when 'Status': 
     	  text << "shared an update:"
           text << "<br/>"
@@ -138,6 +140,8 @@ module ActivityStreamInterface
           text << "added a group post:"
           text << "<br/>"
           text << truncate(self.group_post_post, { :length => 100, :omission => "..." })
+     when 'GalleryPhoto':
+          text << "added a gallery photo:"
    end     
 
   text.join(" ")
@@ -152,10 +156,16 @@ module ActivityStreamInterface
   end
 
   def group_event_what_text
+   text=[]
    case klass
       when 'Group': "#{self.action}d"
-      when 'GroupPhoto': "group photo"
-      when 'QuestionReferral': "referred a question"
+      when 'GroupPhoto'
+           text << "group photo"
+           text << "<span>\"#{truncate(self.group_photo_filename, { :length => 20, :omission => "..." })}\"</span>"
+      when 'QuestionReferral'
+           text << "referred a question"
+           text << "<br/>"
+           text << "<span>\"#{truncate(self.question_question_referral_question, { :length => 40, :omission => "..." })}\"</span>"
       else "#{self.action}d"
    end    
   end
