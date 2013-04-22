@@ -65,7 +65,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_conditions!(args, ["(activity_stream_events.profile_id IS NULL OR (activity_stream_events.profile_id IS NOT NULL AND profiles.visible = ?))", true])
 
     options = ModelUtil.get_options!(args)
-    options[:group] = 'activity_stream_events.klass,activity_stream_events.profile_id, activity_stream_events.klass_id'
+    options[:group] = 'activity_stream_events.klass, activity_stream_events.klass_id'
     options[:order] = 'created_at desc' unless options.member?(:order)
     
     # find(*args)
@@ -120,7 +120,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     (activity_stream_events.profile_id IS NOT NULL AND (groups.sponsor_account_id= #{sponsor_account_id} OR profiles.sponsor_account_id = #{sponsor_account_id}) AND
     profiles.visible=?)", true]) 																																																																																																																																																																																																																										
     options = ModelUtil.get_options!(args)
-    options[:group] = 'activity_stream_events.klass,activity_stream_events.profile_id, activity_stream_events.klass_id'
+    options[:group] = 'activity_stream_events.klass, activity_stream_events.klass_id'
     options[:order] = 'created_at desc' unless options.member?(:order)
     args.shift if args.first.to_sym == :all
     Rails.logger.info "The final query is:" + args.to_s
@@ -170,7 +170,7 @@ class ActivityStreamEvent < ActiveRecord::Base
    
     ModelUtil.add_conditions!(args, ["(groups.id= #{group_id} AND activity_stream_events.profile_id IS NULL) OR (groups.id=#{group_id} AND activity_stream_events.profile_id IS NOT NULL AND profiles.visible=?)",true])
     options = ModelUtil.get_options!(args)
-    options[:group] = 'activity_stream_events.klass,activity_stream_events.profile_id, activity_stream_events.klass_id'
+    options[:group] = 'activity_stream_events.klass, activity_stream_events.klass_id'
     options[:order] = 'created_at desc' unless options.member?(:order)
     args.shift if args.first.to_sym == :all
     res=self.paginate(*args)
