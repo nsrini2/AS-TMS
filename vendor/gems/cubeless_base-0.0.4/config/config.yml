@@ -7,7 +7,7 @@ global:
   email_from_address: 'agentstream.tnss@gmail.com'
   feedback_email: 'agentstream.tnss@gmail.com'
   cubeless_support_email: "agentstream.tnss@gmail.com"
-  # monitor_email_address: 'discard@discard.pri'
+  # monitor_email_address: 'agentstream.tnss@gmail.com'
   open_registration: false
   registration_queue: false
   
@@ -29,7 +29,7 @@ global:
 
   css_debug: true
 
-  video_enabled: true
+  video_enabled: false
 
   #user_max: false
   #user.lockout.failures: 3
@@ -77,7 +77,7 @@ development:
   backdoor_mode: true
   session_key: 'cubeless'
   session_secret: '0481d095c71efc989dced01b8a8cdec95c0c0c3db1e68314d57cb3018ee89514b3afe28b478fd87beceb684d6e7f1ebb80152710ad884dca930f3c7e2f01a73f'
-   smtp_settings:
+  smtp_settings:
     !ruby/sym address: 'smtp.gmail.com'
     !ruby/sym port: 587
     !ruby/sym domain: 'gmail.com'
@@ -93,9 +93,9 @@ test:
   session_secret: '0481d095c71efc989dced01b8a8cdec95c0c0c3db1e68314d57cb3018ee89514b3afe28b478fd87beceb684d6e7f1ebb80152710ad884dca930f3c7e2f01a73f'
   site_url: 'localhost:3000'
   smtp_settings:
-    !ruby/sym address: 'dev1.labs.sabre.com'
-    !ruby/sym port: 25
-    !ruby/sym domain: 'cubeless.com'
+    !ruby/sym address: 'smtp.gmail.com'
+    !ruby/sym port: 587
+    !ruby/sym domain: 'gmail.com'
   site_base_url: 'http://localhost:3000'
 
 production:
