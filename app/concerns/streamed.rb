@@ -64,6 +64,7 @@ module Streamed
                    Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
                    ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
           when ProfileAward 
+                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
                    opts[:profile_id] = self.profile_id
                    groupmemship=Profile.group_memberships(self.profile_id)
                    for i in 0...groupmemship.size
@@ -71,9 +72,12 @@ module Streamed
                      ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
                    end
           when ProfilePhoto
-                  opts[:profile_id] = self.owner_id
                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
-                  ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+                  groupmemship=Profile.group_memberships(self.owner_id)
+                  for i in 0...groupmemship.size
+                    opts[:profile_id] = groupmemship[i].group_id
+                    ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
+                  end
           else
                   opts[:profile_id] = self.profile_id
                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"

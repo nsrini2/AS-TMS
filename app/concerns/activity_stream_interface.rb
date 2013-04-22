@@ -97,7 +97,8 @@ module ActivityStreamInterface
     	  text << "updated profile details"
           text << "<br/>"
      when 'ProfilePhoto': 
-    	  text << "updated profile photo"
+    	  text << "updated profile photo to:"
+          text << "<span>[\"#{truncate(self.profile_photo_filename, { :length => 20, :omission => "..." })}\"]</span>"
           text << "<br/>"
      when 'Answer': 
     	  text << "answered a question:"
@@ -141,7 +142,8 @@ module ActivityStreamInterface
           text << "<br/>"
           text << truncate(self.group_post_post, { :length => 100, :omission => "..." })
      when 'GalleryPhoto':
-          text << "added a gallery photo:"
+          text << "added a gallery photo to the booth:'"
+          text << group_name + "'"
    end     
 
   text.join(" ")
@@ -160,7 +162,7 @@ module ActivityStreamInterface
    case klass
       when 'Group': "#{self.action}d"
       when 'GroupPhoto'
-           text << "group photo"
+           text << "their group photo to"
            text << "<span>\"#{truncate(self.group_photo_filename, { :length => 20, :omission => "..." })}\"</span>"
       when 'QuestionReferral'
            text << "referred a question"
