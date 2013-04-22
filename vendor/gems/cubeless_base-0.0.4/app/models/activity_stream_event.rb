@@ -11,24 +11,27 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join groups on groups.id=group_id left join attachments gp on gp.id=groups.primary_photo_id")
     ModelUtil.add_joins!(args,"left join questions on activity_stream_events.klass='Question' and questions.id=klass_id")
     ModelUtil.add_joins!(args,"left join answers on activity_stream_events.klass='Answer' and answers.id=klass_id")
-
     ModelUtil.add_joins!(args,"left join group_posts on activity_stream_events.klass='GroupPost' and group_posts.id=klass_id")
     ModelUtil.add_joins!(args,"left join blog_posts on activity_stream_events.klass='BlogPost' and blog_posts.id=klass_id")
     ModelUtil.add_joins!(args,"left join question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.id=klass_id") 
     ModelUtil.add_joins!(args,"left join comments on activity_stream_events.klass='Comment' and comments.id=klass_id")
-
     ModelUtil.add_joins!(args,"left join statuses on activity_stream_events.klass='Status' and statuses.id=klass_id")
-    ModelUtil.add_joins!(args,"left join group_memberships on activity_stream_events.klass='GroupMembership' and group_memberships.group_id=activity_stream_events.group_id")
-
+    #SRIWW-19/Apr/13: This is causing duplicate group membership events to be displayed in all the activity streams
+    #ModelUtil.add_joins!(args,"left join group_memberships on activity_stream_events.klass='GroupMembership' and group_memberships.group_id=activity_stream_events.group_id")
     ModelUtil.add_joins!(args,"left join profile_awards on activity_stream_events.klass='ProfileAward' and profile_awards.id=klass_id left join awards on profile_awards.award_id = awards.id")
     ModelUtil.add_joins!(args,"left join questions as answer_questions on activity_stream_events.klass='Answer' and answers.id=klass_id and answers.question_id=answer_questions.id")
     ModelUtil.add_joins!(args,"left join blog_posts as comment_blog_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'BlogPost' and comments.owner_id=comment_blog_posts.id")
-
     ModelUtil.add_joins!(args,"left join group_posts as comment_group_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'GroupPost' and comments.owner_id=comment_group_posts.id")
    ModelUtil.add_joins!(args,"left join questions as question_question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.owner_type='Group' and question_referrals.id=klass_id and question_referrals.question_id=question_question_referrals.id")
 
 
-   ModelUtil.add_selects!(args,"activity_stream_events.*"+
+   ModelUtil.add_selects!(args,"activity_stream_events.id"+
+    ", activity_stream_events.created_at"+
+    ", activity_stream_events.klass"+
+    ", activity_stream_events.klass_id"+
+    ", activity_stream_events.profile_id"+
+    ", activity_stream_events.action"+
+    ", activity_stream_events.group_id"+
     ", profiles.screen_name as profile_screen_name"+
     ", profiles.karma_points as profile_karma_points"+
 
@@ -62,7 +65,9 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_conditions!(args, ["(activity_stream_events.profile_id IS NULL OR (activity_stream_events.profile_id IS NOT NULL AND profiles.visible = ?))", true])
 
     options = ModelUtil.get_options!(args)
+    options[:group] = 'activity_stream_events.klass,activity_stream_events.profile_id, activity_stream_events.klass_id'
     options[:order] = 'created_at desc' unless options.member?(:order)
+    
     # find(*args)
     args.shift if args.first.to_sym == :all
     self.paginate(*args)
@@ -79,7 +84,6 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.id=klass_id") 
     ModelUtil.add_joins!(args,"left join comments on activity_stream_events.klass='Comment' and comments.id=klass_id")
     ModelUtil.add_joins!(args,"left join statuses on activity_stream_events.klass='Status' and statuses.id=klass_id")
-    ModelUtil.add_joins!(args,"left join group_memberships on activity_stream_events.klass='GroupMembership' and group_memberships.group_id=activity_stream_events.group_id")
     ModelUtil.add_joins!(args,"left join profile_awards on activity_stream_events.klass='ProfileAward' and profile_awards.id=klass_id left join awards on profile_awards.award_id = awards.id")
     ModelUtil.add_joins!(args,"left join questions as answer_questions on activity_stream_events.klass='Answer' and answers.id=klass_id and answers.question_id=answer_questions.id")
     ModelUtil.add_joins!(args,"left join blog_posts as comment_blog_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'BlogPost' and comments.owner_id=comment_blog_posts.id")
@@ -116,6 +120,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     (activity_stream_events.profile_id IS NOT NULL AND (groups.sponsor_account_id= #{sponsor_account_id} OR profiles.sponsor_account_id = #{sponsor_account_id}) AND
     profiles.visible=?)", true]) 																																																																																																																																																																																																																										
     options = ModelUtil.get_options!(args)
+    options[:group] = 'activity_stream_events.klass,activity_stream_events.profile_id, activity_stream_events.klass_id'
     options[:order] = 'created_at desc' unless options.member?(:order)
     args.shift if args.first.to_sym == :all
     Rails.logger.info "The final query is:" + args.to_s
@@ -133,7 +138,6 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.id=klass_id") 
     ModelUtil.add_joins!(args,"left join comments on activity_stream_events.klass='Comment' and comments.id=klass_id")
     ModelUtil.add_joins!(args,"left join statuses on activity_stream_events.klass='Status' and statuses.id=klass_id")
-    ModelUtil.add_joins!(args,"left join group_memberships on activity_stream_events.klass='GroupMembership' and group_memberships.group_id=activity_stream_events.group_id")
     ModelUtil.add_joins!(args,"left join profile_awards on activity_stream_events.klass='ProfileAward' and profile_awards.id=klass_id left join awards on profile_awards.award_id = awards.id")
     ModelUtil.add_joins!(args,"left join questions as answer_questions on activity_stream_events.klass='Answer' and answers.id=klass_id and answers.question_id=answer_questions.id")
     ModelUtil.add_joins!(args,"left join blog_posts as comment_blog_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'BlogPost' and comments.owner_id=comment_blog_posts.id")
@@ -166,6 +170,7 @@ class ActivityStreamEvent < ActiveRecord::Base
    
     ModelUtil.add_conditions!(args, ["(groups.id= #{group_id} AND activity_stream_events.profile_id IS NULL) OR (groups.id=#{group_id} AND activity_stream_events.profile_id IS NOT NULL AND profiles.visible=?)",true])
     options = ModelUtil.get_options!(args)
+    options[:group] = 'activity_stream_events.klass,activity_stream_events.profile_id, activity_stream_events.klass_id'
     options[:order] = 'created_at desc' unless options.member?(:order)
     args.shift if args.first.to_sym == :all
     res=self.paginate(*args)
