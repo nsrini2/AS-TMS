@@ -21,6 +21,9 @@ gem 'fastercsv', '1.5.4' # admin user import/export
 gem 'mysql2', '~>0.2.19b5'
 # gem 'mysql2', '~>0.2.18'
 
+gem "acts_as_state_machine", "~> 2.2.0"
+gem "newbamboo-rvideo", "~> 0.9.6"
+
 # MM2
 # The s3 and right_aws gems must come before the rest-client/microreviewr gems
 # Bad things happen if it doesn't
@@ -32,7 +35,7 @@ gem "rest-client", '1.6.1'
 gem "hashie", '>= 0.4.0'
 gem "microreviewr", :require => 'microreview', :path => 'vendor/gems/microreviewr-0.1.2'
 
-gem 'panda', '0.2.1'
+gem 'panda', '1.6.0'
 
 # Deploy with Capistrano
 gem 'capistrano', '2.5.18'
