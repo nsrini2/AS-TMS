@@ -77,10 +77,10 @@ development:
   session_key: 'cubeless'
   session_secret: '0481d095c71efc989dced01b8a8cdec95c0c0c3db1e68314d57cb3018ee89514b3afe28b478fd87beceb684d6e7f1ebb80152710ad884dca930f3c7e2f01a73f'
   smtp_settings:
-    !ruby/sym address: 'smtp.gmail.com'
-    !ruby/sym port: 587
-    !ruby/sym domain: 'gmail.com'
-  email_from_address: 'Developer Testing <agentstream.tnss@gmail.com>'
+    !ruby/sym address: 'dev1.labs.sabre.com'
+    !ruby/sym port: 25
+    !ruby/sym domain: 'cubeless.com'
+  email_from_address: 'Developer Testing <no-reply@cubeless.com>'
   rank_enabled: true
   site_base_url: 'http://localhost:3000'
   google_maps_key: 'ABQIAAAAzr2EBOXUKnm_jVnk0OJI7xSosDVG8KKPE1-m51RBrvYughuyMxQ-i1QfUnH94QxWIa6N4U6MouMmBA'
@@ -92,9 +92,9 @@ test:
   session_secret: '0481d095c71efc989dced01b8a8cdec95c0c0c3db1e68314d57cb3018ee89514b3afe28b478fd87beceb684d6e7f1ebb80152710ad884dca930f3c7e2f01a73f'
   site_url: 'localhost:3000'
   smtp_settings:
-    !ruby/sym address: 'smtp.gmail.com'
-    !ruby/sym port: 587
-    !ruby/sym domain: 'gmail.com'
+    !ruby/sym address: 'dev1.labs.sabre.com'
+    !ruby/sym port: 25
+    !ruby/sym domain: 'cubeless.com'
   site_base_url: 'http://localhost:3000'
 
 production:
