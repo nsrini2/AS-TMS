@@ -3,10 +3,10 @@ class KarmaHistory < ActiveRecord::Base
     def capture_points
       t = Time.new
       sql = <<-EOS
-        INSERT INTO karma_histories (profile_id, month, year, value)
-        (SELECT id, #{t.month}, #{t.year}, karma_points
+        INSERT INTO karma_histories (profile_id, month, year, value, karma_login)
+        (SELECT id, #{t.month}, #{t.year}, karma_points, karma_login_points
         FROM profiles)
-        ON DUPLICATE KEY UPDATE value = karma_points
+        ON DUPLICATE KEY UPDATE value = karma_points, karma_login = karma_login_points
       EOS
       ActiveRecord::Base.connection.execute(sql)
     end
@@ -21,15 +21,17 @@ class KarmaHistory < ActiveRecord::Base
       sql = <<-EOS
         SELECT profiles.screen_name, profiles.profile_1 as agency_name, profiles.profile_8 as agency_type, karma_earned
         FROM profiles, 
-        (SELECT t1.profile_id, (t1.value - t2.value) as karma_earned 
+        (SELECT t1.profile_id, (t1.net_karma - t2.net_karma) as karma_earned 
         FROM 
-        (SELECT karma_histories.profile_id, karma_histories.value
+        (SELECT karma_histories.profile_id, 
+        (karma_histories.value - karma_histories.karma_login) as net_karma
         FROM karma_histories, `profiles`
         WHERE karma_histories.profile_id = `profiles`.id
         AND profiles.`status` = 1	 
         AND month = #{month} AND year = #{year} ) as t1,
 
-        (SELECT karma_histories.profile_id, karma_histories.value
+        (SELECT karma_histories.profile_id, 
+        (karma_histories.value - karma_histories.karma_login) as net_karma
         FROM karma_histories, `profiles`
         WHERE karma_histories.profile_id = `profiles`.id
         AND profiles.`status` = 1	 

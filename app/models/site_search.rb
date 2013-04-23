@@ -3,13 +3,17 @@
 class SiteSearch
   extend LocalTire::ActiveModel::Extensions
   per_page 10
-  search_indexes :profiles, :groups, :blog_posts, :questions, :chats
+  @default_search_indexes = ['profiles', 'groups', 'blog_posts', 'questions', 'chats']
 
   
   def self.search(params)
     current_page = get_page(params[:page])
     query_string = params[:query] if params.member?(:query)
-    search_indexes params[:scope] if params.member?(:scope) && params[:scope] != 'all'
+    if params.member?(:scope) && params[:scope] != 'all'
+      search_indexes params[:scope] 
+    else
+      search_indexes *@default_search_indexes
+    end
     
     results = perform_query(query_string, current_page).results
     results.extend Tire::Results::Pagination

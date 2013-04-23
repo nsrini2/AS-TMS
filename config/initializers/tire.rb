@@ -17,4 +17,5 @@ Tire.configure do
   end
   # rake environment tire:import CLASS=Comment FORCE=true
   logger STDERR
+  logger
 end
