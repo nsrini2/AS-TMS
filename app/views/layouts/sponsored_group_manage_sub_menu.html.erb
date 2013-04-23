@@ -7,7 +7,7 @@
   	sub_menu_li_for(group_announcement_path(@group), :text => 'Post an Announcement'),
         (sub_menu_li_for(group_announcement_path(@group), :text => 'Deals + Extras') if @group.de_flag=true),
         sub_menu_li_for(group_announcement_path(@group), :text => 'Upload Booth Video'),
-        sub_menu_li_for(group_group_links_path(@group), :text => 'Manage Booth Links'),
+        sub_menu_li_for(get_group_links_group_path(@group), :text => 'Manage Booth Links'),
         sub_menu_li_for(booth_marketing_messages_group_path(@group), :text => 'Booth Marketing Messages'),
   	sub_menu_li_for(mass_mail_group_path(@group), :text => 'Send Booth Email'),
   	(sub_menu_li_for(moderators_group_path(@group), :text => 'Moderators') if @group.owner==current_profile),

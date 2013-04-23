@@ -419,9 +419,7 @@ AgentStream::Application.routes.draw do
       end
     end
 
-    resources :group_links do
-      post :create
-    end
+    #resources :group_links
     
     resources :photos
     resource :blog do

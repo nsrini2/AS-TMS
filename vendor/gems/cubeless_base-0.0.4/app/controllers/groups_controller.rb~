@@ -87,7 +87,7 @@ class GroupsController < ApplicationController
 
   def get_group_links
     @booth_links = @group.group_links.all
-    render :template => 'group_links/group_links', :layout => '/layouts/sponsored_group_manage_sub_menu'
+    render :layout => '/layouts/sponsored_group_manage_sub_menu'
   end
 
 
@@ -130,7 +130,6 @@ class GroupsController < ApplicationController
          @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
          render :action => 'group', :layout => '/layouts/sponsored_group'
     else
-         Rails.logger.info "This groups announcement is:" + @group.group_announcement.content.to_s
          render :action => 'group', :layout => '/layouts/group'
     end
   end

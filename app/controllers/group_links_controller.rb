@@ -4,17 +4,12 @@ class GroupLinksController < ApplicationController
 
  before_filter :find_group_booth_links
 
-
-  def index
-    render :template => 'group_links/group_links', :layout => '/layouts/sponsored_group_manage_sub_menu'
-  end
-
-  def new
+ def new
      @group_link=GroupLink.new
-      respond_to do |format|
-       format.html { render :layout => '/layouts/sponsored_group_manage_sub_menu' }
+     respond_to do |format|
+      format.html { render(:partial => 'group_links/new', :layout => '/layouts/popup') }
+    end
   end
- end
 
   def create
     @group_link=GroupLink.new(params[:group_link])
@@ -24,7 +19,7 @@ class GroupLinksController < ApplicationController
        redirect_to group_group_links_path(@group)
      else
        flash[:errors] = @group_link.errors
-       render :action => "new", :layout => '/layouts/sponsored_group_manage_sub_menu' 
+       render :action => "new"
     end
   end
 

@@ -42,7 +42,7 @@ ul.sponsor_group_actions li a {
   text-decoration: underline;
 }
 
-#group_action_list.group_actions {
+#sponsor_group_actions_list.sponsor_group_actions {
 	float: left;
 }
 
@@ -157,13 +157,14 @@ border:1px solid blue;
 margin-bottom:10px;
 }
 
-
-
-
 .sponsored_group_events{
 border:1px solid #C4D7DC;
 float:left;
 width:300px;
+}
+
+.booth_activity_details{
+clear: both; margin: 20px 0 0; color: #4a6970; padding: 10px;
 }
 
 .group_video{
@@ -303,6 +304,7 @@ margin-bottom:10px;
 .group_members:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 
 #member_card { position: relative; clear: right; float: left; display: block; margin-right: 18px; margin-bottom: 18px; background: #fff; border: 1px solid #000; padding: 10px; width: 370px; _height: 190px; min-height: 190px; zoom: 1; overflow: hidden; }
+
 #sponsor_member_card { position: relative; clear: right; float: left; display: block; margin-right: 20px; margin-bottom: 20px; background: #fff; border: 1px solid #000; padding: 10px; width: 350px; _height: 140px; min-height: 140px; zoom: 1; overflow: hidden; }
 
 
@@ -370,7 +372,7 @@ margin-bottom:10px;
 
 #booth_members_images_wrapper { 
 	width: 250px;
-        border:1px solid red;
+        
 }
 
 	#members_images { position: relative; margin: 0; width: 484px; overflow: hidden; }

@@ -86,8 +86,8 @@ class ActivityStreamEvent < ActiveRecord::Base
     ", comments.text as comment_text"+
     ", statuses.body as status_body"+
     ", awards.title as award_title")
-   
-    ModelUtil.add_conditions!(args, ["(groups.sponsor_account_id= #{sponsor_account_id} AND activity_stream_events.profile_id IS NULL) OR (activity_stream_events.profile_id IS NOT NULL AND profiles.sponsor_account_id = #{sponsor_account_id} AND profiles.visible = ?)", true])
+
+    ModelUtil.add_conditions!(args, ["(groups.sponsor_account_id= #{sponsor_account_id} AND activity_stream_events.klass in ('Group','GroupPhoto','GroupMembership') OR (profiles.sponsor_account_id = #{sponsor_account_id}  AND activity_stream_events.klass in ('Profile','Question','Status','GroupMembership','Comment','Answer','ProfilePhoto') AND profiles.visible = ?))", true])
     options = ModelUtil.get_options!(args)
     options[:order] = 'created_at desc' unless options.member?(:order)
     args.shift if args.first.to_sym == :all
@@ -95,7 +95,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     res=self.paginate(*args)
  end
 
- #SRIWW: Using the existing query to generate category-wise activity stream events for the Travel Market Showcase
+ #SRIWW: Using the existing query to generate group-wise activity stream events for the Travel Market Showcase
   def self.find_by_group(group_id,*args)
     ModelUtil.add_joins!(args,"left join profiles on profiles.id=profile_id left join attachments pp on pp.id=profiles.primary_photo_id")
     ModelUtil.add_joins!(args,"left join groups on groups.id=group_id left join attachments gp on gp.id=groups.primary_photo_id")
@@ -130,11 +130,10 @@ class ActivityStreamEvent < ActiveRecord::Base
     ", statuses.body as status_body"+
     ", awards.title as award_title")
    
-    ModelUtil.add_conditions!(args, ["(groups.id= #{group_id} AND activity_stream_events.profile_id IS NULL) OR (activity_stream_events.profile_id IS NOT NULL AND groups.id= #{group_id} AND profiles.visible = ?)", true])
+    ModelUtil.add_conditions!(args, ["((groups.id= #{group_id}) OR (group_memberships.group_id= #{group_id} AND profiles.visible = ?))", true])
     options = ModelUtil.get_options!(args)
     options[:order] = 'created_at desc' unless options.member?(:order)
     args.shift if args.first.to_sym == :all
-    Rails.logger.info "The final query is:" + args.to_s
     res=self.paginate(*args)
  end
 

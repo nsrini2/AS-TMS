@@ -24,10 +24,7 @@ class GalleryPhotosController < ApplicationController
     respond_to do |format|
       format.json { render :text => @photo.to_json(:methods => 'tag_list') }
     end
-    if @group.is_sponsored?
-      render :layout => '/layouts/sponsored_group'
-    end
-  end
+ end
 
   def create
     return redirect_to(group_gallery_photos_path(@group)) unless @group.is_member?(current_profile)
@@ -58,9 +55,6 @@ class GalleryPhotosController < ApplicationController
     rescue
       redirect_to group_gallery_photos_path(@group) and return if @photo.blank?
     end
-    if @group.is_sponsored?
-      render :layout => '/layouts/sponsored_group'
-    end
   end
 
   def delete
@@ -73,10 +67,7 @@ class GalleryPhotosController < ApplicationController
     @photo.destroy
     add_to_notices "Photo was successfully deleted."
     redirect_to group_gallery_photos_path(@group)
-    if @group.is_sponsored?
-      render :layout => '/layouts/sponsored_group'
-    end
-  end
+ end
 
   def rate
     photo = @group.gallery_photos.find(params[:id])
@@ -100,9 +91,6 @@ class GalleryPhotosController < ApplicationController
     else
       add_to_errors(@comment)
       render :action => 'show'
-    end
-    if @group.is_sponsored?
-      render :layout => '/layouts/sponsored_group'
     end
   end
 
