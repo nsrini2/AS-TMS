@@ -7,8 +7,7 @@
         </div>
 
         <div id="booth_tags">
-            <%= render "shared/booth_tag_cloud" %>
-            <%#= TagCloud.tagcloudize(@group_blog_tags) %>
+            <%#= render "shared/booth_tag_cloud" %>
         </div>
   
         <div id="booth_useful_links">
