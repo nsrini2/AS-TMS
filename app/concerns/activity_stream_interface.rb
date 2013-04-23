@@ -38,6 +38,8 @@ module ActivityStreamInterface
         when "QuestionReferral": "/questions/#{(QuestionReferral.find_by_id(klass_id)).question_id}"
         when "Group": url_for(group_path(:id => group_id))
         when "GroupPhoto" : url_for(group_path(:id => group_id))
+        when "GroupPost": "/groups/#{group_id}/group_posts/#{klass_id}"
+        when "ProfileAward": "/profiles/#{profile_id}"
       #   if event_object.owner.respond_to?(:news?) && event_object.owner.news? #Exception for news post
       #     news_post_path(event_object.owner) + "#comments"
       #   else    
@@ -51,14 +53,17 @@ module ActivityStreamInterface
   def icon_path
    event_icon_path = "/images/icons/as"
    event_icon_path << case klass
-                       when /(Group|GroupMembership)/: "/user-group.png"
                        when "Status": "/comment.png"
                        when /(Question|Answer|QuestionReferral)/: "/help.png"
-                       when /(Blog|Comment)/: "/write-note.png"
-                       when /Profile/: "/user.png"
+                       when /(GroupPost|Blog)/: "/write-note.png"
+                       when /Comment/: "/comment.png"
+                       when /ProfileAward/: "/trophy.png"
+                       when /(Profile|ProfilePhoto)/: "/user.png"
                        when /Ad/: "/ticket.png"
-                     end
+                       when /(Group|GroupMembership|GroupPhoto)/: "/user-group.png"
+                    end
   end
+
 
   def who
    if group_id && !profile_id
@@ -89,50 +94,69 @@ module ActivityStreamInterface
    case klass
      when 'Profile': 
     	  text << "updated profile details"
+          text << "<br/>"
      when 'ProfilePhoto': 
     	  text << "updated profile photo"
+          text << "<br/>"
      when 'Answer': 
-    	  # text << "answered a question:"
-    	  text << truncate(self[:answer_answer], { :length => 100, :omission => "..." })
+    	  text << "answered a question:"
+          text << "<br/>"
+    	  text << truncate(self[:answer_answer], { :length => 50, :omission => "..." })
     	  text << "<br/><span>[answer to \"#{truncate(self.answer_question_question, { :length => 60, :omission => "..." })}\"]</span>"
      when 'Question': 
-    	  # text << "asked a question:"
-    	  text << truncate(self[:question_question], { :length => 100, :omission => "..." })
+    	  text << "asked a question:"
+          text << "<br/>"
+    	  text << truncate(self[:question_question], { :length => 50, :omission => "..." })
      when 'Login': 
     	  text << "logged in"
+          text << "<br/>"
      when 'GroupMembership': 
-    	  # text << "joined a group:"
-    	  text << "joined the group: " + truncate(self.group_name, { :length => 100, :omission => "..." })
+    	  text << "joined the group: " + truncate(self.group_name, { :length => 50, :omission => "..." })
      when 'BlogPost': 
-    	  # text << "added a blog post:"
-    	  text << truncate(self.blog_post_title, { :length => 100, :omission => "..." })
-     when 'Comment': 
-    	  text << truncate(self.comment_text, { :length => 100, :omission => "..." })
-    	  text << "<br/><span>[comment on \"#{truncate(self.comment_blog_post_title, { :length => 60, :omission => "..." })}\"]</span>"
+    	  text << "added a blog post:"
+          text << "<br/>"
+    	  text << truncate(self.blog_post_title, { :length => 50, :omission => "..." })
+     when 'Comment':
+          text << "added a comment:" 
+          text << "<br/>'"
+    	  text << truncate(self.comment_text, { :length => 35, :omission => "..." })
+          text << "'<br/>"
+          if self.comment_blog_post_title
+       	    text << "<span>[comment on the Blog Post - \"#{truncate(self.comment_blog_post_title, { :length => 40, :omission => "..." })}\"]</span>"
+          elsif self.comment_group_post_post
+            text << "<span>[comment on the Group Post - \"#{truncate(self.comment_group_post_post, { :length => 40, :omission => "..." })}\"]</span>"
+          end
      when 'ProfileAward': 
-    	  # text << "received an award:"
+    	  text << "received an award:"
+          text << "<br/>"
     	  text << "was awarded the " + truncate(self.award_title, { :length => 100, :omission => "..." })
      when 'Status': 
-    	  # text << "shared an update:"
-    	  text << self.status_body 	
+    	  text << "shared an update:"
+          text << "<br/>"
+    	  text << self.status_body
+     when 'GroupPost':
+          text << "added a group post:"
+          text << "<br/>"
+          text << truncate(self.group_post_post, { :length => 100, :omission => "..." })
    end     
 
-   text.join(" ")
+  text.join(" ")
   end
 
   def group_event_verb_text
    case klass
       when 'Group': "was"
-  	  when 'GroupPhoto': "updated"
-     else "was"
+      when 'GroupPhoto': "updated"
+      else "was"
    end
   end
 
   def group_event_what_text
    case klass
       when 'Group': "#{self.action}d"
-  	  when 'GroupPhoto': "group photo"
-     else "#{self.action}d"
+      when 'GroupPhoto': "group photo"
+      when 'QuestionReferral': "referred a question"
+      else "#{self.action}d"
    end    
   end
 

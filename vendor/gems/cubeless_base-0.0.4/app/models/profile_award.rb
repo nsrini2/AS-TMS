@@ -4,6 +4,8 @@ class ProfileAward < ActiveRecord::Base
   belongs_to :profile
   
   attr_accessor :karma_points
+ 
+  stream_to :activity
   
   def karma_points=(value)
     @karma_points = value.to_i

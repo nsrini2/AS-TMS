@@ -7,8 +7,8 @@ content_for(:page_title, "Group Talk for #{@group.name}")
 <div id="booth_group_posts">
 	<%= render :partial => 'group_posts/group_posts' -%>
 </div>
-<%else%>
+<% else %>
 <div id="group_posts">
 	<%= render :partial => 'group_posts/group_posts' -%>
 </div>
-<%end%>
+<% end -%>
