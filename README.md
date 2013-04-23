@@ -52,6 +52,21 @@ d) Modified name references on these pages so:
       sponsor member => booth owner
       sponsor group (group) => booth
 
+
+This change includes the following:
+----------------------------------------------------------------------------------------------------------------
+1. Fixes to defect #'s 277, 280
+
+Defect #277:
+-------------
+Description: User is able to create a group in any sponsor account even when the 'no of groups allowed' for the
+sponsor account is set to 0
+
+Defect #280
+-------------
+Description: When the user tries to create a group without entering values for the name/desc fields, the group 
+is not saved, but a flash notice informs the user that the nameless group has been saved
+
 This change includes the following:
 ----------------------------------------------------------------------------------------------------------------
 1. Changes in Agentstream 'Travel Expo' Admin tab as follows:
