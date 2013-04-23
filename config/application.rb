@@ -177,7 +177,7 @@ module AgentStream
     config.filter_parameters += [:password]
     
     # More cubeless specific stuff
-    config.active_record.observers = :activity_stream_observer, :karma_observer, :watch_observer, :watch_event_observer #, :general_observer
+    config.active_record.observers = :activity_stream_observer, :karma_observer #, :watch_observer, :watch_event_observer, :general_observer
 
     config.action_view.sanitized_allowed_attributes = 'style'
     config.after_initialize do
