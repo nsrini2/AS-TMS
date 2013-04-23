@@ -1,3 +1,0 @@
-<div id="sponsored_booth_video">				  
-    <iframe width="420" height="315" src="<%= @group.booth_video_location %>" frameborder="0"></iframe>
-</div>
