@@ -1,0 +1,6 @@
+<%
+content_for(:home_tab, 'selected')
+content_for(:page_title, @group.name)
+-%>
+
+

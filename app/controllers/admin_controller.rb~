@@ -1,5 +1,5 @@
 # require_de_engine_file 'controller', :admin_controller
-
+require 'will_paginate/array'
 require 'user_sync'
 class AdminController < ApplicationController
   include BackgroundProcessing
@@ -83,7 +83,7 @@ class AdminController < ApplicationController
   end
 
   def showcase_marketing_messages
-    @showcase_marketing_messages = ShowcaseMarketingMessage.find(:all, :order => 'id asc')
+    @marketing_messages = ShowcaseMarketingMessage.find(:all, :order => 'id asc')
     render :template => 'showcase_marketing_messages/showcase_marketing_messages', :layout => 'sponsor_accounts_sub_menu'
   end
   

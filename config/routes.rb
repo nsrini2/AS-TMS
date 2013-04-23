@@ -387,8 +387,9 @@ AgentStream::Application.routes.draw do
   end
 
   resources :groups do
-    member do 
+    member do
       post :resend_all
+      get :booth_marketing_messages
       put :update
       post :remove_member
       get :stats_summary
@@ -409,9 +410,9 @@ AgentStream::Application.routes.draw do
       get :members
       get :select_member
       get :edit 
-    end
-    
-    resources :abuse, :controller => "abuses" do
+  end
+
+   resources :abuse, :controller => "abuses" do
       collection do
         get :abuse_popup
       end
@@ -430,7 +431,9 @@ AgentStream::Application.routes.draw do
     resources :group_posts do
       resources :comments
     end
+
     resource :announcement, :controller => "group_announcements"
+
     resources :gallery_photos do
       member do
         match :update, :as => :update, :via => :put
@@ -439,6 +442,12 @@ AgentStream::Application.routes.draw do
         get :delete
       end
     end
+
+    resources :booth_marketing_messages do
+    member do
+      match :toggle_activation
+    end
+   end
   end
 
   resources :marketing_messages do
@@ -453,6 +462,7 @@ AgentStream::Application.routes.draw do
     end
   end
 
+ 
  
   
   resources :rss_feeds do
@@ -491,6 +501,8 @@ AgentStream::Application.routes.draw do
     member do
       match :update, :as => :update, :via => :put
     end
+
+
     resources :abuse, :controller => "abuses" do
       collection do
         get :abuse_popup

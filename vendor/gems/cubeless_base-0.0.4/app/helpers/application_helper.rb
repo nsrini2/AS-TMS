@@ -350,7 +350,6 @@ module ApplicationHelper
       data.merge!({ :maxlength => options[:maxlength] }) if options[:maxlength]
       val += content_tag(:script, data.to_json, :type => "application/json")
     end
-    
     content_tag( options[:tag] || :p, replace_newline_with_br(editable ? val : auto_link(val, :all)), html_options )
   end
 

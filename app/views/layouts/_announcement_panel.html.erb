@@ -1,0 +1,11 @@
+<% content_for :announcement_panel do %>
+ <% if (@group.group_announcement && @group.group_announcement.is_active? && @group.group_announcement.content!="") %>
+   <div id="sponsored_group_announcement">
+		<%= group_member_or_public_content @group do -%>
+			<%= render :partial => 'groups/sponsored_group_announcement', :locals => { :group_announcement => @group.group_announcement } -%>
+		<% end -%>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render :file => 'layouts/_sponsored_group_tabs' %>

@@ -3,6 +3,35 @@ content_for(:members_tab, 'selected')
 content_for(:page_title, "Members of #{@group.name}")
 -%>
 
+<% if @group.is_sponsored? %>
+  <% if @members.size.zero? -%>
+	<div>
+		No members in this group 
+	</div>
+  <% else -%>
+     <div class="sponsored_group_members">
+		<%= render :partial => 'groups/sponsor_member_card', :locals => { :member => @members.first } -%>
+		<%= render :partial => 'groups/member_table' -%>
+		<dl class="sponsor_group_owner">
+			<dt>Group Owner:</dt>
+			<dd><%= link_to_profile(@group.owner, false) -%></dd>
+		</dl>
+	</div>
+
+	<% unless @group.moderators.size.zero? %>
+	<dl class="sponsor_group_moderators">
+		<dt>Moderators:</dt>
+		<dd><%= @group.moderators.collect{ |mod| link_to_profile(mod, false) }.join(", ") -%></dd>
+	</dl>
+	<% end %>
+	<% if @group.is_group_admin?(current_profile) %>
+		<%= render :partial => 'groups/invitations_pending' %>
+		<%= render :partial => 'groups/invitation_requests' %>
+	<% end %>	
+<% end -%>
+
+
+<% else %>
 <% if @members.size.zero? -%>
 	<div>
 		No members in this group 
@@ -33,4 +62,5 @@ content_for(:page_title, "Members of #{@group.name}")
 		<%= render :partial => 'groups/invitations_pending' %>
 		<%= render :partial => 'groups/invitation_requests' %>
 	<% end %>	
+<% end -%>
 <% end -%>

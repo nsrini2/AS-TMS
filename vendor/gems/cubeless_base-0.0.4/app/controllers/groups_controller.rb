@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   
   before_filter :add_or_update_visitor, :only => [:show,:members]
   before_filter :private_group_protection_needed, :only => [:join, :members, :help_answer]
-  
+
   layout 'group'
 
   def index
@@ -16,7 +16,11 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    render :layout => 'group_manage_sub_menu'
+    if @group.is_sponsored?
+       render :layout => 'sponsored_group_manage_sub_menu'
+    else
+       render :layout => 'group_manage_sub_menu'
+    end
   end
 
   def update
@@ -77,6 +81,11 @@ class GroupsController < ApplicationController
     end
   end
 
+  def booth_marketing_messages
+    @booth_marketing_messages = @group.booth_marketing_messages.all
+    render :template => 'booth_marketing_messages/booth_marketing_messages', :layout => '/layouts/sponsored_group'
+  end
+
   def create
     # MM2: Old Group.crate override syntax
     # @group = Group.create(params[:group], current_profile)
@@ -110,8 +119,16 @@ class GroupsController < ApplicationController
     end
   end
 
-  def show
-    render :action => 'group'
+ def show
+    if @group.is_sponsored?
+      @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:events_page])
+      #@tags=@group.blog.tags.count
+      #Rails.logger.info "Tag_count is:" + @tags.to_s
+      @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
+      render :action => 'group', :layout => '/layouts/sponsored_group'
+    else
+      render :action => 'group', :layout => '/layouts/group'
+    end
   end
 
   def stream
@@ -123,6 +140,9 @@ class GroupsController < ApplicationController
     @members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 200).to_a.sort! { |a,b| rand(3)-1 }
     @invitation_requests = GroupInvitationRequest.find(:all, :conditions => "group_id = #{@group.id}")
     @invitations_pending = GroupInvitation.find(:all, :conditions => "group_id = #{@group.id}")
+    if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
+    end
   end
 
   def select_member
@@ -134,6 +154,9 @@ class GroupsController < ApplicationController
   def help_answer
     redirect_to group_path(@group) and return if @group.is_private?
     @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 6)
+     if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
+    end
   end
 
   def moderators

@@ -1,0 +1,36 @@
+<div id="members_images_wrapper">
+	<div id="members_images">
+		<table id="members" cellpadding="0" cellspacing="0" border="0">
+			<%
+				num_rows = 5
+				min_cols = 11
+				num_cols = (@members.size / 5.0).ceil				
+				num_cols = min_cols if num_cols < min_cols 
+			-%>
+			<% num_rows.times do |row| -%>
+				<tr>
+					<% num_cols.times do |col|
+						p_index = ( col * num_rows ) + row -%>
+						<td class="<%= "last" if col+1 == num_cols %>">
+							<% if p_index < @members.size -%>
+								<%= primary_photo_for(@members[p_index], :size => '35x35', :linkable => true) -%>
+							<% else %>
+								<%= content_tag('div', image_tag('/images/no_image.png', :size => '35x35'), :class => 'photo_wrapper') -%>
+							<% end -%>
+						</td>
+					<% end -%>
+				</tr>
+			<% end -%>
+		</table>
+	</div>
+	<% unless @members.size <= (num_rows * min_cols) -%>
+	<div id="member_scrollers">
+		<div id="left_scroll">
+			<a href="#" class="previous"> &laquo; previous</a>
+		</div>
+		<div id="right_scroll">
+			<a href="#" class="next"> next &raquo; </a>
+		</div>
+	</div>
+	<% end -%>
+</div>

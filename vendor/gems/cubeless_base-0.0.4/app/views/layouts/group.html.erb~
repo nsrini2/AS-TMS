@@ -1,0 +1,7 @@
+<% content_for :group_content do %>
+  <div id="group">
+        <h1>Test Message, will this appear anywhere?</h1>
+  	<%= yield %>
+  </div>
+<% end %>
+<%= render :file => 'layouts/_group_tabs' %>

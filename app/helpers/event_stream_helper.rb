@@ -107,8 +107,8 @@ module EventStreamHelper
   def group_event_verb_text(event)
     case event.klass
 	    when 'Group': "was"
-		  when 'GroupPhoto': "updated"
-      else "was"
+	    when 'GroupPhoto': "updated"
+            else "was"
     end
   end
   
