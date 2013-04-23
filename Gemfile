@@ -52,7 +52,7 @@ gem 'compass-960-plugin', '0.10.0'
 
 gem 'will_paginate', "~> 3.0.pre2"
 gem 'tire', '~>0.5.1'
-gem 'twitter'
+gem 'twitter', :git => 'https://github.com/sferik/twitter.git' 
 
 
 # TNSS Engines
@@ -68,7 +68,7 @@ gem 'hpricot', '~>0.8.6'
 gem 'prawn', '~>0.12.0'
 gem 'feedzirra', '~> 0.1.2'
 gem 'inherits_from', '~> 0.0.2'
-gem 'newrelic_rpm', '~> 3.3.4.1' 
+gem 'newrelic_rpm', '~> 3.5.3.25' 
 gem 'best_image', '~> 0.0.3'
 
 # Bundle gems for the local environment. Make sure to

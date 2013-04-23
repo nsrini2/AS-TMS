@@ -24,7 +24,7 @@ module MarketingMessagesHelper
     elsif(message.class.to_s=="ShowcaseMarketingMessage")
 	link_to("change image", edit_showcase_marketing_message_path(message), :class => "modal change_marketing_image")
     elsif(message.class.to_s=="BoothMarketingMessage")
-	link_to("change image", edit_group_booth_marketing_message_path(message.group,message), :class => "modal change_marketing_image")
+	link_to("change image", edit_group_booth_marketing_message_path(message.group,message))
     end
   end
 

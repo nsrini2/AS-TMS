@@ -9,8 +9,6 @@ class Group < ActiveRecord::Base
 
   has_many :group_links, :dependent => :destroy
 
-  has_one :booth_video, :dependent => :destroy
-
   has_many :notes, :order => 'notes.created_at DESC', :include => [:sender,:abuse], :as => :receiver
 
   has_many :group_memberships, :dependent => :destroy
