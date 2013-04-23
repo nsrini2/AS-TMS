@@ -1,5 +1,5 @@
 <% content_for(:page_title, "Stats Summary for #{@group.name}") -%>
-<% if @group.is_sponsored? %>
+<% if @group/is_sponsored? %>
 <div class="group_stats">
 	<div class="stats">
 		<h5>Group Talk Stats</h5>

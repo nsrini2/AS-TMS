@@ -140,7 +140,7 @@ module QuestionsHelper
   end
 
   def render_booth_referred_questions_for(object, referred_questions, can_remove_question=true)
-    render( :partial => 'questions/questions',
+    render( :partial => 'questions/booth_questions',
               :locals => {:domain => 'referred_questions', :questions => referred_questions,
               :questions_for => object, :model => object.class.name, :show => {:referred_by => true, :referred_to_groups => false, :remove => can_remove_question}} )
   end

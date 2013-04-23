@@ -1,41 +1,27 @@
 class BoothVideosController < ApplicationController
-before_filter :find_booth_details
+before_filter :init_booth_video
+  before_filter :find_booth_details
 
-  def show
-    render :layout => 'sponsored_group_manage_sub_menu'
-  end
-
+ def show
+     @video = Video.find(params[:id])
+    @original_video = @video.panda_video
+    @h264_encoding = @original_video.encodings["h264"]
+    render :template => 'booth_video/booth_video', :layout => 'sponsored_group_manage_sub_menu'
+ end
 
   def new
-    @booth_video = BoothVideo.new
+    @video = BoothVideo.new
     render :layout => 'sponsored_group_manage_sub_menu'
   end
 
   def create
-    @booth_video = BoothVideo.new(params[:booth_video])
-    @booth_video.group_id = params[:group_id]
-    if params[:marketing_video_file].blank?
-       flash[:errors] = "We need a video file for creating this booth video"
-       render :action => "new"
-    else
-       @booth_video.marketing_video=MarketingVideo.new(:uploaded_data => params[:marketing_video_file])
-       @booth_video.save
-       Rails.logger.info("Values are: Video - #{@booth_video.marketing_video.public_filename.to_s}")
-       #@booth_video.marketing_video.convert
-       flash[:notice] = 'Video has been uploaded'
-       redirect_to :action => 'show'
-    end
+     @video = BoothVideo.create!(params[:video])
+    redirect_to :action => :show, :id => @video.id 
   end
 
-  def edit
-    @booth_video = BoothVideo.find(params[:id])
-    @video_filename = @booth_video.marketing_video.filename
-  end
-  
-  def delete
-    @video = BoothVideo.find(params[:id])
-    @video.destroy
-    redirect_to :action => 'show'
+  def init_booth_video
+     @group = Group.find(params[:group_id])
+     @video=@group.booth_video
   end
 
   def find_booth_details
@@ -49,6 +35,6 @@ before_filter :find_booth_details
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
     end
-   end
+  end
 end
 

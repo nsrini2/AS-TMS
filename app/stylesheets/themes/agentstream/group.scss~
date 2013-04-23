@@ -287,6 +287,17 @@ horizontal-align:center;
 margin-bottom:10px;
 }
 
+/*Booth Questions*/
+#question_item_odd{
+background: #f0f0f0;
+}
+
+#question_item_even{
+margin-bottom: 12px;
+font-size: 13px;
+border-top:1px solid black;
+}
+
 /* Group Hub */
 #group_hub #notes {
 	display: none;
@@ -427,7 +438,7 @@ margin-bottom:10px;
 						table#members tbody tr td div.photo_wrapper { margin: 0 3px 3px 0; }
                          			table#members tbody tr td.last div.photo_wrapper { margin-right: 0; }
 
-                                                table#booth_members tbody tr td div.photo_wrapper { margin: 0 3px 3px 0;}
+                                                table#booth_members tbody tr td div.photo_wrapper { margin: 0 3px 0 0;}
                          			table#booth_members tbody tr td.last div.photo_wrapper { margin-right: 0; }
 
 		#member_scrollers { width: 384px; }

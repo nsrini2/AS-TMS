@@ -69,13 +69,9 @@ is not saved, but a flash notice informs the user that the nameless group has be
 
 This change includes the following:
 ----------------------------------------------------------------------------------------------------------------
-1. Changes in Agentstream 'Travel Expo' Admin tab as follows:
-a) Added menu for setting Showcase Text
-b) Added menu for creating Showcase Marketing Messages
-
-----------------------------------------------------------------------------------------------------------------
-
-2. Changes in 'Travel Expo' (showcase) page
-a) Added category level listings page
-
+1. Tag cloud
+2. Booth level marketing messages
+3. Interesting links
+4. Booth 'Follow'
+5. Booth fomatting
 ----------------------------------------------------------------------------------------------------------------

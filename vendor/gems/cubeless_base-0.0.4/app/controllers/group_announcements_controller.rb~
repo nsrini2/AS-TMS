@@ -34,5 +34,4 @@ class GroupAnnouncementsController < ApplicationController
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
     end
-  end
 end

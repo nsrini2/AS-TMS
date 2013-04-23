@@ -15,7 +15,7 @@ should_show = question_render_toggle_list(show)
 <% avatar_content_for_question(should_show) do %>
 	<%=link_to_avatar_for(question.profile, :reference => question.id)%>
 <%end %>
-<div class="details">
+<div class="details cycle('odd', 'even')">
 	<div class="item_text">
 		<%= question_link_content_for(should_show, question) %>
 	</div>
