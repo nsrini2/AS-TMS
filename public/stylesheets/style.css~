@@ -162,7 +162,7 @@ div.action_buttons .button, div.action_buttons a.button { width: 100px; }
 
 #header .nav { display: block; }
 
-#header .nav:after { content: "."; display: none; height: 0; clear: both; }
+#header .nav:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 
 #header .nav li { display: block; float: left; margin: 0 15px 0 0; }
 
@@ -195,10 +195,6 @@ div.action_buttons .button, div.action_buttons a.button { width: 100px; }
 #header .nav #news_nav a { background: url("/images/icons/as/nav/off/announcement.png") no-repeat 50% top; }
 
 #header .nav #news_nav.active a, #header .nav #news_nav a:hover { background: url("/images/icons/as/nav/on/announcement.png") no-repeat 50% top; }
-
-#header .nav #showcase_nav a { background: url("/images/icons/as/nav/off/new.png") no-repeat 50% top; }
-
-#header .nav #showcase_nav.active a, #header .nav #showcase_nav a:hover { background: url("/images/icons/as/nav/on/new.png") no-repeat 50% top; }
 
 #header .utility { margin: 20px 0 0 50px; font-size: 14px; }
 
@@ -936,6 +932,7 @@ h2.page_title { margin: 10px 0 0 10px; }
 
 #content .details { display: block; float: left; width: 575px; margin-top: 20px; }
 
+
 /* Groups */
 .group_item h3 { margin-bottom: 0; }
 
@@ -969,6 +966,8 @@ div.single_item div.action_buttons { float: right; width: 15%; }
 #list div.answer:after, div.single_item:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 
 /* Blog Posts */
+#list .blog_post_item{overflow:hidden}
+
 #list .blog_post_item .details { width: 470px; }
 
 #list .blog_post_item .details h3, #list .blog_post_item .details h3 a { margin-bottom: 0; font-weight: bold; }

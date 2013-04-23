@@ -1,14 +1,13 @@
 <% content_for :booth_info_panel do %>
    <div id="booth_info">
+
         <div id="follow">
           <%= render "shared/booth_member_table" %>
           <%= action_list_for([(link_for_booth_action(@group) unless hide_for_sponsor)], :class => 'group_actions full_screen') -%>
         </div>
 
         <div id="booth_tags">
-            <%# tag_cloud @group_blog_tags, %w(vb b m s) do |tag, css_class| %>
-               <%#= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
-            <%# end %>
+            <%= render "shared/booth_tag_cloud" %>
         </div>
   
         <div id="booth_useful_links">
@@ -23,5 +22,6 @@
  
    </div>
 <% end %>
+
 
 <%= render :file => 'layouts/_booth_social_feeds_panel' %>

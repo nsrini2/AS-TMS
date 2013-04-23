@@ -1,6 +1,6 @@
 <%
 content_for(:blog_tab, 'selected')
-content_for(:page_title, blog_title(@blog, @blog_posts))
+content_for(:page_title, blog_title(@blog, @blog_post))
 current = true unless params[:date]
 -%>
 <% if @group.is_sponsored?%>

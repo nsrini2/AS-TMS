@@ -1,4 +1,4 @@
-div.rate { padding: 2px; width: 100px; text-align: right; border:1px solid blue }
+div.rate { padding: 2px; width: 125px; text-align: right; border:1px solid blue }
 	div.rate:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 	div.rate { zoom: 1; }
 	div.rate ul { float: right; position: relative; margin: 0; width: 75px; height: 15px; background: url(/images/rate_dim.png) 0 0 repeat-x; list-style: none; }

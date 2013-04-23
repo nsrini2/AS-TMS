@@ -51,7 +51,7 @@ class GalleryPhotosController < ApplicationController
     begin
       @comment = Comment.new
       @photo = @group.gallery_photos.find(params[:id])
-      if 
+      render :layout => '/layouts/sponsored_group' if @group.is_sponsored?
     rescue
       redirect_to group_gallery_photos_path(@group) and return if @photo.blank?
     end

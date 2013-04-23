@@ -27,6 +27,20 @@ module GroupsHelper
     link_to(group.name, group_path(group.id), :id => 'group_' + group.id.to_s)
   end
 
+
+  def calc_tag_sizes(tag,minoccurs,maxoccurs)
+    minFontSize=20
+    maxFontSize=40
+    weight = (tag[:count]-minoccurs).to_f/(maxoccurs-minoccurs)
+    size = minFontSize + ((maxFontSize-minFontSize)*weight).round
+  end  
+
+  def link_to_booth_tag(owner, tag, minoccurs, maxoccurs)
+      tag_size=calc_tag_sizes(tag,minoccurs,maxoccurs)
+      content_tag(:a, tag[:text], {:href => "#{polymorphic_path([owner, :blog])}?tag=#{tag[:text]}", :title =>"Tag Clouds", :style => "font-size:#{tag_size}px" })
+      #link_to(tag[:text], "#{polymorphic_path([owner, :blog])}?tag=#{tag[:text]}", :class => 'booth_tag_'+"{#tag_size}")
+  end
+
   def group_member_or_public_content(group, &block)
     return group.is_member?(current_profile) || !group.is_private? || current_profile.has_role?(Role::ShadyAdmin) unless block_given?
     # yield if group.is_member?(current_profile) || !group.is_private? || current_profile.has_role?(Role::ShadyAdmin)
