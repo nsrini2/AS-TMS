@@ -40,7 +40,9 @@ gem 'capistrano', '2.5.18'
 gem 'delayed_job', '~>2.1.4'
 gem 'spawn', '~> 0.1.4'
 
-gem 'koala', '1.2.1'
+#gem 'koala', '1.2.1'
+
+gem 'koala'
 
 gem 'compass', '0.10.6'
 gem 'compass-960-plugin', '0.10.0'

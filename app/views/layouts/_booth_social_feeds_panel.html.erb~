@@ -1,7 +1,18 @@
 <% content_for :booth_social_feeds_panel do %>
    <div id="booth_social">
+     <div id="booth_twitter">
+       <div id="twitter_logo">
+         <%=image_tag("/images/twitter.jpg", :alt => "Twitter", :height => '50', :width => '50') %>
+       </div>
+       <div id="tweet_feed">
+          <%#= @twitter_feed %>
+       </div>
+      </div>
          
+     <div id="booth_facebook">
+
+     </div>
    </div>
 <% end %>
 
-<%= render :file => 'layouts/_sponsored_group_tabs' %>
+<%= render :file => 'layouts/_tab_structure' -%>
