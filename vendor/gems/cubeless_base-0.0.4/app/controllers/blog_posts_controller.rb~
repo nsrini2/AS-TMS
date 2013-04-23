@@ -121,7 +121,11 @@ class BlogPostsController < ApplicationController
     end
   end
 
- private
+   def tag_cloud
+      @tags = BlogPost.tag_counts
+    end
+
+  private
 
   def check_for_news_post
     @post = BlogPost.unscoped.find(params[:id])

@@ -25,7 +25,7 @@ validates_presence_of :group_id
 
   def last_message?
     count = BoothMarketingMessage.count_by_sql(["select count(1) from booth_marketing_messages where active=1"])
-    Rails.logger.info("This booth has" + count.to_s + "active messages")
+    #Rails.logger.info("This booth has" + count.to_s + "active messages")
     count == 1 && self.active
   end
   

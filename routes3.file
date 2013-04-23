@@ -1,0 +1,7 @@
+                                            group_group_links GET      /groups/:group_id/group_links(.:format)                                               {:controller=>"group_links", :action=>"index"}
+                                                              POST     /groups/:group_id/group_links(.:format)                                               {:controller=>"group_links", :action=>"create"}
+                                         new_group_group_link GET      /groups/:group_id/group_links/new(.:format)                                           {:controller=>"group_links", :action=>"new"}
+                                        edit_group_group_link GET      /groups/:group_id/group_links/:id/edit(.:format)                                      {:controller=>"group_links", :action=>"edit"}
+                                             group_group_link GET      /groups/:group_id/group_links/:id(.:format)                                           {:controller=>"group_links", :action=>"show"}
+                                                              PUT      /groups/:group_id/group_links/:id(.:format)                                           {:controller=>"group_links", :action=>"update"}
+                                                              DELETE   /groups/:group_id/group_links/:id(.:format)                                           {:controller=>"group_links", :action=>"destroy"}

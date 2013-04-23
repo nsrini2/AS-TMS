@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318110259) do
+ActiveRecord::Schema.define(:version => 20130320131039) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -417,6 +417,14 @@ ActiveRecord::Schema.define(:version => 20130318110259) do
   add_index "group_invitations", ["receiver_id"], :name => "index_group_invitations_on_receiver_id"
   add_index "group_invitations", ["sender_id"], :name => "index_group_invitations_on_sender_id"
   add_index "group_invitations", ["type"], :name => "index_group_invitations_on_type"
+
+  create_table "group_links", :force => true do |t|
+    t.string   "url"
+    t.string   "text"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "group_memberships", :force => true do |t|
     t.integer  "profile_id",                                :null => false
