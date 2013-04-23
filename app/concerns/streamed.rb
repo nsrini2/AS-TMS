@@ -17,6 +17,32 @@ module Streamed
           when Group then opts[:group_id] = self.id
           when GroupPhoto then opts[:group_id] = self.owner_id
           when GroupMembership then opts.merge!(:profile_id => self.profile_id, :group_id => self.group_id)
+          when GroupPost then opts.merge!(:profile_id => self.profile_id, :group_id => self.group_id)
+          when QuestionReferral
+               case self.owner_type
+                   when 'Group' then opts[:group_id]=self.owner_id
+                   when 'Profile' then opts[:profile_id]=self.owner_id
+               end
+          when BlogPost
+               case self.blog.owner_type
+                    when 'Group'
+                          opts[:group_id]=self.blog.owner.id
+                    when 'Profile'
+                          opts[:profile_id]=self.blog.owner.id
+               end
+          when Comment
+               case self.owner
+                      when GroupPost
+                         opts.merge!(:profile_id => self.owner.profile_id, :group_id => self.owner.group_id)
+                      when BlogPost
+                            case self.owner.blog.owner_type
+                                 when 'Group'
+                                   opts[:group_id]=self.owner.blog.owner.id
+                                 when 'Profile'
+                                  opts[:profile_id]=self.owner.blog.owner.id
+                            end
+                      end
+            
           when ProfileAward then opts[:profile_id] = self.profile.id
           when ProfilePhoto then opts[:profile_id] = self.owner_id
           else opts[:profile_id] = self.profile_id
