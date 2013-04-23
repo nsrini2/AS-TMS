@@ -1,7 +1,7 @@
 <% content_for :booth_info_panel do %>
    <div id="booth_info">
         <div id="follow">
-          <%= render "booth_member_table" %>
+          <%= render "shared/booth_member_table" %>
           <%= action_list_for([(link_for_booth_action(@group) unless hide_for_sponsor)], :class => 'group_actions full_screen') -%>
         </div>
 
@@ -12,7 +12,7 @@
         </div>
   
         <div id="booth_useful_links">
-            <h5>Useful links</h5>
+            <h5>Interesting links</h5>
              <% @booth_links.each do |booth_link| -%>
               <span class="click_me">
                  <%= link_to booth_link.text, booth_link.url, :target => "_blank"-%>

@@ -87,7 +87,7 @@ class GroupsController < ApplicationController
 
   def get_group_links
     @booth_links = @group.group_links.all
-    render :template => 'group_links/group_links', :layout => '/layouts/sponsored_group_manage_sub_menu'
+    render :template => 'group_links/index', :layout => '/layouts/sponsored_group_manage_sub_menu'
   end
 
 
@@ -126,7 +126,7 @@ class GroupsController < ApplicationController
 
  def show
     if @group.is_sponsored?
-         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:events_page])
+         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:booth_page],:per_page => 5)
          @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
          render :action => 'group', :layout => '/layouts/sponsored_group'
     else
@@ -297,8 +297,8 @@ class GroupsController < ApplicationController
 
   def init_group
     @group = Group.find_by_id(params[:id])
-    @group_blog_tags=@group.blog.blog_posts.tag_counts
-    @booth_links = @group.group_links.all
+    @group_links = @group.group_links.all
+    Rails.logger.info "This booth has: " + @group_links.count.to_s
      max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
     @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
     #@group_links=@group.group_links

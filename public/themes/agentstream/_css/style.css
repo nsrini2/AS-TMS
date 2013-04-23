@@ -1496,7 +1496,7 @@ form#create_topic input.button {
 /* line 1, ../../../../app/stylesheets/themes/agentstream/paging.scss */
 div.pagination {
   background-color: inherit;
-  margin: 0px 0 0px;
+  margin: 10px 0 10px;
   padding: 0;
   font-size: 16px;
   text-align: center;

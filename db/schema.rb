@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320131039) do
+ActiveRecord::Schema.define(:version => 20130325121632) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -144,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20130320131039) do
   end
 
   add_index "blog_post_text_indices", ["blog_post_id"], :name => "index_blog_post_text_indices_on_blog_post_id", :unique => true
-  add_index "blog_post_text_indices", ["title_text", "text_text", "cached_tag_list_text", "author"], :name => "fulltext_blog_post"
 
   create_table "blog_posts", :force => true do |t|
     t.datetime "created_at",                                                            :null => false

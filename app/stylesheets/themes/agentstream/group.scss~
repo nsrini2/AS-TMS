@@ -158,13 +158,16 @@ margin-bottom:10px;
 }
 
 .sponsored_group_events{
-border:1px solid #C4D7DC;
 float:left;
 width:300px;
 }
 
 .booth_activity_details{
 clear: both; margin: 20px 0 0; color: #4a6970; padding: 10px;
+}
+
+.booth_activity_details p{
+display: inline; 
 }
 
 .group_video{

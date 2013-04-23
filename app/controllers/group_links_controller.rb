@@ -1,15 +1,19 @@
-class GroupLinksController < ApplicationController
- allow_access_for :all => :sponsor_admin
- allow_access_for :all => :shady_admin
+require 'will_paginate/array'
 
- before_filter :find_group_booth_links
+class GroupLinksController < ApplicationController
+respond_to :html, :json
+
+ before_filter :find_booth_details
+
+ def index
+    @booth_links = @group.group_links.paginate(:page => params[:group_links_page], :per_page => 10)
+    render :layout => '/layouts/sponsored_group_manage_sub_menu'
+ end
+
 
  def new
-     @group_link=GroupLink.new
-     respond_to do |format|
-      format.html { render(:partial => 'group_links/new', :layout => '/layouts/popup') }
-    end
-  end
+     render :layout => '/layouts/sponsored_group_manage_sub_menu'
+ end
 
   def create
     @group_link=GroupLink.new(params[:group_link])
@@ -32,8 +36,12 @@ class GroupLinksController < ApplicationController
     end
   end
 
-  def find_group_booth_links
-     @group = Group.find(params[:group_id])
-     @booth_links = @group.group_links.all
+  def find_booth_details
+    @group = Group.find(params[:group_id])
+    @group_blog_tags=@group.blog.blog_posts.tag_counts
+    @booth_links = @group.group_links.all
+     max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
+    @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
+    @booth_links = @group.group_links.all
   end
 end

@@ -6,7 +6,7 @@ content_for(:page_title, @group.name)
 <% if @group.is_sponsored? %>
    <div class="sponsored_group_events">
     	 <%= render :partial => '/groups/events_panel', :locals => { :events => @events } %>
-        <%= will_paginate @events %>
+        <%= will_paginate @events, :param_name => 'booth_page' %>
    </div>
   
    <div class="group_video">
