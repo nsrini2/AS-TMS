@@ -1,4 +1,10 @@
-Added smtp_tls library (vendor/plugins/action_mailer_tls plugin) to make application work with gmail.
-This was needed even though the AgentStream app uses Ruby version 1.8.7 which is supposed to have smtp support built in.
+Fixes to defect #'s 254, 274, 275, 276
 
-Modified environment.rb file to include smtp settings for gmail account
+Changes in Agentstream admin (Sponsors tab) as follows:
+a) Tab renamed as "Showcase"
+b) Included showcase category image as a compulsory input field for creating a new showcase category
+c) Fixed delete action for showcase category (defect # 257)
+d) Modified name references on these pages so:
+      sponsor account => showcase category
+      sponsor member => booth owner
+      sponsor group (group) => booth

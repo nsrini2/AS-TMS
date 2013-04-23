@@ -26,6 +26,6 @@
 	<label for="profile_karma_points">Karma</label><br />
 	<%= text_field :profile, :karma_points, :size =>'10', :placeholder => "Karma points of user" -%><br /><br />
 
-	<%= f.submit "Create New Booth Owner in #{@sponsor_account.name} category", :class => "button large"  %>
+	<%= f.submit "Create New Sponsor Member in #{@sponsor_account.name} category", :class => "button large"  %>
 
 <% end -%>
