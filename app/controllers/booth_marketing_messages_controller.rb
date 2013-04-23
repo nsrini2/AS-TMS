@@ -9,7 +9,7 @@ class BoothMarketingMessagesController < ApplicationController
  end
 
  def new
-    render :layout => '/layouts/sponsored_group_manage_sub_menu'
+    render (:template => '/booth_marketing_messages/upload_image', :layout => '/layouts/sponsored_group_manage_sub_menu')
  end
 
   def create
@@ -32,9 +32,7 @@ class BoothMarketingMessagesController < ApplicationController
   end
 
   def edit
-    respond_to do |format|
-      format.js { render(:partial => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup', :locals => { :msg => @message }) }
-    end
+      render(:template => 'booth_marketing_messages/upload_image', :layout => '/layouts/sponsored_group_manage_sub_menu', :locals => { :msg => @message })
   end
 
   def update
@@ -44,10 +42,10 @@ class BoothMarketingMessagesController < ApplicationController
       format.html {
          add_to_errors([@message, @message.marketing_image].compact)
          if flash[:errors].blank?
-           flash.now[:notice] = "The booth marketing message was successfully updated"
-           redirect_to booth_marketing_messages_path
+           flash[:notice] = "The booth marketing message was successfully updated"
+           redirect_to group_booth_marketing_messages_path(@group)
          else
-           redirect_to booth_marketing_messages_path
+           redirect_to group_booth_marketing_messages_path(@group)
            flash[:errors] = nil
          end
       }
@@ -90,6 +88,16 @@ class BoothMarketingMessagesController < ApplicationController
       @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
+    end
+    source=@group.booth_twitter_id
+    if !source.nil?
+      begin
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+      rescue => e
+       Rails.logger.info("Twitter error: " + e.message)
+      end
     end
   end
 
