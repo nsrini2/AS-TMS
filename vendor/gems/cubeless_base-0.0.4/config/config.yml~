@@ -28,7 +28,7 @@ global:
 
   css_debug: true
 
-  video_enabled: true
+  video_enabled: false
 
   #user_max: false
   #user.lockout.failures: 3

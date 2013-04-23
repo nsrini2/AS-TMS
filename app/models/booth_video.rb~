@@ -50,3 +50,4 @@ def set_new_filename
   update_attribute(:filename, "#{filename}.#{id}.flv")
   update_attribute(:content_type, "application/x-flash-video")
 end
+end

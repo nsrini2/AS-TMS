@@ -1,12 +1,12 @@
 <% content_for(:page_title, "Create a New Booth Video") -%>
-<% form_for(@booth_video,:url => group_booth_video_path, :html => {:id => "new_booth_video", :multipart => true, :method => "post"}) do |f| %>
+<% form_for(:booth_video,:url => group_booth_video_path, :html => {:id => "new_booth_video", :multipart => true, :method => "post"}) do |f| %>
 <h5>New Booth Video</h5>
 <fieldset>
 	<label for="title">Title</label><br />
         <%= f.text_field :title, :size => 32, :placeholder => "Title for the new booth video" %><br /><br />
         <label for="booth_video"></label>
-        <%#= file_field_tag :marketing_video_file %><br /> <br/>
-        <%=f.file_field :uploaded_data %><br /> <br/>
+        <%= file_field_tag :marketing_video_file %><br /> <br/>
+        <%#=f.file_field :uploaded_data %><br /> <br/>
         <%=f.submit "Upload video" %>
 <% end %>
 
