@@ -9,10 +9,8 @@ class BoothMarketingMessagesController < ApplicationController
  end
 
  def new
-    respond_to do |format|
-      format.html { render(:template => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup') }
-    end
-  end
+    render :layout => '/layouts/sponsored_group_manage_sub_menu'
+ end
 
   def create
     @message=BoothMarketingMessage.new(

@@ -27,7 +27,7 @@
 	<% end -%>
 </div>
 <div class="group_announcement content">
-	<h6>The current content is:</h6>
+	<h3>The current content is:</h3>
 	<div class="fck_styled">
 		<%= @group_announcement.content -%>
 	</div>

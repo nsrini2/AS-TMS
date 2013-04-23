@@ -1,30 +1,32 @@
 class BoothVideosController < ApplicationController
-before_filter :init_booth_video
-  before_filter :find_booth_details
+ before_filter :find_booth_details
+  
+def show
+    render :layout => '/layouts/sponsored_group_manage_sub_menu'
+end
 
- def show
-     @video = Video.find(params[:id])
-    @original_video = @video.panda_video
-    @h264_encoding = @original_video.encodings["h264"]
-    render :template => 'booth_video/booth_video', :layout => 'sponsored_group_manage_sub_menu'
- end
+def create
+    @group.booth_video=BoothVideo.new(params[:booth_video])
+    if @group.booth_video.save
+        flash[:success]="New Booth Video Link created!"
+    else
+        flash[:error]="New Booth Video Link failed!"
+    end
+    redirect_to :action => :show
+end
 
-  def new
-    @video = BoothVideo.new
-    render :layout => 'sponsored_group_manage_sub_menu'
-  end
+def update
+    @booth_video=@group.booth_video
+    @booth_video.update_attributes!(params[:booth_video])
+    @booth_video.group_id=@group.id
+    redirect_to :action => :show
+end
 
-  def create
-     @video = BoothVideo.create!(params[:video])
-    redirect_to :action => :show, :id => @video.id 
-  end
+def destroy
+    @group.booth_video.destroy
+end
 
-  def init_booth_video
-     @group = Group.find(params[:group_id])
-     @video=@group.booth_video
-  end
-
-  def find_booth_details
+def find_booth_details
     @group = Group.find(params[:group_id])
     @group_links = @group.group_links.all
      max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
@@ -36,5 +38,5 @@ before_filter :init_booth_video
       @maxTagOccurs=@group_blog_tags.last[:count]
     end
   end
+  
 end
-

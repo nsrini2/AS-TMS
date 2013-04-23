@@ -4,6 +4,7 @@ class GroupPhotosController < ApplicationController
   before_filter :group_photo_protection
 
   def create
+    Rails.logger.info "Gandhi: Inside CReate group_photo action"
     @group.update_attributes(:last_updated_by => current_profile.id)
     if (@group.group_photo = GroupPhoto.new(params[:asset]))
       @group.update_attributes(:primary_photo => @group.group_photo)
@@ -12,6 +13,7 @@ class GroupPhotosController < ApplicationController
   end
 
   def update
+    Rails.logger.info "Gandhi: Inside Update group_photo action"
     @group.update_attributes(:last_updated_by => current_profile.id)
     @group.group_photo.update_attributes(params[:asset])
     refresh_parent
