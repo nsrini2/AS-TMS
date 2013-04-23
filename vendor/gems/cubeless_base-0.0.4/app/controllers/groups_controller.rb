@@ -1,14 +1,14 @@
+require 'will_paginate/array'
 class GroupsController < ApplicationController
-  
+
   before_filter :init_group, :except => [:create, :new]
-  
   allow_access_for :destroy => :shady_admin
   deny_access_for :show => :sponsor_member, :when => lambda{ |c| !c.instance_variable_get(:@group).is_member?(c.current_profile) }
   deny_access_for [:new, :create, :quit] => :sponsor_member
   
   before_filter :add_or_update_visitor, :only => [:show,:members]
   before_filter :private_group_protection_needed, :only => [:join, :members, :help_answer]
-  
+
   layout 'group'
 
   def index
@@ -16,7 +16,11 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    render :layout => 'group_manage_sub_menu'
+    if @group.is_sponsored?
+       render :layout => 'sponsored_group_manage_sub_menu'
+    else
+       render :layout => 'group_manage_sub_menu'
+    end
   end
 
   def update
@@ -60,7 +64,7 @@ class GroupsController < ApplicationController
           add_to_errors @mailer
         end
       end
-      render :layout => 'group_manage_sub_menu'
+      render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu'
     end
   end
 
@@ -75,6 +79,20 @@ class GroupsController < ApplicationController
         format.html { render :layout => false }
       end
     end
+  end
+
+  def get_booth_marketing_messages
+    @booth_marketing_messages = BoothMarketingMessage.find(:all, :conditions => ['group_id =?',@group.id]).paginate(:page => params[:booth_marketing_page], :per_page => 5)
+    render :template => 'booth_marketing_messages/index', :layout => '/layouts/sponsored_group_manage_sub_menu'
+  end
+
+  def get_group_links
+    @useful_links = GroupLink.find(:all,:conditions => ["group_id =?",@group.id]).paginate(:page => params[:group_links_page], :per_page => 10)
+    render :template => 'group_links/index', :layout => '/layouts/sponsored_group_manage_sub_menu'
+  end
+
+  def get_booth_de
+      render :template => 'groups/booth_de', :layout => '/layouts/sponsored_group_manage_sub_menu' if @group.de_allowed?
   end
 
   def create
@@ -110,8 +128,14 @@ class GroupsController < ApplicationController
     end
   end
 
-  def show
-    render :action => 'group'
+ def show
+    if @group.is_sponsored?
+         @events=ActivityStreamEvent.find_by_group(@group.id,:all,:page=> params[:booth_page],:per_page => 4)
+         @random_marketing_message = BoothMarketingMessage.random_active_message(@group.id)
+         render :action => 'group', :layout => '/layouts/sponsored_group'
+    else
+         render :action => 'group', :layout => '/layouts/group'
+    end
   end
 
   def stream
@@ -123,6 +147,9 @@ class GroupsController < ApplicationController
     @members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 200).to_a.sort! { |a,b| rand(3)-1 }
     @invitation_requests = GroupInvitationRequest.find(:all, :conditions => "group_id = #{@group.id}")
     @invitations_pending = GroupInvitation.find(:all, :conditions => "group_id = #{@group.id}")
+    if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
+    end
   end
 
   def select_member
@@ -133,7 +160,10 @@ class GroupsController < ApplicationController
 
   def help_answer
     redirect_to group_path(@group) and return if @group.is_private?
-    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 6)
+    @referred_questions = @group.questions_referred_to_me.order('questions.created_at desc').paginate(:page => params[:page], :per_page => 3)
+     if @group.is_sponsored?
+      render :layout => '/layouts/sponsored_group'
+    end
   end
 
   def moderators
@@ -181,7 +211,7 @@ class GroupsController < ApplicationController
    @members = owner_transfer_results(@group, params[:q])
    
    respond_to do |format|
-     format.html { render :layout => 'group_manage_sub_menu' }
+     format.html { render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu' }
    end
   end
 
@@ -237,7 +267,7 @@ class GroupsController < ApplicationController
   def stats_summary
     redirect_to group_path(@group) and return unless is_editable?(@group)
     @stats = @group.stats
-    render :layout => 'group_manage_sub_menu'
+    render :layout => @group.is_sponsored? ? 'sponsored_group_manage_sub_menu' : 'group_manage_sub_menu'
   end
 
   def remove_member
@@ -271,8 +301,28 @@ class GroupsController < ApplicationController
 
   def init_group
     @group = Group.find_by_id(params[:id])
+    @group_links = @group.group_links.all
+    max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
+    @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
+    @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
+    if @group_blog_tags.count > 0
+      @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
+      @minTagOccurs=@group_blog_tags.first[:count]
+      @maxTagOccurs=@group_blog_tags.last[:count]
+    end
+    source=@group.booth_twitter_id
+    if !source.nil?
+      begin
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+      rescue => e
+       Rails.logger.info("Twitter error: " + e.message)
+      end
+    end
     redirect_to groups_explorations_path unless @group
   end
+
 
   def add_or_update_visitor
     @group.increment_group_views!

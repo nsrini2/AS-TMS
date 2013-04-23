@@ -157,6 +157,10 @@ class Profile < ActiveRecord::Base
     GroupMembership.find(:first, :conditions => ["profile_id = #{self.id} and group_id = #{group.id}"])
   end
 
+  def self.group_memberships(profile_id)
+      GroupMembership.find(:all,:conditions => ["profile_id = #{profile_id}"])
+  end
+
   def self.all_visible_profiles(options={})
     self.visible
   end
@@ -171,7 +175,7 @@ class Profile < ActiveRecord::Base
 
   @@active_timeout_in_minutes = 30
   def self.active_users_count
-    self.count_by_sql("select count(1) from profiles where last_accessed>timestampadd(minute,-#{@@active_timeout_in_minutes},now())")
+    self.count_by_sql("select count(1) from profiles where last_accessed>timestampadd(minute,-#{@@active_timeout_in_minutes},UTC_TIMESTAMP())")
   end
 
   def online_now?

@@ -1,0 +1,132 @@
+/* line 1, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .categories {
+  margin-top: 250px;
+}
+
+/* line 5, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list #list_text {
+  float: left;
+  margin: 20px 40px 20px 10px;
+  width: 480px;
+  font: 1.2em black;
+  font-family: 'Arial';
+  text-align: justify;
+}
+
+/* line 14, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .categories #expo_categories {
+  list-style-type: none;
+}
+
+/* line 18, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .categories #expo_categories .travelexpo_category {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 24, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .categories #expo_categories .travelexpo_category li {
+  float: left;
+  margin: 15px 6px 15px 9px;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .categories #expo_categories .travelexpo_category h3 {
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  width: 100%;
+  left: 30px;
+  top: 30px;
+}
+
+/* line 38, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list {
+  overflow: hidden;
+}
+
+/* line 42, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .group_results #controls dt {
+  display: inline;
+}
+
+/* line 46, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .group_results #controls dd {
+  display: inline;
+  padding: 0 10px;
+  border-right: 1px solid #676767;
+}
+
+/* line 53, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list #travelexpo_marketing_message {
+  float: right;
+  margin-top: 25px;
+  height: 150px;
+  margin-bottom: 5px;
+  width: 395px;
+  margin-right: 8px;
+}
+
+/* line 62, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list #news_feed {
+  float: left;
+  width: 510px;
+  border: 1px solid #c4d7dc;
+}
+
+/* line 68, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#news_feed .news_item {
+  position: relative;
+  height: 80px;
+  margin: 5px 0 0;
+  color: #4a6970;
+  padding: 10 0 0 20px;
+}
+
+/* line 75, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+.news_item .details {
+  display: inline;
+  position: inherit;
+}
+
+/* line 80, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+.news_item .details .category_activity_who {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+/* line 85, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#news_feed .news_item .details p.what span {
+  font-size: 10px;
+}
+
+/* line 89, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .group_results {
+  float: right;
+  left: 520px;
+  width: 400px;
+  padding: 10px;
+}
+
+/* line 96, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+table #admin_marketing {
+  width: 90%;
+}
+
+/* line 100, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#admin_marketing th {
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 50px;
+}
+
+/* line 108, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#admin_marketing td {
+  height: 50px;
+  width: 110px;
+  align: center;
+  padding-left: 30px;
+}

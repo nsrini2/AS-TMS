@@ -1,3 +1,5 @@
+/* ------------- /app/stylesheets/themes/agentstream/layout.scss ---------------- */
+
 @import "960/grid";
 @import "compass/utilities/general/clearfix";
 $ninesixty-columns: 16;
@@ -9,38 +11,34 @@ $ninesixty-grid-width: 960px;
   #welcome-page {@include grid-width(14);}
 }
 
+#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats { @include grid-unit-base; }
 
+#header, #main, .alert, #footer { @include grid-width(16); }
 
-	#header, #main, .alert, #footer, .primary, .aside, #logo, .global_nav, .utility, .stats  { @include grid-unit-base;}
-	
-	#header, #main, .alert, #footer { @include grid-width(16); }
-	
-		#logo { width: 160px; @include alpha;}
-		.global_nav { width: 460px }
-		.utility { width: 320px;}
-		
-		.stats { 
-		  @include grid-width(12); @include omega;
-		  h4 { float :right; }	    
-		}
-		
-	#login-main { @include grid-width(8); @include grid-prefix(4); }	
-	#register-main { @include grid-width(12); @include grid-prefix(2); }
-	#login-agentstream-facebook-main { @include grid-width(6); @include grid-prefix(5); }
-	#body {
-	}
-	
-	.primary { width: 560px; @include alpha; }
-	.aside { margin-top: 30px; width: 400px; @include omega; }
-		.aside .module { 
-		  margin-right: 0px;
-		  margin-left: 5px; 
-		}
-	.list .primary { width: 720px;  }
-	.list .aside { width: 240px; }
-	
-	.profile .primary { @include grid-width(12); clear: both; @include alpha; }
-	.profile .aside { @include grid-width(4); @include omega; }
-	
-	.profile .full_length { @include grid-width(16); clear: both; }
+#logo { width: 160px; @include alpha;}
+.global_nav { width: 460px }
+.utility { width: 320px;}
 
+.stats { 
+  @include grid-width(12); @include omega;
+  h4 { float :right; }
+}
+
+#login-main { @include grid-width(8); @include grid-prefix(4); }  
+#register-main { @include grid-width(12); @include grid-prefix(2); }
+#login-agentstream-facebook-main { @include grid-width(6); @include grid-prefix(5); }
+
+.primary { width: 560px; @include alpha; }
+.aside { margin-top: 30px; width: 400px; @include omega; }
+.aside .module { 
+  margin-right: 0px;
+  margin-left: 5px; 
+}
+.list .primary { width: 720px; }
+.list .aside { width: 240px; }
+
+.profile .sponsor_grp { width: 655px; @include alpha; }
+.profile .primary { @include grid-width(12); clear: both; @include alpha; }
+.profile .aside { @include grid-width(4); @include omega; }
+
+.profile .full_length { @include grid-width(16); clear: both; }

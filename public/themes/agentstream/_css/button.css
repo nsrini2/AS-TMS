@@ -1,21 +1,23 @@
-/* line 1, ../../../../app/stylesheets/themes/agentstream/button.scss */
+/* ------------- /app/stylesheets/themes/agentstream/button.scss ---------------- */
+/* line 3, ../../../../app/stylesheets/themes/agentstream/button.scss */
 div.action_buttons {
   float: right;
   margin-top: 20px;
   width: 15%;
 }
-/* line 6, ../../../../app/stylesheets/themes/agentstream/button.scss */
+/* line 7, ../../../../app/stylesheets/themes/agentstream/button.scss */
 div.action_buttons .button {
   display: block;
   width: 100px;
 }
-/* line 10, ../../../../app/stylesheets/themes/agentstream/button.scss */
+/* line 11, ../../../../app/stylesheets/themes/agentstream/button.scss */
 div.action_buttons a.button {
   padding: 0px;
 }
 
 /* line 15, ../../../../app/stylesheets/themes/agentstream/button.scss */
-.button, a.button {
+.button,
+a.button {
   margin: 0 2px 5px 0;
   background: #4A6970;
   border: 0;
@@ -27,19 +29,22 @@ div.action_buttons a.button {
   text-align: center;
 }
 
-/* line 27, ../../../../app/stylesheets/themes/agentstream/button.scss */
-.button.little, a.button.little {
+/* line 28, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.little,
+a.button.little {
   font-size: 0.8em;
   padding: 1px 4px;
   width: 60px;
 }
 
-/* line 33, ../../../../app/stylesheets/themes/agentstream/button.scss */
-.button.light, a.button.light {
+/* line 35, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.light
+a.button.light {
   background: #90b4bc;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/button.scss */
-.button.xlarge, a.button.xlarge {
+/* line 39, ../../../../app/stylesheets/themes/agentstream/button.scss */
+.button.xlarge,
+a.button.xlarge {
   font-size: 1.8em;
 }

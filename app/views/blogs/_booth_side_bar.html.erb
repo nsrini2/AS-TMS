@@ -1,0 +1,22 @@
+<%
+  show_create = true unless defined?(show_create)
+  -%>
+  <div id="booth_blog_meta">
+  	<%= content_tag(:h5, link_to('Create Blog Post', url_for([@owner, :blog, :blog_posts])+'/new')) if show_create && blogger_content(@blog) -%>
+  	<% unless @blog.archived_posts.size.zero? -%>
+  		<h6>Archives</h6>
+  		<ul class="booth_blog_archives">
+  			<li><%= link_to_unless(params[:date].blank? && params[:tag].blank? && (@blog_posts && @blog_posts.size != 1), "Most Recent", [@owner, :blog]) -%></li>
+  			<% @blog.archived_posts.each do |archive| -%>
+  				<li><%= link_to_archive @owner, archive -%></li>
+  			<% end -%>
+  		</ul>
+  	<% end -%>
+  	
+  	<% profile_blog_content(@owner) do -%>
+  		<h4>Drive-bys</h4>
+  		<% @owner.visitors.as_drive_bys.each do |visitor| -%>
+  			<%= link_to_avatar_for(visitor, :size => '35x35') -%>
+  		<% end -%>
+  	<% end -%>
+  </div>

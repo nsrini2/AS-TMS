@@ -1,0 +1,22 @@
+<style>
+  div.news_item div.details a {
+    color: inherit;
+ }
+  
+</style>
+
+<div id="<%= "news_item_#{index}" %>" class="list_item news_item <%= cycle("even", "odd") %>">
+  <%= primary_photo_for(event) %>
+   <div class="details">
+    <a href="<%= event.event_path %>">
+      <div class="icon">
+        <%= image_tag event.icon_path, :class => "icon" %>
+      </div>
+      <div class="category_activity_who"><%= event.who %></div>
+      <div class="category_what_when">
+        <%= event.what %><br/>
+        <%= event.when %><br/>
+      </div>
+     </a>
+  </div>
+</div>

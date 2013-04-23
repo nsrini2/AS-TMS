@@ -267,8 +267,30 @@ module ApplicationHelper
     end
   end
 
+  def link_for_booth_action(group)
+    hide_for_sponsor do
+      if group.is_member?(current_profile)
+        link_to("Quit Following", quit_group_path(group), :class => 'modal quit_group button little')
+      elsif current_profile.has_requested_invitation?(group)
+        "<span class='clicked'>Follow Request Sent</span>"
+      elsif !group.is_public? && group.has_members? && !current_profile.has_received_invitation?(group)
+        link_to("Request Invite", invitation_request_group_invitation_path(group), :class => "request_invite button")
+      elsif !group.is_private? || current_profile.has_received_invitation?(group)
+        link_to("Follow", join_group_path(group), :class => "modal join_group button")
+      end
+    end
+  end
+
   def link_for_group_members_action(group)
     if group.invitation_can_be_accepted_or_sent_by?(current_profile)
+      link_to("invite someone", new_group_invitation_path(:group_id => group.id), :class => "modal invite")
+    else
+      nil # link_for_group_action(group) 
+    end
+  end
+
+  def link_for_sponsor_group_members_action(group)
+    if group.sponsor_group_invitation_can_be_sent_by?(current_profile)
       link_to("invite someone", new_group_invitation_path(:group_id => group.id), :class => "modal invite")
     else
       nil # link_for_group_action(group) 
@@ -277,6 +299,14 @@ module ApplicationHelper
   
   def link_for_resend_action(group)
     if group.invitation_can_be_accepted_or_sent_by?(current_profile)
+      link_to("Resend ALL Invitations", resend_all_group_path(group), :class => "invite_all")
+    else
+      nil # link_for_group_action(group)
+    end
+  end
+
+  def link_for_resend_sponsor_group_action(group)
+    if group.sponsor_group_invitation_can_be_sent_by?(current_profile)
       link_to("Resend ALL Invitations", resend_all_group_path(group), :class => "invite_all")
     else
       nil # link_for_group_action(group)
@@ -350,7 +380,6 @@ module ApplicationHelper
       data.merge!({ :maxlength => options[:maxlength] }) if options[:maxlength]
       val += content_tag(:script, data.to_json, :type => "application/json")
     end
-    
     content_tag( options[:tag] || :p, replace_newline_with_br(editable ? val : auto_link(val, :all)), html_options )
   end
 

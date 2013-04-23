@@ -1,8 +1,18 @@
 <% form_for @group_post, :url => [@group,@group_post], :html => { :id => "new_group_post", :class => "html5" } do |f| -%>
-	<h2><label for="group_post_post">Got something to say to your group? Go right ahead!</label></h2>
+<%if @group.is_sponsored? %>
+<h5><label for="group_post_post">Got something to say to your group? Go right ahead!</label></h5>
 	<%= f.text_area :post, :cols=> nil, :rows => nil, :maxlength => "256" -%>
 	<div class="buttons">
 		<input type="submit" name="commit" value="Say It!" class="button large">
 	</div>
 	<p class="meta">Using Group Talk will ensure that only members of your group see it.</p>
+
+<%else%>
+	<h4><label for="group_post_post">Got something to say to your group? Go right ahead!</label></h4>
+	<%= f.text_area :post, :cols=> nil, :rows => nil, :maxlength => "256" -%>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Say It!" class="button large">
+	</div>
+	<p class="meta">Using Group Talk will ensure that only members of your group see it.</p>
+<% end -%>
 <% end -%>

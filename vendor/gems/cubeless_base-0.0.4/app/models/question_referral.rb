@@ -7,6 +7,8 @@ class QuestionReferral < ActiveRecord::Base
   belongs_to :profile, :foreign_key => 'owner_id'
   belongs_to :group, :foreign_key => 'owner_id'
 
+  stream_to :activity
+
   def self.clear_all_by_question_id_and_owner(question_id, owner)
     update_all "active=0","question_id=#{question_id} and owner_id=#{owner.id} and owner_type='#{owner.class.name}'"
   end

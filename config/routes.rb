@@ -34,6 +34,8 @@ AgentStream::Application.routes.draw do
   resources :offers
   
   resources :favorites
+
+  match "/panda/authorize_upload", :to => "panda#authorize_upload"
   
   # MM2: Make DE the default report route
   match "/reports/prepare/*p", :to => "reports#prepare"
@@ -133,9 +135,11 @@ AgentStream::Application.routes.draw do
       get :about_us
       get :activity_stream_messages
       get :marketing_messages
+      get :showcase_marketing_messages
       get :rss_feeds
       match :stats_by_date
       match :welcome_note
+      match :showcase_text
       get :user_setup
       get :current_awards
       get :profiles_summary
@@ -245,6 +249,14 @@ AgentStream::Application.routes.draw do
   end
 
   resources :sponsor_accounts do
+   member do
+	get :delete
+        get :category_level
+   end
+  end
+
+
+  resources :sponsor_accounts do
     resources :sponsor_members do    
       member do
         post :add_group
@@ -258,7 +270,7 @@ AgentStream::Application.routes.draw do
         post :add_sponsor
         post :remove_sponsor
         get :delete
-      end
+       end
     end
   end
 
@@ -268,6 +280,9 @@ AgentStream::Application.routes.draw do
       match :unlock
     end
   end
+
+  resources :showcase
+ 
 
   resources :api, :controller => "apis" do
     collection do
@@ -374,8 +389,11 @@ AgentStream::Application.routes.draw do
   end
 
   resources :groups do
-    member do 
+    member do
       post :resend_all
+      get :get_booth_marketing_messages
+      get :get_group_links
+      get :get_booth_de
       put :update
       post :remove_member
       get :stats_summary
@@ -396,14 +414,16 @@ AgentStream::Application.routes.draw do
       get :members
       get :select_member
       get :edit 
-    end
-    
-    resources :abuse, :controller => "abuses" do
+  end
+
+   resources :abuse, :controller => "abuses" do
       collection do
         get :abuse_popup
       end
     end
 
+    resources :group_links
+    
     resources :photos
     resource :blog do
       resources :blog_posts do
@@ -417,7 +437,9 @@ AgentStream::Application.routes.draw do
     resources :group_posts do
       resources :comments
     end
+
     resource :announcement, :controller => "group_announcements"
+
     resources :gallery_photos do
       member do
         match :update, :as => :update, :via => :put
@@ -426,6 +448,12 @@ AgentStream::Application.routes.draw do
         get :delete
       end
     end
+
+    resources :booth_marketing_messages do
+    member do
+      match :toggle_activation
+    end
+   end
   end
 
   resources :marketing_messages do
@@ -433,6 +461,15 @@ AgentStream::Application.routes.draw do
       match :toggle_activation
     end
   end
+
+ resources :showcase_marketing_messages do
+    member do
+      match :toggle_activation
+    end
+  end
+
+ 
+ 
   
   resources :rss_feeds do
     member do
@@ -470,6 +507,8 @@ AgentStream::Application.routes.draw do
     member do
       match :update, :as => :update, :via => :put
     end
+
+
     resources :abuse, :controller => "abuses" do
       collection do
         get :abuse_popup

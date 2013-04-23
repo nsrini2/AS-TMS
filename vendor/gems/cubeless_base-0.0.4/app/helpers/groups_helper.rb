@@ -27,6 +27,20 @@ module GroupsHelper
     link_to(group.name, group_path(group.id), :id => 'group_' + group.id.to_s)
   end
 
+
+  def calc_tag_classes(tag,minoccurs,maxoccurs)
+    classes=%w(tag0 tag1 tag2 tag3 tag4)
+    div=((maxoccurs-minoccurs)/classes.size) + 1
+    weight = ((tag[:count]-minoccurs)/div).round
+    tag_class=classes[weight]
+  end  
+
+  def link_to_booth_tag(owner, tag, minoccurs, maxoccurs)
+      tag_class=calc_tag_classes(tag,minoccurs,maxoccurs)
+      content_tag(:a, tag[:text], {:href => "#{polymorphic_path([owner, :blog])}?tag=#{tag[:text]}", :title =>"Tag Cloud", :class => "#{tag_class}" })
+      #link_to(tag[:text], "#{polymorphic_path([owner, :blog])}?tag=#{tag[:text]}", :class => 'booth_tag_'+"{#tag_size}")
+  end
+
   def group_member_or_public_content(group, &block)
     return group.is_member?(current_profile) || !group.is_private? || current_profile.has_role?(Role::ShadyAdmin) unless block_given?
     # yield if group.is_member?(current_profile) || !group.is_private? || current_profile.has_role?(Role::ShadyAdmin)
@@ -44,6 +58,12 @@ module GroupsHelper
     # yield if current_profile.has_role?(Role::ShadyAdmin) || group.is_member?(current_profile)
     block_text = capture(&block)
     block_text if current_profile.has_role?(Role::ShadyAdmin) || group.is_member?(current_profile)
+  end
+
+  def booth_admin_or_shady_or_cubeless_admin_content(group, &block)
+    # yield if current_profile.has_role?(Role::ShadyAdmin) || current_profile.has_role?(Role::CubelessAdmin) ||  group.is_group_admin?(current_profile)
+    block_text = capture(&block)
+    block_text if group.is_group_admin?(current_profile) || current_profile.has_role?(Role::ShadyAdmin) || current_profile.has_role?(Role::CubelessAdmin)
   end
 
   def non_private_content(group, &block)

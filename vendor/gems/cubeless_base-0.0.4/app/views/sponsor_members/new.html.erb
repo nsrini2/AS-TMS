@@ -1,30 +1,31 @@
-<% content_for(:page_title, "Create a New Sponsor Member for #{@sponsor_account.name}") -%>
-<h2>Create a New Sponsor Member for <%= @sponsor_account.name %></h2>
+<% content_for(:page_title, "Create a New User }") -%>
+<h2>New Sponsor Member in <%="#{@sponsor_account.name}"%> category</h2>
 
 <% form_for :user, :url => [@sponsor_account, :sponsor_members] do |f| -%>
 
-	<label for="profile_first_name">First Name</label>
-	<%= text_field :profile, :first_name, :size=>'20 '-%><br /><br />
+	<label for="profile_first_name">First Name</label><br />
+	<%= text_field :profile, :first_name, :size => 32, :placeholder => "First name of user"-%><br /><br />
 
-	<label for="profile_last_name">Last Name</label>
-	<%= text_field :profile, :last_name, :size=>'20' -%><br /><br />
+	<label for="profile_last_name">Last Name</label><br />
+	<%= text_field :profile, :last_name, :size => 32, :placeholder => "Last name of user" -%><br /><br />
 
-	<label for="user_email">Email</label>
-	<%= text_field :user, :email, :size=>'20' -%><br /><br />
+	<label for="user_email">Email</label><br />
+	<%= text_field :user, :email, :size => 32, :placeholder => "Email of user" -%><br /><br />
 
-	<label for="profile_status">Status</label>
-	<%= select :profile, :status, [["activate on login", 2], ["active", 1], ["inactive",0], ["delete",-1] ] -%><br /><br />
-	<%= check_box :profile, :visible %> <label for="profile_visible" id="visible_label" class="inline">Visible</label>
+	<label for="profile_status">Status</label><br />
+	<%= select :profile, :status, [["activate on login", 2], ["active", 1], ["inactive",0], ["delete",-1] ] -%><br />
 
-	<label for="user_login">Login</label>
-	<%= text_field :user, :login, :size=>'20' -%><br /><br />
+	<%= check_box :profile, :visible %> <label for="profile_visible" id="visible_label" class="inline">Visible</label><br /><br />
 
-	<label for="profile_screen_name">Screen Name</label>
-	<%= text_field :profile, :screen_name, :size=>'20' -%><br /><br />
+	<label for="user_login">Login</label><br />
+	<%= text_field :user, :login, :size => 32, :placeholder => "Login id of user" -%><br /><br />
 
-	<label for="profile_karma_points">Karma</label>
-	<%= text_field :profile, :karma_points, :size =>'5' -%><br /><br />
+	<label for="profile_screen_name">Screen Name</label><br />
+	<%= text_field :profile, :screen_name, :size => 32, :placeholder => "Preferred screen name of user" -%><br /><br />
 
-	<%= f.submit('Create New User') %>
+	<label for="profile_karma_points">Karma</label><br />
+	<%= text_field :profile, :karma_points, :size =>'10', :placeholder => "Karma points of user" -%><br /><br />
+
+	<%= f.submit "Create User", :class => "button large"  %>
 
 <% end -%>

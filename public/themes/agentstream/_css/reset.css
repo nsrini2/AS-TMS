@@ -1,11 +1,5 @@
-/* 
-html5doctor.com Reset Stylesheet
-v1.6
-Last Updated: 2010-08-18
-Author: Richard Clark - http://richclarkdesign.com 
-Twitter: @rich_clark
-*/
-/* line 20, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* ------------- /app/stylesheets/themes/agentstream/reset.scss ---------------- */
+/* line 14, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -27,35 +21,35 @@ time, mark, audio, video {
   background: transparent;
 }
 
-/* line 30, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 24, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 body {
   line-height: 1;
 }
 
-/* line 35, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 29, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 39, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 33, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 nav ul {
   list-style: none;
 }
 
-/* line 43, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 37, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 blockquote, q {
   quotes: none;
 }
 
-/* line 48, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
   content: none;
 }
 
-/* line 53, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 47, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 a, a:visited {
   margin: 0;
   padding: 0;
@@ -67,7 +61,7 @@ a, a:visited {
 }
 
 /* change colours to suit your needs */
-/* line 64, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 58, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 ins {
   background-color: #ff9;
   color: #000;
@@ -75,7 +69,7 @@ ins {
 }
 
 /* change colours to suit your needs */
-/* line 71, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 65, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 mark {
   background-color: #ff9;
   color: #000;
@@ -83,35 +77,35 @@ mark {
   font-weight: bold;
 }
 
-/* line 78, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 72, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 del {
   text-decoration: line-through;
 }
 
-/* line 82, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 76, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 abbr[title], dfn[title] {
   border-bottom: 1px dotted inherit;
   cursor: help;
 }
 
-/* line 87, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 81, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
 /* change border colour to suit your needs */
-/* line 93, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 87, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid #ccc;
   margin: 1em 0;
   padding: 0;
 }
 
-/* line 102, ../../../../app/stylesheets/themes/agentstream/reset.scss */
+/* line 96, ../../../../app/stylesheets/themes/agentstream/reset.scss */
 input, select {
   vertical-align: middle;
 }

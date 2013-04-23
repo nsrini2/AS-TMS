@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206192250) do
+ActiveRecord::Schema.define(:version => 20130411065926) do
 
   create_table "about_us", :force => true do |t|
     t.text "content"
@@ -144,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
   end
 
   add_index "blog_post_text_indices", ["blog_post_id"], :name => "index_blog_post_text_indices_on_blog_post_id", :unique => true
-  add_index "blog_post_text_indices", ["title_text", "text_text", "cached_tag_list_text", "author"], :name => "fulltext_blog_post"
 
   create_table "blog_posts", :force => true do |t|
     t.datetime "created_at",                                                            :null => false
@@ -196,6 +195,14 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
   end
 
   add_index "bookmarks", ["profile_id"], :name => "index_bookmarks_on_profile_id"
+
+  create_table "booth_marketing_messages", :force => true do |t|
+    t.boolean  "active"
+    t.text     "link_to_url"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "chat_topic_indices", :force => true do |t|
     t.integer  "topic_id",        :null => false
@@ -410,6 +417,14 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
   add_index "group_invitations", ["sender_id"], :name => "index_group_invitations_on_sender_id"
   add_index "group_invitations", ["type"], :name => "index_group_invitations_on_type"
 
+  create_table "group_links", :force => true do |t|
+    t.string   "url"
+    t.string   "text"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "group_memberships", :force => true do |t|
     t.integer  "profile_id",                                :null => false
     t.integer  "group_id",                                  :null => false
@@ -466,6 +481,9 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
     t.integer  "views",                                  :default => 0
     t.integer  "company_id",                             :default => 0
     t.integer  "active",                                 :default => 1
+    t.integer  "de_flag"
+    t.string   "booth_video_location"
+    t.string   "booth_twitter_id"
   end
 
   add_index "groups", ["activity_points"], :name => "index_groups_on_activity_points"
@@ -973,6 +991,19 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
     t.string   "setting"
   end
 
+  create_table "showcase_marketing_messages", :force => true do |t|
+    t.boolean  "active"
+    t.text     "link_to_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "showcase_texts", :force => true do |t|
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "site_configs", :force => true do |t|
     t.string   "site_name"
     t.text     "disclaimer"
@@ -1186,8 +1217,6 @@ ActiveRecord::Schema.define(:version => 20130206192250) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
-
-  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
 
   create_table "temp_users", :force => true do |t|
     t.string   "email"

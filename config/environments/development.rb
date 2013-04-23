@@ -5,8 +5,8 @@ AgentStream::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   # -- This needs to be off if you are monkeypunching a library, so it does not get re-punched
-  config.cache_classes = false
-  # config.cache_classes = true
+  # config.cache_classes = false
+  config.cache_classes = true
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
@@ -15,7 +15,7 @@ AgentStream::Application.configure do
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
-
+  config.log_level = :debug
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 

@@ -1,9 +1,10 @@
-/* line 1, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* ------------- /app/stylesheets/themes/agentstream/header.scss ---------------- */
+/* line 3, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header {
   height: 110px;
 }
 
-/* line 3, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 5, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header h1 {
   float: left;
   height: 110px;
@@ -12,21 +13,21 @@
   text-indent: -9999px;
 }
 
-/* line 9, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 13, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header h1 a {
   background: url("http://placehold.it/140x80/eeeeee/&text=logo") no-repeat 0 0;
   display: block;
   height: 100px;
-  margin: 5px 0px 0px 10px;
+  margin: 5px 0 0 10px;
   width: 200px;
 }
 
-/* line 15, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 21, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav {
   display: block;
 }
 
-/* line 16, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 22, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav:after {
   content: ".";
   display: block;
@@ -35,185 +36,196 @@
   visibility: hidden;
 }
 
-/* line 17, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 29, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav li {
   display: block;
   float: left;
   margin: 0 15px 0 0;
 }
 
-/* line 22, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 34, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav a {
   color: #4a6970;
 }
 
-/* line 25, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 37, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav {
-  font-size: 16px;
-  margin: 30px 0 0;
+  font-size: 15px;
+  margin: 20px 0 0;
   text-transform: lowercase;
-  text-align: right;
+  text-align: left;
 }
 
-/* line 32, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 44, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav li:first-child {
-  margin-left: 40px;
+  margin-left: 25px;
 }
 
-/* line 36, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 48, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav li.active {
   border-bottom: 1px solid #4a6970;
 }
 
-/* line 38, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 49, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .global_nav li a {
   display: block;
   padding: 30px 0 0 0;
-  min-width: 30px;
+  min-width: 27px;
 }
 
-/* line 44, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 55, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #hub_nav {
   background: url("/images/icons/as/nav/off/home.png") no-repeat 50% top;
 }
 
-/* line 48, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 58, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #hub_nav.active, #header .nav #hub_nav:hover {
   background: url("/images/icons/as/nav/on/home.png") no-repeat 50% top;
 }
 
-/* line 51, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 61, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #company_nav {
   background: url("/images/icons/as/nav/off/agency.png") no-repeat 50% top;
 }
 
-/* line 54, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 64, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #company_nav.active, #header .nav #company_nav:hover {
   background: url("/images/icons/as/nav/on/agency.png") no-repeat 50% top;
 }
 
-/* line 57, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 67, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #qa_nav {
   background: url("/images/icons/as/nav/off/help.png") no-repeat 50% top;
 }
 
-/* line 60, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 70, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #qa_nav.active, #header .nav #qa_nav:hover {
   background: url("/images/icons/as/nav/on/help.png") no-repeat 50% top;
 }
 
-/* line 63, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 73, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #group_nav {
   background: url("/images/icons/as/nav/off/user-group.png") no-repeat 50% top;
 }
 
-/* line 66, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 76, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #group_nav.active, #header .nav #group_nav:hover {
   background: url("/images/icons/as/nav/on/user-group.png") no-repeat 50% top;
 }
 
-/* line 69, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 79, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #blog_nav {
   background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
 }
 
-/* line 72, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 82, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #blog_nav.active, #header .nav #blog_nav:hover {
   background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top;
 }
 
-/* line 75, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 85, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #news_nav {
   background: url("/images/icons/as/nav/off/news_new.png") no-repeat 50% top;
 }
 
-/* line 78, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 88, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #news_nav.active, #header .nav #news_nav:hover {
   background: url("/images/icons/as/nav/on/news_new.png") no-repeat 50% top;
 }
 
-/* line 82, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 91, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #chats_nav {
   background: url("/images/icons/as/nav/off/chat.png") no-repeat 50% top;
 }
 
-/* line 86, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 94, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #chats_nav.active, #header .nav #chats_nav:hover {
   background: url("/images/icons/as/nav/on/chat.png") no-repeat 50% top;
 }
 
-/* line 90, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 97, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #new_nav {
   background: url("/images/icons/as/nav/off/new.png") no-repeat 50% top;
 }
 
-/* line 94, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 100, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #new_nav.active, #header .nav #new_nav:hover {
   background: url("/images/icons/as/nav/on/new.png") no-repeat 50% top;
 }
 
-/* line 98, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 104, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #de_nav {
   background: url("/images/icons/as/nav/off/de.gif") no-repeat 50% top;
 }
 
-/* line 102, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 107, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #de_nav.active, #header .nav #de_nav:hover {
   background: url("/images/icons/as/nav/on/de.gif") no-repeat 50% top;
 }
 
-/* line 106, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 110, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #showcase_nav {
+  background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
+}
+
+/* line 114, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .nav #showcase_nav.active, #header .nav #showcase_nav a:hover {
+  background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top;
+}
+
+/* line 118, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav .line2 {
   display: block;
   margin-top: -5px;
   text-align: left;
 }
 
-/* line 112, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 124, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .stats {
   margin: 20px 0 0 50px;
   font-size: 14px;
 }
-/* line 115, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 127, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .stats h4 {
   font-size: 19px;
   font-weight: normal;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 50px;
 }
 
-/* line 124, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 135, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility {
   margin: 20px 10px 0 0;
   font-size: 14px;
   float: right;
 }
 
-/* line 125, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 140, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav {
   float: right;
 }
 
-/* line 126, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 141, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav li {
   font-size: 0.9em;
   margin-right: 8px;
 }
 
-/* line 132, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 146, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search {
   float: right;
   margin: 0 5px 0 0;
 }
 
-/* line 136, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .utility .search input[type=text], #header .utility .search #global_search_input {
+/* line 151, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header .utility .search input[type=text],
+#header .utility .search #global_search_input {
   margin-top: 0;
   height: 20px;
   width: 210px;
 }
 
-/* line 141, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 156, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search .button {
   font-size: 12px;
   margin: 0 3px 0 0;
@@ -226,36 +238,38 @@
 }
 
 /*#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('/images/bg_nav_online_now.png') 0 50% no-repeat; }*/
-/* line 153, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 168, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav .online_now {
   padding: 7px 0 5px 20px;
   background: url("/images/icons/as/online-now.png") 0 50% no-repeat;
 }
 
-/* line 154, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 172, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .nav .drop_down {
   padding: 0 15px 0 0;
   background: url("/images/bg_nav_dropdown.png") 100% 50% no-repeat;
 }
 
-/* line 156, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header, #main {
+/* line 178, ../../../../app/stylesheets/themes/agentstream/header.scss */
+#header,
+#main {
   border: 1px solid #c4d7dc;
   border-width: 0 1px 0;
 }
 
-/* line 157, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 182, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #main {
   border-width: 0 1px 1px;
 }
 
-/* line 158, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 183, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #footer {
   clear: both;
 }
 
-/* line 159, ../../../../app/stylesheets/themes/agentstream/header.scss */
-.aside .module, .primary .module {
+/* line 185, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.aside .module,
+.primary .module {
   margin: 0;
   padding: 10px 20px 10px;
   border: 1px solid #c4d7dc;
@@ -263,12 +277,12 @@
   background: #fff;
 }
 
-/* line 160, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 192, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .module {
   border-width: 1px 0 0 1px;
 }
 
-/* line 161, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 193, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .last {
   border-bottom: 1px solid #c4d7dc;
 }

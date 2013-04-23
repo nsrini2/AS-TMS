@@ -1,7 +1,15 @@
 <% content_for(:sponsor_accounts_tab_selected, 'selected') -%>
 
 <% content_for :admin_tabs_submenu do %>
-
+<%= 
+  sub_menu_for([
+  	sub_menu_li_for(sponsor_accounts_path, :text => 'Manage Categories'),
+  	sub_menu_li_for(showcase_text_admin_path, :text => 'Showcase Text'),
+  	sub_menu_li_for(showcase_marketing_messages_admin_path, :text => 'Marketing Messages')
+  ])
+  -%><br/><br/>
 <% end %>
+
+
 
 <%= render :file => 'layouts/_admin_tabs' -%>

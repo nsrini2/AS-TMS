@@ -1,1 +1,1 @@
-require 'streamed'
+require 'streamed.rb'

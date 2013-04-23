@@ -34,6 +34,8 @@ class GroupMembership < ActiveRecord::Base
   belongs_to :member, :class_name => 'Profile', :foreign_key => 'profile_id'
   belongs_to :group, :counter_cache => true
 
+  stream_to :activity
+
   validates_presence_of [:member, :group]
 
   @email_preferences = nil

@@ -1,0 +1,24 @@
+<% content_for :booth_social_feeds_panel do %>
+   <div id="booth_social">
+
+     <div id="booth_twitter">
+       <% if !@twitter_feed.nil? %>
+       <div id="twitter_logo">
+          <%=image_tag("/images/twitter.jpg", :alt => "Twitter", :height => '50', :width => '50') %>
+       </div>
+       <div id="tweet_feed">
+          <%= @twitter_user_name %><span>:</span><%= @twitter_user_handle %><br/>
+          <%= @twitter_feed %>
+       </div>
+       <% end -%>
+      </div>     
+     <!--<div id="booth_facebook">
+        <div id="fb_logo">
+          <%#=image_tag("/images/fb.jpg", :alt => "Facebook", :height => '35', :width => '35') %>
+        </div>
+     </div>-->
+
+   </div>
+<% end %>
+
+<%= render :file => 'layouts/_tab_structure' -%>
