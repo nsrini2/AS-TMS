@@ -1579,22 +1579,6 @@ $.fn.extend({
 
 });
 
-
-
-panda.uploader.init({
-    'buttonId': 'browse',
-    'progressBarId': 'progress-bar',
-    'onSuccess': function(file, data) {
-      $("#panda_video_id").val(data.id)
-    },
-    'onComplete': function(){
-      $("#new_video").submit();
-    }
-  });
-
-
-
-
 $.confirmation_dialog = function(options) {
   options = $.extend({
     title: 'Are you sure?',
