@@ -66,7 +66,7 @@ module Streamed
           when ProfileAward 
                    opts[:profile_id] = self.profile_id
                    groupmemship=Profile.group_memberships(self.profile_id)
-                   for i in 0...groupmemship.size-1
+                   for i in 0...groupmemship.size
                      opts[:group_id]=groupmemship[i].group_id
                      ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
                    end
