@@ -1,3 +1,6 @@
+Scott was here!
+Take 2
+
 Set up:
 
 1 - git clone  to create local copy of repo 
