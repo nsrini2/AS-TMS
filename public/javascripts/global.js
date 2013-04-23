@@ -1582,14 +1582,35 @@ $.fn.extend({
 
 
 panda.uploader.init({
-    'buttonId': 'browse',
-    'progressBarId': 'progress-bar',
+   'buttonId': 'browse-files',
+   'progressBarId': "progress-bar",
+   'fileDropId': "file-drop",
+   
+   'onQueue': function(files) {
+    $.each(files, function(i, file) {
+    upl.setPayload(file, {'authenticity_token': AUTH_TOKEN});
+   })
+  },   
+
+   'onProgress': function(file, percent) {
+    console.log("progress", percent, "%");
+   },
+
     'onSuccess': function(file, data) {
-      $("#panda_video_id").val(data.id)
-    },
-    'onComplete': function(){
+      $("#new_video")
+      .find("[name=panda_video_id]")
+      .val(data.id)
+      .end()
+      .submit();
+   },
+
+   'onComplete': function(){
       $("#new_video").submit();
-    }
+    },
+
+  'onError': function(file, message) {
+   console.log("error", message);
+  },
   });
 
 

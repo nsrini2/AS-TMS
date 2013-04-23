@@ -1,4 +1,4 @@
-<% if false %>
+<% if true %>
 <ul class="<%='my_rating' if gallery_photo.user_has_rated %>">
   <% (1..5).each do |i| %>
     <li class="rate rating<%=i%>" title="Rate: <%=i%> out of 5">

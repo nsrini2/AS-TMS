@@ -394,6 +394,7 @@ AgentStream::Application.routes.draw do
       get :get_booth_marketing_messages
       get :get_group_links
       get :get_booth_video
+      get :get_booth_de
       put :update
       post :remove_member
       get :stats_summary

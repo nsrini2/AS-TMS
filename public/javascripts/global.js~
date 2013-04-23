@@ -1579,6 +1579,43 @@ $.fn.extend({
 
 });
 
+
+
+panda.uploader.init({
+   'buttonId': 'browse',
+   'progressBarId': "progress-bar",
+   'fileDropId': "file-drop",
+   
+   'onQueue': function(files) {
+    $.each(files, function(i, file) {
+    upl.setPayload(file, {'authenticity_token': AUTH_TOKEN});
+   })
+  },   
+
+   'onProgress': function(file, percent) {
+    console.log("progress", percent, "%");
+   },
+
+    'onSuccess': function(file, data) {
+      $("#new_video")
+      .find("[name=panda_video_id]")
+      .val(data.id)
+      .end()
+      .submit();
+   },
+
+   'onComplete': function(){
+      $("#new_video").submit();
+    },
+
+  'onError': function(file, message) {
+   console.log("error", message);
+  },
+  });
+
+
+
+
 $.confirmation_dialog = function(options) {
   options = $.extend({
     title: 'Are you sure?',

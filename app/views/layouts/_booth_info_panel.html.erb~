@@ -2,7 +2,7 @@
    <div id="booth_info">
         <div id="follow">
           <%= render "shared/booth_member_table" %>
-          <%= action_list_for([(link_for_booth_action(@group) unless hide_for_sponsor)], :class => 'group_actions full_screen') -%>
+          <%#= action_list_for([(link_for_booth_action(@group) unless hide_for_sponsor)], :class => 'group_actions full_screen') -%>
         </div>
 
         <div id="booth_tags">
@@ -13,9 +13,9 @@
   
         <div id="booth_useful_links">
             <h5>Interesting links</h5>
-             <%# @group_links.each do |link| -%>
+             <% @group_links.each do |link| -%>
               <span class="click_me">
-                 <%#= link_to link.text, link.url, :target => "_blank"-%>
+                 <%= link_to link.text, link.url, :target => "_blank"-%>
               </span>
               <br/>
            <%end%>

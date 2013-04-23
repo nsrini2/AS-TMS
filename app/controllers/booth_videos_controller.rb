@@ -9,12 +9,12 @@ class BoothVideosController < ApplicationController
   end
 
   def new
-    @video = Video.new
+    @video = BoothVideo.new
     render :layout => 'sponsored_group_manage_sub_menu'
   end
 
   def create
-    @video = Video.create!(params[:video])
+    @video = BoothVideo.create!(params[:video])
     redirect_to :action => :show, :id => @video.id 
   end
 

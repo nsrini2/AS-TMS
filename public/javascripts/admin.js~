@@ -41,7 +41,7 @@ $.fn.extend({
 		return this.live('click', function(event) {
 			var $this = $(this);
 			$.ajax({
-				url: $this.attr('href'), dataType: 'html', type: 'get', 
+				//url: $this.attr('href'), dataType: 'html', type: 'get', 
 				success: function(data) {
 					var $dialog = $(data);
 					$dialog

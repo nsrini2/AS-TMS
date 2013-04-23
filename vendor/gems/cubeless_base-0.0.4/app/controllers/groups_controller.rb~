@@ -1,7 +1,6 @@
 require 'will_paginate/array'
 class GroupsController < ApplicationController
 
-  
   before_filter :init_group, :except => [:create, :new]
   allow_access_for :destroy => :shady_admin
   deny_access_for :show => :sponsor_member, :when => lambda{ |c| !c.instance_variable_get(:@group).is_member?(c.current_profile) }
@@ -97,6 +96,10 @@ class GroupsController < ApplicationController
      render :template => 'booth_videos/show', :layout => '/layouts/sponsored_group_manage_sub_menu'
   end
 
+  def get_booth_de
+      if @group.de_allowed?
+      render :template => 'groups/booth_de', :layout => '/layouts/sponsored_group_manage_sub_menu'         
+  end
 
   def create
     # MM2: Old Group.crate override syntax
