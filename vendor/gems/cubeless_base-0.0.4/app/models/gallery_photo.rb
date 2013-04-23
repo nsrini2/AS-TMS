@@ -13,6 +13,8 @@ class GalleryPhoto < ActiveRecord::Base
   validates_presence_of [:group, :uploader]
   validates_length_of :caption, :within => 0..256, :allow_nil => true
 
+  stream_to :activity
+
   def editable_by?(profile)
     uploader == profile || group.editable_by?(profile)
   end

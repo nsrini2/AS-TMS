@@ -1,11 +1,11 @@
 <div class="booth_activity_details">
   <%= image_tag event.icon_path -%>
    <a href="<%= event.event_path %>">
-     <h6 class="who"><%= event.who %></h6>
-       <p class="what">
-         <%= event.what %>
-       </p>
-       <p class="when"><br/><%= event.when %></p>
+     <div class="booth_activity_who"><%= event.who %></div>
+       <div class="booth_activity_what_when">
+         <%= event.what %><br/>
+         <%= event.when %>
+       </div>
     </a>
 </div>
 

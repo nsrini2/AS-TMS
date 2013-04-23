@@ -61,20 +61,21 @@
 /* line 53, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list #travelexpo_marketing_message {
   float: right;
-  margin-top: 30px;
+  margin-top: 25px;
+  height: 150px;
   margin-bottom: 5px;
   width: 395px;
   margin-right: 8px;
 }
 
-/* line 61, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 62, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list #news_feed {
   float: left;
   width: 510px;
   border: 1px solid #c4d7dc;
 }
 
-/* line 67, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 68, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #news_feed .news_item {
   position: relative;
   height: 80px;
@@ -83,23 +84,24 @@
   padding: 10 0 0 20px;
 }
 
-/* line 74, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 75, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 .news_item .details {
   display: inline;
   position: inherit;
 }
 
-/* line 79, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
-.news_item .details p.what {
-  font-size: 12px;
+/* line 80, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+.news_item .details .category_activity_who {
+  font-size: 1.3em;
+  font-weight: bold;
 }
 
-/* line 83, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 85, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #news_feed .news_item .details p.what span {
   font-size: 10px;
 }
 
-/* line 87, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 89, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list .group_results {
   float: right;
   left: 520px;
@@ -107,12 +109,12 @@
   padding: 10px;
 }
 
-/* line 94, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 96, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 table #admin_marketing {
   width: 90%;
 }
 
-/* line 98, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 100, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #admin_marketing th {
   height: 50px;
   width: 100px;
@@ -121,7 +123,7 @@ table #admin_marketing {
   padding-right: 50px;
 }
 
-/* line 106, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 108, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #admin_marketing td {
   height: 50px;
   width: 110px;

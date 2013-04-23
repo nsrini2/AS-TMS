@@ -5,41 +5,57 @@ class ActivityStreamEvent < ActiveRecord::Base
   belongs_to :profile
 
   # MM2: I'm truly sorry for adding to this mess and not fixing it. (2010-07-20 - status additions)
+  # SRIWW-19/Apr/13: Adding more joins to create additional activity stream events...
   def self.find_summary(*args)
     ModelUtil.add_joins!(args,"left join profiles on profiles.id=profile_id left join attachments pp on pp.id=profiles.primary_photo_id")
     ModelUtil.add_joins!(args,"left join groups on groups.id=group_id left join attachments gp on gp.id=groups.primary_photo_id")
     ModelUtil.add_joins!(args,"left join questions on activity_stream_events.klass='Question' and questions.id=klass_id")
     ModelUtil.add_joins!(args,"left join answers on activity_stream_events.klass='Answer' and answers.id=klass_id")
-    ModelUtil.add_joins!(args,"left join blog_posts on activity_stream_events.klass='BlogPost' and blog_posts.id=klass_id")
-    ModelUtil.add_joins!(args,"left join comments on activity_stream_events.klass='Comment' and comments.id=klass_id")
-    ModelUtil.add_joins!(args,"left join statuses on activity_stream_events.klass='Status' and statuses.id=klass_id")
-    ModelUtil.add_joins!(args,"left join profile_awards on activity_stream_events.klass='ProfileAward' and profile_awards.id=klass_id left join awards on profile_awards.award_id = awards.id")
 
-    # MM2: More adding :( (2010-11-08)
+    ModelUtil.add_joins!(args,"left join group_posts on activity_stream_events.klass='GroupPost' and group_posts.id=klass_id")
+    ModelUtil.add_joins!(args,"left join blog_posts on activity_stream_events.klass='BlogPost' and blog_posts.id=klass_id")
+    ModelUtil.add_joins!(args,"left join question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.id=klass_id") 
+    ModelUtil.add_joins!(args,"left join comments on activity_stream_events.klass='Comment' and comments.id=klass_id")
+
+    ModelUtil.add_joins!(args,"left join statuses on activity_stream_events.klass='Status' and statuses.id=klass_id")
+    ModelUtil.add_joins!(args,"left join group_memberships on activity_stream_events.klass='GroupMembership' and group_memberships.group_id=activity_stream_events.group_id")
+
+    ModelUtil.add_joins!(args,"left join profile_awards on activity_stream_events.klass='ProfileAward' and profile_awards.id=klass_id left join awards on profile_awards.award_id = awards.id")
     ModelUtil.add_joins!(args,"left join questions as answer_questions on activity_stream_events.klass='Answer' and answers.id=klass_id and answers.question_id=answer_questions.id")
     ModelUtil.add_joins!(args,"left join blog_posts as comment_blog_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'BlogPost' and comments.owner_id=comment_blog_posts.id")
 
+    ModelUtil.add_joins!(args,"left join group_posts as comment_group_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'GroupPost' and comments.owner_id=comment_group_posts.id")
+   ModelUtil.add_joins!(args,"left join questions as question_question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.owner_type='Group' and question_referrals.id=klass_id and question_referrals.question_id=question_question_referrals.id")
 
-    ModelUtil.add_selects!(args,"activity_stream_events.*"+
+
+   ModelUtil.add_selects!(args,"activity_stream_events.*"+
     ", profiles.screen_name as profile_screen_name"+
     ", profiles.karma_points as profile_karma_points"+
+
     ", pp.filename as profile_photo_filename"+
     ", pp.id as profile_photo_id"+
     ", questions.question as question_question"+
     ", answers.answer as answer_answer"+
+
     ", answers.question_id as answer_question_id"+
     
     ", answer_questions.question as answer_question_question"+
     ", comment_blog_posts.title as comment_blog_post_title"+
+    ", comment_group_posts.post as comment_group_post_post"+
+
+    ", group_posts.post as group_post_post"+
+    ", question_question_referrals.question as question_question_referral_question"+
     
     ", groups.name as group_name"+
     ", gp.filename as group_photo_filename"+
+
     ", gp.id as group_photo_id"+
     ", blog_posts.title as blog_post_title"+
     ", comments.text as comment_text"+
     ", statuses.body as status_body"+
+
     ", awards.title as award_title")
-    
+   
     
     # Do not display GroupMemberships of invisible people
     # I know...that sounds whack...but it has happened...
@@ -60,6 +76,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join answers on activity_stream_events.klass='Answer' and answers.id=klass_id")
     ModelUtil.add_joins!(args,"left join group_posts on activity_stream_events.klass='GroupPost' and group_posts.id=klass_id")
     ModelUtil.add_joins!(args,"left join blog_posts on activity_stream_events.klass='BlogPost' and blog_posts.id=klass_id")
+    ModelUtil.add_joins!(args,"left join question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.id=klass_id") 
     ModelUtil.add_joins!(args,"left join comments on activity_stream_events.klass='Comment' and comments.id=klass_id")
     ModelUtil.add_joins!(args,"left join statuses on activity_stream_events.klass='Status' and statuses.id=klass_id")
     ModelUtil.add_joins!(args,"left join group_memberships on activity_stream_events.klass='GroupMembership' and group_memberships.group_id=activity_stream_events.group_id")
@@ -67,6 +84,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join questions as answer_questions on activity_stream_events.klass='Answer' and answers.id=klass_id and answers.question_id=answer_questions.id")
     ModelUtil.add_joins!(args,"left join blog_posts as comment_blog_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'BlogPost' and comments.owner_id=comment_blog_posts.id")
     ModelUtil.add_joins!(args,"left join group_posts as comment_group_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'GroupPost' and comments.owner_id=comment_group_posts.id")
+   ModelUtil.add_joins!(args,"left join questions as question_question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.owner_type='Group' and question_referrals.id=klass_id and question_referrals.question_id=question_question_referrals.id")
 
 
    ModelUtil.add_selects!(args,"activity_stream_events.*"+
@@ -77,29 +95,26 @@ class ActivityStreamEvent < ActiveRecord::Base
     ", questions.question as question_question"+
     ", answers.answer as answer_answer"+
     ", answers.question_id as answer_question_id"+
-
-    ", comment_blog_posts.title as comment_blog_post_title"+
-    ", comment_group_posts.post as comment_group_post_post"+
-    ", group_posts.post as group_post_post"+
     
     ", answer_questions.question as answer_question_question"+
     ", comment_blog_posts.title as comment_blog_post_title"+
+    ", comment_group_posts.post as comment_group_post_post"+
+    ", group_posts.post as group_post_post"+
+    ", question_question_referrals.question as question_question_referral_question"+
     
     ", groups.name as group_name"+
     ", gp.filename as group_photo_filename"+
     ", gp.id as group_photo_id"+
     ", blog_posts.title as blog_post_title"+
     ", comments.text as comment_text"+
+
     ", statuses.body as status_body"+
     ", awards.title as award_title")
-
-    #ModelUtil.add_conditions!(args, ["((groups.sponsor_account_id= #{sponsor_account_id}) OR profiles.visible = ?))", true])
-    #ModelUtil.add_conditions!(args, ["((groups.sponsor_account_id= #{sponsor_account_id} AND activity_stream_events.klass in ('Group','GroupPhoto','GroupMembership','BlogPost','Comment'))
-    #OR (profiles.sponsor_account_id = #{sponsor_account_id}  AND activity_stream_events.klass in
-    #('Profile','Question','Status','QuestionReferral','Answer')) AND profiles.visible = ?)", true])
-
-    																																																																																																																																																																																																																										ModelUtil.add_conditions!(args, ["((groups.sponsor_account_id= #{sponsor_account_id} AND activity_stream_events.profile_id IS NULL) OR (activity_stream_events.profile_id IS NOT NULL AND (groups.sponsor_account_id= #{sponsor_account_id} OR profiles.sponsor_account_id = #{sponsor_account_id}) AND profiles.visible=?))", true])
-
+   
+    
+    ModelUtil.add_conditions!(args, ["(groups.sponsor_account_id= #{sponsor_account_id} AND activity_stream_events.profile_id IS NULL) OR
+    (activity_stream_events.profile_id IS NOT NULL AND (groups.sponsor_account_id= #{sponsor_account_id} OR profiles.sponsor_account_id = #{sponsor_account_id}) AND
+    profiles.visible=?)", true]) 																																																																																																																																																																																																																										
     options = ModelUtil.get_options!(args)
     options[:order] = 'created_at desc' unless options.member?(:order)
     args.shift if args.first.to_sym == :all
@@ -115,6 +130,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join answers on activity_stream_events.klass='Answer' and answers.id=klass_id")
     ModelUtil.add_joins!(args,"left join group_posts on activity_stream_events.klass='GroupPost' and group_posts.id=klass_id")
     ModelUtil.add_joins!(args,"left join blog_posts on activity_stream_events.klass='BlogPost' and blog_posts.id=klass_id")
+    ModelUtil.add_joins!(args,"left join question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.id=klass_id") 
     ModelUtil.add_joins!(args,"left join comments on activity_stream_events.klass='Comment' and comments.id=klass_id")
     ModelUtil.add_joins!(args,"left join statuses on activity_stream_events.klass='Status' and statuses.id=klass_id")
     ModelUtil.add_joins!(args,"left join group_memberships on activity_stream_events.klass='GroupMembership' and group_memberships.group_id=activity_stream_events.group_id")
@@ -122,6 +138,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join questions as answer_questions on activity_stream_events.klass='Answer' and answers.id=klass_id and answers.question_id=answer_questions.id")
     ModelUtil.add_joins!(args,"left join blog_posts as comment_blog_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'BlogPost' and comments.owner_id=comment_blog_posts.id")
     ModelUtil.add_joins!(args,"left join group_posts as comment_group_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'GroupPost' and comments.owner_id=comment_group_posts.id")
+   ModelUtil.add_joins!(args,"left join questions as question_question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.owner_type='Group' and question_referrals.id=klass_id and question_referrals.question_id=question_question_referrals.id")
 
 
    ModelUtil.add_selects!(args,"activity_stream_events.*"+
@@ -137,6 +154,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ", comment_blog_posts.title as comment_blog_post_title"+
     ", comment_group_posts.post as comment_group_post_post"+
     ", group_posts.post as group_post_post"+
+    ", question_question_referrals.question as question_question_referral_question"+
     
     ", groups.name as group_name"+
     ", gp.filename as group_photo_filename"+

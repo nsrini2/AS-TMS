@@ -14,7 +14,8 @@ class ActivityStreamObserver < ActiveRecord::Observer
       when ProfileAward then opts[:profile_id] = model.profile.id
       else opts[:profile_id] = model.profile_id
     end
-    ActivityStreamEvent.add(model.class,model.id,:create,opts) unless opts.empty?
+    #SRIWW-19/Apr/13: Selectively commenting out to avoid duplicate activity stream events due to streamed
+    #ActivityStreamEvent.add(model.class,model.id,:create,opts) unless opts.empty?
   end
 
   @@monitor_update = [Profile,Group].to_set
@@ -22,7 +23,7 @@ class ActivityStreamObserver < ActiveRecord::Observer
     return unless @@monitor_update.member?(model.class)
     case model
       when Profile
-        ActivityStreamEvent.add(Profile,model.id,:update,:profile_id => model.id) if model.visible and updated_awhile_ago?(model,'about_me_updated_at')
+        #ActivityStreamEvent.add(Profile,model.id,:update,:profile_id => model.id) if model.visible and updated_awhile_ago?(model,'about_me_updated_at')
       when Group
         ActivityStreamEvent.add(model.class,model.id,:update,:group_id => model.id) if updated_awhile_ago?(model,'content_updated_at')
     end
@@ -35,7 +36,7 @@ class ActivityStreamObserver < ActiveRecord::Observer
       when GroupPhoto
         ActivityStreamEvent.add(model.class,model.id,:update,:group_id => model.owner_id) if model.parent_id.nil? # only on primary photo
       when ProfilePhoto
-        ActivityStreamEvent.add(model.class,model.id,:update,:profile_id => model.owner_id) if model.parent_id.nil? # only on primary photo
+        #ActivityStreamEvent.add(model.class,model.id,:update,:profile_id => model.owner_id) if model.parent_id.nil? # only on primary photo
     end
   end
 

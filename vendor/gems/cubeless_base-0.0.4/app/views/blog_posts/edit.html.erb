@@ -2,8 +2,10 @@
 content_for(:blog_tab, 'selected')
 content_for(:page_title, "Editing: #{@blog_post.title}")
 -%>
-<%if @group.is_sponsored?%>
-<div id="blog">
+<% if @owner.is_a?(Group) %>
+ 
+ <%if @group.is_sponsored?%>
+  <div id="blog">
 	<div id="blog_posts">
 		<% if @preview_blog_post -%>
 			<%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => @preview_blog_post, :full_post => true, :classname => 'odd', :preview => true } -%>
@@ -21,4 +23,16 @@ content_for(:page_title, "Editing: #{@blog_post.title}")
 	</div>
 	<%= render :partial => 'blogs/side_bar', :locals => { :show_create => false } -%>
 </div>
-<%end%>
+<% end %>
+
+<% else %>
+<div id="blog">
+	<div id="blog_posts">
+		<% if @preview_blog_post -%>
+			<%= render :partial => 'blog_posts/blog_post', :locals => { :blog_post => @preview_blog_post, :full_post => true, :classname => 'odd', :preview => true } -%>
+		<% end -%>
+		<%= render :partial => 'blog_posts/form' -%>
+	</div>
+	<%= render :partial => 'blogs/side_bar', :locals => { :show_create => false } -%>
+</div>
+<% end %>
