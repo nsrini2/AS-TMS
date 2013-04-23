@@ -49,7 +49,7 @@ gem 'compass-960-plugin', '0.10.0'
 
 gem 'will_paginate', "~> 3.0.pre2"
 gem 'tire', '~>0.5.1'
-gem 'twitter', :git => 'https://github.com/sferik/twitter.git' 
+gem 'twitter'
 
 
 # TNSS Engines
