@@ -113,10 +113,10 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
   add_index "audit_values", ["audit_id"], :name => "index_audit_values_on_audit_id"
 
   create_table "audits", :force => true do |t|
-    t.datetime "created_at",                     :null => false
-    t.string   "auditable_type", :default => "", :null => false
-    t.integer  "auditable_id",                   :null => false
-    t.string   "action",         :default => "", :null => false
+    t.datetime "created_at",     :null => false
+    t.string   "auditable_type", :null => false
+    t.integer  "auditable_id",   :null => false
+    t.string   "action",         :null => false
     t.integer  "who_id"
   end
 
@@ -234,8 +234,8 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "profile_id"
-    t.integer  "owner_id"
+    t.integer  "profile_id",                                   :null => false
+    t.integer  "owner_id",                                     :null => false
     t.string   "text",       :limit => 4000,                   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -440,12 +440,12 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
   add_index "group_memberships", ["profile_id"], :name => "index_group_memberships_on_profile_id"
 
   create_table "group_posts", :force => true do |t|
-    t.text     "post",                                       :null => false
+    t.text     "post",                          :null => false
     t.integer  "group_id"
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count", :limit => 8, :default => 0, :null => false
+    t.integer  "comments_count", :default => 0, :null => false
   end
 
   add_index "group_posts", ["created_at"], :name => "index_group_posts_on_created_at"
@@ -463,18 +463,18 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
   add_index "group_text_indices", ["name_text", "description_text", "tags_text"], :name => "fulltext_group"
 
   create_table "groups", :force => true do |t|
-    t.string   "name",                    :limit => 100,                 :null => false
-    t.string   "description",             :limit => 500, :default => "", :null => false
+    t.string   "name",                    :limit => 100,                :null => false
+    t.string   "description",             :limit => 500,                :null => false
     t.datetime "created_at"
     t.integer  "primary_photo_id"
     t.datetime "updated_at"
-    t.string   "tags",                    :limit => 300,                 :null => false
-    t.integer  "group_memberships_count",                :default => 0,  :null => false
-    t.integer  "group_type",                             :default => 0,  :null => false
-    t.integer  "last_updated_by",                                        :null => false
+    t.string   "tags",                    :limit => 300,                :null => false
+    t.integer  "group_memberships_count",                :default => 0, :null => false
+    t.integer  "group_type",                             :default => 0, :null => false
+    t.integer  "last_updated_by",                                       :null => false
     t.datetime "content_updated_at"
-    t.integer  "activity_points",                        :default => 0,  :null => false
-    t.integer  "activity_status",                        :default => 0,  :null => false
+    t.integer  "activity_points",                        :default => 0, :null => false
+    t.integer  "activity_status",                        :default => 0, :null => false
     t.date     "no_memberships_on"
     t.integer  "owner_id"
     t.integer  "sponsor_account_id"
@@ -502,9 +502,7 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
     t.integer "karma_login", :default => 0
   end
 
-  add_index "karma_histories", ["month"], :name => "month_index"
   add_index "karma_histories", ["profile_id", "month", "year"], :name => "karma_month_index", :unique => true
-  add_index "karma_histories", ["year"], :name => "year_index"
 
   create_table "list_pois", :force => true do |t|
     t.string  "owner_type", :null => false
@@ -552,31 +550,6 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
 
   add_index "marketing_messages", ["active"], :name => "index_marketing_messages_on_active"
   add_index "marketing_messages", ["is_default"], :name => "index_marketing_messages_on_is_default"
-
-  create_table "mint__config", :force => true do |t|
-    t.text "cfg",  :limit => 16777215, :null => false
-    t.text "data", :limit => 16777215, :null => false
-  end
-
-  create_table "mint_visit", :force => true do |t|
-    t.integer "dt",                :default => 0,     :null => false
-    t.string  "referer",                              :null => false
-    t.integer "referer_checksum",                     :null => false
-    t.integer "domain_checksum",                      :null => false
-    t.boolean "referer_is_local",  :default => false, :null => false
-    t.string  "resource",                             :null => false
-    t.integer "resource_checksum",                    :null => false
-    t.string  "resource_title",                       :null => false
-    t.string  "search_terms",                         :null => false
-    t.boolean "img_search_found",  :default => false, :null => false
-  end
-
-  add_index "mint_visit", ["domain_checksum"], :name => "domain_checksum"
-  add_index "mint_visit", ["dt"], :name => "dt"
-  add_index "mint_visit", ["img_search_found"], :name => "img_search_found"
-  add_index "mint_visit", ["referer_checksum"], :name => "referer_checksum"
-  add_index "mint_visit", ["referer_is_local"], :name => "referer_is_local"
-  add_index "mint_visit", ["resource_checksum"], :name => "resource_checksum"
 
   create_table "news_followers", :force => true do |t|
     t.integer  "profile_id"
@@ -674,7 +647,7 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
 
   create_table "pois", :force => true do |t|
     t.datetime "created_at",                                                         :null => false
-    t.string   "poi_type"
+    t.string   "poi_type",                                                           :null => false
     t.string   "name",                                                               :null => false
     t.string   "loc_name"
     t.decimal  "loc_lat",         :precision => 13, :scale => 10
@@ -709,17 +682,6 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
   add_index "pois", ["poi_type"], :name => "index_trip_elements_on_element_type"
   add_index "pois", ["popularity"], :name => "index_plan_elements_on_popularity"
   add_index "pois", ["rating_avg"], :name => "index_trip_elements_on_rating_avg"
-
-  create_table "poly_text_indices", :force => true do |t|
-    t.string  "owner_type", :null => false
-    t.integer "owner_id",   :null => false
-    t.string  "domain"
-    t.text    "text"
-  end
-
-  add_index "poly_text_indices", ["owner_type", "domain", "owner_id"], :name => "index_poly_text_indices_on_owner_type_and_domain_and_owner_id"
-  add_index "poly_text_indices", ["owner_type", "owner_id"], :name => "index_poly_text_indices_on_owner_type_and_owner_id"
-  add_index "poly_text_indices", ["text"], :name => "fulltext_text"
 
   create_table "posts", :force => true do |t|
     t.integer  "topic_id"
@@ -811,7 +773,7 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
     t.boolean  "karma_abducted",                                          :default => false, :null => false
     t.string   "api_key"
     t.integer  "list_pois_count",                                         :default => 0,     :null => false
-    t.string   "roles",                                                   :default => ""
+    t.string   "roles"
     t.string   "profile_8"
     t.string   "profile_9"
     t.string   "profile_10"
@@ -1024,7 +986,6 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
     t.string   "monitor_email_address"
     t.boolean  "frozen_emails",             :default => false
     t.boolean  "ssl_enabled",               :default => false
-    t.boolean  "use_gen_widgets_enabled",   :default => true
     t.string   "welcome_promo_title_1",     :default => ""
     t.string   "welcome_promo_1",           :default => ""
     t.string   "welcome_promo_title_2",     :default => ""
@@ -1300,13 +1261,6 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
   add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["sso_id"], :name => "index_users_on_external_id"
 
-  create_table "users_fb_award", :force => true do |t|
-    t.integer   "user_id",                                :null => false
-    t.integer   "awarded",    :limit => 1, :default => 0, :null => false
-    t.timestamp "updated_at",                             :null => false
-    t.timestamp "created_at"
-  end
-
   create_table "videos", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -1322,8 +1276,8 @@ ActiveRecord::Schema.define(:version => 20130411065926) do
   end
 
   create_table "visitations", :force => true do |t|
-    t.integer  "profile_id"
-    t.integer  "owner_id"
+    t.integer  "profile_id", :null => false
+    t.integer  "owner_id",   :null => false
     t.datetime "updated_at"
     t.string   "owner_type", :null => false
   end
