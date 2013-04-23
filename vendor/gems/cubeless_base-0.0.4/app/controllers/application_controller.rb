@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   # prevent against CSRF [security]
   protect_from_forgery
 
-  helper [:profiles, :questions, :groups, :css, :travels]
+  helper [:profiles, :questions, :groups, :css, :travels, :marketing_messages,:filter_sort,:photos]
 
   include Ads
   include AuthenticatedSystem

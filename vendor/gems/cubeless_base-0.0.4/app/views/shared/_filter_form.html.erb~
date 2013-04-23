@@ -1,0 +1,32 @@
+<% scope = params.fetch('filter_scope','all') %>
+<% category = params.fetch('filter_category','all') %>
+<%= form_tag('', :method => :get, :id => "filter_form", :class => "#{ "ajax" if options[:ajax] }") %>
+	<% (CGI::parse(request.query_string)).each do |k,v|
+		next if k=='filter_order' or k=='page' or k=='filter_scope' or k=='filter_category' or k=='authenticity_token' %>
+		<%= hidden_field_tag(k,v,:id => k+"_hidden") %>
+	<% end %>
+	<% if options[:category_options] %>
+		<div class="categories">
+			<strong>Category: </strong><%= category_select_for(options) %>
+		</div>
+	<% end %>
+	<% if options[:filter_select] %>
+		<div id="filter_option">
+			<strong>View: </strong>
+			<%= filter_select_for(options) %>
+		</div>
+	<% elsif options[:filter_options] %>
+		<%= hidden_field_tag('filter_scope',scope,:id => 'filter_scope') %>
+		<dl id="filter_options">
+			<dt><strong>View:<strong></dt>
+			<%= filter_links_for(options,scope) %>
+		</dl>
+	<% end %>
+	<% if options[:sort_options] %>
+		<div class="sort_options">
+			<strong>Sort by: </strong>
+			<%= sort_select_for(options) %>
+		</div>
+	<% end %>
+	
+</form>

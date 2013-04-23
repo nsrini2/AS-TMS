@@ -1,0 +1,15 @@
+<link href="/themes/agentstream/_css/showcase.css" rel="stylesheet">
+<h2 class="page_title"><%=@sponsor_account.name%></h2>
+<div id="list" >
+   <div id="news_feed" class="tabs_panel" style="border: 1px solid";>
+        <%= render :partial => '/showcase/events_panel', :locals => { :events => @events } %>
+        <%= will_paginate @events %>
+   </div>
+   <div class="groups_results" style="border: 1px solid;">
+        <%#= filter_control('CategoryGroup') %>
+        <%= sort_control('CategoryGroup') %><br/><br/>
+	<%= render :partial => 'showcase/groups' %>
+	<%= will_paginate @category_groups %>
+  </div>
+</div>
+

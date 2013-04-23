@@ -46,6 +46,16 @@ module ListFiltering
     Group.where(group_types[filter_scope]).order(order_hash[filter_order])
   end
 
+  def category_filtered_groups(sponsor_account_id,find_options={})
+    group_types = {'all' => 'groups.group_type >= 0', 'public' => 'groups.group_type = 0', 'invite_only' => 'groups.group_type = 1', 'private' => 'groups.group_type = 2'}
+    order_hash = {'newest_to_oldest' => 'groups.created_at desc', 'oldest_to_newest' => 'groups.created_at', 'most_members' => 'groups.group_memberships_count desc', 'most_activity' => 'groups.activity_status desc', 'relevance' => nil}
+    Rails.logger.info "using category_filtered_groups"
+    filter_order = params[:filter_order] || "newest_to_oldest"
+    filter_scope = params[:filter_scope] || 'all'
+    Rails.logger.info("The selected showcase category is:" + SponsorAccount.find(sponsor_account_id).name.to_s)
+    Group.where(group_types[filter_scope]).where('sponsor_account_id=?',sponsor_account_id).order(order_hash[filter_order])
+  end
+
   @@profile_sort_options_list = {"last_first" => "last_name, first_name", "first_last" => "first_name, last_name"}
   def profile_filters(find_options={})
     find_options[:order] ||= @@profile_sort_options_list[params['filter_order'] || params.store('filter_order','last_name, first_name')]

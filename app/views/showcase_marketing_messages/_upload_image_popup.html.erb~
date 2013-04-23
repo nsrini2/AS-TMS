@@ -1,0 +1,9 @@
+<% content_for(:title, "Upload Image") -%>
+<% form_for :asset, :url => (defined?(msg) ? marketing_message_path(msg) : marketing_messages_path), :html => { :multipart => true, :method => (defined?(msg) && msg ? :put : :post) } do |f| -%>
+	<p>Click browse to find an image on your computer. Your new image will appear at the bottom of the list after you click the save button below. We like JPG, GIF or PNG files up to 2MB with the dimensions 595x240.</p>
+	<%= f.file_field :uploaded_data %>
+	<div class="buttons">
+		<input type="submit" name="commit" value="Upload" class="button medium">
+		<input type="button" name="cancel" value="Cancel" class="button medium light close">
+	</div>
+<% end -%>
