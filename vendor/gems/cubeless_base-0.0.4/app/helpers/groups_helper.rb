@@ -29,10 +29,15 @@ module GroupsHelper
 
 
   def calc_tag_sizes(tag,minoccurs,maxoccurs)
-    minFontSize=20
-    maxFontSize=40
-    weight = (tag[:count]-minoccurs).to_f/(maxoccurs-minoccurs)
-    size = minFontSize + ((maxFontSize-minFontSize)*weight).round
+    minFontSize=15
+    maxFontSize=35
+    maxlog=Math.log(maxoccurs)
+    minlog=Math.log(minoccurs)
+    occursrange=maxlog-minlog
+    occursrange=1 if maxlog==minlog
+    fontrange=maxFontSize-minFontSize
+    weight = (Math.log(tag[:count])-minlog)/occursrange
+    size = minFontSize + (fontrange*weight).round
   end  
 
   def link_to_booth_tag(owner, tag, minoccurs, maxoccurs)

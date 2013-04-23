@@ -58,7 +58,8 @@ class BlogPostsController < ApplicationController
           if @group_blog_tags.count > 0
             @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
             @minTagOccurs=@group_blog_tags.first[:count]
-            @maxTagOccurs=@group_blog_tags.last[:count]  
+            @maxTagOccurs=@group_blog_tags.last[:count]
+            #@maxTagOccurs=@minTagOccurs if @maxTagOccurs.NaN?
           end
           render :template => 'blogs/show', :layout => @owner.is_sponsored? ? 'sponsored_group' :'group'
          else
