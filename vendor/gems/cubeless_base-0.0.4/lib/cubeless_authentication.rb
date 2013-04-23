@@ -38,7 +38,7 @@ module CubelessAuthentication
 
   def require_password_change?
     return if current_profile.has_role?(Role::CubelessAdmin)
-    duration_seconds = current_profile.has_role?(Role::UserAdmin, Role::ShadyAdmin, Role::ContentAdmin, Role::ShadyAdmin,  Role::AwardsAdmin, Role::SponsorAdmin) ? Config['user.pwd.duration.admin'] : Config['user.pwd.duration.user']
+    duration_seconds = current_profile.has_role?(Role::ShadyAdmin, Role::ContentAdmin, Role::ShadyAdmin, Role::UserAdmin, Role::AwardsAdmin, Role::SponsorAdmin) ? Config['user.pwd.duration.admin'] : Config['user.pwd.duration.user']
     duration_seconds && current_user.uses_login_pass? && Time.now > current_user.password_changed_at + duration_seconds
   end
 

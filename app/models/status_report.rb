@@ -60,12 +60,6 @@ class << self
     # Answers
     data << "Total Answers,#{Answer.count}\n\n"
     
-    
-    # Number of unique visitors by month
-    data << "Month of:,Unique logins\n"
-    start_date = today.advance(:months => -1)
-    data << "#{start_date.strftime('%B')}, #{SiteVisit.visitors_by_month(start_date)}\n\n"  
-    
     # Number of unique visitors by week
     data << "Week of:,Unique logins, Total Community Size\n"
     (1..52).each do |week|
@@ -75,7 +69,7 @@ class << self
     data << "\n"
     
     # Top ten countries with most visitors by week for the given month
-    top_visitor_countries = SiteVisit.visitors_by_country(first_day_of_month, last_day_of_month + 1)
+    top_visitor_countries = SiteVisit.visitors_by_country(first_day_of_month, last_day_of_month)
     top_visitor_countries.each do | visit |
       data << "Number of unique visitors from, #{visit.country.chomp}, #{visit.profile_count}\n"
     end

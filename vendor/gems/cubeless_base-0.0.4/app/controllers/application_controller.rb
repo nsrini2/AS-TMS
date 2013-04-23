@@ -153,7 +153,7 @@ class ApplicationController < ActionController::Base
   # audit any changes admins make to the system
   def audit_admin_request
     return if request.get?
-    return unless logged_in? and current_profile.has_role?(Role::CubelessAdmin, Role::UserAdmin, Role::ReportAdmin, Role::ShadyAdmin, Role::ContentAdmin, Role::AwardsAdmin, Role::SponsorAdmin)
+    return unless logged_in? and current_profile.has_role?(Role::CubelessAdmin, Role::ReportAdmin, Role::ShadyAdmin, Role::ContentAdmin, Role::UserAdmin, Role::AwardsAdmin, Role::SponsorAdmin)
     audit_event('admin', :merge_params => true)
   end
   

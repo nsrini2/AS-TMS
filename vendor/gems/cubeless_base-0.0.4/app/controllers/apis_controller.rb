@@ -111,7 +111,7 @@ class ApisController < ApplicationController
   end
 
   def questions
-    opts = {:summary => true, :limit => 50, :order => "questions.created_at DESC"}
+    opts = {:summary => true, :limit => 500, :order => "questions.created_at DESC"}
     ModelUtil.add_conditions!(opts, ["questions.profile_id=?", params[:profile_id]]) if params[:profile_id]
     ModelUtil.add_conditions!(opts, ["questions.created_at>?", Date.parse(params[:date])]) if params[:date]
     ModelUtil.add_conditions!(opts, ["questions.open_until>?", Date.parse(params[:open_until])]) if params[:open_until]

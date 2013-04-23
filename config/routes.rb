@@ -417,7 +417,7 @@ AgentStream::Application.routes.draw do
     resources :group_posts do
       resources :comments
     end
-    resource :announcement, :controller => "group_announcements"
+    resource :announcement
     resources :gallery_photos do
       member do
         match :update, :as => :update, :via => :put

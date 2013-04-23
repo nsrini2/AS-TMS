@@ -85,20 +85,14 @@ describe Notifications do
       # SSJ I may have done a bad thing, but I could not get @question.profile_id to pass 
       # into SQL INSERT statment, so I removed the requirement from cubeless_trunk_test.questions
       @question = Factory.build(:question)
-      @profile = Factory.build(:profile, :first_name => "Create", :last_name => "Profile")
       SemanticMatcher.default.stub!(:match_question_to_profiles).and_return(:true)
     end
     
     
     it "should call fire_notifications after it is saved" do
-      pending "MySQL is throwing profile_id as nil error -- not sure what is causing this"
-      @q = Question.new()
-      @q.category = "Life"
-      @q.question = "This is the spec question"
-      @q.open_until = Time.now.advance(:months => 1)
-      @q.profile_id = 1
-      @q.should_receive(:fire_notifications).and_return(:true)
-      @q.save
+      @question.should be_valid
+      @question.should_receive(:fire_notifications).and_return(:true)
+      @question.save
     end
     
     it "should call SemanticMatcher.default.match_question_to_profiles when a question is saved" do
@@ -397,7 +391,7 @@ describe Notifications do
       @question_referral.fire_notifications
     end
     
-    it "should batch email a referral if send_group_email is called" do
+    it "should batch email a referral is send_group_email is called" do
       QuestionReferral.methods.include?('send_batch_email').should be_true
       QuestionReferral.should_receive(:send_batch_email).with(anything, @group.members ).and_return(true)
       @question_referral.send_group_referral_email

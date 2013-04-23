@@ -10,8 +10,7 @@ class Group < ActiveRecord::Base
   has_many :group_memberships, :dependent => :destroy
   has_many :members, :through => :group_memberships
   has_many :moderators, :through => :group_memberships, :source => :member, :conditions => "moderator=1", :order => "screen_name"
-  has_many :non_moderators, :through => :group_memberships, :source => :member, :conditions => "moderator=0", :order => "screen_name"
-  
+
   has_many :referred_questions, :class_name => 'QuestionReferral', :as => :owner, :dependent => :destroy
 
   has_many :questions_referred_to_me, :through => :referred_questions, :source => :question,
@@ -69,14 +68,14 @@ class Group < ActiveRecord::Base
   end
 
   def self.find(*args)
-    #here args
+    here args
     
     current_profile = AuthenticatedSystem.current_profile
     #!H super-awful performance hack
     ModelUtil.add_selects!(args,"groups.*, (select count(1) from group_memberships where group_id=groups.id and profile_id=#{current_profile.id}) as current_profile_is_member, #{current_profile.id} as current_profile_id") if current_profile
     ModelUtil.add_includes!(args,:primary_photo)
     
-    #here args
+    here args
     
     super(*args)
   end
@@ -245,7 +244,7 @@ class Group < ActiveRecord::Base
     stats[:average_number_of_comments] = number_of_comments > 0 ? stats[:total_blog_posts] / number_of_comments : 0
     stats[:most_commented_on_blog_post] = BlogPost.find(:all, :include => :blog, :conditions => ["blogs.owner_id = ?", self.id], :limit => 1, :order => "blog_posts.comments_count DESC").first
     stats[:highest_rated_blog_post] = BlogPost.find(:all, :include => :blog, :conditions => ["blogs.owner_id = ?", self.id], :limit => 1, :order => "blog_posts.rating_avg DESC").first
-    stats[:biggest_blogger] = Profile.find_by_sql(["select * from blog_posts bp, blogs b, profiles p where b.owner_id = ? and b.owner_type = 'Group' and bp.blog_id = b.id and bp.creator_id = p.id group by bp.creator_id order by count(1) DESC limit 1", self.id]).first || nil
+    stats[:biggest_blogger] = Profile.find_by_sql(["select * from blog_posts bp, blogs b, profiles p where b.owner_id = ? and b.owner_type = 'Group' and bp.blog_id = b.id and bp.profile_id = p.id group by bp.profile_id order by count(1) DESC limit 1", self.id]).first || nil
     
     stats
   end

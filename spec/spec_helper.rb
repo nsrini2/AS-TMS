@@ -37,15 +37,15 @@ RSpec.configure do |config|
   def login_as_content_admin
     stub_current_user_and_profile( create_user_and_profile(:login => 'content_admin', :roles => Role::ContentAdmin) )
   end
-
-  def login_as_user_admin
-    stub_current_user_and_profile( create_user_and_profile(:login => 'user_admin', :roles => Role::UserAdmin) )
-  end
   
   def login_as_shady_admin
     stub_current_user_and_profile( create_user_and_profile(:login => 'shady_admin', :roles => Role::ShadyAdmin) )
   end
-    
+  
+  def login_as_user_admin
+    stub_current_user_and_profile( create_user_and_profile(:login => 'user_admin', :roles => Role::UserAdmin) )
+  end
+  
   def login_as_awards_admin
     stub_current_user_and_profile( create_user_and_profile(:login => 'awards_admin', :roles => Role::AwardsAdmin) )
   end

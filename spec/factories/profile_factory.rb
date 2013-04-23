@@ -60,7 +60,6 @@ FactoryGirl.define do
     f.question "This is the spec factory question"
     f.open_until Time.now.advance(:months => 1)
     f.association :profile
-    f.profile_id 1
   end
   
   Factory.define :answer do |f|

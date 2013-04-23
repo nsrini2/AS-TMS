@@ -167,11 +167,10 @@ class GroupsController < ApplicationController
     GroupMembership.find_by_group_id_and_profile_id(@group, params[:profile_id]).toggle!(:moderator)
     @non_moderators = non_mods
     @moderators = @group.moderators
-    moderator_list_html = view_context.escape_javascript render_to_string :partial => 'groups/member', :collection => @moderators.reject{|x| x.id==@group.owner_id }, :locals => {:is_moderator => true}
-    member_list_html = view_context.escape_javascript render_to_string :partial => 'groups/member', :collection => @non_moderators, :locals => {:is_moderator => false}
-    javascript_updates = "$('#moderator_list').html('#{moderator_list_html}');"
-    javascript_updates << "$('#member_list').html('#{member_list_html}');"
-    render :js => javascript_updates
+    render :update do |page|
+      page[:moderator_list].replace_html :partial => 'groups/member', :collection => @moderators.reject{|x| x.id==@group.owner_id }, :locals => {:is_moderator => true}
+      page[:member_list].replace_html :partial => 'groups/member', :collection => @non_moderators, :locals => {:is_moderator => false}
+    end
   end
 
   def ownership
@@ -190,14 +189,13 @@ class GroupsController < ApplicationController
     profile = @group.members.find_by_id(params[:profile_id])
     if profile
       @group.transfer_ownership_to!(profile)
-      flash[:notice] = "#{profile.screen_name} is now the owner of this group!"
     end
-    redirect_to @group
   end
 
   def non_mods
-    p = params[:q] || ""
-    @group.non_moderators.where("CONCAT(first_name, ' ', last_name) LIKE ?", "%#{p}%")
+    opts = { :conditions => "moderator=0", :order => "screen_name", :page => default_paging }
+    p = params[:q] || {}
+    p.empty? ? @group.members.find(:all,opts) : @group.members.find_by_full_name(p,opts)
   end
 
   def filter_mods

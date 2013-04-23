@@ -2,7 +2,7 @@ class GroupAnnouncementsController < ApplicationController
   before_filter :init_group_announcement
 
   def show
-    render :template => 'group_announcements/_group_announcement_form', :layout => 'layouts/group_manage_sub_menu'
+    render :partial => 'group_announcements/group_announcement_form', :layout => 'group_manage_sub_menu'
   end
 
   def update

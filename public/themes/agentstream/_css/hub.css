@@ -45,7 +45,7 @@
 #news_feed .news_item .details {
   display: block;
   float: left;
-  width: 410px;
+  width: 420px;
 }
 
 /* line 9, ../../../../app/stylesheets/themes/agentstream/hub.scss */
@@ -101,10 +101,11 @@
 
 /* line 18, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask textarea {
-  height: 80px;
-  width: 410px;
+  height: 60px;
+  width: 415px;
   padding: 10px;
   border: 1px solid #90b4bc;
+  border-width: 1px 1px 1px 0;
   font-size: 12px;
   line-height: 1.2em !important;
   color: #4a6970;
@@ -112,8 +113,8 @@
 
 /* line 19, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask img {
-  /*border: 1px solid #90b4bc;
-  border-width: 1px 0 1px 1px;*/
+  border: 1px solid #90b4bc;
+  border-width: 1px 0 1px 1px;
 }
 
 /* line 20, ../../../../app/stylesheets/themes/agentstream/hub.scss */

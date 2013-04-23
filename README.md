@@ -1,3 +1,4 @@
+Set up:
 
 1 - git clone  to create local copy of repo 
 
@@ -39,21 +40,3 @@
 
     - u: cubeless_admin  p: abc123
     - u: agent_a         p: abc123
-    
-
-#Cached Objects
-
-Because some classes get overridden in development mode, you must set caching to true to work use these files.  Some notable areas include:
-
-       My Agency -- Companies::HubController
-       Search -- ChatTopicIndex
-       
-To turn on caching in development:
-
-    config/environments/development.rb
-    # change line 8 from:
-    config.cache_classes = false 
-    # to
-    config.cache_classes = true
-    
-Note:  You will need to restart your server instance to see changes in code base when this is set to true.

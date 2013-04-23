@@ -2,11 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require 'log4r'
-require 'log4r/yamlconfigurator'
-require 'log4r/outputter/datefileoutputter'
-include Log4r
-
 # Hack to look in engines first
 # require 'active_support/dependencies'
 # module ActiveSupport::Dependencies
@@ -183,7 +178,7 @@ module AgentStream
       ActionView::Base.sanitized_allowed_tags << 'u'
     end
 
-    # BUFFERED LOGGER
-    Rails.logger = ActiveSupport::BufferedLogger.new(File.dirname(__FILE__) + "/../log/#{Rails.env}.log")
+    config.logger = Logger.new(File.dirname(__FILE__) + "/../log/#{Rails.env}.log") 
+    config.logger.formatter = Logger::Formatter.new
   end
 end

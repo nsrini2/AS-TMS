@@ -12,18 +12,8 @@ module PhotosHelper
     if model.is_a?(Profile) && photo_linkable?(model, options)
       link_opts = { :class => 'photo_link_to' }.merge(options.delete(:link_options) || {})
     end
-    
-    div_class_name = "photo_wrapper"
-    
-    Rails.logger.info "detect expert"
-    Rails.logger.info model.class.to_s
-    
-    if (model.is_a?(Profile) && model.sponsor_account_id == 1) || 
-        (model.is_a?(ActivityStreamEvent) && model.profile.sponsor_account_id == 1)
-      div_class_name << " expert"
-    end
-    
-    content_tag :div, :class => div_class_name do
+
+    content_tag :div, :class => "photo_wrapper" do
       (options[:hide_sponsor_sash] ? "" : sponsor_indicator_for(model).to_s) +
       link_to_if(photo_linkable?(model, options), image_tag(primary_photo_path_for(model, options[:thumb]), :size => options[:size], :alt => "avatar", :class => "photo #{'tooltip' if tooltip}", :title => tooltip), photo_link(model), link_opts) +
       (options[:hide_status_indicator] ? "" : online_indicator_for(model).to_s ) +

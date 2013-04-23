@@ -389,7 +389,7 @@ p.category, p.answers {
 
 /* line 30, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 img.photo {
-  /*border: 1px solid #C4D7DC;*/
+  border: 1px solid #C4D7DC;
 }
 
 /* line 32, ../../../../app/stylesheets/themes/agentstream/screen.scss */
@@ -6652,12 +6652,3 @@ div#search_filter .accordionButton a {
   font-weight: normal;
   text-transform: lowercase;
 }
-/*.expert {
-	background: url("/images/expert.gif") no-repeat 0 0;
-	width: 86px;
-	height: 102px;
-}
-.expert img.photo {
-	margin: 3px;
-	border: none;
-}*/

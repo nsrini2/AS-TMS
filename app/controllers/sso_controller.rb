@@ -32,6 +32,17 @@ class SsoController
   end
   
   def srw
+    Rails.logger.error "An error occured creating a user from SRW -- user redirected to '/account/welcome' "
+    message="We were unable to connect your account to AgentStream. "
+    message+="Please verify you Sabre Red Profile has a valid email address and try to connect again. "
+    message+="Or you can login in using your AgentStream account. "
+    message+="If you continue to have trouble, please notify us #{view_context.link_to('here', '/feedback')}."
+    flash[:notice]=message
+    redirect_to "/account/welcome"
+    
+    return
+    
+    
     # validate SSO param ?
     ticket_id = params[:ticketNo] || nil
     unless ticket_id
