@@ -26,7 +26,7 @@
 
   <% if content_for? :booth_social_feeds_panel %>
      <div class="booth_social_feeds">
-       <%=yield :booth_info_panel %>
+       <%=yield :booth_social_feeds_panel %>
      </div>
   <% end %>
 
@@ -44,21 +44,6 @@
         </div>
       </div>
       
-      <% if content_for? :post_panel %>
-        <div class="post-panel">
-          <%= yield :post_panel %>
-        </div>
-      <% end %>
-    </div>
-  
-    <% if content_for? :aside %>
-      <div class="aside">
-      	<%= yield :aside %>
-      </div>
-    <% end %>
-  </div>
- 
-
   <% elsif content_for? :tabs %>
    <div class="profile">
     <div class="primary <%= "full_length" unless content_for?(:aside) %>">
@@ -69,13 +54,14 @@
 
         <div class="tabs-panel">
           <%= content_for?(:tab_panel) ? yield(:tab_panel) : yield %>
+          
           <div style="clear: both;"></div>
         </div>
       </div>
       
       <% if content_for? :post_panel %>
         <div class="post-panel">
-          <%= yield :post_panel %>
+          <%#= yield :post_panel %>
         </div>
       <% end %>
     </div>
@@ -87,7 +73,8 @@
     <% end %>
 
   </div>
- <% end %>
+<% end %>
+
 <% end %>
 
 <%= render :file => 'layouts/_application' -%>

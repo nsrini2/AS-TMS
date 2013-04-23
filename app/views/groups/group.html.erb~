@@ -14,13 +14,13 @@ content_for(:page_title, @group.name)
    </div>
 
    <div class="group_marketing_message">
-        <div id="booth_marketing_message"><%= showcase_marketing_image_tag(@random_marketing_message) -%></div>
+        <div id="booth_marketing_message"><%= booth_marketing_image_tag(@random_marketing_message) -%></div>
    </div>
 
 <% else %>
 
 <div id="group_hub" <%= 'class="with_stream"' if group_member_or_public_content(@group) %>>
- <%= action_list_for([
+  <%= action_list_for([
   	(link_for_group_action(@group) unless hide_for_sponsor)
   ], :class => 'group_actions full_screen') -%>
 
@@ -60,17 +60,15 @@ content_for(:page_title, @group.name)
     </div>
     <% end -%>
 
-  <#% end %>
+  <% end %>
 <% end %>
 
 <% content_for :post_panel do %>
   <div id="group_widgets">
 		<%= group_member_or_public_content @group do -%>
 			<%= render :partial => 'groups/group_announcement', :locals => { :group_announcement => @group.group_announcement } -%>
-			<%= render :partial => 'widget_drive_bys' -%>
+                        <%= render :partial => 'widget_drive_bys' -%>
 		<% end -%>
 	</div>
-  <% end %>
-<%end%>
-
-<%end%>
+<% end %>
+<% end %>

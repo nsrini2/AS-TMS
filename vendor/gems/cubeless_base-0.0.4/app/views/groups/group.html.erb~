@@ -45,7 +45,7 @@ content_for(:page_title, @group.name)
 	<div id="group_widgets">
 		<% group_member_or_public_content @group do -%>
 			<%= render :partial => 'groups/group_announcement', :locals => { :group_announcement => @group.group_announcement } -%>
-			<%= render :partial => 'widget_drive_bys' -%>
+			<%#= render :partial => 'widget_drive_bys' -%>
 		<% end -%>
 	</div>
 </div>
