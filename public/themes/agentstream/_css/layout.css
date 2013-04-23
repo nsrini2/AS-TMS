@@ -96,19 +96,25 @@
 }
 
 /* line 42, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+.profile .sponsor_grp {
+  width: 655px;
+  margin-left: 0;
+}
+
+/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .primary {
   width: 720px;
   clear: both;
   margin-left: 0;
 }
 
-/* line 43, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 44, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .aside {
   width: 240px;
   margin-right: 0;
 }
 
-/* line 45, ../../../../app/stylesheets/themes/agentstream/layout.scss */
+/* line 46, ../../../../app/stylesheets/themes/agentstream/layout.scss */
 .profile .full_length {
   width: 960px;
   clear: both;

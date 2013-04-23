@@ -54,7 +54,7 @@ div.question {
   div.item_text{
     margin-bottom: 20px;
     span, a {
-      font-size: 1.3em ! important;
+      font-size: .8em ! important;
     }
   }
   ul.action_list {

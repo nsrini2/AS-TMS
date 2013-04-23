@@ -1,0 +1,11 @@
+<%
+show = nil unless defined?(show) #!H?
+model = '' unless defined?(model)
+domain = '' unless defined?(domain)
+questions_for = nil unless defined?(questions_for)
+avatar_size = :thumb_80 unless avatar_size
+questions.each_with_index do |question, index|%>
+	<div id="qaQuestion<%=question.id%>" class="question <%=question.id%> list_item <%=cycle("odd", "even") %>">
+		<%= render :partial =>'questions/question', :locals => {:questions_for => questions_for, :domain => domain, :questions_counter => index, :question => question, :show => show, :model => model, :avatar_size => avatar_size }%>
+	</div>
+<%end%>

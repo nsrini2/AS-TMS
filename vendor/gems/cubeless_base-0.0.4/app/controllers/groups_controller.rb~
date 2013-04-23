@@ -314,7 +314,6 @@ class GroupsController < ApplicationController
       @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
       @minTagOccurs=@group_blog_tags.first[:count]
       @maxTagOccurs=@group_blog_tags.last[:count]
-      Rails.logger.info("Niranjana Rahul:min=#{@minTagOccurs}, max=#{@maxTagOccurs}")
     end
     redirect_to groups_explorations_path unless @group
   end
