@@ -10,7 +10,7 @@ class BoothMarketingMessagesController < ApplicationController
 
  def new
     respond_to do |format|
-      format.js { render(:template => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup') }
+      format.html { render(:template => 'booth_marketing_messages/upload_image_popup', :layout => '/layouts/popup') }
     end
   end
 
