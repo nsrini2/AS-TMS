@@ -1,0 +1,31 @@
+<% content_for(:page_title, "Edit #{@sponsor_group.name}") -%>
+<h2>Edit Booth <%= @sponsor_group.name %></h2>
+<% form_for(:sponsor_group,:url => {:action => "update"},:html => {:method => :put}) do |f| -%>
+
+	<label for="sponsor_group_owner">Booth Owner</label><br />
+	<% sponsors = @sponsor_account.sponsors.collect { |s| ["#{s.first_name} #{s.last_name}", s.id] } %>
+	<%=f.select(:owner_id, sponsors)%><br /><br/>
+
+	<label for="sponsor_group_type">Booth Type</label><br />
+        <%=f.select(:group_type,@group_types,:selected => @sponsor_group.group_type)%><br/><br/>
+       
+        <label for="sponsor_group_name">Booth Name</label><br/>
+	<%= f.text_field :name, :size => 32 -%><br /><br />
+
+	<label for="sponsor_group_description">Booth Description</label><br/>
+	<%= f.text_area :description, :rows => 10, :cols => 40 -%><br /><br />
+
+	<label for="sponsor_group_de_allowed">Deals and Extras Allowed?</label><br/>
+        <%= f.radio_button :de_flag, 1 %>
+        <label for="sponsor_group_de_allowed_yes">Yes</label><br/>
+        <%= f.radio_button :de_flag, 0 %>
+        <label for="sponsor_group_de_allowed_no">No</label><br/><br/>
+
+        <label for="sponsor_group_tags">Booth Tags</label><br/>
+	<%= f.text_field :tags, :size => 32, :class => 'input'-%><br /><br />
+	<%= f.submit "Update Booth", :class => "button large"%>
+
+<% end %>
+<style>
+ .big_action {font-size: 13px}
+</style>

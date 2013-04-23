@@ -249,7 +249,7 @@ AgentStream::Application.routes.draw do
 	get :delete
    end
   end
- 
+
 
   resources :sponsor_accounts do
     resources :sponsor_members do    
@@ -265,7 +265,7 @@ AgentStream::Application.routes.draw do
         post :add_sponsor
         post :remove_sponsor
         get :delete
-      end
+       end
     end
   end
 
@@ -275,6 +275,8 @@ AgentStream::Application.routes.draw do
       match :unlock
     end
   end
+
+  resources :showcase
 
   resources :api, :controller => "apis" do
     collection do

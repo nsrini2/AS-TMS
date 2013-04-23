@@ -5,6 +5,7 @@ class SponsorMembersController < ApplicationController
 
   def index
     @sponsor_account = SponsorAccount.find(params[:sponsor_account_id])
+    @sponsors=@sponsor_account.sponsors.paginate(:page => params[:page], :per_page => 5)
   end
 
   def create

@@ -1,0 +1,38 @@
+<% content_for(:page_title, "Manage Sponsor Members for #{@sponsor_account.name} Showcase Category") -%>
+<h2><%= @sponsor_account.name %> Category Sponsor Members </h2>
+<a href="<%= sponsor_accounts_path -%>">&laquo; Back to Showcase Categories</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%= sponsor_account_sponsor_groups_path(@sponsor_account) -%>">Manage Booths</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%= new_sponsor_account_sponsor_member_url(@sponsor_account) %>">Create a new Member</a><br /><br />
+<% @sponsors.each_index do |index| -%>
+<% sponsor = @sponsor_account.sponsors[index] -%>
+<% klass = index%2 != 0 ? 'even' : 'odd' -%>
+<div class="sponsor_account_sponsor sponsor_account_sponsor_<%= klass %>">
+	<h3><%= sponsor.full_name %></h3>
+	<p>
+
+	</p>
+	<div class="container">
+		<% form_for :sponsor_member, :url => add_group_sponsor_account_sponsor_member_path(@sponsor_account, sponsor) do |f| -%>
+		<label for="add_group_<%= "#{sponsor.id}" %>">Add to a booth:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<% account_groups = @sponsor_account.groups.to_set.subtract(sponsor.groups).collect { |s| ["#{s.name}", s.id] } %>
+			<%= select(:group, :id, account_groups, { :prompt => 'Select Booth' }, {:id => "add_group_#{sponsor.id}", :disabled => account_groups.size > 0 ? false : true } ) -%>
+			<%= account_groups.size > 0 ? submit_tag("Add to Group") : "<a href=\"#{new_sponsor_account_sponsor_group_path(@sponsor_account)} \">Create a booth</a>" %>
+		<% end -%>
+		<% form_for :sponsor_member, :url => remove_group_sponsor_account_sponsor_member_path(@sponsor_account, sponsor) do |f| -%>
+			<label for="remove_group_<%= "#{sponsor.id}" %>">Remove from a booth:</label>
+			<% sponsor_member_groups = sponsor.groups.exclude_groups(sponsor).collect { |s| ["#{s.name}", s.id] } %>
+			<%= select(:group, :id, sponsor_member_groups, { :prompt => 'Select Booth' }, {:id => "remove_group_#{sponsor.id}", :disabled => sponsor_member_groups.size > 0 ? false : true }) -%>
+			<%= submit_tag "Remove from Booth", :disabled => sponsor_member_groups.size > 0 ? false : true %>
+		<% end -%>
+		<br />
+		<ul class="action_list">
+			<li><a href="<%= groups_profile_path(sponsor) %>">Belongs to <%= pluralize(sponsor.groups.size, "Booth") %></a></li>
+			<li><a href="<%= profile_path(sponsor) %>">View Profile</a></li>
+			<li><a href="<%= edit_sponsor_member_path(sponsor) %>">Edit Details</a></li>
+			<li><a href="<%= reset_password_sponsor_member_path(sponsor) %>">Reset Password</a></li>
+			<% if sponsor.user.locked? -%>
+			<li><a href="<%= unlock_sponsor_member_path(sponsor) %>">Clear Lock</a></li>
+			<% end -%>
+		</ul>
+	</div>
+</div><br/><br/>
+<% end -%>
+<%= will_paginate @sponsors %>

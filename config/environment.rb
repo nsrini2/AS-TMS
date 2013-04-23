@@ -13,3 +13,4 @@ ActionMailer::Base.smtp_settings = {
   :password => 'abcd-9999',
   :openssl_verify_mode  => 'none'
 }
+

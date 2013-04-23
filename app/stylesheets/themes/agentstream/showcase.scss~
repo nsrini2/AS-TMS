@@ -1,0 +1,5 @@
+@import "color";
+@import "text";
+@import "layout";
+
+.showcase #list .categories #category_list{list-style-type: none;}

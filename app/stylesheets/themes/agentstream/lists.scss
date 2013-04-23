@@ -360,3 +360,17 @@ div.aside-small {
   margin: 0 0 10px 0;
   float: right;
 }
+
+#list .categories {margin-top:250px;}
+
+#list .categories #expo_categories{list-style-type:none;}
+
+#list .categories #expo_categories .travelexpo_category {display:inline-block; overflow:hidden; position:relative;}
+
+#list .categories #expo_categories .travelexpo_category li {float:left; margin-left:6px; margin-right: 5px;padding : 2px; margin-top: 15px;}
+
+#list .categories #expo_categories .travelexpo_category h3{position:absolute; font-size: 15px; color: white; width: 100%; left: 30px; top: 30px;}
+
+#list #travelexpo_marketing_message { float: right; margin-top:30px; margin-bottom: 5px; width: 395px; margin-right: 8px;}
+
+#list #travelexpo_marketing_message #marketing_message img { display: block; }
