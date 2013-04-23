@@ -1,123 +1,127 @@
 /*
-Syntax error: Invalid CSS after "a, a:": expected pseudoclass or pseudoelement, was " visited {"
-        on line 47 of /home/vasu/Sabre/agentstream-travel-showcase/app/stylesheets/themes/agentstream/reset.scss
-        from line 1 of /home/vasu/Sabre/agentstream-travel-showcase/app/stylesheets/themes/agentstream/style.scss
+Syntax error: Invalid CSS after "  width 350px": expected "{", was "; "
+        on line 335 of /Users/tnss/rails_projects/sriww/app/stylesheets/themes/agentstream/screen.scss
+        from line 6 of /Users/tnss/rails_projects/sriww/app/stylesheets/themes/agentstream/style.scss
 
-42: q:before, q:after {
-43:   content: '';
-44:   content: none;
-45: }
-46: 
-47: a, a: visited {
-48:   margin: 0;
-49:   padding: 0;
-50:   font-size: 100%;
-51:   vertical-align: baseline;
-52:   background: transparent;
+330: /* SSJ: 3/11/11 Push all this off the page, txt is now on image, but keep for crawlers etc. */
+331: #main .primary .content .intro-text { 
+332:   text-indent: -5000px;
+333:   clear: both; 
+334:   float: left; 
+335:   width 350px; 
+336:   margin: 30px 20px 20px 30px; 
+337:   background: transparent;
+338:   h5 {
+339:     font-size: 32px; 
+340:     line-height: 32px; 
 
 Backtrace:
-/home/vasu/Sabre/agentstream-travel-showcase/app/stylesheets/themes/agentstream/reset.scss:47
-/home/vasu/Sabre/agentstream-travel-showcase/app/stylesheets/themes/agentstream/style.scss:1
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:1148:in `expected'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:1084:in `expected'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:1066:in `expr!'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:794:in `pseudo'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:678:in `simple_selector_sequence'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:640:in `_selector'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:619:in `selector'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:609:in `selector_sequence'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:528:in `ruleset'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:553:in `block_child'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:546:in `block_contents'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:82:in `stylesheet'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:27:in `parse'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/engine.rb:342:in `_to_tree'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/engine.rb:273:in `to_tree'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/util.rb:400:in `silence_sass_warnings'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/engine.rb:273:in `to_tree'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:225:in `visit_import'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:128:in `visit_root'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/tree/root_node.rb:20:in `render'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/engine.rb:315:in `_render'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/engine.rb:263:in `render'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/util.rb:400:in `silence_sass_warnings'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/engine.rb:263:in `render'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/plugin/compiler.rb:341:in `update_stylesheet'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/plugin/compiler.rb:203:in `update_stylesheets'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/plugin/compiler.rb:201:in `each'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/plugin/compiler.rb:201:in `update_stylesheets'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/plugin.rb:81:in `update_stylesheets'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/plugin.rb:54:in `check_for_updates'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/sass-3.2.7/lib/sass/../sass/plugin/rack.rb:51:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/warden-1.0.6/lib/warden/manager.rb:35:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/warden-1.0.6/lib/warden/manager.rb:34:in `catch'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/warden-1.0.6/lib/warden/manager.rb:34:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/head.rb:14:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/methodoverride.rb:24:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/flash.rb:182:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/cookies.rb:302:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/activerecord-3.0.20/lib/active_record/query_cache.rb:32:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/activerecord-3.0.20/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/activerecord-3.0.20/lib/active_record/query_cache.rb:12:in `cache'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/activerecord-3.0.20/lib/active_record/query_cache.rb:31:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/activerecord-3.0.20/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/activesupport-3.0.20/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/sendfile.rb:106:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/rack/logger.rb:13:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/runtime.rb:17:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/activesupport-3.0.20/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/lock.rb:13:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/lock.rb:13:in `synchronize'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/lock.rb:13:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/actionpack-3.0.20/lib/action_dispatch/middleware/static.rb:30:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/application.rb:168:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/application.rb:77:in `send'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/application.rb:77:in `method_missing'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/rack/log_tailer.rb:14:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/content_length.rb:13:in `call'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/handler/webrick.rb:52:in `service'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
-/home/vasu/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/handler/webrick.rb:13:in `run'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/rack-1.2.8/lib/rack/server.rb:217:in `start'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/commands/server.rb:65:in `start'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/commands.rb:30
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/commands.rb:27:in `tap'
-/home/vasu/.rvm/gems/ruby-1.8.7-p371/gems/railties-3.0.20/lib/rails/commands.rb:27
+/Users/tnss/rails_projects/sriww/app/stylesheets/themes/agentstream/screen.scss:335
+/Users/tnss/rails_projects/sriww/app/stylesheets/themes/agentstream/style.scss:6
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:1148:in `expected'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:1084:in `expected'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:1079:in `tok!'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:534:in `block'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:529:in `ruleset'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:591:in `declaration_or_ruleset'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:1122:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:1122:in `rethrow'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:592:in `declaration_or_ruleset'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:554:in `block_child'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:546:in `block_contents'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:535:in `block'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:529:in `ruleset'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:553:in `block_child'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:546:in `block_contents'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:82:in `stylesheet'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/scss/parser.rb:27:in `parse'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/engine.rb:342:in `_to_tree'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/engine.rb:273:in `to_tree'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/util.rb:400:in `silence_sass_warnings'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/engine.rb:273:in `to_tree'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:225:in `visit_import'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:109:in `visit_children'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:100:in `visit'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/tree/root_node.rb:20:in `render'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/engine.rb:315:in `_render'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/engine.rb:263:in `render'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/util.rb:400:in `silence_sass_warnings'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/engine.rb:263:in `render'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/plugin/compiler.rb:341:in `update_stylesheet'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/plugin/compiler.rb:203:in `update_stylesheets'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/plugin/compiler.rb:201:in `each'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/plugin.rb:81:in `update_stylesheets'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/plugin.rb:54:in `check_for_updates'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/sass-3.2.7/lib/sass/../sass/plugin/rack.rb:51:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/warden-1.0.6/lib/warden/manager.rb:35:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/warden-1.0.6/lib/warden/manager.rb:34:in `catch'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/warden-1.0.6/lib/warden/manager.rb:34:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/methodoverride.rb:24:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/activerecord-3.0.20/lib/active_record/query_cache.rb:32:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/activerecord-3.0.20/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/activerecord-3.0.20/lib/active_record/query_cache.rb:12:in `cache'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/activerecord-3.0.20/lib/active_record/query_cache.rb:31:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/activerecord-3.0.20/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/activesupport-3.0.20/lib/active_support/callbacks.rb:416:in `_run_call_callbacks'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/sendfile.rb:106:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/rack/logger.rb:13:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/runtime.rb:17:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/activesupport-3.0.20/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/lock.rb:13:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/lock.rb:13:in `synchronize'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/lock.rb:13:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/actionpack-3.0.20/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/application.rb:168:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/application.rb:77:in `send'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/application.rb:77:in `method_missing'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/content_length.rb:13:in `call'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/handler/webrick.rb:52:in `service'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/Users/tnss/.rvm/rubies/ruby-1.8.7-p371/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/handler/webrick.rb:13:in `run'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/rack-1.2.8/lib/rack/server.rb:217:in `start'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/commands/server.rb:65:in `start'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/commands.rb:30
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/commands.rb:27:in `tap'
+/Users/tnss/.rvm/gems/ruby-1.8.7-p371@agentstream/gems/railties-3.0.20/lib/rails/commands.rb:27
 script/rails:6:in `require'
 script/rails:6
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"a, a:\": expected pseudoclass or pseudoelement, was \" visited {\"\A         on line 47 of /home/vasu/Sabre/agentstream-travel-showcase/app/stylesheets/themes/agentstream/reset.scss\A         from line 1 of /home/vasu/Sabre/agentstream-travel-showcase/app/stylesheets/themes/agentstream/style.scss\A \A 42: q:before, q:after {\A 43:   content: '';\A 44:   content: none;\A 45: }\A 46: \A 47: a, a: visited {\A 48:   margin: 0;\A 49:   padding: 0;\A 50:   font-size: 100%;\A 51:   vertical-align: baseline;\A 52:   background: transparent;"; }
+  content: "Syntax error: Invalid CSS after \"  width 350px\": expected \"{\", was \"; \"\A         on line 335 of /Users/tnss/rails_projects/sriww/app/stylesheets/themes/agentstream/screen.scss\A         from line 6 of /Users/tnss/rails_projects/sriww/app/stylesheets/themes/agentstream/style.scss\A \A 330: /* SSJ: 3/11/11 Push all this off the page, txt is now on image, but keep for crawlers etc. */\A 331: #main .primary .content .intro-text { \A 332:   text-indent: -5000px;\A 333:   clear: both; \A 334:   float: left; \A 335:   width 350px; \A 336:   margin: 30px 20px 20px 30px; \A 337:   background: transparent;\A 338:   h5 {\A 339:     font-size: 32px; \A 340:     line-height: 32px; "; }
