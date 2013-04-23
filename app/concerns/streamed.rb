@@ -29,9 +29,10 @@ module Streamed
                           opts[:group_id]=self.blog.owner.id
                     when 'Profile'
                           opts[:profile_id]=self.blog.owner.id
+                          
                end
           when Comment
-               case self.owner
+               case self.owner_type
                       when GroupPost
                          opts.merge!(:profile_id => self.owner.profile_id, :group_id => self.owner.group_id)
                       when BlogPost
@@ -39,7 +40,7 @@ module Streamed
                                  when 'Group'
                                    opts[:group_id]=self.owner.blog.owner.id
                                  when 'Profile'
-                                  opts[:profile_id]=self.owner.blog.owner.id
+                                   opts[:profile_id]=self.owner.blog.owner.id
                             end
                       end
             
@@ -48,7 +49,6 @@ module Streamed
           else opts[:profile_id] = self.profile_id
         end
         Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
-        Rails.logger.info "Yes #{self.class} is using Streamed for logging the ActivityStreamEvents"
         ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
       end    
     end

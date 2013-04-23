@@ -88,8 +88,6 @@ class ActivityStreamEvent < ActiveRecord::Base
     ", awards.title as award_title")
 
     #ModelUtil.add_conditions!(args, ["((groups.sponsor_account_id= #{sponsor_account_id}) OR profiles.visible = ?))", true])
-
-
     #ModelUtil.add_conditions!(args, ["((groups.sponsor_account_id= #{sponsor_account_id} AND activity_stream_events.klass in ('Group','GroupPhoto','GroupMembership'))
     #OR (profiles.sponsor_account_id = #{sponsor_account_id}  AND activity_stream_events.klass in
     #('Profile','Question','Status','GroupMembership','Comment','Answer','BlogPost') AND profiles.visible = ?))", true])
@@ -138,7 +136,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ", statuses.body as status_body"+
     ", awards.title as award_title")
    
-    ModelUtil.add_conditions!(args, ["((groups.id= #{group_id}) OR (group_memberships.group_id= #{group_id} AND profiles.visible = ?))", true])
+    ModelUtil.add_conditions!(args, ["(groups.id= #{group_id} AND activity_stream_events.profile_id IS NULL) OR (groups.id=#{group_id} AND activity_stream_events.profile_id IS NOT NULL AND profiles.visible=?)",true])
     options = ModelUtil.get_options!(args)
     options[:order] = 'created_at desc' unless options.member?(:order)
     args.shift if args.first.to_sym == :all
