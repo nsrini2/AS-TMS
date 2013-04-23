@@ -1,4 +1,3 @@
-just touching the readme to try our process
 
 1 - git clone  to create local copy of repo 
 
