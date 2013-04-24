@@ -409,7 +409,7 @@ p.category, p.answers {
 
 /* line 40, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 img.photo {
-  /*border: 1px solid #C4D7DC;*/
+  border: 1px solid #C4D7DC;
 }
 
 /* line 42, ../../../../app/stylesheets/themes/agentstream/screen.scss */
@@ -1673,7 +1673,7 @@ a.button.xlarge {
 #header .nav li {
   display: block;
   float: left;
-  margin: 0 15px 0 0;
+  margin: 0 14px 0 0;
 }
 
 /* line 34, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -7768,12 +7768,3 @@ div#search_filter .accordionButton a {
   font-weight: normal;
   text-transform: lowercase;
 }
-/*.expert {
-	background: url("/images/expert.gif") no-repeat 0 0;
-	width: 86px;
-	height: 102px;
-}
-.expert img.photo {
-	margin: 3px;
-	border: none;
-}*/
