@@ -14,7 +14,9 @@ class SponsorAccountsController < ApplicationController
 
   def edit
     @sponsor_account = SponsorAccount.find(params[:id])
-    @filename = @sponsor_account.showcase_category_image.filename
+    if @sponsor_account.showcase_category_image
+      @filename = @sponsor_account.showcase_category_image.filename
+    end
   end
 
   def create
@@ -42,6 +44,7 @@ class SponsorAccountsController < ApplicationController
     @sponsor_account.update_attributes(params[:sponsor_account])
     if @sponsor_account.save
         if params[:showcase_category_image_file] && !params[:showcase_category_image_file].blank?
+           #Rails.logger.info("Niranjana filename is:" + @sponsor_account.showcase_category_image.public_filename(:medium).to_s)
            @sponsor_account.showcase_category_image = ShowcaseCategoryImage.new(:uploaded_data => params[:showcase_category_image_file])
         end
         flash[:notice] = "Showcase category #{@sponsor_account.name} was updated!"

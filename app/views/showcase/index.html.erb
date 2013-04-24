@@ -9,8 +9,10 @@
        	<% @sponsor_accounts.each_index do |index| -%>
    	<% account = @sponsor_accounts[index] -%>
         <div class="travelexpo_category">
-        <!--<h3><%=account.name%></h3>-->
-        <%=content_tag('li',link_to(image_tag(account.showcase_category_image.public_filename(:medium), :alt => account.name, :width => 170, :height => 220),:controller => 'showcase', :action => "category_level_details", :id => account))%>
+          <!--<h3><%=account.name%></h3>-->
+          <% if account.showcase_category_image %>
+            <%=content_tag('li',link_to(image_tag(account.showcase_category_image.public_filename(:medium), :alt => account.name, :width => 170, :height => 220),:controller => 'showcase', :action => "category_level_details", :id => account))%>
+          <% end %>
         </div>
         <%end%>
       </ul>
