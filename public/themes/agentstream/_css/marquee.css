@@ -3,7 +3,7 @@
 /* Written by Scott Johnson      */
 /* line 6, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 body {
-  padding: 35px;
+  padding: 25px 35px 35px;
   background-color: #fff;
   font-family: Arial;
   color: #555;

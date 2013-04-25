@@ -1887,7 +1887,7 @@ a.button.xlarge {
 #header,
 #main {
   border: 1px solid #c4d7dc;
-  border-width: 0 1px 0;
+  border-width: 1px 1px 0 1px;
 }
 
 /* line 182, ../../../../app/stylesheets/themes/agentstream/header.scss */
@@ -7532,7 +7532,7 @@ div#deals-header h2, div#deals-header p {
 /* Written by Scott Johnson      */
 /* line 6, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 body {
-  padding: 35px;
+  padding: 25px 35px 35px;
   background-color: #fff;
   font-family: Arial;
   color: #555;

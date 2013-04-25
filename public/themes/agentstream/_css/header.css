@@ -254,7 +254,7 @@
 #header,
 #main {
   border: 1px solid #c4d7dc;
-  border-width: 0 1px 0;
+  border-width: 1px 1px 0 1px;
 }
 
 /* line 182, ../../../../app/stylesheets/themes/agentstream/header.scss */
