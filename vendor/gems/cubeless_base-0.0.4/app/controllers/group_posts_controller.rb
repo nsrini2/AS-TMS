@@ -5,7 +5,7 @@ class GroupPostsController < ApplicationController
   layout 'group'
   
   before_filter :group_up_and_protect_privates
-  before_filter :find_booth_details, :except => [:destroy, :create_reply]
+  before_filter :find_booth_details, :except => [:destroy, :create_reply,:show]
   
   def index
     return redirect_to(group_path(@group)) unless @group.is_member?(current_profile) || current_profile.has_role?(Role::ShadyAdmin)
@@ -71,6 +71,25 @@ class GroupPostsController < ApplicationController
     post = GroupPost.find(params[:id])
     @group_posts = [post].paginate :page => params[:page], :per_page => 1
     @group = post.group
+    @group_links = @group.group_links.all
+    max_id = Group.count_by_sql("select min(profile_id) from (select profile_id from group_memberships where group_id = #{@group.id} order by profile_id desc limit 200) as x")
+    @booth_members = @group.members.all(:conditions => "profiles.id >= #{rand(max_id)+1}", :limit => 20).to_a.sort! { |a,b| rand(3)-1 }
+    @group_blog_tags=TagCloud.tagcloudize(@group.blog.booth_tags.map{|x|x.name + " "})
+    if @group_blog_tags.count > 0
+      @group_blog_tags.sort!{|a,b|a[:count]<=>b[:count]}
+      @minTagOccurs=@group_blog_tags.first[:count]
+      @maxTagOccurs=@group_blog_tags.last[:count]
+    end
+    source=@group.booth_twitter_id
+    if !source.nil?
+      begin
+       @twitter_feed=Twitter.user_timeline("#{source}").first.text
+       @twitter_user_name=Twitter.user("#{source}").name
+       @twitter_user_handle="@"+Twitter.user("#{source}").screen_name
+      rescue => e
+       Rails.logger.info("Twitter error: " + e.message)
+      end
+    end
     render :template => 'group_posts/index', :layout =>  @group.is_sponsored? ? '/layouts/sponsored_group' : '/layouts/group'
     #redirect_to group_talk_group_path GroupPost.find(params[:id]).group
   end
