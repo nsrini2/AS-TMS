@@ -22,10 +22,10 @@
 				<div class="what"><span class="letter">G:</span><%=link_to(truncate(event.group_name, :length => 100),group_path(:id => event.group_id))%></div>
 			<% when 'BlogPost': %>
 				<span class="did">[added blog post]</span>
-				<div class="what"><span class="letter">B:</span><%=truncate(event.blog_post_title, :length => 100)%> <%=link_to('more', "/blog_posts/#{event.klass_id}")%></div>
+				<div class="what"><span class="letter">B:</span><%=truncate(event.blog_post_title, :length => 10)%> <%=link_to('more', "/blog_posts/#{event.klass_id}")%></div>
 			<% when 'Comment': %>
 				<span class="did">[added a comment]</span>
-				<div class="what"><span class="letter">C:</span><%=truncate(event.comment_text, :length => 100)%> <%=link_to('more', "/comments/#{event.klass_id}")%></div>
+				<div class="what"><span class="letter">C:</span><%=truncate(event.comment_text, :length => 10)%> <%#=link_to('more', "/comments/#{event.klass_id}")%></div>
 			<% when 'ProfileAward': %>
 				<span class="did">[award presented]</span>
 				<div class="what"><span class="letter">A:</span><%=truncate(event.award_title, :length => 100)%></div>
