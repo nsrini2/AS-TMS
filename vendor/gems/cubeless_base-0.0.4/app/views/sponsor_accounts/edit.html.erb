@@ -9,7 +9,7 @@
        	<%= f.text_field :groups_allowed, :size => 32 %><br /><br />
         <% if @filename %>
           <label for="showcase_category_image">Showcase Category Image</label><br />
-          <%=image_tag(@sponsor_account.showcase_category_image.public_filename(:medium))%><br/>
+          <%=image_tag(@sponsor_account.showcase_category_image.public_filename())%><br/>
         <% end %>
         <label for="showcase_category_image_name"><%="#{@filename}"%></label><br/>
         <%= file_field_tag :showcase_category_image_file%><br /> <br/>

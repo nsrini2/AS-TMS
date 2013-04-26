@@ -5,7 +5,7 @@
 <div class="sponsor_account sponsor_account_<%= cycle('even', 'odd') %>">
         <h4><%= account.name%></h4>
         <%if account.showcase_category_image %>
-          <%= image_tag(account.showcase_category_image.public_filename(:medium))%>
+          <%= image_tag(account.showcase_category_image.public_filename())%>
         <%end%>
 	<p class="sponsor_account_notes"><%= replace_newline_with_br(auto_link(account.notes, :all))%></p>
 	<p><a href="<%= sponsor_account_sponsor_groups_path(account) %>"><%= pluralize(account.groups.size, 'booth') %> created</a> - <%= pluralize (account.group_slots_remaining, 'unused booth slot') %></p>
