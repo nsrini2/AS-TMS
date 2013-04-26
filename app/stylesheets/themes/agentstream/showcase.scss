@@ -37,6 +37,7 @@ top: 30px;
 
 #list{
 overflow:hidden;
+background-color:#fff;
 }
 
 #list .group_results #controls dt{
@@ -63,7 +64,11 @@ margin-right: 8px;
 float:left;
 width: 510px;
 border: 1px solid #c4d7dc;
-background-color: #fff;
+background-color: #EFF8FA;
+}
+
+#group {
+  background-color: #fff;
 }
 
 #list .details {
