@@ -2,6 +2,7 @@
    <div id="booth_info">
 
         <div id="follow">
+          <h5>Followers</h5>
           <%= render "shared/booth_member_table" %>
           <%= action_list_for([(link_for_booth_action(@group) unless hide_for_sponsor)], :class => 'booth_actions full_screen') -%>
         </div>
