@@ -3,10 +3,12 @@
 <div id="list" >
   <% if @category_groups.count >0 %>
    <div id="news_feed">
+      <h3>Latest Activity</h3>
         <%= render :partial => '/showcase/events_panel', :locals => { :events => @events } %>
         <%= will_paginate @events, :param_name => 'events_page' %>
    </div>
    <div class="group_results">
+       <h3>Companies</h3>
        <div id="controls">
         <%#= filter_control('CategoryGroup') %>
         <%= sort_control('CategoryGroup') %><br/><br/>
