@@ -1,4 +1,4 @@
-class Companies::CommentsController < ApplicationController
+class CommentsController < ApplicationController
   before_filter :current_company, :set_selected_tab, :set_owner
   layout "_company_tabs"
   

@@ -1,4 +1,4 @@
-class Companies::QuestionsController < ApplicationController
+class QuestionsController < ApplicationController
   before_filter :current_company, :set_selected_tab
   layout "_company_tabs"
   
