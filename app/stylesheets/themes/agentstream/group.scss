@@ -96,6 +96,7 @@ margin-left: 10px;
 #group_card_sponsored .sponsored_group_details h2{
 margin-top:15px;
 margin-bottom:0;
+line-height: 1.2;
 }
 
 #group_card_sponsored .sponsored_group_details h6{
@@ -715,7 +716,7 @@ span.topic_buttons {
         #booth_group_posts { width: 350px; margin-left: 5px; margin-top:30px; float: left;}
 		#booth_group_posts:after { content: '.'; display: block; height: 0; clear: both; visibility: hidden; }
 		#booth_group_posts div.group_post_item { padding-bottom: 2px; }
-			#booth_group_posts div.photo_wrapper { float: left;}
+			#booth_group_posts div.photo_wrapper { float: left; margin: 0 10px 10px 0; }
 			#booth_group_posts div.details { margin-left: 65px; width: 400px; }
 				#booth_group_posts div.details h5 { margin-bottom: 0;}
 				
