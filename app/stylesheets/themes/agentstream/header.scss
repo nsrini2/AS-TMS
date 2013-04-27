@@ -26,9 +26,12 @@
   clear: both;
   visibility: hidden;
 }
-.global_nav .nav li {
+.nav li {
   display: block;
   float: left;
+
+}
+.global_nav .nav li {
   margin: 0 35px 0 0;
 }
 .global_nav .nav a {
@@ -174,7 +177,8 @@
   padding: 7px 0 5px 20px;
   background: url('/images/icons/as/online-now.png') 0 50% no-repeat;
 }
-.nav .drop_down {
+
+ .drop_down {
   padding: 0 15px 0 0;
   background: url('/images/bg_nav_dropdown.png') 100% 50% no-repeat;
 }
