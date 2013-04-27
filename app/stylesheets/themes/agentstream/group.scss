@@ -79,6 +79,7 @@ margin-left: 10px;
 margin-bottom: 15px;
 float:left;
 background-color: #eee;
+padding-bottom: 10px;
 }
 
 #group_card_sponsored img{
@@ -143,7 +144,7 @@ text-align:justify;
 
 #booth_info, #booth_user_info{
 margin-right:10px;
-border:1px solid #C4D7DC;
+/*border:1px solid #C4D7DC;*/
 width:270px;
 position:relative;
 float:right;
@@ -152,14 +153,14 @@ right:0;
 margin-left:10px;
 margin-bottom:10px;
 overflow:auto;
-min-height:920px;
+/*min-height:920px;*/
 }
 
 #booth_info #follow{
 margin-left:10px;
-margin-top:10px;
+margin-top:0;
 margin-bottom:10px;
-min-height:260px;
+/*min-height:260px;*/
 width:250px;
 }
 
@@ -169,7 +170,6 @@ margin-left:10px;
 margin-top:10px;
 margin-bottom:20px;
 width:250px;
-height:200px;
 }
 
 #booth_info #booth_useful_links{
@@ -177,42 +177,38 @@ float:left;
 margin-left:10px;
 margin-top:10px;
 width:250px;
-min-height:150px;
 margin-bottom:10px;
 }
 
 .booth_social_feeds{
 float:left;
 clear:both;
-width:100%;
+width:665px;
 height:80px;
 }
 
 #booth_twitter{
-padding-left:20px;
+padding-left:0;
 display:table-cell;
-overflow:hidden;
 margin-bottom:2px;
 margin-top:2px;
-height:70px;
 margin-left:15px;
-width:360px;
+width:330px;
 }
 
 #booth_facebook{
 display:table-cell;
-padding-left:20px;
+padding-left:5px;
 margin-bottom:2px;
 margin-top:2px;
-height:70px;
-width:360px;
+width:330px;
 }
 
 
 #twitter_logo{
 height:50px;
 padding-top:10px;
-padding-right:8px;
+padding-right:0;
 display:table-cell;
 }
 
@@ -234,10 +230,6 @@ vertical-align: middle;
 }
 
 #tweet_feed{
-margin-top:5px;
-height:75px;
-margin-left:20%;
-margin-right:2px;
 font-size:1em;
 display:table-cell;
 vertical-align:middle;
@@ -254,10 +246,10 @@ text-align:left;
 }
 
 .sponsored_group_events{
-border:1px solid #C4D7DC;
+/*border:1px solid #C4D7DC;*/
 float:left;
 width:300px;
-min-height:416px;
+/*min-height:416px;*/
 }
 
 .booth_activity_details{
@@ -273,7 +265,7 @@ font-weight:bold;
 .group_video{
 float:right;
 width:320px;
-height:235px;
+/*height:235px;*/
 }
 
 #browse{
@@ -290,7 +282,7 @@ width:  70px;
 .group_marketing_message{
 float:right;
 width:320px;
-height:175px;
+/*height:175px;*/
 margin-top:6px;
 padding-bottom:0;
 }
@@ -527,6 +519,7 @@ color:#DE2C2C;}
 
 	#members_images { position: relative; margin: 0; width: 484px; overflow: hidden; }
         #booth_members_images { position: relative; margin-left: 30px; width: 200px; margin-right:25px; margin-top:10px; margin-bottom:10px; overflow: hidden;}
+        #booth_members_images table { margin-bottom: 0; }
 
 		table#members { font-size: 0; }
 			table#members tbody {  }
