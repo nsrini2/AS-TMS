@@ -18,8 +18,8 @@
   width: 200px;
 }
 
-.global_nav .nav { display: block; }
-.global_nav .nav:after {
+.nav { display: block; }
+.nav:after {
   content: ".";
   display: block;
   height: 0;

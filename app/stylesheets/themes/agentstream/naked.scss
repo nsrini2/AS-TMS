@@ -128,7 +128,8 @@
 /*********  LOGIN  ************/
   div#login-main {
     text-align:center;
-    margin-top: 100px;
+    margin-top: 0;
+    padding: 20px 0 20px 240px;
     form { 
       margin-right: 28px;
       input, button {
