@@ -79,6 +79,7 @@ border: 1px solid #C0C0C0;
 margin-left: 10px;
 margin-bottom: 15px;
 float:left;
+background-color: #eee;
 }
 
 #group_card_sponsored img{
@@ -87,6 +88,9 @@ margin-top: 20px;
 margin-bottom: 15px;
 margin-right: 25px;
 margin-left: 10px;
+}
+#group_card_sponsored .sponsored_group_details {
+  margin-left: 210px;
 }
 
 #group_card_sponsored .sponsored_group_details h2{

@@ -122,17 +122,15 @@ align:center;
 padding-left:30px;
 }
 
-#follow table#booth_members {
+#booth_members_images table {
   margin-bottom: 0;
 }
 #news_feed h3 {
   padding-left: 0 10px;
 }
-#group_card_sponsored {
-  background-color: #eee;
-}
 #booth_info {
   border: none;
+  min-height: inherit;
 }
 .sponsored_news_events {
   border: none;

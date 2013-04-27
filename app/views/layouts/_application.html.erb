@@ -56,9 +56,9 @@
     <div class="utility">
       <% if logged_in? %>
         <ul class="nav">
-          <li>
+          <!--<li>
             <span class="online_now"><%= @active_users %> online now</span>
-          </li>
+          </li>-->
           <li>
             <%= link_to "Profile", profile_path(current_profile) if current_profile %>
           </li>
