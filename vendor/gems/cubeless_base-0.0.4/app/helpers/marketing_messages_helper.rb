@@ -55,7 +55,7 @@ module MarketingMessagesHelper
   end
 
   def showcase_marketing_image_tag(message)
-    link_to_if(message.link_to_url, image_tag( showcase_marketing_image_path(message), :alt => '', :width => "394", :height => "150"),message.link_to_url,:target => "_blank") if message
+    link_to_if(message.link_to_url, image_tag( showcase_marketing_image_path(message), :alt => '', :width => "395", :height => "152"),message.link_to_url,:target => "_blank") if message
   end
 
   def showcase_marketing_image_path(showcase_marketing_message,which=:large)
@@ -67,7 +67,7 @@ module MarketingMessagesHelper
   end
 
   def booth_marketing_image_tag(message)
-    link_to_if(message.link_to_url, image_tag( booth_marketing_image_path(message), :alt => '', :width => "320", :height => "175"),message.link_to_url,:target => "_blank") if message
+    link_to_if(message.link_to_url, image_tag( booth_marketing_image_path(message), :alt => '', :width => "320", :height => "150"),message.link_to_url,:target => "_blank") if message
   end
 
   def booth_marketing_image_path(booth_marketing_message,which=:large)
