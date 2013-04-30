@@ -62,7 +62,7 @@ p.category, p.answers {
 
 /* line 40, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 img.photo {
-  border: 1px solid #C4D7DC;
+  /*border: 1px solid #C4D7DC;*/
 }
 
 /* line 42, ../../../../app/stylesheets/themes/agentstream/screen.scss */
@@ -363,6 +363,7 @@ img.photo {
 /* line 220, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #main {
   border-width: 0 1px 1px;
+  padding-top: 20px;
 }
 
 /* line 221, ../../../../app/stylesheets/themes/agentstream/screen.scss */

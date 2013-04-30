@@ -41,15 +41,6 @@
     <div class="utility">
       <% if logged_in? %>
         <ul class="nav">
-          <!--<li>
-            <span class="online_now"><%= @active_users %> online now</span>
-          </li>-->
-          <li>
-            <%= link_to "Profile", profile_path(current_profile) if current_profile %>
-          </li>
-          <li>
-            <%= link_to("Settings", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => "#{@content_for_settings_selected}") if current_profile %>
-          </li>
           <% 
             admin_roles = [Role::ReportAdmin, Role::ContentAdmin, Role::ShadyAdmin, Role::UserAdmin, Role::AwardsAdmin, Role::SponsorAdmin]
             admin_paths = {
@@ -64,9 +55,18 @@
           -%>
           <% unless admin_path.compact.blank? %>
             <li>
+              <span class="online_now"><%= @active_users %> online now</span>
+            </li>
+            <li>
               <%= link_to('Admin', admin_path.compact[0]) %>
             </li>
           <% end %>
+          <li>
+            <%= link_to "Profile", profile_path(current_profile) if current_profile %>
+          </li>
+          <li>
+            <%= link_to("Settings", (hide_for_sponsor ? change_email_account_path : email_subscriptions_account_path), :class => "#{@content_for_settings_selected}") if current_profile %>
+          </li>
           <li>
             <%= link_to "Logout", logout_account_path if show_logout %>
           </li>

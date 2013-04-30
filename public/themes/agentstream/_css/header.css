@@ -23,12 +23,12 @@
 }
 
 /* line 21, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .nav {
+.nav {
   display: block;
 }
 
 /* line 22, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .nav:after {
+.nav:after {
   content: ".";
   display: block;
   height: 0;
@@ -37,155 +37,130 @@
 }
 
 /* line 29, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .nav li {
+.nav li {
   display: block;
   float: left;
-  margin: 0 14px 0 0;
+  margin-left: 0;
 }
 
-/* line 34, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .nav a {
-  color: #4a6970;
+/* line 35, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.global_nav .nav li {
+  margin: 0 30px 0 0;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .global_nav {
-  font-size: 15px;
-  margin: 20px 0 0;
-  text-transform: lowercase;
-  text-align: left;
+/* line 38, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.global_nav .nav a {
+  color: #fff;
+}
+
+/* line 41, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.utility .nav a {
+  color: #c00;
 }
 
 /* line 44, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .global_nav li:first-child {
+.global_nav .nav a:hover {
+  text-decoration: underline;
+}
+
+/* line 47, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.global_nav {
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+/* line 53, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.global_nav li:first-child {
   margin-left: 25px;
 }
 
-/* line 48, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .global_nav li.active {
-  border-bottom: 1px solid #4a6970;
-}
-
-/* line 49, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .global_nav li a {
-  display: block;
-  padding: 30px 0 0 0;
-  min-width: 27px;
-}
-
-/* line 55, ../../../../app/stylesheets/themes/agentstream/header.scss */
-#header .nav #hub_nav {
-  background: url("/images/icons/as/nav/off/home.png") no-repeat 50% top;
+/* line 57, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.global_nav li.active {
+  text-decoration: underline;
+  color: #fff;
 }
 
 /* line 58, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.global_nav li a {
+  display: block;
+  line-height: 37px;
+}
+
+/*#header .nav #hub_nav {
+  background: url('/images/icons/as/nav/off/home.png') no-repeat 50% top;
+}
 #header .nav #hub_nav.active, #header .nav #hub_nav:hover {
-  background: url("/images/icons/as/nav/on/home.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/home.png') no-repeat 50% top;
 }
-
-/* line 61, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #company_nav {
-  background: url("/images/icons/as/nav/off/agency.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/agency.png') no-repeat 50% top;
 }
-
-/* line 64, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #company_nav.active, #header .nav #company_nav:hover {
-  background: url("/images/icons/as/nav/on/agency.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/agency.png') no-repeat 50% top;
 }
-
-/* line 67, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #qa_nav {
-  background: url("/images/icons/as/nav/off/help.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/help.png') no-repeat 50% top;
 }
-
-/* line 70, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #qa_nav.active, #header .nav #qa_nav:hover {
-  background: url("/images/icons/as/nav/on/help.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/help.png') no-repeat 50% top;
 }
-
-/* line 73, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #group_nav {
-  background: url("/images/icons/as/nav/off/user-group.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/user-group.png') no-repeat 50% top;
 }
-
-/* line 76, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #group_nav.active, #header .nav #group_nav:hover {
-  background: url("/images/icons/as/nav/on/user-group.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/user-group.png') no-repeat 50% top;
 }
-
-/* line 79, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #blog_nav {
-  background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/write-note.png') no-repeat 50% top;
 }
-
-/* line 82, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #blog_nav.active, #header .nav #blog_nav:hover {
-  background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/write-note.png') no-repeat 50% top;
 }
-
-/* line 85, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #news_nav {
-  background: url("/images/icons/as/nav/off/news_new.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/news_new.png') no-repeat 50% top;
 }
-
-/* line 88, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #news_nav.active, #header .nav #news_nav:hover {
-  background: url("/images/icons/as/nav/on/news_new.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/news_new.png') no-repeat 50% top;
 }
-
-/* line 91, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #chats_nav {
-  background: url("/images/icons/as/nav/off/chat.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/chat.png') no-repeat 50% top;
 }
-
-/* line 94, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #chats_nav.active, #header .nav #chats_nav:hover {
-  background: url("/images/icons/as/nav/on/chat.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/chat.png') no-repeat 50% top;
 }
-
-/* line 97, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #new_nav {
-  background: url("/images/icons/as/nav/off/new.png") no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/new.png') no-repeat 50% top;
 }
-
-/* line 100, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #new_nav.active, #header .nav #new_nav:hover {
-  background: url("/images/icons/as/nav/on/new.png") no-repeat 50% top;
-}
+  background: url('/images/icons/as/nav/on/new.png') no-repeat 50% top;
+} 
 
-/* line 104, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #de_nav {
-  background: url("/images/icons/as/nav/off/de.gif") no-repeat 50% top;
+  background: url('/images/icons/as/nav/off/de.gif') no-repeat 50% top;
 }
-
-/* line 107, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #de_nav.active, #header .nav #de_nav:hover {
-  background: url("/images/icons/as/nav/on/de.gif") no-repeat 50% top;
+  background: url('/images/icons/as/nav/on/de.gif') no-repeat 50% top;
 }
-
-/* line 110, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #showcase_nav {
   background: url("/images/icons/as/nav/off/write-note.png") no-repeat 50% top;
 }
 
-/* line 114, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav #showcase_nav.active, #header .nav #showcase_nav a:hover {
-  background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top;
+  background: url("/images/icons/as/nav/on/write-note.png") no-repeat 50% top; 
 }
 
-/* line 118, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .nav .line2 {
-  display: block;
+  display:block; 
   margin-top: -5px;
   text-align: left;
-}
-
-/* line 124, ../../../../app/stylesheets/themes/agentstream/header.scss */
+}*/
+/* line 133, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .stats {
   margin: 20px 0 0 50px;
   font-size: 14px;
 }
-/* line 127, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 136, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .stats h4 {
   font-size: 19px;
   font-weight: normal;
@@ -193,31 +168,31 @@
   margin-top: 50px;
 }
 
-/* line 135, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 144, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility {
   margin: 20px 10px 0 0;
   font-size: 14px;
   float: right;
 }
 
-/* line 140, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 149, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav {
   float: right;
 }
 
-/* line 141, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 150, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav li {
   font-size: 0.9em;
   margin-right: 8px;
 }
 
-/* line 146, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 155, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search {
   float: right;
   margin: 0 5px 0 0;
 }
 
-/* line 151, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 160, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search input[type=text],
 #header .utility .search #global_search_input {
   margin-top: 0;
@@ -225,7 +200,7 @@
   width: 210px;
 }
 
-/* line 156, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 165, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .search .button {
   font-size: 12px;
   margin: 0 3px 0 0;
@@ -238,36 +213,37 @@
 }
 
 /*#header .utility .nav .online_now {  padding: 5px 0 5px 20px; background: url('/images/bg_nav_online_now.png') 0 50% no-repeat; }*/
-/* line 168, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 177, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header .utility .nav .online_now {
   padding: 7px 0 5px 20px;
   background: url("/images/icons/as/online-now.png") 0 50% no-repeat;
 }
 
-/* line 172, ../../../../app/stylesheets/themes/agentstream/header.scss */
-.nav .drop_down {
+/* line 182, ../../../../app/stylesheets/themes/agentstream/header.scss */
+.drop_down {
   padding: 0 15px 0 0;
   background: url("/images/bg_nav_dropdown.png") 100% 50% no-repeat;
 }
 
-/* line 178, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 188, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #header,
 #main {
-  border: 1px solid #c4d7dc;
+  border: 1px solid #fff;
   border-width: 1px 1px 0 1px;
+  background-color: #fff;
 }
 
-/* line 182, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 193, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #main {
   border-width: 0 1px 1px;
 }
 
-/* line 183, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 194, ../../../../app/stylesheets/themes/agentstream/header.scss */
 #footer {
   clear: both;
 }
 
-/* line 185, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 196, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .module,
 .primary .module {
   margin: 0;
@@ -277,12 +253,12 @@
   background: #fff;
 }
 
-/* line 192, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 203, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .module {
   border-width: 1px 0 0 1px;
 }
 
-/* line 193, ../../../../app/stylesheets/themes/agentstream/header.scss */
+/* line 204, ../../../../app/stylesheets/themes/agentstream/header.scss */
 .aside .last {
   border-bottom: 1px solid #c4d7dc;
 }

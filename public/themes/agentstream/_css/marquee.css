@@ -4,7 +4,7 @@
 /* line 6, ../../../../app/stylesheets/themes/agentstream/marquee.scss */
 body {
   padding: 25px 35px 35px;
-  background-color: #fff;
+  background: #505050 url(/homepage_2/_layout/images/bg-body.png) 0 0;
   font-family: Arial;
   color: #555;
   font-size: .75em;

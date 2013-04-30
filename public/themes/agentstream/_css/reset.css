@@ -33,7 +33,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 /* line 33, ../../../../app/stylesheets/themes/agentstream/reset.scss */
-nav ul {
+.nav ul {
   list-style: none;
 }
 

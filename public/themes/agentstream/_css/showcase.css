@@ -1,6 +1,6 @@
 /* line 1, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list .categories {
-  margin-top: 250px;
+  clear: both;
 }
 
 /* line 5, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
@@ -28,7 +28,7 @@
 /* line 24, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list .categories #expo_categories .travelexpo_category li {
   float: left;
-  margin: 15px 6px 15px 9px;
+  margin: 30px 2px 15px 2px;
 }
 
 /* line 29, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
@@ -44,21 +44,22 @@
 /* line 38, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list {
   overflow: hidden;
+  background-color: #fff;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 43, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list .group_results #controls dt {
   display: inline;
 }
 
-/* line 46, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 47, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list .group_results #controls dd {
   display: inline;
   padding: 0 10px;
   border-right: 1px solid #676767;
 }
 
-/* line 53, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 54, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list #travelexpo_marketing_message {
   float: right;
   margin-top: 25px;
@@ -68,14 +69,25 @@
   margin-right: 8px;
 }
 
-/* line 62, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 63, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list #news_feed {
   float: left;
   width: 510px;
   border: 1px solid #c4d7dc;
+  background-color: #EFF8FA;
 }
 
-/* line 68, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 70, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#groups {
+  background-color: #fff;
+}
+
+/* line 74, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#list .details {
+  width: auto;
+}
+
+/* line 78, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #news_feed .news_item {
   position: relative;
   height: 80px;
@@ -84,37 +96,37 @@
   padding: 10 0 0 20px;
 }
 
-/* line 75, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 85, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 .news_item .details {
   display: inline;
   position: inherit;
 }
 
-/* line 80, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 90, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 .news_item .details .category_activity_who {
   font-size: 1.3em;
   font-weight: bold;
 }
 
-/* line 85, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 95, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #news_feed .news_item .details p.what span {
   font-size: 10px;
 }
 
-/* line 89, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 99, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #list .group_results {
   float: right;
   left: 520px;
   width: 400px;
-  padding: 10px;
+  padding: 0 0 0 10px;
 }
 
-/* line 96, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 106, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 table #admin_marketing {
   width: 90%;
 }
 
-/* line 100, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 110, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #admin_marketing th {
   height: 50px;
   width: 100px;
@@ -123,10 +135,26 @@ table #admin_marketing {
   padding-right: 50px;
 }
 
-/* line 108, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+/* line 118, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
 #admin_marketing td {
   height: 50px;
   width: 110px;
   align: center;
   padding-left: 30px;
+}
+
+/* line 125, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#news_feed h3 {
+  padding: 10px 10px 0 10px;
+}
+
+/* line 128, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+#booth_info {
+  border: none;
+  min-height: inherit;
+}
+
+/* line 132, ../../../../app/stylesheets/themes/agentstream/showcase.scss */
+.sponsored_news_events {
+  border: none;
 }
