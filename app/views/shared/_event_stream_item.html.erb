@@ -15,9 +15,8 @@
         <%= image_tag event.icon_path, :class => "icon" %>
       </div>
       <h3 class="what"><%= event.what %></h3>
-      <p class="when">Posted <%= event.when %> by <%= event.who %></p>
-      
     </a>
+    <p class="when">Posted <%= event.when %> by <%= link_to(event.who, event.owner_path) %></p>
   </div>
 </div>
 

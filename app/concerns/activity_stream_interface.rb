@@ -97,17 +97,17 @@ module ActivityStreamInterface
     	  text << "updated profile details"
           text << "<br/>"
      when 'ProfilePhoto': 
-    	  text << "updated profile photo to:"
-          text << "<span>[\"#{truncate(self.profile_photo_filename, { :length => 20, :omission => "..." })}\"]</span>"
+    	  text << "updated profile photo"
+          #text << "<span>[\"#{truncate(self.profile_photo_filename, { :length => 20, :omission => "..." })}\"]</span>"
           text << "<br/>"
      when 'Answer': 
-    	  text << "answered a question:"
+    	  text << "answered the question:"
           text << "<br/>"
+    	  text << "<em>\"#{truncate(self.answer_question_question, { :length => 60, :omission => "..." })}\"</em><br />"
     	  text << truncate(self[:answer_answer], { :length => 50, :omission => "..." })
-    	  text << "<br/><span>[answer to \"#{truncate(self.answer_question_question, { :length => 60, :omission => "..." })}\"]</span>"
      when 'Question': 
-    	  text << "asked a question:"
-          text << "<br/>"
+    	  #text << "asked a question:"
+          #text << "<br/>"
     	  text << truncate(self[:question_question], { :length => 50, :omission => "..." })
      when 'Login': 
     	  text << "logged in"
