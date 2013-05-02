@@ -59,7 +59,7 @@ module MarketingMessagesHelper
   end
 
   def showcase_marketing_image_path(showcase_marketing_message,which=:large)
-    showcase_marketing_message.marketing_image.public_filename(which)
+    showcase_marketing_message.marketing_image.public_filename()
   end
 
  def link_to_create_booth_marketing_message(group)
@@ -71,7 +71,7 @@ module MarketingMessagesHelper
   end
 
   def booth_marketing_image_path(booth_marketing_message,which=:large)
-    booth_marketing_message.marketing_image.public_filename(which)
+    booth_marketing_message.marketing_image.public_filename()
   end
 
 end

@@ -14,11 +14,8 @@
       <div class="icon">
         <%= image_tag event.icon_path, :class => "icon" %>
       </div>
-      <h3 class="who"><%= event.who %></h3>
-      <p class="what">
-        <%= event.what %>
-      </p>
-      <p class="when"><br/><%= event.when %></p>
+      <h3 class="what"><%= event.what %></h3>
+      <p class="when">Posted <%= event.when %> by <%= event.who %></p>
       
     </a>
   </div>
