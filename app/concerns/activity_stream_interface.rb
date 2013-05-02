@@ -94,57 +94,61 @@ module ActivityStreamInterface
    text = []
    case klass
      when 'Profile': 
-    	  text << "updated profile details"
-          text << "<br/>"
+       text << "updated profile details"
+       text << "<br />"
      when 'ProfilePhoto': 
-    	  text << "updated profile photo"
-          #text << "<span>[\"#{truncate(self.profile_photo_filename, { :length => 20, :omission => "..." })}\"]</span>"
-          text << "<br/>"
+       text << "updated profile photo"
+       #text << "<span>[\"#{truncate(self.profile_photo_filename, { :length => 20, :omission => "..." })}\"]</span>"
+       text << "<br />"
      when 'Answer': 
-    	  text << "answered the question:"
-          text << "<br/>"
-    	  text << "<em>\"#{truncate(self.answer_question_question, { :length => 60, :omission => "..." })}\"</em><br />"
-    	  text << truncate(self[:answer_answer], { :length => 50, :omission => "..." })
+       text << "answered the question:"
+       text << "<br />"
+       text << "<em>\"#{truncate(self.answer_question_question, { :length => 100, :omission => "..." })}\"</em><br />"
+       text << "<span>\"#{truncate(self[:answer_answer], { :length => 100, :omission => "..." })}\"</span>"
      when 'Question': 
-    	  #text << "asked a question:"
-          #text << "<br/>"
-    	  text << truncate(self[:question_question], { :length => 50, :omission => "..." })
+       #text << "asked a question:"
+       text << "<span>"
+       text << truncate(self[:question_question], { :length => 100, :omission => "..." })
+       text << "</span>"
      when 'Login': 
-    	  text << "logged in"
-          text << "<br/>"
+       text << "logged in"
+       text << "<br />"
      when 'GroupMembership': 
-    	  text << "joined the group: " + truncate(self.group_name, { :length => 50, :omission => "..." })
+       text << "joined the group:<br /><span> " + truncate(self.group_name, { :length => 100, :omission => "..." })
+       text << "</span>"
      when 'BlogPost': 
-    	  text << "added a blog post:"
-          text << "<br/>'"
-    	  text << truncate(self.blog_post_title, { :length => 50, :omission => "..." })
-          text << "'"
+       text << "added a blog post:"
+       text << "<br /><span>"
+       text << truncate(self.blog_post_title, { :length => 100, :omission => "..." })
+       text << "'</span>"
      when 'Comment':
-          text << "added a comment:" 
-          text << "<br/>'"
-    	  text << truncate(self.comment_text, { :length => 35, :omission => "..." })
-          text << "'<br/>"
-          if self.comment_blog_post_title
-       	    text << "<span>[comment on the Blog Post - \"#{truncate(self.comment_blog_post_title, { :length => 40, :omission => "..." })}\"]</span>"
-          elsif self.comment_group_post_post
-            text << "<span>[comment on the Group Post - \"#{truncate(self.comment_group_post_post, { :length => 40, :omission => "..." })}\"]</span>"
-          end
+       text << "added a comment:" 
+       text << "<br /><span>'"
+       text << truncate(self.comment_text, { :length => 100, :omission => "..." })
+       text << "'</span><br />"
+       if self.comment_blog_post_title
+         text << "<em>[comment on the Blog Post - \"#{truncate(self.comment_blog_post_title, { :length => 40, :omission => "..." })}\"]</em>"
+       elsif self.comment_group_post_post
+         text << "<em>[comment on the Group Post - \"#{truncate(self.comment_group_post_post, { :length => 100, :omission => "..." })}\"]</em>"
+       end
      when 'ProfileAward': 
-    	  text << "received an award:"
-          text << "<br/>"
-    	  text << "was awarded the '" + truncate(self.award_title, { :length => 100, :omission => "..." }) + "'"
+       text << "received an award:"
+       text << "<br />"
+       text << "was awarded the <span>'" + truncate(self.award_title, { :length => 100, :omission => "..." }) + "'</span>"
      when 'Status': 
-    	  text << "shared an update:"
-          text << "<br/>"
-    	  text << self.status_body
+       text << "shared an update:"
+       text << "<br /><span>"
+       text << self.status_body
+       text << "</span>"
      when 'GroupPost':
-          text << "added a group post:"
-          text << "<br/>"
-          text << truncate(self.group_post_post, { :length => 100, :omission => "..." })
+       text << "added a group post:"
+       text << "<br /><span>"
+       text << truncate(self.group_post_post, { :length => 100, :omission => "..." })
+       text << "</span>"
      when 'GalleryPhoto':
-          text << "added a gallery photo to the booth:'"
-          text << group_name + "'"
-   end     
+       text << "added a gallery photo to the booth:'"
+       text << group_name + "'"
+   end
 
   text.join(" ")
   end
@@ -162,8 +166,8 @@ module ActivityStreamInterface
    case klass
       when 'Group': "#{self.action}d"
       when 'GroupPhoto'
-           text << "their group photo to"
-           text << "<span>\"#{truncate(self.group_photo_filename, { :length => 20, :omission => "..." })}\"</span>"
+           text << "their group photo"
+           #text << "<span>\"#{truncate(self.group_photo_filename, { :length => 20, :omission => "..." })}\"</span>"
       when 'QuestionReferral'
            text << "referred a question"
            text << "<br/>"
