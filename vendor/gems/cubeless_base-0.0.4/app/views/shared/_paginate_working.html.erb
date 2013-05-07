@@ -22,9 +22,9 @@ end
 <% if collection.page_count != collection.first_page -%>
 <div class="pagination">
 <% if collection.previous_page? -%>
-<%= link_to('&#171; previous', page_url_params(collection.previous_page), :class => 'nextpage') unless @paging_uses_ajax %><%#= link_to_remote('&#171; previous', :url => page_url_params_for_ajax(collection.previous_page), :method => 'get', :class => 'nextpage') if @paging_uses_ajax %>
+<%= link_to('previous', page_url_params(collection.previous_page), :class => 'nextpage') unless @paging_uses_ajax %><%#= link_to_remote('&#171; previous', :url => page_url_params_for_ajax(collection.previous_page), :method => 'get', :class => 'nextpage') if @paging_uses_ajax %>
 <% else -%>
-<span class="disablepage">&#171; previous</span>
+<span class="disablepage">previous</span>
 <% end -%>
 <% last_page = 0 -%>
 <% windowed_pagination_links(collection, :window_size => 2, :link_to_current_page => true, :always_show_anchors => true) do |n| -%>
@@ -37,9 +37,9 @@ end
 <% last_page = n -%>
 <% end -%>
 <% if collection.next_page? -%>
-<%=  link_to('next &#187;', page_url_params(collection.next_page), :class => 'nextpage') unless @paging_uses_ajax %><%#=  link_to_remote('next &#187;', :url => page_url_params_for_ajax(collection.next_page), :method => 'get', :class => 'nextpage') if @paging_uses_ajax %>
+<%=  link_to('next', page_url_params(collection.next_page), :class => 'nextpage') unless @paging_uses_ajax %><%#=  link_to_remote('next &#187;', :url => page_url_params_for_ajax(collection.next_page), :method => 'get', :class => 'nextpage') if @paging_uses_ajax %>
 <% else -%>
-<span class="disablepage">&#171; next</span>
+<span class="disablepage">next</span>
 <% end -%>
 </div>
 <% end -%>

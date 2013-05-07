@@ -45,7 +45,7 @@
 #news_feed .news_item .details {
   display: block;
   float: left;
-  width: 420px;
+  width: 450px;
 }
 
 /* line 9, ../../../../app/stylesheets/themes/agentstream/hub.scss */
@@ -56,26 +56,25 @@
 }
 
 /* line 10, ../../../../app/stylesheets/themes/agentstream/hub.scss */
-#news_feed .news_item .details p {
-  display: inline;
+#news_feed .news_item .details h3.what {
+  font-size: 12px;
+  font-weight: normal;
+  display: block;
 }
 
 /* line 11, ../../../../app/stylesheets/themes/agentstream/hub.scss */
-#news_feed .news_item .details p.what {
+#news_feed .news_item .details h3.what span {
   font-size: 14px;
+  font-weight: bold;
 }
 
 /* line 12, ../../../../app/stylesheets/themes/agentstream/hub.scss */
-#news_feed .news_item .details p.what span {
+#news_feed .news_item h3 a {
+  color: #4a6970;
   font-size: 12px;
 }
 
-/* line 13, ../../../../app/stylesheets/themes/agentstream/hub.scss */
-#news_feed .news_item h3 a {
-  color: #4a6970;
-}
-
-/* line 15, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 14, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask {
   clear: both;
   margin: 15px 0 0;
@@ -83,14 +82,14 @@
   padding: 0 10px;
 }
 
-/* line 16, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 15, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask .photo_wrapper {
   display: block;
   float: left;
   margin: 1px 0 0 0;
 }
 
-/* line 17, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 16, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask:after {
   content: ".";
   display: block;
@@ -99,7 +98,7 @@
   visibility: hidden;
 }
 
-/* line 18, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 17, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask textarea {
   height: 60px;
   width: 415px;
@@ -111,13 +110,13 @@
   color: #4a6970;
 }
 
-/* line 19, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 18, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask img {
   border: 1px solid #90b4bc;
   border-width: 1px 0 1px 1px;
 }
 
-/* line 20, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 19, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask .button {
   float: right;
   margin: 0 2px 0 0;
@@ -132,18 +131,18 @@
 
 /* feeds */
 /* STOLEN FROM news feed...made to be generic */
-/* line 24, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 23, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds {
   background: #fff;
   margin: 0 0 10px;
 }
 
-/* line 25, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 24, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds .tabs-panel {
   padding: 10px 0;
 }
 
-/* line 26, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 25, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tabs-panel .news_item {
   clear: both;
   margin: 20px 0 0;
@@ -151,12 +150,12 @@
   padding: 10px;
 }
 
-/* line 27, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 26, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tabs-panel .question {
   background: #e1ecee;
 }
 
-/* line 28, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 27, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tabs-panel .news_item:after {
   content: ".";
   display: block;
@@ -165,56 +164,54 @@
   visibility: hidden;
 }
 
-/* line 29, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 28, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tabs-panel .news_item .photo_wrapper {
   display: block;
   float: left;
   margin: 0 15px 0 0;
 }
 
-/* line 30, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 29, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tabs-panel .news_item .details {
   display: block;
   float: left;
   width: 420px;
 }
 
-/* line 31, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 30, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tabs-panel .news_item .details h3 {
   margin: 0 10px 0 0;
   display: inline;
   font-weight: bold;
 }
 
-/* line 32, ../../../../app/stylesheets/themes/agentstream/hub.scss */
-.tabs-panel .news_item .details p {
-  display: inline;
-}
-
-/* line 33, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 31, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tabs-panel .news_item .details p.when {
-  font-size: 0.8em;
+  font-size: 10px;
   color: #666;
+  text-align: right;
+  padding-top: 10px;
+  display: block;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 38, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tabs-panel .news_item h3 a {
   color: #4a6970;
 }
 
 /*groups*/
-/* line 41, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups {
   position: relative;
   background: #fff;
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 43, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .group_item {
   clear: both;
 }
 
-/* line 43, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 44, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .group_item:after {
   content: ".";
   display: block;
@@ -223,42 +220,42 @@
   visibility: hidden;
 }
 
-/* line 44, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 45, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups .group_item .photo_wrapper {
   display: block;
   float: left;
   margin: 0 15px 0 0;
 }
 
-/* line 45, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 46, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #hub #groups .details {
   display: block;
   float: left;
   width: 410px;
 }
 
-/* line 46, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 47, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups .group_item .details h3 {
   margin-bottom: 0px;
 }
 
-/* line 47, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 48, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups .group_item .details h3 small {
   font-size: 0.8em;
 }
 
 /*      #groups h3 a { color: #6f563b; }*/
-/* line 49, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 50, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups h3 .info {
   color: #987d72;
 }
 
-/* line 51, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 52, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups h2 {
   float: left;
 }
 
-/* line 52, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 53, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups .nav {
   display: block;
   float: right;
@@ -267,7 +264,7 @@
   text-transform: lowercase;
 }
 
-/* line 53, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 54, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups .nav:after {
   content: ".";
   display: block;
@@ -276,67 +273,67 @@
   visibility: hidden;
 }
 
-/* line 54, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 55, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups .nav li {
   display: block;
   float: left;
   margin: 0 20px 0 0;
 }
 
-/* line 55, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 56, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups .nav li.active {
   border-bottom: 1px solid #4a6970;
 }
 
-/* line 56, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 57, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #groups .nav a {
   color: #4a6970;
   font-weight: normal;
 }
 
-/* line 58, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 59, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #statistics table {
   width: 100%;
 }
 
-/* line 59, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 60, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #statistics table, #statistics table a {
   color: #4a6970;
 }
 
-/* line 62, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 63, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .question {
   margin: 0 0 10px;
 }
 
-/* line 63, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 64, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .question .text {
   margin: 0 0 10px;
 }
 
-/* line 64, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 65, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .question .meta a {
   color: #90b4bc;
 }
 
-/* line 65, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 66, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .question .meta p {
   margin: 0;
 }
 
-/* line 66, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 67, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .question .question_actions {
   margin: 15px 0 0 0;
 }
 
-/* line 67, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 68, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .question .question_actions li {
   margin-right: 15px;
   padding: 5px 0 2px 0;
   text-transform: capitalize;
 }
 
-/* line 72, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 73, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .question .question_actions a {
   background: none;
   color: #676767;
@@ -344,40 +341,40 @@
 }
 
 /* deals */
-/* line 80, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 81, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #deals.module .deal_image {
   float: left;
 }
-/* line 83, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 84, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #deals.module .details {
   margin-left: 60px;
 }
-/* line 86, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 87, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #deals.module .list_item {
   padding-top: 5px;
   /*      border-bottom: 1px solid #CECECE;*/
 }
-/* line 90, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 91, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #deals.module .list_item h3 {
   margin-bottom: 0px;
 }
-/* line 95, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 96, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #deals.module .list_item.even {
   /*      background-color: #EFF5F5;*/
 }
-/* line 98, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 99, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #deals.module .list_item.odd {
   /*      background-color: #E9F3F2;*/
 }
 
-/* line 104, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 105, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #promotions {
   padding: 0;
   height: 150px;
   position: relative;
 }
 
-/* line 105, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 106, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #promotions h2 {
   position: absolute;
   top: 10px;
@@ -387,12 +384,12 @@
   text-shadow: #999 0 -1px 0;
 }
 
-/* line 106, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 107, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .promo_image {
   position: absolute;
 }
 
-/* line 108, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 109, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #ask span.counter {
   /*color: #990000;*/
   display: block !important;
@@ -400,13 +397,13 @@
   margin: 0 0 0 -80px;
 }
 
-/* line 114, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 115, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #ask .actions {
   margin-top: 1px;
   margin-left: 100px;
 }
 
-/* line 119, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 120, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask textarea.ask_text_placeholder {
   font-size: 2.2em !important;
   line-height: 1.2em !important;
@@ -415,7 +412,7 @@
   color: #a1a1a1;
 }
 
-/* line 127, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 128, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #ask .actions input[type=checkbox] {
   float: left;
   height: 18px;
@@ -423,36 +420,36 @@
   width: 18px;
 }
 
-/* line 134, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 135, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #ask .actions .category_prompt {
   float: right;
   margin-right: 20px;
   margin-top: 0;
 }
 
-/* line 147, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 148, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #following a.filter {
   display: block;
   float: right;
   margin: 3px 5px 0 0;
 }
 
-/* line 152, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 153, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #following .list {
   margin: 10px;
 }
 
-/* line 155, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 156, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #following .news_item {
   clear: both;
 }
 
-/* line 159, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 160, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 div.news_item div.details a.new_message.button {
   color: #fff;
 }
 
-/* line 163, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 164, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 ul.hub_question_actions li a {
   color: white !important;
   /*    padding: 0;*/
@@ -476,50 +473,50 @@ ul.hub_question_actions li a {
       #groups .nav li { display: block; float: left; margin: 0 20px 0 0; }
         #groups .nav li.active { border-bottom: 1px solid #4a6970; }
       #groups .nav a { color: #4a6970; font-weight: normal;  }*/
-/* line 186, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 187, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox {
   margin-left: 100px;
   margin-top: 30px;
 }
 
-/* line 191, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 192, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup {
   width: 500px !important;
 }
-/* line 193, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 194, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup h1 {
   margin-top: 10px;
   margin-bottom: 0px;
 }
-/* line 197, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 198, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup h4 {
   margin-top: 10px;
   margin-bottom: 0px;
 }
-/* line 201, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 202, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup div.buttons {
   margin-top: 5px;
 }
-/* line 204, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 205, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup h3 {
   line-height: 15px;
   margin-bottom: 5px;
 }
-/* line 208, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 209, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup h3.tagline {
   margin-bottom: 15px;
 }
-/* line 211, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 212, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup hr {
   margin-left: 5px;
   margin-right: 15px;
 }
-/* line 215, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 216, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup center.none h4 {
   height: 0px;
   margin: 0;
 }
-/* line 220, ../../../../app/stylesheets/themes/agentstream/hub.scss */
+/* line 221, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 .tac_facebox .popup form .facebox_sign_in_label {
   float: left;
 }

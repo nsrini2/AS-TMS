@@ -120,12 +120,12 @@ module ActivityStreamInterface
        text << "added a blog post:"
        text << "<br /><span>"
        text << truncate(self.blog_post_title, { :length => 100, :omission => "..." })
-       text << "'</span>"
+       text << "</span>"
      when 'Comment':
        text << "added a comment:" 
-       text << "<br /><span>'"
+       text << "<br /><span>"
        text << truncate(self.comment_text, { :length => 100, :omission => "..." })
-       text << "'</span><br />"
+       text << "</span><br />"
        if self.comment_blog_post_title
          text << "<em>[comment on the Blog Post - \"#{truncate(self.comment_blog_post_title, { :length => 40, :omission => "..." })}\"]</em>"
        elsif self.comment_group_post_post
@@ -169,9 +169,9 @@ module ActivityStreamInterface
            text << "their group photo"
            #text << "<span>\"#{truncate(self.group_photo_filename, { :length => 20, :omission => "..." })}\"</span>"
       when 'QuestionReferral'
-           text << "referred a question"
+           text << "referred a question:"
            text << "<br/>"
-           text << "<span>\"#{truncate(self.question_question_referral_question, { :length => 40, :omission => "..." })}\"</span>"
+           text << "<span>\"#{truncate(self.question_question_referral_question, { :length => 100, :omission => "..." })}\"</span>"
       else "#{self.action}d"
    end    
   end

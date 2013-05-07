@@ -8,15 +8,15 @@
 <div id="<%= "news_item_#{index}" %>" class="list_item news_item <%= cycle("even", "odd") %>">
   <%# display = display_event(event) %>
   <%#= display[:avatar] %>
-  <%= link_to(primary_photo_for(event, :thumb => :thumb_80, :hide_status_indicator => false, :hide_sponsor_sash => false), event.owner_path) %>
+  <%= link_to(primary_photo_for(event, :thumb => :thumb, :hide_status_indicator => false, :hide_sponsor_sash => false), event.owner_path) %>
   <div class="details">
     <a href="<%= event.event_path %>">
       <div class="icon">
         <%= image_tag event.icon_path, :class => "icon" %>
       </div>
-      <h3 class="what"><%= event.what %></h3>
+      <h3 class="what"><%= event.who %> <%= event.what %></h3>
     </a>
-    <p class="when">Posted <%= event.when %> by <%= link_to(event.who, event.owner_path) %></p>
+    <p class="when">Posted about <%= event.when %></p>
   </div>
 </div>
 
