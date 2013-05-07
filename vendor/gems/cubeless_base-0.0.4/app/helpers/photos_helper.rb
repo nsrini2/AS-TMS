@@ -22,7 +22,6 @@ module PhotosHelper
     #  div_class_name << " expert"
     #end
     #content_tag :div, :class => div_class_name do
-
     content_tag :div, :class => "photo_wrapper" do
       (options[:hide_sponsor_sash] ? "" : sponsor_indicator_for(model).to_s) +
       link_to_if(photo_linkable?(model, options), image_tag(primary_photo_path_for(model, options[:thumb]), :size => options[:size], :alt => "avatar", :class => "photo #{'tooltip' if tooltip}", :title => tooltip), photo_link(model), link_opts) +
