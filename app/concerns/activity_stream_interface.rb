@@ -106,8 +106,8 @@ module ActivityStreamInterface
        text << "<em>\"#{truncate(self.answer_question_question, { :length => 100, :omission => "..." })}\"</em><br />"
        text << "<span>\"#{truncate(self[:answer_answer], { :length => 100, :omission => "..." })}\"</span>"
      when 'Question': 
-       #text << "asked a question:"
-       text << "<span>"
+       text << "asked a question:"
+       text << "<br /><span>"
        text << truncate(self[:question_question], { :length => 100, :omission => "..." })
        text << "</span>"
      when 'Login': 
