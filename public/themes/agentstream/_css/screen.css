@@ -34,95 +34,119 @@ h3, h3 a {
 }
 
 /* line 27, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.aside h2 {
+  margin-bottom: 0;
+  font-size: 18px;
+}
+
+/* line 28, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.aside h3, .aside h3 a {
+  line-height: 1.2;
+}
+
+/* line 29, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 div.meta {
   color: #666;
   font-size: 11px;
 }
 
-/* line 31, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 33, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 p.asked, p.open_until {
   display: inline;
 }
 
-/* line 32, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 34, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 p.category, p.answers {
   display: inline;
 }
 
-/* line 33, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 35, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question_actions {
   color: #666;
   font-size: 11px;
 }
 
-/* line 37, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 39, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question_actions li {
   display: inline;
 }
 
-/* line 40, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 42, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 img.photo {
   /*border: 1px solid #C4D7DC;*/
 }
 
-/* line 42, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 44, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.expert {
+  background: url("/images/expert.gif") no-repeat 0 0;
+  width: 86px;
+  height: 102px;
+}
+
+/* line 49, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+.expert img.photo {
+  margin: 3px;
+  border: none;
+}
+
+/* line 54, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .alert {
   border: 1px solid #c4d7dc;
   border-width: 0 1px 0;
   border-width: 0 !important;
 }
 
-/* line 47, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 59, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .alert .content {
   margin: 0 0 20px;
   padding: 10px 10px 1px;
   border-radius: 3px;
 }
 
-/* line 52, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 64, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .alert .content p {
   margin: 0 0 10px;
 }
 
-/* line 53, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 65, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .notice .content {
   background: #E5F1F4;
 }
 
-/* line 54, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 66, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .success .content {
   background: #dcedbc;
 }
 
-/* line 55, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 67, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .error .content {
   background: #fee;
 }
 
-/* line 56, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 68, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .warning .content {
   background: #fff5cc;
 }
 
-/* line 58, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 70, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .primary .alert {
   float: none;
   border: none;
 }
 
 /* news feed */
-/* line 64, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 76, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content {
   background: #fff;
   margin: 0 0 10px;
 }
 
-/* line 68, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 80, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content .tabs-panel {
   padding: 10px 0;
 }
 
-/* line 69, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 81, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #news_feed .news_item {
   clear: both;
   margin: 20px 0 0;
@@ -130,12 +154,12 @@ img.photo {
   padding: 10px;
 }
 
-/* line 75, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 87, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #news_feed .question {
   background: #e1ecee;
 }
 
-/* line 76, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 88, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #news_feed .news_item:after {
   content: ".";
   display: block;
@@ -144,61 +168,61 @@ img.photo {
   visibility: hidden;
 }
 
-/* line 83, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 95, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #news_feed .news_item .photo_wrapper {
   display: block;
   float: left;
   margin: 0 15px 0 0;
 }
 
-/* line 88, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 100, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #news_feed .news_item .details {
   display: block;
   float: left;
   width: 420px;
 }
 
-/* line 93, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 105, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #news_feed .news_item .details h3 {
   margin: 0 10px 0 0;
   display: inline;
   font-weight: bold;
 }
 
-/* line 98, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 110, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #news_feed .news_item h3 a {
   color: #4a6970;
   font-size: 12px;
 }
 
 /* chats feed */
-/* line 101, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 113, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content {
   background: #fff;
   margin: 0 0 10px;
 }
 
-/* line 105, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 117, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content .tabs-panel {
   padding: 10px 0;
 }
 
-/* line 107, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 119, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #list .chat_item .photo_wrapper {
   display: block;
   float: left;
   margin: 0 15px 0 0;
 }
-/* line 112, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 124, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #list .chat_item .details {
   margin-top: 0;
 }
-/* line 113, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 125, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #list .chat_item .action_buttons {
   margin-top: 0;
 }
 
-/* line 116, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 128, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content #ask {
   clear: both;
   margin: 15px 0 0;
@@ -206,14 +230,14 @@ img.photo {
   padding: 0 10px;
 }
 
-/* line 122, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 134, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content #ask .photo_wrapper {
   display: block;
   float: left;
   margin: 0;
 }
 
-/* line 127, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 139, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content #ask:after {
   content: ".";
   display: block;
@@ -222,7 +246,7 @@ img.photo {
   visibility: hidden;
 }
 
-/* line 134, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 146, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content #ask textarea {
   height: 60px;
   width: 415px;
@@ -233,13 +257,13 @@ img.photo {
   color: #4a6970;
 }
 
-/* line 143, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 155, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content #ask img {
   border: 1px solid #90b4bc;
   border-width: 1px 0 1px 1px;
 }
 
-/* line 147, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 159, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .content #ask .button {
   float: right;
   margin: 0;
@@ -253,18 +277,18 @@ img.photo {
 }
 
 /*groups*/
-/* line 160, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 172, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #groups {
   position: relative;
   background-color: #eff8fa;
 }
 
-/* line 164, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 176, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .group_item {
   clear: both;
 }
 
-/* line 165, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 177, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .group_item:after {
   content: ".";
   display: block;
@@ -273,36 +297,36 @@ img.photo {
   visibility: hidden;
 }
 
-/* line 172, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 184, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #hub #groups .group_item .photo_wrapper {
   display: block;
   float: left;
   margin: 0 15px 0 0;
 }
 
-/* line 177, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 189, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #hub #groups .details {
   display: block;
   float: left;
   width: 425px;
 }
 
-/* line 182, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 194, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #hub #groups .group_item .details h3 {
   margin-bottom: 0;
 }
 
-/* line 183, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 195, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #hub #groups h3 a {
   color: #6f563b;
 }
 
-/* line 184, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 196, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #groups h3 .info {
   color: #987d72;
 }
 
-/* line 186, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 198, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #groups .nav {
   display: block;
   float: right;
@@ -311,7 +335,7 @@ img.photo {
   text-transform: lowercase;
 }
 
-/* line 193, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 205, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #groups .nav:after {
   content: ".";
   display: block;
@@ -320,7 +344,7 @@ img.photo {
   visibility: hidden;
 }
 
-/* line 200, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 212, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #groups .nav li {
   display: block;
   float: left;
@@ -329,45 +353,45 @@ img.photo {
   background: url("/images/bg_nav_glyph_right_blue.png") 100% 50% no-repeat;
 }
 
-/* line 207, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 219, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #groups .nav li.active {
   border-bottom: 1px solid #4a6970;
 }
 
-/* line 208, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 220, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #groups .nav a {
   color: #4a6970;
   font-weight: normal;
 }
 
-/* line 213, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 225, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #statistics table {
   width: 100%;
 }
 
-/* line 214, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 226, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #statistics table, #statistics table a {
   color: #4a6970;
 }
 
-/* line 215, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 227, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #header, #main {
   border: 1px solid #c4d7dc;
   border-width: 0 1px 0;
 }
 
-/* line 219, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 231, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #main {
   border-width: 0 1px 1px;
   padding-top: 20px;
 }
 
-/* line 220, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 232, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #footer {
   clear: both;
 }
 
-/* line 221, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 233, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .aside .module, .primary .module {
   margin: 0;
   padding: 10px 20px 10px;
@@ -376,53 +400,53 @@ img.photo {
   background: #e5f1f4;
 }
 
-/* line 228, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 240, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .aside .module {
   border-width: 1px 0 0 1px;
 }
 
-/* line 229, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 241, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .aside .last {
   border-bottom: 1px solid #c4d7dc;
 }
 
-/* line 232, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 244, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question {
   margin: 0 0 10px;
 }
 
-/* line 233, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 245, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question .text {
   margin: 0 0 10px;
 }
 
-/* line 234, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 246, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question .meta a {
   color: #90b4bc;
 }
 
-/* line 235, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 247, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question .meta p {
   margin: 0;
 }
 
-/* line 236, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 248, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question .question_actions {
   margin: 5px 0 0 0;
 }
 
-/* line 237, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 249, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question .question_actions li {
   margin: 0 15px 0 0;
 }
 
-/* line 238, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 250, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .question .question_actions a {
   color: #676767;
 }
 
 /*.note { clear: both; }*/
-/* line 242, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 254, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note:after {
   content: ".";
   display: block;
@@ -431,56 +455,56 @@ img.photo {
   visibility: hidden;
 }
 
-/* line 249, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 261, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .text, .note .text a {
   margin: 0 10px 3px 0;
   font-size: 14px;
   color: #4a6970;
 }
 
-/* line 254, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 266, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .text {
   background: url("/images/bg_notes_quote.png") no-repeat;
   padding: 0 0 0 25px;
   background-position: 0 3px;
 }
 
-/* line 259, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 271, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .text {
   width: 330px;
   display: block;
 }
 
-/* line 263, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 275, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .agency .note .text {
   width: 180px;
   display: block;
 }
 
-/* line 267, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 279, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .text p {
   margin-top: 20px;
   margin-bottom: 0;
 }
 
-/* line 271, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 283, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .text p:first-child {
   margin-top: 10px;
 }
 
-/* line 274, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 286, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .text p.actions {
   margin-top: 0;
   margin-bottom: 20px;
 }
 
-/* line 278, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 290, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .text a.button {
   color: #fff;
 }
 
 /*.note .text a { width: 100%; display: block; }*/
-/* line 282, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 294, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .title {
   margin: 0;
   color: #4a6970;
@@ -488,18 +512,18 @@ img.photo {
   font-weight: bold;
 }
 
-/* line 288, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 300, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note .when {
   margin: 0 0 0 0;
   font-size: 11px;
 }
 
-/* line 292, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 304, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .note object {
   width: 315px !important;
 }
 
-/* line 294, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 306, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #widget:after {
   content: ".";
   display: block;
@@ -508,31 +532,31 @@ img.photo {
   visibility: hidden;
 }
 
-/* line 301, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 313, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #widget h3 {
   margin: 10px 0 5px 0;
 }
 
-/* line 304, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 316, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #widget div.content {
   border-bottom: 1px solid #C4D7DC;
   margin-bottom: 30px;
   padding-bottom: 30px;
 }
 
-/* line 309, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 321, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #widget .widget:last-child div.content {
   border-bottom: 0;
 }
 
-/* line 313, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 325, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #promotions {
   padding: 0;
   height: 150px;
   position: relative;
 }
 
-/* line 318, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 330, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #promotions h2 {
   position: absolute;
   top: 10px;
@@ -542,14 +566,14 @@ img.photo {
   text-shadow: #999999 0 -1px 0;
 }
 
-/* line 326, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 338, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 .promo_image {
   position: absolute;
 }
 
 /* LANDING PAGE */
 /* SSJ: 3/11/11 Push all this off the page, txt is now on image, but keep for crawlers etc. */
-/* line 330, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 342, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #main .primary .content .intro-text {
   text-indent: -5000px;
   clear: both;
@@ -558,7 +582,7 @@ img.photo {
   margin: 30px 20px 20px 30px;
   background: transparent;
 }
-/* line 337, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 349, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #main .primary .content .intro-text h5 {
   font-size: 32px;
   line-height: 32px;
@@ -566,20 +590,20 @@ img.photo {
   font-weight: normal;
   color: #6f563b;
 }
-/* line 344, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 356, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #main .primary .content .intro-text h1 {
   font-size: 48px;
   line-height: 40px;
   margin: 0;
   color: #4a6970;
 }
-/* line 350, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 362, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #main .primary .content .intro-text p {
   font-size: 12px;
   line-height: 14pt;
   margin: 12px 0;
 }
-/* line 355, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 367, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 #main .primary .content .intro-text li {
   list-style: none;
   color: #4a6970;
@@ -587,21 +611,21 @@ img.photo {
 }
 
 /* inherits from ul.action_list */
-/* line 362, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 374, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 ul.sub_nav {
   list-style: none;
 }
-/* line 364, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 376, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 ul.sub_nav li {
   float: left;
 }
-/* line 365, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 377, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 ul.sub_nav li.selected {
   padding-left: 20px;
   background: url(/themes/theme_1/images/arrow_right.png) 5px center no-repeat;
   font-weight: bold;
 }
-/* line 369, ../../../../app/stylesheets/themes/agentstream/screen.scss */
+/* line 381, ../../../../app/stylesheets/themes/agentstream/screen.scss */
 ul.sub_nav li.selected a {
   color: #000;
   text-decoration: none;

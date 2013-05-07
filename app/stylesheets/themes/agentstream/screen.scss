@@ -24,6 +24,8 @@ h3, h3 a {
 }
 .aside { }
 .aside p { color: #666;}
+.aside h2 { margin-bottom: 0; font-size: 18px; }
+.aside h3, .aside h3 a { line-height: 1.2; }
 div.meta {
   color: #666;
   font-size: 11px;
@@ -38,6 +40,16 @@ p.category, p.answers { display: inline; }
 .primary {  }
 
 img.photo { /*border: 1px solid #C4D7DC;*/ }
+
+.expert {
+	background: url("/images/expert.gif") no-repeat 0 0;
+	width: 86px;
+	height: 102px;
+}
+.expert img.photo {
+	margin: 3px;
+	border: none;
+}
 
 .alert {
   border: 1px solid #c4d7dc;

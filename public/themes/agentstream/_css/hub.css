@@ -122,9 +122,9 @@
   margin: 0 2px 0 0;
   background: #90b4bc;
   border: 0;
-  padding: 5px 25px;
+  padding: 5px 15px;
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -391,8 +391,8 @@
 
 /* line 109, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #ask span.counter {
-  /*color: #990000;*/
-  display: block !important;
+  /*color: #990000;
+  display: block ! important;*/
   float: left;
   margin: 0 0 0 -80px;
 }
@@ -405,7 +405,7 @@
 
 /* line 120, ../../../../app/stylesheets/themes/agentstream/hub.scss */
 #feeds #ask textarea.ask_text_placeholder {
-  font-size: 2.2em !important;
+  font-size: 1.2em !important;
   line-height: 1.2em !important;
   font-weight: normal;
   padding: 5px 10px 15px 10px;

@@ -1,10 +1,10 @@
 <div id="ask" class="">				  
   <% form_for :status, :url => questions_path, :html => {:accept_charset => "utf-8", :id => "widget_status", :class => "html5"} do |f| -%>
 	  <%= link_to_avatar_for(current_profile, { :thumb => :thumb_large, :size=> "80x80", :hide_status_indicator => true, :hide_sponsor_sash => true, :hide_tooltip => true }) %>
-		<%= f.text_area :body, :maxlength => '4000', :placeholder => "Ask a Question", :class => "ask_text_placeholder", :required => "" %>
+		<%= f.text_area :body, :maxlength => '4000', :placeholder => "Have a question about a destination, Sabre formats, or just need some general help? Post it here...", :class => "ask_text_placeholder", :required => "" %>
 		
 		<div class="actions">
-		  <input class="button" type="submit" value="Ask">
+		  <input class="button" type="submit" value="Ask Question">
       <% if false %>
   		  <input type="checkbox" id="status_question" />
   		  <span>Post as a question</span>

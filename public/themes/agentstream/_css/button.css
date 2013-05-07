@@ -18,7 +18,7 @@ div.action_buttons a.button {
 /* line 15, ../../../../app/stylesheets/themes/agentstream/button.scss */
 .button,
 a.button {
-  margin: 0 2px 5px 0;
+  /*margin: 0 2px 5px 0;*/
   background: #4A6970;
   border: 0;
   color: #fff;
@@ -33,7 +33,7 @@ a.button {
 .button.little,
 a.button.little {
   font-size: 0.8em;
-  padding: 1px 4px;
+  /*padding: 1px 4px;*/
   width: 60px;
 }
 

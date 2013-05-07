@@ -16,7 +16,7 @@
   	#feeds #ask:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
   	#feeds #ask textarea { height: 60px; width: 415px; padding: 10px; border: 1px solid #90b4bc; border-width: 1px 1px 1px 0; font-size: 12px; line-height: 1.2em ! important; color: #4a6970; }
   	#feeds #ask img { border: 1px solid #90b4bc; border-width: 1px 0 1px 1px; }
-  	#feeds #ask .button { float: right; margin: 0 2px 0 0; background: #90b4bc; border: 0; padding: 5px 25px; color: #fff; font-size: 18px; text-transform: uppercase; font-weight: bold; }
+  	#feeds #ask .button { float: right; margin: 0 2px 0 0; background: #90b4bc; border: 0; padding: 5px 15px; color: #fff; font-size: 14px; text-transform: uppercase; font-weight: bold; }
 
 
   /* feeds */ /* STOLEN FROM news feed...made to be generic */
@@ -107,8 +107,8 @@
   .promo_image { position: absolute; }
   
   #ask span.counter {
-    /*color: #990000;*/
-    display: block ! important;
+    /*color: #990000;
+    display: block ! important;*/
     float: left;
     margin: 0 0 0 -80px;    
   }
@@ -118,7 +118,7 @@
   }
 
   #feeds #ask textarea.ask_text_placeholder {
-    font-size: 2.2em ! important;
+    font-size: 1.2em ! important;
     line-height: 1.2em ! important;
     font-weight: normal;
     padding: 5px 10px 15px 10px;

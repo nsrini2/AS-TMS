@@ -112,9 +112,9 @@ div.blog_post_p a, div.blog_post_p a:visited, a.answer_link, a.answer_link:visit
 
 /* line 53, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.question {
-  border-bottom: 1px solid #c4d7dc;
-  margin-top: 15px;
-  padding-top: 15px;
+  /*border-bottom: 1px solid #c4d7dc;*/
+  margin-top: 0;
+  padding-top: 0;
 }
 /* line 57, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.question div.details {
@@ -530,7 +530,7 @@ table#rss_feed tr.odd {
 
 /* line 298, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 table#companies_list, table#company_members_list {
-  border: 1px solid #4a6970;
+  border: 1px solid #4A6970;
   margin: 20px;
   width: 840px;
 }
@@ -567,7 +567,7 @@ table#companies_list .odd, table#company_members_list .odd {
 div.news_results .primary {
   margin-left: 10px;
   width: 720px;
-  border: 1px solid #c4d7dc;
+  border: 1px solid #C4D7DC;
 }
 
 /* line 337, ../../../../app/stylesheets/themes/agentstream/lists.scss */
@@ -576,7 +576,7 @@ div.news_post_item {
   padding: 10px;
   width: 720px;
   background-color: #EFF8FA;
-  border: 1px solid #c4d7dc;
+  border: 1px solid #C4D7DC;
 }
 /* line 338, ../../../../app/stylesheets/themes/agentstream/lists.scss */
 div.news_post_item .photo_wrapper {
