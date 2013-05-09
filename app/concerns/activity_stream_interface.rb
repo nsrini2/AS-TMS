@@ -148,6 +148,10 @@ module ActivityStreamInterface
      when 'GalleryPhoto':
        text << "added a gallery photo to the booth:'"
        text << group_name + "'"
+     when 'QuestionReferral'
+       text << "referred a question:"
+       text << "<br />"
+       text << "<span>\"#{truncate(self.question_question_referral_question, { :length => 100, :omission => "..." })}\"</span>"
    end
 
   text.join(" ")
@@ -170,7 +174,7 @@ module ActivityStreamInterface
            #text << "<span>\"#{truncate(self.group_photo_filename, { :length => 20, :omission => "..." })}\"</span>"
       when 'QuestionReferral'
            text << "referred a question:"
-           text << "<br/>"
+           text << "<br />"
            text << "<span>\"#{truncate(self.question_question_referral_question, { :length => 100, :omission => "..." })}\"</span>"
       else "#{self.action}d"
    end    
