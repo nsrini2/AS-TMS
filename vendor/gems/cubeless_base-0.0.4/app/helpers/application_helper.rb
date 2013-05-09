@@ -118,7 +118,7 @@ module ApplicationHelper
   #IMAGE RELATED METHODS
 
   def marketing_image_tag(message)
-    link_to_if(message.link_to_url, image_tag( marketing_image_path(message), :alt => '', :width => "595", :height => "220"),message.link_to_url) if message
+    link_to_if(message.link_to_url, image_tag( marketing_image_path(message), :alt => '', :width => "395", :height => "146"),message.link_to_url) if message
   end
 
   def marketing_image_path(marketing_message,which=:large)

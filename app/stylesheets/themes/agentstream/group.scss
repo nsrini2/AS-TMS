@@ -176,7 +176,7 @@ width:250px;
 #booth_info #booth_useful_links{
 float:left;
 margin-left:10px;
-margin-top:10px;
+margin-top:0;
 width:250px;
 margin-bottom:10px;
 }
@@ -363,30 +363,33 @@ padding-left:30px;
 }
 
 #booth_useful_links{
-margin-top:30px;
-padding-top:30px;
+margin-top:0;
+padding-top:0;
 margin-bottom:10px;
 padding-bottom:10px;
 text-align:left;
 }
 
 #booth_useful_links h5{
-margin-top:20px;
-padding-top:10px;
+margin-top:0;
+padding-top:0;
 margin-bottom:10px;
 }
 
 #booth_useful_links .click_me{
-text-decoration:underline;
 font-size:1.2em;
 horizontal-align:center;
 }
 
 #booth_useful_links .click_me a:link{
-color:red;}
+color:red;
+text-decoration: underline;
+}
 
 #booth_useful_links .click_me a:visited{
-color:#DE2C2C;}
+color:#DE2C2C;
+text-decoration: underline;
+}
 
 
 

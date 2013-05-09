@@ -3,7 +3,7 @@ class MarketingVideo < Attachment
    has_attachment :content_type => :video,
                  :storage => :file_system,
                  :max_size => 500.megabytes,
-                 :thumbnails => { :large => [595,220], :thumbnail => [119,44] }
+                 :thumbnails => { :large => [395,146], :thumbnail => [119,44] }
 
    validates_as_attachment
 
