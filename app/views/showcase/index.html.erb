@@ -8,8 +8,7 @@
      <ul id="expo_categories">
         <% @sponsor_accounts.each do |account| -%>
           <% next unless account.showcase_category_image %>
-          <div class="travelexpo_category">
-          <%=content_tag('li',link_to(image_tag(account.showcase_category_image.public_filename(), :alt => account.name, :width => 180, :height => 236),:controller => 'showcase', :action => "category_level_details", :id => account))%>
+          <div class="travelexpo_category">          <%=content_tag('li',link_to(image_tag(account.showcase_category_image.public_filename(), :alt => account.name, :width => 180, :height => 236),:controller => 'showcase', :action => "category_level_details", :id => account))%>
           </div>
         <%end%>
       </ul>
