@@ -2,6 +2,19 @@
 transfer_ownership ||= false
 is_moderator ||= false
 %>
+<% if @group.is_sponsored? %>
+<div class="member <%= member.id %>">
+	<%= primary_photo_for(member, :hide_sponsor_sash => true, :size => '30x30', :hide_status_indicator => true) %>
+	<strong><%= member.screen_name %></strong><br />
+	Joined on <%= member_since_display(member,@group) %>
+	<div class="assign_link">
+	<%= transfer_ownership ? link_to_assign_owner(member) : link_to_assign_moderator((is_moderator ? "unassign" : "assign"),member) %>
+	</div>
+	
+</div>
+
+<% else %>
+
 <div class="member <%= member.id %>">
 	<%= primary_photo_for(member, :size => '30x30', :hide_status_indicator => true) %>
 	<strong><%= member.screen_name %></strong><br />
@@ -11,3 +24,4 @@ is_moderator ||= false
 	</div>
 	
 </div>
+<% end %>

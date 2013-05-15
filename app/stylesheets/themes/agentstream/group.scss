@@ -185,12 +185,12 @@ margin-bottom:10px;
 float:left;
 clear:both;
 width:665px;
-height:80px;
+height:auto;
 }
 
 #booth_twitter{
 padding-left:0;
-display:table-cell;
+overflow:auto;
 margin-bottom:2px;
 margin-top:2px;
 margin-left:15px;
@@ -210,7 +210,8 @@ width:330px;
 height:50px;
 padding-top:10px;
 padding-right:0;
-display:table-cell;
+float:left;
+width:50px;
 }
 
 
@@ -232,9 +233,14 @@ vertical-align: middle;
 
 #tweet_feed{
 font-size:1em;
-display:table-cell;
+float:right;
+width:270px;
+top:0;
+right:0;
 vertical-align:middle;
-text-align:justify;
+text-align:left;
+overflow:auto;
+word-wrap:break-word;
 }
 
 

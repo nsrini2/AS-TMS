@@ -13,7 +13,7 @@
 						p_index = ( col * num_rows ) + row -%>
 						<td class="<%= "last" if col+1 == num_cols %>">
 							<% if p_index < @members.size -%>
-								<%= primary_photo_for(@members[p_index], :size => '35x35', :linkable => true) -%>
+								<%= primary_photo_for(@members[p_index], :hide_sponsor_sash => true, :size => '35x35', :linkable => true) -%>
 							<% else %>
 								<%= content_tag('div', image_tag('/images/no_image.png', :size => '35x35'), :class => 'photo_wrapper') -%>
 							<% end -%>

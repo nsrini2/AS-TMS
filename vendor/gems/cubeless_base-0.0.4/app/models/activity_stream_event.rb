@@ -23,6 +23,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join blog_posts as comment_blog_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'BlogPost' and comments.owner_id=comment_blog_posts.id")
     ModelUtil.add_joins!(args,"left join group_posts as comment_group_posts on activity_stream_events.klass='Comment' and comments.id=klass_id and comments.owner_type = 'GroupPost' and comments.owner_id=comment_group_posts.id")
    ModelUtil.add_joins!(args,"left join questions as question_question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.owner_type='Group' and question_referrals.id=klass_id and question_referrals.question_id=question_question_referrals.id")
+   ModelUtil.add_joins!(args,"left join questions as profile_question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.owner_type='Profile' and question_referrals.id=klass_id and question_referrals.question_id=profile_question_referrals.id")
 
 
    ModelUtil.add_selects!(args,"activity_stream_events.id"+
@@ -48,6 +49,7 @@ class ActivityStreamEvent < ActiveRecord::Base
 
     ", group_posts.post as group_post_post"+
     ", question_question_referrals.question as question_question_referral_question"+
+    ", profile_question_referrals.question as profile_question_referral_question"+
     
     ", groups.name as group_name"+
     ", gp.filename as group_photo_filename"+
@@ -137,6 +139,7 @@ class ActivityStreamEvent < ActiveRecord::Base
     ModelUtil.add_joins!(args,"left join blog_posts on activity_stream_events.klass='BlogPost' and blog_posts.id=klass_id")
     ModelUtil.add_joins!(args,"left join question_referrals on activity_stream_events.klass='QuestionReferral' and question_referrals.id=klass_id") 
     ModelUtil.add_joins!(args,"left join comments on activity_stream_events.klass='Comment' and comments.id=klass_id")
+    ModelUtil.add_joins!(args,"left join booth_marketing_messages on activity_stream_events.klass='BoothMarketingMessage' and booth_marketing_messages.active=1 and booth_marketing_messages.id=klass_id")
     ModelUtil.add_joins!(args,"left join statuses on activity_stream_events.klass='Status' and statuses.id=klass_id")
     ModelUtil.add_joins!(args,"left join profile_awards on activity_stream_events.klass='ProfileAward' and profile_awards.id=klass_id left join awards on profile_awards.award_id = awards.id")
     ModelUtil.add_joins!(args,"left join questions as answer_questions on activity_stream_events.klass='Answer' and answers.id=klass_id and answers.question_id=answer_questions.id")

@@ -2,6 +2,7 @@ class BoothMarketingMessage < ActiveRecord::Base
 has_one :marketing_image, :as => :owner, :dependent => :destroy
 belongs_to :group
 validates_presence_of :group_id
+stream_to :activity
 
   def toggle_activation
     if last_message?

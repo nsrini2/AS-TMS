@@ -8,7 +8,7 @@
 		<dd class="name"><%= f.text_field :name, :size => nil, :tabindex => 1, :maxlength => '400' -%></dd><br/>
 		<dt><label>Photo</label></dt>
 		<dd class="photo"><input type="file" name="asset[uploaded_data]" id="asset_uploaded_data" tabindex="2"></dd>
-		<dd class="photo"><%= primary_photo_for(@group, :thumb => :thumb, :hide_group_icon => true) %></dd><br/>
+		<dd class="photo"><%= primary_photo_for(@group, :hide_sponsor_sash => true, :thumb => :thumb, :hide_group_icon => true) %></dd><br/>
 		<dt class="description"><label for="group_description">Description</label></dt>
 		<dd class="description"><%= f.text_area :description, :rows => nil, :cols => nil, :tabindex => 3, :maxlength => '1000' -%></dd>
 		<dt class="tags"><label for="group_tags">Tags</label></dt>

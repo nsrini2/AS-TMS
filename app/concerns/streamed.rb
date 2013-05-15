@@ -75,7 +75,10 @@ module Streamed
                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
                   opts[:profile_id]=self.owner_id
                   ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?
-                  
+          when BoothMarketingMessage
+                  Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"
+                  opts[:group_id]=self.group_id       
+                  ActivityStreamEvent.add(self.class,self.id,:create,opts) unless opts.empty?                             
           else
                   opts[:profile_id] = self.profile_id
                   Rails.logger.info "Adding #{self.class} #{self.id} to ActivityStreamEvent with opts #{opts.inspect}"

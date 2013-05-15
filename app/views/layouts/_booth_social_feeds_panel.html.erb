@@ -8,7 +8,8 @@
        </div>
        <div id="tweet_feed">
           <%= @twitter_user_name %><span>:</span><%= @twitter_user_handle %><br/>
-          <%= @twitter_feed %>
+          <%= content_tag(:a, @twitter_feed, :href => "https://www.twitter.com/" + @twitter_user_handle.to_s, :target => "_blank") %>
+          <%#= @twitter_feed %>
        </div>
        <% end -%>
       </div>     
